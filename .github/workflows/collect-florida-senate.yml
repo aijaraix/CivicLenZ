@@ -4,6 +4,11 @@ on:
   schedule:
     - cron: '27 9 * * *'
   workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - 'workers/ingestion/collect_florida_senate.py'
+      - '.github/workflows/collect-florida-senate.yml'
 
 concurrency:
   group: florida-senate-collection
