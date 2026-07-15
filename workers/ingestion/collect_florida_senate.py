@@ -21,20 +21,29 @@ from pathlib import Path
 from urllib.parse import urljoin, urlparse
 
 import requests
-from bs4 import BeautifulSoup, Tag
+from bs4 import BeautifulSoup, NavigableString, Tag
 
 SOURCE_URL = "https://www.flsenate.gov/Senators"
 SOURCE_KEY = "florida-senate-members"
-USER_AGENT = "CivicLenZResearchBot/0.1 (+https://civiclenz.ai; evidence-first public records research)"
+# Use a conventional browser user agent because the Senate site returns different
+# markup to some non-browser clients. CivicLenZ identity remains explicit in From.
+USER_AGENT = (
+    "Mozilla/5.0 (Windows NT 10.0; Win64; x64) "
+    "AppleWebKit/537.36 (KHTML, like Gecko) "
+    "Chrome/126.0.0.0 Safari/537.36"
+)
 NAMESPACE = uuid.UUID("9ad986b4-f174-46ec-9a24-e953c5329226")
 
-# The Senate currently links members in both of these forms:
-#   /Senators/S27
-#   /Senators/2024-2026/S27
-# Matching the URL path rather than a lowercase prefix prevents a case-sensitive
-# selector from silently returning zero records when the official site uses "S".
 MEMBER_PATH_PATTERN = re.compile(
     r"^/Senators/(?:\d{4}-\d{4}/)?S(?P<district>\d{1,3})/?$",
+    re.IGNORECASE,
+)
+PARTY_PATTERN = re.compile(
+    r"\b(No Party Affiliation|Republican|Democrat(?:ic)?)\b",
+    re.IGNORECASE,
+)
+COUNTY_PATTERN = re.compile(
+    r"\b(Consists of\s+.+?)(?=\s+(?:Track(?:er)?|Former Senators|Home\b)|$)",
     re.IGNORECASE,
 )
 
@@ -71,22 +80,63 @@ def slugify(value: str) -> str:
 def fetch(url: str) -> requests.Response:
     response = requests.get(
         url,
-        headers={"User-Agent": USER_AGENT, "Accept": "text/html,application/xhtml+xml"},
+        headers={
+            "User-Agent": USER_AGENT,
+            "From": "research@civiclenz.ai",
+            "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
+            "Accept-Language": "en-US,en;q=0.9",
+            "Cache-Control": "no-cache",
+        },
         timeout=(10, 45),
     )
     response.raise_for_status()
     return response
 
 
-def find_member_link(row: Tag) -> Tag | None:
-    """Return the canonical member-profile link from a Senate directory row."""
+def member_path_match(link: Tag) -> re.Match[str] | None:
+    href = str(link.get("href", "")).strip()
+    return MEMBER_PATH_PATTERN.fullmatch(urlparse(href).path)
 
-    for link in row.find_all("a", href=True):
-        href = str(link.get("href", "")).strip()
-        path = urlparse(href).path
-        if MEMBER_PATH_PATTERN.fullmatch(path):
-            return link
-    return None
+
+def text_until_next_member(link: Tag, max_characters: int = 1500) -> str:
+    """Collect the visible directory-entry text following one member link.
+
+    The official page has changed between semantic tables and responsive list
+    markup. Reading the DOM sequence until the next member link is resilient to
+    either representation while remaining bounded to one directory entry.
+    """
+
+    pieces: list[str] = []
+    character_count = 0
+
+    for element in link.next_elements:
+        if element is link:
+            continue
+        if isinstance(element, Tag) and element.name == "a" and member_path_match(element):
+            break
+        if not isinstance(element, NavigableString):
+            continue
+
+        text = " ".join(str(element).split())
+        if not text:
+            continue
+        pieces.append(text)
+        character_count += len(text) + 1
+        if character_count >= max_characters:
+            break
+
+    return " ".join(pieces)
+
+
+def normalize_party(value: str) -> str:
+    lowered = value.casefold()
+    if lowered.startswith("republican"):
+        return "Republican"
+    if lowered.startswith("democrat"):
+        return "Democrat"
+    if lowered.startswith("no party"):
+        return "No Party Affiliation"
+    return value.strip()
 
 
 def parse_directory(
@@ -101,37 +151,52 @@ def parse_directory(
 
     records: list[ExtractedSenator] = []
     seen_member_urls: set[str] = set()
+    seen_districts: set[int] = set()
+    matched_member_links = 0
+    skipped_without_directory_fields: list[str] = []
 
-    for row in soup.select("table tr"):
-        cells = [cell.get_text(" ", strip=True) for cell in row.find_all("td")]
-        member_link = find_member_link(row)
-        if not member_link or len(cells) < 4:
+    for link in soup.find_all("a", href=True):
+        path_match = member_path_match(link)
+        if not path_match:
+            continue
+        matched_member_links += 1
+
+        raw_href = str(link.get("href", "")).strip()
+        member_url = urljoin(SOURCE_URL, raw_href)
+        display_name = link.get_text(" ", strip=True)
+        district = path_match.group("district")
+        entry_text = text_until_next_member(link)
+        party_match = PARTY_PATTERN.search(entry_text)
+        county_match = COUNTY_PATTERN.search(entry_text)
+
+        # Former-member entries contain a district and party but no "Consists of"
+        # representation description. Requiring both fields keeps the collection
+        # focused on the current 40-member directory.
+        if not display_name or not party_match or not county_match:
+            if display_name:
+                skipped_without_directory_fields.append(display_name)
             continue
 
-        raw_href = str(member_link.get("href", "")).strip()
-        member_url = urljoin(SOURCE_URL, raw_href)
+        district_number = int(district)
+        visible_district_match = re.search(r"\b(\d{1,3})\b", entry_text[: party_match.start()])
+        if visible_district_match and int(visible_district_match.group(1)) != district_number:
+            raise RuntimeError(
+                f"District mismatch for {display_name}: directory text shows "
+                f"{visible_district_match.group(1)}, but the member URL identifies district {district}."
+            )
+        if district_number in seen_districts:
+            raise RuntimeError(
+                f"Duplicate current Senate district {district_number} found while parsing {display_name}."
+            )
         if member_url in seen_member_urls:
             continue
 
-        display_name = member_link.get_text(" ", strip=True)
-        district = cells[1].strip()
-        party = cells[2].strip()
-        counties = cells[3].strip()
-
-        # Cross-check the visible district against the district encoded in the
-        # official member URL. A disagreement should not be published silently.
-        path_match = MEMBER_PATH_PATTERN.fullmatch(urlparse(raw_href).path)
-        linked_district = path_match.group("district") if path_match else None
-
-        if not display_name or not re.fullmatch(r"\d{1,3}", district):
-            continue
-        if linked_district and int(linked_district) != int(district):
-            raise RuntimeError(
-                f"District mismatch for {display_name}: table shows {district}, "
-                f"but member URL identifies district {linked_district}."
-            )
+        party = normalize_party(party_match.group(1))
+        counties = " ".join(county_match.group(1).split())
+        raw_record_text = " ".join(f"{display_name} {entry_text}".split())
 
         seen_member_urls.add(member_url)
+        seen_districts.add(district_number)
         stable_id = str(uuid.uuid5(NAMESPACE, member_url))
         records.append(
             ExtractedSenator(
@@ -153,15 +218,20 @@ def parse_directory(
                 jurisdictionName="Florida",
                 stateCode="FL",
                 canonicalMatchStatus="unmatched",
-                rawRowText=" | ".join(cells),
+                rawRowText=raw_record_text,
             )
         )
 
+    records.sort(key=lambda record: int(record.districtNumber))
+
     if len(records) < minimum_records:
+        page_title = soup.title.get_text(" ", strip=True) if soup.title else "no-title"
+        skipped_preview = ", ".join(skipped_without_directory_fields[:5]) or "none"
         raise RuntimeError(
-            f"Only extracted {len(records)} senators; expected at least {minimum_records} "
-            "from the near-complete 40-member directory. The source layout or member-link "
-            "format may have changed, so publication is blocked."
+            f"Only extracted {len(records)} senators from {matched_member_links} member-like links; "
+            f"expected at least {minimum_records} from the near-complete 40-member directory. "
+            f"Page title: {page_title!r}; HTML length: {len(html)}; "
+            f"first skipped names: {skipped_preview}. Publication is blocked."
         )
 
     return records
