@@ -178,6 +178,12 @@ def parse_directory(
             continue
 
         district_number = int(district)
+        visible_district_match = re.search(r"\b(\d{1,3})\b", entry_text[: party_match.start()])
+        if visible_district_match and int(visible_district_match.group(1)) != district_number:
+            raise RuntimeError(
+                f"District mismatch for {display_name}: directory text shows "
+                f"{visible_district_match.group(1)}, but the member URL identifies district {district}."
+            )
         if district_number in seen_districts:
             raise RuntimeError(
                 f"Duplicate current Senate district {district_number} found while parsing {display_name}."
