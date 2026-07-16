@@ -1,0 +1,95 @@
+name: CivicLenZ collection heartbeat
+
+# Lightweight health check. It never fetches public source sites or publishes data.
+# The daily collector remains the only workflow that contacts official directories.
+on:
+  schedule:
+    - cron: '15 * * * *'
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+      - 'agent/**'
+    paths:
+      - 'workers/operations/collection_health.py'
+      - 'workers/ingestion/**'
+      - 'workers/enrichment/**'
+      - 'data/sources/**'
+      - '.github/workflows/collection-heartbeat.yml'
+      - '.github/workflows/collect-florida-senate.yml'
+      - '.github/workflows/collect-federal-baseline.yml'
+  pull_request:
+    paths:
+      - 'workers/operations/collection_health.py'
+      - 'workers/ingestion/**'
+      - 'workers/enrichment/**'
+      - 'data/sources/**'
+      - '.github/workflows/collection-heartbeat.yml'
+      - '.github/workflows/collect-florida-senate.yml'
+      - '.github/workflows/collect-federal-baseline.yml'
+
+permissions:
+  contents: read
+
+concurrency:
+  group: collection-heartbeat-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  heartbeat:
+    name: Report collection health
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Checkout reporting code
+        uses: actions/checkout@v6
+        with:
+          fetch-depth: 1
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Select the latest Florida review snapshot
+        id: snapshot
+        shell: bash
+        run: |
+          set -euo pipefail
+          cp workers/operations/collection_health.py "$RUNNER_TEMP/collection_health.py"
+
+          if git ls-remote --exit-code origin refs/heads/bot/florida-baseline-refresh >/dev/null 2>&1; then
+            git fetch --no-tags origin bot/florida-baseline-refresh
+            git checkout --detach FETCH_HEAD
+            echo "ref=bot/florida-baseline-refresh" >> "$GITHUB_OUTPUT"
+          else
+            echo "ref=${GITHUB_SHA}" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Generate health snapshot
+        run: >-
+          python "$RUNNER_TEMP/collection_health.py"
+          --root "$GITHUB_WORKSPACE"
+          --output "$RUNNER_TEMP/collection-health.json"
+
+      - name: Write heartbeat summary
+        run: >-
+          python "$RUNNER_TEMP/collection_health.py"
+          --root "$GITHUB_WORKSPACE"
+          --markdown
+          >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Fail only for critical collection errors
+        run: >-
+          python "$RUNNER_TEMP/collection_health.py"
+          --root "$GITHUB_WORKSPACE"
+          --fail-on-error
+          > /dev/null
+
+      - name: Upload health snapshot
+        uses: actions/upload-artifact@v4
+        with:
+          name: civiclenz-collection-health-${{ github.run_number }}
+          path: ${{ runner.temp }}/collection-health.json
+          if-no-files-found: error
+          retention-days: 30
