@@ -1,0 +1,33 @@
+{
+  "candidateRecordVersion": "1.0.0",
+  "stagingRecordId": "46f49ed6-eebb-5fa9-886f-544ff4e44b18",
+  "sourceKey": "us-house-members",
+  "sourceUrl": "https://www.house.gov/representatives",
+  "sourceMemberUrl": "https://sorensen.house.gov",
+  "sourceSnapshotSha256": "810e17d99b704ea3b2720a49433af0864653130511accb2f912aadef6b979aab",
+  "fetchedAt": "2026-07-16T01:40:58Z",
+  "extractionStatus": "extracted_unreviewed",
+  "recordKind": "person_officeholder",
+  "displayName": "Sorensen, Eric",
+  "formerMemberName": null,
+  "officeTitle": "United States Representative",
+  "governmentLevel": "federal",
+  "branch": "legislative",
+  "chamber": "house",
+  "jurisdictionName": "United States",
+  "stateName": "Illinois",
+  "stateCode": "IL",
+  "districtLabel": "17th",
+  "districtNumber": "17",
+  "partyCode": "D",
+  "partyName": "Democratic",
+  "officeRoom": "1314 LHOB",
+  "phone": "(202) 225-5905",
+  "committeeAssignments": [
+    "Agriculture",
+    "Armed Services"
+  ],
+  "canonicalMatchStatus": "unmatched",
+  "refreshClass": "term_based",
+  "rawRowText": "17th Sorensen, Eric D 1314 LHOB (202) 225-5905 Agriculture|Armed Services"
+}

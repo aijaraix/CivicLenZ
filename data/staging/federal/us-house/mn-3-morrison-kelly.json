@@ -1,0 +1,33 @@
+{
+  "candidateRecordVersion": "1.0.0",
+  "stagingRecordId": "fde0d728-76cc-56f7-bf0e-14c65a2e9fe9",
+  "sourceKey": "us-house-members",
+  "sourceUrl": "https://www.house.gov/representatives",
+  "sourceMemberUrl": "https://morrison.house.gov/",
+  "sourceSnapshotSha256": "810e17d99b704ea3b2720a49433af0864653130511accb2f912aadef6b979aab",
+  "fetchedAt": "2026-07-16T01:40:58Z",
+  "extractionStatus": "extracted_unreviewed",
+  "recordKind": "person_officeholder",
+  "displayName": "Morrison, Kelly",
+  "formerMemberName": null,
+  "officeTitle": "United States Representative",
+  "governmentLevel": "federal",
+  "branch": "legislative",
+  "chamber": "house",
+  "jurisdictionName": "United States",
+  "stateName": "Minnesota",
+  "stateCode": "MN",
+  "districtLabel": "3rd",
+  "districtNumber": "3",
+  "partyCode": "D",
+  "partyName": "Democratic",
+  "officeRoom": "1205 LHOB",
+  "phone": "(202) 225-2871",
+  "committeeAssignments": [
+    "Small Business",
+    "Veterans' Affairs"
+  ],
+  "canonicalMatchStatus": "unmatched",
+  "refreshClass": "term_based",
+  "rawRowText": "3rd Morrison, Kelly D 1205 LHOB (202) 225-2871 Small Business|Veterans' Affairs"
+}

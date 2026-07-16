@@ -1,0 +1,33 @@
+{
+  "candidateRecordVersion": "1.0.0",
+  "stagingRecordId": "8390e0d5-3983-5ad8-a971-cdab40cd70b8",
+  "sourceKey": "us-house-members",
+  "sourceUrl": "https://www.house.gov/representatives",
+  "sourceMemberUrl": "https://patronis.house.gov/",
+  "sourceSnapshotSha256": "810e17d99b704ea3b2720a49433af0864653130511accb2f912aadef6b979aab",
+  "fetchedAt": "2026-07-16T01:40:58Z",
+  "extractionStatus": "extracted_unreviewed",
+  "recordKind": "person_officeholder",
+  "displayName": "Patronis, Jimmy",
+  "formerMemberName": null,
+  "officeTitle": "United States Representative",
+  "governmentLevel": "federal",
+  "branch": "legislative",
+  "chamber": "house",
+  "jurisdictionName": "United States",
+  "stateName": "Florida",
+  "stateCode": "FL",
+  "districtLabel": "1st",
+  "districtNumber": "1",
+  "partyCode": "R",
+  "partyName": "Republican",
+  "officeRoom": "2021 RHOB",
+  "phone": "(202) 225-4136",
+  "committeeAssignments": [
+    "Transportation and Infrastructure",
+    "Small Business"
+  ],
+  "canonicalMatchStatus": "unmatched",
+  "refreshClass": "term_based",
+  "rawRowText": "1st Patronis, Jimmy R 2021 RHOB (202) 225-4136 Transportation and Infrastructure|Small Business"
+}

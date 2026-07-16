@@ -1,0 +1,33 @@
+{
+  "candidateRecordVersion": "1.0.0",
+  "stagingRecordId": "4a8b8f00-a403-5ed0-bc04-269332492d07",
+  "sourceKey": "us-house-members",
+  "sourceUrl": "https://www.house.gov/representatives",
+  "sourceMemberUrl": "https://brecheen.house.gov",
+  "sourceSnapshotSha256": "810e17d99b704ea3b2720a49433af0864653130511accb2f912aadef6b979aab",
+  "fetchedAt": "2026-07-16T01:40:58Z",
+  "extractionStatus": "extracted_unreviewed",
+  "recordKind": "person_officeholder",
+  "displayName": "Brecheen, Josh",
+  "formerMemberName": null,
+  "officeTitle": "United States Representative",
+  "governmentLevel": "federal",
+  "branch": "legislative",
+  "chamber": "house",
+  "jurisdictionName": "United States",
+  "stateName": "Oklahoma",
+  "stateCode": "OK",
+  "districtLabel": "2nd",
+  "districtNumber": "2",
+  "partyCode": "R",
+  "partyName": "Republican",
+  "officeRoom": "351 CHOB",
+  "phone": "(202) 225-2701",
+  "committeeAssignments": [
+    "Budget",
+    "Homeland Security"
+  ],
+  "canonicalMatchStatus": "unmatched",
+  "refreshClass": "term_based",
+  "rawRowText": "2nd Brecheen, Josh R 351 CHOB (202) 225-2701 Budget|Homeland Security"
+}

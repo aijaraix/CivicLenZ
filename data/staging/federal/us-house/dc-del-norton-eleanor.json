@@ -1,0 +1,33 @@
+{
+  "candidateRecordVersion": "1.0.0",
+  "stagingRecordId": "692c38af-721c-5f38-a6ab-15ff65a8e2d7",
+  "sourceKey": "us-house-members",
+  "sourceUrl": "https://www.house.gov/representatives",
+  "sourceMemberUrl": "https://norton.house.gov/",
+  "sourceSnapshotSha256": "810e17d99b704ea3b2720a49433af0864653130511accb2f912aadef6b979aab",
+  "fetchedAt": "2026-07-16T01:40:58Z",
+  "extractionStatus": "extracted_unreviewed",
+  "recordKind": "person_officeholder",
+  "displayName": "Norton, Eleanor",
+  "formerMemberName": null,
+  "officeTitle": "Delegate to the United States House of Representatives",
+  "governmentLevel": "federal",
+  "branch": "legislative",
+  "chamber": "house",
+  "jurisdictionName": "United States",
+  "stateName": "District of Columbia",
+  "stateCode": "DC",
+  "districtLabel": "Delegate",
+  "districtNumber": "DEL",
+  "partyCode": "D",
+  "partyName": "Democratic",
+  "officeRoom": "2136 RHOB",
+  "phone": "(202) 225-8050",
+  "committeeAssignments": [
+    "Oversight and Government Reform",
+    "Transportation and Infrastructure"
+  ],
+  "canonicalMatchStatus": "unmatched",
+  "refreshClass": "term_based",
+  "rawRowText": "Delegate Norton, Eleanor D 2136 RHOB (202) 225-8050 Oversight and Government Reform|Transportation and Infrastructure"
+}

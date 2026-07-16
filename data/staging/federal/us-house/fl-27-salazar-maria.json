@@ -1,0 +1,33 @@
+{
+  "candidateRecordVersion": "1.0.0",
+  "stagingRecordId": "cc788fc3-9fc7-5790-9d0b-2f432c6a7cde",
+  "sourceKey": "us-house-members",
+  "sourceUrl": "https://www.house.gov/representatives",
+  "sourceMemberUrl": "https://salazar.house.gov",
+  "sourceSnapshotSha256": "810e17d99b704ea3b2720a49433af0864653130511accb2f912aadef6b979aab",
+  "fetchedAt": "2026-07-16T01:40:58Z",
+  "extractionStatus": "extracted_unreviewed",
+  "recordKind": "person_officeholder",
+  "displayName": "Salazar, Maria",
+  "formerMemberName": null,
+  "officeTitle": "United States Representative",
+  "governmentLevel": "federal",
+  "branch": "legislative",
+  "chamber": "house",
+  "jurisdictionName": "United States",
+  "stateName": "Florida",
+  "stateCode": "FL",
+  "districtLabel": "27th",
+  "districtNumber": "27",
+  "partyCode": "R",
+  "partyName": "Republican",
+  "officeRoom": "2162 RHOB",
+  "phone": "(202) 225-3931",
+  "committeeAssignments": [
+    "Financial Services",
+    "Foreign Affairs"
+  ],
+  "canonicalMatchStatus": "unmatched",
+  "refreshClass": "term_based",
+  "rawRowText": "27th Salazar, Maria R 2162 RHOB (202) 225-3931 Financial Services|Foreign Affairs"
+}

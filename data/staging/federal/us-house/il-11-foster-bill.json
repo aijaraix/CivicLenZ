@@ -1,0 +1,33 @@
+{
+  "candidateRecordVersion": "1.0.0",
+  "stagingRecordId": "8efa4229-debe-51b3-91c1-40f23b0cbd7d",
+  "sourceKey": "us-house-members",
+  "sourceUrl": "https://www.house.gov/representatives",
+  "sourceMemberUrl": "https://foster.house.gov",
+  "sourceSnapshotSha256": "810e17d99b704ea3b2720a49433af0864653130511accb2f912aadef6b979aab",
+  "fetchedAt": "2026-07-16T01:40:58Z",
+  "extractionStatus": "extracted_unreviewed",
+  "recordKind": "person_officeholder",
+  "displayName": "Foster, Bill",
+  "formerMemberName": null,
+  "officeTitle": "United States Representative",
+  "governmentLevel": "federal",
+  "branch": "legislative",
+  "chamber": "house",
+  "jurisdictionName": "United States",
+  "stateName": "Illinois",
+  "stateCode": "IL",
+  "districtLabel": "11th",
+  "districtNumber": "11",
+  "partyCode": "D",
+  "partyName": "Democratic",
+  "officeRoom": "2366 RHOB",
+  "phone": "(202) 225-3515",
+  "committeeAssignments": [
+    "Financial Services",
+    "Science, Space, and Technology"
+  ],
+  "canonicalMatchStatus": "unmatched",
+  "refreshClass": "term_based",
+  "rawRowText": "11th Foster, Bill D 2366 RHOB (202) 225-3515 Financial Services|Science, Space, and Technology"
+}

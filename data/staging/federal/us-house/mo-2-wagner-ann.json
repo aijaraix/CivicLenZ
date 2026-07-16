@@ -1,0 +1,33 @@
+{
+  "candidateRecordVersion": "1.0.0",
+  "stagingRecordId": "21b3c7b6-f7ec-5d94-8a9a-ae4805362981",
+  "sourceKey": "us-house-members",
+  "sourceUrl": "https://www.house.gov/representatives",
+  "sourceMemberUrl": "https://wagner.house.gov",
+  "sourceSnapshotSha256": "810e17d99b704ea3b2720a49433af0864653130511accb2f912aadef6b979aab",
+  "fetchedAt": "2026-07-16T01:40:58Z",
+  "extractionStatus": "extracted_unreviewed",
+  "recordKind": "person_officeholder",
+  "displayName": "Wagner, Ann",
+  "formerMemberName": null,
+  "officeTitle": "United States Representative",
+  "governmentLevel": "federal",
+  "branch": "legislative",
+  "chamber": "house",
+  "jurisdictionName": "United States",
+  "stateName": "Missouri",
+  "stateCode": "MO",
+  "districtLabel": "2nd",
+  "districtNumber": "2",
+  "partyCode": "R",
+  "partyName": "Republican",
+  "officeRoom": "2350 RHOB",
+  "phone": "(202) 225-1621",
+  "committeeAssignments": [
+    "Financial Services",
+    "Intelligence"
+  ],
+  "canonicalMatchStatus": "unmatched",
+  "refreshClass": "term_based",
+  "rawRowText": "2nd Wagner, Ann R 2350 RHOB (202) 225-1621 Financial Services|Intelligence"
+}

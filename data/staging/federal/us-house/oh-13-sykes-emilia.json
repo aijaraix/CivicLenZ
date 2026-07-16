@@ -1,0 +1,33 @@
+{
+  "candidateRecordVersion": "1.0.0",
+  "stagingRecordId": "bf3b8588-346d-5120-934d-e32cdda4ee5f",
+  "sourceKey": "us-house-members",
+  "sourceUrl": "https://www.house.gov/representatives",
+  "sourceMemberUrl": "https://sykes.house.gov",
+  "sourceSnapshotSha256": "810e17d99b704ea3b2720a49433af0864653130511accb2f912aadef6b979aab",
+  "fetchedAt": "2026-07-16T01:40:58Z",
+  "extractionStatus": "extracted_unreviewed",
+  "recordKind": "person_officeholder",
+  "displayName": "Sykes, Emilia",
+  "formerMemberName": null,
+  "officeTitle": "United States Representative",
+  "governmentLevel": "federal",
+  "branch": "legislative",
+  "chamber": "house",
+  "jurisdictionName": "United States",
+  "stateName": "Ohio",
+  "stateCode": "OH",
+  "districtLabel": "13th",
+  "districtNumber": "13",
+  "partyCode": "D",
+  "partyName": "Democratic",
+  "officeRoom": "1217 LHOB",
+  "phone": "(202) 225-6265",
+  "committeeAssignments": [
+    "Transportation and Infrastructure",
+    "Science, Space, and Technology"
+  ],
+  "canonicalMatchStatus": "unmatched",
+  "refreshClass": "term_based",
+  "rawRowText": "13th Sykes, Emilia D 1217 LHOB (202) 225-6265 Transportation and Infrastructure|Science, Space, and Technology"
+}

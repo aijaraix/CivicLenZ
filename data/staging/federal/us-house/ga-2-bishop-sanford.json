@@ -1,0 +1,32 @@
+{
+  "candidateRecordVersion": "1.0.0",
+  "stagingRecordId": "7494297f-2038-5511-ab79-7d4506c2e785",
+  "sourceKey": "us-house-members",
+  "sourceUrl": "https://www.house.gov/representatives",
+  "sourceMemberUrl": "https://bishop.house.gov/",
+  "sourceSnapshotSha256": "810e17d99b704ea3b2720a49433af0864653130511accb2f912aadef6b979aab",
+  "fetchedAt": "2026-07-16T01:40:58Z",
+  "extractionStatus": "extracted_unreviewed",
+  "recordKind": "person_officeholder",
+  "displayName": "Bishop, Sanford",
+  "formerMemberName": null,
+  "officeTitle": "United States Representative",
+  "governmentLevel": "federal",
+  "branch": "legislative",
+  "chamber": "house",
+  "jurisdictionName": "United States",
+  "stateName": "Georgia",
+  "stateCode": "GA",
+  "districtLabel": "2nd",
+  "districtNumber": "2",
+  "partyCode": "D",
+  "partyName": "Democratic",
+  "officeRoom": "2407 RHOB",
+  "phone": "(202) 225-3631",
+  "committeeAssignments": [
+    "Appropriations"
+  ],
+  "canonicalMatchStatus": "unmatched",
+  "refreshClass": "term_based",
+  "rawRowText": "2nd Bishop, Sanford D 2407 RHOB (202) 225-3631 Appropriations"
+}

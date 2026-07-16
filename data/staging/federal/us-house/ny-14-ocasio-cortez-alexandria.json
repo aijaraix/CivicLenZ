@@ -1,0 +1,32 @@
+{
+  "candidateRecordVersion": "1.0.0",
+  "stagingRecordId": "0ae507a2-2857-58a5-a970-ced7933abbb5",
+  "sourceKey": "us-house-members",
+  "sourceUrl": "https://www.house.gov/representatives",
+  "sourceMemberUrl": "https://ocasio-cortez.house.gov/",
+  "sourceSnapshotSha256": "810e17d99b704ea3b2720a49433af0864653130511accb2f912aadef6b979aab",
+  "fetchedAt": "2026-07-16T01:40:58Z",
+  "extractionStatus": "extracted_unreviewed",
+  "recordKind": "person_officeholder",
+  "displayName": "Ocasio-Cortez, Alexandria",
+  "formerMemberName": null,
+  "officeTitle": "United States Representative",
+  "governmentLevel": "federal",
+  "branch": "legislative",
+  "chamber": "house",
+  "jurisdictionName": "United States",
+  "stateName": "New York",
+  "stateCode": "NY",
+  "districtLabel": "14th",
+  "districtNumber": "14",
+  "partyCode": "D",
+  "partyName": "Democratic",
+  "officeRoom": "250 CHOB",
+  "phone": "(202) 225-3965",
+  "committeeAssignments": [
+    "Energy and Commerce"
+  ],
+  "canonicalMatchStatus": "unmatched",
+  "refreshClass": "term_based",
+  "rawRowText": "14th Ocasio-Cortez, Alexandria D 250 CHOB (202) 225-3965 Energy and Commerce"
+}

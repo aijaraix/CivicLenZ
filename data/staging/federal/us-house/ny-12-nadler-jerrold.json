@@ -1,0 +1,33 @@
+{
+  "candidateRecordVersion": "1.0.0",
+  "stagingRecordId": "c854f4da-4d76-500a-87a2-a05886efa54d",
+  "sourceKey": "us-house-members",
+  "sourceUrl": "https://www.house.gov/representatives",
+  "sourceMemberUrl": "https://nadler.house.gov",
+  "sourceSnapshotSha256": "810e17d99b704ea3b2720a49433af0864653130511accb2f912aadef6b979aab",
+  "fetchedAt": "2026-07-16T01:40:58Z",
+  "extractionStatus": "extracted_unreviewed",
+  "recordKind": "person_officeholder",
+  "displayName": "Nadler, Jerrold",
+  "formerMemberName": null,
+  "officeTitle": "United States Representative",
+  "governmentLevel": "federal",
+  "branch": "legislative",
+  "chamber": "house",
+  "jurisdictionName": "United States",
+  "stateName": "New York",
+  "stateCode": "NY",
+  "districtLabel": "12th",
+  "districtNumber": "12",
+  "partyCode": "D",
+  "partyName": "Democratic",
+  "officeRoom": "2132 RHOB",
+  "phone": "(202) 225-5635",
+  "committeeAssignments": [
+    "Judiciary",
+    "Transportation and Infrastructure"
+  ],
+  "canonicalMatchStatus": "unmatched",
+  "refreshClass": "term_based",
+  "rawRowText": "12th Nadler, Jerrold D 2132 RHOB (202) 225-5635 Judiciary|Transportation and Infrastructure"
+}

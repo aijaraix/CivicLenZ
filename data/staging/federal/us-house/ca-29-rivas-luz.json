@@ -1,0 +1,33 @@
+{
+  "candidateRecordVersion": "1.0.0",
+  "stagingRecordId": "2e1ab6ae-40fc-59b2-bfbb-97681f2a6adc",
+  "sourceKey": "us-house-members",
+  "sourceUrl": "https://www.house.gov/representatives",
+  "sourceMemberUrl": "https://rivas.house.gov/",
+  "sourceSnapshotSha256": "810e17d99b704ea3b2720a49433af0864653130511accb2f912aadef6b979aab",
+  "fetchedAt": "2026-07-16T01:40:58Z",
+  "extractionStatus": "extracted_unreviewed",
+  "recordKind": "person_officeholder",
+  "displayName": "Rivas, Luz",
+  "formerMemberName": null,
+  "officeTitle": "United States Representative",
+  "governmentLevel": "federal",
+  "branch": "legislative",
+  "chamber": "house",
+  "jurisdictionName": "United States",
+  "stateName": "California",
+  "stateCode": "CA",
+  "districtLabel": "29th",
+  "districtNumber": "29",
+  "partyCode": "D",
+  "partyName": "Democratic",
+  "officeRoom": "1319 LHOB",
+  "phone": "(202) 225-6131",
+  "committeeAssignments": [
+    "Natural Resources",
+    "Science, Space, and Technology"
+  ],
+  "canonicalMatchStatus": "unmatched",
+  "refreshClass": "term_based",
+  "rawRowText": "29th Rivas, Luz D 1319 LHOB (202) 225-6131 Natural Resources|Science, Space, and Technology"
+}

@@ -1,0 +1,33 @@
+{
+  "candidateRecordVersion": "1.0.0",
+  "stagingRecordId": "0b98f8c5-e9af-51d3-9b14-1fd3dd35b861",
+  "sourceKey": "us-house-members",
+  "sourceUrl": "https://www.house.gov/representatives",
+  "sourceMemberUrl": "https://fuller.house.gov/",
+  "sourceSnapshotSha256": "810e17d99b704ea3b2720a49433af0864653130511accb2f912aadef6b979aab",
+  "fetchedAt": "2026-07-16T01:40:58Z",
+  "extractionStatus": "extracted_unreviewed",
+  "recordKind": "person_officeholder",
+  "displayName": "Fuller, Clay",
+  "formerMemberName": null,
+  "officeTitle": "United States Representative",
+  "governmentLevel": "federal",
+  "branch": "legislative",
+  "chamber": "house",
+  "jurisdictionName": "United States",
+  "stateName": "Georgia",
+  "stateCode": "GA",
+  "districtLabel": "14th",
+  "districtNumber": "14",
+  "partyCode": "R",
+  "partyName": "Republican",
+  "officeRoom": "2201 RHOB",
+  "phone": "(202) 225-5211",
+  "committeeAssignments": [
+    "Transportation and Infrastructure",
+    "Small Business"
+  ],
+  "canonicalMatchStatus": "unmatched",
+  "refreshClass": "term_based",
+  "rawRowText": "14th Fuller, Clay R 2201 RHOB (202) 225-5211 Transportation and Infrastructure|Small Business"
+}

@@ -1,0 +1,33 @@
+{
+  "candidateRecordVersion": "1.0.0",
+  "stagingRecordId": "4c442247-cd6c-5eb7-a0ac-7b9b8d84ebd8",
+  "sourceKey": "us-house-members",
+  "sourceUrl": "https://www.house.gov/representatives",
+  "sourceMemberUrl": "https://tlaib.house.gov/",
+  "sourceSnapshotSha256": "810e17d99b704ea3b2720a49433af0864653130511accb2f912aadef6b979aab",
+  "fetchedAt": "2026-07-16T01:40:58Z",
+  "extractionStatus": "extracted_unreviewed",
+  "recordKind": "person_officeholder",
+  "displayName": "Tlaib, Rashida",
+  "formerMemberName": null,
+  "officeTitle": "United States Representative",
+  "governmentLevel": "federal",
+  "branch": "legislative",
+  "chamber": "house",
+  "jurisdictionName": "United States",
+  "stateName": "Michigan",
+  "stateCode": "MI",
+  "districtLabel": "12th",
+  "districtNumber": "12",
+  "partyCode": "D",
+  "partyName": "Democratic",
+  "officeRoom": "2438 RHOB",
+  "phone": "(202) 225-5126",
+  "committeeAssignments": [
+    "Financial Services",
+    "Oversight and Government Reform"
+  ],
+  "canonicalMatchStatus": "unmatched",
+  "refreshClass": "term_based",
+  "rawRowText": "12th Tlaib, Rashida D 2438 RHOB (202) 225-5126 Financial Services|Oversight and Government Reform"
+}

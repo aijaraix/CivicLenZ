@@ -1,0 +1,33 @@
+{
+  "candidateRecordVersion": "1.0.0",
+  "stagingRecordId": "7f3ec41a-4403-5bee-b5f1-2c96381b7d65",
+  "sourceKey": "us-house-members",
+  "sourceUrl": "https://www.house.gov/representatives",
+  "sourceMemberUrl": "https://pfluger.house.gov",
+  "sourceSnapshotSha256": "810e17d99b704ea3b2720a49433af0864653130511accb2f912aadef6b979aab",
+  "fetchedAt": "2026-07-16T01:40:58Z",
+  "extractionStatus": "extracted_unreviewed",
+  "recordKind": "person_officeholder",
+  "displayName": "Pfluger, August",
+  "formerMemberName": null,
+  "officeTitle": "United States Representative",
+  "governmentLevel": "federal",
+  "branch": "legislative",
+  "chamber": "house",
+  "jurisdictionName": "United States",
+  "stateName": "Texas",
+  "stateCode": "TX",
+  "districtLabel": "11th",
+  "districtNumber": "11",
+  "partyCode": "R",
+  "partyName": "Republican",
+  "officeRoom": "2202 RHOB",
+  "phone": "(202) 225-3605",
+  "committeeAssignments": [
+    "Homeland Security",
+    "Energy and Commerce"
+  ],
+  "canonicalMatchStatus": "unmatched",
+  "refreshClass": "term_based",
+  "rawRowText": "11th Pfluger, August R 2202 RHOB (202) 225-3605 Homeland Security|Energy and Commerce"
+}

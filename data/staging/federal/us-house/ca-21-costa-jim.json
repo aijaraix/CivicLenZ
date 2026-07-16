@@ -1,0 +1,33 @@
+{
+  "candidateRecordVersion": "1.0.0",
+  "stagingRecordId": "89c9f68f-6d4e-5d2c-8e3d-b3a23e40472c",
+  "sourceKey": "us-house-members",
+  "sourceUrl": "https://www.house.gov/representatives",
+  "sourceMemberUrl": "https://costa.house.gov/",
+  "sourceSnapshotSha256": "810e17d99b704ea3b2720a49433af0864653130511accb2f912aadef6b979aab",
+  "fetchedAt": "2026-07-16T01:40:58Z",
+  "extractionStatus": "extracted_unreviewed",
+  "recordKind": "person_officeholder",
+  "displayName": "Costa, Jim",
+  "formerMemberName": null,
+  "officeTitle": "United States Representative",
+  "governmentLevel": "federal",
+  "branch": "legislative",
+  "chamber": "house",
+  "jurisdictionName": "United States",
+  "stateName": "California",
+  "stateCode": "CA",
+  "districtLabel": "21st",
+  "districtNumber": "21",
+  "partyCode": "D",
+  "partyName": "Democratic",
+  "officeRoom": "2081 RHOB",
+  "phone": "(202) 225-3341",
+  "committeeAssignments": [
+    "Agriculture",
+    "Foreign Affairs"
+  ],
+  "canonicalMatchStatus": "unmatched",
+  "refreshClass": "term_based",
+  "rawRowText": "21st Costa, Jim D 2081 RHOB (202) 225-3341 Agriculture|Foreign Affairs"
+}

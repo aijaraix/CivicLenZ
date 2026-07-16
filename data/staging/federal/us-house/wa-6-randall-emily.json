@@ -1,0 +1,33 @@
+{
+  "candidateRecordVersion": "1.0.0",
+  "stagingRecordId": "b4170a18-4915-5113-85f0-c0bea61148ed",
+  "sourceKey": "us-house-members",
+  "sourceUrl": "https://www.house.gov/representatives",
+  "sourceMemberUrl": "https://randall.house.gov/",
+  "sourceSnapshotSha256": "810e17d99b704ea3b2720a49433af0864653130511accb2f912aadef6b979aab",
+  "fetchedAt": "2026-07-16T01:40:58Z",
+  "extractionStatus": "extracted_unreviewed",
+  "recordKind": "person_officeholder",
+  "displayName": "Randall, Emily",
+  "formerMemberName": null,
+  "officeTitle": "United States Representative",
+  "governmentLevel": "federal",
+  "branch": "legislative",
+  "chamber": "house",
+  "jurisdictionName": "United States",
+  "stateName": "Washington",
+  "stateCode": "WA",
+  "districtLabel": "6th",
+  "districtNumber": "6",
+  "partyCode": "D",
+  "partyName": "Democratic",
+  "officeRoom": "1531 LHOB",
+  "phone": "(202) 225-5916",
+  "committeeAssignments": [
+    "Oversight and Government Reform",
+    "Natural Resources"
+  ],
+  "canonicalMatchStatus": "unmatched",
+  "refreshClass": "term_based",
+  "rawRowText": "6th Randall, Emily D 1531 LHOB (202) 225-5916 Oversight and Government Reform|Natural Resources"
+}

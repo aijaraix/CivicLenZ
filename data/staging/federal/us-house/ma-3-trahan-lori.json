@@ -1,0 +1,32 @@
+{
+  "candidateRecordVersion": "1.0.0",
+  "stagingRecordId": "c5d40976-ad6a-56ee-986e-4f49fbf82853",
+  "sourceKey": "us-house-members",
+  "sourceUrl": "https://www.house.gov/representatives",
+  "sourceMemberUrl": "https://trahan.house.gov",
+  "sourceSnapshotSha256": "810e17d99b704ea3b2720a49433af0864653130511accb2f912aadef6b979aab",
+  "fetchedAt": "2026-07-16T01:40:58Z",
+  "extractionStatus": "extracted_unreviewed",
+  "recordKind": "person_officeholder",
+  "displayName": "Trahan, Lori",
+  "formerMemberName": null,
+  "officeTitle": "United States Representative",
+  "governmentLevel": "federal",
+  "branch": "legislative",
+  "chamber": "house",
+  "jurisdictionName": "United States",
+  "stateName": "Massachusetts",
+  "stateCode": "MA",
+  "districtLabel": "3rd",
+  "districtNumber": "3",
+  "partyCode": "D",
+  "partyName": "Democratic",
+  "officeRoom": "2233 RHOB",
+  "phone": "(202) 225-3411",
+  "committeeAssignments": [
+    "Energy and Commerce"
+  ],
+  "canonicalMatchStatus": "unmatched",
+  "refreshClass": "term_based",
+  "rawRowText": "3rd Trahan, Lori D 2233 RHOB (202) 225-3411 Energy and Commerce"
+}

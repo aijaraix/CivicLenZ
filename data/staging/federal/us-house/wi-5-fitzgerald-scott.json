@@ -1,0 +1,33 @@
+{
+  "candidateRecordVersion": "1.0.0",
+  "stagingRecordId": "1421a324-d5fc-5a1d-9e64-fd8c50b8f0e4",
+  "sourceKey": "us-house-members",
+  "sourceUrl": "https://www.house.gov/representatives",
+  "sourceMemberUrl": "https://fitzgerald.house.gov",
+  "sourceSnapshotSha256": "810e17d99b704ea3b2720a49433af0864653130511accb2f912aadef6b979aab",
+  "fetchedAt": "2026-07-16T01:40:58Z",
+  "extractionStatus": "extracted_unreviewed",
+  "recordKind": "person_officeholder",
+  "displayName": "Fitzgerald, Scott",
+  "formerMemberName": null,
+  "officeTitle": "United States Representative",
+  "governmentLevel": "federal",
+  "branch": "legislative",
+  "chamber": "house",
+  "jurisdictionName": "United States",
+  "stateName": "Wisconsin",
+  "stateCode": "WI",
+  "districtLabel": "5th",
+  "districtNumber": "5",
+  "partyCode": "R",
+  "partyName": "Republican",
+  "officeRoom": "2444 RHOB",
+  "phone": "(202) 225-5101",
+  "committeeAssignments": [
+    "Financial Services",
+    "Judiciary"
+  ],
+  "canonicalMatchStatus": "unmatched",
+  "refreshClass": "term_based",
+  "rawRowText": "5th Fitzgerald, Scott R 2444 RHOB (202) 225-5101 Financial Services|Judiciary"
+}

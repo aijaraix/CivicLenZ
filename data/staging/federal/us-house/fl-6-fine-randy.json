@@ -1,0 +1,33 @@
+{
+  "candidateRecordVersion": "1.0.0",
+  "stagingRecordId": "76f20dc8-ccbb-513a-8907-7a6622cf869d",
+  "sourceKey": "us-house-members",
+  "sourceUrl": "https://www.house.gov/representatives",
+  "sourceMemberUrl": "https://fine.house.gov/",
+  "sourceSnapshotSha256": "810e17d99b704ea3b2720a49433af0864653130511accb2f912aadef6b979aab",
+  "fetchedAt": "2026-07-16T01:40:58Z",
+  "extractionStatus": "extracted_unreviewed",
+  "recordKind": "person_officeholder",
+  "displayName": "Fine, Randy",
+  "formerMemberName": null,
+  "officeTitle": "United States Representative",
+  "governmentLevel": "federal",
+  "branch": "legislative",
+  "chamber": "house",
+  "jurisdictionName": "United States",
+  "stateName": "Florida",
+  "stateCode": "FL",
+  "districtLabel": "6th",
+  "districtNumber": "6",
+  "partyCode": "R",
+  "partyName": "Republican",
+  "officeRoom": "244 CHOB",
+  "phone": "(202) 225-2706",
+  "committeeAssignments": [
+    "Education and Workforce",
+    "Foreign Affairs"
+  ],
+  "canonicalMatchStatus": "unmatched",
+  "refreshClass": "term_based",
+  "rawRowText": "6th Fine, Randy R 244 CHOB (202) 225-2706 Education and Workforce|Foreign Affairs"
+}

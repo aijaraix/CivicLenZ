@@ -1,0 +1,32 @@
+{
+  "candidateRecordVersion": "1.0.0",
+  "stagingRecordId": "84e07081-4792-51a3-ad22-e8c8dfcff29d",
+  "sourceKey": "us-house-members",
+  "sourceUrl": "https://www.house.gov/representatives",
+  "sourceMemberUrl": "https://casten.house.gov",
+  "sourceSnapshotSha256": "810e17d99b704ea3b2720a49433af0864653130511accb2f912aadef6b979aab",
+  "fetchedAt": "2026-07-16T01:40:58Z",
+  "extractionStatus": "extracted_unreviewed",
+  "recordKind": "person_officeholder",
+  "displayName": "Casten, Sean",
+  "formerMemberName": null,
+  "officeTitle": "United States Representative",
+  "governmentLevel": "federal",
+  "branch": "legislative",
+  "chamber": "house",
+  "jurisdictionName": "United States",
+  "stateName": "Illinois",
+  "stateCode": "IL",
+  "districtLabel": "6th",
+  "districtNumber": "6",
+  "partyCode": "D",
+  "partyName": "Democratic",
+  "officeRoom": "2440 RHOB",
+  "phone": "(202) 225-4561",
+  "committeeAssignments": [
+    "Financial Services"
+  ],
+  "canonicalMatchStatus": "unmatched",
+  "refreshClass": "term_based",
+  "rawRowText": "6th Casten, Sean D 2440 RHOB (202) 225-4561 Financial Services"
+}

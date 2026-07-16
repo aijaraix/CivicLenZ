@@ -1,0 +1,33 @@
+{
+  "candidateRecordVersion": "1.0.0",
+  "stagingRecordId": "43268a8d-9c7d-51fa-975a-3352c3fcb556",
+  "sourceKey": "us-house-members",
+  "sourceUrl": "https://www.house.gov/representatives",
+  "sourceMemberUrl": "https://keating.house.gov/",
+  "sourceSnapshotSha256": "810e17d99b704ea3b2720a49433af0864653130511accb2f912aadef6b979aab",
+  "fetchedAt": "2026-07-16T01:40:58Z",
+  "extractionStatus": "extracted_unreviewed",
+  "recordKind": "person_officeholder",
+  "displayName": "Keating, William",
+  "formerMemberName": null,
+  "officeTitle": "United States Representative",
+  "governmentLevel": "federal",
+  "branch": "legislative",
+  "chamber": "house",
+  "jurisdictionName": "United States",
+  "stateName": "Massachusetts",
+  "stateCode": "MA",
+  "districtLabel": "9th",
+  "districtNumber": "9",
+  "partyCode": "D",
+  "partyName": "Democratic",
+  "officeRoom": "2372 RHOB",
+  "phone": "(202) 225-3111",
+  "committeeAssignments": [
+    "Armed Services",
+    "Foreign Affairs"
+  ],
+  "canonicalMatchStatus": "unmatched",
+  "refreshClass": "term_based",
+  "rawRowText": "9th Keating, William D 2372 RHOB (202) 225-3111 Armed Services|Foreign Affairs"
+}

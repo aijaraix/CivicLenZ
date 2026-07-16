@@ -1,0 +1,33 @@
+{
+  "candidateRecordVersion": "1.0.0",
+  "stagingRecordId": "e94a91bd-1d76-56f6-bee1-0d631f4a704e",
+  "sourceKey": "us-house-members",
+  "sourceUrl": "https://www.house.gov/representatives",
+  "sourceMemberUrl": "https://donalds.house.gov",
+  "sourceSnapshotSha256": "810e17d99b704ea3b2720a49433af0864653130511accb2f912aadef6b979aab",
+  "fetchedAt": "2026-07-16T01:40:58Z",
+  "extractionStatus": "extracted_unreviewed",
+  "recordKind": "person_officeholder",
+  "displayName": "Donalds, Byron",
+  "formerMemberName": null,
+  "officeTitle": "United States Representative",
+  "governmentLevel": "federal",
+  "branch": "legislative",
+  "chamber": "house",
+  "jurisdictionName": "United States",
+  "stateName": "Florida",
+  "stateCode": "FL",
+  "districtLabel": "19th",
+  "districtNumber": "19",
+  "partyCode": "R",
+  "partyName": "Republican",
+  "officeRoom": "1710 LHOB",
+  "phone": "(202) 225-2536",
+  "committeeAssignments": [
+    "Financial Services",
+    "Oversight and Government Reform"
+  ],
+  "canonicalMatchStatus": "unmatched",
+  "refreshClass": "term_based",
+  "rawRowText": "19th Donalds, Byron R 1710 LHOB (202) 225-2536 Financial Services|Oversight and Government Reform"
+}
