@@ -19,6 +19,9 @@ export default async function OfficialProfilePage({
   const metrics = official.performanceMetrics ?? [];
   const trackers = official.issueTrackers ?? [];
   const website = official.websites?.find((item) => item.type === 'official');
+  const isBaseline = official.publicationStage === 'baseline_record';
+  const researchLabel = isBaseline ? 'Baseline record' : 'Reviewed profile';
+  const sourceUrl = official.sourceMemberUrl || official.sourceUrl || website?.url;
 
   return (
     <>
@@ -28,7 +31,7 @@ export default async function OfficialProfilePage({
           <div className="profile-hero-grid">
             <div className="profile-avatar" aria-hidden="true">{initials(official.person.displayName)}</div>
             <div>
-              <span className="eyebrow">Last tracked {official.lastTrackedAt ? new Date(official.lastTrackedAt).toLocaleDateString() : 'pending'}</span>
+              <span className="eyebrow">Last collected {official.lastTrackedAt ? new Date(official.lastTrackedAt).toLocaleDateString() : 'pending'}</span>
               <h1>{official.person.displayName}</h1>
               <p className="profile-title">{official.office.title}</p>
               <div className="badges" style={{ justifyContent: 'flex-start' }}>
@@ -42,10 +45,12 @@ export default async function OfficialProfilePage({
               </p>
             </div>
             <aside className="meter-card">
-              <div className="meter-value">{official.profileCompleteness ?? 0}%</div>
-              <div>Profile data complete</div>
+              <div className="meter-value" style={{ fontSize: '1.35rem' }}>{researchLabel}</div>
+              <div>{isBaseline ? 'Official-source identity and office data collected' : 'Structured profile under continuing research'}</div>
               <div className="progress-row">
-                <div className="progress"><span style={{ width: `${official.profileCompleteness ?? 0}%` }} /></div>
+                <span className={isBaseline ? 'badge' : 'badge badge-green'}>
+                  {isBaseline ? 'Deep research queued' : 'Evidence review active'}
+                </span>
               </div>
             </aside>
           </div>
@@ -67,6 +72,30 @@ export default async function OfficialProfilePage({
 
       <div className="shell profile-stack">
         <section className="card profile-card">
+          <h2 className="card-title">Research Status</h2>
+          <p className="card-subtitle">
+            CivicLenZ separates official-source baseline facts from deeper biography, policy, finance, promise, integrity, and performance research.
+          </p>
+          <div className="detail-grid">
+            <div><strong>Publication stage</strong><span>{researchLabel}</span></div>
+            <div><strong>Data state</strong><span>{humanize(official.dataState ?? 'partially_verified')}</span></div>
+            <div><strong>Source system</strong><span>{official.sourceKey ? humanize(official.sourceKey) : 'Canonical CivicLenZ record'}</span></div>
+            {sourceUrl ? (
+              <div>
+                <strong>Primary official source</strong>
+                <a href={sourceUrl} target="_blank" rel="noreferrer">Review source ↗</a>
+              </div>
+            ) : null}
+          </div>
+          {isBaseline ? (
+            <div className="analysis-box" style={{ marginTop: '1rem' }}>
+              <strong>What this means</strong><br />
+              The person, office, district, party, and official source were collected from a government directory. No civic score or policy judgment is published until the supporting evidence has been gathered and reviewed.
+            </div>
+          ) : null}
+        </section>
+
+        <section className="card profile-card">
           <h2 className="card-title">Active Petitions</h2>
           <p className="card-subtitle">Current reviewed petitions seeking signatures for this office.</p>
           <div className="empty-state">No reviewed active petitions are attached to this profile.</div>
@@ -75,9 +104,9 @@ export default async function OfficialProfilePage({
         <section className="card profile-card">
           <h2 className="card-title">Contact Information</h2>
           <p className="card-subtitle">Official public contact channels with source verification.</p>
-          {official.contactPoints?.length ? (
+          {official.contactPoints?.length || website ? (
             <div className="detail-grid">
-              {official.contactPoints.map((contact, index) => (
+              {official.contactPoints?.map((contact, index) => (
                 <div key={`${contact.type}-${index}`}>
                   <strong>{contact.label ?? humanize(contact.type)}</strong>
                   <span>{contact.value}</span>
@@ -108,7 +137,7 @@ export default async function OfficialProfilePage({
               ))}
             </div>
           ) : (
-            <div className="empty-state">Insufficient reviewed evidence to publish civic scores.</div>
+            <div className="empty-state">Insufficient reviewed evidence to publish civic scores. No placeholder percentage is shown.</div>
           )}
           {metrics.map((metric) => (
             <div className="progress-row" key={metric.metricType}>
@@ -154,12 +183,12 @@ export default async function OfficialProfilePage({
 
         <section className="card profile-card">
           <h2 className="card-title">Campaign Finance & Promises</h2>
-          <div className="empty-state">Finance ingestion and promise extraction are queued for the next collection milestone.</div>
+          <div className="empty-state">Finance ingestion and promise extraction are queued for the Florida enrichment pipeline.</div>
         </section>
 
         <section className="card profile-card">
           <h2 className="card-title">News & Real-Time Activity</h2>
-          <div className="empty-state">Monitoring will begin after the official source registry and scheduled workers are enabled.</div>
+          <div className="empty-state">Monitoring will begin after baseline aggregation and profile enrichment are complete.</div>
         </section>
       </div>
     </>
