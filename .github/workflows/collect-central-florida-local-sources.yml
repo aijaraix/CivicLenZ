@@ -59,7 +59,7 @@ jobs:
         run: pip install -r workers/ingestion/requirements.txt
 
       - name: Verify bounded source plan without fetching
-        run: python workers/ingestion/discover_central_florida_local_sources.py --validate-plan
+        run: python -m workers.ingestion.discover_central_florida_local_sources --validate-plan
 
   collect:
     name: Collect review-only Central Florida source maps
@@ -87,10 +87,10 @@ jobs:
         run: pip install -r workers/ingestion/requirements.txt
 
       - name: Confirm source plan and active workstream claim
-        run: python workers/ingestion/discover_central_florida_local_sources.py --validate-active-claim
+        run: python -m workers.ingestion.discover_central_florida_local_sources --validate-active-claim
 
       - name: Fetch fixed official source entry points
-        run: python workers/ingestion/discover_central_florida_local_sources.py
+        run: python -m workers.ingestion.discover_central_florida_local_sources
 
       - name: Validate review-only source maps
         run: python scripts/validate_officials.py
