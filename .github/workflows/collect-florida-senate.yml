@@ -50,7 +50,7 @@ jobs:
         run: pip install -r workers/ingestion/requirements.txt
 
       - name: Run enabled Florida baseline collectors
-        run: python workers/ingestion/run_baseline_collectors.py --group florida
+        run: python workers/ingestion/run_baseline_collectors.py --group florida --workers 3
 
       - name: Build seat research queue
         run: python workers/enrichment/build_profile_research_queue.py
@@ -63,6 +63,17 @@ jobs:
 
       - name: Validate all data
         run: python scripts/validate_officials.py
+
+      - name: Create collection health snapshot
+        run: >-
+          python workers/operations/collection_health.py
+          --output artifacts/collection-health.json
+
+      - name: Add collection health to job summary
+        run: >-
+          python workers/operations/collection_health.py
+          --markdown
+          >> "$GITHUB_STEP_SUMMARY"
 
       - name: Summarize Florida collection
         id: summary
@@ -131,6 +142,7 @@ jobs:
             data/staging/florida/**/*.json
             data/operations/florida-profile-research-queue.json
             data/research-staging/florida/identity-contact/*.json
+            artifacts/collection-health.json
           if-no-files-found: error
           retention-days: 14
 
