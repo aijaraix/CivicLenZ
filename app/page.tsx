@@ -24,13 +24,19 @@ const recordSignals = [
   ['Money', 'Campaign finance, public disclosures, and ethics information with source trails.'],
 ];
 
+const audiences = [
+  ['For residents', 'Find your officials, understand the public record, and choose what you want to follow.'],
+  ['For researchers', 'Organize source-led records, track changes, and understand the gaps behind a public claim.'],
+  ['For civic teams', 'Bring trustworthy context, corrections, and community priorities into the same conversation.'],
+];
+
 export default function HomePage() {
   return (
     <>
       <section className="human-hero" aria-labelledby="home-title">
         <div className="shell hero-content-shell">
           <div className="hero-content">
-            <span className="eyebrow">Civic intelligence for everyday people</span>
+            <span className="eyebrow">Clearer civic insight</span>
             <h1 id="home-title">A clearer view of the people making public decisions.</h1>
             <p className="hero-copy">
               CivicLenZ brings together the public record so you can understand who represents you,
@@ -41,9 +47,9 @@ export default function HomePage() {
               <Link className="button button-primary button-large" href="/officials/">
                 Explore Florida officials <span aria-hidden="true">→</span>
               </Link>
-              <a className="button button-glass button-large" href="#what-you-can-do">
-                See what CivicLenZ does
-              </a>
+              <Link className="button button-glass button-large" href="/how-it-works/">
+                See how CivicLenZ works
+              </Link>
             </div>
             <div className="hero-proof" aria-label="CivicLenZ principles">
               <span><b>✓</b> Sources stay attached</span>
@@ -120,6 +126,34 @@ export default function HomePage() {
         </div>
       </section>
 
+      <section className="section member-section">
+        <div className="shell member-layout">
+          <div className="member-preview" aria-label="Upcoming CivicLenZ member dashboard preview">
+            <div className="member-preview-top">
+              <span>MY CIVICLENZ</span>
+              <i>Preview</i>
+            </div>
+            <strong>Your civic picture</strong>
+            <p>Set your location. Follow the people and issues that matter. Keep the public record close.</p>
+            <div className="member-preview-row"><b>My representatives</b><span>Starting in Florida</span></div>
+            <div className="member-preview-row"><b>Following</b><span>Choose your alerts</span></div>
+            <div className="member-preview-row"><b>Civic activity</b><span>Sources stay visible</span></div>
+          </div>
+          <div>
+            <span className="eyebrow eyebrow-dark">Member dashboard and mobile app — in development</span>
+            <h2 className="member-title">Your elected officials, your follows, and your civic activity in one private place.</h2>
+            <p className="member-copy">
+              The next stage of CivicLenZ adds Google sign-in or secure email codes, address-based setup,
+              private follows, alerts, message drafts, and a clear view of the civic actions you choose to take.
+            </p>
+            <div className="member-links">
+              <Link className="button button-primary" href="/app/">Preview the app</Link>
+              <Link className="text-link" href="/sign-in/">See member access plans <span aria-hidden="true">→</span></Link>
+            </div>
+          </div>
+        </div>
+      </section>
+
       <section className="section section-trust" id="trust">
         <div className="shell trust-layout">
           <div>
@@ -134,10 +168,31 @@ export default function HomePage() {
         </div>
       </section>
 
+      <section className="section audience-section">
+        <div className="shell">
+          <div className="section-heading section-heading-centered">
+            <div>
+              <span className="eyebrow eyebrow-dark">Built around the civic work people already do</span>
+              <h2>One clearer starting point for every kind of civic participant.</h2>
+            </div>
+            <Link className="text-link" href="/about/">About CivicLenZ <span aria-hidden="true">→</span></Link>
+          </div>
+          <div className="audience-grid">
+            {audiences.map(([title, copy], index) => (
+              <article key={title}>
+                <span>0{index + 1}</span>
+                <h3>{title}</h3>
+                <p>{copy}</p>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+
       <section className="section section-launch" id="florida">
         <div className="shell launch-card">
           <div>
-            <span className="eyebrow eyebrow-dark">Florida first. Built to grow.</span>
+            <span className="eyebrow eyebrow-dark">Florida first. Built for every community.</span>
             <h2>The first public profiles are beginning in Florida.</h2>
             <p>
               We are building the foundation carefully: a consistent profile framework, source policy,
@@ -146,7 +201,7 @@ export default function HomePage() {
           </div>
           <div className="launch-actions">
             <Link className="button button-primary button-large" href="/officials/">Meet the first officials</Link>
-            <span>Address-based representative lookup is next.</span>
+            <Link className="text-link" href="/contact/">Get launch and app updates <span aria-hidden="true">→</span></Link>
           </div>
         </div>
       </section>
