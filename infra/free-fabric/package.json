@@ -11,8 +11,8 @@
     "db:migrate:remote": "wrangler d1 execute civiclenz-control --remote --file=./schema.sql"
   },
   "devDependencies": {
-    "@cloudflare/workers-types": "^4.20260701.0",
-    "typescript": "^5.8.3",
-    "wrangler": "^4.0.0"
+    "@cloudflare/workers-types": "5.20260716.1",
+    "typescript": "7.0.2",
+    "wrangler": "4.111.0"
   }
 }
