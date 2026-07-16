@@ -45,7 +45,7 @@ jobs:
         run: pip install -r workers/ingestion/requirements.txt
 
       - name: Run federal baseline collectors
-        run: python workers/ingestion/run_baseline_collectors.py --group federal
+        run: python workers/ingestion/run_baseline_collectors.py --group federal --workers 3
 
       - name: Validate collected records
         run: python scripts/validate_officials.py
