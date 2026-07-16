@@ -1,0 +1,21 @@
+{
+  "candidateRecordVersion": "1.0.0",
+  "stagingRecordId": "6279e2ed-0c3e-562a-83ea-fa8ed3a3c464",
+  "sourceKey": "florida-senate-members",
+  "sourceUrl": "https://www.flsenate.gov/Senators",
+  "sourceMemberUrl": "https://www.flsenate.gov/Senators/2024-2026/S15",
+  "sourceSnapshotSha256": "9d117b2a6757f6aac9e8f78e14fe42d4adb86d5a6313e669907a233088bf8b73",
+  "fetchedAt": "2026-07-16T00:33:06Z",
+  "extractionStatus": "extracted_unreviewed",
+  "termLabel": "2024-2026 Senators",
+  "displayName": "Bracy Davis, LaVon",
+  "districtNumber": "15",
+  "partyName": "Democrat",
+  "countyDescription": "Consists of part of Orange county",
+  "officeTitle": "Florida State Senator, District 15",
+  "governmentLevel": "state",
+  "jurisdictionName": "Florida",
+  "stateCode": "FL",
+  "canonicalMatchStatus": "unmatched",
+  "rawRowText": "Bracy Davis, LaVon Bracy Davis, LaVon 15 Democrat Consists of part of Orange county"
+}

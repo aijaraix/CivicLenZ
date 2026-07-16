@@ -1,0 +1,21 @@
+{
+  "candidateRecordVersion": "1.0.0",
+  "stagingRecordId": "3c2e662b-063d-5818-80a3-a7f3bde37796",
+  "sourceKey": "florida-senate-members",
+  "sourceUrl": "https://www.flsenate.gov/Senators",
+  "sourceMemberUrl": "https://www.flsenate.gov/Senators/2024-2026/S26",
+  "sourceSnapshotSha256": "9d117b2a6757f6aac9e8f78e14fe42d4adb86d5a6313e669907a233088bf8b73",
+  "fetchedAt": "2026-07-16T00:33:06Z",
+  "extractionStatus": "extracted_unreviewed",
+  "termLabel": "2024-2026 Senators",
+  "displayName": "Berman, Lori",
+  "districtNumber": "26",
+  "partyName": "Democrat",
+  "countyDescription": "Consists of part of Palm Beach county",
+  "officeTitle": "Florida State Senator, District 26",
+  "governmentLevel": "state",
+  "jurisdictionName": "Florida",
+  "stateCode": "FL",
+  "canonicalMatchStatus": "unmatched",
+  "rawRowText": "Berman, Lori Berman, Lori Minority (Democratic) Leader 26 Democrat Consists of part of Palm Beach county"
+}

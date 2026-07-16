@@ -1,0 +1,21 @@
+{
+  "candidateRecordVersion": "1.0.0",
+  "stagingRecordId": "387593ad-0564-5bb3-be67-2d889193fa64",
+  "sourceKey": "florida-senate-members",
+  "sourceUrl": "https://www.flsenate.gov/Senators",
+  "sourceMemberUrl": "https://www.flsenate.gov/Senators/2024-2026/S39",
+  "sourceSnapshotSha256": "9d117b2a6757f6aac9e8f78e14fe42d4adb86d5a6313e669907a233088bf8b73",
+  "fetchedAt": "2026-07-16T00:33:06Z",
+  "extractionStatus": "extracted_unreviewed",
+  "termLabel": "2024-2026 Senators",
+  "displayName": "Avila, Bryan",
+  "districtNumber": "39",
+  "partyName": "Republican",
+  "countyDescription": "Consists of part of Miami-Dade county",
+  "officeTitle": "Florida State Senator, District 39",
+  "governmentLevel": "state",
+  "jurisdictionName": "Florida",
+  "stateCode": "FL",
+  "canonicalMatchStatus": "unmatched",
+  "rawRowText": "Avila, Bryan Avila, Bryan 39 Republican Consists of part of Miami-Dade county"
+}

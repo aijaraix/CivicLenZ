@@ -1,0 +1,21 @@
+{
+  "candidateRecordVersion": "1.0.0",
+  "stagingRecordId": "d794cffe-3c7f-5463-9308-0dc9999772d7",
+  "sourceKey": "florida-senate-members",
+  "sourceUrl": "https://www.flsenate.gov/Senators",
+  "sourceMemberUrl": "https://www.flsenate.gov/Senators/2024-2026/S28",
+  "sourceSnapshotSha256": "9d117b2a6757f6aac9e8f78e14fe42d4adb86d5a6313e669907a233088bf8b73",
+  "fetchedAt": "2026-07-16T00:33:06Z",
+  "extractionStatus": "extracted_unreviewed",
+  "termLabel": "2024-2026 Senators",
+  "displayName": "Passidomo, Kathleen",
+  "districtNumber": "28",
+  "partyName": "Republican",
+  "countyDescription": "Consists of Collier, Hendry counties and part of Lee county",
+  "officeTitle": "Florida State Senator, District 28",
+  "governmentLevel": "state",
+  "jurisdictionName": "Florida",
+  "stateCode": "FL",
+  "canonicalMatchStatus": "unmatched",
+  "rawRowText": "Passidomo, Kathleen Passidomo, Kathleen 28 Republican Consists of Collier, Hendry counties and part of Lee county"
+}

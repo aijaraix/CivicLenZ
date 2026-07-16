@@ -1,0 +1,21 @@
+{
+  "candidateRecordVersion": "1.0.0",
+  "stagingRecordId": "a2e10d88-e85e-5ded-b282-4b797baf025a",
+  "sourceKey": "florida-senate-members",
+  "sourceUrl": "https://www.flsenate.gov/Senators",
+  "sourceMemberUrl": "https://www.flsenate.gov/Senators/2024-2026/S30",
+  "sourceSnapshotSha256": "9d117b2a6757f6aac9e8f78e14fe42d4adb86d5a6313e669907a233088bf8b73",
+  "fetchedAt": "2026-07-16T00:33:06Z",
+  "extractionStatus": "extracted_unreviewed",
+  "termLabel": "2024-2026 Senators",
+  "displayName": "Polsky, Tina Scott",
+  "districtNumber": "30",
+  "partyName": "Democrat",
+  "countyDescription": "Consists of parts of Broward, Palm Beach counties",
+  "officeTitle": "Florida State Senator, District 30",
+  "governmentLevel": "state",
+  "jurisdictionName": "Florida",
+  "stateCode": "FL",
+  "canonicalMatchStatus": "unmatched",
+  "rawRowText": "Polsky, Tina Scott Polsky, Tina Scott 30 Democrat Consists of parts of Broward, Palm Beach counties"
+}
