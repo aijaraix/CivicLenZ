@@ -24,7 +24,7 @@ function initials(name: string): string {
 function listingLabel(entry: DirectoryEntry): string {
   return entry.listingType === 'profile'
     ? 'Published CivicLenZ profile'
-    : 'Florida Senate source listing';
+    : 'Government source listing';
 }
 
 export function OfficialDirectory({ entries }: { entries: DirectoryEntry[] }) {
@@ -107,7 +107,7 @@ export function OfficialDirectory({ entries }: { entries: DirectoryEntry[] }) {
 
               {entry.listingType === 'source_listing' ? (
                 <p className="directory-card-note">
-                  Basic office information is linked to its primary Florida Senate source. Contact, social, biography, voting, and issue research are not yet published.
+                  Basic office information is linked to its primary government source. Contact, social, biography, voting, and issue research are not yet published.
                 </p>
               ) : (
                 <p className="directory-card-note">
@@ -131,7 +131,7 @@ export function OfficialDirectory({ entries }: { entries: DirectoryEntry[] }) {
       ) : (
         <div className="directory-empty">
           <strong>No matching directory records.</strong>
-          <p>Try an official’s last name, a Florida Senate district, or clear the active filter.</p>
+          <p>Try an official’s last name, a Florida district, or clear the active filter.</p>
         </div>
       )}
     </div>
