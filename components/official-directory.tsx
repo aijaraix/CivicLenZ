@@ -43,16 +43,21 @@ export function OfficialDirectory({ officials }: { officials: OfficialProfile[] 
         />
       </div>
       <div className="filter-row" aria-label="Filter officials">
-        {(['all', 'federal', 'state'] as const).map((option) => (
-          <button
-            className={`filter-chip${level === option ? ' filter-chip-active' : ''}`}
-            type="button"
-            key={option}
-            onClick={() => setLevel(option)}
-          >
-            {option === 'all' ? 'All Florida officials' : option === 'federal' ? 'Federal delegation' : 'State government'}
-          </button>
-        ))}
+        {(['all', 'federal', 'state'] as const).map((option) => {
+          const active = level === option;
+          return (
+            <button
+              className="filter-chip"
+              style={active ? { color: '#fff', background: '#2563eb', borderColor: '#2563eb' } : undefined}
+              type="button"
+              key={option}
+              onClick={() => setLevel(option)}
+              aria-pressed={active}
+            >
+              {option === 'all' ? 'All Florida officials' : option === 'federal' ? 'Federal delegation' : 'State government'}
+            </button>
+          );
+        })}
       </div>
 
       <div className="section-heading" style={{ marginTop: '2rem' }}>
