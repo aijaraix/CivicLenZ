@@ -40,11 +40,12 @@ jobs:
       - name: Inspect live Florida House source structure
         run: |
           python - <<'PY'
+          from pathlib import Path
           from workers.ingestion.common import fetch
           from bs4 import BeautifulSoup
-          from urllib.parse import urlparse
 
           response = fetch('https://www.flhouse.gov/Representatives')
+          Path('/tmp/flhouse.html').write_text(response.text, encoding='utf-8')
           soup = BeautifulSoup(response.text, 'lxml')
           print('status=', response.status_code)
           print('final_url=', response.url)
@@ -60,6 +61,14 @@ jobs:
           for href, text in links[:40]:
               print('LINK', repr(href), repr(text))
           PY
+
+      - name: Upload live Florida House source snapshot
+        uses: actions/upload-artifact@v4
+        with:
+          name: florida-house-live-source-${{ github.run_number }}
+          path: /tmp/flhouse.html
+          if-no-files-found: error
+          retention-days: 2
 
       - name: Collect live Florida House directory
         run: python -m workers.ingestion.collect_florida_house --output /tmp/florida-house
