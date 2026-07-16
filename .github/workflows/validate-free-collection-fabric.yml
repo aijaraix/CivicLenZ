@@ -4,15 +4,19 @@ on:
   pull_request:
     paths:
       - 'infra/free-fabric/**'
+      - 'workers/orchestration/**'
       - 'scripts/inventory_legacy_official_datasets.py'
       - 'tests/test_inventory_legacy_official_datasets.py'
+      - 'tests/test_orchestration_worker.py'
       - '.github/workflows/validate-free-collection-fabric.yml'
   push:
     branches: [main]
     paths:
       - 'infra/free-fabric/**'
+      - 'workers/orchestration/**'
       - 'scripts/inventory_legacy_official_datasets.py'
       - 'tests/test_inventory_legacy_official_datasets.py'
+      - 'tests/test_orchestration_worker.py'
       - '.github/workflows/validate-free-collection-fabric.yml'
   workflow_dispatch:
 
@@ -32,8 +36,14 @@ jobs:
         with:
           python-version: '3.12'
 
-      - name: Test dataset inventory tooling
-        run: python -m unittest tests.test_inventory_legacy_official_datasets
+      - name: Install worker dependencies
+        run: pip install -r workers/ingestion/requirements.txt
+
+      - name: Test dataset inventory and worker tooling
+        run: >-
+          python -m unittest
+          tests.test_inventory_legacy_official_datasets
+          tests.test_orchestration_worker
 
       - name: Validate D1 schema with SQLite
         run: |
@@ -49,7 +59,7 @@ jobs:
 
       - name: Install control-plane dependencies
         working-directory: infra/free-fabric
-        run: npm install
+        run: npm install --no-audit --no-fund
 
       - name: Type-check Cloudflare control plane
         working-directory: infra/free-fabric
