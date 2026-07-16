@@ -18,6 +18,9 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v6
 
+      - name: Validate Florida work allocation
+        run: python scripts/validate_florida_work_allocation.py
+
       - name: Set up Node
         uses: actions/setup-node@v4
         with:
