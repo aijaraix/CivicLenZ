@@ -1,63 +1,60 @@
-import Link from 'next/link';
-import { getAllOfficials, initials } from '@/lib/officials';
+import { OfficialDirectory } from '@/components/official-directory';
+import { getDirectoryCoverage, getDirectoryEntries } from '@/lib/officials';
 
 export default function OfficialsPage() {
-  const officials = getAllOfficials();
+  const entries = getDirectoryEntries();
+  const coverage = getDirectoryCoverage();
 
   return (
     <>
-      <section className="page-hero">
+      <section className="page-hero directory-hero">
         <div className="shell">
-          <span className="eyebrow">Official directory</span>
-          <h1>Find elected officials</h1>
+          <span className="eyebrow">Florida-first public directory</span>
+          <h1>Find the people and offices that represent Florida.</h1>
           <p>
-            Search and filters are being connected to the canonical JSON index. Every result represents one person in one office-term context.
+            CivicLenZ starts with primary public sources. A result can be a published, source-backed profile or a clearly labeled
+            government-directory listing while deeper research is underway.
           </p>
-          <div className="search-panel">
-            <input className="input" aria-label="Search officials" placeholder="Search by name, office, jurisdiction, district, or issue" />
-            <button className="button button-primary" type="button">Search</button>
-          </div>
-          <div className="filter-row" aria-label="Browse by state">
-            <span className="filter-chip">Florida</span>
-            <span className="filter-chip">State officials</span>
-            <span className="filter-chip">Current officeholders</span>
+
+          <div className="directory-coverage" aria-label="Current Florida directory coverage">
+            <div>
+              <strong>{coverage.total}</strong>
+              <span>Florida directory records</span>
+            </div>
+            <div>
+              <strong>{coverage.publishedProfiles}</strong>
+              <span>Published profile{coverage.publishedProfiles === 1 ? '' : 's'}</span>
+            </div>
+            <div>
+              <strong>{coverage.sourceListings}</strong>
+              <span>Florida Senate source listings</span>
+            </div>
           </div>
         </div>
       </section>
 
-      <section className="section">
+      <section className="section directory-section">
         <div className="shell">
-          <div className="section-heading">
+          <div className="section-heading directory-heading">
             <div>
-              <h2>{officials.length} canonical result{officials.length === 1 ? '' : 's'}</h2>
+              <span className="eyebrow eyebrow-dark">Search the directory</span>
+              <h2>Start with a name, district, office, county, or party.</h2>
             </div>
-            <p>Scraper output is validated and reviewed before it appears here.</p>
+            <p>
+              A source listing confirms only the directory facts shown on its original government page. It is not a finished profile,
+              score, or judgment.
+            </p>
           </div>
-          {officials.length ? (
-            <div className="official-grid">
-              {officials.map((official) => (
-                <article className="card official-card" key={official.officialId}>
-                  <div className="official-card-top">
-                    <div className="avatar" aria-hidden="true">{initials(official.person.displayName)}</div>
-                  </div>
-                  <div className="official-card-body">
-                    <h3>{official.person.displayName}</h3>
-                    <p>{official.office.title}</p>
-                    <p>{official.jurisdiction.name}</p>
-                    <div className="badges">
-                      {official.party?.name ? <span className="badge badge-blue">{official.party.name}</span> : null}
-                      <span className="badge badge-green">{official.office.governmentLevel.replaceAll('_', ' ')}</span>
-                    </div>
-                    <Link className="button button-primary" href={`/officials/${official.slug}/`}>
-                      View sourced profile
-                    </Link>
-                  </div>
-                </article>
-              ))}
-            </div>
-          ) : (
-            <div className="empty-state">No reviewed official profiles have been published yet.</div>
-          )}
+
+          <OfficialDirectory entries={entries} />
+
+          <aside className="directory-disclosure">
+            <strong>How coverage grows</strong>
+            <p>
+              Every official moves from primary-source listing to reviewed profile. Contact details, public accounts, biography,
+              actions, finance, and issue evidence are each added with their own source trail—never guessed from a name or handle.
+            </p>
+          </aside>
         </div>
       </section>
     </>
