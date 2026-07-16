@@ -295,11 +295,16 @@ def local_coverage_summary(root: Path) -> tuple[dict[str, Any], list[dict[str, s
         for record in source_discovery_records
         if isinstance(record.get("resolvedCategoryCount"), int)
     )
-    required_categories = sum(
-        int(record.get("requiredCategoryCount", 0))
+    reported_required_categories = [
+        int(record["requiredCategoryCount"])
         for record in source_discovery_records
         if isinstance(record.get("requiredCategoryCount"), int)
-    )
+    ]
+    # Failed discovery files can legitimately omit their own category count. The
+    # most complete discovered county establishes the shared category target so
+    # coverage does not look artificially complete when a run fails early.
+    expected_categories_per_county = max(reported_required_categories, default=0)
+    required_categories = expected_categories_per_county * len(source_discovery_records)
     unresolved_categories = sum(
         len(record.get("unresolvedCategories", []))
         for record in source_discovery_records
@@ -391,6 +396,8 @@ def local_coverage_summary(root: Path) -> tuple[dict[str, Any], list[dict[str, s
                 "collectionStatusCounts": counter_dict([record.get("collectionStatus") for record in source_discovery_records]),
                 "resolvedCategoryCount": resolved_categories,
                 "requiredCategoryCount": required_categories,
+                "reportedRequiredCategoryCount": sum(reported_required_categories),
+                "expectedCategoryCountPerCounty": expected_categories_per_county,
                 "unresolvedCategoryCount": unresolved_categories,
                 "latestFetchedAt": max_timestamp(
                     [str(record["fetchedAt"]) for record in source_discovery_records if record.get("fetchedAt")]
