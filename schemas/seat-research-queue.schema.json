@@ -1,0 +1,121 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://civicslenz.com/schemas/seat-research-queue.schema.json",
+  "title": "CivicLenZ seat research queue record",
+  "type": "object",
+  "required": [
+    "queueVersion",
+    "recordKind",
+    "queueId",
+    "queueStatus",
+    "publicationState",
+    "seat",
+    "directoryListedOfficeholder",
+    "sourceRecord",
+    "researchBundles",
+    "promotionGate"
+  ],
+  "properties": {
+    "queueVersion": { "type": "string" },
+    "recordKind": { "const": "seat_research_queue" },
+    "queueId": { "type": "string", "format": "uuid" },
+    "queueStatus": {
+      "enum": ["ready_for_enrichment", "in_progress", "blocked", "ready_for_review", "complete"]
+    },
+    "publicationState": {
+      "enum": ["not_public", "review_only", "promoted"]
+    },
+    "seat": {
+      "type": "object",
+      "required": ["seatKey", "chamber", "officeTitle", "jurisdictionName"],
+      "properties": {
+        "seatKey": { "type": "string", "minLength": 1 },
+        "chamber": { "type": "string", "minLength": 1 },
+        "officeTitle": { "type": "string", "minLength": 1 },
+        "districtNumber": { "type": ["string", "null"] },
+        "jurisdictionName": { "type": "string", "minLength": 1 },
+        "stateCode": { "type": ["string", "null"], "pattern": "^[A-Z]{2}$" },
+        "governmentLevel": { "type": ["string", "null"] }
+      },
+      "additionalProperties": true
+    },
+    "directoryListedOfficeholder": {
+      "type": "object",
+      "required": ["displayName"],
+      "properties": {
+        "displayName": { "type": "string", "minLength": 1 },
+        "partyName": { "type": ["string", "null"] },
+        "countyDescription": { "type": ["string", "null"] }
+      },
+      "additionalProperties": true
+    },
+    "sourceRecord": {
+      "type": "object",
+      "required": [
+        "stagingRecordId",
+        "sourceKey",
+        "sourceUrl",
+        "sourceSnapshotSha256",
+        "fetchedAt"
+      ],
+      "properties": {
+        "stagingRecordId": { "type": "string", "minLength": 1 },
+        "sourceKey": { "type": "string", "minLength": 1 },
+        "sourceUrl": { "type": "string", "format": "uri" },
+        "sourceMemberUrl": { "type": ["string", "null"], "format": "uri" },
+        "sourceSnapshotSha256": { "type": "string", "pattern": "^[A-Fa-f0-9]{64}$" },
+        "fetchedAt": { "type": "string", "format": "date-time" }
+      },
+      "additionalProperties": true
+    },
+    "researchBundles": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": [
+          "key",
+          "title",
+          "status",
+          "reviewRequired",
+          "fields",
+          "preferredSources",
+          "publicationRule"
+        ],
+        "properties": {
+          "key": { "type": "string", "minLength": 1 },
+          "title": { "type": "string", "minLength": 1 },
+          "status": {
+            "enum": ["not_started", "in_progress", "blocked", "ready_for_review", "approved", "not_applicable"]
+          },
+          "reviewRequired": { "const": true },
+          "fields": {
+            "type": "array",
+            "minItems": 1,
+            "items": { "type": "string", "minLength": 1 }
+          },
+          "preferredSources": {
+            "type": "array",
+            "minItems": 1,
+            "items": { "type": "string", "minLength": 1 }
+          },
+          "publicationRule": { "type": "string", "minLength": 1 },
+          "assignee": { "type": "string" },
+          "reviewNotes": { "type": "string" },
+          "evidence": { "type": "array", "items": { "type": "object" } },
+          "reviewedAt": { "type": "string", "format": "date-time" },
+          "reviewDecision": {
+            "enum": ["approved", "needs_revision", "blocked", "not_applicable"]
+          }
+        },
+        "additionalProperties": true
+      }
+    },
+    "promotionGate": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "type": "string", "minLength": 1 }
+    }
+  },
+  "additionalProperties": true
+}
