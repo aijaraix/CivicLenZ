@@ -30,8 +30,7 @@ on:
       - '.github/workflows/collect-central-florida-local-sources.yml'
 
 permissions:
-  contents: write
-  pull-requests: write
+  contents: read
 
 concurrency:
   group: central-florida-local-source-discovery
@@ -40,6 +39,8 @@ concurrency:
 jobs:
   validate-plan:
     name: Validate Central Florida source plan
+    permissions:
+      contents: read
     runs-on: ubuntu-latest
     timeout-minutes: 10
     steps:
@@ -63,6 +64,9 @@ jobs:
 
   collect:
     name: Collect review-only Central Florida source maps
+    permissions:
+      contents: write
+      pull-requests: write
     needs: validate-plan
     if: >-
       github.event_name == 'schedule' ||
