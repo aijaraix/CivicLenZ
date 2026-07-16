@@ -63,7 +63,7 @@ function SourceListedProfile({ official }: { official: SourceListedOfficial }) {
             </div>
             <aside className="meter-card source-listing-meter">
               <strong>Source listing</strong>
-              <span>Basic office facts are linked to the original Florida Senate page.</span>
+              <span>Basic office facts are linked to the original government directory page.</span>
               <span>Full profile research is in progress.</span>
             </aside>
           </div>
@@ -86,11 +86,11 @@ function SourceListedProfile({ official }: { official: SourceListedOfficial }) {
         <section className="card profile-card">
           <h2 className="card-title">Original government source</h2>
           <p>
-            CivicLenZ found this listing in the Florida Senate&apos;s official directory. You can inspect the original member page
+            CivicLenZ found this listing in an official Florida government directory. You can inspect the original record
             before relying on this record.
           </p>
           <div className="profile-action-row">
-            <a className="button button-primary" href={official.sourceUrl} rel="noreferrer" target="_blank">Open Florida Senate source ↗</a>
+            <a className="button button-primary" href={official.sourceUrl} rel="noreferrer" target="_blank">Open government source ↗</a>
             <a className="text-link" href={official.sourceDirectoryUrl} rel="noreferrer" target="_blank">View the Senate directory ↗</a>
           </div>
         </section>
@@ -98,7 +98,7 @@ function SourceListedProfile({ official }: { official: SourceListedOfficial }) {
         <section className="card profile-card">
           <h2 className="card-title">Research status</h2>
           <div className="research-status-grid">
-            <div><strong>✓ Identity and office</strong><span>Listed by the Florida Senate directory.</span></div>
+            <div><strong>✓ Identity and office</strong><span>Listed by an official Florida government directory.</span></div>
             <div><strong>○ Contact and public accounts</strong><span>Not yet reviewed for publication.</span></div>
             <div><strong>○ Biography and public service</strong><span>Research in progress.</span></div>
             <div><strong>○ Actions, votes, promises, and finance</strong><span>Not yet researched for this profile.</span></div>
