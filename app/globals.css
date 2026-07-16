@@ -66,7 +66,7 @@ button, input { font: inherit; }
   align-items: center;
   overflow: hidden;
   color: white;
-  background-image: linear-gradient(90deg, rgba(5, 20, 41, .97) 0%, rgba(8, 29, 56, .88) 35%, rgba(8, 28, 53, .28) 68%, rgba(5, 20, 41, .05) 100%), url('/images/civiclenz-hero.webp');
+  background-image: linear-gradient(90deg, rgba(5, 20, 41, .97) 0%, rgba(8, 29, 56, .88) 35%, rgba(8, 28, 53, .28) 68%, rgba(5, 20, 41, .05) 100%), url('/images/civiclenz-hero.svg');
   background-size: cover;
   background-position: center;
 }
