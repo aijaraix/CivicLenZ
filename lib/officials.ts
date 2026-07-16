@@ -157,8 +157,8 @@ export type DirectoryEntry = {
   officeTitle: string;
   governmentLevel: string;
   jurisdictionName: string;
-  stateCode?: string;
-  districtName?: string;
+  stateCode?: string | null;
+  districtName?: string | null;
   partyName?: string;
   countyDescription?: string;
   portraitUrl?: string | null;
