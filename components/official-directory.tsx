@@ -3,7 +3,15 @@
 import Link from 'next/link';
 import { useMemo, useState } from 'react';
 import type { OfficialProfile } from '@/lib/officials';
-import { initials } from '@/lib/officials';
+
+function displayInitials(name: string): string {
+  return name
+    .split(/\s+/)
+    .filter(Boolean)
+    .slice(0, 2)
+    .map((part) => part[0]?.toUpperCase())
+    .join('');
+}
 
 export function OfficialDirectory({ officials }: { officials: OfficialProfile[] }) {
   const [query, setQuery] = useState('');
@@ -72,7 +80,7 @@ export function OfficialDirectory({ officials }: { officials: OfficialProfile[] 
           {filtered.map((official) => (
             <article className="card official-card" key={official.officialId}>
               <div className="official-card-top">
-                <div className="avatar" aria-hidden="true">{initials(official.person.displayName)}</div>
+                <div className="avatar" aria-hidden="true">{displayInitials(official.person.displayName)}</div>
               </div>
               <div className="official-card-body">
                 <div className="badges" style={{ justifyContent: 'flex-start' }}>
