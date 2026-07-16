@@ -1,4 +1,4 @@
-name: Collect Florida Senate directory
+name: Collect Florida baseline officials
 
 on:
   schedule:
@@ -7,11 +7,15 @@ on:
   push:
     branches: [main]
     paths:
+      - 'workers/ingestion/common.py'
       - 'workers/ingestion/collect_florida_senate.py'
+      - 'workers/ingestion/collect_florida_house.py'
+      - 'workers/ingestion/run_baseline_collectors.py'
+      - 'data/sources/collector-manifest.json'
       - '.github/workflows/collect-florida-senate.yml'
 
 concurrency:
-  group: florida-senate-collection
+  group: florida-baseline-aggregation
   cancel-in-progress: false
 
 permissions:
@@ -38,51 +42,52 @@ jobs:
       - name: Install dependencies
         run: pip install -r workers/ingestion/requirements.txt
 
-      - name: Collect review-only staging records
-        id: collect
-        run: |
-          python workers/ingestion/collect_florida_senate.py
-          count=$(find data/staging/florida/state-senate -name '*.json' -type f | wc -l | tr -d ' ')
-          echo "Collected $count Florida Senate staging records."
-          test "$count" -ge 30
-          echo "record_count=$count" >> "$GITHUB_OUTPUT"
-          {
-            echo "### Florida Senate collection"
-            echo "- Review-only staging records collected: **$count**"
-            echo "- Public profiles changed: **No**"
-            echo "- Next step: create or update the data-review pull request"
-          } >> "$GITHUB_STEP_SUMMARY"
+      - name: Run enabled Florida baseline collectors
+        run: python workers/ingestion/run_baseline_collectors.py --group florida
 
       - name: Validate all data
-        run: |
-          python scripts/validate_officials.py
-          echo "Validated ${{ steps.collect.outputs.record_count }} staging records and the canonical official dataset."
+        run: python scripts/validate_officials.py
 
-      - name: Upload staging snapshot
+      - name: Summarize Florida collection
+        id: summary
+        run: |
+          senate=$(find data/staging/florida/state-senate -name '*.json' -type f | wc -l | tr -d ' ')
+          house=$(find data/staging/florida/state-house -name '*.json' -type f | wc -l | tr -d ' ')
+          total=$((senate + house))
+          echo "senate=$senate" >> "$GITHUB_OUTPUT"
+          echo "house=$house" >> "$GITHUB_OUTPUT"
+          echo "total=$total" >> "$GITHUB_OUTPUT"
+          {
+            echo "### Florida baseline aggregation"
+            echo "- Florida senators: **$senate**"
+            echo "- Florida House seats/officeholders: **$house**"
+            echo "- Total Florida legislative staging records: **$total**"
+            echo "- Publication state: **review-only staging**"
+          } >> "$GITHUB_STEP_SUMMARY"
+          test "$senate" -ge 30
+          test "$house" -ge 115
+
+      - name: Upload Florida staging snapshot
         uses: actions/upload-artifact@v4
         with:
-          name: florida-senate-staging-${{ github.run_number }}
-          path: data/staging/florida/state-senate/*.json
+          name: florida-baseline-staging-${{ github.run_number }}
+          path: data/staging/florida/**/*.json
           if-no-files-found: error
-          retention-days: 7
+          retention-days: 14
 
-      - name: Create or refresh review pull request
+      - name: Save or refresh Florida review branch
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
           set -euo pipefail
-
-          STAGING_PATH="data/staging/florida/state-senate"
-          BRANCH="bot/florida-senate-refresh"
+          STAGING_PATH="data/staging/florida"
+          BRANCH="bot/florida-baseline-refresh"
           CHANGES=$(git status --porcelain --untracked-files=all -- "$STAGING_PATH")
 
           if [ -z "$CHANGES" ]; then
-            echo "No directory changes detected. The live source matches the committed staging data."
+            echo "No Florida baseline changes detected."
             exit 0
           fi
-
-          echo "Detected staging changes:"
-          echo "$CHANGES"
 
           git config user.name "civiclenz-data-bot"
           git config user.email "civiclenz-data-bot@users.noreply.github.com"
@@ -90,37 +95,27 @@ jobs:
           git add "$STAGING_PATH"
 
           if git diff --cached --quiet; then
-            echo "No staged differences remained after adding the staging directory."
+            echo "No staged Florida differences remained."
             exit 0
           fi
 
-          git commit -m "Refresh Florida Senate staging records"
-
-          # Push the generated commit explicitly to the bot branch. Using an
-          # explicit refspec is reliable for both a brand-new branch and later
-          # scheduled refreshes, whereas force-with-lease can fail when the
-          # runner has no remote-tracking ref for a branch that does not exist yet.
+          git commit -m "Refresh Florida baseline staging records"
           git push --force origin "HEAD:refs/heads/$BRANCH"
           git ls-remote --exit-code --heads origin "refs/heads/$BRANCH"
-          echo "Saved ${{ steps.collect.outputs.record_count }} staging records to $BRANCH."
+          echo "Saved ${{ steps.summary.outputs.total }} Florida staging records to $BRANCH."
 
           OPEN_PR=$(gh pr list --head "$BRANCH" --base main --state open --json number --jq '.[0].number // empty')
           if [ -z "$OPEN_PR" ]; then
             if gh pr create \
               --base main \
               --head "$BRANCH" \
-              --title "Data review: Florida Senate directory refresh" \
-              --body "Automated extraction of ${{ steps.collect.outputs.record_count }} records from the official Florida Senate directory. These files remain review-only staging records and must be matched to canonical people, offices, and terms before publication."; then
-              echo "Created the Florida Senate data-review pull request."
+              --title "Data review: Florida legislative baseline" \
+              --body "Automated aggregation of ${{ steps.summary.outputs.total }} review-only Florida Senate and House baseline records from official legislative directories. These records must be normalized and promoted before public publication."; then
+              echo "Created Florida data-review pull request."
             else
-              echo "The staging branch was saved, but GitHub blocked automatic pull-request creation."
-              echo "Create a pull request from $BRANCH to main once; later runs will refresh that same branch and pull request."
-              {
-                echo ""
-                echo "### Review pull request requires one-time creation"
-                echo "The staging data was saved to \`$BRANCH\`, but GitHub did not permit this workflow to create the pull request automatically."
-              } >> "$GITHUB_STEP_SUMMARY"
+              echo "Florida staging data was saved, but repository settings blocked workflow-created pull requests."
+              echo "The branch remains available at $BRANCH; collection itself is complete."
             fi
           else
-            echo "Updated existing review PR #$OPEN_PR"
+            echo "Updated existing Florida review PR #$OPEN_PR"
           fi
