@@ -55,13 +55,12 @@
       "sourceKey": "florida-house-members",
       "group": "florida",
       "phase": "baseline",
-      "enabled": false,
-      "command": ["workers/ingestion/collect_florida_house.py"],
+      "enabled": true,
+      "command": ["-m", "workers.ingestion.collect_florida_house"],
       "outputDirectory": "data/staging/florida/state-house",
       "expectedMinimum": 115,
       "expectedMaximum": 120,
-      "refreshClass": "term_based",
-      "blockedReason": "Collector is the next Florida implementation target."
+      "refreshClass": "term_based"
     }
   ]
 }
