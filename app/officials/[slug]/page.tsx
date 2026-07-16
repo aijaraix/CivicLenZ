@@ -42,6 +42,120 @@ function contactLink(value: string) {
   return /^https?:\/\//i.test(value) ? value : undefined;
 }
 
+type SeatRecordCardProps = {
+  holderName: string;
+  officeTitle: string;
+  districtName?: string | null;
+  partyName?: string | null;
+  jurisdictionName: string;
+  governmentLevel: string;
+  listingType: 'profile' | 'source_listing';
+  lastCheckedAt?: string | null;
+  termStart?: string | null;
+  termEnd?: string | null;
+  source?: {
+    url?: string | null;
+    label?: string | null;
+  };
+};
+
+function SeatRecordCard({
+  holderName,
+  officeTitle,
+  districtName,
+  partyName,
+  jurisdictionName,
+  governmentLevel,
+  listingType,
+  lastCheckedAt,
+  termStart,
+  termEnd,
+  source,
+}: SeatRecordCardProps) {
+  const isPublishedProfile = listingType === 'profile';
+  const termText = termStart
+    ? 'Started ' + formatDate(termStart) + (termEnd ? ' · Ends ' + formatDate(termEnd) : '')
+    : 'Term dates are still being verified';
+
+  return (
+    <section className="card profile-card seat-record-card">
+      <div className="seat-record-head">
+        <div>
+          <span className="eyebrow eyebrow-dark">Seat record</span>
+          <h2>One public record for the office—not just the person.</h2>
+          <p>
+            This card follows the office or district over time. A new officeholder receives a new tenure while earlier
+            records, sources, and evidence remain distinguishable.
+          </p>
+        </div>
+        <span className={isPublishedProfile ? 'seat-record-status is-published' : 'seat-record-status'}>
+          {isPublishedProfile ? 'Published profile' : 'Primary-source listing'}
+        </span>
+      </div>
+
+      <div className="seat-record-grid">
+        <div>
+          <span>{isPublishedProfile ? 'Current officeholder' : 'Directory-listed officeholder'}</span>
+          <strong>{holderName}</strong>
+        </div>
+        <div>
+          <span>Office / seat</span>
+          <strong>{districtName ?? officeTitle}</strong>
+        </div>
+        <div>
+          <span>Jurisdiction</span>
+          <strong>{jurisdictionName} · {humanize(governmentLevel)}</strong>
+        </div>
+        <div>
+          <span>Party shown by source</span>
+          <strong>{partyName ?? 'Not published in this record'}</strong>
+        </div>
+        <div>
+          <span>Term record</span>
+          <strong>{termText}</strong>
+        </div>
+        <div>
+          <span>Last source check</span>
+          <strong>{formatDate(lastCheckedAt)}</strong>
+        </div>
+      </div>
+
+      <div className="seat-evidence-grid" aria-label="Seat record research coverage">
+        <div className="is-linked">
+          <strong>✓ Office and identity</strong>
+          <span>Linked to a primary public source.</span>
+        </div>
+        <div>
+          <strong>○ Seat-holder history</strong>
+          <span>Past officeholders will be preserved by seat and term.</span>
+        </div>
+        <div>
+          <strong>○ Photo and biography</strong>
+          <span>Published only after reliable source verification.</span>
+        </div>
+        <div>
+          <strong>○ Votes, actions, and documents</strong>
+          <span>Source records and copies are collected separately.</span>
+        </div>
+        <div>
+          <strong>○ Promises, trackers, and scores</strong>
+          <span>Requires a visible method, evidence, and review.</span>
+        </div>
+        <div>
+          <strong>○ Finance and disclosures</strong>
+          <span>Added from official filing sources when ready.</span>
+        </div>
+      </div>
+
+      {source?.url ? (
+        <a className="seat-source-link" href={source.url} rel="noreferrer" target="_blank">
+          {source.label ?? 'Open the current primary source'} ↗
+        </a>
+      ) : null}
+    </section>
+  );
+}
+
 function SourceListedProfile({ official }: { official: SourceListedOfficial }) {
   return (
     <>
@@ -71,6 +185,18 @@ function SourceListedProfile({ official }: { official: SourceListedOfficial }) {
       </section>
 
       <div className="shell profile-stack">
+        <SeatRecordCard
+          holderName={official.displayName}
+          officeTitle={official.officeTitle}
+          districtName={official.districtName}
+          partyName={official.partyName}
+          jurisdictionName={official.jurisdictionName}
+          governmentLevel={official.governmentLevel}
+          listingType="source_listing"
+          lastCheckedAt={official.fetchedAt}
+          source={{ url: official.sourceUrl, label: official.sourceLabel }}
+        />
+
         <section className="card profile-card">
           <h2 className="card-title">What CivicLenZ has confirmed so far</h2>
           <p className="card-subtitle">This is a directory record, not a completed CivicLenZ evaluation.</p>
@@ -168,6 +294,20 @@ function CanonicalProfile({ official }: { official: OfficialProfile }) {
       </section>
 
       <div className="shell profile-stack">
+        <SeatRecordCard
+          holderName={official.person.displayName}
+          officeTitle={official.office.title}
+          districtName={official.office.districtName}
+          partyName={official.party?.name}
+          jurisdictionName={official.jurisdiction.name}
+          governmentLevel={official.office.governmentLevel}
+          listingType="profile"
+          lastCheckedAt={official.lastTrackedAt ?? official.lastUpdatedAt}
+          termStart={official.term?.startDate}
+          termEnd={official.term?.endDate}
+          source={{ url: sources[0]?.url ?? officialWebsite?.url, label: sources[0]?.label ?? 'Official public source' }}
+        />
+
         <section className="card profile-card profile-status-card">
           <div className="section-heading">
             <div>
