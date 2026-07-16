@@ -1,0 +1,67 @@
+{
+  "manifestVersion": "1.0.0",
+  "collectionStrategy": "aggregation_first",
+  "collectors": [
+    {
+      "collectorKey": "us-house-baseline",
+      "sourceKey": "us-house-members",
+      "group": "federal",
+      "phase": "baseline",
+      "enabled": true,
+      "command": ["-m", "workers.ingestion.collect_us_house"],
+      "outputDirectory": "data/staging/federal/us-house",
+      "expectedMinimum": 435,
+      "expectedMaximum": 450,
+      "refreshClass": "term_based"
+    },
+    {
+      "collectorKey": "us-senate-baseline",
+      "sourceKey": "us-senate-members",
+      "group": "federal",
+      "phase": "baseline",
+      "enabled": true,
+      "command": ["-m", "workers.ingestion.collect_us_senate"],
+      "outputDirectory": "data/staging/federal/us-senate",
+      "expectedMinimum": 95,
+      "expectedMaximum": 105,
+      "refreshClass": "term_based"
+    },
+    {
+      "collectorKey": "white-house-executive-baseline",
+      "sourceKey": "white-house-administration",
+      "group": "federal",
+      "phase": "baseline",
+      "enabled": true,
+      "command": ["-m", "workers.ingestion.collect_white_house_executive"],
+      "outputDirectory": "data/staging/federal/executive",
+      "expectedMinimum": 2,
+      "expectedMaximum": 2,
+      "refreshClass": "term_based"
+    },
+    {
+      "collectorKey": "florida-senate-baseline",
+      "sourceKey": "florida-senate-members",
+      "group": "florida",
+      "phase": "baseline",
+      "enabled": true,
+      "command": ["workers/ingestion/collect_florida_senate.py"],
+      "outputDirectory": "data/staging/florida/state-senate",
+      "expectedMinimum": 30,
+      "expectedMaximum": 40,
+      "refreshClass": "term_based"
+    },
+    {
+      "collectorKey": "florida-house-baseline",
+      "sourceKey": "florida-house-members",
+      "group": "florida",
+      "phase": "baseline",
+      "enabled": false,
+      "command": ["workers/ingestion/collect_florida_house.py"],
+      "outputDirectory": "data/staging/florida/state-house",
+      "expectedMinimum": 115,
+      "expectedMaximum": 120,
+      "refreshClass": "term_based",
+      "blockedReason": "Collector is the next Florida implementation target."
+    }
+  ]
+}
