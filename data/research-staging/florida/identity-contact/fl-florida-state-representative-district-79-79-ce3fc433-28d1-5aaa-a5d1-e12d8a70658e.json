@@ -1,0 +1,147 @@
+{
+  "enrichmentRecordVersion": "1.0.0",
+  "enrichmentRecordId": "c7e6877a-864d-53ab-875c-fcb9afd44e24",
+  "taskId": "ce3fc433-28d1-5aaa-a5d1-e12d8a70658e",
+  "seatKey": "fl-florida-state-representative-district-79-79",
+  "displayName": "Mike Giallombardo",
+  "officeTitle": "Florida State Representative, District 79",
+  "sourceUrl": "https://www.flhouse.gov/Sections/Representatives/details.aspx?MemberId=4783&LegislativeTermId=91",
+  "fetchedAt": "2026-07-16T05:20:30Z",
+  "collectionStatus": "success",
+  "reviewStatus": "unreviewed",
+  "publicationAllowed": false,
+  "portraitCandidates": [
+    {
+      "url": "https://www.flhouse.gov/FileStores/Web/Imaging/Member/4783.jpg",
+      "method": "img",
+      "score": 39,
+      "altText": "Representative Giallombardo Photo",
+      "sourcePageUrl": "https://www.flhouse.gov/Sections/Representatives/details.aspx?MemberId=4783&LegislativeTermId=91",
+      "rightsStatus": "review_required",
+      "identityReviewStatus": "unreviewed",
+      "httpStatus": 200,
+      "finalUrl": "https://www.flhouse.gov/FileStores/Web/Imaging/Member/4783.jpg",
+      "contentType": "image/jpeg",
+      "byteSize": 67891,
+      "imageSha256": "3f946cce085672fb7347a3547d35f241cbba04dbf91349f05e9993a4a2ec343a",
+      "downloadStatus": "captured_for_hash"
+    },
+    {
+      "url": "https://www.flhouse.gov/Images/bronze-seal-250.png?cb=4.6.654349",
+      "method": "og:image",
+      "score": 14,
+      "altText": null,
+      "sourcePageUrl": "https://www.flhouse.gov/Sections/Representatives/details.aspx?MemberId=4783&LegislativeTermId=91",
+      "rightsStatus": "review_required",
+      "identityReviewStatus": "unreviewed",
+      "httpStatus": 200,
+      "finalUrl": "https://www.flhouse.gov/Images/bronze-seal-250.png?cb=4.6.654349",
+      "contentType": "image/png",
+      "byteSize": 150275,
+      "imageSha256": "36f7c4317f0cc62c44ff5bbfc0a0e5eebf014be23c9c8826141f11a70d9e7ff8",
+      "downloadStatus": "captured_for_hash"
+    },
+    {
+      "url": "https://www.flhouse.gov/FileStores/Web/Imaging/PhotoAlbums/HousePhotoSized7506.jpg",
+      "method": "img",
+      "score": 9,
+      "altText": null,
+      "sourcePageUrl": "https://www.flhouse.gov/Sections/Representatives/details.aspx?MemberId=4783&LegislativeTermId=91",
+      "rightsStatus": "review_required",
+      "identityReviewStatus": "unreviewed",
+      "httpStatus": 200,
+      "finalUrl": "https://www.flhouse.gov/FileStores/Web/Imaging/PhotoAlbums/HousePhotoSized7506.jpg",
+      "contentType": "image/jpeg",
+      "byteSize": 14329,
+      "imageSha256": "a1257b6bd0f76126ab9072dc87a8680de681896a0cd5f2f0f7f6ae2396570cc4",
+      "downloadStatus": "captured_for_hash"
+    },
+    {
+      "url": "https://www.flhouse.gov/FileStores/Web/Imaging/PhotoAlbums/HousePhotoSized7540.jpg",
+      "method": "img",
+      "score": 9,
+      "altText": null,
+      "sourcePageUrl": "https://www.flhouse.gov/Sections/Representatives/details.aspx?MemberId=4783&LegislativeTermId=91",
+      "rightsStatus": "review_required",
+      "identityReviewStatus": "unreviewed",
+      "httpStatus": 200,
+      "finalUrl": "https://www.flhouse.gov/FileStores/Web/Imaging/PhotoAlbums/HousePhotoSized7540.jpg",
+      "contentType": "image/jpeg",
+      "byteSize": 14573,
+      "imageSha256": "05f2698039663605e0e66d8ea5dcd31a36991d1f0daedfb901768ae0263b0633",
+      "downloadStatus": "captured_for_hash"
+    },
+    {
+      "url": "https://www.flhouse.gov/FileStores/Web/Imaging/PhotoAlbums/HousePhotoSized7713.jpg",
+      "method": "img",
+      "score": 9,
+      "altText": null,
+      "sourcePageUrl": "https://www.flhouse.gov/Sections/Representatives/details.aspx?MemberId=4783&LegislativeTermId=91",
+      "rightsStatus": "review_required",
+      "identityReviewStatus": "unreviewed",
+      "httpStatus": 200,
+      "finalUrl": "https://www.flhouse.gov/FileStores/Web/Imaging/PhotoAlbums/HousePhotoSized7713.jpg",
+      "contentType": "image/jpeg",
+      "byteSize": 15785,
+      "imageSha256": "f0b3119d2cc164fc352dd3f919b17ee0f8188b170dcfd632e3a45803ad0272b3",
+      "downloadStatus": "captured_for_hash"
+    },
+    {
+      "url": "https://www.flhouse.gov/FileStores/Web/Imaging/PhotoAlbums/HousePhotoSized7719.jpg",
+      "method": "img",
+      "score": 9,
+      "altText": null,
+      "sourcePageUrl": "https://www.flhouse.gov/Sections/Representatives/details.aspx?MemberId=4783&LegislativeTermId=91",
+      "rightsStatus": "review_required",
+      "identityReviewStatus": "unreviewed",
+      "httpStatus": 200,
+      "finalUrl": "https://www.flhouse.gov/FileStores/Web/Imaging/PhotoAlbums/HousePhotoSized7719.jpg",
+      "contentType": "image/jpeg",
+      "byteSize": 25282,
+      "imageSha256": "cb92589dd0ff17abbcc2d474c819bd2fb50c2094e276bf3a352435ca70a21b53",
+      "downloadStatus": "captured_for_hash"
+    }
+  ],
+  "contactCandidates": [],
+  "socialCandidates": [
+    {
+      "platform": "YouTube",
+      "url": "https://www.youtube.com/channel/UCGiMELcyYCuDPP3N0Tg5sTg",
+      "label": "Subscribe",
+      "sourcePageUrl": "https://www.flhouse.gov/Sections/Representatives/details.aspx?MemberId=4783&LegislativeTermId=91",
+      "reviewStatus": "unreviewed"
+    }
+  ],
+  "websiteCandidates": [
+    {
+      "url": "https://www.flhouse.gov/Sections/HouseSchedule/houseschedule.aspx",
+      "label": "House Schedule",
+      "sourcePageUrl": "https://www.flhouse.gov/Sections/Representatives/details.aspx?MemberId=4783&LegislativeTermId=91",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "url": "https://www.flhouse.gov/Sections/Representatives/contactmember.aspx?MemberId=4783&SessionId=113",
+      "label": "Contact Member",
+      "sourcePageUrl": "https://www.flhouse.gov/Sections/Representatives/details.aspx?MemberId=4783&LegislativeTermId=91",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "url": "https://www.flhouse.gov/contentViewer.aspx?Category=website&File=contact us.htm",
+      "label": "Contact Us",
+      "sourcePageUrl": "https://www.flhouse.gov/Sections/Representatives/details.aspx?MemberId=4783&LegislativeTermId=91",
+      "reviewStatus": "unreviewed"
+    }
+  ],
+  "errors": [],
+  "httpStatus": 200,
+  "finalUrl": "https://www.flhouse.gov/Sections/Representatives/details.aspx?MemberId=4783&LegislativeTermId=91",
+  "sourceSnapshotSha256": "ba8b3cb0440b8d3f405e5fd81f6f3f22f5d644ce64962d573e6d1a6a2a93cf01",
+  "contentType": "text/html",
+  "pageTitle": "Mike Giallombardo  - 2024 - 2026 ( Speaker Perez ) | Florida House of Representatives",
+  "candidateSummary": {
+    "portraits": 6,
+    "contacts": 0,
+    "socials": 1,
+    "websites": 3
+  }
+}

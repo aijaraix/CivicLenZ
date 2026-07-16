@@ -1,0 +1,220 @@
+{
+  "enrichmentRecordVersion": "1.0.0",
+  "enrichmentRecordId": "1eac8ac5-2f94-50d7-a1f3-0c3c21b38458",
+  "taskId": "261342be-d7ee-56c9-952d-54a4fc30c9b9",
+  "seatKey": "fl-florida-state-senator-district-12-12",
+  "displayName": "Colleen Burton",
+  "officeTitle": "Florida State Senator, District 12",
+  "sourceUrl": "https://www.flsenate.gov/Senators/2024-2026/S12",
+  "fetchedAt": "2026-07-16T05:20:37Z",
+  "collectionStatus": "success",
+  "reviewStatus": "unreviewed",
+  "publicationAllowed": false,
+  "portraitCandidates": [
+    {
+      "url": "https://www.flsenate.gov/PublishedContent/Senators/2024-2026/Photos/s12_5414.jpg",
+      "method": "img",
+      "score": 30,
+      "altText": "Senator Burton",
+      "sourcePageUrl": "https://www.flsenate.gov/Senators/S12",
+      "rightsStatus": "review_required",
+      "identityReviewStatus": "unreviewed",
+      "httpStatus": 200,
+      "finalUrl": "https://www.flsenate.gov/PublishedContent/Senators/2024-2026/Photos/s12_5414.jpg",
+      "contentType": "image/jpeg",
+      "byteSize": 73605,
+      "imageSha256": "27c3956d431a392f7f252d3f8b0cfc7602c5558aff4a1c3d2ecab3f2c7b98ab9",
+      "downloadStatus": "captured_for_hash"
+    },
+    {
+      "url": "https://www.flsenate.gov/PublishedContent/Session/Redistricting/Districts/SD2022/webmaps/sd12_webmap.png",
+      "method": "img",
+      "score": 9,
+      "altText": "District 12 map",
+      "sourcePageUrl": "https://www.flsenate.gov/Senators/S12",
+      "rightsStatus": "review_required",
+      "identityReviewStatus": "unreviewed",
+      "httpStatus": 200,
+      "finalUrl": "https://www.flsenate.gov/PublishedContent/Session/Redistricting/Districts/SD2022/webmaps/sd12_webmap.png",
+      "contentType": "image/png",
+      "byteSize": 141898,
+      "imageSha256": "63429b14ff113d0fe8583941da9bd67b12dff3e06c6639048886da817440c21b",
+      "downloadStatus": "captured_for_hash"
+    },
+    {
+      "url": "https://www.flsenate.gov/UserContent/img/help/2013search-goBill.png",
+      "method": "img",
+      "score": 9,
+      "altText": "Example of Go To Bill feature available on every page of flsenate.gov",
+      "sourcePageUrl": "https://www.flsenate.gov/Senators/S12",
+      "rightsStatus": "review_required",
+      "identityReviewStatus": "unreviewed",
+      "httpStatus": 200,
+      "finalUrl": "https://www.flsenate.gov/UserContent/img/help/2013search-goBill.png",
+      "contentType": "image/png",
+      "byteSize": 5007,
+      "imageSha256": "a5603c435a93d2686367d1b9d1852b1ac6e1bdfda72b8d2ea6c888e66a377ffe",
+      "downloadStatus": "captured_for_hash"
+    },
+    {
+      "url": "https://www.flsenate.gov/UserContent/img/help/2013sitesearch.png",
+      "method": "img",
+      "score": 9,
+      "altText": "Example of Site Search available on every page of flsenate.gov",
+      "sourcePageUrl": "https://www.flsenate.gov/Senators/S12",
+      "rightsStatus": "review_required",
+      "identityReviewStatus": "unreviewed",
+      "httpStatus": 200,
+      "finalUrl": "https://www.flsenate.gov/UserContent/img/help/2013sitesearch.png",
+      "contentType": "image/png",
+      "byteSize": 4284,
+      "imageSha256": "a856ffdf809fbc2f0993fab57b3436909b092ef1d682a977310fc6edd2380dac",
+      "downloadStatus": "captured_for_hash"
+    },
+    {
+      "url": "https://www.flsenate.gov/UserContent/img/help/2013statutesearch.png",
+      "method": "img",
+      "score": 9,
+      "altText": "Example of Go To Bill feature available on every page of flsenate.gov",
+      "sourcePageUrl": "https://www.flsenate.gov/Senators/S12",
+      "rightsStatus": "review_required",
+      "identityReviewStatus": "unreviewed",
+      "httpStatus": 200,
+      "finalUrl": "https://www.flsenate.gov/UserContent/img/help/2013statutesearch.png",
+      "contentType": "image/png",
+      "byteSize": 5911,
+      "imageSha256": "34b5496e6e024221ffe3fae722107c6c23f4bf07f70c6607c863ef6def60bd3b",
+      "downloadStatus": "captured_for_hash"
+    },
+    {
+      "url": "https://www.flsenate.gov/UserContent/img/help/printerIcon.png",
+      "method": "img",
+      "score": -26,
+      "altText": "Acrobat print icon",
+      "sourcePageUrl": "https://www.flsenate.gov/Senators/S12",
+      "rightsStatus": "review_required",
+      "identityReviewStatus": "unreviewed",
+      "httpStatus": 200,
+      "finalUrl": "https://www.flsenate.gov/UserContent/img/help/printerIcon.png",
+      "contentType": "image/png",
+      "byteSize": 1535,
+      "imageSha256": "bd252613689747407dcc6f71fe992c940a3a21b2365a6d4e3851de2ae8fbcf5f",
+      "downloadStatus": "captured_for_hash"
+    }
+  ],
+  "contactCandidates": [
+    {
+      "type": "email",
+      "value": "burton.colleen.web@flsenate.gov",
+      "label": "burton.colleen.web@flsenate.gov",
+      "sourcePageUrl": "https://www.flsenate.gov/Senators/S12"
+    },
+    {
+      "type": "email",
+      "value": "webmaster@flsenate.gov",
+      "label": "email",
+      "sourcePageUrl": "https://www.flsenate.gov/Senators/S12"
+    },
+    {
+      "type": "phone",
+      "value": "(850) 487-5012",
+      "label": null,
+      "sourcePageUrl": "https://www.flsenate.gov/Senators/S12"
+    },
+    {
+      "type": "phone",
+      "value": "1 (863) 413-1529",
+      "label": null,
+      "sourcePageUrl": "https://www.flsenate.gov/Senators/S12"
+    }
+  ],
+  "socialCandidates": [
+    {
+      "platform": "X",
+      "url": "http://www.twitter.com/flsenate",
+      "label": "Twitter",
+      "sourcePageUrl": "https://www.flsenate.gov/Senators/S12",
+      "reviewStatus": "unreviewed"
+    }
+  ],
+  "websiteCandidates": [
+    {
+      "url": "https://www.flsenate.gov/Session/ExecutiveAppointments",
+      "label": "Executive Appointments",
+      "sourcePageUrl": "https://www.flsenate.gov/Senators/S12",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "url": "https://www.flsenate.gov/Media/VideoSchedule",
+      "label": "Video Broadcast Schedule",
+      "sourcePageUrl": "https://www.flsenate.gov/Senators/S12",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "url": "https://www.flsenate.gov/About/Contact",
+      "label": "Contact Us",
+      "sourcePageUrl": "https://www.flsenate.gov/Senators/S12",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "url": "https://www.flsenate.gov/Offices",
+      "label": "Offices",
+      "sourcePageUrl": "https://www.flsenate.gov/Senators/S12",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "url": "https://www.flsenate.gov/Offices/President",
+      "label": "President's Office",
+      "sourcePageUrl": "https://www.flsenate.gov/Senators/S12",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "url": "https://www.flsenate.gov/Offices/Majority",
+      "label": "Majority Office",
+      "sourcePageUrl": "https://www.flsenate.gov/Senators/S12",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "url": "https://www.flsenate.gov/Offices/Minority",
+      "label": "Minority Office",
+      "sourcePageUrl": "https://www.flsenate.gov/Senators/S12",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "url": "https://www.flsenate.gov/Offices/Secretary",
+      "label": "Secretary's Office",
+      "sourcePageUrl": "https://www.flsenate.gov/Senators/S12",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "url": "https://www.flsenate.gov/Reference/PublicRecords",
+      "label": "Public Records",
+      "sourcePageUrl": "https://www.flsenate.gov/Senators/S12",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "url": "https://www.flsenate.gov/Session/ExecutiveAppointments/",
+      "label": "Executive Appointments",
+      "sourcePageUrl": "https://www.flsenate.gov/Senators/S12",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "url": "https://www.flsenate.gov/About/Contact#connect",
+      "label": "Connect with the Senate",
+      "sourcePageUrl": "https://www.flsenate.gov/Senators/S12",
+      "reviewStatus": "unreviewed"
+    }
+  ],
+  "errors": [],
+  "httpStatus": 200,
+  "finalUrl": "https://www.flsenate.gov/Senators/S12",
+  "sourceSnapshotSha256": "05fabebc459f7ed5d3c7507085f9917d3984e2bd6e4d618703e997a3aadc0e8b",
+  "contentType": "text/html",
+  "pageTitle": "Senator Burton - The Florida Senate",
+  "candidateSummary": {
+    "portraits": 6,
+    "contacts": 4,
+    "socials": 1,
+    "websites": 11
+  }
+}

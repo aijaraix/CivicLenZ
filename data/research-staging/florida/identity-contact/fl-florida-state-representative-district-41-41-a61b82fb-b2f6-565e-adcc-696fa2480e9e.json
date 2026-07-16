@@ -1,0 +1,147 @@
+{
+  "enrichmentRecordVersion": "1.0.0",
+  "enrichmentRecordId": "11386da4-4efe-529f-a719-f554367093bb",
+  "taskId": "a61b82fb-b2f6-565e-adcc-696fa2480e9e",
+  "seatKey": "fl-florida-state-representative-district-41-41",
+  "displayName": "Bruce Hadley Antone",
+  "officeTitle": "Florida State Representative, District 41",
+  "sourceUrl": "https://www.flhouse.gov/Sections/Representatives/details.aspx?MemberId=4269&LegislativeTermId=91",
+  "fetchedAt": "2026-07-16T05:20:18Z",
+  "collectionStatus": "success",
+  "reviewStatus": "unreviewed",
+  "publicationAllowed": false,
+  "portraitCandidates": [
+    {
+      "url": "https://www.flhouse.gov/FileStores/Web/Imaging/Member/4269.jpg",
+      "method": "img",
+      "score": 39,
+      "altText": "Representative Antone Photo",
+      "sourcePageUrl": "https://www.flhouse.gov/Sections/Representatives/details.aspx?MemberId=4269&LegislativeTermId=91",
+      "rightsStatus": "review_required",
+      "identityReviewStatus": "unreviewed",
+      "httpStatus": 200,
+      "finalUrl": "https://www.flhouse.gov/FileStores/Web/Imaging/Member/4269.jpg",
+      "contentType": "image/jpeg",
+      "byteSize": 67497,
+      "imageSha256": "5d5c6b976163e4f2a4a09066dbbea56f53c1dfcc7863adb02923af542d5b242d",
+      "downloadStatus": "captured_for_hash"
+    },
+    {
+      "url": "https://www.flhouse.gov/Images/bronze-seal-250.png?cb=4.6.654349",
+      "method": "og:image",
+      "score": 14,
+      "altText": null,
+      "sourcePageUrl": "https://www.flhouse.gov/Sections/Representatives/details.aspx?MemberId=4269&LegislativeTermId=91",
+      "rightsStatus": "review_required",
+      "identityReviewStatus": "unreviewed",
+      "httpStatus": 200,
+      "finalUrl": "https://www.flhouse.gov/Images/bronze-seal-250.png?cb=4.6.654349",
+      "contentType": "image/png",
+      "byteSize": 150275,
+      "imageSha256": "36f7c4317f0cc62c44ff5bbfc0a0e5eebf014be23c9c8826141f11a70d9e7ff8",
+      "downloadStatus": "captured_for_hash"
+    },
+    {
+      "url": "https://www.flhouse.gov/FileStores/Web/Imaging/PhotoAlbums/HousePhotoSized6681.JPG",
+      "method": "img",
+      "score": 9,
+      "altText": null,
+      "sourcePageUrl": "https://www.flhouse.gov/Sections/Representatives/details.aspx?MemberId=4269&LegislativeTermId=91",
+      "rightsStatus": "review_required",
+      "identityReviewStatus": "unreviewed",
+      "httpStatus": 200,
+      "finalUrl": "https://www.flhouse.gov/FileStores/Web/Imaging/PhotoAlbums/HousePhotoSized6681.JPG",
+      "contentType": "image/jpeg",
+      "byteSize": 20805,
+      "imageSha256": "f97f16fb8c5ea0a4396d862b3bc878a0ad896d863b74f548ac97f7243e36dc0a",
+      "downloadStatus": "captured_for_hash"
+    },
+    {
+      "url": "https://www.flhouse.gov/FileStores/Web/Imaging/PhotoAlbums/HousePhotoSized6682.JPG",
+      "method": "img",
+      "score": 9,
+      "altText": null,
+      "sourcePageUrl": "https://www.flhouse.gov/Sections/Representatives/details.aspx?MemberId=4269&LegislativeTermId=91",
+      "rightsStatus": "review_required",
+      "identityReviewStatus": "unreviewed",
+      "httpStatus": 200,
+      "finalUrl": "https://www.flhouse.gov/FileStores/Web/Imaging/PhotoAlbums/HousePhotoSized6682.JPG",
+      "contentType": "image/jpeg",
+      "byteSize": 20313,
+      "imageSha256": "da212868a43930e974318a950223841376fda6168bb4af928721c1bd2684a6e6",
+      "downloadStatus": "captured_for_hash"
+    },
+    {
+      "url": "https://www.flhouse.gov/FileStores/Web/Imaging/PhotoAlbums/HousePhotoSized7116.jpg",
+      "method": "img",
+      "score": 9,
+      "altText": null,
+      "sourcePageUrl": "https://www.flhouse.gov/Sections/Representatives/details.aspx?MemberId=4269&LegislativeTermId=91",
+      "rightsStatus": "review_required",
+      "identityReviewStatus": "unreviewed",
+      "httpStatus": 200,
+      "finalUrl": "https://www.flhouse.gov/FileStores/Web/Imaging/PhotoAlbums/HousePhotoSized7116.jpg",
+      "contentType": "image/jpeg",
+      "byteSize": 17470,
+      "imageSha256": "3c0b7cf044d0a391a78b06047133d8c0075392794d424c871cefe583b4f6aa6a",
+      "downloadStatus": "captured_for_hash"
+    },
+    {
+      "url": "https://www.flhouse.gov/FileStores/Web/Imaging/PhotoAlbums/HousePhotoSized7462.jpg",
+      "method": "img",
+      "score": 9,
+      "altText": null,
+      "sourcePageUrl": "https://www.flhouse.gov/Sections/Representatives/details.aspx?MemberId=4269&LegislativeTermId=91",
+      "rightsStatus": "review_required",
+      "identityReviewStatus": "unreviewed",
+      "httpStatus": 200,
+      "finalUrl": "https://www.flhouse.gov/FileStores/Web/Imaging/PhotoAlbums/HousePhotoSized7462.jpg",
+      "contentType": "image/jpeg",
+      "byteSize": 28298,
+      "imageSha256": "7808545678c75c7316eec972b3c22d2a59bc22ae38b8e531e05279e55e6e9dc4",
+      "downloadStatus": "captured_for_hash"
+    }
+  ],
+  "contactCandidates": [],
+  "socialCandidates": [
+    {
+      "platform": "YouTube",
+      "url": "https://www.youtube.com/channel/UCGiMELcyYCuDPP3N0Tg5sTg",
+      "label": "Subscribe",
+      "sourcePageUrl": "https://www.flhouse.gov/Sections/Representatives/details.aspx?MemberId=4269&LegislativeTermId=91",
+      "reviewStatus": "unreviewed"
+    }
+  ],
+  "websiteCandidates": [
+    {
+      "url": "https://www.flhouse.gov/Sections/HouseSchedule/houseschedule.aspx",
+      "label": "House Schedule",
+      "sourcePageUrl": "https://www.flhouse.gov/Sections/Representatives/details.aspx?MemberId=4269&LegislativeTermId=91",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "url": "https://www.flhouse.gov/Sections/Representatives/contactmember.aspx?MemberId=4269&SessionId=113",
+      "label": "Contact Member",
+      "sourcePageUrl": "https://www.flhouse.gov/Sections/Representatives/details.aspx?MemberId=4269&LegislativeTermId=91",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "url": "https://www.flhouse.gov/contentViewer.aspx?Category=website&File=contact us.htm",
+      "label": "Contact Us",
+      "sourcePageUrl": "https://www.flhouse.gov/Sections/Representatives/details.aspx?MemberId=4269&LegislativeTermId=91",
+      "reviewStatus": "unreviewed"
+    }
+  ],
+  "errors": [],
+  "httpStatus": 200,
+  "finalUrl": "https://www.flhouse.gov/Sections/Representatives/details.aspx?MemberId=4269&LegislativeTermId=91",
+  "sourceSnapshotSha256": "fb24c1a1b367798dbea8e79f2e8f31053d55ca129b83d53f9470a6dacba9f5c3",
+  "contentType": "text/html",
+  "pageTitle": "Bruce Hadley Antone  - 2024 - 2026 ( Speaker Perez ) | Florida House of Representatives",
+  "candidateSummary": {
+    "portraits": 6,
+    "contacts": 0,
+    "socials": 1,
+    "websites": 3
+  }
+}

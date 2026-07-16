@@ -1,0 +1,238 @@
+{
+  "enrichmentRecordVersion": "1.0.0",
+  "enrichmentRecordId": "974aa677-6ea7-5d12-8939-c6e3d238ab9c",
+  "taskId": "d966b2ce-ec4b-57f0-86af-6847a08ef09b",
+  "seatKey": "fl-florida-state-senator-district-40-40",
+  "displayName": "Ana Maria Rodriguez",
+  "officeTitle": "Florida State Senator, District 40",
+  "sourceUrl": "https://www.flsenate.gov/Senators/2024-2026/S40",
+  "fetchedAt": "2026-07-16T05:20:47Z",
+  "collectionStatus": "success",
+  "reviewStatus": "unreviewed",
+  "publicationAllowed": false,
+  "portraitCandidates": [
+    {
+      "url": "https://www.flsenate.gov/PublishedContent/Senators/2024-2026/Photos/s40_5379.jpg",
+      "method": "img",
+      "score": 30,
+      "altText": "Senator Rodriguez",
+      "sourcePageUrl": "https://www.flsenate.gov/Senators/S40",
+      "rightsStatus": "review_required",
+      "identityReviewStatus": "unreviewed",
+      "httpStatus": 429,
+      "finalUrl": "https://www.flsenate.gov/PublishedContent/Senators/2024-2026/Photos/s40_5379.jpg",
+      "contentType": "text/plain",
+      "byteSize": 17,
+      "downloadStatus": "not_an_image_or_http_error"
+    },
+    {
+      "url": "https://www.flsenate.gov/PublishedContent/Senators/2024-2026/5379/Documents/AMR_Newsletter_Template1.jpg",
+      "method": "img",
+      "score": 18,
+      "altText": null,
+      "sourcePageUrl": "https://www.flsenate.gov/Senators/S40",
+      "rightsStatus": "review_required",
+      "identityReviewStatus": "unreviewed",
+      "httpStatus": 429,
+      "finalUrl": "https://www.flsenate.gov/PublishedContent/Senators/2024-2026/5379/Documents/AMR_Newsletter_Template1.jpg",
+      "contentType": "text/plain",
+      "byteSize": 17,
+      "downloadStatus": "not_an_image_or_http_error"
+    },
+    {
+      "url": "https://www.flsenate.gov/PublishedContent/Senators/2024-2026/5379/Documents/AMR_Newsletter_Template12.jpg",
+      "method": "img",
+      "score": 18,
+      "altText": null,
+      "sourcePageUrl": "https://www.flsenate.gov/Senators/S40",
+      "rightsStatus": "review_required",
+      "identityReviewStatus": "unreviewed",
+      "httpStatus": 429,
+      "finalUrl": "https://www.flsenate.gov/PublishedContent/Senators/2024-2026/5379/Documents/AMR_Newsletter_Template12.jpg",
+      "contentType": "text/plain",
+      "byteSize": 17,
+      "downloadStatus": "not_an_image_or_http_error"
+    },
+    {
+      "url": "https://www.flsenate.gov/PublishedContent/Senators/2024-2026/5379/Documents/AMR_Newsletter_Template123.jpg",
+      "method": "img",
+      "score": 18,
+      "altText": null,
+      "sourcePageUrl": "https://www.flsenate.gov/Senators/S40",
+      "rightsStatus": "review_required",
+      "identityReviewStatus": "unreviewed",
+      "httpStatus": 429,
+      "finalUrl": "https://www.flsenate.gov/PublishedContent/Senators/2024-2026/5379/Documents/AMR_Newsletter_Template123.jpg",
+      "contentType": "text/plain",
+      "byteSize": 17,
+      "downloadStatus": "not_an_image_or_http_error"
+    },
+    {
+      "url": "https://www.flsenate.gov/PublishedContent/Senators/2024-2026/5379/Documents/AMR_Newsletter_Template_(1).jpg",
+      "method": "img",
+      "score": 18,
+      "altText": null,
+      "sourcePageUrl": "https://www.flsenate.gov/Senators/S40",
+      "rightsStatus": "review_required",
+      "identityReviewStatus": "unreviewed",
+      "httpStatus": 429,
+      "finalUrl": "https://www.flsenate.gov/PublishedContent/Senators/2024-2026/5379/Documents/AMR_Newsletter_Template_(1).jpg",
+      "contentType": "text/plain",
+      "byteSize": 17,
+      "downloadStatus": "not_an_image_or_http_error"
+    },
+    {
+      "url": "https://www.flsenate.gov/PublishedContent/Session/Redistricting/Districts/SD2022/webmaps/sd40_webmap.png",
+      "method": "img",
+      "score": 9,
+      "altText": "District 40 map",
+      "sourcePageUrl": "https://www.flsenate.gov/Senators/S40",
+      "rightsStatus": "review_required",
+      "identityReviewStatus": "unreviewed",
+      "httpStatus": 429,
+      "finalUrl": "https://www.flsenate.gov/PublishedContent/Session/Redistricting/Districts/SD2022/webmaps/sd40_webmap.png",
+      "contentType": "text/plain",
+      "byteSize": 17,
+      "downloadStatus": "not_an_image_or_http_error"
+    }
+  ],
+  "contactCandidates": [
+    {
+      "type": "email",
+      "value": "rodriguez.anamaria.web@flsenate.gov",
+      "label": "rodriguez.anamaria.web@flsenate.gov",
+      "sourcePageUrl": "https://www.flsenate.gov/Senators/S40"
+    },
+    {
+      "type": "email",
+      "value": "webmaster@flsenate.gov",
+      "label": "email",
+      "sourcePageUrl": "https://www.flsenate.gov/Senators/S40"
+    },
+    {
+      "type": "phone",
+      "value": "(305) 470-2552",
+      "label": null,
+      "sourcePageUrl": "https://www.flsenate.gov/Senators/S40"
+    },
+    {
+      "type": "phone",
+      "value": "(850) 487-5040",
+      "label": null,
+      "sourcePageUrl": "https://www.flsenate.gov/Senators/S40"
+    }
+  ],
+  "socialCandidates": [
+    {
+      "platform": "X",
+      "url": "http://www.twitter.com/flsenate",
+      "label": "Twitter",
+      "sourcePageUrl": "https://www.flsenate.gov/Senators/S40",
+      "reviewStatus": "unreviewed"
+    }
+  ],
+  "websiteCandidates": [
+    {
+      "url": "https://www.flsenate.gov/Session/ExecutiveAppointments",
+      "label": "Executive Appointments",
+      "sourcePageUrl": "https://www.flsenate.gov/Senators/S40",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "url": "https://www.flsenate.gov/Media/VideoSchedule",
+      "label": "Video Broadcast Schedule",
+      "sourcePageUrl": "https://www.flsenate.gov/Senators/S40",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "url": "https://www.flsenate.gov/About/Contact",
+      "label": "Contact Us",
+      "sourcePageUrl": "https://www.flsenate.gov/Senators/S40",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "url": "https://www.flsenate.gov/Offices",
+      "label": "Offices",
+      "sourcePageUrl": "https://www.flsenate.gov/Senators/S40",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "url": "https://www.flsenate.gov/Offices/President",
+      "label": "President's Office",
+      "sourcePageUrl": "https://www.flsenate.gov/Senators/S40",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "url": "https://www.flsenate.gov/Offices/Majority",
+      "label": "Majority Office",
+      "sourcePageUrl": "https://www.flsenate.gov/Senators/S40",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "url": "https://www.flsenate.gov/Offices/Minority",
+      "label": "Minority Office",
+      "sourcePageUrl": "https://www.flsenate.gov/Senators/S40",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "url": "https://www.flsenate.gov/Offices/Secretary",
+      "label": "Secretary's Office",
+      "sourcePageUrl": "https://www.flsenate.gov/Senators/S40",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "url": "https://www.flsenate.gov/Reference/PublicRecords",
+      "label": "Public Records",
+      "sourcePageUrl": "https://www.flsenate.gov/Senators/S40",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "url": "https://www.flsenate.gov/PublishedContent/Senators/2024-2026/5379/Documents/AMR_Newsletter_Template_(1).pdf",
+      "label": "Senate District 40 August Newsletter - Senator Ana Maria Rodriguez",
+      "sourcePageUrl": "https://www.flsenate.gov/Senators/S40",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "url": "https://www.flsenate.gov/PublishedContent/Senators/2024-2026/5379/Documents/AMR_Newsletter_Template123.pdf",
+      "label": "Senate District 40 June Newsletter - Senator Ana Maria Rodriguez",
+      "sourcePageUrl": "https://www.flsenate.gov/Senators/S40",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "url": "https://www.flsenate.gov/PublishedContent/Senators/2024-2026/5379/Documents/AMR_Newsletter_Template12.pdf",
+      "label": "Senate District 40 April Newsletter - Senator Ana Maria Rodriguez",
+      "sourcePageUrl": "https://www.flsenate.gov/Senators/S40",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "url": "https://www.flsenate.gov/PublishedContent/Senators/2024-2026/5379/Documents/AMR_Newsletter_Template1.pdf",
+      "label": "Senate District 40 March Newsletter - Senator Ana Maria Rodriguez",
+      "sourcePageUrl": "https://www.flsenate.gov/Senators/S40",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "url": "https://www.flsenate.gov/Session/ExecutiveAppointments/",
+      "label": "Executive Appointments",
+      "sourcePageUrl": "https://www.flsenate.gov/Senators/S40",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "url": "https://www.flsenate.gov/About/Contact#connect",
+      "label": "Connect with the Senate",
+      "sourcePageUrl": "https://www.flsenate.gov/Senators/S40",
+      "reviewStatus": "unreviewed"
+    }
+  ],
+  "errors": [],
+  "httpStatus": 200,
+  "finalUrl": "https://www.flsenate.gov/Senators/S40",
+  "sourceSnapshotSha256": "986932452aa7ecc78f0ea4784e93ece0fad77b03eecfdd8a5b1ba9de73f11c91",
+  "contentType": "text/html",
+  "pageTitle": "Senator Rodriguez - The Florida Senate",
+  "candidateSummary": {
+    "portraits": 6,
+    "contacts": 4,
+    "socials": 1,
+    "websites": 15
+  }
+}

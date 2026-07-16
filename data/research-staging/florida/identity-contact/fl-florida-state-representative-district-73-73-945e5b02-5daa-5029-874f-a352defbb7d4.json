@@ -1,0 +1,147 @@
+{
+  "enrichmentRecordVersion": "1.0.0",
+  "enrichmentRecordId": "a1bcf7d8-93ae-5459-ad6b-b76a926757cb",
+  "taskId": "945e5b02-5daa-5029-874f-a352defbb7d4",
+  "seatKey": "fl-florida-state-representative-district-73-73",
+  "displayName": "Fiona McFarland",
+  "officeTitle": "Florida State Representative, District 73",
+  "sourceUrl": "https://www.flhouse.gov/Sections/Representatives/details.aspx?MemberId=4780&LegislativeTermId=91",
+  "fetchedAt": "2026-07-16T05:20:28Z",
+  "collectionStatus": "success",
+  "reviewStatus": "unreviewed",
+  "publicationAllowed": false,
+  "portraitCandidates": [
+    {
+      "url": "https://www.flhouse.gov/FileStores/Web/Imaging/Member/4780.jpg",
+      "method": "img",
+      "score": 39,
+      "altText": "Representative McFarland Photo",
+      "sourcePageUrl": "https://www.flhouse.gov/Sections/Representatives/details.aspx?MemberId=4780&LegislativeTermId=91",
+      "rightsStatus": "review_required",
+      "identityReviewStatus": "unreviewed",
+      "httpStatus": 200,
+      "finalUrl": "https://www.flhouse.gov/FileStores/Web/Imaging/Member/4780.jpg",
+      "contentType": "image/jpeg",
+      "byteSize": 61796,
+      "imageSha256": "1a47c46867302421e301aa7e01ffb9e54e775bf83cc5c407c8e7f216b5407169",
+      "downloadStatus": "captured_for_hash"
+    },
+    {
+      "url": "https://www.flhouse.gov/Images/bronze-seal-250.png?cb=4.6.654349",
+      "method": "og:image",
+      "score": 14,
+      "altText": null,
+      "sourcePageUrl": "https://www.flhouse.gov/Sections/Representatives/details.aspx?MemberId=4780&LegislativeTermId=91",
+      "rightsStatus": "review_required",
+      "identityReviewStatus": "unreviewed",
+      "httpStatus": 200,
+      "finalUrl": "https://www.flhouse.gov/Images/bronze-seal-250.png?cb=4.6.654349",
+      "contentType": "image/png",
+      "byteSize": 150275,
+      "imageSha256": "36f7c4317f0cc62c44ff5bbfc0a0e5eebf014be23c9c8826141f11a70d9e7ff8",
+      "downloadStatus": "captured_for_hash"
+    },
+    {
+      "url": "https://www.flhouse.gov/FileStores/Web/Imaging/PhotoAlbums/HousePhotoSized7634.jpg",
+      "method": "img",
+      "score": 9,
+      "altText": null,
+      "sourcePageUrl": "https://www.flhouse.gov/Sections/Representatives/details.aspx?MemberId=4780&LegislativeTermId=91",
+      "rightsStatus": "review_required",
+      "identityReviewStatus": "unreviewed",
+      "httpStatus": 200,
+      "finalUrl": "https://www.flhouse.gov/FileStores/Web/Imaging/PhotoAlbums/HousePhotoSized7634.jpg",
+      "contentType": "image/jpeg",
+      "byteSize": 14516,
+      "imageSha256": "1a7ffbdcd0633576ecc96fb749db23d8146f65812fc9030c5fb6193219a0b46d",
+      "downloadStatus": "captured_for_hash"
+    },
+    {
+      "url": "https://www.flhouse.gov/FileStores/Web/Imaging/PhotoAlbums/HousePhotoSized7876.JPG",
+      "method": "img",
+      "score": 9,
+      "altText": null,
+      "sourcePageUrl": "https://www.flhouse.gov/Sections/Representatives/details.aspx?MemberId=4780&LegislativeTermId=91",
+      "rightsStatus": "review_required",
+      "identityReviewStatus": "unreviewed",
+      "httpStatus": 200,
+      "finalUrl": "https://www.flhouse.gov/FileStores/Web/Imaging/PhotoAlbums/HousePhotoSized7876.JPG",
+      "contentType": "image/jpeg",
+      "byteSize": 21238,
+      "imageSha256": "b5f73185e8be7a142e9d6caefd96b4b398e0f6dccc3640b12938baceecc664b7",
+      "downloadStatus": "captured_for_hash"
+    },
+    {
+      "url": "https://www.flhouse.gov/FileStores/Web/Imaging/PhotoAlbums/HousePhotoSized7877.JPG",
+      "method": "img",
+      "score": 9,
+      "altText": null,
+      "sourcePageUrl": "https://www.flhouse.gov/Sections/Representatives/details.aspx?MemberId=4780&LegislativeTermId=91",
+      "rightsStatus": "review_required",
+      "identityReviewStatus": "unreviewed",
+      "httpStatus": 200,
+      "finalUrl": "https://www.flhouse.gov/FileStores/Web/Imaging/PhotoAlbums/HousePhotoSized7877.JPG",
+      "contentType": "image/jpeg",
+      "byteSize": 20251,
+      "imageSha256": "5dd8678578b21fd36d44d0b77dfbc68ebd79e1ec35552ddd16df4ef54a90264c",
+      "downloadStatus": "captured_for_hash"
+    },
+    {
+      "url": "https://www.flhouse.gov/FileStores/Web/Imaging/PhotoAlbums/HousePhotoSized7888.JPG",
+      "method": "img",
+      "score": 9,
+      "altText": null,
+      "sourcePageUrl": "https://www.flhouse.gov/Sections/Representatives/details.aspx?MemberId=4780&LegislativeTermId=91",
+      "rightsStatus": "review_required",
+      "identityReviewStatus": "unreviewed",
+      "httpStatus": 200,
+      "finalUrl": "https://www.flhouse.gov/FileStores/Web/Imaging/PhotoAlbums/HousePhotoSized7888.JPG",
+      "contentType": "image/jpeg",
+      "byteSize": 19394,
+      "imageSha256": "5965263f2927a5307b036fdfcee2724e0abe38dbd91cdb4625a1fb8f90425113",
+      "downloadStatus": "captured_for_hash"
+    }
+  ],
+  "contactCandidates": [],
+  "socialCandidates": [
+    {
+      "platform": "YouTube",
+      "url": "https://www.youtube.com/channel/UCGiMELcyYCuDPP3N0Tg5sTg",
+      "label": "Subscribe",
+      "sourcePageUrl": "https://www.flhouse.gov/Sections/Representatives/details.aspx?MemberId=4780&LegislativeTermId=91",
+      "reviewStatus": "unreviewed"
+    }
+  ],
+  "websiteCandidates": [
+    {
+      "url": "https://www.flhouse.gov/Sections/HouseSchedule/houseschedule.aspx",
+      "label": "House Schedule",
+      "sourcePageUrl": "https://www.flhouse.gov/Sections/Representatives/details.aspx?MemberId=4780&LegislativeTermId=91",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "url": "https://www.flhouse.gov/Sections/Representatives/contactmember.aspx?MemberId=4780&SessionId=113",
+      "label": "Contact Member",
+      "sourcePageUrl": "https://www.flhouse.gov/Sections/Representatives/details.aspx?MemberId=4780&LegislativeTermId=91",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "url": "https://www.flhouse.gov/contentViewer.aspx?Category=website&File=contact us.htm",
+      "label": "Contact Us",
+      "sourcePageUrl": "https://www.flhouse.gov/Sections/Representatives/details.aspx?MemberId=4780&LegislativeTermId=91",
+      "reviewStatus": "unreviewed"
+    }
+  ],
+  "errors": [],
+  "httpStatus": 200,
+  "finalUrl": "https://www.flhouse.gov/Sections/Representatives/details.aspx?MemberId=4780&LegislativeTermId=91",
+  "sourceSnapshotSha256": "9ac9d387f8a16cef3ec2335cdea5703a3f5aaf322faf73ed4985b7e93ffc9106",
+  "contentType": "text/html",
+  "pageTitle": "Fiona McFarland  - 2024 - 2026 ( Speaker Perez ) | Florida House of Representatives",
+  "candidateSummary": {
+    "portraits": 6,
+    "contacts": 0,
+    "socials": 1,
+    "websites": 3
+  }
+}

@@ -1,0 +1,147 @@
+{
+  "enrichmentRecordVersion": "1.0.0",
+  "enrichmentRecordId": "d973a307-137d-556c-81cf-c501f86cea57",
+  "taskId": "e605003d-c74d-5399-b8b4-33ab59947331",
+  "seatKey": "fl-florida-state-representative-district-46-46",
+  "displayName": "Jose Alvarez",
+  "officeTitle": "Florida State Representative, District 46",
+  "sourceUrl": "https://www.flhouse.gov/Sections/Representatives/details.aspx?MemberId=4916&LegislativeTermId=91",
+  "fetchedAt": "2026-07-16T05:20:19Z",
+  "collectionStatus": "success",
+  "reviewStatus": "unreviewed",
+  "publicationAllowed": false,
+  "portraitCandidates": [
+    {
+      "url": "https://www.flhouse.gov/FileStores/Web/Imaging/Member/4916.jpg",
+      "method": "img",
+      "score": 39,
+      "altText": "Representative Alvarez Photo",
+      "sourcePageUrl": "https://www.flhouse.gov/Sections/Representatives/details.aspx?MemberId=4916&LegislativeTermId=91",
+      "rightsStatus": "review_required",
+      "identityReviewStatus": "unreviewed",
+      "httpStatus": 200,
+      "finalUrl": "https://www.flhouse.gov/FileStores/Web/Imaging/Member/4916.jpg",
+      "contentType": "image/jpeg",
+      "byteSize": 87059,
+      "imageSha256": "02bda807be4c4c00514f7fa02a7746d25556a2add16ce32251f45b0d38a847dc",
+      "downloadStatus": "captured_for_hash"
+    },
+    {
+      "url": "https://www.flhouse.gov/Images/bronze-seal-250.png?cb=4.6.654349",
+      "method": "og:image",
+      "score": 14,
+      "altText": null,
+      "sourcePageUrl": "https://www.flhouse.gov/Sections/Representatives/details.aspx?MemberId=4916&LegislativeTermId=91",
+      "rightsStatus": "review_required",
+      "identityReviewStatus": "unreviewed",
+      "httpStatus": 200,
+      "finalUrl": "https://www.flhouse.gov/Images/bronze-seal-250.png?cb=4.6.654349",
+      "contentType": "image/png",
+      "byteSize": 150275,
+      "imageSha256": "36f7c4317f0cc62c44ff5bbfc0a0e5eebf014be23c9c8826141f11a70d9e7ff8",
+      "downloadStatus": "captured_for_hash"
+    },
+    {
+      "url": "https://www.flhouse.gov/FileStores/Web/Imaging/PhotoAlbums/HousePhotoSized8163.JPG",
+      "method": "img",
+      "score": 9,
+      "altText": null,
+      "sourcePageUrl": "https://www.flhouse.gov/Sections/Representatives/details.aspx?MemberId=4916&LegislativeTermId=91",
+      "rightsStatus": "review_required",
+      "identityReviewStatus": "unreviewed",
+      "httpStatus": 200,
+      "finalUrl": "https://www.flhouse.gov/FileStores/Web/Imaging/PhotoAlbums/HousePhotoSized8163.JPG",
+      "contentType": "image/jpeg",
+      "byteSize": 15299,
+      "imageSha256": "79936652967d2c43c1e4e95b14a8db59d2dd204e0684510a6b853073648b46df",
+      "downloadStatus": "captured_for_hash"
+    },
+    {
+      "url": "https://www.flhouse.gov/FileStores/Web/Imaging/PhotoAlbums/HousePhotoSized8226.JPG",
+      "method": "img",
+      "score": 9,
+      "altText": null,
+      "sourcePageUrl": "https://www.flhouse.gov/Sections/Representatives/details.aspx?MemberId=4916&LegislativeTermId=91",
+      "rightsStatus": "review_required",
+      "identityReviewStatus": "unreviewed",
+      "httpStatus": 200,
+      "finalUrl": "https://www.flhouse.gov/FileStores/Web/Imaging/PhotoAlbums/HousePhotoSized8226.JPG",
+      "contentType": "image/jpeg",
+      "byteSize": 21309,
+      "imageSha256": "1149ec8be50908a20f9e1c59fb1836b0513696739ef2f23342d72b217f878538",
+      "downloadStatus": "captured_for_hash"
+    },
+    {
+      "url": "https://www.flhouse.gov/FileStores/Web/Imaging/PhotoAlbums/HousePhotoSized8248.JPG",
+      "method": "img",
+      "score": 9,
+      "altText": null,
+      "sourcePageUrl": "https://www.flhouse.gov/Sections/Representatives/details.aspx?MemberId=4916&LegislativeTermId=91",
+      "rightsStatus": "review_required",
+      "identityReviewStatus": "unreviewed",
+      "httpStatus": 200,
+      "finalUrl": "https://www.flhouse.gov/FileStores/Web/Imaging/PhotoAlbums/HousePhotoSized8248.JPG",
+      "contentType": "image/jpeg",
+      "byteSize": 19014,
+      "imageSha256": "2cf5bbbc7a4d0bbb80dd8409d9803fb0ff78896f091781dd28df65ec7103723d",
+      "downloadStatus": "captured_for_hash"
+    },
+    {
+      "url": "https://www.flhouse.gov/FileStores/Web/Imaging/PhotoAlbums/HousePhotoSized8288.JPG",
+      "method": "img",
+      "score": 9,
+      "altText": null,
+      "sourcePageUrl": "https://www.flhouse.gov/Sections/Representatives/details.aspx?MemberId=4916&LegislativeTermId=91",
+      "rightsStatus": "review_required",
+      "identityReviewStatus": "unreviewed",
+      "httpStatus": 200,
+      "finalUrl": "https://www.flhouse.gov/FileStores/Web/Imaging/PhotoAlbums/HousePhotoSized8288.JPG",
+      "contentType": "image/jpeg",
+      "byteSize": 13009,
+      "imageSha256": "4a83dc0ada36ca3a3726cf9f2a8b88a786b74ae08815837365ebc9c6efdbe186",
+      "downloadStatus": "captured_for_hash"
+    }
+  ],
+  "contactCandidates": [],
+  "socialCandidates": [
+    {
+      "platform": "YouTube",
+      "url": "https://www.youtube.com/channel/UCGiMELcyYCuDPP3N0Tg5sTg",
+      "label": "Subscribe",
+      "sourcePageUrl": "https://www.flhouse.gov/Sections/Representatives/details.aspx?MemberId=4916&LegislativeTermId=91",
+      "reviewStatus": "unreviewed"
+    }
+  ],
+  "websiteCandidates": [
+    {
+      "url": "https://www.flhouse.gov/Sections/HouseSchedule/houseschedule.aspx",
+      "label": "House Schedule",
+      "sourcePageUrl": "https://www.flhouse.gov/Sections/Representatives/details.aspx?MemberId=4916&LegislativeTermId=91",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "url": "https://www.flhouse.gov/Sections/Representatives/contactmember.aspx?MemberId=4916&SessionId=113",
+      "label": "Contact Member",
+      "sourcePageUrl": "https://www.flhouse.gov/Sections/Representatives/details.aspx?MemberId=4916&LegislativeTermId=91",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "url": "https://www.flhouse.gov/contentViewer.aspx?Category=website&File=contact us.htm",
+      "label": "Contact Us",
+      "sourcePageUrl": "https://www.flhouse.gov/Sections/Representatives/details.aspx?MemberId=4916&LegislativeTermId=91",
+      "reviewStatus": "unreviewed"
+    }
+  ],
+  "errors": [],
+  "httpStatus": 200,
+  "finalUrl": "https://www.flhouse.gov/Sections/Representatives/details.aspx?MemberId=4916&LegislativeTermId=91",
+  "sourceSnapshotSha256": "dc3988c594a41c0ca081a2dfd6bcdc778cfcbf9d89efb491835d867a68c50392",
+  "contentType": "text/html",
+  "pageTitle": "Jose Alvarez  - 2024 - 2026 ( Speaker Perez ) | Florida House of Representatives",
+  "candidateSummary": {
+    "portraits": 6,
+    "contacts": 0,
+    "socials": 1,
+    "websites": 3
+  }
+}

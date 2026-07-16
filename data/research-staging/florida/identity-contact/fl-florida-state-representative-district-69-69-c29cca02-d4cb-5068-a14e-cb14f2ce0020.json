@@ -1,0 +1,146 @@
+{
+  "enrichmentRecordVersion": "1.0.0",
+  "enrichmentRecordId": "862fcaad-f9bf-5adb-8a9a-9ec9a0c73f76",
+  "taskId": "c29cca02-d4cb-5068-a14e-cb14f2ce0020",
+  "seatKey": "fl-florida-state-representative-district-69-69",
+  "displayName": "Daniel Antonio \"Danny\" Alvarez",
+  "officeTitle": "Florida State Representative, District 69",
+  "sourceUrl": "https://www.flhouse.gov/Sections/Representatives/details.aspx?MemberId=4889&LegislativeTermId=91",
+  "fetchedAt": "2026-07-16T05:20:27Z",
+  "collectionStatus": "success",
+  "reviewStatus": "unreviewed",
+  "publicationAllowed": false,
+  "portraitCandidates": [
+    {
+      "url": "https://www.flhouse.gov/FileStores/Web/Imaging/Member/cutout%2f4889.png",
+      "method": "img",
+      "score": 39,
+      "altText": "Representative Alvarez Photo",
+      "sourcePageUrl": "https://www.flhouse.gov/Sections/Representatives/custom/details.aspx?MemberId=4889&LegislativeTermId=91",
+      "rightsStatus": "review_required",
+      "identityReviewStatus": "unreviewed",
+      "httpStatus": 200,
+      "finalUrl": "https://www.flhouse.gov/FileStores/Web/Imaging/Member/cutout%2F4889.png",
+      "contentType": "image/png",
+      "byteSize": 160017,
+      "imageSha256": "c39e0ecbba9feb412d7068b36609f8df7472b917ef5174823b7375f4b9903001",
+      "downloadStatus": "captured_for_hash"
+    },
+    {
+      "url": "https://www.flhouse.gov/FileStores/Web/Imaging/PhotoAlbums/HousePhotoSized8147.JPG",
+      "method": "img",
+      "score": 30,
+      "altText": "Representative Alvarez Photo",
+      "sourcePageUrl": "https://www.flhouse.gov/Sections/Representatives/custom/details.aspx?MemberId=4889&LegislativeTermId=91",
+      "rightsStatus": "review_required",
+      "identityReviewStatus": "unreviewed",
+      "httpStatus": 200,
+      "finalUrl": "https://www.flhouse.gov/FileStores/Web/Imaging/PhotoAlbums/HousePhotoSized8147.JPG",
+      "contentType": "image/jpeg",
+      "byteSize": 28480,
+      "imageSha256": "228d2b8bab8b462d87ebd3fe424b330626567fa06e4f291ebf32dffdb728f47c",
+      "downloadStatus": "captured_for_hash"
+    },
+    {
+      "url": "https://www.flhouse.gov/Images/bronze-seal-250.png?cb=4.6.654349",
+      "method": "og:image",
+      "score": 14,
+      "altText": null,
+      "sourcePageUrl": "https://www.flhouse.gov/Sections/Representatives/custom/details.aspx?MemberId=4889&LegislativeTermId=91",
+      "rightsStatus": "review_required",
+      "identityReviewStatus": "unreviewed",
+      "httpStatus": 200,
+      "finalUrl": "https://www.flhouse.gov/Images/bronze-seal-250.png?cb=4.6.654349",
+      "contentType": "image/png",
+      "byteSize": 150275,
+      "imageSha256": "36f7c4317f0cc62c44ff5bbfc0a0e5eebf014be23c9c8826141f11a70d9e7ff8",
+      "downloadStatus": "captured_for_hash"
+    },
+    {
+      "url": "https://www.flhouse.gov/FileStores/Web/Imaging/PhotoAlbums/HousePhotoSized8222.JPG",
+      "method": "img",
+      "score": 9,
+      "altText": null,
+      "sourcePageUrl": "https://www.flhouse.gov/Sections/Representatives/custom/details.aspx?MemberId=4889&LegislativeTermId=91",
+      "rightsStatus": "review_required",
+      "identityReviewStatus": "unreviewed",
+      "httpStatus": 200,
+      "finalUrl": "https://www.flhouse.gov/FileStores/Web/Imaging/PhotoAlbums/HousePhotoSized8222.JPG",
+      "contentType": "image/jpeg",
+      "byteSize": 18054,
+      "imageSha256": "c27228c46e2a42c174f99176031b12a34fdefc3a25bccefd52661e7ecf480d9d",
+      "downloadStatus": "captured_for_hash"
+    },
+    {
+      "url": "https://www.flhouse.gov/FileStores/Web/Imaging/PhotoAlbums/HousePhotoSized8227.JPG",
+      "method": "img",
+      "score": 9,
+      "altText": null,
+      "sourcePageUrl": "https://www.flhouse.gov/Sections/Representatives/custom/details.aspx?MemberId=4889&LegislativeTermId=91",
+      "rightsStatus": "review_required",
+      "identityReviewStatus": "unreviewed",
+      "httpStatus": 200,
+      "finalUrl": "https://www.flhouse.gov/FileStores/Web/Imaging/PhotoAlbums/HousePhotoSized8227.JPG",
+      "contentType": "image/jpeg",
+      "byteSize": 18172,
+      "imageSha256": "d6fcf3a2da599264095ef57300c52f631ae9ea0a8777d15eeafa34e8e5a96eb0",
+      "downloadStatus": "captured_for_hash"
+    },
+    {
+      "url": "https://www.flhouse.gov/FileStores/Web/Imaging/member-page-banners/1.jpg",
+      "method": "img",
+      "score": -17,
+      "altText": "The House Chamber",
+      "sourcePageUrl": "https://www.flhouse.gov/Sections/Representatives/custom/details.aspx?MemberId=4889&LegislativeTermId=91",
+      "rightsStatus": "review_required",
+      "identityReviewStatus": "unreviewed",
+      "httpStatus": 200,
+      "finalUrl": "https://www.flhouse.gov/FileStores/Web/Imaging/member-page-banners/1.jpg",
+      "contentType": "image/jpeg",
+      "byteSize": 106842,
+      "imageSha256": "9b11c3a35cea6e0f4dea3566a1298efa0e265354a2340e1754fba45bdbaf3fb9",
+      "downloadStatus": "captured_for_hash"
+    }
+  ],
+  "contactCandidates": [
+    {
+      "type": "phone",
+      "value": "(813) 768-0940",
+      "label": null,
+      "sourcePageUrl": "https://www.flhouse.gov/Sections/Representatives/custom/details.aspx?MemberId=4889&LegislativeTermId=91"
+    },
+    {
+      "type": "phone",
+      "value": "(850) 717-5069",
+      "label": null,
+      "sourcePageUrl": "https://www.flhouse.gov/Sections/Representatives/custom/details.aspx?MemberId=4889&LegislativeTermId=91"
+    }
+  ],
+  "socialCandidates": [],
+  "websiteCandidates": [
+    {
+      "url": "https://www.flhouse.gov/Sections/Representatives/custom/contactmember.aspx?MemberId=4889&LegislativeTermId=91",
+      "label": "Contact Member",
+      "sourcePageUrl": "https://www.flhouse.gov/Sections/Representatives/custom/details.aspx?MemberId=4889&LegislativeTermId=91",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "url": "https://www.flhouse.gov/Sections/Representatives/custom/maps-and-offices.aspx?MemberId=4889&LegislativeTermId=91",
+      "label": "Maps & Offices",
+      "sourcePageUrl": "https://www.flhouse.gov/Sections/Representatives/custom/details.aspx?MemberId=4889&LegislativeTermId=91",
+      "reviewStatus": "unreviewed"
+    }
+  ],
+  "errors": [],
+  "httpStatus": 200,
+  "finalUrl": "https://www.flhouse.gov/Sections/Representatives/custom/details.aspx?MemberId=4889&LegislativeTermId=91",
+  "sourceSnapshotSha256": "dc0bc68942a70d66d2a44d7eb3ab08dc03c3aac1fd1007f54c0b998e2680113a",
+  "contentType": "text/html",
+  "pageTitle": "Daniel Antonio \"Danny\" Alvarez  - 2024 - 2026 ( Speaker Perez ) | Florida House of Representatives",
+  "candidateSummary": {
+    "portraits": 6,
+    "contacts": 2,
+    "socials": 0,
+    "websites": 2
+  }
+}

@@ -1,0 +1,226 @@
+{
+  "enrichmentRecordVersion": "1.0.0",
+  "enrichmentRecordId": "c1f37032-b053-5e98-8d42-b822949461a8",
+  "taskId": "f3283ee0-aff9-5fac-99f1-ebbf845e0755",
+  "seatKey": "fl-florida-state-senator-district-10-10",
+  "displayName": "Jason Brodeur",
+  "officeTitle": "Florida State Senator, District 10",
+  "sourceUrl": "https://www.flsenate.gov/Senators/2024-2026/S10",
+  "fetchedAt": "2026-07-16T05:20:37Z",
+  "collectionStatus": "success",
+  "reviewStatus": "unreviewed",
+  "publicationAllowed": false,
+  "portraitCandidates": [
+    {
+      "url": "https://www.flsenate.gov/PublishedContent/Senators/2024-2026/Photos/s10_5077.jpg",
+      "method": "img",
+      "score": 30,
+      "altText": "Senator Brodeur",
+      "sourcePageUrl": "https://www.flsenate.gov/Senators/S10",
+      "rightsStatus": "review_required",
+      "identityReviewStatus": "unreviewed",
+      "httpStatus": 200,
+      "finalUrl": "https://www.flsenate.gov/PublishedContent/Senators/2024-2026/Photos/s10_5077.jpg",
+      "contentType": "image/jpeg",
+      "byteSize": 32689,
+      "imageSha256": "4eb6d6038d0a60f5a0004d81746af2e8cecd89279962afb782f0307fe5d490cf",
+      "downloadStatus": "captured_for_hash"
+    },
+    {
+      "url": "https://www.flsenate.gov/PublishedContent/Senators/2020-2022/5077/Documents/Draft_Newsletter_(copy)_for_FLSenate.jpg",
+      "method": "img",
+      "score": 18,
+      "altText": null,
+      "sourcePageUrl": "https://www.flsenate.gov/Senators/S10",
+      "rightsStatus": "review_required",
+      "identityReviewStatus": "unreviewed",
+      "httpStatus": 200,
+      "finalUrl": "https://www.flsenate.gov/PublishedContent/Senators/2020-2022/5077/Documents/Draft_Newsletter_(copy)_for_FLSenate.jpg",
+      "contentType": "image/jpeg",
+      "byteSize": 8054,
+      "imageSha256": "cc5805a7f07c78160870c96169d53d5a181d63d0ca6261aad6be6ca479d44c06",
+      "downloadStatus": "captured_for_hash"
+    },
+    {
+      "url": "https://www.flsenate.gov/PublishedContent/Session/Redistricting/Districts/SD2022/webmaps/sd10_webmap.png",
+      "method": "img",
+      "score": 9,
+      "altText": "District 10 map",
+      "sourcePageUrl": "https://www.flsenate.gov/Senators/S10",
+      "rightsStatus": "review_required",
+      "identityReviewStatus": "unreviewed",
+      "httpStatus": 200,
+      "finalUrl": "https://www.flsenate.gov/PublishedContent/Session/Redistricting/Districts/SD2022/webmaps/sd10_webmap.png",
+      "contentType": "image/png",
+      "byteSize": 97612,
+      "imageSha256": "a1aaa0e956f1e9eca7c5770ae7351d6eb1280a912caf433abdcf261fca2bd7b4",
+      "downloadStatus": "captured_for_hash"
+    },
+    {
+      "url": "https://www.flsenate.gov/UserContent/img/help/2013search-goBill.png",
+      "method": "img",
+      "score": 9,
+      "altText": "Example of Go To Bill feature available on every page of flsenate.gov",
+      "sourcePageUrl": "https://www.flsenate.gov/Senators/S10",
+      "rightsStatus": "review_required",
+      "identityReviewStatus": "unreviewed",
+      "httpStatus": 200,
+      "finalUrl": "https://www.flsenate.gov/UserContent/img/help/2013search-goBill.png",
+      "contentType": "image/png",
+      "byteSize": 5007,
+      "imageSha256": "a5603c435a93d2686367d1b9d1852b1ac6e1bdfda72b8d2ea6c888e66a377ffe",
+      "downloadStatus": "captured_for_hash"
+    },
+    {
+      "url": "https://www.flsenate.gov/UserContent/img/help/2013sitesearch.png",
+      "method": "img",
+      "score": 9,
+      "altText": "Example of Site Search available on every page of flsenate.gov",
+      "sourcePageUrl": "https://www.flsenate.gov/Senators/S10",
+      "rightsStatus": "review_required",
+      "identityReviewStatus": "unreviewed",
+      "httpStatus": 200,
+      "finalUrl": "https://www.flsenate.gov/UserContent/img/help/2013sitesearch.png",
+      "contentType": "image/png",
+      "byteSize": 4284,
+      "imageSha256": "a856ffdf809fbc2f0993fab57b3436909b092ef1d682a977310fc6edd2380dac",
+      "downloadStatus": "captured_for_hash"
+    },
+    {
+      "url": "https://www.flsenate.gov/UserContent/img/help/2013statutesearch.png",
+      "method": "img",
+      "score": 9,
+      "altText": "Example of Go To Bill feature available on every page of flsenate.gov",
+      "sourcePageUrl": "https://www.flsenate.gov/Senators/S10",
+      "rightsStatus": "review_required",
+      "identityReviewStatus": "unreviewed",
+      "httpStatus": 200,
+      "finalUrl": "https://www.flsenate.gov/UserContent/img/help/2013statutesearch.png",
+      "contentType": "image/png",
+      "byteSize": 5911,
+      "imageSha256": "34b5496e6e024221ffe3fae722107c6c23f4bf07f70c6607c863ef6def60bd3b",
+      "downloadStatus": "captured_for_hash"
+    }
+  ],
+  "contactCandidates": [
+    {
+      "type": "email",
+      "value": "brodeur.jason.web@flsenate.gov",
+      "label": "brodeur.jason.web@flsenate.gov",
+      "sourcePageUrl": "https://www.flsenate.gov/Senators/S10"
+    },
+    {
+      "type": "email",
+      "value": "webmaster@flsenate.gov",
+      "label": "email",
+      "sourcePageUrl": "https://www.flsenate.gov/Senators/S10"
+    },
+    {
+      "type": "phone",
+      "value": "(407) 333-1802",
+      "label": null,
+      "sourcePageUrl": "https://www.flsenate.gov/Senators/S10"
+    },
+    {
+      "type": "phone",
+      "value": "(850) 487-5010",
+      "label": null,
+      "sourcePageUrl": "https://www.flsenate.gov/Senators/S10"
+    }
+  ],
+  "socialCandidates": [
+    {
+      "platform": "X",
+      "url": "http://www.twitter.com/flsenate",
+      "label": "Twitter",
+      "sourcePageUrl": "https://www.flsenate.gov/Senators/S10",
+      "reviewStatus": "unreviewed"
+    }
+  ],
+  "websiteCandidates": [
+    {
+      "url": "https://www.flsenate.gov/Session/ExecutiveAppointments",
+      "label": "Executive Appointments",
+      "sourcePageUrl": "https://www.flsenate.gov/Senators/S10",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "url": "https://www.flsenate.gov/Media/VideoSchedule",
+      "label": "Video Broadcast Schedule",
+      "sourcePageUrl": "https://www.flsenate.gov/Senators/S10",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "url": "https://www.flsenate.gov/About/Contact",
+      "label": "Contact Us",
+      "sourcePageUrl": "https://www.flsenate.gov/Senators/S10",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "url": "https://www.flsenate.gov/Offices",
+      "label": "Offices",
+      "sourcePageUrl": "https://www.flsenate.gov/Senators/S10",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "url": "https://www.flsenate.gov/Offices/President",
+      "label": "President's Office",
+      "sourcePageUrl": "https://www.flsenate.gov/Senators/S10",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "url": "https://www.flsenate.gov/Offices/Majority",
+      "label": "Majority Office",
+      "sourcePageUrl": "https://www.flsenate.gov/Senators/S10",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "url": "https://www.flsenate.gov/Offices/Minority",
+      "label": "Minority Office",
+      "sourcePageUrl": "https://www.flsenate.gov/Senators/S10",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "url": "https://www.flsenate.gov/Offices/Secretary",
+      "label": "Secretary's Office",
+      "sourcePageUrl": "https://www.flsenate.gov/Senators/S10",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "url": "https://www.flsenate.gov/Reference/PublicRecords",
+      "label": "Public Records",
+      "sourcePageUrl": "https://www.flsenate.gov/Senators/S10",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "url": "https://www.flsenate.gov/PublishedContent/Senators/2020-2022/5077/Documents/Draft_Newsletter_(copy)_for_FLSenate.pdf",
+      "label": "Brodeur Blog: April, 9th, 2021",
+      "sourcePageUrl": "https://www.flsenate.gov/Senators/S10",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "url": "https://www.flsenate.gov/Session/ExecutiveAppointments/",
+      "label": "Executive Appointments",
+      "sourcePageUrl": "https://www.flsenate.gov/Senators/S10",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "url": "https://www.flsenate.gov/About/Contact#connect",
+      "label": "Connect with the Senate",
+      "sourcePageUrl": "https://www.flsenate.gov/Senators/S10",
+      "reviewStatus": "unreviewed"
+    }
+  ],
+  "errors": [],
+  "httpStatus": 200,
+  "finalUrl": "https://www.flsenate.gov/Senators/S10",
+  "sourceSnapshotSha256": "37bc4bc8f3c724333d8a17a5849f8eb41f20f4852027498ea7f9f2bd2bc02e9e",
+  "contentType": "text/html",
+  "pageTitle": "Senator Brodeur - The Florida Senate",
+  "candidateSummary": {
+    "portraits": 6,
+    "contacts": 4,
+    "socials": 1,
+    "websites": 12
+  }
+}

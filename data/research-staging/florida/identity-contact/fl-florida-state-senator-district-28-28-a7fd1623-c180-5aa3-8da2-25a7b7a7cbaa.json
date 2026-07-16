@@ -1,0 +1,226 @@
+{
+  "enrichmentRecordVersion": "1.0.0",
+  "enrichmentRecordId": "b280d85a-4278-5d3c-a1b4-4f0b1a681741",
+  "taskId": "a7fd1623-c180-5aa3-8da2-25a7b7a7cbaa",
+  "seatKey": "fl-florida-state-senator-district-28-28",
+  "displayName": "Kathleen Passidomo",
+  "officeTitle": "Florida State Senator, District 28",
+  "sourceUrl": "https://www.flsenate.gov/Senators/2024-2026/S28",
+  "fetchedAt": "2026-07-16T05:20:42Z",
+  "collectionStatus": "success",
+  "reviewStatus": "unreviewed",
+  "publicationAllowed": false,
+  "portraitCandidates": [
+    {
+      "url": "https://www.flsenate.gov/PublishedContent/Senators/2024-2026/Photos/s28_5196.jpg",
+      "method": "img",
+      "score": 30,
+      "altText": "Senator Passidomo",
+      "sourcePageUrl": "https://www.flsenate.gov/Senators/S28",
+      "rightsStatus": "review_required",
+      "identityReviewStatus": "unreviewed",
+      "httpStatus": 200,
+      "finalUrl": "https://www.flsenate.gov/PublishedContent/Senators/2024-2026/Photos/s28_5196.jpg",
+      "contentType": "image/jpeg",
+      "byteSize": 71207,
+      "imageSha256": "433cc1736534823e0c98007fd112c6d1bd13f2577c11e1b05d3468022e064056",
+      "downloadStatus": "captured_for_hash"
+    },
+    {
+      "url": "https://www.flsenate.gov/PublishedContent/Session/Redistricting/Districts/SD2022/webmaps/sd28_webmap.png",
+      "method": "img",
+      "score": 9,
+      "altText": "District 28 map",
+      "sourcePageUrl": "https://www.flsenate.gov/Senators/S28",
+      "rightsStatus": "review_required",
+      "identityReviewStatus": "unreviewed",
+      "httpStatus": 200,
+      "finalUrl": "https://www.flsenate.gov/PublishedContent/Session/Redistricting/Districts/SD2022/webmaps/sd28_webmap.png",
+      "contentType": "image/png",
+      "byteSize": 103420,
+      "imageSha256": "086095f2bebd244e316e572728e3576da6d716fa3895c97b70c4c7c8485439dc",
+      "downloadStatus": "captured_for_hash"
+    },
+    {
+      "url": "https://www.flsenate.gov/UserContent/img/help/2013search-goBill.png",
+      "method": "img",
+      "score": 9,
+      "altText": "Example of Go To Bill feature available on every page of flsenate.gov",
+      "sourcePageUrl": "https://www.flsenate.gov/Senators/S28",
+      "rightsStatus": "review_required",
+      "identityReviewStatus": "unreviewed",
+      "httpStatus": 200,
+      "finalUrl": "https://www.flsenate.gov/UserContent/img/help/2013search-goBill.png",
+      "contentType": "image/png",
+      "byteSize": 5007,
+      "imageSha256": "a5603c435a93d2686367d1b9d1852b1ac6e1bdfda72b8d2ea6c888e66a377ffe",
+      "downloadStatus": "captured_for_hash"
+    },
+    {
+      "url": "https://www.flsenate.gov/UserContent/img/help/2013sitesearch.png",
+      "method": "img",
+      "score": 9,
+      "altText": "Example of Site Search available on every page of flsenate.gov",
+      "sourcePageUrl": "https://www.flsenate.gov/Senators/S28",
+      "rightsStatus": "review_required",
+      "identityReviewStatus": "unreviewed",
+      "httpStatus": 200,
+      "finalUrl": "https://www.flsenate.gov/UserContent/img/help/2013sitesearch.png",
+      "contentType": "image/png",
+      "byteSize": 4284,
+      "imageSha256": "a856ffdf809fbc2f0993fab57b3436909b092ef1d682a977310fc6edd2380dac",
+      "downloadStatus": "captured_for_hash"
+    },
+    {
+      "url": "https://www.flsenate.gov/UserContent/img/help/2013statutesearch.png",
+      "method": "img",
+      "score": 9,
+      "altText": "Example of Go To Bill feature available on every page of flsenate.gov",
+      "sourcePageUrl": "https://www.flsenate.gov/Senators/S28",
+      "rightsStatus": "review_required",
+      "identityReviewStatus": "unreviewed",
+      "httpStatus": 200,
+      "finalUrl": "https://www.flsenate.gov/UserContent/img/help/2013statutesearch.png",
+      "contentType": "image/png",
+      "byteSize": 5911,
+      "imageSha256": "34b5496e6e024221ffe3fae722107c6c23f4bf07f70c6607c863ef6def60bd3b",
+      "downloadStatus": "captured_for_hash"
+    },
+    {
+      "url": "https://www.flsenate.gov/UserContent/img/help/printerIcon.png",
+      "method": "img",
+      "score": -26,
+      "altText": "Acrobat print icon",
+      "sourcePageUrl": "https://www.flsenate.gov/Senators/S28",
+      "rightsStatus": "review_required",
+      "identityReviewStatus": "unreviewed",
+      "httpStatus": 200,
+      "finalUrl": "https://www.flsenate.gov/UserContent/img/help/printerIcon.png",
+      "contentType": "image/png",
+      "byteSize": 1535,
+      "imageSha256": "bd252613689747407dcc6f71fe992c940a3a21b2365a6d4e3851de2ae8fbcf5f",
+      "downloadStatus": "captured_for_hash"
+    }
+  ],
+  "contactCandidates": [
+    {
+      "type": "email",
+      "value": "passidomo.kathleen.web@flsenate.gov",
+      "label": "passidomo.kathleen.web@flsenate.gov",
+      "sourcePageUrl": "https://www.flsenate.gov/Senators/S28"
+    },
+    {
+      "type": "email",
+      "value": "webmaster@flsenate.gov",
+      "label": "email",
+      "sourcePageUrl": "https://www.flsenate.gov/Senators/S28"
+    },
+    {
+      "type": "phone",
+      "value": "(239) 417-6205",
+      "label": null,
+      "sourcePageUrl": "https://www.flsenate.gov/Senators/S28"
+    },
+    {
+      "type": "phone",
+      "value": "(850) 487-5028",
+      "label": null,
+      "sourcePageUrl": "https://www.flsenate.gov/Senators/S28"
+    },
+    {
+      "type": "phone",
+      "value": "(863) 674-7122",
+      "label": null,
+      "sourcePageUrl": "https://www.flsenate.gov/Senators/S28"
+    }
+  ],
+  "socialCandidates": [
+    {
+      "platform": "X",
+      "url": "http://www.twitter.com/flsenate",
+      "label": "Twitter",
+      "sourcePageUrl": "https://www.flsenate.gov/Senators/S28",
+      "reviewStatus": "unreviewed"
+    }
+  ],
+  "websiteCandidates": [
+    {
+      "url": "https://www.flsenate.gov/Session/ExecutiveAppointments",
+      "label": "Executive Appointments",
+      "sourcePageUrl": "https://www.flsenate.gov/Senators/S28",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "url": "https://www.flsenate.gov/Media/VideoSchedule",
+      "label": "Video Broadcast Schedule",
+      "sourcePageUrl": "https://www.flsenate.gov/Senators/S28",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "url": "https://www.flsenate.gov/About/Contact",
+      "label": "Contact Us",
+      "sourcePageUrl": "https://www.flsenate.gov/Senators/S28",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "url": "https://www.flsenate.gov/Offices",
+      "label": "Offices",
+      "sourcePageUrl": "https://www.flsenate.gov/Senators/S28",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "url": "https://www.flsenate.gov/Offices/President",
+      "label": "President's Office",
+      "sourcePageUrl": "https://www.flsenate.gov/Senators/S28",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "url": "https://www.flsenate.gov/Offices/Majority",
+      "label": "Majority Office",
+      "sourcePageUrl": "https://www.flsenate.gov/Senators/S28",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "url": "https://www.flsenate.gov/Offices/Minority",
+      "label": "Minority Office",
+      "sourcePageUrl": "https://www.flsenate.gov/Senators/S28",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "url": "https://www.flsenate.gov/Offices/Secretary",
+      "label": "Secretary's Office",
+      "sourcePageUrl": "https://www.flsenate.gov/Senators/S28",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "url": "https://www.flsenate.gov/Reference/PublicRecords",
+      "label": "Public Records",
+      "sourcePageUrl": "https://www.flsenate.gov/Senators/S28",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "url": "https://www.flsenate.gov/Session/ExecutiveAppointments/",
+      "label": "Executive Appointments",
+      "sourcePageUrl": "https://www.flsenate.gov/Senators/S28",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "url": "https://www.flsenate.gov/About/Contact#connect",
+      "label": "Connect with the Senate",
+      "sourcePageUrl": "https://www.flsenate.gov/Senators/S28",
+      "reviewStatus": "unreviewed"
+    }
+  ],
+  "errors": [],
+  "httpStatus": 200,
+  "finalUrl": "https://www.flsenate.gov/Senators/S28",
+  "sourceSnapshotSha256": "01febf91466021f1cf554a520107fbcdc6472490290196754d747dceb2896bcf",
+  "contentType": "text/html",
+  "pageTitle": "Senator Passidomo - The Florida Senate",
+  "candidateSummary": {
+    "portraits": 6,
+    "contacts": 5,
+    "socials": 1,
+    "websites": 11
+  }
+}

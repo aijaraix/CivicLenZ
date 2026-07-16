@@ -1,0 +1,161 @@
+{
+  "enrichmentRecordVersion": "1.0.0",
+  "enrichmentRecordId": "507ca07b-6b40-5901-bb22-bd5163036f81",
+  "taskId": "1049fd5c-42b3-557a-960b-e4876bec6199",
+  "seatKey": "fl-florida-state-representative-district-43-43",
+  "displayName": "Johanna López",
+  "officeTitle": "Florida State Representative, District 43",
+  "sourceUrl": "https://www.flhouse.gov/Sections/Representatives/details.aspx?MemberId=4875&LegislativeTermId=91",
+  "fetchedAt": "2026-07-16T05:20:19Z",
+  "collectionStatus": "success",
+  "reviewStatus": "unreviewed",
+  "publicationAllowed": false,
+  "portraitCandidates": [
+    {
+      "url": "https://www.flhouse.gov/FileStores/Web/Imaging/Member/cutout%2f4875.png",
+      "method": "img",
+      "score": 39,
+      "altText": "Representative López Photo",
+      "sourcePageUrl": "https://www.flhouse.gov/Sections/Representatives/custom/details.aspx?MemberId=4875&LegislativeTermId=91",
+      "rightsStatus": "review_required",
+      "identityReviewStatus": "unreviewed",
+      "httpStatus": 200,
+      "finalUrl": "https://www.flhouse.gov/FileStores/Web/Imaging/Member/cutout%2F4875.png",
+      "contentType": "image/png",
+      "byteSize": 143058,
+      "imageSha256": "e575198932dc167384a8574fbef2a77e33bfc809c1c25ef735b1d2635399539b",
+      "downloadStatus": "captured_for_hash"
+    },
+    {
+      "url": "https://www.flhouse.gov/FileStores/Web/Imaging/PhotoAlbums/HousePhotoSized7462.jpg",
+      "method": "img",
+      "score": 30,
+      "altText": "Representative López Photo",
+      "sourcePageUrl": "https://www.flhouse.gov/Sections/Representatives/custom/details.aspx?MemberId=4875&LegislativeTermId=91",
+      "rightsStatus": "review_required",
+      "identityReviewStatus": "unreviewed",
+      "httpStatus": 200,
+      "finalUrl": "https://www.flhouse.gov/FileStores/Web/Imaging/PhotoAlbums/HousePhotoSized7462.jpg",
+      "contentType": "image/jpeg",
+      "byteSize": 28298,
+      "imageSha256": "7808545678c75c7316eec972b3c22d2a59bc22ae38b8e531e05279e55e6e9dc4",
+      "downloadStatus": "captured_for_hash"
+    },
+    {
+      "url": "https://www.flhouse.gov/Images/bronze-seal-250.png?cb=4.6.654349",
+      "method": "og:image",
+      "score": 14,
+      "altText": null,
+      "sourcePageUrl": "https://www.flhouse.gov/Sections/Representatives/custom/details.aspx?MemberId=4875&LegislativeTermId=91",
+      "rightsStatus": "review_required",
+      "identityReviewStatus": "unreviewed",
+      "httpStatus": 200,
+      "finalUrl": "https://www.flhouse.gov/Images/bronze-seal-250.png?cb=4.6.654349",
+      "contentType": "image/png",
+      "byteSize": 150275,
+      "imageSha256": "36f7c4317f0cc62c44ff5bbfc0a0e5eebf014be23c9c8826141f11a70d9e7ff8",
+      "downloadStatus": "captured_for_hash"
+    },
+    {
+      "url": "https://www.flhouse.gov/FileStores/Web/Imaging/PhotoAlbums/HousePhotoSized7585.jpg",
+      "method": "img",
+      "score": 9,
+      "altText": null,
+      "sourcePageUrl": "https://www.flhouse.gov/Sections/Representatives/custom/details.aspx?MemberId=4875&LegislativeTermId=91",
+      "rightsStatus": "review_required",
+      "identityReviewStatus": "unreviewed",
+      "httpStatus": 200,
+      "finalUrl": "https://www.flhouse.gov/FileStores/Web/Imaging/PhotoAlbums/HousePhotoSized7585.jpg",
+      "contentType": "image/jpeg",
+      "byteSize": 13293,
+      "imageSha256": "457140f8dba5bdf0e045d84d7d90b5df79359f11f77253c615d7d5851a209c16",
+      "downloadStatus": "captured_for_hash"
+    },
+    {
+      "url": "https://www.flhouse.gov/FileStores/Web/Imaging/PhotoAlbums/HousePhotoSized8244.JPG",
+      "method": "img",
+      "score": 9,
+      "altText": null,
+      "sourcePageUrl": "https://www.flhouse.gov/Sections/Representatives/custom/details.aspx?MemberId=4875&LegislativeTermId=91",
+      "rightsStatus": "review_required",
+      "identityReviewStatus": "unreviewed",
+      "httpStatus": 200,
+      "finalUrl": "https://www.flhouse.gov/FileStores/Web/Imaging/PhotoAlbums/HousePhotoSized8244.JPG",
+      "contentType": "image/jpeg",
+      "byteSize": 18666,
+      "imageSha256": "c90cb68c6c01a67a3c269d67c5974b49bef02f940efb23b6dd0d5f5b3fbed928",
+      "downloadStatus": "captured_for_hash"
+    },
+    {
+      "url": "https://www.flhouse.gov/FileStores/Web/Imaging/PhotoAlbums/HousePhotoSized8246.JPG",
+      "method": "img",
+      "score": 9,
+      "altText": null,
+      "sourcePageUrl": "https://www.flhouse.gov/Sections/Representatives/custom/details.aspx?MemberId=4875&LegislativeTermId=91",
+      "rightsStatus": "review_required",
+      "identityReviewStatus": "unreviewed",
+      "httpStatus": 200,
+      "finalUrl": "https://www.flhouse.gov/FileStores/Web/Imaging/PhotoAlbums/HousePhotoSized8246.JPG",
+      "contentType": "image/jpeg",
+      "byteSize": 18755,
+      "imageSha256": "255f42a5607660893bc4afc780ae6455992ac81d17a01b6375d86a201623cf98",
+      "downloadStatus": "captured_for_hash"
+    }
+  ],
+  "contactCandidates": [
+    {
+      "type": "phone",
+      "value": "(850) 717-5043",
+      "label": null,
+      "sourcePageUrl": "https://www.flhouse.gov/Sections/Representatives/custom/details.aspx?MemberId=4875&LegislativeTermId=91"
+    },
+    {
+      "type": "phone",
+      "value": "1 (407) 751-1060",
+      "label": null,
+      "sourcePageUrl": "https://www.flhouse.gov/Sections/Representatives/custom/details.aspx?MemberId=4875&LegislativeTermId=91"
+    }
+  ],
+  "socialCandidates": [
+    {
+      "platform": "Instagram",
+      "url": "https://www.instagram.com/johannaforfl/?utm_source=ig_embed&utm_campaign=loading",
+      "label": "Johanna López",
+      "sourcePageUrl": "https://www.flhouse.gov/Sections/Representatives/custom/details.aspx?MemberId=4875&LegislativeTermId=91",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "platform": "Facebook",
+      "url": "https://www.facebook.com/JohannaLopezFL",
+      "label": "Johanna López",
+      "sourcePageUrl": "https://www.flhouse.gov/Sections/Representatives/custom/details.aspx?MemberId=4875&LegislativeTermId=91",
+      "reviewStatus": "unreviewed"
+    }
+  ],
+  "websiteCandidates": [
+    {
+      "url": "https://www.flhouse.gov/Sections/Representatives/custom/contactmember.aspx?MemberId=4875&LegislativeTermId=91",
+      "label": "Contact Member",
+      "sourcePageUrl": "https://www.flhouse.gov/Sections/Representatives/custom/details.aspx?MemberId=4875&LegislativeTermId=91",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "url": "https://www.flhouse.gov/Sections/Representatives/custom/maps-and-offices.aspx?MemberId=4875&LegislativeTermId=91",
+      "label": "Maps & Offices",
+      "sourcePageUrl": "https://www.flhouse.gov/Sections/Representatives/custom/details.aspx?MemberId=4875&LegislativeTermId=91",
+      "reviewStatus": "unreviewed"
+    }
+  ],
+  "errors": [],
+  "httpStatus": 200,
+  "finalUrl": "https://www.flhouse.gov/Sections/Representatives/custom/details.aspx?MemberId=4875&LegislativeTermId=91",
+  "sourceSnapshotSha256": "7c980a97f27ebcd9ac2d149c1ae3757374ac92014f086da3e91c90e293edf9e8",
+  "contentType": "text/html",
+  "pageTitle": "Johanna López  - 2024 - 2026 ( Speaker Perez ) | Florida House of Representatives",
+  "candidateSummary": {
+    "portraits": 6,
+    "contacts": 2,
+    "socials": 2,
+    "websites": 2
+  }
+}

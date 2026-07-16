@@ -1,0 +1,154 @@
+{
+  "enrichmentRecordVersion": "1.0.0",
+  "enrichmentRecordId": "e73a706c-e6ba-5cdb-bacc-f36b3584bc1a",
+  "taskId": "c353b3ba-d109-5986-8f95-5438b820908d",
+  "seatKey": "fl-florida-state-representative-district-37-37",
+  "displayName": "Susan Plasencia",
+  "officeTitle": "Florida State Representative, District 37",
+  "sourceUrl": "https://www.flhouse.gov/Sections/Representatives/details.aspx?MemberId=4872&LegislativeTermId=91",
+  "fetchedAt": "2026-07-16T05:20:16Z",
+  "collectionStatus": "success",
+  "reviewStatus": "unreviewed",
+  "publicationAllowed": false,
+  "portraitCandidates": [
+    {
+      "url": "https://www.flhouse.gov/FileStores/Web/Imaging/Member/cutout%2f4872.png",
+      "method": "img",
+      "score": 39,
+      "altText": "Representative Plasencia Photo",
+      "sourcePageUrl": "https://www.flhouse.gov/Sections/Representatives/custom/details.aspx?MemberId=4872&LegislativeTermId=91",
+      "rightsStatus": "review_required",
+      "identityReviewStatus": "unreviewed",
+      "httpStatus": 200,
+      "finalUrl": "https://www.flhouse.gov/FileStores/Web/Imaging/Member/cutout%2F4872.png",
+      "contentType": "image/png",
+      "byteSize": 151667,
+      "imageSha256": "413a5694930c7e36b454c8a8f1bb34a4d2d58ff5364a184dc2573e0d7c2c58ef",
+      "downloadStatus": "captured_for_hash"
+    },
+    {
+      "url": "https://www.flhouse.gov/FileStores/Web/Imaging/PhotoAlbums/HousePhotoSized7679.jpg",
+      "method": "img",
+      "score": 30,
+      "altText": "Representative Plasencia Photo",
+      "sourcePageUrl": "https://www.flhouse.gov/Sections/Representatives/custom/details.aspx?MemberId=4872&LegislativeTermId=91",
+      "rightsStatus": "review_required",
+      "identityReviewStatus": "unreviewed",
+      "httpStatus": 200,
+      "finalUrl": "https://www.flhouse.gov/FileStores/Web/Imaging/PhotoAlbums/HousePhotoSized7679.jpg",
+      "contentType": "image/jpeg",
+      "byteSize": 22564,
+      "imageSha256": "ff490dd3279b4e03f3c002e49d7715afb40b17a28622eee1a922dc203a4b3a88",
+      "downloadStatus": "captured_for_hash"
+    },
+    {
+      "url": "https://www.flhouse.gov/Images/bronze-seal-250.png?cb=4.6.654349",
+      "method": "og:image",
+      "score": 14,
+      "altText": null,
+      "sourcePageUrl": "https://www.flhouse.gov/Sections/Representatives/custom/details.aspx?MemberId=4872&LegislativeTermId=91",
+      "rightsStatus": "review_required",
+      "identityReviewStatus": "unreviewed",
+      "httpStatus": 200,
+      "finalUrl": "https://www.flhouse.gov/Images/bronze-seal-250.png?cb=4.6.654349",
+      "contentType": "image/png",
+      "byteSize": 150275,
+      "imageSha256": "36f7c4317f0cc62c44ff5bbfc0a0e5eebf014be23c9c8826141f11a70d9e7ff8",
+      "downloadStatus": "captured_for_hash"
+    },
+    {
+      "url": "https://www.flhouse.gov/api/Member/get-member-uploaded-photo/4872/MemberPhotoSized8013.jpg/image",
+      "method": "img",
+      "score": 14,
+      "altText": null,
+      "sourcePageUrl": "https://www.flhouse.gov/Sections/Representatives/custom/details.aspx?MemberId=4872&LegislativeTermId=91",
+      "rightsStatus": "review_required",
+      "identityReviewStatus": "unreviewed",
+      "httpStatus": 200,
+      "finalUrl": "https://www.flhouse.gov/api/Member/get-member-uploaded-photo/4872/MemberPhotoSized8013.jpg/image",
+      "contentType": "image/jpeg",
+      "byteSize": 290357,
+      "imageSha256": "a1016d2abb6ba99cf1605480d14a5f9f12ea21960d45dfbc30384637f56a04ac",
+      "downloadStatus": "captured_for_hash"
+    },
+    {
+      "url": "https://www.flhouse.gov/api/Member/get-member-uploaded-photo/4872/MemberPhotoSized8014.jpg/image",
+      "method": "img",
+      "score": 14,
+      "altText": null,
+      "sourcePageUrl": "https://www.flhouse.gov/Sections/Representatives/custom/details.aspx?MemberId=4872&LegislativeTermId=91",
+      "rightsStatus": "review_required",
+      "identityReviewStatus": "unreviewed",
+      "httpStatus": 200,
+      "finalUrl": "https://www.flhouse.gov/api/Member/get-member-uploaded-photo/4872/MemberPhotoSized8014.jpg/image",
+      "contentType": "image/jpeg",
+      "byteSize": 301975,
+      "imageSha256": "2be2dcb5126dc70f6cb9fbb40d3c08873a190233492dfe5ca1e2ad05fcf67b34",
+      "downloadStatus": "captured_for_hash"
+    },
+    {
+      "url": "https://www.flhouse.gov/FileStores/Web/Imaging/PhotoAlbums/HousePhotoSized7461.jpg",
+      "method": "img",
+      "score": 9,
+      "altText": null,
+      "sourcePageUrl": "https://www.flhouse.gov/Sections/Representatives/custom/details.aspx?MemberId=4872&LegislativeTermId=91",
+      "rightsStatus": "review_required",
+      "identityReviewStatus": "unreviewed",
+      "httpStatus": 200,
+      "finalUrl": "https://www.flhouse.gov/FileStores/Web/Imaging/PhotoAlbums/HousePhotoSized7461.jpg",
+      "contentType": "image/jpeg",
+      "byteSize": 28025,
+      "imageSha256": "99caff51840f3d77e407bbbe23fc5b62bd2f5b1dd6e5753a2566c3c8bc536602",
+      "downloadStatus": "captured_for_hash"
+    }
+  ],
+  "contactCandidates": [
+    {
+      "type": "phone",
+      "value": "(407) 633-3730",
+      "label": null,
+      "sourcePageUrl": "https://www.flhouse.gov/Sections/Representatives/custom/details.aspx?MemberId=4872&LegislativeTermId=91"
+    },
+    {
+      "type": "phone",
+      "value": "(850) 717-5037",
+      "label": null,
+      "sourcePageUrl": "https://www.flhouse.gov/Sections/Representatives/custom/details.aspx?MemberId=4872&LegislativeTermId=91"
+    }
+  ],
+  "socialCandidates": [
+    {
+      "platform": "Facebook",
+      "url": "https://www.facebook.com/electsusan",
+      "label": "Susan Plasencia",
+      "sourcePageUrl": "https://www.flhouse.gov/Sections/Representatives/custom/details.aspx?MemberId=4872&LegislativeTermId=91",
+      "reviewStatus": "unreviewed"
+    }
+  ],
+  "websiteCandidates": [
+    {
+      "url": "https://www.flhouse.gov/Sections/Representatives/custom/contactmember.aspx?MemberId=4872&LegislativeTermId=91",
+      "label": "Contact Member",
+      "sourcePageUrl": "https://www.flhouse.gov/Sections/Representatives/custom/details.aspx?MemberId=4872&LegislativeTermId=91",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "url": "https://www.flhouse.gov/Sections/Representatives/custom/maps-and-offices.aspx?MemberId=4872&LegislativeTermId=91",
+      "label": "Maps & Offices",
+      "sourcePageUrl": "https://www.flhouse.gov/Sections/Representatives/custom/details.aspx?MemberId=4872&LegislativeTermId=91",
+      "reviewStatus": "unreviewed"
+    }
+  ],
+  "errors": [],
+  "httpStatus": 200,
+  "finalUrl": "https://www.flhouse.gov/Sections/Representatives/custom/details.aspx?MemberId=4872&LegislativeTermId=91",
+  "sourceSnapshotSha256": "f1d72db67aa5d95de5f712d29f0f8771ef04be5029901c48eb330b5171937130",
+  "contentType": "text/html",
+  "pageTitle": "Susan Plasencia  - 2024 - 2026 ( Speaker Perez ) | Florida House of Representatives",
+  "candidateSummary": {
+    "portraits": 6,
+    "contacts": 2,
+    "socials": 1,
+    "websites": 2
+  }
+}

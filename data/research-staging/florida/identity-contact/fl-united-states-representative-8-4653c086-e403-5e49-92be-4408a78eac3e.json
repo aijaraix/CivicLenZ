@@ -1,0 +1,222 @@
+{
+  "enrichmentRecordVersion": "1.0.0",
+  "enrichmentRecordId": "452a6272-dc8c-529d-af4a-60f7812f9893",
+  "taskId": "4653c086-e403-5e49-92be-4408a78eac3e",
+  "seatKey": "fl-united-states-representative-8",
+  "displayName": "Mike Haridopolos",
+  "officeTitle": "United States Representative",
+  "sourceUrl": "https://haridopolos.house.gov/",
+  "fetchedAt": "2026-07-16T05:19:59Z",
+  "collectionStatus": "success",
+  "reviewStatus": "unreviewed",
+  "publicationAllowed": false,
+  "portraitCandidates": [
+    {
+      "url": "https://haridopolos.house.gov/profiles/evo/assets/images/Seal_of_the_United_States_House_of_Representatives.png",
+      "method": "og:image",
+      "score": 44,
+      "altText": null,
+      "sourcePageUrl": "https://haridopolos.house.gov/",
+      "rightsStatus": "review_required",
+      "identityReviewStatus": "unreviewed",
+      "httpStatus": 200,
+      "finalUrl": "https://haridopolos.house.gov/profiles/evo/assets/images/Seal_of_the_United_States_House_of_Representatives.png",
+      "contentType": "image/png",
+      "byteSize": 225630,
+      "imageSha256": "97f154eb8428c9c1c38c05112b6cdd943fea63ecdd486d084c167e10e0dec628",
+      "downloadStatus": "captured_for_hash"
+    },
+    {
+      "url": "https://haridopolos.house.gov/sites/evo-subsites/haridopolos.house.gov/files/styles/large/public/evo-media-image/haridopolos.jpeg.webp?itok=6cxXKRMy",
+      "method": "img",
+      "score": 39,
+      "altText": "Haridopolos official headshot",
+      "sourcePageUrl": "https://haridopolos.house.gov/",
+      "rightsStatus": "review_required",
+      "identityReviewStatus": "unreviewed",
+      "httpStatus": 200,
+      "finalUrl": "https://haridopolos.house.gov/sites/evo-subsites/haridopolos.house.gov/files/styles/large/public/evo-media-image/haridopolos.jpeg.webp?itok=6cxXKRMy",
+      "contentType": "image/webp",
+      "byteSize": 14750,
+      "imageSha256": "89fb1623723fba1e691418aa942fff99da16ac16dc431907c9ce89fa362c053a",
+      "downloadStatus": "captured_for_hash"
+    },
+    {
+      "url": "https://haridopolos.house.gov/sites/evo-subsites/haridopolos.house.gov/files/styles/evo_image_full_width_1920_focal_point/public/evo-media-image/untitled-design.png?h=d1cb525d&itok=p-41xKx-",
+      "method": "img",
+      "score": 33,
+      "altText": "Congressman Mike Haridopolos",
+      "sourcePageUrl": "https://haridopolos.house.gov/",
+      "rightsStatus": "review_required",
+      "identityReviewStatus": "unreviewed",
+      "httpStatus": 200,
+      "finalUrl": "https://haridopolos.house.gov/sites/evo-subsites/haridopolos.house.gov/files/styles/evo_image_full_width_1920_focal_point/public/evo-media-image/untitled-design.png?h=d1cb525d&itok=p-41xKx-",
+      "contentType": "image/png",
+      "byteSize": 1781117,
+      "imageSha256": "c19d58fb4ba6fe15c142c92af8631b44a9e685e03f603fcb59d6185586aa4727",
+      "downloadStatus": "captured_for_hash"
+    },
+    {
+      "url": "https://haridopolos.house.gov/sites/evo-subsites/haridopolos.house.gov/files/styles/evo_image_full_width_1920_focal_point/public/evo-media-image/543a5729-enhanced-nr-1.jpg?h=d1cb525d&itok=hbQGob27",
+      "method": "img",
+      "score": 21,
+      "altText": "Night photo courtesy of Michael Seely",
+      "sourcePageUrl": "https://haridopolos.house.gov/",
+      "rightsStatus": "review_required",
+      "identityReviewStatus": "unreviewed",
+      "httpStatus": 200,
+      "finalUrl": "https://haridopolos.house.gov/sites/evo-subsites/haridopolos.house.gov/files/styles/evo_image_full_width_1920_focal_point/public/evo-media-image/543a5729-enhanced-nr-1.jpg?h=d1cb525d&itok=hbQGob27",
+      "contentType": "image/jpeg",
+      "byteSize": 221696,
+      "imageSha256": "b61d14a2af96f3a688574fd7d83626c4a2e2bac00a963b8300a348482ca06042",
+      "downloadStatus": "captured_for_hash"
+    },
+    {
+      "url": "https://haridopolos.house.gov/sites/evo-subsites/haridopolos.house.gov/files/styles/evo_image_full_width_1920_focal_point/public/evo-media-image/543a5729-enhanced-nr-4.jpg?h=36a45dfe&itok=LzK5KHgC",
+      "method": "img",
+      "score": 21,
+      "altText": "Space shuttle taking off - photo courtesy of Michael Seely",
+      "sourcePageUrl": "https://haridopolos.house.gov/",
+      "rightsStatus": "review_required",
+      "identityReviewStatus": "unreviewed",
+      "httpStatus": 200,
+      "finalUrl": "https://haridopolos.house.gov/sites/evo-subsites/haridopolos.house.gov/files/styles/evo_image_full_width_1920_focal_point/public/evo-media-image/543a5729-enhanced-nr-4.jpg?h=36a45dfe&itok=LzK5KHgC",
+      "contentType": "image/jpeg",
+      "byteSize": 338366,
+      "imageSha256": "d104060a9aa42ad79930a42b601fccd981686bbc7a1ba8d3d0ae39d9b4c36c87",
+      "downloadStatus": "captured_for_hash"
+    },
+    {
+      "url": "https://haridopolos.house.gov/sites/evo-subsites/haridopolos.house.gov/files/mh-logo-xlarge.png",
+      "method": "img",
+      "score": -2,
+      "altText": "Congressman Mike Haridopolos logo",
+      "sourcePageUrl": "https://haridopolos.house.gov/",
+      "rightsStatus": "review_required",
+      "identityReviewStatus": "unreviewed",
+      "httpStatus": 200,
+      "finalUrl": "https://haridopolos.house.gov/sites/evo-subsites/haridopolos.house.gov/files/mh-logo-xlarge.png",
+      "contentType": "image/png",
+      "byteSize": 290288,
+      "imageSha256": "4d291ceb0159825ba60e90bf323ab90c727a9bb2302c64c156831f018dca1bc4",
+      "downloadStatus": "captured_for_hash"
+    }
+  ],
+  "contactCandidates": [
+    {
+      "type": "phone",
+      "value": "2022253671",
+      "label": "(202) 225-3671",
+      "sourcePageUrl": "https://haridopolos.house.gov/"
+    },
+    {
+      "type": "phone",
+      "value": "(202) 225-3671",
+      "label": null,
+      "sourcePageUrl": "https://haridopolos.house.gov/"
+    },
+    {
+      "type": "phone",
+      "value": "(321) 632-1776",
+      "label": null,
+      "sourcePageUrl": "https://haridopolos.house.gov/"
+    }
+  ],
+  "socialCandidates": [
+    {
+      "platform": "Facebook",
+      "url": "https://www.facebook.com/profile.php?id=61571722240997",
+      "label": "Rep Mike Haridopolos",
+      "sourcePageUrl": "https://haridopolos.house.gov/",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "platform": "Instagram",
+      "url": "https://www.instagram.com/housegop/?utm_source=ig_embed&utm_campaign=loading",
+      "label": "House GOP",
+      "sourcePageUrl": "https://haridopolos.house.gov/",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "platform": "X",
+      "url": "https://twitter.com/repharidopolos",
+      "label": "Tweets by Rep. Haridopolos",
+      "sourcePageUrl": "https://haridopolos.house.gov/",
+      "reviewStatus": "unreviewed"
+    }
+  ],
+  "websiteCandidates": [
+    {
+      "url": "https://haridopolos.house.gov/contact/email-me",
+      "label": "Email Me",
+      "sourcePageUrl": "https://haridopolos.house.gov/",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "url": "https://haridopolos.house.gov/contact/office-locations",
+      "label": "Office Locations",
+      "sourcePageUrl": "https://haridopolos.house.gov/",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "url": "https://haridopolos.house.gov/contact/newsletter-subscribe",
+      "label": "Newsletter Subscribe",
+      "sourcePageUrl": "https://haridopolos.house.gov/",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "url": "https://haridopolos.house.gov/contact/request-an-appearance",
+      "label": "Request an Appearance/Meeting",
+      "sourcePageUrl": "https://haridopolos.house.gov/",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "url": "https://haridopolos.house.gov/contact/website-problem",
+      "label": "Website Problem",
+      "sourcePageUrl": "https://haridopolos.house.gov/",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "url": "https://haridopolos.house.gov/contact",
+      "label": "Contact Me",
+      "sourcePageUrl": "https://haridopolos.house.gov/",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "url": "https://haridopolos.house.gov/media/in-the-news/space-coast-congressmans-office-assisting-constituents-during-shutdown",
+      "label": "Space Coast congressman's office assisting constituents during shutdown",
+      "sourcePageUrl": "https://haridopolos.house.gov/",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "url": "https://haridopolos.house.gov/contact/offices/washington-dc-office",
+      "label": "Washington DC Office",
+      "sourcePageUrl": "https://haridopolos.house.gov/",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "url": "https://haridopolos.house.gov/contact/offices/melbourne-office",
+      "label": "Melbourne Office",
+      "sourcePageUrl": "https://haridopolos.house.gov/",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "url": "https://haridopolos.house.gov/contact/newsletter-unsubscribe",
+      "label": "cancel or unsubscribe",
+      "sourcePageUrl": "https://haridopolos.house.gov/",
+      "reviewStatus": "unreviewed"
+    }
+  ],
+  "errors": [],
+  "httpStatus": 200,
+  "finalUrl": "https://haridopolos.house.gov/",
+  "sourceSnapshotSha256": "3758f8b8c7b23908410179b9e8f6868be0e7f09146acdc6d2173aae5b3eaab7c",
+  "contentType": "text/html",
+  "pageTitle": "Congressman Mike Haridopolos | Representing Florida's 8th District",
+  "candidateSummary": {
+    "portraits": 6,
+    "contacts": 3,
+    "socials": 3,
+    "websites": 10
+  }
+}

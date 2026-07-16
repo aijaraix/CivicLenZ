@@ -1,0 +1,146 @@
+{
+  "enrichmentRecordVersion": "1.0.0",
+  "enrichmentRecordId": "341758d3-4c41-5db2-b03f-683bb77fc473",
+  "taskId": "40392f7b-d3f9-5487-8bad-689de37ec356",
+  "seatKey": "fl-florida-state-representative-district-118-118",
+  "displayName": "Mike Redondo",
+  "officeTitle": "Florida State Representative, District 118",
+  "sourceUrl": "https://www.flhouse.gov/Sections/Representatives/details.aspx?MemberId=4902&LegislativeTermId=91",
+  "fetchedAt": "2026-07-16T05:20:07Z",
+  "collectionStatus": "success",
+  "reviewStatus": "unreviewed",
+  "publicationAllowed": false,
+  "portraitCandidates": [
+    {
+      "url": "https://www.flhouse.gov/FileStores/Web/Imaging/Member/cutout%2f4902.png",
+      "method": "img",
+      "score": 39,
+      "altText": "Representative Redondo Photo",
+      "sourcePageUrl": "https://www.flhouse.gov/Sections/Representatives/custom/details.aspx?MemberId=4902&LegislativeTermId=91",
+      "rightsStatus": "review_required",
+      "identityReviewStatus": "unreviewed",
+      "httpStatus": 200,
+      "finalUrl": "https://www.flhouse.gov/FileStores/Web/Imaging/Member/cutout%2F4902.png",
+      "contentType": "image/png",
+      "byteSize": 141940,
+      "imageSha256": "b3c57874b3443d39dd1c863d3674fb7e1cea71618ac67b11e90d5e67f3e7217a",
+      "downloadStatus": "captured_for_hash"
+    },
+    {
+      "url": "https://www.flhouse.gov/FileStores/Web/Imaging/PhotoAlbums/HousePhotoSized8321.JPG",
+      "method": "img",
+      "score": 30,
+      "altText": "Representative Redondo Photo",
+      "sourcePageUrl": "https://www.flhouse.gov/Sections/Representatives/custom/details.aspx?MemberId=4902&LegislativeTermId=91",
+      "rightsStatus": "review_required",
+      "identityReviewStatus": "unreviewed",
+      "httpStatus": 200,
+      "finalUrl": "https://www.flhouse.gov/FileStores/Web/Imaging/PhotoAlbums/HousePhotoSized8321.JPG",
+      "contentType": "image/jpeg",
+      "byteSize": 16703,
+      "imageSha256": "842d62c9ceda8a8563627c7e0b5b5a319e8a9a2c3ad77168be5360de1115ccad",
+      "downloadStatus": "captured_for_hash"
+    },
+    {
+      "url": "https://www.flhouse.gov/Images/bronze-seal-250.png?cb=4.6.654349",
+      "method": "og:image",
+      "score": 14,
+      "altText": null,
+      "sourcePageUrl": "https://www.flhouse.gov/Sections/Representatives/custom/details.aspx?MemberId=4902&LegislativeTermId=91",
+      "rightsStatus": "review_required",
+      "identityReviewStatus": "unreviewed",
+      "httpStatus": 200,
+      "finalUrl": "https://www.flhouse.gov/Images/bronze-seal-250.png?cb=4.6.654349",
+      "contentType": "image/png",
+      "byteSize": 150275,
+      "imageSha256": "36f7c4317f0cc62c44ff5bbfc0a0e5eebf014be23c9c8826141f11a70d9e7ff8",
+      "downloadStatus": "captured_for_hash"
+    },
+    {
+      "url": "https://www.flhouse.gov/FileStores/Web/Imaging/PhotoAlbums/HousePhotoSized8224.JPG",
+      "method": "img",
+      "score": 9,
+      "altText": null,
+      "sourcePageUrl": "https://www.flhouse.gov/Sections/Representatives/custom/details.aspx?MemberId=4902&LegislativeTermId=91",
+      "rightsStatus": "review_required",
+      "identityReviewStatus": "unreviewed",
+      "httpStatus": 200,
+      "finalUrl": "https://www.flhouse.gov/FileStores/Web/Imaging/PhotoAlbums/HousePhotoSized8224.JPG",
+      "contentType": "image/jpeg",
+      "byteSize": 15302,
+      "imageSha256": "df030a254a9b3f7ea55c292aac618bef9351b3652ec56dbf446a27584580269a",
+      "downloadStatus": "captured_for_hash"
+    },
+    {
+      "url": "https://www.flhouse.gov/FileStores/Web/Imaging/PhotoAlbums/HousePhotoSized8394.JPG",
+      "method": "img",
+      "score": 9,
+      "altText": null,
+      "sourcePageUrl": "https://www.flhouse.gov/Sections/Representatives/custom/details.aspx?MemberId=4902&LegislativeTermId=91",
+      "rightsStatus": "review_required",
+      "identityReviewStatus": "unreviewed",
+      "httpStatus": 200,
+      "finalUrl": "https://www.flhouse.gov/FileStores/Web/Imaging/PhotoAlbums/HousePhotoSized8394.JPG",
+      "contentType": "image/jpeg",
+      "byteSize": 16551,
+      "imageSha256": "be13721121bf6dbcb0cde8d9577bdc4b522c1fcca52fecce0bf85bd673c9e3c2",
+      "downloadStatus": "captured_for_hash"
+    },
+    {
+      "url": "https://www.flhouse.gov/FileStores/Web/Imaging/member-page-banners/3.jpg",
+      "method": "img",
+      "score": -17,
+      "altText": "The Old Florida Capitol",
+      "sourcePageUrl": "https://www.flhouse.gov/Sections/Representatives/custom/details.aspx?MemberId=4902&LegislativeTermId=91",
+      "rightsStatus": "review_required",
+      "identityReviewStatus": "unreviewed",
+      "httpStatus": 200,
+      "finalUrl": "https://www.flhouse.gov/FileStores/Web/Imaging/member-page-banners/3.jpg",
+      "contentType": "image/jpeg",
+      "byteSize": 146745,
+      "imageSha256": "aab4b10fbf85ee46b11a7c5abf8105554cfac4b5a3b85de583e91fa6e5b5b506",
+      "downloadStatus": "captured_for_hash"
+    }
+  ],
+  "contactCandidates": [
+    {
+      "type": "phone",
+      "value": "(305) 564-4730",
+      "label": null,
+      "sourcePageUrl": "https://www.flhouse.gov/Sections/Representatives/custom/details.aspx?MemberId=4902&LegislativeTermId=91"
+    },
+    {
+      "type": "phone",
+      "value": "(850) 717-5118",
+      "label": null,
+      "sourcePageUrl": "https://www.flhouse.gov/Sections/Representatives/custom/details.aspx?MemberId=4902&LegislativeTermId=91"
+    }
+  ],
+  "socialCandidates": [],
+  "websiteCandidates": [
+    {
+      "url": "https://www.flhouse.gov/Sections/Representatives/custom/contactmember.aspx?MemberId=4902&LegislativeTermId=91",
+      "label": "Contact Member",
+      "sourcePageUrl": "https://www.flhouse.gov/Sections/Representatives/custom/details.aspx?MemberId=4902&LegislativeTermId=91",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "url": "https://www.flhouse.gov/Sections/Representatives/custom/maps-and-offices.aspx?MemberId=4902&LegislativeTermId=91",
+      "label": "Maps & Offices",
+      "sourcePageUrl": "https://www.flhouse.gov/Sections/Representatives/custom/details.aspx?MemberId=4902&LegislativeTermId=91",
+      "reviewStatus": "unreviewed"
+    }
+  ],
+  "errors": [],
+  "httpStatus": 200,
+  "finalUrl": "https://www.flhouse.gov/Sections/Representatives/custom/details.aspx?MemberId=4902&LegislativeTermId=91",
+  "sourceSnapshotSha256": "d1f4d584a48c789fddb288233761bbf0f4d467e61d43ed8156a01a027c7a21d4",
+  "contentType": "text/html",
+  "pageTitle": "Mike Redondo  - 2024 - 2026 ( Speaker Perez ) | Florida House of Representatives",
+  "candidateSummary": {
+    "portraits": 6,
+    "contacts": 2,
+    "socials": 0,
+    "websites": 2
+  }
+}

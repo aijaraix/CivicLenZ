@@ -1,0 +1,237 @@
+{
+  "enrichmentRecordVersion": "1.0.0",
+  "enrichmentRecordId": "813a9126-92fa-5541-a641-f4c2d8795bbb",
+  "taskId": "c728ab36-c29b-5110-a48d-21ffa90bf39e",
+  "seatKey": "fl-united-states-representative-17",
+  "displayName": "W. Steube",
+  "officeTitle": "United States Representative",
+  "sourceUrl": "https://steube.house.gov/",
+  "fetchedAt": "2026-07-16T05:20:00Z",
+  "collectionStatus": "success",
+  "reviewStatus": "unreviewed",
+  "publicationAllowed": false,
+  "portraitCandidates": [
+    {
+      "url": "https://steube.house.gov/wp-content/uploads/2024/04/steube-og.png",
+      "method": "og:image",
+      "score": 61,
+      "altText": null,
+      "sourcePageUrl": "https://steube.house.gov/",
+      "rightsStatus": "review_required",
+      "identityReviewStatus": "unreviewed",
+      "httpStatus": 200,
+      "finalUrl": "https://steube.house.gov/wp-content/uploads/2024/04/steube-og.png",
+      "contentType": "image/png",
+      "byteSize": 646757,
+      "imageSha256": "b11946a149c52b8b28b57d0351f61fefed30e4221dd669c6bb8eb14e14e696a1",
+      "downloadStatus": "captured_for_hash"
+    },
+    {
+      "url": "https://steube.house.gov/wp-content/themes/steube/dist/img/social/blue/facebook.png",
+      "method": "img",
+      "score": 21,
+      "altText": "facebook",
+      "sourcePageUrl": "https://steube.house.gov/",
+      "rightsStatus": "review_required",
+      "identityReviewStatus": "unreviewed",
+      "httpStatus": 200,
+      "finalUrl": "https://steube.house.gov/wp-content/themes/steube/dist/img/social/blue/facebook.png",
+      "contentType": "image/png",
+      "byteSize": 312,
+      "imageSha256": "7b0969c542a1d96963893bb6985a86ef21221fb67407b4d1abf75b2202d633f1",
+      "downloadStatus": "captured_for_hash"
+    },
+    {
+      "url": "https://steube.house.gov/wp-content/themes/steube/dist/img/social/blue/instagram.png",
+      "method": "img",
+      "score": 21,
+      "altText": "Instagram",
+      "sourcePageUrl": "https://steube.house.gov/",
+      "rightsStatus": "review_required",
+      "identityReviewStatus": "unreviewed",
+      "httpStatus": 200,
+      "finalUrl": "https://steube.house.gov/wp-content/themes/steube/dist/img/social/blue/instagram.png",
+      "contentType": "image/png",
+      "byteSize": 372,
+      "imageSha256": "fda6a29d12a792a02666bae4c2588c5f7074402149eb0134211f782e76782732",
+      "downloadStatus": "captured_for_hash"
+    },
+    {
+      "url": "https://steube.house.gov/wp-content/themes/steube/dist/img/social/blue/rumble.png",
+      "method": "img",
+      "score": 21,
+      "altText": "Rumble",
+      "sourcePageUrl": "https://steube.house.gov/",
+      "rightsStatus": "review_required",
+      "identityReviewStatus": "unreviewed",
+      "httpStatus": 200,
+      "finalUrl": "https://steube.house.gov/wp-content/themes/steube/dist/img/social/blue/rumble.png",
+      "contentType": "image/png",
+      "byteSize": 333,
+      "imageSha256": "e8dfa3af9b8474af601f521cb006e6ab01d056a64818d5dc20c9b762cf42ce2e",
+      "downloadStatus": "captured_for_hash"
+    },
+    {
+      "url": "https://steube.house.gov/wp-content/themes/steube/dist/img/social/blue/torch.png",
+      "method": "img",
+      "score": 21,
+      "altText": "Gettr",
+      "sourcePageUrl": "https://steube.house.gov/",
+      "rightsStatus": "review_required",
+      "identityReviewStatus": "unreviewed",
+      "httpStatus": 200,
+      "finalUrl": "https://steube.house.gov/wp-content/themes/steube/dist/img/social/blue/torch.png",
+      "contentType": "image/png",
+      "byteSize": 310,
+      "imageSha256": "dfd241828e949052e2a1056d2359f53b1193a0b80c1f4d65290e626fd77952f4",
+      "downloadStatus": "captured_for_hash"
+    },
+    {
+      "url": "https://steube.house.gov/wp-content/themes/steube/dist/img/social/blue/truth.png",
+      "method": "img",
+      "score": 21,
+      "altText": "Truth",
+      "sourcePageUrl": "https://steube.house.gov/",
+      "rightsStatus": "review_required",
+      "identityReviewStatus": "unreviewed",
+      "httpStatus": 200,
+      "finalUrl": "https://steube.house.gov/wp-content/themes/steube/dist/img/social/blue/truth.png",
+      "contentType": "image/png",
+      "byteSize": 309,
+      "imageSha256": "a09fd4659b3a32cdd236429aa2bdc0f5ee7198a205c34c5ea3e67cd586e8f3b8",
+      "downloadStatus": "captured_for_hash"
+    }
+  ],
+  "contactCandidates": [
+    {
+      "type": "phone",
+      "value": "(202) 225-5792",
+      "label": null,
+      "sourcePageUrl": "https://steube.house.gov/"
+    },
+    {
+      "type": "phone",
+      "value": "(941) 499-3214",
+      "label": null,
+      "sourcePageUrl": "https://steube.house.gov/"
+    }
+  ],
+  "socialCandidates": [
+    {
+      "platform": "Truth Social",
+      "url": "https://truthsocial.com/@repgregsteube",
+      "label": null,
+      "sourcePageUrl": "https://steube.house.gov/",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "platform": "Instagram",
+      "url": "https://www.instagram.com/repgregsteube/",
+      "label": null,
+      "sourcePageUrl": "https://steube.house.gov/",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "platform": "YouTube",
+      "url": "https://www.youtube.com/@RepGregSteube",
+      "label": null,
+      "sourcePageUrl": "https://steube.house.gov/",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "platform": "Facebook",
+      "url": "https://www.facebook.com/RepGregSteube",
+      "label": null,
+      "sourcePageUrl": "https://steube.house.gov/",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "platform": "X",
+      "url": "https://twitter.com/RepGregSteube",
+      "label": null,
+      "sourcePageUrl": "https://steube.house.gov/",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "platform": "YouTube",
+      "url": "https://www.youtube.com/watch?v=Ho6-p9Iu9Nw",
+      "label": "YouTube Video UExkVnZuc1p1Rm0zWmZkQ1ZzMHdYUGlSRkZMbGNNN1VPWC43QzNCNkZENzIyMDY2MjZB",
+      "sourcePageUrl": "https://steube.house.gov/",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "platform": "YouTube",
+      "url": "http://www.youtube.com/channel/?sub_confirmation=1&feature=subscribe-embed-click",
+      "label": "Subscribe",
+      "sourcePageUrl": "https://steube.house.gov/",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "platform": "Facebook",
+      "url": "https://facebook.com/1641117200703171",
+      "label": "Play",
+      "sourcePageUrl": "https://steube.house.gov/",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "platform": "Facebook",
+      "url": "https://www.facebook.com/1641117200703171",
+      "label": "View on Facebook",
+      "sourcePageUrl": "https://steube.house.gov/",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "platform": "Facebook",
+      "url": "https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fwww.facebook.com%2F1641117200703171",
+      "label": "Share on Facebook",
+      "sourcePageUrl": "https://steube.house.gov/",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "platform": "X",
+      "url": "https://twitter.com/intent/tweet?text=https%3A%2F%2Fwww.facebook.com%2F1641117200703171",
+      "label": "Share on Twitter",
+      "sourcePageUrl": "https://steube.house.gov/",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "platform": "LinkedIn",
+      "url": "https://www.linkedin.com/shareArticle?mini=true&url=https%3A%2F%2Fwww.facebook.com%2F1641117200703171&title=%09The%20Sunshine%20Protection%20Act%20has%20been%20nearly%20a%20decade%20in%20the%20making.%20I%20fought%20for%20it%20in%20the%20Florida%20Legislature%20back%20in%202018%2C%20and%20now%20Congress%20is%20finally%20acting.It%E2%80%99s%20time%20to%20end%20the%20outdated%20ritual%20of%20springing%20forward%20and%20falling%20back.%20It%E2%80%99s%20time%20to%20LOCK%20the%20CLOCK%21%20%E2%8F%B0%F0%9F%94%92%E2%98%80%EF%B8%8F%20%09%09",
+      "label": "Share on Linked In",
+      "sourcePageUrl": "https://steube.house.gov/",
+      "reviewStatus": "unreviewed"
+    }
+  ],
+  "websiteCandidates": [
+    {
+      "url": "https://steube.house.gov/contact/",
+      "label": "Contact",
+      "sourcePageUrl": "https://steube.house.gov/",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "url": "https://steube.house.gov/newsletter-subscribe/",
+      "label": "Newsletter Subscribe",
+      "sourcePageUrl": "https://steube.house.gov/",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "url": "https://steube.house.gov/mobile-office-hours/",
+      "label": "Mobile Office Hours",
+      "sourcePageUrl": "https://steube.house.gov/",
+      "reviewStatus": "unreviewed"
+    }
+  ],
+  "errors": [],
+  "httpStatus": 200,
+  "finalUrl": "https://steube.house.gov/",
+  "sourceSnapshotSha256": "903c2adcb0303033a8879f338850dd86f3823ea189517ca75d3f6e61820e0f8e",
+  "contentType": "text/html",
+  "pageTitle": "Congressman Steube – Representing Florida",
+  "candidateSummary": {
+    "portraits": 6,
+    "contacts": 2,
+    "socials": 12,
+    "websites": 3
+  }
+}

@@ -1,0 +1,154 @@
+{
+  "enrichmentRecordVersion": "1.0.0",
+  "enrichmentRecordId": "d4cfaffc-bce9-55f9-83c0-d34cac232a73",
+  "taskId": "334b2d9f-ae71-5c4b-8a1b-5b7790e57fc0",
+  "seatKey": "fl-florida-state-representative-district-21-21",
+  "displayName": "Yvonne Hayes Hinson",
+  "officeTitle": "Florida State Representative, District 21",
+  "sourceUrl": "https://www.flhouse.gov/Sections/Representatives/details.aspx?MemberId=4768&LegislativeTermId=91",
+  "fetchedAt": "2026-07-16T05:20:11Z",
+  "collectionStatus": "success",
+  "reviewStatus": "unreviewed",
+  "publicationAllowed": false,
+  "portraitCandidates": [
+    {
+      "url": "https://www.flhouse.gov/FileStores/Web/Imaging/Member/cutout%2f4768.png",
+      "method": "img",
+      "score": 39,
+      "altText": "Representative Hinson Photo",
+      "sourcePageUrl": "https://www.flhouse.gov/Sections/Representatives/custom/details.aspx?MemberId=4768&LegislativeTermId=91",
+      "rightsStatus": "review_required",
+      "identityReviewStatus": "unreviewed",
+      "httpStatus": 200,
+      "finalUrl": "https://www.flhouse.gov/FileStores/Web/Imaging/Member/cutout%2F4768.png",
+      "contentType": "image/png",
+      "byteSize": 149642,
+      "imageSha256": "e7cf6f347a2e736fcf25e217951a11bc4be4a4ae2cc9b8c19b8555ec31c3816e",
+      "downloadStatus": "captured_for_hash"
+    },
+    {
+      "url": "https://www.flhouse.gov/FileStores/Web/Imaging/PhotoAlbums/HousePhotoSized7549.jpg",
+      "method": "img",
+      "score": 30,
+      "altText": "Representative Hinson Photo",
+      "sourcePageUrl": "https://www.flhouse.gov/Sections/Representatives/custom/details.aspx?MemberId=4768&LegislativeTermId=91",
+      "rightsStatus": "review_required",
+      "identityReviewStatus": "unreviewed",
+      "httpStatus": 200,
+      "finalUrl": "https://www.flhouse.gov/FileStores/Web/Imaging/PhotoAlbums/HousePhotoSized7549.jpg",
+      "contentType": "image/jpeg",
+      "byteSize": 14832,
+      "imageSha256": "42e330373f2ec1fd7028289da71b266a0f3c5a7436d2ef8da0311a7ea3ae1100",
+      "downloadStatus": "captured_for_hash"
+    },
+    {
+      "url": "https://www.flhouse.gov/Images/bronze-seal-250.png?cb=4.6.654349",
+      "method": "og:image",
+      "score": 14,
+      "altText": null,
+      "sourcePageUrl": "https://www.flhouse.gov/Sections/Representatives/custom/details.aspx?MemberId=4768&LegislativeTermId=91",
+      "rightsStatus": "review_required",
+      "identityReviewStatus": "unreviewed",
+      "httpStatus": 200,
+      "finalUrl": "https://www.flhouse.gov/Images/bronze-seal-250.png?cb=4.6.654349",
+      "contentType": "image/png",
+      "byteSize": 150275,
+      "imageSha256": "36f7c4317f0cc62c44ff5bbfc0a0e5eebf014be23c9c8826141f11a70d9e7ff8",
+      "downloadStatus": "captured_for_hash"
+    },
+    {
+      "url": "https://www.flhouse.gov/FileStores/Web/Imaging/PhotoAlbums/HousePhotoSized7734.JPG",
+      "method": "img",
+      "score": 9,
+      "altText": null,
+      "sourcePageUrl": "https://www.flhouse.gov/Sections/Representatives/custom/details.aspx?MemberId=4768&LegislativeTermId=91",
+      "rightsStatus": "review_required",
+      "identityReviewStatus": "unreviewed",
+      "httpStatus": 200,
+      "finalUrl": "https://www.flhouse.gov/FileStores/Web/Imaging/PhotoAlbums/HousePhotoSized7734.JPG",
+      "contentType": "image/jpeg",
+      "byteSize": 16682,
+      "imageSha256": "8c5fb25ddc7720fff2b1dad663c5c030a63616cd06e88199ad63ae6ce4867e3b",
+      "downloadStatus": "captured_for_hash"
+    },
+    {
+      "url": "https://www.flhouse.gov/FileStores/Web/Imaging/PhotoAlbums/HousePhotoSized7966.JPG",
+      "method": "img",
+      "score": 9,
+      "altText": null,
+      "sourcePageUrl": "https://www.flhouse.gov/Sections/Representatives/custom/details.aspx?MemberId=4768&LegislativeTermId=91",
+      "rightsStatus": "review_required",
+      "identityReviewStatus": "unreviewed",
+      "httpStatus": 200,
+      "finalUrl": "https://www.flhouse.gov/FileStores/Web/Imaging/PhotoAlbums/HousePhotoSized7966.JPG",
+      "contentType": "image/jpeg",
+      "byteSize": 12099,
+      "imageSha256": "91b0f3e79cf36d53b7cb1a28a52bba2b12debb0ca37e14f9680846ec5c02712b",
+      "downloadStatus": "captured_for_hash"
+    },
+    {
+      "url": "https://www.flhouse.gov/FileStores/Web/Imaging/member-page-banners/1.jpg",
+      "method": "img",
+      "score": -17,
+      "altText": "The House Chamber",
+      "sourcePageUrl": "https://www.flhouse.gov/Sections/Representatives/custom/details.aspx?MemberId=4768&LegislativeTermId=91",
+      "rightsStatus": "review_required",
+      "identityReviewStatus": "unreviewed",
+      "httpStatus": 200,
+      "finalUrl": "https://www.flhouse.gov/FileStores/Web/Imaging/member-page-banners/1.jpg",
+      "contentType": "image/jpeg",
+      "byteSize": 106842,
+      "imageSha256": "9b11c3a35cea6e0f4dea3566a1298efa0e265354a2340e1754fba45bdbaf3fb9",
+      "downloadStatus": "captured_for_hash"
+    }
+  ],
+  "contactCandidates": [
+    {
+      "type": "phone",
+      "value": "(352) 663-1140",
+      "label": null,
+      "sourcePageUrl": "https://www.flhouse.gov/Sections/Representatives/custom/details.aspx?MemberId=4768&LegislativeTermId=91"
+    },
+    {
+      "type": "phone",
+      "value": "(850) 717-5021",
+      "label": null,
+      "sourcePageUrl": "https://www.flhouse.gov/Sections/Representatives/custom/details.aspx?MemberId=4768&LegislativeTermId=91"
+    }
+  ],
+  "socialCandidates": [
+    {
+      "platform": "Facebook",
+      "url": "https://www.facebook.com/profile.php?id=100063948634359",
+      "label": "Yvonne Hayes Hinson",
+      "sourcePageUrl": "https://www.flhouse.gov/Sections/Representatives/custom/details.aspx?MemberId=4768&LegislativeTermId=91",
+      "reviewStatus": "unreviewed"
+    }
+  ],
+  "websiteCandidates": [
+    {
+      "url": "https://www.flhouse.gov/Sections/Representatives/custom/contactmember.aspx?MemberId=4768&LegislativeTermId=91",
+      "label": "Contact Member",
+      "sourcePageUrl": "https://www.flhouse.gov/Sections/Representatives/custom/details.aspx?MemberId=4768&LegislativeTermId=91",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "url": "https://www.flhouse.gov/Sections/Representatives/custom/maps-and-offices.aspx?MemberId=4768&LegislativeTermId=91",
+      "label": "Maps & Offices",
+      "sourcePageUrl": "https://www.flhouse.gov/Sections/Representatives/custom/details.aspx?MemberId=4768&LegislativeTermId=91",
+      "reviewStatus": "unreviewed"
+    }
+  ],
+  "errors": [],
+  "httpStatus": 200,
+  "finalUrl": "https://www.flhouse.gov/Sections/Representatives/custom/details.aspx?MemberId=4768&LegislativeTermId=91",
+  "sourceSnapshotSha256": "694099a3b46a6fdd414f929874d955b7c4cea5b247e5a0bf7f05fa0164eacc67",
+  "contentType": "text/html",
+  "pageTitle": "Yvonne Hayes Hinson  - 2024 - 2026 ( Speaker Perez ) | Florida House of Representatives",
+  "candidateSummary": {
+    "portraits": 6,
+    "contacts": 2,
+    "socials": 1,
+    "websites": 2
+  }
+}

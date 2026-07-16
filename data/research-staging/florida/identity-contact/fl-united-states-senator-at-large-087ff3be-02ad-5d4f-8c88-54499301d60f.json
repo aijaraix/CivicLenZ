@@ -1,0 +1,181 @@
+{
+  "enrichmentRecordVersion": "1.0.0",
+  "enrichmentRecordId": "82e1fda7-8661-56c2-9ec8-692d34dd7858",
+  "taskId": "087ff3be-02ad-5d4f-8c88-54499301d60f",
+  "seatKey": "fl-united-states-senator-at-large",
+  "displayName": "Ashley Moody",
+  "officeTitle": "United States Senator",
+  "sourceUrl": "https://www.moody.senate.gov",
+  "fetchedAt": "2026-07-16T05:20:00Z",
+  "collectionStatus": "success",
+  "reviewStatus": "unreviewed",
+  "publicationAllowed": false,
+  "portraitCandidates": [
+    {
+      "url": "https://www.moody.senate.gov/wp-content/uploads/2025/08/General-Casework-1024x683.jpeg",
+      "method": "img",
+      "score": 30,
+      "altText": "Senator Moody Townhall",
+      "sourcePageUrl": "https://www.moody.senate.gov/",
+      "rightsStatus": "review_required",
+      "identityReviewStatus": "unreviewed",
+      "httpStatus": 200,
+      "finalUrl": "https://www.moody.senate.gov/wp-content/uploads/2025/08/General-Casework-1024x683.jpeg",
+      "contentType": "image/jpeg",
+      "byteSize": 70874,
+      "imageSha256": "4c76d3c2d1ee5d53dc633554ae34e4f15396ebd2fbd308689c23f0643d0edeb3",
+      "downloadStatus": "captured_for_hash"
+    },
+    {
+      "url": "https://www.moody.senate.gov/wp-content/uploads/2025/06/main-logo-white.png",
+      "method": "img",
+      "score": 7,
+      "altText": "Senator Ashley Moody's White Logo",
+      "sourcePageUrl": "https://www.moody.senate.gov/",
+      "rightsStatus": "review_required",
+      "identityReviewStatus": "unreviewed",
+      "httpStatus": 200,
+      "finalUrl": "https://www.moody.senate.gov/wp-content/uploads/2025/06/main-logo-white.png",
+      "contentType": "image/png",
+      "byteSize": 48921,
+      "imageSha256": "ca047f402b00844afe9f7a14a17ff9ea90c520ca5e036b5566a51132ba8780d2",
+      "downloadStatus": "captured_for_hash"
+    },
+    {
+      "url": "https://www.moody.senate.gov/wp-content/uploads/2025/06/main-logo.png",
+      "method": "img",
+      "score": 7,
+      "altText": "Senator Ashley Moody's Logo",
+      "sourcePageUrl": "https://www.moody.senate.gov/",
+      "rightsStatus": "review_required",
+      "identityReviewStatus": "unreviewed",
+      "httpStatus": 200,
+      "finalUrl": "https://www.moody.senate.gov/wp-content/uploads/2025/06/main-logo.png",
+      "contentType": "image/png",
+      "byteSize": 63321,
+      "imageSha256": "ad0c83a44538ead8a2fb1ac010cd3329f34a190d36f7a2fc801061ae41cc18e9",
+      "downloadStatus": "captured_for_hash"
+    },
+    {
+      "url": "https://www.moody.senate.gov/wp-content/uploads/2025/06/main-logo-300x60.png",
+      "method": "img",
+      "score": -14,
+      "altText": null,
+      "sourcePageUrl": "https://www.moody.senate.gov/",
+      "rightsStatus": "review_required",
+      "identityReviewStatus": "unreviewed",
+      "httpStatus": 200,
+      "finalUrl": "https://www.moody.senate.gov/wp-content/uploads/2025/06/main-logo-300x60.png",
+      "contentType": "image/png",
+      "byteSize": 3623,
+      "imageSha256": "6080636dd30dd7a5dbc86c3af30759e2cb0724ffbee988b5d3775374d00527b7",
+      "downloadStatus": "captured_for_hash"
+    }
+  ],
+  "contactCandidates": [
+    {
+      "type": "phone",
+      "value": "(239) 318-6464",
+      "label": null,
+      "sourcePageUrl": "https://www.moody.senate.gov/"
+    },
+    {
+      "type": "phone",
+      "value": "(305) 596-4224",
+      "label": null,
+      "sourcePageUrl": "https://www.moody.senate.gov/"
+    },
+    {
+      "type": "phone",
+      "value": "(407) 254-2573",
+      "label": null,
+      "sourcePageUrl": "https://www.moody.senate.gov/"
+    },
+    {
+      "type": "phone",
+      "value": "(561) 775-3360",
+      "label": null,
+      "sourcePageUrl": "https://www.moody.senate.gov/"
+    },
+    {
+      "type": "phone",
+      "value": "(813) 947-6288",
+      "label": null,
+      "sourcePageUrl": "https://www.moody.senate.gov/"
+    },
+    {
+      "type": "phone",
+      "value": "(850) 599-9100",
+      "label": null,
+      "sourcePageUrl": "https://www.moody.senate.gov/"
+    },
+    {
+      "type": "phone",
+      "value": "(904) 354-4300",
+      "label": null,
+      "sourcePageUrl": "https://www.moody.senate.gov/"
+    },
+    {
+      "type": "phone",
+      "value": "202-224-3041",
+      "label": null,
+      "sourcePageUrl": "https://www.moody.senate.gov/"
+    },
+    {
+      "type": "phone",
+      "value": "850-433-2603",
+      "label": null,
+      "sourcePageUrl": "https://www.moody.senate.gov/"
+    }
+  ],
+  "socialCandidates": [
+    {
+      "platform": "X",
+      "url": "https://x.com/SenAshleyMoody",
+      "label": "Follow",
+      "sourcePageUrl": "https://www.moody.senate.gov/",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "platform": "Instagram",
+      "url": "https://www.instagram.com/senashleymoody/?hl=en",
+      "label": "Follow",
+      "sourcePageUrl": "https://www.moody.senate.gov/",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "platform": "Facebook",
+      "url": "https://www.facebook.com/p/Senator-Ashley-Moody-61576106136804/",
+      "label": "Follow",
+      "sourcePageUrl": "https://www.moody.senate.gov/",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "platform": "YouTube",
+      "url": "https://www.youtube.com/channel/UCuDDW7huwfAOHjf0YYRSWFw",
+      "label": "Follow",
+      "sourcePageUrl": "https://www.moody.senate.gov/",
+      "reviewStatus": "unreviewed"
+    }
+  ],
+  "websiteCandidates": [
+    {
+      "url": "https://www.moody.senate.gov/contact-us/",
+      "label": "Contact",
+      "sourcePageUrl": "https://www.moody.senate.gov/",
+      "reviewStatus": "unreviewed"
+    }
+  ],
+  "errors": [],
+  "httpStatus": 200,
+  "finalUrl": "https://www.moody.senate.gov/",
+  "sourceSnapshotSha256": "ac52a8c7a7a47177e8ecd482344692e55c279150149e26ba3f3727e7fdff2cb3",
+  "contentType": "text/html",
+  "pageTitle": "Homepage - Senator Moody",
+  "candidateSummary": {
+    "portraits": 4,
+    "contacts": 9,
+    "socials": 4,
+    "websites": 1
+  }
+}

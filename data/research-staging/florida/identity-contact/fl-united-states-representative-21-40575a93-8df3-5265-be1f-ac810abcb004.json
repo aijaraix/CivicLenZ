@@ -1,0 +1,167 @@
+{
+  "enrichmentRecordVersion": "1.0.0",
+  "enrichmentRecordId": "fff692ae-2a93-5fb7-9de0-54a9060bcac5",
+  "taskId": "40575a93-8df3-5265-be1f-ac810abcb004",
+  "seatKey": "fl-united-states-representative-21",
+  "displayName": "Brian Mast",
+  "officeTitle": "United States Representative",
+  "sourceUrl": "https://mast.house.gov",
+  "fetchedAt": "2026-07-16T05:19:58Z",
+  "collectionStatus": "success",
+  "reviewStatus": "unreviewed",
+  "publicationAllowed": false,
+  "portraitCandidates": [],
+  "contactCandidates": [
+    {
+      "type": "phone",
+      "value": "202-225-3026",
+      "label": null,
+      "sourcePageUrl": "https://mast.house.gov/"
+    },
+    {
+      "type": "phone",
+      "value": "202-225-8398",
+      "label": null,
+      "sourcePageUrl": "https://mast.house.gov/"
+    },
+    {
+      "type": "phone",
+      "value": "772-403-0900",
+      "label": null,
+      "sourcePageUrl": "https://mast.house.gov/"
+    }
+  ],
+  "socialCandidates": [
+    {
+      "platform": "Facebook",
+      "url": "https://www.facebook.com/RepBrianMast",
+      "label": "Facebook-link",
+      "sourcePageUrl": "https://mast.house.gov/",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "platform": "X",
+      "url": "https://www.twitter.com/RepBrianMast",
+      "label": "Twitter-link",
+      "sourcePageUrl": "https://mast.house.gov/",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "platform": "YouTube",
+      "url": "https://www.youtube.com/RepBrianMast",
+      "label": "YouTube-link",
+      "sourcePageUrl": "https://mast.house.gov/",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "platform": "Instagram",
+      "url": "https://www.instagram.com/RepBrianMast",
+      "label": "Instagram-link",
+      "sourcePageUrl": "https://mast.house.gov/",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "platform": "YouTube",
+      "url": "https://www.youtube.com/watch?v=Rtq_XSy_4po",
+      "label": "Rep. Mast Discusses Bills To Help Veterans",
+      "sourcePageUrl": "https://mast.house.gov/",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "platform": "YouTube",
+      "url": "https://www.youtube.com/watch?v=zTn66nM_m18",
+      "label": "Rep. Mast Testifies On Need For Robust Funding To Fix Treasure Coast Water Quality Issues",
+      "sourcePageUrl": "https://mast.house.gov/",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "platform": "YouTube",
+      "url": "https://www.youtube.com/watch?v=4_q-PkP2mqg",
+      "label": "Rep. Mast Discusses 18th District Priorities",
+      "sourcePageUrl": "https://mast.house.gov/",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "platform": "Instagram",
+      "url": "https://www.instagram.com/p/BPtTmjmFh45",
+      "label": "Select Image",
+      "sourcePageUrl": "https://mast.house.gov/",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "platform": "Instagram",
+      "url": "https://www.instagram.com/p/BSb-xSEgllR/",
+      "label": "Select Image",
+      "sourcePageUrl": "https://mast.house.gov/",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "platform": "Instagram",
+      "url": "https://www.instagram.com/p/BQle0Y_gJ2c/",
+      "label": "Select Image",
+      "sourcePageUrl": "https://mast.house.gov/",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "platform": "Instagram",
+      "url": "https://www.instagram.com/p/BSBeMb5gING/",
+      "label": "Select Image",
+      "sourcePageUrl": "https://mast.house.gov/",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "platform": "Instagram",
+      "url": "https://www.instagram.com/p/BRTU_Z1gDjQ/",
+      "label": "Select Image",
+      "sourcePageUrl": "https://mast.house.gov/",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "platform": "Instagram",
+      "url": "https://www.instagram.com/p/BQTF3PFl10p/",
+      "label": "Select Image",
+      "sourcePageUrl": "https://mast.house.gov/",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "platform": "Instagram",
+      "url": "https://www.instagram.com/p/BRbNvdLAH0m/",
+      "label": "Select Image",
+      "sourcePageUrl": "https://mast.house.gov/",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "platform": "Instagram",
+      "url": "https://www.instagram.com/p/BQ0TBeLg_4o/",
+      "label": "Select Image",
+      "sourcePageUrl": "https://mast.house.gov/",
+      "reviewStatus": "unreviewed"
+    }
+  ],
+  "websiteCandidates": [
+    {
+      "url": "https://mast.house.gov/contact",
+      "label": "Contact",
+      "sourcePageUrl": "https://mast.house.gov/",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "url": "https://mast.house.gov/our-offices",
+      "label": "Our Offices",
+      "sourcePageUrl": "https://mast.house.gov/",
+      "reviewStatus": "unreviewed"
+    }
+  ],
+  "errors": [],
+  "httpStatus": 200,
+  "finalUrl": "https://mast.house.gov/",
+  "sourceSnapshotSha256": "a5a7aa26dbd6d4fd4f6af1948473c36122a1d6e998bbe31a1a66064ada146f2e",
+  "contentType": "text/html",
+  "pageTitle": "Congressman Brian Mast",
+  "candidateSummary": {
+    "portraits": 0,
+    "contacts": 3,
+    "socials": 15,
+    "websites": 2
+  }
+}

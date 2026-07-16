@@ -1,0 +1,146 @@
+{
+  "enrichmentRecordVersion": "1.0.0",
+  "enrichmentRecordId": "cd735a3d-b7b3-553a-9fbe-0baa75f6cae8",
+  "taskId": "6539dbb0-0b87-5beb-84bf-73a432bbbb86",
+  "seatKey": "fl-florida-state-representative-district-18-18",
+  "displayName": "Kim Kendall",
+  "officeTitle": "Florida State Representative, District 18",
+  "sourceUrl": "https://www.flhouse.gov/Sections/Representatives/details.aspx?MemberId=4905&LegislativeTermId=91",
+  "fetchedAt": "2026-07-16T05:20:10Z",
+  "collectionStatus": "success",
+  "reviewStatus": "unreviewed",
+  "publicationAllowed": false,
+  "portraitCandidates": [
+    {
+      "url": "https://www.flhouse.gov/FileStores/Web/Imaging/Member/cutout%2f4905.png",
+      "method": "img",
+      "score": 39,
+      "altText": "Representative Kendall Photo",
+      "sourcePageUrl": "https://www.flhouse.gov/Sections/Representatives/custom/details.aspx?MemberId=4905&LegislativeTermId=91",
+      "rightsStatus": "review_required",
+      "identityReviewStatus": "unreviewed",
+      "httpStatus": 200,
+      "finalUrl": "https://www.flhouse.gov/FileStores/Web/Imaging/Member/cutout%2F4905.png",
+      "contentType": "image/png",
+      "byteSize": 224536,
+      "imageSha256": "ea5d3502fa1dcf9cba9567b725bbead0bf1849870a2603fbc9d01436f72269cc",
+      "downloadStatus": "captured_for_hash"
+    },
+    {
+      "url": "https://www.flhouse.gov/FileStores/Web/Imaging/PhotoAlbums/HousePhotoSized8242.JPG",
+      "method": "img",
+      "score": 30,
+      "altText": "Representative Kendall Photo",
+      "sourcePageUrl": "https://www.flhouse.gov/Sections/Representatives/custom/details.aspx?MemberId=4905&LegislativeTermId=91",
+      "rightsStatus": "review_required",
+      "identityReviewStatus": "unreviewed",
+      "httpStatus": 200,
+      "finalUrl": "https://www.flhouse.gov/FileStores/Web/Imaging/PhotoAlbums/HousePhotoSized8242.JPG",
+      "contentType": "image/jpeg",
+      "byteSize": 17151,
+      "imageSha256": "81d83d9a36e792513866b0769baaf17b63da71baab492e3da3c37a2b96179bd1",
+      "downloadStatus": "captured_for_hash"
+    },
+    {
+      "url": "https://www.flhouse.gov/Images/bronze-seal-250.png?cb=4.6.654349",
+      "method": "og:image",
+      "score": 14,
+      "altText": null,
+      "sourcePageUrl": "https://www.flhouse.gov/Sections/Representatives/custom/details.aspx?MemberId=4905&LegislativeTermId=91",
+      "rightsStatus": "review_required",
+      "identityReviewStatus": "unreviewed",
+      "httpStatus": 200,
+      "finalUrl": "https://www.flhouse.gov/Images/bronze-seal-250.png?cb=4.6.654349",
+      "contentType": "image/png",
+      "byteSize": 150275,
+      "imageSha256": "36f7c4317f0cc62c44ff5bbfc0a0e5eebf014be23c9c8826141f11a70d9e7ff8",
+      "downloadStatus": "captured_for_hash"
+    },
+    {
+      "url": "https://www.flhouse.gov/api/Member/get-member-uploaded-photo/4905/MemberPhotoSized8439.jpeg/image",
+      "method": "img",
+      "score": 14,
+      "altText": null,
+      "sourcePageUrl": "https://www.flhouse.gov/Sections/Representatives/custom/details.aspx?MemberId=4905&LegislativeTermId=91",
+      "rightsStatus": "review_required",
+      "identityReviewStatus": "unreviewed",
+      "httpStatus": 200,
+      "finalUrl": "https://www.flhouse.gov/api/Member/get-member-uploaded-photo/4905/MemberPhotoSized8439.jpeg/image",
+      "contentType": "image/jpeg",
+      "byteSize": 342308,
+      "imageSha256": "22c6b99919ec6714bef5512ba4a85d64f1424b187b5aae5580880d7b074b0543",
+      "downloadStatus": "captured_for_hash"
+    },
+    {
+      "url": "https://www.flhouse.gov/api/Member/get-member-uploaded-photo/4905/MemberPhotoSized8440.jpg/image",
+      "method": "img",
+      "score": 14,
+      "altText": null,
+      "sourcePageUrl": "https://www.flhouse.gov/Sections/Representatives/custom/details.aspx?MemberId=4905&LegislativeTermId=91",
+      "rightsStatus": "review_required",
+      "identityReviewStatus": "unreviewed",
+      "httpStatus": 200,
+      "finalUrl": "https://www.flhouse.gov/api/Member/get-member-uploaded-photo/4905/MemberPhotoSized8440.jpg/image",
+      "contentType": "image/jpeg",
+      "byteSize": 292365,
+      "imageSha256": "89c010769a931915e762ab5107ccfd1485a05ebf9754cf31487773f11167d79a",
+      "downloadStatus": "captured_for_hash"
+    },
+    {
+      "url": "https://www.flhouse.gov/api/Member/get-member-uploaded-photo/4905/MemberPhotoSized8492.jpg/image",
+      "method": "img",
+      "score": 14,
+      "altText": null,
+      "sourcePageUrl": "https://www.flhouse.gov/Sections/Representatives/custom/details.aspx?MemberId=4905&LegislativeTermId=91",
+      "rightsStatus": "review_required",
+      "identityReviewStatus": "unreviewed",
+      "httpStatus": 200,
+      "finalUrl": "https://www.flhouse.gov/api/Member/get-member-uploaded-photo/4905/MemberPhotoSized8492.jpg/image",
+      "contentType": "image/jpeg",
+      "byteSize": 291378,
+      "imageSha256": "79596335f725dc84b9cc3c8e82210e8c1651447dae4f84e94f4fca064d6700c7",
+      "downloadStatus": "captured_for_hash"
+    }
+  ],
+  "contactCandidates": [
+    {
+      "type": "phone",
+      "value": "(850) 717-5018",
+      "label": null,
+      "sourcePageUrl": "https://www.flhouse.gov/Sections/Representatives/custom/details.aspx?MemberId=4905&LegislativeTermId=91"
+    },
+    {
+      "type": "phone",
+      "value": "(904) 295-1620",
+      "label": null,
+      "sourcePageUrl": "https://www.flhouse.gov/Sections/Representatives/custom/details.aspx?MemberId=4905&LegislativeTermId=91"
+    }
+  ],
+  "socialCandidates": [],
+  "websiteCandidates": [
+    {
+      "url": "https://www.flhouse.gov/Sections/Representatives/custom/contactmember.aspx?MemberId=4905&LegislativeTermId=91",
+      "label": "Contact Member",
+      "sourcePageUrl": "https://www.flhouse.gov/Sections/Representatives/custom/details.aspx?MemberId=4905&LegislativeTermId=91",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "url": "https://www.flhouse.gov/Sections/Representatives/custom/maps-and-offices.aspx?MemberId=4905&LegislativeTermId=91",
+      "label": "Maps & Offices",
+      "sourcePageUrl": "https://www.flhouse.gov/Sections/Representatives/custom/details.aspx?MemberId=4905&LegislativeTermId=91",
+      "reviewStatus": "unreviewed"
+    }
+  ],
+  "errors": [],
+  "httpStatus": 200,
+  "finalUrl": "https://www.flhouse.gov/Sections/Representatives/custom/details.aspx?MemberId=4905&LegislativeTermId=91",
+  "sourceSnapshotSha256": "c332e964128b238ffcf5caa3c5b51d24f2e1d1fdd5cc9ab74e7d049bd67a9e82",
+  "contentType": "text/html",
+  "pageTitle": "Kim Kendall  - 2024 - 2026 ( Speaker Perez ) | Florida House of Representatives",
+  "candidateSummary": {
+    "portraits": 6,
+    "contacts": 2,
+    "socials": 0,
+    "websites": 2
+  }
+}

@@ -1,0 +1,146 @@
+{
+  "enrichmentRecordVersion": "1.0.0",
+  "enrichmentRecordId": "3b04a0cb-10f0-5804-90ab-1f02fb5b156b",
+  "taskId": "14daac6f-6754-5a10-8fa8-192396f66876",
+  "seatKey": "fl-attorney-general-of-florida-at-large",
+  "displayName": "James Uthmeier",
+  "officeTitle": "Attorney General of Florida",
+  "sourceUrl": "https://www.myfloridalegal.com/",
+  "fetchedAt": "2026-07-16T05:20:00Z",
+  "collectionStatus": "success",
+  "reviewStatus": "unreviewed",
+  "publicationAllowed": false,
+  "portraitCandidates": [
+    {
+      "url": "https://www.myfloridalegal.com/img/logo.png",
+      "method": "img",
+      "score": -26,
+      "altText": "Logo",
+      "sourcePageUrl": "https://www.myfloridalegal.com/",
+      "rightsStatus": "review_required",
+      "identityReviewStatus": "unreviewed",
+      "httpStatus": 200,
+      "finalUrl": "https://www.myfloridalegal.com/img/logo.png",
+      "contentType": "image/png",
+      "byteSize": 51409,
+      "imageSha256": "b0840de436f613507f7d046ead8dbe6131f77bb6c7361b32a90ecb0963f5bc85",
+      "downloadStatus": "captured_for_hash"
+    },
+    {
+      "url": "https://www.myfloridalegal.com/themes/custom/my_florida_legal/images/new/ag-banner-pic.png",
+      "method": "img",
+      "score": -52,
+      "altText": "Florida Attorney General standing in front of the state seal",
+      "sourcePageUrl": "https://www.myfloridalegal.com/",
+      "rightsStatus": "review_required",
+      "identityReviewStatus": "unreviewed",
+      "httpStatus": 200,
+      "finalUrl": "https://www.myfloridalegal.com/themes/custom/my_florida_legal/images/new/ag-banner-pic.png",
+      "contentType": "image/png",
+      "byteSize": 392180,
+      "imageSha256": "98fdf8671258ededb7f397b5779540b7ea777906df0cbed55e9fed7613a3d281",
+      "downloadStatus": "captured_for_hash"
+    },
+    {
+      "url": "https://www.myfloridalegal.com/img/oag-seal-left.png",
+      "method": "img",
+      "score": -61,
+      "altText": "Logo",
+      "sourcePageUrl": "https://www.myfloridalegal.com/",
+      "rightsStatus": "review_required",
+      "identityReviewStatus": "unreviewed",
+      "httpStatus": 200,
+      "finalUrl": "https://www.myfloridalegal.com/img/oag-seal-left.png",
+      "contentType": "image/png",
+      "byteSize": 287242,
+      "imageSha256": "0763792d1afe8c1e2caea8b9b2bb3f27e2bfa4ad663490c725902b530ed9d46b",
+      "downloadStatus": "captured_for_hash"
+    }
+  ],
+  "contactCandidates": [],
+  "socialCandidates": [
+    {
+      "platform": "X",
+      "url": "https://x.com/AGJamesUthmeier/status/2077475714429751790",
+      "label": "July 15, 2026 3:29 pm",
+      "sourcePageUrl": "https://www.myfloridalegal.com/",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "platform": "X",
+      "url": "https://x.com/AGJamesUthmeier/status/2077415810188927482",
+      "label": "July 15, 2026 11:31 am",
+      "sourcePageUrl": "https://www.myfloridalegal.com/",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "platform": "X",
+      "url": "https://x.com/AGJamesUthmeier/status/2076758575246975066",
+      "label": "July 13, 2026 4:00 pm",
+      "sourcePageUrl": "https://www.myfloridalegal.com/",
+      "reviewStatus": "unreviewed"
+    }
+  ],
+  "websiteCandidates": [
+    {
+      "url": "https://legacy.myfloridalegal.com/Contact.nsf/ParentalRights?OpenForm=",
+      "label": "PARENTAL RIGHTS",
+      "sourcePageUrl": "https://www.myfloridalegal.com/",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "url": "https://www.myfloridalegal.com/overview/office-of-inspector-general",
+      "label": "Office of Inspector General",
+      "sourcePageUrl": "https://www.myfloridalegal.com/",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "url": "https://www.myfloridalegal.com/contact/offices",
+      "label": "Addresses & Phone Numbers",
+      "sourcePageUrl": "https://www.myfloridalegal.com/",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "url": "https://www.myfloridalegal.com/how-to-contact-us/file-a-complaint",
+      "label": "File a Complaint",
+      "sourcePageUrl": "https://www.myfloridalegal.com/",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "url": "https://www.myfloridalegal.com/form/citizen-services-contact-form",
+      "label": "General Inquiries",
+      "sourcePageUrl": "https://www.myfloridalegal.com/",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "url": "https://www.myfloridalegal.com/overview/communications-office",
+      "label": "Media Contact",
+      "sourcePageUrl": "https://www.myfloridalegal.com/",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "url": "https://legacy.myfloridalegal.com/Contact.nsf/piuc?OpenForm",
+      "label": "PUBLIC INTEGRITY",
+      "sourcePageUrl": "https://www.myfloridalegal.com/",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "url": "https://www.myfloridalegal.com/home-page/doing-business-with-the-office-of-the-attorney-general",
+      "label": "Doing Business with the Office",
+      "sourcePageUrl": "https://www.myfloridalegal.com/",
+      "reviewStatus": "unreviewed"
+    }
+  ],
+  "errors": [],
+  "httpStatus": 200,
+  "finalUrl": "https://www.myfloridalegal.com/",
+  "sourceSnapshotSha256": "3df6ec72f065aeaad2644da5649a4466eeb0ed818651b90d0e4086d257b167de",
+  "contentType": "text/html",
+  "pageTitle": "Home | My Florida Legal",
+  "candidateSummary": {
+    "portraits": 3,
+    "contacts": 0,
+    "socials": 3,
+    "websites": 8
+  }
+}

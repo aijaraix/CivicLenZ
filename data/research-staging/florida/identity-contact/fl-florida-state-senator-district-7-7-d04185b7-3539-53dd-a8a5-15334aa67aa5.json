@@ -1,0 +1,244 @@
+{
+  "enrichmentRecordVersion": "1.0.0",
+  "enrichmentRecordId": "05728c21-77f4-5ba6-97c2-ef473c5d515c",
+  "taskId": "d04185b7-3539-53dd-a8a5-15334aa67aa5",
+  "seatKey": "fl-florida-state-senator-district-7-7",
+  "displayName": "Thomas J. \"Tom\" Leek",
+  "officeTitle": "Florida State Senator, District 7",
+  "sourceUrl": "https://www.flsenate.gov/Senators/2024-2026/S7",
+  "fetchedAt": "2026-07-16T05:20:47Z",
+  "collectionStatus": "success",
+  "reviewStatus": "unreviewed",
+  "publicationAllowed": false,
+  "portraitCandidates": [
+    {
+      "url": "https://www.flsenate.gov/PublishedContent/Senators/2024-2026/Photos/s07_5232.jpg",
+      "method": "img",
+      "score": 30,
+      "altText": "Senator Leek",
+      "sourcePageUrl": "https://www.flsenate.gov/Senators/S7",
+      "rightsStatus": "review_required",
+      "identityReviewStatus": "unreviewed",
+      "httpStatus": 429,
+      "finalUrl": "https://www.flsenate.gov/PublishedContent/Senators/2024-2026/Photos/s07_5232.jpg",
+      "contentType": "text/plain",
+      "byteSize": 17,
+      "downloadStatus": "not_an_image_or_http_error"
+    },
+    {
+      "url": "https://www.flsenate.gov/PublishedContent/Offices/Senator/Final_Session_Wrap-up_St__Johns_2026__2_.jpg",
+      "method": "img",
+      "score": 18,
+      "altText": null,
+      "sourcePageUrl": "https://www.flsenate.gov/Senators/S7",
+      "rightsStatus": "review_required",
+      "identityReviewStatus": "unreviewed",
+      "httpStatus": 429,
+      "finalUrl": "https://www.flsenate.gov/PublishedContent/Offices/Senator/Final_Session_Wrap-up_St__Johns_2026__2_.jpg",
+      "contentType": "text/plain",
+      "byteSize": 17,
+      "downloadStatus": "not_an_image_or_http_error"
+    },
+    {
+      "url": "https://www.flsenate.gov/PublishedContent/Offices/Senator/Session_Wrap-up_Daytona_2026__1_.jpg",
+      "method": "img",
+      "score": 18,
+      "altText": null,
+      "sourcePageUrl": "https://www.flsenate.gov/Senators/S7",
+      "rightsStatus": "review_required",
+      "identityReviewStatus": "unreviewed",
+      "httpStatus": 429,
+      "finalUrl": "https://www.flsenate.gov/PublishedContent/Offices/Senator/Session_Wrap-up_Daytona_2026__1_.jpg",
+      "contentType": "text/plain",
+      "byteSize": 17,
+      "downloadStatus": "not_an_image_or_http_error"
+    },
+    {
+      "url": "https://www.flsenate.gov/PublishedContent/Offices/Senator/Session_Wrap-up_Flagler_2026__2_.jpg",
+      "method": "img",
+      "score": 18,
+      "altText": null,
+      "sourcePageUrl": "https://www.flsenate.gov/Senators/S7",
+      "rightsStatus": "review_required",
+      "identityReviewStatus": "unreviewed",
+      "httpStatus": 429,
+      "finalUrl": "https://www.flsenate.gov/PublishedContent/Offices/Senator/Session_Wrap-up_Flagler_2026__2_.jpg",
+      "contentType": "text/plain",
+      "byteSize": 17,
+      "downloadStatus": "not_an_image_or_http_error"
+    },
+    {
+      "url": "https://www.flsenate.gov/PublishedContent/Offices/Senator/Session_Wrap-up_Putnam_2026__2_.jpg",
+      "method": "img",
+      "score": 18,
+      "altText": null,
+      "sourcePageUrl": "https://www.flsenate.gov/Senators/S7",
+      "rightsStatus": "review_required",
+      "identityReviewStatus": "unreviewed",
+      "httpStatus": 429,
+      "finalUrl": "https://www.flsenate.gov/PublishedContent/Offices/Senator/Session_Wrap-up_Putnam_2026__2_.jpg",
+      "contentType": "text/plain",
+      "byteSize": 17,
+      "downloadStatus": "not_an_image_or_http_error"
+    },
+    {
+      "url": "https://www.flsenate.gov/PublishedContent/Session/Redistricting/Districts/SD2022/webmaps/sd07_webmap.png",
+      "method": "img",
+      "score": 9,
+      "altText": "District 7 map",
+      "sourcePageUrl": "https://www.flsenate.gov/Senators/S7",
+      "rightsStatus": "review_required",
+      "identityReviewStatus": "unreviewed",
+      "httpStatus": 429,
+      "finalUrl": "https://www.flsenate.gov/PublishedContent/Session/Redistricting/Districts/SD2022/webmaps/sd07_webmap.png",
+      "contentType": "text/plain",
+      "byteSize": 17,
+      "downloadStatus": "not_an_image_or_http_error"
+    }
+  ],
+  "contactCandidates": [
+    {
+      "type": "email",
+      "value": "leek.tom.web@flsenate.gov",
+      "label": "leek.tom.web@flsenate.gov",
+      "sourcePageUrl": "https://www.flsenate.gov/Senators/S7"
+    },
+    {
+      "type": "email",
+      "value": "webmaster@flsenate.gov",
+      "label": "email",
+      "sourcePageUrl": "https://www.flsenate.gov/Senators/S7"
+    },
+    {
+      "type": "phone",
+      "value": "(386) 317-7500",
+      "label": null,
+      "sourcePageUrl": "https://www.flsenate.gov/Senators/S7"
+    },
+    {
+      "type": "phone",
+      "value": "(386) 446-7610",
+      "label": null,
+      "sourcePageUrl": "https://www.flsenate.gov/Senators/S7"
+    },
+    {
+      "type": "phone",
+      "value": "(850) 487-5007",
+      "label": null,
+      "sourcePageUrl": "https://www.flsenate.gov/Senators/S7"
+    }
+  ],
+  "socialCandidates": [
+    {
+      "platform": "X",
+      "url": "http://www.twitter.com/flsenate",
+      "label": "Twitter",
+      "sourcePageUrl": "https://www.flsenate.gov/Senators/S7",
+      "reviewStatus": "unreviewed"
+    }
+  ],
+  "websiteCandidates": [
+    {
+      "url": "https://www.flsenate.gov/Session/ExecutiveAppointments",
+      "label": "Executive Appointments",
+      "sourcePageUrl": "https://www.flsenate.gov/Senators/S7",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "url": "https://www.flsenate.gov/Media/VideoSchedule",
+      "label": "Video Broadcast Schedule",
+      "sourcePageUrl": "https://www.flsenate.gov/Senators/S7",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "url": "https://www.flsenate.gov/About/Contact",
+      "label": "Contact Us",
+      "sourcePageUrl": "https://www.flsenate.gov/Senators/S7",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "url": "https://www.flsenate.gov/Offices",
+      "label": "Offices",
+      "sourcePageUrl": "https://www.flsenate.gov/Senators/S7",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "url": "https://www.flsenate.gov/Offices/President",
+      "label": "President's Office",
+      "sourcePageUrl": "https://www.flsenate.gov/Senators/S7",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "url": "https://www.flsenate.gov/Offices/Majority",
+      "label": "Majority Office",
+      "sourcePageUrl": "https://www.flsenate.gov/Senators/S7",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "url": "https://www.flsenate.gov/Offices/Minority",
+      "label": "Minority Office",
+      "sourcePageUrl": "https://www.flsenate.gov/Senators/S7",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "url": "https://www.flsenate.gov/Offices/Secretary",
+      "label": "Secretary's Office",
+      "sourcePageUrl": "https://www.flsenate.gov/Senators/S7",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "url": "https://www.flsenate.gov/Reference/PublicRecords",
+      "label": "Public Records",
+      "sourcePageUrl": "https://www.flsenate.gov/Senators/S7",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "url": "https://www.flsenate.gov/PublishedContent/Offices/Senator/Final_Session_Wrap-up_St__Johns_2026__2_.pdf",
+      "label": "Session Wrap-up St. Johns 2026",
+      "sourcePageUrl": "https://www.flsenate.gov/Senators/S7",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "url": "https://www.flsenate.gov/PublishedContent/Offices/Senator/Session_Wrap-up_Putnam_2026__2_.pdf",
+      "label": "Session Wrap-up Putnam 2026",
+      "sourcePageUrl": "https://www.flsenate.gov/Senators/S7",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "url": "https://www.flsenate.gov/PublishedContent/Offices/Senator/Session_Wrap-up_Flagler_2026__2_.pdf",
+      "label": "Session Wrap-up Flagler 2026",
+      "sourcePageUrl": "https://www.flsenate.gov/Senators/S7",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "url": "https://www.flsenate.gov/PublishedContent/Offices/Senator/Session_Wrap-up_Daytona_2026__1_.pdf",
+      "label": "Session Wrap-up Volusia/Daytona 2026",
+      "sourcePageUrl": "https://www.flsenate.gov/Senators/S7",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "url": "https://www.flsenate.gov/Session/ExecutiveAppointments/",
+      "label": "Executive Appointments",
+      "sourcePageUrl": "https://www.flsenate.gov/Senators/S7",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "url": "https://www.flsenate.gov/About/Contact#connect",
+      "label": "Connect with the Senate",
+      "sourcePageUrl": "https://www.flsenate.gov/Senators/S7",
+      "reviewStatus": "unreviewed"
+    }
+  ],
+  "errors": [],
+  "httpStatus": 200,
+  "finalUrl": "https://www.flsenate.gov/Senators/S7",
+  "sourceSnapshotSha256": "7ef345dc85f34bbaa4bea9d909d623f7f8a919ef5db784cb9aeca257429fa279",
+  "contentType": "text/html",
+  "pageTitle": "Senator Leek - The Florida Senate",
+  "candidateSummary": {
+    "portraits": 6,
+    "contacts": 5,
+    "socials": 1,
+    "websites": 15
+  }
+}

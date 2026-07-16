@@ -1,0 +1,234 @@
+{
+  "enrichmentRecordVersion": "1.0.0",
+  "enrichmentRecordId": "7e5d187c-442b-5a73-91de-3948bab3e947",
+  "taskId": "7a3e7e6d-32c9-5c3c-b922-eb9c5bd08b6a",
+  "seatKey": "fl-united-states-representative-24",
+  "displayName": "Frederica Wilson",
+  "officeTitle": "United States Representative",
+  "sourceUrl": "https://wilson.house.gov/",
+  "fetchedAt": "2026-07-16T05:19:58Z",
+  "collectionStatus": "success",
+  "reviewStatus": "unreviewed",
+  "publicationAllowed": false,
+  "portraitCandidates": [
+    {
+      "url": "https://wilson.house.gov/profiles/evo/assets/images/Seal_of_the_United_States_House_of_Representatives.png",
+      "method": "og:image",
+      "score": 44,
+      "altText": null,
+      "sourcePageUrl": "https://wilson.house.gov/",
+      "rightsStatus": "review_required",
+      "identityReviewStatus": "unreviewed",
+      "httpStatus": 200,
+      "finalUrl": "https://wilson.house.gov/profiles/evo/assets/images/Seal_of_the_United_States_House_of_Representatives.png",
+      "contentType": "image/png",
+      "byteSize": 225630,
+      "imageSha256": "97f154eb8428c9c1c38c05112b6cdd943fea63ecdd486d084c167e10e0dec628",
+      "downloadStatus": "captured_for_hash"
+    },
+    {
+      "url": "https://wilson.house.gov/sites/evo-subsites/wilson.house.gov/files/styles/large/public/evo-media-image/wilson-about.jpg.webp?itok=1mI-SzFO",
+      "method": "img",
+      "score": 33,
+      "altText": "Rep. Frederica Wilson",
+      "sourcePageUrl": "https://wilson.house.gov/",
+      "rightsStatus": "review_required",
+      "identityReviewStatus": "unreviewed",
+      "httpStatus": 200,
+      "finalUrl": "https://wilson.house.gov/sites/evo-subsites/wilson.house.gov/files/styles/large/public/evo-media-image/wilson-about.jpg.webp?itok=1mI-SzFO",
+      "contentType": "image/webp",
+      "byteSize": 28628,
+      "imageSha256": "f515355c8b955dc2efd6e1e639367239596e9d730613e46e4a46915e1c80b789",
+      "downloadStatus": "captured_for_hash"
+    },
+    {
+      "url": "https://wilson.house.gov/sites/evo-subsites/wilson.house.gov/files/styles/evo_image/public/evo-media-image/commendations-and-greetings.jpg?itok=1BS6-3h7",
+      "method": "img",
+      "score": 21,
+      "altText": "Commendations and Greetings",
+      "sourcePageUrl": "https://wilson.house.gov/",
+      "rightsStatus": "review_required",
+      "identityReviewStatus": "unreviewed",
+      "httpStatus": 200,
+      "finalUrl": "https://wilson.house.gov/sites/evo-subsites/wilson.house.gov/files/styles/evo_image/public/evo-media-image/commendations-and-greetings.jpg?itok=1BS6-3h7",
+      "contentType": "image/jpeg",
+      "byteSize": 8748,
+      "imageSha256": "a1db9811c83ce4f8dc3bf07724312d56a2a2a3c3dedaab0b787c4b78a07b09fe",
+      "downloadStatus": "captured_for_hash"
+    },
+    {
+      "url": "https://wilson.house.gov/sites/evo-subsites/wilson.house.gov/files/styles/evo_image/public/evo-media-image/grant-application.jpg?itok=-4sRUnjG",
+      "method": "img",
+      "score": 21,
+      "altText": "Grant Application",
+      "sourcePageUrl": "https://wilson.house.gov/",
+      "rightsStatus": "review_required",
+      "identityReviewStatus": "unreviewed",
+      "httpStatus": 200,
+      "finalUrl": "https://wilson.house.gov/sites/evo-subsites/wilson.house.gov/files/styles/evo_image/public/evo-media-image/grant-application.jpg?itok=-4sRUnjG",
+      "contentType": "image/jpeg",
+      "byteSize": 6387,
+      "imageSha256": "6b680eba9883d34f05c2a55f441ef8aeada6f663a6fbd4e594bc65dbe79972d5",
+      "downloadStatus": "captured_for_hash"
+    },
+    {
+      "url": "https://wilson.house.gov/sites/evo-subsites/wilson.house.gov/files/styles/evo_image/public/evo-media-image/help-with-a-federal-agency.jpg?itok=vgyqbY4h",
+      "method": "img",
+      "score": 21,
+      "altText": "Help with a Federal Agency",
+      "sourcePageUrl": "https://wilson.house.gov/",
+      "rightsStatus": "review_required",
+      "identityReviewStatus": "unreviewed",
+      "httpStatus": 200,
+      "finalUrl": "https://wilson.house.gov/sites/evo-subsites/wilson.house.gov/files/styles/evo_image/public/evo-media-image/help-with-a-federal-agency.jpg?itok=vgyqbY4h",
+      "contentType": "image/jpeg",
+      "byteSize": 7668,
+      "imageSha256": "e2016d5895e12162a96f0d9c41b6dbbf1a18f68861a2dd50d1193c5daac9b37f",
+      "downloadStatus": "captured_for_hash"
+    },
+    {
+      "url": "https://wilson.house.gov/sites/evo-subsites/wilson.house.gov/files/styles/evo_image/public/evo-media-image/interships.jpg?itok=YXN9tbV-",
+      "method": "img",
+      "score": 21,
+      "altText": "Internship",
+      "sourcePageUrl": "https://wilson.house.gov/",
+      "rightsStatus": "review_required",
+      "identityReviewStatus": "unreviewed",
+      "httpStatus": 200,
+      "finalUrl": "https://wilson.house.gov/sites/evo-subsites/wilson.house.gov/files/styles/evo_image/public/evo-media-image/interships.jpg?itok=YXN9tbV-",
+      "contentType": "image/jpeg",
+      "byteSize": 9568,
+      "imageSha256": "60c96bf1cb1e0a026520aca6d244041bd129db2ffd9a1fab4ccec10521c48a92",
+      "downloadStatus": "captured_for_hash"
+    }
+  ],
+  "contactCandidates": [
+    {
+      "type": "phone",
+      "value": "(202) 225-4506",
+      "label": null,
+      "sourcePageUrl": "https://wilson.house.gov/"
+    },
+    {
+      "type": "phone",
+      "value": "(305) 690-5905",
+      "label": null,
+      "sourcePageUrl": "https://wilson.house.gov/"
+    },
+    {
+      "type": "phone",
+      "value": "(954) 989-2688",
+      "label": null,
+      "sourcePageUrl": "https://wilson.house.gov/"
+    }
+  ],
+  "socialCandidates": [
+    {
+      "platform": "Facebook",
+      "url": "https://www.facebook.com/RepWilson",
+      "label": "RepWilson",
+      "sourcePageUrl": "https://wilson.house.gov/",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "platform": "Instagram",
+      "url": "https://www.instagram.com/repwilson/?utm_source=ig_embed&utm_campaign=loading",
+      "label": "RepWilson",
+      "sourcePageUrl": "https://wilson.house.gov/",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "platform": "X",
+      "url": "https://twitter.com/RepWilson",
+      "label": "Posts by RepWilson",
+      "sourcePageUrl": "https://wilson.house.gov/",
+      "reviewStatus": "unreviewed"
+    }
+  ],
+  "websiteCandidates": [
+    {
+      "url": "https://wilson.house.gov/contact",
+      "label": "Contact",
+      "sourcePageUrl": "https://wilson.house.gov/",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "url": "https://wilson.house.gov/contact/email-me",
+      "label": "Email Me",
+      "sourcePageUrl": "https://wilson.house.gov/",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "url": "https://wilson.house.gov/contact/subscribe",
+      "label": "Newsletter Sign Up",
+      "sourcePageUrl": "https://wilson.house.gov/",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "url": "https://wilson.house.gov/contact/office-locations",
+      "label": "Office Locations",
+      "sourcePageUrl": "https://wilson.house.gov/",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "url": "https://wilson.house.gov/contact/request-an-appearance",
+      "label": "Request an Appearance",
+      "sourcePageUrl": "https://wilson.house.gov/",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "url": "https://wilson.house.gov/contact/website-problem",
+      "label": "Website Problem",
+      "sourcePageUrl": "https://wilson.house.gov/",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "url": "https://wilson.house.gov/contact/newsletter-unsubscribe",
+      "label": "cancel or unsubscribe",
+      "sourcePageUrl": "https://wilson.house.gov/",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "url": "https://wilson.house.gov/contact/offices/washington-dc-office",
+      "label": "Washington DC Office",
+      "sourcePageUrl": "https://wilson.house.gov/",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "url": "https://wilson.house.gov/contact/offices/district-office-0",
+      "label": "Miami Beach District Office",
+      "sourcePageUrl": "https://wilson.house.gov/",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "url": "https://wilson.house.gov/contact/offices/west-park-district-office",
+      "label": "West Park District Office",
+      "sourcePageUrl": "https://wilson.house.gov/",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "url": "https://wilson.house.gov/contact/offices/north-miami-district-office",
+      "label": "North Miami District Office",
+      "sourcePageUrl": "https://wilson.house.gov/",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "url": "https://wilson.house.gov/contact/offices/miami-gardens-office",
+      "label": "Miami Gardens Office",
+      "sourcePageUrl": "https://wilson.house.gov/",
+      "reviewStatus": "unreviewed"
+    }
+  ],
+  "errors": [],
+  "httpStatus": 200,
+  "finalUrl": "https://wilson.house.gov/",
+  "sourceSnapshotSha256": "b53890bb2607bc0db819166303c30edda02ab3b81d1a519dd43efe9422c6eee3",
+  "contentType": "text/html",
+  "pageTitle": "Congresswoman Frederica Wilson |",
+  "candidateSummary": {
+    "portraits": 6,
+    "contacts": 3,
+    "socials": 3,
+    "websites": 12
+  }
+}

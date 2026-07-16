@@ -1,0 +1,210 @@
+{
+  "enrichmentRecordVersion": "1.0.0",
+  "enrichmentRecordId": "d94def01-95d8-572f-abcc-9d3dc0673d99",
+  "taskId": "17c71dc1-2feb-565f-a8ad-37516768666f",
+  "seatKey": "fl-united-states-representative-27",
+  "displayName": "Maria Salazar",
+  "officeTitle": "United States Representative",
+  "sourceUrl": "https://salazar.house.gov",
+  "fetchedAt": "2026-07-16T05:19:59Z",
+  "collectionStatus": "success",
+  "reviewStatus": "unreviewed",
+  "publicationAllowed": false,
+  "portraitCandidates": [
+    {
+      "url": "https://salazar.house.gov/profiles/evo/assets/images/Seal_of_the_United_States_House_of_Representatives.png",
+      "method": "og:image",
+      "score": 44,
+      "altText": null,
+      "sourcePageUrl": "https://salazar.house.gov/",
+      "rightsStatus": "review_required",
+      "identityReviewStatus": "unreviewed",
+      "httpStatus": 200,
+      "finalUrl": "https://salazar.house.gov/profiles/evo/assets/images/Seal_of_the_United_States_House_of_Representatives.png",
+      "contentType": "image/png",
+      "byteSize": 225630,
+      "imageSha256": "97f154eb8428c9c1c38c05112b6cdd943fea63ecdd486d084c167e10e0dec628",
+      "downloadStatus": "captured_for_hash"
+    },
+    {
+      "url": "https://salazar.house.gov/sites/evo-subsites/salazar.house.gov/files/styles/original_size/public/evo-media-image/Rep-Salazar-headshot.png?itok=leuGg0nW",
+      "method": "img",
+      "score": 42,
+      "altText": "Congresswoman Maria Salazar",
+      "sourcePageUrl": "https://salazar.house.gov/",
+      "rightsStatus": "review_required",
+      "identityReviewStatus": "unreviewed",
+      "httpStatus": 200,
+      "finalUrl": "https://salazar.house.gov/sites/evo-subsites/salazar.house.gov/files/styles/original_size/public/evo-media-image/Rep-Salazar-headshot.png?itok=leuGg0nW",
+      "contentType": "image/png",
+      "byteSize": 728520,
+      "imageSha256": "a67c96ca581b7e6e372df225d4e9bdf04520d00a9f99e6450f8a209d58b26495",
+      "downloadStatus": "captured_for_hash"
+    },
+    {
+      "url": "https://salazar.house.gov/sites/evo-subsites/salazar.house.gov/files/styles/medium/public/evo-media-image/earth-42.PNG?itok=irjDLMYV",
+      "method": "img",
+      "score": 33,
+      "altText": "Rep. Maria Salazar",
+      "sourcePageUrl": "https://salazar.house.gov/",
+      "rightsStatus": "review_required",
+      "identityReviewStatus": "unreviewed",
+      "httpStatus": 200,
+      "finalUrl": "https://salazar.house.gov/sites/evo-subsites/salazar.house.gov/files/styles/medium/public/evo-media-image/earth-42.PNG?itok=irjDLMYV",
+      "contentType": "image/png",
+      "byteSize": 168792,
+      "imageSha256": "6fb625fbc20b017b719817d18e8fb7ce1cd6fbe8e27e37f120f7268839956496",
+      "downloadStatus": "captured_for_hash"
+    },
+    {
+      "url": "https://salazar.house.gov/sites/evo-subsites/salazar.house.gov/files/styles/medium/public/evo-media-image/hfac.jpg?itok=PtPdQkMe",
+      "method": "img",
+      "score": 33,
+      "altText": "Rep. Maria Salazar",
+      "sourcePageUrl": "https://salazar.house.gov/",
+      "rightsStatus": "review_required",
+      "identityReviewStatus": "unreviewed",
+      "httpStatus": 200,
+      "finalUrl": "https://salazar.house.gov/sites/evo-subsites/salazar.house.gov/files/styles/medium/public/evo-media-image/hfac.jpg?itok=PtPdQkMe",
+      "contentType": "image/jpeg",
+      "byteSize": 12538,
+      "imageSha256": "7df8c9871e6dc9f46379e55c1396e8125c9891e3f121263cc1911c98c8028ec4",
+      "downloadStatus": "captured_for_hash"
+    },
+    {
+      "url": "https://salazar.house.gov/sites/evo-subsites/salazar.house.gov/files/styles/evo_image_full_width/public/evo-media-image/Miami%20skyline.jpg?h=16b768a2&itok=A9lBB9kh",
+      "method": "img",
+      "score": 21,
+      "altText": "Photo of Miami skyline",
+      "sourcePageUrl": "https://salazar.house.gov/",
+      "rightsStatus": "review_required",
+      "identityReviewStatus": "unreviewed",
+      "httpStatus": 200,
+      "finalUrl": "https://salazar.house.gov/sites/evo-subsites/salazar.house.gov/files/styles/evo_image_full_width/public/evo-media-image/Miami%20skyline.jpg?h=16b768a2&itok=A9lBB9kh",
+      "contentType": "image/jpeg",
+      "byteSize": 199789,
+      "imageSha256": "216b5d185000b54395e0c5421d9c5e404324f380563e221bae8a5156165f3a97",
+      "downloadStatus": "captured_for_hash"
+    },
+    {
+      "url": "https://salazar.house.gov/sites/evo-subsites/salazar.house.gov/files/styles/medium/public/evo-media-image/earth-43.PNG?itok=VuOQEZ2l",
+      "method": "img",
+      "score": 21,
+      "altText": "Housing Act",
+      "sourcePageUrl": "https://salazar.house.gov/",
+      "rightsStatus": "review_required",
+      "identityReviewStatus": "unreviewed",
+      "httpStatus": 200,
+      "finalUrl": "https://salazar.house.gov/sites/evo-subsites/salazar.house.gov/files/styles/medium/public/evo-media-image/earth-43.PNG?itok=VuOQEZ2l",
+      "contentType": "image/png",
+      "byteSize": 108331,
+      "imageSha256": "abe0c0d457243bd7b5549da6cea92ab819d96d02bd62f6f003145fb4d980adc0",
+      "downloadStatus": "captured_for_hash"
+    }
+  ],
+  "contactCandidates": [
+    {
+      "type": "phone",
+      "value": "(202) 225-3931",
+      "label": null,
+      "sourcePageUrl": "https://salazar.house.gov/"
+    },
+    {
+      "type": "phone",
+      "value": "(305) 668-2285",
+      "label": null,
+      "sourcePageUrl": "https://salazar.house.gov/"
+    }
+  ],
+  "socialCandidates": [
+    {
+      "platform": "X",
+      "url": "https://twitter.com/RepMariaSalazar",
+      "label": "Tweets by RepMariaSalazar",
+      "sourcePageUrl": "https://salazar.house.gov/",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "platform": "Facebook",
+      "url": "https://www.facebook.com/RepMariaSalazar/",
+      "label": "Rep. María Elvira Salazar",
+      "sourcePageUrl": "https://salazar.house.gov/",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "platform": "Instagram",
+      "url": "https://www.instagram.com/repmariasalazar/?utm_source=ig_embed&utm_campaign=loading",
+      "label": "repmariasalazar",
+      "sourcePageUrl": "https://salazar.house.gov/",
+      "reviewStatus": "unreviewed"
+    }
+  ],
+  "websiteCandidates": [
+    {
+      "url": "https://salazar.house.gov/contact",
+      "label": "Contact Us",
+      "sourcePageUrl": "https://salazar.house.gov/",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "url": "https://salazar.house.gov/contact/newsletter-subscribe",
+      "label": "Subscribe to our newsletter",
+      "sourcePageUrl": "https://salazar.house.gov/",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "url": "https://salazar.house.gov/contact/offices",
+      "label": "Office Locations",
+      "sourcePageUrl": "https://salazar.house.gov/",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "url": "https://salazar.house.gov/contact/website-problem",
+      "label": "Website Problem",
+      "sourcePageUrl": "https://salazar.house.gov/",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "url": "https://salazar.house.gov/contact/newsletter-unsubscribe",
+      "label": "cancel or unsubscribe",
+      "sourcePageUrl": "https://salazar.house.gov/",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "url": "https://salazar.house.gov/contact/offices/washington-dc-office",
+      "label": "Washington DC Office",
+      "sourcePageUrl": "https://salazar.house.gov/",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "url": "https://salazar.house.gov/contact/offices/main-district-office-0",
+      "label": "Main District Office",
+      "sourcePageUrl": "https://salazar.house.gov/",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "url": "https://salazar.house.gov/contact/offices/palmetto-bay",
+      "label": "Palmetto Bay",
+      "sourcePageUrl": "https://salazar.house.gov/",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "url": "https://salazar.house.gov/contact/offices/cutler-bay",
+      "label": "Cutler Bay",
+      "sourcePageUrl": "https://salazar.house.gov/",
+      "reviewStatus": "unreviewed"
+    }
+  ],
+  "errors": [],
+  "httpStatus": 200,
+  "finalUrl": "https://salazar.house.gov/",
+  "sourceSnapshotSha256": "be7e0ac6d9ecc3f06ba809e90a14c615f97498969c405c6fdf93ff9f7a5abc1d",
+  "contentType": "text/html",
+  "pageTitle": "Representative Maria Salazar |",
+  "candidateSummary": {
+    "portraits": 6,
+    "contacts": 2,
+    "socials": 3,
+    "websites": 9
+  }
+}

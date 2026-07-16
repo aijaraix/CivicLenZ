@@ -1,0 +1,244 @@
+{
+  "enrichmentRecordVersion": "1.0.0",
+  "enrichmentRecordId": "26937e54-1bed-54c6-841f-cf524cc5df67",
+  "taskId": "9d3b7b93-7950-5685-87dd-42c93d08cf45",
+  "seatKey": "fl-florida-state-senator-district-17-17",
+  "displayName": "Carlos Guillermo Smith",
+  "officeTitle": "Florida State Senator, District 17",
+  "sourceUrl": "https://www.flsenate.gov/Senators/2024-2026/S17",
+  "fetchedAt": "2026-07-16T05:20:39Z",
+  "collectionStatus": "success",
+  "reviewStatus": "unreviewed",
+  "publicationAllowed": false,
+  "portraitCandidates": [
+    {
+      "url": "https://www.flsenate.gov/PublishedContent/Senators/2024-2026/Photos/s17_5256.jpg",
+      "method": "img",
+      "score": 30,
+      "altText": "Senator Smith",
+      "sourcePageUrl": "https://www.flsenate.gov/Senators/S17",
+      "rightsStatus": "review_required",
+      "identityReviewStatus": "unreviewed",
+      "httpStatus": 200,
+      "finalUrl": "https://www.flsenate.gov/PublishedContent/Senators/2024-2026/Photos/s17_5256.jpg",
+      "contentType": "image/jpeg",
+      "byteSize": 52254,
+      "imageSha256": "4cf2f53b45795819975416305589e60a2f35776a6633f6d45a03a35e74f8b674",
+      "downloadStatus": "captured_for_hash"
+    },
+    {
+      "url": "https://www.flsenate.gov/PublishedContent/Offices/Senator/2026_Budget_Victories_Press_Release.jpg",
+      "method": "img",
+      "score": 18,
+      "altText": null,
+      "sourcePageUrl": "https://www.flsenate.gov/Senators/S17",
+      "rightsStatus": "review_required",
+      "identityReviewStatus": "unreviewed",
+      "httpStatus": 200,
+      "finalUrl": "https://www.flsenate.gov/PublishedContent/Offices/Senator/2026_Budget_Victories_Press_Release.jpg",
+      "contentType": "image/jpeg",
+      "byteSize": 5446,
+      "imageSha256": "33bb6cbed7108cd09bc5c1dcb3eb2703f8fe0d049eb256824f9c373fb579934f",
+      "downloadStatus": "captured_for_hash"
+    },
+    {
+      "url": "https://www.flsenate.gov/PublishedContent/Offices/Senator/EMERGENCY_STOPGAP_FUNDING_FOR_FLORIDA_HIV_PATIENTS_SIGNED_INTO_LAW.jpg",
+      "method": "img",
+      "score": 18,
+      "altText": null,
+      "sourcePageUrl": "https://www.flsenate.gov/Senators/S17",
+      "rightsStatus": "review_required",
+      "identityReviewStatus": "unreviewed",
+      "httpStatus": 200,
+      "finalUrl": "https://www.flsenate.gov/PublishedContent/Offices/Senator/EMERGENCY_STOPGAP_FUNDING_FOR_FLORIDA_HIV_PATIENTS_SIGNED_INTO_LAW.jpg",
+      "contentType": "image/jpeg",
+      "byteSize": 4272,
+      "imageSha256": "cd25b514691e5c620c7edc21f2db844a39955fd76a22e392d30b552be8fb5d2e",
+      "downloadStatus": "captured_for_hash"
+    },
+    {
+      "url": "https://www.flsenate.gov/PublishedContent/Offices/Senator/Press_Release__10_Year_Pulse_Remembrance.jpg",
+      "method": "img",
+      "score": 18,
+      "altText": null,
+      "sourcePageUrl": "https://www.flsenate.gov/Senators/S17",
+      "rightsStatus": "review_required",
+      "identityReviewStatus": "unreviewed",
+      "httpStatus": 200,
+      "finalUrl": "https://www.flsenate.gov/PublishedContent/Offices/Senator/Press_Release__10_Year_Pulse_Remembrance.jpg",
+      "contentType": "image/jpeg",
+      "byteSize": 4822,
+      "imageSha256": "61920efeb9bb0b565dbfce968d0d4e214a3ec5bdcbc3d572b3316bb97657707f",
+      "downloadStatus": "captured_for_hash"
+    },
+    {
+      "url": "https://www.flsenate.gov/PublishedContent/Offices/Senator/Press_Release__SB_658___608_Water_Safety_Requirements_for_the_Rental_of_Residential_and_Vacation_Properties.jpg",
+      "method": "img",
+      "score": 18,
+      "altText": null,
+      "sourcePageUrl": "https://www.flsenate.gov/Senators/S17",
+      "rightsStatus": "review_required",
+      "identityReviewStatus": "unreviewed",
+      "httpStatus": 200,
+      "finalUrl": "https://www.flsenate.gov/PublishedContent/Offices/Senator/Press_Release__SB_658___608_Water_Safety_Requirements_for_the_Rental_of_Residential_and_Vacation_Properties.jpg",
+      "contentType": "image/jpeg",
+      "byteSize": 5480,
+      "imageSha256": "733e31faff872d03c5536dd7aa3798681b73bbe9ca0c320fa2e375c32b931c42",
+      "downloadStatus": "captured_for_hash"
+    },
+    {
+      "url": "https://www.flsenate.gov/PublishedContent/Session/Redistricting/Districts/SD2022/webmaps/sd17_webmap.png",
+      "method": "img",
+      "score": 9,
+      "altText": "District 17 map",
+      "sourcePageUrl": "https://www.flsenate.gov/Senators/S17",
+      "rightsStatus": "review_required",
+      "identityReviewStatus": "unreviewed",
+      "httpStatus": 200,
+      "finalUrl": "https://www.flsenate.gov/PublishedContent/Session/Redistricting/Districts/SD2022/webmaps/sd17_webmap.png",
+      "contentType": "image/png",
+      "byteSize": 75309,
+      "imageSha256": "2689fd1341626fe87474c4accfffcb8c3fdfaaa105f04dc56862f3bbb709941a",
+      "downloadStatus": "captured_for_hash"
+    }
+  ],
+  "contactCandidates": [
+    {
+      "type": "email",
+      "value": "smith.carlos.web@flsenate.gov",
+      "label": "smith.carlos.web@flsenate.gov",
+      "sourcePageUrl": "https://www.flsenate.gov/Senators/S17"
+    },
+    {
+      "type": "email",
+      "value": "webmaster@flsenate.gov",
+      "label": "email",
+      "sourcePageUrl": "https://www.flsenate.gov/Senators/S17"
+    },
+    {
+      "type": "phone",
+      "value": "(407) 893-2422",
+      "label": null,
+      "sourcePageUrl": "https://www.flsenate.gov/Senators/S17"
+    },
+    {
+      "type": "phone",
+      "value": "(850) 487-5017",
+      "label": null,
+      "sourcePageUrl": "https://www.flsenate.gov/Senators/S17"
+    }
+  ],
+  "socialCandidates": [
+    {
+      "platform": "X",
+      "url": "http://www.twitter.com/flsenate",
+      "label": "Twitter",
+      "sourcePageUrl": "https://www.flsenate.gov/Senators/S17",
+      "reviewStatus": "unreviewed"
+    }
+  ],
+  "websiteCandidates": [
+    {
+      "url": "https://www.flsenate.gov/Session/ExecutiveAppointments",
+      "label": "Executive Appointments",
+      "sourcePageUrl": "https://www.flsenate.gov/Senators/S17",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "url": "https://www.flsenate.gov/Media/VideoSchedule",
+      "label": "Video Broadcast Schedule",
+      "sourcePageUrl": "https://www.flsenate.gov/Senators/S17",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "url": "https://www.flsenate.gov/About/Contact",
+      "label": "Contact Us",
+      "sourcePageUrl": "https://www.flsenate.gov/Senators/S17",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "url": "https://www.flsenate.gov/Offices",
+      "label": "Offices",
+      "sourcePageUrl": "https://www.flsenate.gov/Senators/S17",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "url": "https://www.flsenate.gov/Offices/President",
+      "label": "President's Office",
+      "sourcePageUrl": "https://www.flsenate.gov/Senators/S17",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "url": "https://www.flsenate.gov/Offices/Majority",
+      "label": "Majority Office",
+      "sourcePageUrl": "https://www.flsenate.gov/Senators/S17",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "url": "https://www.flsenate.gov/Offices/Minority",
+      "label": "Minority Office",
+      "sourcePageUrl": "https://www.flsenate.gov/Senators/S17",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "url": "https://www.flsenate.gov/Offices/Secretary",
+      "label": "Secretary's Office",
+      "sourcePageUrl": "https://www.flsenate.gov/Senators/S17",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "url": "https://www.flsenate.gov/Reference/PublicRecords",
+      "label": "Public Records",
+      "sourcePageUrl": "https://www.flsenate.gov/Senators/S17",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "url": "https://www.flsenate.gov/PublishedContent/Offices/Senator/Press_Release__10_Year_Pulse_Remembrance.pdf",
+      "label": "Senator Carlos Guillermo Smith recognizes 10-year Pulse Nightclub Remembrance",
+      "sourcePageUrl": "https://www.flsenate.gov/Senators/S17",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "url": "https://www.flsenate.gov/PublishedContent/Offices/Senator/2026_Budget_Victories_Press_Release.pdf",
+      "label": "Senator Carlos Guillermo Smith Secures $8 Million+ In State Budget For Central Florida Families, Non",
+      "sourcePageUrl": "https://www.flsenate.gov/Senators/S17",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "url": "https://www.flsenate.gov/PublishedContent/Offices/Senator/EMERGENCY_STOPGAP_FUNDING_FOR_FLORIDA_HIV_PATIENTS_SIGNED_INTO_LAW.pdf",
+      "label": "EMERGENCY STOPGAP FUNDING FOR FLORIDA HIV PATIENTS SIGNED INTO LAW",
+      "sourcePageUrl": "https://www.flsenate.gov/Senators/S17",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "url": "https://www.flsenate.gov/PublishedContent/Offices/Senator/Press_Release__SB_658___608_Water_Safety_Requirements_for_the_Rental_of_Residential_and_Vacation_Properties.pdf",
+      "label": "SENATOR SMITH PASSES GROUNDBREAKING WATER SAFETY BILL IN FLORIDA SENATE",
+      "sourcePageUrl": "https://www.flsenate.gov/Senators/S17",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "url": "https://www.flsenate.gov/Session/ExecutiveAppointments/",
+      "label": "Executive Appointments",
+      "sourcePageUrl": "https://www.flsenate.gov/Senators/S17",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "url": "https://www.flsenate.gov/About/Contact#connect",
+      "label": "Connect with the Senate",
+      "sourcePageUrl": "https://www.flsenate.gov/Senators/S17",
+      "reviewStatus": "unreviewed"
+    }
+  ],
+  "errors": [],
+  "httpStatus": 200,
+  "finalUrl": "https://www.flsenate.gov/Senators/S17",
+  "sourceSnapshotSha256": "092bfadd510fe110d8b150d5ca7df9f848c6c84de12cd9157c5fec2886ae4a64",
+  "contentType": "text/html",
+  "pageTitle": "Senator Smith - The Florida Senate",
+  "candidateSummary": {
+    "portraits": 6,
+    "contacts": 4,
+    "socials": 1,
+    "websites": 15
+  }
+}

@@ -1,0 +1,146 @@
+{
+  "enrichmentRecordVersion": "1.0.0",
+  "enrichmentRecordId": "ebbd17e1-ce0c-5269-aa6d-7efd37c7a19f",
+  "taskId": "e10718a3-c042-5b3e-ad6e-a05c068ac536",
+  "seatKey": "fl-florida-state-representative-district-101-101",
+  "displayName": "Hillary Cassel",
+  "officeTitle": "Florida State Representative, District 101",
+  "sourceUrl": "https://www.flhouse.gov/Sections/Representatives/details.aspx?MemberId=4895&LegislativeTermId=91",
+  "fetchedAt": "2026-07-16T05:20:01Z",
+  "collectionStatus": "success",
+  "reviewStatus": "unreviewed",
+  "publicationAllowed": false,
+  "portraitCandidates": [
+    {
+      "url": "https://www.flhouse.gov/FileStores/Web/Imaging/Member/cutout%2f4895.png",
+      "method": "img",
+      "score": 39,
+      "altText": "Representative Cassel Photo",
+      "sourcePageUrl": "https://www.flhouse.gov/Sections/Representatives/custom/details.aspx?MemberId=4895&LegislativeTermId=91",
+      "rightsStatus": "review_required",
+      "identityReviewStatus": "unreviewed",
+      "httpStatus": 200,
+      "finalUrl": "https://www.flhouse.gov/FileStores/Web/Imaging/Member/cutout%2F4895.png",
+      "contentType": "image/png",
+      "byteSize": 479504,
+      "imageSha256": "4be35d380ff64080fe7738a694d0c687d162953f9e3fc916bfe0effe2c1e4ac6",
+      "downloadStatus": "captured_for_hash"
+    },
+    {
+      "url": "https://www.flhouse.gov/FileStores/Web/Imaging/PhotoAlbums/HousePhotoSized7958.JPG",
+      "method": "img",
+      "score": 30,
+      "altText": "Representative Cassel Photo",
+      "sourcePageUrl": "https://www.flhouse.gov/Sections/Representatives/custom/details.aspx?MemberId=4895&LegislativeTermId=91",
+      "rightsStatus": "review_required",
+      "identityReviewStatus": "unreviewed",
+      "httpStatus": 200,
+      "finalUrl": "https://www.flhouse.gov/FileStores/Web/Imaging/PhotoAlbums/HousePhotoSized7958.JPG",
+      "contentType": "image/jpeg",
+      "byteSize": 17445,
+      "imageSha256": "6b1ce199977c5cf435a39fbc44b1978915c0c6afa701be5773984f1a7a5d32cf",
+      "downloadStatus": "captured_for_hash"
+    },
+    {
+      "url": "https://www.flhouse.gov/Images/bronze-seal-250.png?cb=4.6.654349",
+      "method": "og:image",
+      "score": 14,
+      "altText": null,
+      "sourcePageUrl": "https://www.flhouse.gov/Sections/Representatives/custom/details.aspx?MemberId=4895&LegislativeTermId=91",
+      "rightsStatus": "review_required",
+      "identityReviewStatus": "unreviewed",
+      "httpStatus": 200,
+      "finalUrl": "https://www.flhouse.gov/Images/bronze-seal-250.png?cb=4.6.654349",
+      "contentType": "image/png",
+      "byteSize": 150275,
+      "imageSha256": "36f7c4317f0cc62c44ff5bbfc0a0e5eebf014be23c9c8826141f11a70d9e7ff8",
+      "downloadStatus": "captured_for_hash"
+    },
+    {
+      "url": "https://www.flhouse.gov/api/Member/get-member-uploaded-photo/4895/MemberPhotoSized8349.jpg/image",
+      "method": "img",
+      "score": 14,
+      "altText": null,
+      "sourcePageUrl": "https://www.flhouse.gov/Sections/Representatives/custom/details.aspx?MemberId=4895&LegislativeTermId=91",
+      "rightsStatus": "review_required",
+      "identityReviewStatus": "unreviewed",
+      "httpStatus": 200,
+      "finalUrl": "https://www.flhouse.gov/api/Member/get-member-uploaded-photo/4895/MemberPhotoSized8349.jpg/image",
+      "contentType": "image/jpeg",
+      "byteSize": 267836,
+      "imageSha256": "b15d1cb2b3785b21cebee3399af6e318f7dad30e5a717310df1a5a15cc22c476",
+      "downloadStatus": "captured_for_hash"
+    },
+    {
+      "url": "https://www.flhouse.gov/api/Member/get-member-uploaded-photo/4895/MemberPhotoSized8410.jpg/image",
+      "method": "img",
+      "score": 14,
+      "altText": null,
+      "sourcePageUrl": "https://www.flhouse.gov/Sections/Representatives/custom/details.aspx?MemberId=4895&LegislativeTermId=91",
+      "rightsStatus": "review_required",
+      "identityReviewStatus": "unreviewed",
+      "httpStatus": 200,
+      "finalUrl": "https://www.flhouse.gov/api/Member/get-member-uploaded-photo/4895/MemberPhotoSized8410.jpg/image",
+      "contentType": "image/jpeg",
+      "byteSize": 354993,
+      "imageSha256": "a72a6f27eb181514ee82c7e4a08931cb0da77db828fa08e27766607f8ea95e3f",
+      "downloadStatus": "captured_for_hash"
+    },
+    {
+      "url": "https://www.flhouse.gov/api/Member/get-member-uploaded-photo/4895/MemberPhotoSized8475.JPG/image",
+      "method": "img",
+      "score": 14,
+      "altText": null,
+      "sourcePageUrl": "https://www.flhouse.gov/Sections/Representatives/custom/details.aspx?MemberId=4895&LegislativeTermId=91",
+      "rightsStatus": "review_required",
+      "identityReviewStatus": "unreviewed",
+      "httpStatus": 200,
+      "finalUrl": "https://www.flhouse.gov/api/Member/get-member-uploaded-photo/4895/MemberPhotoSized8475.JPG/image",
+      "contentType": "image/jpeg",
+      "byteSize": 284607,
+      "imageSha256": "295d38dd069a6ff37135932faab2af36ec9c3987a57f191d23c6a06a035555c4",
+      "downloadStatus": "captured_for_hash"
+    }
+  ],
+  "contactCandidates": [
+    {
+      "type": "phone",
+      "value": "(850) 717-5101",
+      "label": null,
+      "sourcePageUrl": "https://www.flhouse.gov/Sections/Representatives/custom/details.aspx?MemberId=4895&LegislativeTermId=91"
+    },
+    {
+      "type": "phone",
+      "value": "(954) 872-0180",
+      "label": null,
+      "sourcePageUrl": "https://www.flhouse.gov/Sections/Representatives/custom/details.aspx?MemberId=4895&LegislativeTermId=91"
+    }
+  ],
+  "socialCandidates": [],
+  "websiteCandidates": [
+    {
+      "url": "https://www.flhouse.gov/Sections/Representatives/custom/contactmember.aspx?MemberId=4895&LegislativeTermId=91",
+      "label": "Contact Member",
+      "sourcePageUrl": "https://www.flhouse.gov/Sections/Representatives/custom/details.aspx?MemberId=4895&LegislativeTermId=91",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "url": "https://www.flhouse.gov/Sections/Representatives/custom/maps-and-offices.aspx?MemberId=4895&LegislativeTermId=91",
+      "label": "Maps & Offices",
+      "sourcePageUrl": "https://www.flhouse.gov/Sections/Representatives/custom/details.aspx?MemberId=4895&LegislativeTermId=91",
+      "reviewStatus": "unreviewed"
+    }
+  ],
+  "errors": [],
+  "httpStatus": 200,
+  "finalUrl": "https://www.flhouse.gov/Sections/Representatives/custom/details.aspx?MemberId=4895&LegislativeTermId=91",
+  "sourceSnapshotSha256": "957df7f7170089b44d093a1c107fd8f6517351e34a92c8df264e68e5c41ecdd0",
+  "contentType": "text/html",
+  "pageTitle": "Hillary Cassel  - 2024 - 2026 ( Speaker Perez ) | Florida House of Representatives",
+  "candidateSummary": {
+    "portraits": 6,
+    "contacts": 2,
+    "socials": 0,
+    "websites": 2
+  }
+}

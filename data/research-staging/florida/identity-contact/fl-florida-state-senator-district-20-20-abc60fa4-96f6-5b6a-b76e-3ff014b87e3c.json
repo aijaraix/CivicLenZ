@@ -1,0 +1,238 @@
+{
+  "enrichmentRecordVersion": "1.0.0",
+  "enrichmentRecordId": "506a8535-5dbc-549d-832e-59387198a7f9",
+  "taskId": "abc60fa4-96f6-5b6a-b76e-3ff014b87e3c",
+  "seatKey": "fl-florida-state-senator-district-20-20",
+  "displayName": "Jim Boyd",
+  "officeTitle": "Florida State Senator, District 20",
+  "sourceUrl": "https://www.flsenate.gov/Senators/2024-2026/S20",
+  "fetchedAt": "2026-07-16T05:20:40Z",
+  "collectionStatus": "success",
+  "reviewStatus": "unreviewed",
+  "publicationAllowed": false,
+  "portraitCandidates": [
+    {
+      "url": "https://www.flsenate.gov/PublishedContent/Senators/2020-2022/5070/Documents/Newsletter_for_Sen_Boyd_April_23_2021.jpg",
+      "method": "img",
+      "score": 30,
+      "altText": null,
+      "sourcePageUrl": "https://www.flsenate.gov/Senators/S20",
+      "rightsStatus": "review_required",
+      "identityReviewStatus": "unreviewed",
+      "httpStatus": 200,
+      "finalUrl": "https://www.flsenate.gov/PublishedContent/Senators/2020-2022/5070/Documents/Newsletter_for_Sen_Boyd_April_23_2021.jpg",
+      "contentType": "image/jpeg",
+      "byteSize": 5897,
+      "imageSha256": "cb13fe6ce1e09818e0acc18d6fb099154fe2a3ea51392888f81b408b08faab2d",
+      "downloadStatus": "captured_for_hash"
+    },
+    {
+      "url": "https://www.flsenate.gov/PublishedContent/Senators/2020-2022/5070/Documents/Newsletter_for_Sen_Boyd_May_14_2021.jpg",
+      "method": "img",
+      "score": 30,
+      "altText": null,
+      "sourcePageUrl": "https://www.flsenate.gov/Senators/S20",
+      "rightsStatus": "review_required",
+      "identityReviewStatus": "unreviewed",
+      "httpStatus": 200,
+      "finalUrl": "https://www.flsenate.gov/PublishedContent/Senators/2020-2022/5070/Documents/Newsletter_for_Sen_Boyd_May_14_2021.jpg",
+      "contentType": "image/jpeg",
+      "byteSize": 5849,
+      "imageSha256": "0a7557bc6869f97cba959920b212d740478b30b37e561301e63b60d5cf531c2d",
+      "downloadStatus": "captured_for_hash"
+    },
+    {
+      "url": "https://www.flsenate.gov/PublishedContent/Senators/2020-2022/5070/Documents/Newsletter_for_Sen_Boyd_May_26_2021.jpg",
+      "method": "img",
+      "score": 30,
+      "altText": null,
+      "sourcePageUrl": "https://www.flsenate.gov/Senators/S20",
+      "rightsStatus": "review_required",
+      "identityReviewStatus": "unreviewed",
+      "httpStatus": 200,
+      "finalUrl": "https://www.flsenate.gov/PublishedContent/Senators/2020-2022/5070/Documents/Newsletter_for_Sen_Boyd_May_26_2021.jpg",
+      "contentType": "image/jpeg",
+      "byteSize": 5650,
+      "imageSha256": "0bd80f708413932ccdfcf6db9093bcb19e92f017e862952959bbd45f93abd79c",
+      "downloadStatus": "captured_for_hash"
+    },
+    {
+      "url": "https://www.flsenate.gov/PublishedContent/Senators/2024-2026/Photos/s20_5070.jpg",
+      "method": "img",
+      "score": 30,
+      "altText": "Senator Boyd",
+      "sourcePageUrl": "https://www.flsenate.gov/Senators/S20",
+      "rightsStatus": "review_required",
+      "identityReviewStatus": "unreviewed",
+      "httpStatus": 200,
+      "finalUrl": "https://www.flsenate.gov/PublishedContent/Senators/2024-2026/Photos/s20_5070.jpg",
+      "contentType": "image/jpeg",
+      "byteSize": 55462,
+      "imageSha256": "89cb36721a98481563456e46e2fc1bab094a89b5fcea137744f248a554a55ab5",
+      "downloadStatus": "captured_for_hash"
+    },
+    {
+      "url": "https://www.flsenate.gov/PublishedContent/Senators/2022-2024/5070/Documents/ManateeDelegationMtgNotice_October52023.jpg",
+      "method": "img",
+      "score": 18,
+      "altText": null,
+      "sourcePageUrl": "https://www.flsenate.gov/Senators/S20",
+      "rightsStatus": "review_required",
+      "identityReviewStatus": "unreviewed",
+      "httpStatus": 200,
+      "finalUrl": "https://www.flsenate.gov/PublishedContent/Senators/2022-2024/5070/Documents/ManateeDelegationMtgNotice_October52023.jpg",
+      "contentType": "image/jpeg",
+      "byteSize": 3101,
+      "imageSha256": "0958b7f83ba577c92ed316d64ee42a74ee9d4da41093e93eb99766602baed9f1",
+      "downloadStatus": "captured_for_hash"
+    },
+    {
+      "url": "https://www.flsenate.gov/PublishedContent/Session/Redistricting/Districts/SD2022/webmaps/sd20_webmap.png",
+      "method": "img",
+      "score": 9,
+      "altText": "District 20 map",
+      "sourcePageUrl": "https://www.flsenate.gov/Senators/S20",
+      "rightsStatus": "review_required",
+      "identityReviewStatus": "unreviewed",
+      "httpStatus": 200,
+      "finalUrl": "https://www.flsenate.gov/PublishedContent/Session/Redistricting/Districts/SD2022/webmaps/sd20_webmap.png",
+      "contentType": "image/png",
+      "byteSize": 114649,
+      "imageSha256": "dc0ce8f2b083aaecd613c978eaf995edb2ce1bf4977a0e19f99c14895840bb9d",
+      "downloadStatus": "captured_for_hash"
+    }
+  ],
+  "contactCandidates": [
+    {
+      "type": "email",
+      "value": "boyd.jim.web@flsenate.gov",
+      "label": "boyd.jim.web@flsenate.gov",
+      "sourcePageUrl": "https://www.flsenate.gov/Senators/S20"
+    },
+    {
+      "type": "email",
+      "value": "webmaster@flsenate.gov",
+      "label": "email",
+      "sourcePageUrl": "https://www.flsenate.gov/Senators/S20"
+    },
+    {
+      "type": "phone",
+      "value": "(850) 487-5020",
+      "label": null,
+      "sourcePageUrl": "https://www.flsenate.gov/Senators/S20"
+    },
+    {
+      "type": "phone",
+      "value": "(941) 742-6445",
+      "label": null,
+      "sourcePageUrl": "https://www.flsenate.gov/Senators/S20"
+    }
+  ],
+  "socialCandidates": [
+    {
+      "platform": "X",
+      "url": "http://www.twitter.com/flsenate",
+      "label": "Twitter",
+      "sourcePageUrl": "https://www.flsenate.gov/Senators/S20",
+      "reviewStatus": "unreviewed"
+    }
+  ],
+  "websiteCandidates": [
+    {
+      "url": "https://www.flsenate.gov/Session/ExecutiveAppointments",
+      "label": "Executive Appointments",
+      "sourcePageUrl": "https://www.flsenate.gov/Senators/S20",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "url": "https://www.flsenate.gov/Media/VideoSchedule",
+      "label": "Video Broadcast Schedule",
+      "sourcePageUrl": "https://www.flsenate.gov/Senators/S20",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "url": "https://www.flsenate.gov/About/Contact",
+      "label": "Contact Us",
+      "sourcePageUrl": "https://www.flsenate.gov/Senators/S20",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "url": "https://www.flsenate.gov/Offices",
+      "label": "Offices",
+      "sourcePageUrl": "https://www.flsenate.gov/Senators/S20",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "url": "https://www.flsenate.gov/Offices/President",
+      "label": "President's Office",
+      "sourcePageUrl": "https://www.flsenate.gov/Senators/S20",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "url": "https://www.flsenate.gov/Offices/Majority",
+      "label": "Majority Office",
+      "sourcePageUrl": "https://www.flsenate.gov/Senators/S20",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "url": "https://www.flsenate.gov/Offices/Minority",
+      "label": "Minority Office",
+      "sourcePageUrl": "https://www.flsenate.gov/Senators/S20",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "url": "https://www.flsenate.gov/Offices/Secretary",
+      "label": "Secretary's Office",
+      "sourcePageUrl": "https://www.flsenate.gov/Senators/S20",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "url": "https://www.flsenate.gov/Reference/PublicRecords",
+      "label": "Public Records",
+      "sourcePageUrl": "https://www.flsenate.gov/Senators/S20",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "url": "https://www.flsenate.gov/PublishedContent/Senators/2020-2022/5070/Documents/Newsletter_for_Sen_Boyd_May_26_2021.pdf",
+      "label": "Boyd's Eye View - May 26, 2021",
+      "sourcePageUrl": "https://www.flsenate.gov/Senators/S20",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "url": "https://www.flsenate.gov/PublishedContent/Senators/2020-2022/5070/Documents/Newsletter_for_Sen_Boyd_May_14_2021.pdf",
+      "label": "Boyd's Eye View - May 14, 2021",
+      "sourcePageUrl": "https://www.flsenate.gov/Senators/S20",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "url": "https://www.flsenate.gov/PublishedContent/Senators/2020-2022/5070/Documents/Newsletter_for_Sen_Boyd_April_23_2021.pdf",
+      "label": "Boyd's Eye View - April 23, 2021",
+      "sourcePageUrl": "https://www.flsenate.gov/Senators/S20",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "url": "https://www.flsenate.gov/Session/ExecutiveAppointments/",
+      "label": "Executive Appointments",
+      "sourcePageUrl": "https://www.flsenate.gov/Senators/S20",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "url": "https://www.flsenate.gov/About/Contact#connect",
+      "label": "Connect with the Senate",
+      "sourcePageUrl": "https://www.flsenate.gov/Senators/S20",
+      "reviewStatus": "unreviewed"
+    }
+  ],
+  "errors": [],
+  "httpStatus": 200,
+  "finalUrl": "https://www.flsenate.gov/Senators/S20",
+  "sourceSnapshotSha256": "7f0310687b2025457fee0eac0451ab24b904472dd1806ebd52b852693ecc2d66",
+  "contentType": "text/html",
+  "pageTitle": "Senator Boyd - The Florida Senate",
+  "candidateSummary": {
+    "portraits": 6,
+    "contacts": 4,
+    "socials": 1,
+    "websites": 14
+  }
+}

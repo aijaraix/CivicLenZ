@@ -1,0 +1,242 @@
+{
+  "enrichmentRecordVersion": "1.0.0",
+  "enrichmentRecordId": "fc10b277-da46-5ad9-b80e-68030c6ea4e2",
+  "taskId": "6bcc2630-78ac-527f-8922-b73f80374c1d",
+  "seatKey": "fl-florida-state-senator-district-37-37",
+  "displayName": "Jason W. B. Pizzo",
+  "officeTitle": "Florida State Senator, District 37",
+  "sourceUrl": "https://www.flsenate.gov/Senators/2024-2026/S37",
+  "fetchedAt": "2026-07-16T05:20:45Z",
+  "collectionStatus": "success",
+  "reviewStatus": "unreviewed",
+  "publicationAllowed": false,
+  "portraitCandidates": [
+    {
+      "url": "https://www.flsenate.gov/PublishedContent/Senators/2020-2022/5345/Documents/Pizzo_Newsletter_-_December_202112.jpg",
+      "method": "img",
+      "score": 30,
+      "altText": null,
+      "sourcePageUrl": "https://www.flsenate.gov/Senators/S37",
+      "rightsStatus": "review_required",
+      "identityReviewStatus": "unreviewed",
+      "httpStatus": 200,
+      "finalUrl": "https://www.flsenate.gov/PublishedContent/Senators/2020-2022/5345/Documents/Pizzo_Newsletter_-_December_202112.jpg",
+      "contentType": "image/jpeg",
+      "byteSize": 4983,
+      "imageSha256": "3f48a78b2015d7a87e7519060fde00877b75fc8e4c9c3d4a076a0ab1fd1c77f3",
+      "downloadStatus": "captured_for_hash"
+    },
+    {
+      "url": "https://www.flsenate.gov/PublishedContent/Senators/2020-2022/5345/Documents/The_Pizzo_Post_-_February_2022.jpg",
+      "method": "img",
+      "score": 30,
+      "altText": null,
+      "sourcePageUrl": "https://www.flsenate.gov/Senators/S37",
+      "rightsStatus": "review_required",
+      "identityReviewStatus": "unreviewed",
+      "httpStatus": 429,
+      "finalUrl": "https://www.flsenate.gov/PublishedContent/Senators/2020-2022/5345/Documents/The_Pizzo_Post_-_February_2022.jpg",
+      "contentType": "text/plain",
+      "byteSize": 17,
+      "downloadStatus": "not_an_image_or_http_error"
+    },
+    {
+      "url": "https://www.flsenate.gov/PublishedContent/Senators/2020-2022/5345/Documents/The_Pizzo_Post_-_March_2022.jpg",
+      "method": "img",
+      "score": 30,
+      "altText": null,
+      "sourcePageUrl": "https://www.flsenate.gov/Senators/S37",
+      "rightsStatus": "review_required",
+      "identityReviewStatus": "unreviewed",
+      "httpStatus": 429,
+      "finalUrl": "https://www.flsenate.gov/PublishedContent/Senators/2020-2022/5345/Documents/The_Pizzo_Post_-_March_2022.jpg",
+      "contentType": "text/plain",
+      "byteSize": 17,
+      "downloadStatus": "not_an_image_or_http_error"
+    },
+    {
+      "url": "https://www.flsenate.gov/PublishedContent/Senators/2022-2024/5345/Documents/Sen__Pizzo_Form_6_Webinar.jpg",
+      "method": "img",
+      "score": 30,
+      "altText": null,
+      "sourcePageUrl": "https://www.flsenate.gov/Senators/S37",
+      "rightsStatus": "review_required",
+      "identityReviewStatus": "unreviewed",
+      "httpStatus": 429,
+      "finalUrl": "https://www.flsenate.gov/PublishedContent/Senators/2022-2024/5345/Documents/Sen__Pizzo_Form_6_Webinar.jpg",
+      "contentType": "text/plain",
+      "byteSize": 17,
+      "downloadStatus": "not_an_image_or_http_error"
+    },
+    {
+      "url": "https://www.flsenate.gov/PublishedContent/Senators/2024-2026/Photos/s37_5345.jpg",
+      "method": "img",
+      "score": 30,
+      "altText": "Senator Pizzo",
+      "sourcePageUrl": "https://www.flsenate.gov/Senators/S37",
+      "rightsStatus": "review_required",
+      "identityReviewStatus": "unreviewed",
+      "httpStatus": 429,
+      "finalUrl": "https://www.flsenate.gov/PublishedContent/Senators/2024-2026/Photos/s37_5345.jpg",
+      "contentType": "text/plain",
+      "byteSize": 17,
+      "downloadStatus": "not_an_image_or_http_error"
+    },
+    {
+      "url": "https://www.flsenate.gov/PublishedContent/Session/Redistricting/Districts/SD2022/webmaps/sd37_webmap.png",
+      "method": "img",
+      "score": 9,
+      "altText": "District 37 map",
+      "sourcePageUrl": "https://www.flsenate.gov/Senators/S37",
+      "rightsStatus": "review_required",
+      "identityReviewStatus": "unreviewed",
+      "httpStatus": 429,
+      "finalUrl": "https://www.flsenate.gov/PublishedContent/Session/Redistricting/Districts/SD2022/webmaps/sd37_webmap.png",
+      "contentType": "text/plain",
+      "byteSize": 17,
+      "downloadStatus": "not_an_image_or_http_error"
+    }
+  ],
+  "contactCandidates": [
+    {
+      "type": "email",
+      "value": "pizzo.jason.web@flsenate.gov",
+      "label": "pizzo.jason.web@flsenate.gov",
+      "sourcePageUrl": "https://www.flsenate.gov/Senators/S37"
+    },
+    {
+      "type": "email",
+      "value": "webmaster@flsenate.gov",
+      "label": "email",
+      "sourcePageUrl": "https://www.flsenate.gov/Senators/S37"
+    },
+    {
+      "type": "phone",
+      "value": "(850) 487-5037",
+      "label": null,
+      "sourcePageUrl": "https://www.flsenate.gov/Senators/S37"
+    },
+    {
+      "type": "phone",
+      "value": "1 (954) 893-5045",
+      "label": null,
+      "sourcePageUrl": "https://www.flsenate.gov/Senators/S37"
+    }
+  ],
+  "socialCandidates": [
+    {
+      "platform": "Facebook",
+      "url": "http://www.FaceBook.com/SenPizzo",
+      "label": null,
+      "sourcePageUrl": "https://www.flsenate.gov/Senators/S37",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "platform": "Instagram",
+      "url": "http://Instagram.com/SenPizzo",
+      "label": null,
+      "sourcePageUrl": "https://www.flsenate.gov/Senators/S37",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "platform": "X",
+      "url": "http://www.Twitter.com/SenPizzo",
+      "label": null,
+      "sourcePageUrl": "https://www.flsenate.gov/Senators/S37",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "platform": "X",
+      "url": "http://www.twitter.com/flsenate",
+      "label": "Twitter",
+      "sourcePageUrl": "https://www.flsenate.gov/Senators/S37",
+      "reviewStatus": "unreviewed"
+    }
+  ],
+  "websiteCandidates": [
+    {
+      "url": "https://www.flsenate.gov/Session/ExecutiveAppointments",
+      "label": "Executive Appointments",
+      "sourcePageUrl": "https://www.flsenate.gov/Senators/S37",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "url": "https://www.flsenate.gov/Media/VideoSchedule",
+      "label": "Video Broadcast Schedule",
+      "sourcePageUrl": "https://www.flsenate.gov/Senators/S37",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "url": "https://www.flsenate.gov/About/Contact",
+      "label": "Contact Us",
+      "sourcePageUrl": "https://www.flsenate.gov/Senators/S37",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "url": "https://www.flsenate.gov/Offices",
+      "label": "Offices",
+      "sourcePageUrl": "https://www.flsenate.gov/Senators/S37",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "url": "https://www.flsenate.gov/Offices/President",
+      "label": "President's Office",
+      "sourcePageUrl": "https://www.flsenate.gov/Senators/S37",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "url": "https://www.flsenate.gov/Offices/Majority",
+      "label": "Majority Office",
+      "sourcePageUrl": "https://www.flsenate.gov/Senators/S37",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "url": "https://www.flsenate.gov/Offices/Minority",
+      "label": "Minority Office",
+      "sourcePageUrl": "https://www.flsenate.gov/Senators/S37",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "url": "https://www.flsenate.gov/Offices/Secretary",
+      "label": "Secretary's Office",
+      "sourcePageUrl": "https://www.flsenate.gov/Senators/S37",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "url": "https://www.flsenate.gov/Reference/PublicRecords",
+      "label": "Public Records",
+      "sourcePageUrl": "https://www.flsenate.gov/Senators/S37",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "url": "https://www.flsenate.gov/PublishedContent/Senators/2020-2022/5345/Documents/Pizzo_Newsletter_-_December_202112.pdf",
+      "label": "The Pizzo Post - December 2021",
+      "sourcePageUrl": "https://www.flsenate.gov/Senators/S37",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "url": "https://www.flsenate.gov/Session/ExecutiveAppointments/",
+      "label": "Executive Appointments",
+      "sourcePageUrl": "https://www.flsenate.gov/Senators/S37",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "url": "https://www.flsenate.gov/About/Contact#connect",
+      "label": "Connect with the Senate",
+      "sourcePageUrl": "https://www.flsenate.gov/Senators/S37",
+      "reviewStatus": "unreviewed"
+    }
+  ],
+  "errors": [],
+  "httpStatus": 200,
+  "finalUrl": "https://www.flsenate.gov/Senators/S37",
+  "sourceSnapshotSha256": "a01522eec1ac6fa78674b37b88470cdf964e5a07ebe161a59adba4c4e3c4630e",
+  "contentType": "text/html",
+  "pageTitle": "Senator Pizzo - The Florida Senate",
+  "candidateSummary": {
+    "portraits": 6,
+    "contacts": 4,
+    "socials": 4,
+    "websites": 12
+  }
+}

@@ -1,0 +1,206 @@
+{
+  "enrichmentRecordVersion": "1.0.0",
+  "enrichmentRecordId": "4ea8389e-6673-5b4f-a93f-6383c965e9cf",
+  "taskId": "13c98731-cd64-533c-8f8a-6b3e7100675b",
+  "seatKey": "fl-united-states-representative-9",
+  "displayName": "Darren Soto",
+  "officeTitle": "United States Representative",
+  "sourceUrl": "https://soto.house.gov",
+  "fetchedAt": "2026-07-16T05:19:58Z",
+  "collectionStatus": "success",
+  "reviewStatus": "unreviewed",
+  "publicationAllowed": false,
+  "portraitCandidates": [
+    {
+      "url": "https://soto.house.gov/sites/evo-subsites/soto-evo.house.gov/files/styles/evo_image_full_width/public/featured_image/Screen%20Shot%202021-07-15%20at%2010.44.29%20AM.png?h=bdf3b847&itok=3yR3zlX1",
+      "method": "img",
+      "score": 33,
+      "altText": "Darren Soto stands in front of the U.S. Capitol",
+      "sourcePageUrl": "https://soto.house.gov/",
+      "rightsStatus": "review_required",
+      "identityReviewStatus": "unreviewed",
+      "httpStatus": 200,
+      "finalUrl": "https://soto.house.gov/sites/evo-subsites/soto-evo.house.gov/files/styles/evo_image_full_width/public/featured_image/Screen%20Shot%202021-07-15%20at%2010.44.29%20AM.png?h=bdf3b847&itok=3yR3zlX1",
+      "contentType": "image/png",
+      "byteSize": 2105540,
+      "imageSha256": "adf36310dbd1e28a17b7afc4a9951d01f6d36c6b4b449a953e3b6e01dc5efcab",
+      "downloadStatus": "captured_for_hash"
+    },
+    {
+      "url": "https://soto.house.gov/sites/evo-subsites/soto-evo.house.gov/files/styles/evo_image_full_width/public/evo-media-image/hdopls8bqaqnypt.jpeg?h=a1e1a043&itok=Y0b4XvHa",
+      "method": "img",
+      "score": 30,
+      "altText": "Rep. Soto and Commissioner Janer at presser",
+      "sourcePageUrl": "https://soto.house.gov/",
+      "rightsStatus": "review_required",
+      "identityReviewStatus": "unreviewed",
+      "httpStatus": 200,
+      "finalUrl": "https://soto.house.gov/sites/evo-subsites/soto-evo.house.gov/files/styles/evo_image_full_width/public/evo-media-image/hdopls8bqaqnypt.jpeg?h=a1e1a043&itok=Y0b4XvHa",
+      "contentType": "image/jpeg",
+      "byteSize": 188663,
+      "imageSha256": "e55a760ffb8ad738970f56bc2daeb9c745f6f467551afff21413ba0101729b28",
+      "downloadStatus": "captured_for_hash"
+    },
+    {
+      "url": "https://soto.house.gov/sites/evo-subsites/soto.house.gov/files/evo-media-image/soto_header_new.png",
+      "method": "og:image",
+      "score": 26,
+      "altText": null,
+      "sourcePageUrl": "https://soto.house.gov/",
+      "rightsStatus": "review_required",
+      "identityReviewStatus": "unreviewed",
+      "httpStatus": 200,
+      "finalUrl": "https://soto.house.gov/sites/evo-subsites/soto.house.gov/files/evo-media-image/soto_header_new.png",
+      "contentType": "image/png",
+      "byteSize": 91896,
+      "imageSha256": "c53e92642e7c38a6cd937f42d6a0c979fde7b130015661b8ea99df25ba4eaad9",
+      "downloadStatus": "captured_for_hash"
+    },
+    {
+      "url": "https://soto.house.gov/sites/evo-subsites/soto-evo.house.gov/files/styles/evo_image_full_width/public/evo-media-image/4ilebjoa.jpeg?h=ce7914f4&itok=nYAPwH4B",
+      "method": "img",
+      "score": 21,
+      "altText": "Soto with House Democrat background",
+      "sourcePageUrl": "https://soto.house.gov/",
+      "rightsStatus": "review_required",
+      "identityReviewStatus": "unreviewed",
+      "httpStatus": 200,
+      "finalUrl": "https://soto.house.gov/sites/evo-subsites/soto-evo.house.gov/files/styles/evo_image_full_width/public/evo-media-image/4ilebjoa.jpeg?h=ce7914f4&itok=nYAPwH4B",
+      "contentType": "image/jpeg",
+      "byteSize": 128539,
+      "imageSha256": "28e5972a1f6f0bb34c705e158a6421d678fda6d4681860f3b0baca760761f386",
+      "downloadStatus": "captured_for_hash"
+    },
+    {
+      "url": "https://soto.house.gov/sites/evo-subsites/soto-evo.house.gov/files/styles/evo_image_full_width/public/evo-media-image/Screenshot%202024-05-21%20at%202.52.35%E2%80%AFPM.png?h=150e63c7&itok=mAatvOLw",
+      "method": "img",
+      "score": 21,
+      "altText": "Rep. Soto speaking",
+      "sourcePageUrl": "https://soto.house.gov/",
+      "rightsStatus": "review_required",
+      "identityReviewStatus": "unreviewed",
+      "httpStatus": 200,
+      "finalUrl": "https://soto.house.gov/sites/evo-subsites/soto-evo.house.gov/files/styles/evo_image_full_width/public/evo-media-image/Screenshot%202024-05-21%20at%202.52.35%E2%80%AFPM.png?h=150e63c7&itok=mAatvOLw",
+      "contentType": "image/png",
+      "byteSize": 1335504,
+      "imageSha256": "eee9b25961057c081dd7f27b9add75c0e3fe1b93cfe61bfc2e9aa32bf0309dc0",
+      "downloadStatus": "captured_for_hash"
+    },
+    {
+      "url": "https://soto.house.gov/sites/evo-subsites/soto-evo.house.gov/files/styles/evo_image_full_width/public/evo-media-image/screenshot-2025-05-08-at-2.52.31-pm.png?h=eb8b11ee&itok=Cxt-J8e1",
+      "method": "img",
+      "score": 21,
+      "altText": "Soto in Meeting",
+      "sourcePageUrl": "https://soto.house.gov/",
+      "rightsStatus": "review_required",
+      "identityReviewStatus": "unreviewed",
+      "httpStatus": 200,
+      "finalUrl": "https://soto.house.gov/sites/evo-subsites/soto-evo.house.gov/files/styles/evo_image_full_width/public/evo-media-image/screenshot-2025-05-08-at-2.52.31-pm.png?h=eb8b11ee&itok=Cxt-J8e1",
+      "contentType": "image/png",
+      "byteSize": 2098657,
+      "imageSha256": "831c6a1292703a34a071c62ecb751f63bca5095d8b4e9a9504e5b7d140859945",
+      "downloadStatus": "captured_for_hash"
+    }
+  ],
+  "contactCandidates": [
+    {
+      "type": "phone",
+      "value": "(202) 225-9889",
+      "label": null,
+      "sourcePageUrl": "https://soto.house.gov/"
+    },
+    {
+      "type": "phone",
+      "value": "(407) 204-3370",
+      "label": null,
+      "sourcePageUrl": "https://soto.house.gov/"
+    },
+    {
+      "type": "phone",
+      "value": "(407) 452-1171",
+      "label": null,
+      "sourcePageUrl": "https://soto.house.gov/"
+    }
+  ],
+  "socialCandidates": [],
+  "websiteCandidates": [
+    {
+      "url": "https://soto.house.gov/contact/newsletter",
+      "label": "Newsletter Subscribe",
+      "sourcePageUrl": "https://soto.house.gov/",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "url": "https://soto.house.gov/contact",
+      "label": "Contact",
+      "sourcePageUrl": "https://soto.house.gov/",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "url": "https://soto.house.gov/contact/offices",
+      "label": "Offices",
+      "sourcePageUrl": "https://soto.house.gov/",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "url": "https://soto.house.gov/contact/share-your-story",
+      "label": "Share Your Story",
+      "sourcePageUrl": "https://soto.house.gov/",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "url": "https://soto.house.gov/contact/website-problem",
+      "label": "Website Problem",
+      "sourcePageUrl": "https://soto.house.gov/",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "url": "https://soto.house.gov/contact/constituent-stories",
+      "label": "Constituent Stories",
+      "sourcePageUrl": "https://soto.house.gov/",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "url": "https://soto.house.gov/contact/newsletters",
+      "label": "Newsletters",
+      "sourcePageUrl": "https://soto.house.gov/",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "url": "https://soto.house.gov/contact/offices/washington-dc-office",
+      "label": "Washington, D.C.",
+      "sourcePageUrl": "https://soto.house.gov/",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "url": "https://soto.house.gov/contact/offices/kissimmee",
+      "label": "Kissimmee",
+      "sourcePageUrl": "https://soto.house.gov/",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "url": "https://soto.house.gov/contact/offices/orlando-0",
+      "label": "Orlando",
+      "sourcePageUrl": "https://soto.house.gov/",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "url": "https://soto.house.gov/contact/newsletter-unsubscribe",
+      "label": "cancel or unsubscribe",
+      "sourcePageUrl": "https://soto.house.gov/",
+      "reviewStatus": "unreviewed"
+    }
+  ],
+  "errors": [],
+  "httpStatus": 200,
+  "finalUrl": "https://soto.house.gov/",
+  "sourceSnapshotSha256": "3ef59990ea2fb09d349d3b49cbfcc43626373581ee02fb200850098065e9d11c",
+  "contentType": "text/html",
+  "pageTitle": "Congressman Darren Soto |Representing the 9th District of Florida",
+  "candidateSummary": {
+    "portraits": 6,
+    "contacts": 3,
+    "socials": 0,
+    "websites": 11
+  }
+}

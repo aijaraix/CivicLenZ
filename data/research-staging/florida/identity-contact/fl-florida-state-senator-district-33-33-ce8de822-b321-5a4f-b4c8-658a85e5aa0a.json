@@ -1,0 +1,256 @@
+{
+  "enrichmentRecordVersion": "1.0.0",
+  "enrichmentRecordId": "87a06b38-65e4-57f2-85c0-a2f5b6098b89",
+  "taskId": "ce8de822-b321-5a4f-b4c8-658a85e5aa0a",
+  "seatKey": "fl-florida-state-senator-district-33-33",
+  "displayName": "Jonathan Martin",
+  "officeTitle": "Florida State Senator, District 33",
+  "sourceUrl": "https://www.flsenate.gov/Senators/2024-2026/S33",
+  "fetchedAt": "2026-07-16T05:20:44Z",
+  "collectionStatus": "success",
+  "reviewStatus": "unreviewed",
+  "publicationAllowed": false,
+  "portraitCandidates": [
+    {
+      "url": "https://www.flsenate.gov/PublishedContent/Senators/2024-2026/Photos/s33_5524.jpg",
+      "method": "img",
+      "score": 30,
+      "altText": "Senator Martin",
+      "sourcePageUrl": "https://www.flsenate.gov/Senators/S33",
+      "rightsStatus": "review_required",
+      "identityReviewStatus": "unreviewed",
+      "httpStatus": 200,
+      "finalUrl": "https://www.flsenate.gov/PublishedContent/Senators/2024-2026/Photos/s33_5524.jpg",
+      "contentType": "image/jpeg",
+      "byteSize": 57425,
+      "imageSha256": "9d1ed84c29e5abe21a6de5d207a558b49a722f6526e4a4ca873cff08bf92b6fb",
+      "downloadStatus": "captured_for_hash"
+    },
+    {
+      "url": "https://www.flsenate.gov/PublishedContent/Offices/Senator/2026-2027_Budget-edited.jpg",
+      "method": "img",
+      "score": 18,
+      "altText": null,
+      "sourcePageUrl": "https://www.flsenate.gov/Senators/S33",
+      "rightsStatus": "review_required",
+      "identityReviewStatus": "unreviewed",
+      "httpStatus": 200,
+      "finalUrl": "https://www.flsenate.gov/PublishedContent/Offices/Senator/2026-2027_Budget-edited.jpg",
+      "contentType": "image/jpeg",
+      "byteSize": 5960,
+      "imageSha256": "6be1a4121c0d8963d01dcc44c0e116c16411f6f1339086939c551688e7cb3d48",
+      "downloadStatus": "captured_for_hash"
+    },
+    {
+      "url": "https://www.flsenate.gov/PublishedContent/Offices/Senator/2026_The_First_60_Days__2_.jpg",
+      "method": "img",
+      "score": 18,
+      "altText": null,
+      "sourcePageUrl": "https://www.flsenate.gov/Senators/S33",
+      "rightsStatus": "review_required",
+      "identityReviewStatus": "unreviewed",
+      "httpStatus": 200,
+      "finalUrl": "https://www.flsenate.gov/PublishedContent/Offices/Senator/2026_The_First_60_Days__2_.jpg",
+      "contentType": "image/jpeg",
+      "byteSize": 5965,
+      "imageSha256": "41868ce0f2abd7f6f2c74e6fb9eedd101035744328c52aab1aaa0c7677f101be",
+      "downloadStatus": "captured_for_hash"
+    },
+    {
+      "url": "https://www.flsenate.gov/PublishedContent/Offices/Senator/Bill_signing_of_SB_1296_PERC.jpg",
+      "method": "img",
+      "score": 18,
+      "altText": null,
+      "sourcePageUrl": "https://www.flsenate.gov/Senators/S33",
+      "rightsStatus": "review_required",
+      "identityReviewStatus": "unreviewed",
+      "httpStatus": 200,
+      "finalUrl": "https://www.flsenate.gov/PublishedContent/Offices/Senator/Bill_signing_of_SB_1296_PERC.jpg",
+      "contentType": "image/jpeg",
+      "byteSize": 4169,
+      "imageSha256": "ef4ba855fe851f8211cf47db0b3adbec88be111de3852980711aa14a287fe9c2",
+      "downloadStatus": "captured_for_hash"
+    },
+    {
+      "url": "https://www.flsenate.gov/PublishedContent/Offices/Senator/Session_Week_Eight_Recap_2026.jpg",
+      "method": "img",
+      "score": 18,
+      "altText": null,
+      "sourcePageUrl": "https://www.flsenate.gov/Senators/S33",
+      "rightsStatus": "review_required",
+      "identityReviewStatus": "unreviewed",
+      "httpStatus": 429,
+      "finalUrl": "https://www.flsenate.gov/PublishedContent/Offices/Senator/Session_Week_Eight_Recap_2026.jpg",
+      "contentType": "text/plain",
+      "byteSize": 17,
+      "downloadStatus": "not_an_image_or_http_error"
+    },
+    {
+      "url": "https://www.flsenate.gov/PublishedContent/Session/Redistricting/Districts/SD2022/webmaps/sd33_webmap.png",
+      "method": "img",
+      "score": 9,
+      "altText": "District 33 map",
+      "sourcePageUrl": "https://www.flsenate.gov/Senators/S33",
+      "rightsStatus": "review_required",
+      "identityReviewStatus": "unreviewed",
+      "httpStatus": 429,
+      "finalUrl": "https://www.flsenate.gov/PublishedContent/Session/Redistricting/Districts/SD2022/webmaps/sd33_webmap.png",
+      "contentType": "text/plain",
+      "byteSize": 17,
+      "downloadStatus": "not_an_image_or_http_error"
+    }
+  ],
+  "contactCandidates": [
+    {
+      "type": "email",
+      "value": "martin.jonathan.web@flsenate.gov",
+      "label": "martin.jonathan.web@flsenate.gov",
+      "sourcePageUrl": "https://www.flsenate.gov/Senators/S33"
+    },
+    {
+      "type": "email",
+      "value": "webmaster@flsenate.gov",
+      "label": "email",
+      "sourcePageUrl": "https://www.flsenate.gov/Senators/S33"
+    },
+    {
+      "type": "phone",
+      "value": "(850) 487-5033",
+      "label": null,
+      "sourcePageUrl": "https://www.flsenate.gov/Senators/S33"
+    },
+    {
+      "type": "phone",
+      "value": "1 (239) 338-2570",
+      "label": null,
+      "sourcePageUrl": "https://www.flsenate.gov/Senators/S33"
+    }
+  ],
+  "socialCandidates": [
+    {
+      "platform": "Instagram",
+      "url": "http://Instagram.com/senatorjonmartin",
+      "label": null,
+      "sourcePageUrl": "https://www.flsenate.gov/Senators/S33",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "platform": "X",
+      "url": "http://www.Twitter.com/JonMartinEsq",
+      "label": null,
+      "sourcePageUrl": "https://www.flsenate.gov/Senators/S33",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "platform": "X",
+      "url": "http://www.twitter.com/flsenate",
+      "label": "Twitter",
+      "sourcePageUrl": "https://www.flsenate.gov/Senators/S33",
+      "reviewStatus": "unreviewed"
+    }
+  ],
+  "websiteCandidates": [
+    {
+      "url": "https://www.flsenate.gov/Session/ExecutiveAppointments",
+      "label": "Executive Appointments",
+      "sourcePageUrl": "https://www.flsenate.gov/Senators/S33",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "url": "https://www.flsenate.gov/Media/VideoSchedule",
+      "label": "Video Broadcast Schedule",
+      "sourcePageUrl": "https://www.flsenate.gov/Senators/S33",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "url": "https://www.flsenate.gov/About/Contact",
+      "label": "Contact Us",
+      "sourcePageUrl": "https://www.flsenate.gov/Senators/S33",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "url": "https://www.flsenate.gov/Offices",
+      "label": "Offices",
+      "sourcePageUrl": "https://www.flsenate.gov/Senators/S33",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "url": "https://www.flsenate.gov/Offices/President",
+      "label": "President's Office",
+      "sourcePageUrl": "https://www.flsenate.gov/Senators/S33",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "url": "https://www.flsenate.gov/Offices/Majority",
+      "label": "Majority Office",
+      "sourcePageUrl": "https://www.flsenate.gov/Senators/S33",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "url": "https://www.flsenate.gov/Offices/Minority",
+      "label": "Minority Office",
+      "sourcePageUrl": "https://www.flsenate.gov/Senators/S33",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "url": "https://www.flsenate.gov/Offices/Secretary",
+      "label": "Secretary's Office",
+      "sourcePageUrl": "https://www.flsenate.gov/Senators/S33",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "url": "https://www.flsenate.gov/Reference/PublicRecords",
+      "label": "Public Records",
+      "sourcePageUrl": "https://www.flsenate.gov/Senators/S33",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "url": "https://www.flsenate.gov/PublishedContent/Offices/Senator/2026-2027_Budget-edited.pdf",
+      "label": "2026-2027 Budget",
+      "sourcePageUrl": "https://www.flsenate.gov/Senators/S33",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "url": "https://www.flsenate.gov/PublishedContent/Offices/Senator/Bill_signing_of_SB_1296_PERC.pdf",
+      "label": "Senator Martin on the Bill Signing of SB 1296 PERC",
+      "sourcePageUrl": "https://www.flsenate.gov/Senators/S33",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "url": "https://www.flsenate.gov/PublishedContent/Offices/Senator/2026_The_First_60_Days__2_.pdf",
+      "label": "2026 The First 60 Days",
+      "sourcePageUrl": "https://www.flsenate.gov/Senators/S33",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "url": "https://www.flsenate.gov/PublishedContent/Offices/Senator/Session_Week_Eight_Recap_2026.pdf",
+      "label": "Session Week Eight Recap 2026",
+      "sourcePageUrl": "https://www.flsenate.gov/Senators/S33",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "url": "https://www.flsenate.gov/Session/ExecutiveAppointments/",
+      "label": "Executive Appointments",
+      "sourcePageUrl": "https://www.flsenate.gov/Senators/S33",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "url": "https://www.flsenate.gov/About/Contact#connect",
+      "label": "Connect with the Senate",
+      "sourcePageUrl": "https://www.flsenate.gov/Senators/S33",
+      "reviewStatus": "unreviewed"
+    }
+  ],
+  "errors": [],
+  "httpStatus": 200,
+  "finalUrl": "https://www.flsenate.gov/Senators/S33",
+  "sourceSnapshotSha256": "10f757d5788211cdc9c81e7a6e0a4e5fed387b5a9ff1a06e81d424db7a5e3135",
+  "contentType": "text/html",
+  "pageTitle": "Senator Martin - The Florida Senate",
+  "candidateSummary": {
+    "portraits": 6,
+    "contacts": 4,
+    "socials": 3,
+    "websites": 15
+  }
+}

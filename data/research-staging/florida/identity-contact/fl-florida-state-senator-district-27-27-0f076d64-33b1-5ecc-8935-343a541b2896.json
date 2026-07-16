@@ -1,0 +1,250 @@
+{
+  "enrichmentRecordVersion": "1.0.0",
+  "enrichmentRecordId": "250ef806-4d70-5d12-8f72-0b953e2babd9",
+  "taskId": "0f076d64-33b1-5ecc-8935-343a541b2896",
+  "seatKey": "fl-florida-state-senator-district-27-27",
+  "displayName": "Ben Albritton",
+  "officeTitle": "Florida State Senator, District 27",
+  "sourceUrl": "https://www.flsenate.gov/Senators/2024-2026/S27",
+  "fetchedAt": "2026-07-16T05:20:42Z",
+  "collectionStatus": "success",
+  "reviewStatus": "unreviewed",
+  "publicationAllowed": false,
+  "portraitCandidates": [
+    {
+      "url": "https://www.flsenate.gov/PublishedContent/Senators/2024-2026/Photos/s27_5342.jpg",
+      "method": "img",
+      "score": 30,
+      "altText": "Senator Albritton",
+      "sourcePageUrl": "https://www.flsenate.gov/Senators/S27",
+      "rightsStatus": "review_required",
+      "identityReviewStatus": "unreviewed",
+      "httpStatus": 200,
+      "finalUrl": "https://www.flsenate.gov/PublishedContent/Senators/2024-2026/Photos/s27_5342.jpg",
+      "contentType": "image/jpeg",
+      "byteSize": 63684,
+      "imageSha256": "2e24452cc69a60cbfe0b0a4e8a6342fa6d969dbfe1bedb860c3e0c6f90e0f480",
+      "downloadStatus": "captured_for_hash"
+    },
+    {
+      "url": "https://www.flsenate.gov/PublishedContent/Offices/President/5_26_Farmers_Feeding_Florida.jpg",
+      "method": "img",
+      "score": 9,
+      "altText": null,
+      "sourcePageUrl": "https://www.flsenate.gov/Senators/S27",
+      "rightsStatus": "review_required",
+      "identityReviewStatus": "unreviewed",
+      "httpStatus": 200,
+      "finalUrl": "https://www.flsenate.gov/PublishedContent/Offices/President/5_26_Farmers_Feeding_Florida.jpg",
+      "contentType": "image/jpeg",
+      "byteSize": 4742,
+      "imageSha256": "60bb062f3951c20a56cc6632620c0bd0c69292571a8db12eb1eec1d965c3b088",
+      "downloadStatus": "captured_for_hash"
+    },
+    {
+      "url": "https://www.flsenate.gov/PublishedContent/Offices/President/5_26_Make_Citrus_Great_Again.jpg",
+      "method": "img",
+      "score": 9,
+      "altText": null,
+      "sourcePageUrl": "https://www.flsenate.gov/Senators/S27",
+      "rightsStatus": "review_required",
+      "identityReviewStatus": "unreviewed",
+      "httpStatus": 200,
+      "finalUrl": "https://www.flsenate.gov/PublishedContent/Offices/President/5_26_Make_Citrus_Great_Again.jpg",
+      "contentType": "image/jpeg",
+      "byteSize": 4755,
+      "imageSha256": "0dac177c85e4dbadae69592305001d2ef3904a665c90662de0f8284429403a6f",
+      "downloadStatus": "captured_for_hash"
+    },
+    {
+      "url": "https://www.flsenate.gov/PublishedContent/Offices/President/5_27_26_Tax_Package_Floor.jpg",
+      "method": "img",
+      "score": 9,
+      "altText": null,
+      "sourcePageUrl": "https://www.flsenate.gov/Senators/S27",
+      "rightsStatus": "review_required",
+      "identityReviewStatus": "unreviewed",
+      "httpStatus": 200,
+      "finalUrl": "https://www.flsenate.gov/PublishedContent/Offices/President/5_27_26_Tax_Package_Floor.jpg",
+      "contentType": "image/jpeg",
+      "byteSize": 4838,
+      "imageSha256": "7c285e0b7fbeba0179818dbd21bacaee9c84fdbc49f020ce44acc9f1962a7224",
+      "downloadStatus": "captured_for_hash"
+    },
+    {
+      "url": "https://www.flsenate.gov/PublishedContent/Offices/President/6_2_26_Senate_Passes_Historic_Property_Tax_Cut_for_Florida_Homeowners.jpg",
+      "method": "img",
+      "score": 9,
+      "altText": null,
+      "sourcePageUrl": "https://www.flsenate.gov/Senators/S27",
+      "rightsStatus": "review_required",
+      "identityReviewStatus": "unreviewed",
+      "httpStatus": 200,
+      "finalUrl": "https://www.flsenate.gov/PublishedContent/Offices/President/6_2_26_Senate_Passes_Historic_Property_Tax_Cut_for_Florida_Homeowners.jpg",
+      "contentType": "image/jpeg",
+      "byteSize": 4682,
+      "imageSha256": "09e9ad0a09042c614fc953d14979e002060a1a9ead74411821c3921ee14d3bc6",
+      "downloadStatus": "captured_for_hash"
+    },
+    {
+      "url": "https://www.flsenate.gov/PublishedContent/Session/Redistricting/Districts/SD2022/webmaps/sd27_webmap.png",
+      "method": "img",
+      "score": 9,
+      "altText": "District 27 map",
+      "sourcePageUrl": "https://www.flsenate.gov/Senators/S27",
+      "rightsStatus": "review_required",
+      "identityReviewStatus": "unreviewed",
+      "httpStatus": 200,
+      "finalUrl": "https://www.flsenate.gov/PublishedContent/Session/Redistricting/Districts/SD2022/webmaps/sd27_webmap.png",
+      "contentType": "image/png",
+      "byteSize": 106110,
+      "imageSha256": "aee81ec2b6fa298115e769fbe96d1d09bd8672baf6dbd98e71d46730de8af711",
+      "downloadStatus": "captured_for_hash"
+    }
+  ],
+  "contactCandidates": [
+    {
+      "type": "email",
+      "value": "albritton.ben.web@flsenate.gov",
+      "label": "albritton.ben.web@flsenate.gov",
+      "sourcePageUrl": "https://www.flsenate.gov/Senators/S27"
+    },
+    {
+      "type": "email",
+      "value": "webmaster@flsenate.gov",
+      "label": "email",
+      "sourcePageUrl": "https://www.flsenate.gov/Senators/S27"
+    },
+    {
+      "type": "phone",
+      "value": "(850) 487-5027",
+      "label": null,
+      "sourcePageUrl": "https://www.flsenate.gov/Senators/S27"
+    },
+    {
+      "type": "phone",
+      "value": "(863) 534-0073",
+      "label": null,
+      "sourcePageUrl": "https://www.flsenate.gov/Senators/S27"
+    },
+    {
+      "type": "phone",
+      "value": "(941) 575-5717",
+      "label": null,
+      "sourcePageUrl": "https://www.flsenate.gov/Senators/S27"
+    }
+  ],
+  "socialCandidates": [
+    {
+      "platform": "X",
+      "url": "http://www.twitter.com/flsenate",
+      "label": "Twitter",
+      "sourcePageUrl": "https://www.flsenate.gov/Senators/S27",
+      "reviewStatus": "unreviewed"
+    }
+  ],
+  "websiteCandidates": [
+    {
+      "url": "https://www.flsenate.gov/Session/ExecutiveAppointments",
+      "label": "Executive Appointments",
+      "sourcePageUrl": "https://www.flsenate.gov/Senators/S27",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "url": "https://www.flsenate.gov/Media/VideoSchedule",
+      "label": "Video Broadcast Schedule",
+      "sourcePageUrl": "https://www.flsenate.gov/Senators/S27",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "url": "https://www.flsenate.gov/About/Contact",
+      "label": "Contact Us",
+      "sourcePageUrl": "https://www.flsenate.gov/Senators/S27",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "url": "https://www.flsenate.gov/Offices",
+      "label": "Offices",
+      "sourcePageUrl": "https://www.flsenate.gov/Senators/S27",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "url": "https://www.flsenate.gov/Offices/President",
+      "label": "President's Office",
+      "sourcePageUrl": "https://www.flsenate.gov/Senators/S27",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "url": "https://www.flsenate.gov/Offices/Majority",
+      "label": "Majority Office",
+      "sourcePageUrl": "https://www.flsenate.gov/Senators/S27",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "url": "https://www.flsenate.gov/Offices/Minority",
+      "label": "Minority Office",
+      "sourcePageUrl": "https://www.flsenate.gov/Senators/S27",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "url": "https://www.flsenate.gov/Offices/Secretary",
+      "label": "Secretary's Office",
+      "sourcePageUrl": "https://www.flsenate.gov/Senators/S27",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "url": "https://www.flsenate.gov/Reference/PublicRecords",
+      "label": "Public Records",
+      "sourcePageUrl": "https://www.flsenate.gov/Senators/S27",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "url": "https://www.flsenate.gov/PublishedContent/Offices/President/6_2_26_Senate_Passes_Historic_Property_Tax_Cut_for_Florida_Homeowners.pdf",
+      "label": "Senate Passes Historic Property Tax Cut for Florida Homeowners",
+      "sourcePageUrl": "https://www.flsenate.gov/Senators/S27",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "url": "https://www.flsenate.gov/PublishedContent/Offices/President/5_27_26_Tax_Package_Floor.pdf",
+      "label": "2026 Tax Relief Package Expands Historic Tax Relief for Families and Small Businesses",
+      "sourcePageUrl": "https://www.flsenate.gov/Senators/S27",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "url": "https://www.flsenate.gov/PublishedContent/Offices/President/5_26_Make_Citrus_Great_Again.pdf",
+      "label": "State Budget Includes Historic Funding to Make Citrus Great Again",
+      "sourcePageUrl": "https://www.flsenate.gov/Senators/S27",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "url": "https://www.flsenate.gov/PublishedContent/Offices/President/5_26_Farmers_Feeding_Florida.pdf",
+      "label": "State Budget Includes $38 Million for Farmers Feeding Florida",
+      "sourcePageUrl": "https://www.flsenate.gov/Senators/S27",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "url": "https://www.flsenate.gov/Session/ExecutiveAppointments/",
+      "label": "Executive Appointments",
+      "sourcePageUrl": "https://www.flsenate.gov/Senators/S27",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "url": "https://www.flsenate.gov/About/Contact#connect",
+      "label": "Connect with the Senate",
+      "sourcePageUrl": "https://www.flsenate.gov/Senators/S27",
+      "reviewStatus": "unreviewed"
+    }
+  ],
+  "errors": [],
+  "httpStatus": 200,
+  "finalUrl": "https://www.flsenate.gov/Senators/S27",
+  "sourceSnapshotSha256": "d1e7a7bf208e4d20e4e548e2a648ee556809664f6c9b83a299c1f2f991f0f6fc",
+  "contentType": "text/html",
+  "pageTitle": "Senator Albritton - The Florida Senate",
+  "candidateSummary": {
+    "portraits": 6,
+    "contacts": 5,
+    "socials": 1,
+    "websites": 15
+  }
+}

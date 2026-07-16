@@ -1,0 +1,223 @@
+{
+  "enrichmentRecordVersion": "1.0.0",
+  "enrichmentRecordId": "667aef4d-f8ab-59f3-bd4a-98f64404930a",
+  "taskId": "f146f045-f6b2-59f2-a604-182635752ad0",
+  "seatKey": "fl-united-states-representative-12",
+  "displayName": "Gus Bilirakis",
+  "officeTitle": "United States Representative",
+  "sourceUrl": "https://bilirakis.house.gov/",
+  "fetchedAt": "2026-07-16T05:19:58Z",
+  "collectionStatus": "success",
+  "reviewStatus": "unreviewed",
+  "publicationAllowed": false,
+  "portraitCandidates": [
+    {
+      "url": "https://bilirakis.house.gov/profiles/evo/assets/images/Seal_of_the_United_States_House_of_Representatives.png",
+      "method": "og:image",
+      "score": 44,
+      "altText": null,
+      "sourcePageUrl": "https://bilirakis.house.gov/",
+      "rightsStatus": "review_required",
+      "identityReviewStatus": "unreviewed",
+      "httpStatus": 200,
+      "finalUrl": "https://bilirakis.house.gov/profiles/evo/assets/images/Seal_of_the_United_States_House_of_Representatives.png",
+      "contentType": "image/png",
+      "byteSize": 225630,
+      "imageSha256": "97f154eb8428c9c1c38c05112b6cdd943fea63ecdd486d084c167e10e0dec628",
+      "downloadStatus": "captured_for_hash"
+    },
+    {
+      "url": "https://bilirakis.house.gov/sites/evo-subsites/bilirakis-evo.house.gov/files/evo-media-image/bilirakis-cropped.png",
+      "method": "img",
+      "score": 21,
+      "altText": "Rep. Bilirakis",
+      "sourcePageUrl": "https://bilirakis.house.gov/",
+      "rightsStatus": "review_required",
+      "identityReviewStatus": "unreviewed",
+      "httpStatus": 200,
+      "finalUrl": "https://bilirakis.house.gov/sites/evo-subsites/bilirakis-evo.house.gov/files/evo-media-image/bilirakis-cropped.png",
+      "contentType": "image/png",
+      "byteSize": 1128392,
+      "imageSha256": "237fc51232da52930cf8d08e12038e09f58319ef9d2abb8da1cd417171f6ed7c",
+      "downloadStatus": "captured_for_hash"
+    },
+    {
+      "url": "https://bilirakis.house.gov/sites/evo-subsites/bilirakis-evo.house.gov/files/styles/evo_image_full_width/public/evo-media-image/2023-02-09_bt_0367.jpg?h=b8626526&itok=XMdb761Z",
+      "method": "img",
+      "score": 21,
+      "altText": "Florida 12th District",
+      "sourcePageUrl": "https://bilirakis.house.gov/",
+      "rightsStatus": "review_required",
+      "identityReviewStatus": "unreviewed",
+      "httpStatus": 200,
+      "finalUrl": "https://bilirakis.house.gov/sites/evo-subsites/bilirakis-evo.house.gov/files/styles/evo_image_full_width/public/evo-media-image/2023-02-09_bt_0367.jpg?h=b8626526&itok=XMdb761Z",
+      "contentType": "image/jpeg",
+      "byteSize": 333182,
+      "imageSha256": "fbbbf1eae91a7d3086dcfbe9036a6adad1fc8a76d52df26e77513162c4ec9027",
+      "downloadStatus": "captured_for_hash"
+    },
+    {
+      "url": "https://bilirakis.house.gov/sites/evo-subsites/bilirakis-evo.house.gov/files/bilirakis-logo2.png",
+      "method": "img",
+      "score": -2,
+      "altText": "Congressman Gus Bilirakis logo",
+      "sourcePageUrl": "https://bilirakis.house.gov/",
+      "rightsStatus": "review_required",
+      "identityReviewStatus": "unreviewed",
+      "httpStatus": 200,
+      "finalUrl": "https://bilirakis.house.gov/sites/evo-subsites/bilirakis-evo.house.gov/files/bilirakis-logo2.png",
+      "contentType": "image/png",
+      "byteSize": 247595,
+      "imageSha256": "80e5404fd0a9d2bff9cac4da92c973aae1aacf0a9412f07750f22f1650c5c790",
+      "downloadStatus": "captured_for_hash"
+    }
+  ],
+  "contactCandidates": [
+    {
+      "type": "phone",
+      "value": "202-225-5755",
+      "label": "202-225-5755",
+      "sourcePageUrl": "https://bilirakis.house.gov/"
+    },
+    {
+      "type": "phone",
+      "value": "(202) 225-5755",
+      "label": null,
+      "sourcePageUrl": "https://bilirakis.house.gov/"
+    },
+    {
+      "type": "phone",
+      "value": "(352) 654-1004",
+      "label": null,
+      "sourcePageUrl": "https://bilirakis.house.gov/"
+    },
+    {
+      "type": "phone",
+      "value": "(352) 691-1231",
+      "label": null,
+      "sourcePageUrl": "https://bilirakis.house.gov/"
+    },
+    {
+      "type": "phone",
+      "value": "(727) 232-2921",
+      "label": null,
+      "sourcePageUrl": "https://bilirakis.house.gov/"
+    }
+  ],
+  "socialCandidates": [
+    {
+      "platform": "X",
+      "url": "https://twitter.com/repgusbilirakis",
+      "label": "Twitter icon",
+      "sourcePageUrl": "https://bilirakis.house.gov/",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "platform": "Facebook",
+      "url": "http://www.facebook.com/gusbilirakis/",
+      "label": "Facebook icon",
+      "sourcePageUrl": "https://bilirakis.house.gov/",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "platform": "YouTube",
+      "url": "http://www.youtube.com/user/RepGusBilirakis",
+      "label": "YouTube icon",
+      "sourcePageUrl": "https://bilirakis.house.gov/",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "platform": "Instagram",
+      "url": "http://instagram.com/gusbilirakis/?hl=en",
+      "label": "Instagram icon",
+      "sourcePageUrl": "https://bilirakis.house.gov/",
+      "reviewStatus": "unreviewed"
+    }
+  ],
+  "websiteCandidates": [
+    {
+      "url": "https://bilirakis.house.gov/contact",
+      "label": "Contact Us",
+      "sourcePageUrl": "https://bilirakis.house.gov/",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "url": "https://bilirakis.house.gov/contact/email",
+      "label": "Email",
+      "sourcePageUrl": "https://bilirakis.house.gov/",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "url": "https://bilirakis.house.gov/contact/newsletter-subscribe",
+      "label": "Subscribe",
+      "sourcePageUrl": "https://bilirakis.house.gov/",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "url": "https://bilirakis.house.gov/contact/newsletter-unsubscribe",
+      "label": "Newsletter Unsubscribe",
+      "sourcePageUrl": "https://bilirakis.house.gov/",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "url": "https://bilirakis.house.gov/contact/offices",
+      "label": "Offices",
+      "sourcePageUrl": "https://bilirakis.house.gov/",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "url": "https://bilirakis.house.gov/contact/request-meeting-washington",
+      "label": "Request a Meeting in Washington",
+      "sourcePageUrl": "https://bilirakis.house.gov/",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "url": "https://bilirakis.house.gov/contact/request-meeting-florida-s-12th-district",
+      "label": "Request a Meeting in Florida’s 12th District",
+      "sourcePageUrl": "https://bilirakis.house.gov/",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "url": "https://bilirakis.house.gov/contact/website-problem",
+      "label": "Website Problem",
+      "sourcePageUrl": "https://bilirakis.house.gov/",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "url": "https://bilirakis.house.gov/contact/offices/washington-dc-office",
+      "label": "Washington DC Office",
+      "sourcePageUrl": "https://bilirakis.house.gov/",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "url": "https://bilirakis.house.gov/contact/offices/brooksville-district-office",
+      "label": "Brooksville District Office",
+      "sourcePageUrl": "https://bilirakis.house.gov/",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "url": "https://bilirakis.house.gov/contact/offices/new-port-richey-district-office",
+      "label": "New Port Richey District Office",
+      "sourcePageUrl": "https://bilirakis.house.gov/",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "url": "https://bilirakis.house.gov/contact/offices/inverness-district-office",
+      "label": "Inverness District Office",
+      "sourcePageUrl": "https://bilirakis.house.gov/",
+      "reviewStatus": "unreviewed"
+    }
+  ],
+  "errors": [],
+  "httpStatus": 200,
+  "finalUrl": "https://bilirakis.house.gov/",
+  "sourceSnapshotSha256": "1f9680b13535dc8348c2bdd3b2db0c94a7ebdcb35cd86f132b9a22d09d084e09",
+  "contentType": "text/html",
+  "pageTitle": "Congressman Gus Bilirakis |",
+  "candidateSummary": {
+    "portraits": 4,
+    "contacts": 5,
+    "socials": 4,
+    "websites": 12
+  }
+}
