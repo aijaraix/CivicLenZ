@@ -27,6 +27,7 @@ from workers.ingestion.common import sha256_bytes, slugify, utc_now, write_json_
 ROOT = Path(__file__).resolve().parents[2]
 PLAN_PATH = ROOT / "data" / "sources" / "florida-regions" / "central" / "source-plan.json"
 OUTPUT_DIRECTORY = ROOT / "data" / "staging" / "florida" / "local" / "central" / "source-discovery"
+ALLOCATION_PATH = ROOT / "data" / "operations" / "florida-work-allocation.json"
 ROBOT_USER_AGENT = "CivicLenZSourceDiscovery"
 
 
@@ -98,6 +99,7 @@ def validate_plan(plan: dict[str, Any]) -> int:
             "Plan counties must be exactly Lake, Orange, Osceola, Polk, and Seminole"
         )
 
+    validate_active_claim()
     policy = plan["retrievalPolicy"]
     if not isinstance(policy, dict):
         raise SourcePlanError("retrievalPolicy must be an object")
@@ -148,6 +150,46 @@ def validate_plan(plan: dict[str, Any]) -> int:
             f"Plan configures {source_count} requests but its per-run limit is {max_requests}"
         )
     return source_count
+
+
+def validate_active_claim() -> None:
+    """Require the exact Central Florida claim before live source retrieval."""
+
+    allocation = load_json(ALLOCATION_PATH)
+    streams = allocation.get("workstreams")
+    if not isinstance(streams, list):
+        raise SourcePlanError("Florida work-allocation registry has no workstreams list")
+    stream = next(
+        (
+            item
+            for item in streams
+            if isinstance(item, dict)
+            and item.get("workstreamId") == "fl-central-florida-local-source-discovery"
+        ),
+        None,
+    )
+    if stream is None:
+        raise SourcePlanError(
+            "Central Florida source discovery is not claimed on this checkout; merge the coordination claim before collection"
+        )
+    if stream.get("ownerKey") != "agent-central-florida-source-discovery":
+        raise SourcePlanError("Central Florida claim owner does not match this worker")
+    if stream.get("status") not in {"active_claimed", "active_reserved"}:
+        raise SourcePlanError("Central Florida claim is not active")
+    scope = stream.get("scope")
+    if not isinstance(scope, dict):
+        raise SourcePlanError("Central Florida claim is missing scope")
+    if set(scope.get("counties", [])) != {"Lake", "Orange", "Osceola", "Polk", "Seminole"}:
+        raise SourcePlanError("Central Florida claim counties do not match this worker")
+    if set(scope.get("dataPhases", [])) != {"source_discovery"}:
+        raise SourcePlanError("Central Florida claim must remain source_discovery only")
+    expected_levels = {"county", "school_district", "municipal", "special_district", "judicial"}
+    if set(scope.get("governmentLevels", [])) != expected_levels:
+        raise SourcePlanError("Central Florida claim government levels do not match this worker")
+    output_roots = set(stream.get("outputRoots", []))
+    expected_root = "data/staging/florida/local/central"
+    if expected_root not in output_roots:
+        raise SourcePlanError("Central Florida claim does not permit its isolated staging root")
 
 
 def pause_for_host(
@@ -396,6 +438,7 @@ def build_source_map(
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--validate-plan", action="store_true", help="Validate the static plan without HTTP requests or writes.")
+    parser.add_argument("--validate-active-claim", action="store_true", help="Validate the static plan plus the active coordination claim without HTTP requests or writes.")
     parser.add_argument("--dry-run", action="store_true", help="Print the bounded run scope without HTTP requests or writes.")
     args = parser.parse_args()
 
@@ -414,6 +457,10 @@ def main() -> int:
                 indent=2,
             )
         )
+        return 0
+    if args.validate_active_claim:
+        validate_active_claim()
+        print(json.dumps({"status": "active_claim_verified", "workstreamId": plan["workstreamId"]}, indent=2))
         return 0
     if args.dry_run:
         print(
