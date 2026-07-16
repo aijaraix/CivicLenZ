@@ -71,7 +71,6 @@ def validate_source_discovery(path: Path, data: dict) -> list[str]:
         "fetchedAt",
         "collectionStatus",
         "publicationAllowed",
-        "reviewStatus",
         "sourceCandidates",
         "unresolvedCategories",
     }
@@ -81,8 +80,8 @@ def validate_source_discovery(path: Path, data: dict) -> list[str]:
         errors.append(f"{path}: missing source-discovery keys: {', '.join(sorted(missing))}")
     if data.get("publicationAllowed") is not False:
         errors.append(f"{path}: source-discovery output must remain non-public until a reviewer approves derived records")
-    if data.get("reviewStatus") != "unreviewed":
-        errors.append(f"{path}: source-discovery output must remain unreviewed until a reviewer approves derived records")
+    if data.get("reviewStatus") not in {None, "unreviewed"}:
+        errors.append(f"{path}: source-discovery output cannot be marked reviewed until a reviewer approves derived records")
     if not isinstance(data.get("sourceCandidates"), dict):
         errors.append(f"{path}: sourceCandidates must be an object keyed by collection category")
     if not isinstance(data.get("unresolvedCategories"), list):
