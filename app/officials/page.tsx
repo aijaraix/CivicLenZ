@@ -27,7 +27,7 @@ export default function OfficialsPage() {
             </div>
             <div>
               <strong>{coverage.sourceListings}</strong>
-              <span>Florida Senate source listings</span>
+              <span>Florida source listings</span>
             </div>
           </div>
         </div>
