@@ -4,8 +4,8 @@
   "sourceKey": "florida-senate-members",
   "sourceUrl": "https://www.flsenate.gov/Senators",
   "sourceMemberUrl": "https://www.flsenate.gov/Senators/2024-2026/S3",
-  "sourceSnapshotSha256": "9d117b2a6757f6aac9e8f78e14fe42d4adb86d5a6313e669907a233088bf8b73",
-  "fetchedAt": "2026-07-16T00:33:06Z",
+  "sourceSnapshotSha256": "6da20c1ad7f3b380fff595773dd4ad0dd395a3d0852d637fb09f1adb8874c28a",
+  "fetchedAt": "2026-07-16T02:07:35Z",
   "extractionStatus": "extracted_unreviewed",
   "termLabel": "2024-2026 Senators",
   "displayName": "Simon, Corey",
@@ -17,5 +17,6 @@
   "jurisdictionName": "Florida",
   "stateCode": "FL",
   "canonicalMatchStatus": "unmatched",
-  "rawRowText": "Simon, Corey Simon, Corey 3 Republican Consists of Dixie, Franklin, Gadsden, Gulf, Hamilton, Jefferson, Lafayette, Leon, Liberty, Madison, Suwannee, Taylor, Wakulla counties"
+  "refreshClass": "term_based",
+  "rawRowText": "Simon, Corey | District 3 | Republican | Consists of Dixie, Franklin, Gadsden, Gulf, Hamilton, Jefferson, Lafayette, Leon, Liberty, Madison, Suwannee, Taylor, Wakulla counties"
 }
