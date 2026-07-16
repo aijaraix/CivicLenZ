@@ -1,0 +1,145 @@
+name: Collect Northwest Florida local sources
+
+on:
+  schedule:
+    - cron: '43 10 * * *'
+  workflow_dispatch:
+  pull_request:
+    paths:
+      - 'data/operations/florida-work-allocation.json'
+      - 'data/sources/florida-regions/northwest/**'
+      - 'workers/ingestion/discover_northwest_florida_local_sources.py'
+      - 'tests/test_northwest_florida_source_discovery.py'
+      - '.github/workflows/collect-northwest-florida-local-sources.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'data/operations/florida-work-allocation.json'
+      - 'data/sources/florida-regions/northwest/**'
+      - 'workers/ingestion/discover_northwest_florida_local_sources.py'
+      - '.github/workflows/collect-northwest-florida-local-sources.yml'
+
+concurrency:
+  group: northwest-florida-local-source-discovery
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  discover:
+    runs-on: ubuntu-latest
+    timeout-minutes: 35
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+        with:
+          ref: ${{ github.event_name == 'pull_request' && github.event.pull_request.head.sha || 'main' }}
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+          cache: pip
+          cache-dependency-path: workers/ingestion/requirements.txt
+
+      - name: Install dependencies
+        run: pip install -r workers/ingestion/requirements.txt
+
+      - name: Verify active Northwest Florida claim
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+
+          allocation = json.loads(Path('data/operations/florida-work-allocation.json').read_text())
+          claims = {item['workstreamId']: item for item in allocation['workstreams']}
+          claim = claims['fl-northwest-local-complete']
+          assert claim['status'] == 'active_claimed'
+          assert claim['ownerKey'] == 'gpt-5.6-thinking-northwest-local'
+          assert len(claim['scope']['counties']) == 16
+          assert 'data/staging/florida/local/northwest' in claim['outputRoots']
+          print('Northwest Florida local claim is active and isolated.')
+          PY
+
+      - name: Run parser tests
+        run: python -m unittest tests.test_northwest_florida_source_discovery
+
+      - name: Discover official source directories
+        run: |
+          if [ "${{ github.event_name }}" = "pull_request" ]; then
+            python -m workers.ingestion.discover_northwest_florida_local_sources \
+              --limit 4 \
+              --workers 4 \
+              --max-pages-per-county 8 \
+              --minimum-success-rate 0.50
+          else
+            python -m workers.ingestion.discover_northwest_florida_local_sources \
+              --workers 6 \
+              --max-pages-per-county 14 \
+              --minimum-success-rate 0.55
+          fi
+
+      - name: Summarize discovery
+        id: summary
+        run: |
+          python - <<'PY' >> "$GITHUB_STEP_SUMMARY"
+          import json
+          from pathlib import Path
+
+          paths = sorted(Path('data/staging/florida/local/northwest/source-discovery').glob('*.json'))
+          records = [json.loads(path.read_text()) for path in paths]
+          successes = sum(item.get('collectionStatus') in {'success', 'partial'} for item in records)
+          resolved = sum(item.get('resolvedCategoryCount', 0) for item in records)
+          unresolved = sum(len(item.get('unresolvedCategories', [])) for item in records)
+          print('### Northwest Florida local source discovery')
+          print(f'- County records generated: **{len(records)}**')
+          print(f'- Reachable/partially reachable county roots: **{successes}**')
+          print(f'- Source categories resolved: **{resolved}**')
+          print(f'- Source categories still unresolved: **{unresolved}**')
+          print('- Publication state: **review-only source candidates**')
+          PY
+          records=$(find data/staging/florida/local/northwest/source-discovery -name '*.json' -type f | wc -l | tr -d ' ')
+          echo "records=$records" >> "$GITHUB_OUTPUT"
+
+      - name: Upload discovery snapshot
+        uses: actions/upload-artifact@v4
+        with:
+          name: northwest-florida-local-source-discovery-${{ github.run_number }}
+          path: data/staging/florida/local/northwest/source-discovery/*.json
+          if-no-files-found: error
+          retention-days: 21
+
+      - name: Save full scheduled results to review branch
+        if: github.event_name != 'pull_request'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          OUTPUT='data/staging/florida/local/northwest/source-discovery'
+          BRANCH='bot/fl-nw-local-source-discovery'
+          CHANGES=$(git status --porcelain --untracked-files=all -- "$OUTPUT")
+          if [ -z "$CHANGES" ]; then
+            echo 'No Northwest Florida source-discovery changes detected.'
+            exit 0
+          fi
+
+          git config user.name 'civiclenz-data-bot'
+          git config user.email 'civiclenz-data-bot@users.noreply.github.com'
+          git checkout -B "$BRANCH"
+          git add "$OUTPUT"
+          git commit -m 'Refresh Northwest Florida local source discovery'
+          git push --force origin "HEAD:refs/heads/$BRANCH"
+
+          OPEN_PR=$(gh pr list --head "$BRANCH" --base main --state open --json number --jq '.[0].number // empty')
+          if [ -z "$OPEN_PR" ]; then
+            gh pr create \
+              --base main \
+              --head "$BRANCH" \
+              --title 'Data review: Northwest Florida local source directories' \
+              --body 'Review-only official-source candidates for county, constitutional, school, municipal, special-district, judicial, campaign-finance, and disclosure collection across the 16 claimed Northwest Florida counties. This PR does not publish officeholders.' || true
+          else
+            echo "Updated existing Northwest Florida source review PR #$OPEN_PR"
+          fi
