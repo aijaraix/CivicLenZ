@@ -1,0 +1,172 @@
+{
+  "detailRecordVersion": "1.0.0",
+  "detailRecordId": "d05cd5d6-802b-511b-99f1-bf827f3f5d8f",
+  "stagingRecordId": "490d722d-60e2-5622-8af4-011f326e5f80",
+  "sourceKey": "florida-house-members",
+  "displayName": "Gregory, Emily",
+  "officeTitle": "Florida State Representative, District 87",
+  "districtNumber": "87",
+  "sourceUrl": "https://www.flhouse.gov/Sections/Representatives/details.aspx?MemberId=5069&LegislativeTermId=91",
+  "fetchedAt": "2026-07-16T05:26:30Z",
+  "collectionStatus": "success",
+  "reviewStatus": "unreviewed",
+  "publicationAllowed": false,
+  "errors": [],
+  "httpStatus": 200,
+  "finalUrl": "https://www.flhouse.gov/Sections/Representatives/details.aspx?MemberId=5069&LegislativeTermId=91",
+  "sourceSnapshotSha256": "3efb5eb42e78c6d65d88e29432f331eb88de98895458d843eb723e762d54c5aa",
+  "partyAndDistrictText": "District: 87 -- Democrat",
+  "staffCandidates": [
+    {
+      "role": "Legislative Aide",
+      "name": "Thomas Wilmouth",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "role": "District Aide",
+      "name": "Abby Ross",
+      "reviewStatus": "unreviewed"
+    }
+  ],
+  "biographyCandidates": {
+    "cityOfResidence": "Jupiter",
+    "occupation": "Public Health and Small Business Owner",
+    "spouse": "Andrew Gregory",
+    "educationRaw": "Wake Forest University, BS, 2003-2007; Columbia University, MPH, 2007-2009",
+    "bornRaw": "May 11, 1985, Stuart, FL",
+    "movedToFlorida": null,
+    "recreationalInterests": "golf, needlepoint, pickleball, running, tennis"
+  },
+  "educationCandidates": [
+    {
+      "rawText": "Wake Forest University, BS, 2003-2007",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "rawText": "Columbia University, MPH, 2007-2009",
+      "reviewStatus": "unreviewed"
+    }
+  ],
+  "committeeCandidates": [],
+  "publicServiceCandidates": [],
+  "affiliationCandidates": [
+    {
+      "name": "The Florida House of Representatives does not maintain the content in the site you are about to access.",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "name": "Thank you for visiting FLHouse.gov",
+      "reviewStatus": "unreviewed"
+    }
+  ],
+  "awardCandidates": [],
+  "officeLocationCandidates": [],
+  "contactCandidates": [],
+  "socialCandidates": [
+    {
+      "platform": "YouTube",
+      "url": "https://www.youtube.com/channel/UCGiMELcyYCuDPP3N0Tg5sTg",
+      "label": "Subscribe",
+      "sourcePageUrl": "https://www.flhouse.gov/Sections/Representatives/details.aspx?MemberId=5069&LegislativeTermId=91",
+      "reviewStatus": "unreviewed"
+    }
+  ],
+  "websiteCandidates": [
+    {
+      "url": "https://www.flhouse.gov/Sections/HouseSchedule/houseschedule.aspx",
+      "label": "House Schedule",
+      "sourcePageUrl": "https://www.flhouse.gov/Sections/Representatives/details.aspx?MemberId=5069&LegislativeTermId=91",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "url": "https://www.flhouse.gov/Sections/Representatives/contactmember.aspx?MemberId=5069&SessionId=113",
+      "label": "Contact Member",
+      "sourcePageUrl": "https://www.flhouse.gov/Sections/Representatives/details.aspx?MemberId=5069&LegislativeTermId=91",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "url": "https://lp.constantcontactpages.com/sl/0cIhDn1/emilygregorydistrict87",
+      "label": "Sign Up For My Newsletter",
+      "sourcePageUrl": "https://www.flhouse.gov/Sections/Representatives/details.aspx?MemberId=5069&LegislativeTermId=91",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "url": "https://www.flhouse.gov/contentViewer.aspx?Category=website&File=contact us.htm",
+      "label": "Contact Us",
+      "sourcePageUrl": "https://www.flhouse.gov/Sections/Representatives/details.aspx?MemberId=5069&LegislativeTermId=91",
+      "reviewStatus": "unreviewed"
+    }
+  ],
+  "portraitCandidates": [
+    {
+      "url": "https://www.flhouse.gov/FileStores/Web/Imaging/Member/5069.jpg",
+      "method": "img",
+      "score": 39,
+      "altText": "Representative Gregory Photo",
+      "sourcePageUrl": "https://www.flhouse.gov/Sections/Representatives/details.aspx?MemberId=5069&LegislativeTermId=91",
+      "rightsStatus": "review_required",
+      "identityReviewStatus": "unreviewed"
+    },
+    {
+      "url": "https://www.flhouse.gov/Images/bronze-seal-250.png?cb=4.6.654349",
+      "method": "og:image",
+      "score": 14,
+      "altText": null,
+      "sourcePageUrl": "https://www.flhouse.gov/Sections/Representatives/details.aspx?MemberId=5069&LegislativeTermId=91",
+      "rightsStatus": "review_required",
+      "identityReviewStatus": "unreviewed"
+    },
+    {
+      "url": "https://www.flhouse.gov/Images/svg/house_seal.svg",
+      "method": "img",
+      "score": -30,
+      "altText": "Seal Of Florida",
+      "sourcePageUrl": "https://www.flhouse.gov/Sections/Representatives/details.aspx?MemberId=5069&LegislativeTermId=91",
+      "rightsStatus": "review_required",
+      "identityReviewStatus": "unreviewed"
+    }
+  ],
+  "mapLinks": [
+    {
+      "label": "Detailed District 87 Map",
+      "url": "https://www.flhouse.gov/FileStores/Web/District/DistrictMaps/small/HD_87.pdf"
+    },
+    {
+      "label": "Large Format District 87 Map",
+      "url": "https://www.flhouse.gov/FileStores/Web/District/DistrictMaps/large/HD_87_Large.pdf"
+    }
+  ],
+  "billLinks": [
+    {
+      "label": "Bills",
+      "url": "https://www.flhouse.gov/Sections/Bills/bills.aspx"
+    },
+    {
+      "label": "Sponsored Bills",
+      "url": "https://www.flhouse.gov/Sections/Representatives/sponsoredbills.aspx?MemberId=5069&SessionId=113"
+    }
+  ],
+  "mediaLinks": [
+    {
+      "label": "Communications",
+      "url": "https://www.flhouse.gov/Sections/Representatives/communications.aspx?MemberId=5069&LegislativeTermId=91"
+    },
+    {
+      "label": "Subscribe to the Florida House YouTube Channel:",
+      "url": "https://www.youtube.com/channel/UCGiMELcyYCuDPP3N0Tg5sTg"
+    }
+  ],
+  "candidateCounts": {
+    "staffCandidates": 2,
+    "educationCandidates": 2,
+    "committeeCandidates": 0,
+    "publicServiceCandidates": 0,
+    "affiliationCandidates": 2,
+    "awardCandidates": 0,
+    "officeLocationCandidates": 0,
+    "contactCandidates": 0,
+    "socialCandidates": 1,
+    "websiteCandidates": 4,
+    "portraitCandidates": 3
+  }
+}
