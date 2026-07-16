@@ -9,8 +9,10 @@ from jsonschema import Draft202012Validator, FormatChecker
 
 ROOT = Path(__file__).resolve().parents[1]
 SCHEMA_PATH = ROOT / "schemas" / "elected-official-profile.schema.json"
+REVIEW_QUEUE_SCHEMA_PATH = ROOT / "schemas" / "seat-research-queue.schema.json"
 CANONICAL_ROOT = ROOT / "data" / "officials"
 STAGING_ROOT = ROOT / "data" / "staging"
+REVIEW_QUEUE_ROOT = ROOT / "data" / "review-queue"
 
 
 def load_json(path: Path):
@@ -83,14 +85,45 @@ def validate_staging() -> list[str]:
     return errors
 
 
+def validate_review_queue() -> list[str]:
+    errors: list[str] = []
+    if not REVIEW_QUEUE_ROOT.exists():
+        return errors
+
+    schema = load_json(REVIEW_QUEUE_SCHEMA_PATH)
+    validator = Draft202012Validator(schema, format_checker=FormatChecker())
+    queue_ids: dict[str, Path] = {}
+    seat_keys: dict[str, Path] = {}
+
+    for path in sorted(REVIEW_QUEUE_ROOT.rglob("*.json")):
+        data = load_json(path)
+        for error in sorted(validator.iter_errors(data), key=lambda item: list(item.path)):
+            location = ".".join(str(part) for part in error.path) or "<root>"
+            errors.append(f"{path}:{location}: {error.message}")
+
+        queue_id = data.get("queueId")
+        if queue_id:
+            if queue_id in queue_ids:
+                errors.append(f"Duplicate queueId {queue_id!r}: {queue_ids[queue_id]} and {path}")
+            queue_ids[queue_id] = path
+
+        seat_key = data.get("seat", {}).get("seatKey")
+        if seat_key:
+            if seat_key in seat_keys:
+                errors.append(f"Duplicate seat research queue {seat_key!r}: {seat_keys[seat_key]} and {path}")
+            seat_keys[seat_key] = path
+
+    return errors
+
+
 def main() -> int:
-    errors = validate_canonical() + validate_staging()
+    errors = validate_canonical() + validate_staging() + validate_review_queue()
     if errors:
         print("Data validation failed:", file=sys.stderr)
         for error in errors:
             print(f"- {error}", file=sys.stderr)
         return 1
-    print("Canonical and staging data validation passed")
+    print("Canonical, staging, and review-queue data validation passed")
     return 0
 
 
