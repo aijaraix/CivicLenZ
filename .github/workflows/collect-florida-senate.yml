@@ -70,18 +70,20 @@ jobs:
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
+          set -euo pipefail
+
           STAGING_PATH="data/staging/florida/state-senate"
+          BRANCH="bot/florida-senate-refresh"
           CHANGES=$(git status --porcelain --untracked-files=all -- "$STAGING_PATH")
 
           if [ -z "$CHANGES" ]; then
-            echo "No directory changes detected. The live source matches the current staging branch."
+            echo "No directory changes detected. The live source matches the committed staging data."
             exit 0
           fi
 
           echo "Detected staging changes:"
           echo "$CHANGES"
 
-          BRANCH="bot/florida-senate-refresh"
           git config user.name "civiclenz-data-bot"
           git config user.email "civiclenz-data-bot@users.noreply.github.com"
           git checkout -B "$BRANCH"
@@ -93,15 +95,32 @@ jobs:
           fi
 
           git commit -m "Refresh Florida Senate staging records"
-          git push --force-with-lease origin "$BRANCH"
+
+          # Push the generated commit explicitly to the bot branch. Using an
+          # explicit refspec is reliable for both a brand-new branch and later
+          # scheduled refreshes, whereas force-with-lease can fail when the
+          # runner has no remote-tracking ref for a branch that does not exist yet.
+          git push --force origin "HEAD:refs/heads/$BRANCH"
+          git ls-remote --exit-code --heads origin "refs/heads/$BRANCH"
+          echo "Saved ${{ steps.collect.outputs.record_count }} staging records to $BRANCH."
 
           OPEN_PR=$(gh pr list --head "$BRANCH" --base main --state open --json number --jq '.[0].number // empty')
           if [ -z "$OPEN_PR" ]; then
-            gh pr create \
+            if gh pr create \
               --base main \
               --head "$BRANCH" \
               --title "Data review: Florida Senate directory refresh" \
-              --body "Automated extraction of ${{ steps.collect.outputs.record_count }} records from the official Florida Senate directory. These files remain review-only staging records and must be matched to canonical people, offices, and terms before publication."
+              --body "Automated extraction of ${{ steps.collect.outputs.record_count }} records from the official Florida Senate directory. These files remain review-only staging records and must be matched to canonical people, offices, and terms before publication."; then
+              echo "Created the Florida Senate data-review pull request."
+            else
+              echo "The staging branch was saved, but GitHub blocked automatic pull-request creation."
+              echo "Create a pull request from $BRANCH to main once; later runs will refresh that same branch and pull request."
+              {
+                echo ""
+                echo "### Review pull request requires one-time creation"
+                echo "The staging data was saved to \`$BRANCH\`, but GitHub did not permit this workflow to create the pull request automatically."
+              } >> "$GITHUB_STEP_SUMMARY"
+            fi
           else
             echo "Updated existing review PR #$OPEN_PR"
           fi
