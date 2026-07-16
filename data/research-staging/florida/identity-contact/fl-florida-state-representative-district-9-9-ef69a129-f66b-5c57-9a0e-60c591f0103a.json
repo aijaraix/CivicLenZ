@@ -1,0 +1,152 @@
+{
+  "enrichmentRecordVersion": "1.0.0",
+  "enrichmentRecordId": "ba193818-dd70-58ae-8da6-ba415942aa9b",
+  "taskId": "ef69a129-f66b-5c57-9a0e-60c591f0103a",
+  "seatKey": "fl-florida-state-representative-district-9-9",
+  "displayName": "Allison Tant",
+  "officeTitle": "Florida State Representative, District 9",
+  "sourceUrl": "https://www.flhouse.gov/Sections/Representatives/details.aspx?MemberId=4765&LegislativeTermId=91",
+  "fetchedAt": "2026-07-16T05:20:33Z",
+  "collectionStatus": "success",
+  "reviewStatus": "unreviewed",
+  "publicationAllowed": false,
+  "portraitCandidates": [
+    {
+      "url": "https://www.flhouse.gov/FileStores/Web/Imaging/Member/cutout%2f4765.png",
+      "method": "img",
+      "score": 39,
+      "altText": "Representative Tant Photo",
+      "sourcePageUrl": "https://www.flhouse.gov/Sections/Representatives/custom/details.aspx?MemberId=4765&LegislativeTermId=91",
+      "rightsStatus": "review_required",
+      "identityReviewStatus": "unreviewed",
+      "httpStatus": 200,
+      "finalUrl": "https://www.flhouse.gov/FileStores/Web/Imaging/Member/cutout%2F4765.png",
+      "contentType": "image/png",
+      "byteSize": 75067,
+      "imageSha256": "7e8adcf602e695b824a8b08ffbf4c0d80e0a9a496509ee8e03d3121056ed4857",
+      "downloadStatus": "captured_for_hash"
+    },
+    {
+      "url": "https://www.flhouse.gov/FileStores/Web/Imaging/PhotoAlbums/HousePhotoSized7700.jpg",
+      "method": "img",
+      "score": 30,
+      "altText": "Representative Tant Photo",
+      "sourcePageUrl": "https://www.flhouse.gov/Sections/Representatives/custom/details.aspx?MemberId=4765&LegislativeTermId=91",
+      "rightsStatus": "review_required",
+      "identityReviewStatus": "unreviewed",
+      "httpStatus": 200,
+      "finalUrl": "https://www.flhouse.gov/FileStores/Web/Imaging/PhotoAlbums/HousePhotoSized7700.jpg",
+      "contentType": "image/jpeg",
+      "byteSize": 18480,
+      "imageSha256": "5e36c22463a33bc9837c146a0fd1f73f2c5d62cfd2b3fdb6f2fc8c319347da2f",
+      "downloadStatus": "captured_for_hash"
+    },
+    {
+      "url": "https://www.flhouse.gov/Images/bronze-seal-250.png?cb=4.6.654349",
+      "method": "og:image",
+      "score": 14,
+      "altText": null,
+      "sourcePageUrl": "https://www.flhouse.gov/Sections/Representatives/custom/details.aspx?MemberId=4765&LegislativeTermId=91",
+      "rightsStatus": "review_required",
+      "identityReviewStatus": "unreviewed",
+      "httpStatus": 200,
+      "finalUrl": "https://www.flhouse.gov/Images/bronze-seal-250.png?cb=4.6.654349",
+      "contentType": "image/png",
+      "byteSize": 150275,
+      "imageSha256": "36f7c4317f0cc62c44ff5bbfc0a0e5eebf014be23c9c8826141f11a70d9e7ff8",
+      "downloadStatus": "captured_for_hash"
+    },
+    {
+      "url": "https://www.flhouse.gov/api/Member/get-member-uploaded-photo/4765/MemberPhotoSized8537.jpg/image",
+      "method": "img",
+      "score": 14,
+      "altText": null,
+      "sourcePageUrl": "https://www.flhouse.gov/Sections/Representatives/custom/details.aspx?MemberId=4765&LegislativeTermId=91",
+      "rightsStatus": "review_required",
+      "identityReviewStatus": "unreviewed",
+      "httpStatus": 200,
+      "finalUrl": "https://www.flhouse.gov/api/Member/get-member-uploaded-photo/4765/MemberPhotoSized8537.jpg/image",
+      "contentType": "image/jpeg",
+      "byteSize": 295409,
+      "imageSha256": "a74d28f255e719252ae8347485afde96b8ac7f255244e7d7c29a734343ed4054",
+      "downloadStatus": "captured_for_hash"
+    },
+    {
+      "url": "https://www.flhouse.gov/api/Member/get-member-uploaded-photo/4765/MemberPhotoSized8538.jpg/image",
+      "method": "img",
+      "score": 14,
+      "altText": null,
+      "sourcePageUrl": "https://www.flhouse.gov/Sections/Representatives/custom/details.aspx?MemberId=4765&LegislativeTermId=91",
+      "rightsStatus": "review_required",
+      "identityReviewStatus": "unreviewed",
+      "httpStatus": 200,
+      "finalUrl": "https://www.flhouse.gov/api/Member/get-member-uploaded-photo/4765/MemberPhotoSized8538.jpg/image",
+      "contentType": "image/jpeg",
+      "byteSize": 297495,
+      "imageSha256": "06eab8263379bc8a5c08ab56cac24edce1d8447ed29545584795104740172778",
+      "downloadStatus": "captured_for_hash"
+    },
+    {
+      "url": "https://www.flhouse.gov/api/Member/get-member-uploaded-photo/4765/MemberPhotoSized8539.jpg/image",
+      "method": "img",
+      "score": 14,
+      "altText": null,
+      "sourcePageUrl": "https://www.flhouse.gov/Sections/Representatives/custom/details.aspx?MemberId=4765&LegislativeTermId=91",
+      "rightsStatus": "review_required",
+      "identityReviewStatus": "unreviewed",
+      "httpStatus": 200,
+      "finalUrl": "https://www.flhouse.gov/api/Member/get-member-uploaded-photo/4765/MemberPhotoSized8539.jpg/image",
+      "contentType": "image/jpeg",
+      "byteSize": 320765,
+      "imageSha256": "aa1d1058cb5a6081ba5ed8f3897664d8bf0e4bb7704aab7327b30d9960590f7d",
+      "downloadStatus": "captured_for_hash"
+    }
+  ],
+  "contactCandidates": [
+    {
+      "type": "email",
+      "value": "Allison.Tant@flhouse.gov",
+      "label": null,
+      "sourcePageUrl": "https://www.flhouse.gov/Sections/Representatives/custom/details.aspx?MemberId=4765&LegislativeTermId=91"
+    },
+    {
+      "type": "phone",
+      "value": "(850) 717-5009",
+      "label": null,
+      "sourcePageUrl": "https://www.flhouse.gov/Sections/Representatives/custom/details.aspx?MemberId=4765&LegislativeTermId=91"
+    }
+  ],
+  "socialCandidates": [],
+  "websiteCandidates": [
+    {
+      "url": "https://www.flhouse.gov/Sections/Representatives/custom/contactmember.aspx?MemberId=4765&LegislativeTermId=91",
+      "label": "Contact Member",
+      "sourcePageUrl": "https://www.flhouse.gov/Sections/Representatives/custom/details.aspx?MemberId=4765&LegislativeTermId=91",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "url": "https://www.flhouse.gov/Sections/Representatives/custom/maps-and-offices.aspx?MemberId=4765&LegislativeTermId=91",
+      "label": "Maps & Offices",
+      "sourcePageUrl": "https://www.flhouse.gov/Sections/Representatives/custom/details.aspx?MemberId=4765&LegislativeTermId=91",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "url": "https://lp.constantcontactpages.com/sl/y3gkTnZ/HD9Updates",
+      "label": "Sign Up For My Newsletter",
+      "sourcePageUrl": "https://www.flhouse.gov/Sections/Representatives/custom/details.aspx?MemberId=4765&LegislativeTermId=91",
+      "reviewStatus": "unreviewed"
+    }
+  ],
+  "errors": [],
+  "httpStatus": 200,
+  "finalUrl": "https://www.flhouse.gov/Sections/Representatives/custom/details.aspx?MemberId=4765&LegislativeTermId=91",
+  "sourceSnapshotSha256": "958ef3750359af00974bfb97f78b707fb62db8300ac5bd0e3c4e00ff6f255583",
+  "contentType": "text/html",
+  "pageTitle": "Allison Tant  - 2024 - 2026 ( Speaker Perez ) | Florida House of Representatives",
+  "candidateSummary": {
+    "portraits": 6,
+    "contacts": 2,
+    "socials": 0,
+    "websites": 3
+  }
+}

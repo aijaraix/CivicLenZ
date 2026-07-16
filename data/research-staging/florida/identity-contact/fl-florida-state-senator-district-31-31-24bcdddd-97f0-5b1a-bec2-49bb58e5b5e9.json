@@ -1,0 +1,226 @@
+{
+  "enrichmentRecordVersion": "1.0.0",
+  "enrichmentRecordId": "0f60fde5-b7e7-5643-ac1f-45af4be5d2e8",
+  "taskId": "24bcdddd-97f0-5b1a-bec2-49bb58e5b5e9",
+  "seatKey": "fl-florida-state-senator-district-31-31",
+  "displayName": "Gayle Harrell",
+  "officeTitle": "Florida State Senator, District 31",
+  "sourceUrl": "https://www.flsenate.gov/Senators/2024-2026/S31",
+  "fetchedAt": "2026-07-16T05:20:44Z",
+  "collectionStatus": "success",
+  "reviewStatus": "unreviewed",
+  "publicationAllowed": false,
+  "portraitCandidates": [
+    {
+      "url": "https://www.flsenate.gov/PublishedContent/Senators/2024-2026/5348/Documents/4_3_25_MEDIA_ADVISORY_Senator_Harrell_Marks_Installation_of_Veterans_Museum_Kiosks_In_the_Florida_Capitol.jpg",
+      "method": "img",
+      "score": 30,
+      "altText": null,
+      "sourcePageUrl": "https://www.flsenate.gov/Senators/S31",
+      "rightsStatus": "review_required",
+      "identityReviewStatus": "unreviewed",
+      "httpStatus": 200,
+      "finalUrl": "https://www.flsenate.gov/PublishedContent/Senators/2024-2026/5348/Documents/4_3_25_MEDIA_ADVISORY_Senator_Harrell_Marks_Installation_of_Veterans_Museum_Kiosks_In_the_Florida_Capitol.jpg",
+      "contentType": "image/jpeg",
+      "byteSize": 3147,
+      "imageSha256": "71d52659b051fa30c2120859721d5e598c77a77654f59960cdcfdca7239c9f83",
+      "downloadStatus": "captured_for_hash"
+    },
+    {
+      "url": "https://www.flsenate.gov/PublishedContent/Senators/2024-2026/5348/Documents/4_8_2025_Senator_Harrell_Marks_the_Installation_of_Veterans_Museum_Kiosks_in_the_Florida_Capitol.jpg",
+      "method": "img",
+      "score": 30,
+      "altText": null,
+      "sourcePageUrl": "https://www.flsenate.gov/Senators/S31",
+      "rightsStatus": "review_required",
+      "identityReviewStatus": "unreviewed",
+      "httpStatus": 200,
+      "finalUrl": "https://www.flsenate.gov/PublishedContent/Senators/2024-2026/5348/Documents/4_8_2025_Senator_Harrell_Marks_the_Installation_of_Veterans_Museum_Kiosks_in_the_Florida_Capitol.jpg",
+      "contentType": "image/jpeg",
+      "byteSize": 2121,
+      "imageSha256": "a56f05f3750b9b1ab72a87253ca8dc8c1dd53c188ce2a33960a5f0995ab1aa1b",
+      "downloadStatus": "captured_for_hash"
+    },
+    {
+      "url": "https://www.flsenate.gov/PublishedContent/Senators/2024-2026/Photos/s31_5348.jpg",
+      "method": "img",
+      "score": 30,
+      "altText": "Senator Harrell",
+      "sourcePageUrl": "https://www.flsenate.gov/Senators/S31",
+      "rightsStatus": "review_required",
+      "identityReviewStatus": "unreviewed",
+      "httpStatus": 200,
+      "finalUrl": "https://www.flsenate.gov/PublishedContent/Senators/2024-2026/Photos/s31_5348.jpg",
+      "contentType": "image/jpeg",
+      "byteSize": 59503,
+      "imageSha256": "7382a191e898d59e68c47496d9a5806dab84cf99ccca2461e77dfb926c2ea2ac",
+      "downloadStatus": "captured_for_hash"
+    },
+    {
+      "url": "https://www.flsenate.gov/PublishedContent/Senators/2024-2026/5348/Documents/Martin_County_Delegation_Notice.jpg",
+      "method": "img",
+      "score": 18,
+      "altText": null,
+      "sourcePageUrl": "https://www.flsenate.gov/Senators/S31",
+      "rightsStatus": "review_required",
+      "identityReviewStatus": "unreviewed",
+      "httpStatus": 200,
+      "finalUrl": "https://www.flsenate.gov/PublishedContent/Senators/2024-2026/5348/Documents/Martin_County_Delegation_Notice.jpg",
+      "contentType": "image/jpeg",
+      "byteSize": 3413,
+      "imageSha256": "92386139e5bb930e56198025cf7e708c191d1fdcd598fc9785871d1aa47bf5fa",
+      "downloadStatus": "captured_for_hash"
+    },
+    {
+      "url": "https://www.flsenate.gov/PublishedContent/Session/Redistricting/Districts/SD2022/webmaps/sd31_webmap.png",
+      "method": "img",
+      "score": 9,
+      "altText": "District 31 map",
+      "sourcePageUrl": "https://www.flsenate.gov/Senators/S31",
+      "rightsStatus": "review_required",
+      "identityReviewStatus": "unreviewed",
+      "httpStatus": 200,
+      "finalUrl": "https://www.flsenate.gov/PublishedContent/Session/Redistricting/Districts/SD2022/webmaps/sd31_webmap.png",
+      "contentType": "image/png",
+      "byteSize": 77587,
+      "imageSha256": "47a6e88239b44337e7baf8643b024d584769e2ed0a584f49e296609cfa11ae93",
+      "downloadStatus": "captured_for_hash"
+    },
+    {
+      "url": "https://www.flsenate.gov/UserContent/img/help/2013search-goBill.png",
+      "method": "img",
+      "score": 9,
+      "altText": "Example of Go To Bill feature available on every page of flsenate.gov",
+      "sourcePageUrl": "https://www.flsenate.gov/Senators/S31",
+      "rightsStatus": "review_required",
+      "identityReviewStatus": "unreviewed",
+      "httpStatus": 200,
+      "finalUrl": "https://www.flsenate.gov/UserContent/img/help/2013search-goBill.png",
+      "contentType": "image/png",
+      "byteSize": 5007,
+      "imageSha256": "a5603c435a93d2686367d1b9d1852b1ac6e1bdfda72b8d2ea6c888e66a377ffe",
+      "downloadStatus": "captured_for_hash"
+    }
+  ],
+  "contactCandidates": [
+    {
+      "type": "email",
+      "value": "harrell.gayle.web@flsenate.gov",
+      "label": "harrell.gayle.web@flsenate.gov",
+      "sourcePageUrl": "https://www.flsenate.gov/Senators/S31"
+    },
+    {
+      "type": "email",
+      "value": "webmaster@flsenate.gov",
+      "label": "email",
+      "sourcePageUrl": "https://www.flsenate.gov/Senators/S31"
+    },
+    {
+      "type": "phone",
+      "value": "(772) 221-4019",
+      "label": null,
+      "sourcePageUrl": "https://www.flsenate.gov/Senators/S31"
+    },
+    {
+      "type": "phone",
+      "value": "(850) 487-5031",
+      "label": null,
+      "sourcePageUrl": "https://www.flsenate.gov/Senators/S31"
+    },
+    {
+      "type": "phone",
+      "value": "(888) 263-7895",
+      "label": null,
+      "sourcePageUrl": "https://www.flsenate.gov/Senators/S31"
+    }
+  ],
+  "socialCandidates": [
+    {
+      "platform": "X",
+      "url": "http://www.twitter.com/flsenate",
+      "label": "Twitter",
+      "sourcePageUrl": "https://www.flsenate.gov/Senators/S31",
+      "reviewStatus": "unreviewed"
+    }
+  ],
+  "websiteCandidates": [
+    {
+      "url": "https://www.flsenate.gov/Session/ExecutiveAppointments",
+      "label": "Executive Appointments",
+      "sourcePageUrl": "https://www.flsenate.gov/Senators/S31",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "url": "https://www.flsenate.gov/Media/VideoSchedule",
+      "label": "Video Broadcast Schedule",
+      "sourcePageUrl": "https://www.flsenate.gov/Senators/S31",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "url": "https://www.flsenate.gov/About/Contact",
+      "label": "Contact Us",
+      "sourcePageUrl": "https://www.flsenate.gov/Senators/S31",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "url": "https://www.flsenate.gov/Offices",
+      "label": "Offices",
+      "sourcePageUrl": "https://www.flsenate.gov/Senators/S31",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "url": "https://www.flsenate.gov/Offices/President",
+      "label": "President's Office",
+      "sourcePageUrl": "https://www.flsenate.gov/Senators/S31",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "url": "https://www.flsenate.gov/Offices/Majority",
+      "label": "Majority Office",
+      "sourcePageUrl": "https://www.flsenate.gov/Senators/S31",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "url": "https://www.flsenate.gov/Offices/Minority",
+      "label": "Minority Office",
+      "sourcePageUrl": "https://www.flsenate.gov/Senators/S31",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "url": "https://www.flsenate.gov/Offices/Secretary",
+      "label": "Secretary's Office",
+      "sourcePageUrl": "https://www.flsenate.gov/Senators/S31",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "url": "https://www.flsenate.gov/Reference/PublicRecords",
+      "label": "Public Records",
+      "sourcePageUrl": "https://www.flsenate.gov/Senators/S31",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "url": "https://www.flsenate.gov/Session/ExecutiveAppointments/",
+      "label": "Executive Appointments",
+      "sourcePageUrl": "https://www.flsenate.gov/Senators/S31",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "url": "https://www.flsenate.gov/About/Contact#connect",
+      "label": "Connect with the Senate",
+      "sourcePageUrl": "https://www.flsenate.gov/Senators/S31",
+      "reviewStatus": "unreviewed"
+    }
+  ],
+  "errors": [],
+  "httpStatus": 200,
+  "finalUrl": "https://www.flsenate.gov/Senators/S31",
+  "sourceSnapshotSha256": "918f619c9254fe25d0f557d1ead024d25ae26bd3b99f0594bd4bfbc8e4e2b79b",
+  "contentType": "text/html",
+  "pageTitle": "Senator Harrell - The Florida Senate",
+  "candidateSummary": {
+    "portraits": 6,
+    "contacts": 5,
+    "socials": 1,
+    "websites": 11
+  }
+}

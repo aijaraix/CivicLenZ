@@ -1,0 +1,253 @@
+{
+  "enrichmentRecordVersion": "1.0.0",
+  "enrichmentRecordId": "c950e5fb-6684-5cca-a9b7-2079b003047a",
+  "taskId": "59e2d860-cdf1-58fe-803e-6f35baea88ee",
+  "seatKey": "fl-united-states-representative-25",
+  "displayName": "Debbie Wasserman Schultz",
+  "officeTitle": "United States Representative",
+  "sourceUrl": "https://wassermanschultz.house.gov/",
+  "fetchedAt": "2026-07-16T05:19:58Z",
+  "collectionStatus": "success",
+  "reviewStatus": "unreviewed",
+  "publicationAllowed": false,
+  "portraitCandidates": [
+    {
+      "url": "https://wassermanschultz.house.gov/images/logo.png",
+      "method": "img",
+      "score": 19,
+      "altText": "U.S. House of Representatives Debbie Wasserman Schultz",
+      "sourcePageUrl": "https://wassermanschultz.house.gov/",
+      "rightsStatus": "review_required",
+      "identityReviewStatus": "unreviewed",
+      "httpStatus": 200,
+      "finalUrl": "https://wassermanschultz.house.gov/images/logo.png",
+      "contentType": "image/png",
+      "byteSize": 14173,
+      "imageSha256": "8d31ebaab638b5335166f29f637e2359fe3e4cd75562538b7d05f3ab73b94b6c",
+      "downloadStatus": "captured_for_hash"
+    },
+    {
+      "url": "https://wassermanschultz.house.gov/images/footer-logo.png",
+      "method": "img",
+      "score": -28,
+      "altText": "U.S. House of Representatives",
+      "sourcePageUrl": "https://wassermanschultz.house.gov/",
+      "rightsStatus": "review_required",
+      "identityReviewStatus": "unreviewed",
+      "httpStatus": 200,
+      "finalUrl": "https://wassermanschultz.house.gov/images/footer-logo.png",
+      "contentType": "image/png",
+      "byteSize": 20290,
+      "imageSha256": "9cc2fdf454570516dda71d8751cf3b91d8ecb1ff6d439cab2e3e9c9d8b4847b3",
+      "downloadStatus": "captured_for_hash"
+    }
+  ],
+  "contactCandidates": [
+    {
+      "type": "phone",
+      "value": "2022257931",
+      "label": "(202) 225-7931",
+      "sourcePageUrl": "https://wassermanschultz.house.gov/"
+    },
+    {
+      "type": "phone",
+      "value": "2022262052",
+      "label": "(202) 226-2052",
+      "sourcePageUrl": "https://wassermanschultz.house.gov/"
+    },
+    {
+      "type": "phone",
+      "value": "9548451179",
+      "label": "(954) 845-1179",
+      "sourcePageUrl": "https://wassermanschultz.house.gov/"
+    },
+    {
+      "type": "phone",
+      "value": "9548450396",
+      "label": "(954) 845-0396",
+      "sourcePageUrl": "https://wassermanschultz.house.gov/"
+    },
+    {
+      "type": "phone",
+      "value": "(202) 225-7931",
+      "label": null,
+      "sourcePageUrl": "https://wassermanschultz.house.gov/"
+    },
+    {
+      "type": "phone",
+      "value": "(202) 226-2052",
+      "label": null,
+      "sourcePageUrl": "https://wassermanschultz.house.gov/"
+    },
+    {
+      "type": "phone",
+      "value": "(954) 845-0396",
+      "label": null,
+      "sourcePageUrl": "https://wassermanschultz.house.gov/"
+    },
+    {
+      "type": "phone",
+      "value": "(954) 845-1179",
+      "label": null,
+      "sourcePageUrl": "https://wassermanschultz.house.gov/"
+    }
+  ],
+  "socialCandidates": [
+    {
+      "platform": "Facebook",
+      "url": "https://www.facebook.com/RepDWS",
+      "label": null,
+      "sourcePageUrl": "https://wassermanschultz.house.gov/",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "platform": "X",
+      "url": "https://twitter.com/RepDWStweets",
+      "label": null,
+      "sourcePageUrl": "https://wassermanschultz.house.gov/",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "platform": "YouTube",
+      "url": "https://www.youtube.com/user/RepWassermanSchultz",
+      "label": null,
+      "sourcePageUrl": "https://wassermanschultz.house.gov/",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "platform": "Instagram",
+      "url": "https://www.instagram.com/RepDWS/",
+      "label": null,
+      "sourcePageUrl": "https://wassermanschultz.house.gov/",
+      "reviewStatus": "unreviewed"
+    }
+  ],
+  "websiteCandidates": [
+    {
+      "url": "https://wassermanschultz.house.gov/constituent-services/casework/getting-help-venezuela-earthquakes.htm",
+      "label": "VENEZUELA EARTHQUAKE INFORMATION",
+      "sourcePageUrl": "https://wassermanschultz.house.gov/",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "url": "https://wassermanschultz.house.gov/constituent-services",
+      "label": "view more",
+      "sourcePageUrl": "https://wassermanschultz.house.gov/",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "url": "https://wassermanschultz.house.gov/forms/form/?ID=1",
+      "label": "Newsletter Sign Up",
+      "sourcePageUrl": "https://wassermanschultz.house.gov/",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "url": "https://wassermanschultz.house.gov/constituent-services/",
+      "label": "Services",
+      "sourcePageUrl": "https://wassermanschultz.house.gov/",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "url": "https://wassermanschultz.house.gov/constituent-services/arts-competition.htm",
+      "label": "Art Competition",
+      "sourcePageUrl": "https://wassermanschultz.house.gov/",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "url": "https://wassermanschultz.house.gov/constituent-services/flag-requests.htm",
+      "label": "Flag Request",
+      "sourcePageUrl": "https://wassermanschultz.house.gov/",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "url": "https://wassermanschultz.house.gov/constituent-services/grants.htm",
+      "label": "Grant Information",
+      "sourcePageUrl": "https://wassermanschultz.house.gov/",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "url": "https://wassermanschultz.house.gov/constituent-services/casework/",
+      "label": "Help With A Federal Agency",
+      "sourcePageUrl": "https://wassermanschultz.house.gov/",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "url": "https://wassermanschultz.house.gov/constituent-services/internships.htm",
+      "label": "Internship Opportunities",
+      "sourcePageUrl": "https://wassermanschultz.house.gov/",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "url": "https://wassermanschultz.house.gov/constituent-services/services-academies.htm",
+      "label": "Service Academy Nominations",
+      "sourcePageUrl": "https://wassermanschultz.house.gov/",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "url": "https://wassermanschultz.house.gov/constituent-services/washington-dc.htm",
+      "label": "Visiting Washington, DC",
+      "sourcePageUrl": "https://wassermanschultz.house.gov/",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "url": "https://wassermanschultz.house.gov/news/email/",
+      "label": "Enewsletters",
+      "sourcePageUrl": "https://wassermanschultz.house.gov/",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "url": "https://wassermanschultz.house.gov/contact/",
+      "label": "Email Me",
+      "sourcePageUrl": "https://wassermanschultz.house.gov/",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "url": "https://wassermanschultz.house.gov/contact/officeinformation.htm",
+      "label": "My Office Locations",
+      "sourcePageUrl": "https://wassermanschultz.house.gov/",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "url": "https://wassermanschultz.house.gov/contact/scheduling.htm",
+      "label": "Scheduling",
+      "sourcePageUrl": "https://wassermanschultz.house.gov/",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "url": "https://wassermanschultz.house.gov/constituent-services/immigration-info.htm",
+      "label": "Immigration Resources",
+      "sourcePageUrl": "https://wassermanschultz.house.gov/",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "url": "https://wassermanschultz.house.gov/news/documentsingle.aspx?DocumentID=3517",
+      "label": "EL PAIS: Immigrants say they are being held for days in a Miami ICE office under ‘horrific’ conditions",
+      "sourcePageUrl": "https://wassermanschultz.house.gov/",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "url": "https://wassermanschultz.house.gov/contact/meeting-request.htm",
+      "label": "Schedule a Meeting With Us",
+      "sourcePageUrl": "https://wassermanschultz.house.gov/",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "url": "https://wassermanschultz.house.gov/contact",
+      "label": "Contact Me",
+      "sourcePageUrl": "https://wassermanschultz.house.gov/",
+      "reviewStatus": "unreviewed"
+    }
+  ],
+  "errors": [],
+  "httpStatus": 200,
+  "finalUrl": "https://wassermanschultz.house.gov/",
+  "sourceSnapshotSha256": "a78b96710c6450cbce9390c3066d9a550b2d8f4446aa7c702fa7ecb455143e14",
+  "contentType": "text/html",
+  "pageTitle": "Congresswoman Debbie Wasserman Schultz",
+  "candidateSummary": {
+    "portraits": 2,
+    "contacts": 8,
+    "socials": 4,
+    "websites": 19
+  }
+}

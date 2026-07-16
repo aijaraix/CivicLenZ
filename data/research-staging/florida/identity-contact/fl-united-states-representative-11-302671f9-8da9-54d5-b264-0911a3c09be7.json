@@ -1,0 +1,152 @@
+{
+  "enrichmentRecordVersion": "1.0.0",
+  "enrichmentRecordId": "e8951c0e-f3df-52a1-8da3-d1ad68c444c1",
+  "taskId": "302671f9-8da9-54d5-b264-0911a3c09be7",
+  "seatKey": "fl-united-states-representative-11",
+  "displayName": "Daniel Webster",
+  "officeTitle": "United States Representative",
+  "sourceUrl": "https://webster.house.gov/",
+  "fetchedAt": "2026-07-16T05:19:58Z",
+  "collectionStatus": "success",
+  "reviewStatus": "unreviewed",
+  "publicationAllowed": false,
+  "portraitCandidates": [
+    {
+      "url": "https://webster.house.gov/vendor/_accounts/danielwebster/_skins/102522/images/social_card.jpg",
+      "method": "og:image",
+      "score": 73,
+      "altText": null,
+      "sourcePageUrl": "https://webster.house.gov/",
+      "rightsStatus": "review_required",
+      "identityReviewStatus": "unreviewed",
+      "httpStatus": 404,
+      "finalUrl": "https://webster.house.gov/vendor/_accounts/danielwebster/_skins/102522/images/social_card.jpg",
+      "contentType": "text/html",
+      "byteSize": 196,
+      "downloadStatus": "not_an_image_or_http_error"
+    },
+    {
+      "url": "https://webster.house.gov/vendor/_accounts/danielwebster/_skins/102522/images/img-dan-webster.png",
+      "method": "img",
+      "score": 42,
+      "altText": "portrait",
+      "sourcePageUrl": "https://webster.house.gov/",
+      "rightsStatus": "review_required",
+      "identityReviewStatus": "unreviewed",
+      "httpStatus": 200,
+      "finalUrl": "https://webster.house.gov/vendor/_accounts/danielwebster/_skins/102522/images/img-dan-webster.png",
+      "contentType": "image/png",
+      "byteSize": 298127,
+      "imageSha256": "b2a4a0ca1445094baff286e930f3b1b5e74d3873f23b35fd234f816cd022bf7e",
+      "downloadStatus": "captured_for_hash"
+    },
+    {
+      "url": "https://webster.house.gov/vendor/_accounts/danielwebster/_skins/102522/images/map-118.png",
+      "method": "img",
+      "score": 33,
+      "altText": "map of Florida",
+      "sourcePageUrl": "https://webster.house.gov/",
+      "rightsStatus": "review_required",
+      "identityReviewStatus": "unreviewed",
+      "httpStatus": 200,
+      "finalUrl": "https://webster.house.gov/vendor/_accounts/danielwebster/_skins/102522/images/map-118.png",
+      "contentType": "image/png",
+      "byteSize": 380436,
+      "imageSha256": "cf69fbd8b76b70854dd8d4af7a05c3873995a5e6c34972f1af84c05960bf064f",
+      "downloadStatus": "captured_for_hash"
+    }
+  ],
+  "contactCandidates": [
+    {
+      "type": "phone",
+      "value": "(202) 225-1002",
+      "label": null,
+      "sourcePageUrl": "https://webster.house.gov/"
+    },
+    {
+      "type": "phone",
+      "value": "(352) 241-9220",
+      "label": null,
+      "sourcePageUrl": "https://webster.house.gov/"
+    },
+    {
+      "type": "phone",
+      "value": "(352) 383-3552",
+      "label": null,
+      "sourcePageUrl": "https://webster.house.gov/"
+    }
+  ],
+  "socialCandidates": [
+    {
+      "platform": "Facebook",
+      "url": "https://www.facebook.com/RepWebster/",
+      "label": "Facebook",
+      "sourcePageUrl": "https://webster.house.gov/",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "platform": "X",
+      "url": "https://twitter.com/RepWebster",
+      "label": "Twitter",
+      "sourcePageUrl": "https://webster.house.gov/",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "platform": "YouTube",
+      "url": "https://www.youtube.com/channel/UCCoX4VdU7U11eGEA0lbRtLw",
+      "label": "YouTube",
+      "sourcePageUrl": "https://webster.house.gov/",
+      "reviewStatus": "unreviewed"
+    }
+  ],
+  "websiteCandidates": [
+    {
+      "url": "https://webster.house.gov/constituent-services",
+      "label": "Services",
+      "sourcePageUrl": "https://webster.house.gov/",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "url": "https://webster.house.gov/more-services",
+      "label": "Constituent Services",
+      "sourcePageUrl": "https://webster.house.gov/",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "url": "https://webster.house.gov/contact",
+      "label": "Stay Connected",
+      "sourcePageUrl": "https://webster.house.gov/",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "url": "https://webster.house.gov/newsletter-sign-up",
+      "label": "Newsletter Sign Up",
+      "sourcePageUrl": "https://webster.house.gov/",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "url": "https://webster.house.gov/office-information",
+      "label": "Office Information",
+      "sourcePageUrl": "https://webster.house.gov/",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "url": "https://webster.house.gov/unsubscribe",
+      "label": "Unsubscribe",
+      "sourcePageUrl": "https://webster.house.gov/",
+      "reviewStatus": "unreviewed"
+    }
+  ],
+  "errors": [],
+  "httpStatus": 200,
+  "finalUrl": "https://webster.house.gov/",
+  "sourceSnapshotSha256": "dbde95361829565f2e4eec6875ae2012071eccb2ea65f5ed159e5a520d8bd0a0",
+  "contentType": "text/html",
+  "pageTitle": "United States Congressman Daniel Webster",
+  "candidateSummary": {
+    "portraits": 3,
+    "contacts": 3,
+    "socials": 3,
+    "websites": 6
+  }
+}

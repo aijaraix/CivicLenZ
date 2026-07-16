@@ -1,0 +1,196 @@
+{
+  "enrichmentRecordVersion": "1.0.0",
+  "enrichmentRecordId": "ebf3b4bd-7acc-51d1-ae08-159fc0dc0679",
+  "taskId": "ae92e454-eaa7-50fe-9cd9-53827f2b91f2",
+  "seatKey": "fl-united-states-representative-26",
+  "displayName": "Mario Diaz-Balart",
+  "officeTitle": "United States Representative",
+  "sourceUrl": "https://mariodiazbalart.house.gov/",
+  "fetchedAt": "2026-07-16T05:19:59Z",
+  "collectionStatus": "success",
+  "reviewStatus": "unreviewed",
+  "publicationAllowed": false,
+  "portraitCandidates": [
+    {
+      "url": "https://mariodiazbalart.house.gov/sites/evo-subsites/mariodiazbalart.house.gov/files/evo-media-image/2025bannereditenglishforpressreleasesonsocialmedia.jpg",
+      "method": "og:image",
+      "score": 50,
+      "altText": null,
+      "sourcePageUrl": "https://mariodiazbalart.house.gov/",
+      "rightsStatus": "review_required",
+      "identityReviewStatus": "unreviewed",
+      "httpStatus": 200,
+      "finalUrl": "https://mariodiazbalart.house.gov/sites/evo-subsites/mariodiazbalart.house.gov/files/evo-media-image/2025bannereditenglishforpressreleasesonsocialmedia.jpg",
+      "contentType": "image/jpeg",
+      "byteSize": 297508,
+      "imageSha256": "31935e8770ce8c16362bc5448ae4deea485f210e4ee57b4c766a2f2993767121",
+      "downloadStatus": "captured_for_hash"
+    },
+    {
+      "url": "https://mariodiazbalart.house.gov/sites/evo-subsites/mariodiazbalart-evo.house.gov/files/styles/evo_image_full_width/public/evo-media-image/pier.png?h=ecd0e6f2&itok=Y2TdITdi",
+      "method": "img",
+      "score": 45,
+      "altText": "Marsh",
+      "sourcePageUrl": "https://mariodiazbalart.house.gov/",
+      "rightsStatus": "review_required",
+      "identityReviewStatus": "unreviewed",
+      "httpStatus": 200,
+      "finalUrl": "https://mariodiazbalart.house.gov/sites/evo-subsites/mariodiazbalart-evo.house.gov/files/styles/evo_image_full_width/public/evo-media-image/pier.png?h=ecd0e6f2&itok=Y2TdITdi",
+      "contentType": "image/png",
+      "byteSize": 4886289,
+      "imageSha256": "1f2fa1859a0d0b9573f89c99a838bcb0f89faf9162af3c5eb4798a3f4c42cd30",
+      "downloadStatus": "captured_for_hash"
+    },
+    {
+      "url": "https://mariodiazbalart.house.gov/sites/evo-subsites/mariodiazbalart.house.gov/files/evo-media-image/florida2.png",
+      "method": "img",
+      "score": 45,
+      "altText": null,
+      "sourcePageUrl": "https://mariodiazbalart.house.gov/",
+      "rightsStatus": "review_required",
+      "identityReviewStatus": "unreviewed",
+      "httpStatus": 200,
+      "finalUrl": "https://mariodiazbalart.house.gov/sites/evo-subsites/mariodiazbalart.house.gov/files/evo-media-image/florida2.png",
+      "contentType": "image/png",
+      "byteSize": 1087,
+      "imageSha256": "cde1eec141b866fd5dd4cdb4d85a03e824086b1f1694a0264eeabbeb26d02719",
+      "downloadStatus": "captured_for_hash"
+    },
+    {
+      "url": "https://mariodiazbalart.house.gov/sites/evo-subsites/mariodiazbalart-evo.house.gov/files/logo-new_0.png",
+      "method": "img",
+      "score": 10,
+      "altText": "Congressman Mario Diaz-Balart logo",
+      "sourcePageUrl": "https://mariodiazbalart.house.gov/",
+      "rightsStatus": "review_required",
+      "identityReviewStatus": "unreviewed",
+      "httpStatus": 200,
+      "finalUrl": "https://mariodiazbalart.house.gov/sites/evo-subsites/mariodiazbalart-evo.house.gov/files/logo-new_0.png",
+      "contentType": "image/png",
+      "byteSize": 27267,
+      "imageSha256": "698314abe1d2b13e6edb648cd1a7148b40a8a078f7ecefcce8d66b783ce1577c",
+      "downloadStatus": "captured_for_hash"
+    }
+  ],
+  "contactCandidates": [
+    {
+      "type": "phone",
+      "value": "(202) 225-4211",
+      "label": null,
+      "sourcePageUrl": "https://mariodiazbalart.house.gov/"
+    },
+    {
+      "type": "phone",
+      "value": "(202) 225-8576",
+      "label": null,
+      "sourcePageUrl": "https://mariodiazbalart.house.gov/"
+    },
+    {
+      "type": "phone",
+      "value": "(239) 348-1620",
+      "label": null,
+      "sourcePageUrl": "https://mariodiazbalart.house.gov/"
+    },
+    {
+      "type": "phone",
+      "value": "(239) 348-3569",
+      "label": null,
+      "sourcePageUrl": "https://mariodiazbalart.house.gov/"
+    },
+    {
+      "type": "phone",
+      "value": "(305) 470-8555",
+      "label": null,
+      "sourcePageUrl": "https://mariodiazbalart.house.gov/"
+    },
+    {
+      "type": "phone",
+      "value": "(305) 470-8575",
+      "label": null,
+      "sourcePageUrl": "https://mariodiazbalart.house.gov/"
+    }
+  ],
+  "socialCandidates": [
+    {
+      "platform": "X",
+      "url": "https://twitter.com/mariodb",
+      "label": "Tweets by GOP",
+      "sourcePageUrl": "https://mariodiazbalart.house.gov/",
+      "reviewStatus": "unreviewed"
+    }
+  ],
+  "websiteCandidates": [
+    {
+      "url": "https://mariodiazbalart.house.gov/contact-mario",
+      "label": "Contact Mario",
+      "sourcePageUrl": "https://mariodiazbalart.house.gov/",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "url": "https://mariodiazbalart.house.gov/contact-mario/newsletter-subscribe",
+      "label": "Sign Up",
+      "sourcePageUrl": "https://mariodiazbalart.house.gov/",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "url": "https://mariodiazbalart.house.gov/contact-mario/office-hours-near-you",
+      "label": "Office Hours Near You",
+      "sourcePageUrl": "https://mariodiazbalart.house.gov/",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "url": "https://mariodiazbalart.house.gov/contact/offices",
+      "label": "Office Locations",
+      "sourcePageUrl": "https://mariodiazbalart.house.gov/",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "url": "https://mariodiazbalart.house.gov/contact-mario/request-an-appearance",
+      "label": "Request an Appearance",
+      "sourcePageUrl": "https://mariodiazbalart.house.gov/",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "url": "https://mariodiazbalart.house.gov/contact-mario/website-problem",
+      "label": "Website Problem",
+      "sourcePageUrl": "https://mariodiazbalart.house.gov/",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "url": "https://mariodiazbalart.house.gov/contact/offices/washington-dc-office",
+      "label": "Washington DC Office",
+      "sourcePageUrl": "https://mariodiazbalart.house.gov/",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "url": "https://mariodiazbalart.house.gov/contact/offices/doral-district-office",
+      "label": "Doral District Office",
+      "sourcePageUrl": "https://mariodiazbalart.house.gov/",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "url": "https://mariodiazbalart.house.gov/contact/offices/naples-district-office",
+      "label": "Naples District Office",
+      "sourcePageUrl": "https://mariodiazbalart.house.gov/",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "url": "https://mariodiazbalart.house.gov/contact/newsletter-unsubscribe",
+      "label": "cancel or unsubscribe",
+      "sourcePageUrl": "https://mariodiazbalart.house.gov/",
+      "reviewStatus": "unreviewed"
+    }
+  ],
+  "errors": [],
+  "httpStatus": 200,
+  "finalUrl": "https://mariodiazbalart.house.gov/",
+  "sourceSnapshotSha256": "75e71b59ed167b37eb307390e34e78d8f66eef34e0913bb95f82bab58b898ea4",
+  "contentType": "text/html",
+  "pageTitle": "Congressman Mario Diaz-Balart |",
+  "candidateSummary": {
+    "portraits": 4,
+    "contacts": 6,
+    "socials": 1,
+    "websites": 10
+  }
+}

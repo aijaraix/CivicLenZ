@@ -1,0 +1,226 @@
+{
+  "enrichmentRecordVersion": "1.0.0",
+  "enrichmentRecordId": "6a985b0a-bd44-5b67-b5f0-54fe76301d01",
+  "taskId": "3c3672e3-22ec-5348-947e-adcd51fc9f6e",
+  "seatKey": "fl-florida-state-senator-district-16-16",
+  "displayName": "Darryl Ervin Rouson",
+  "officeTitle": "Florida State Senator, District 16",
+  "sourceUrl": "https://www.flsenate.gov/Senators/2024-2026/S16",
+  "fetchedAt": "2026-07-16T05:20:39Z",
+  "collectionStatus": "success",
+  "reviewStatus": "unreviewed",
+  "publicationAllowed": false,
+  "portraitCandidates": [
+    {
+      "url": "https://www.flsenate.gov/PublishedContent/Senators/2024-2026/Photos/s16_5203.jpg",
+      "method": "img",
+      "score": 30,
+      "altText": "Senator Rouson",
+      "sourcePageUrl": "https://www.flsenate.gov/Senators/S16",
+      "rightsStatus": "review_required",
+      "identityReviewStatus": "unreviewed",
+      "httpStatus": 200,
+      "finalUrl": "https://www.flsenate.gov/PublishedContent/Senators/2024-2026/Photos/s16_5203.jpg",
+      "contentType": "image/jpeg",
+      "byteSize": 59883,
+      "imageSha256": "3b0365570597b1a08b7d1552f26d98d4b2b715d4d0dd50bd7c2fa1692a2bfe33",
+      "downloadStatus": "captured_for_hash"
+    },
+    {
+      "url": "https://www.flsenate.gov/PublishedContent/Session/Redistricting/Districts/SD2022/webmaps/sd16_webmap.png",
+      "method": "img",
+      "score": 9,
+      "altText": "District 16 map",
+      "sourcePageUrl": "https://www.flsenate.gov/Senators/S16",
+      "rightsStatus": "review_required",
+      "identityReviewStatus": "unreviewed",
+      "httpStatus": 200,
+      "finalUrl": "https://www.flsenate.gov/PublishedContent/Session/Redistricting/Districts/SD2022/webmaps/sd16_webmap.png",
+      "contentType": "image/png",
+      "byteSize": 152487,
+      "imageSha256": "6692ef8dc21efb9b79db64d7e7a7015fec90fbfc2b95c504d1b358d199b4d9d2",
+      "downloadStatus": "captured_for_hash"
+    },
+    {
+      "url": "https://www.flsenate.gov/UserContent/img/help/2013search-goBill.png",
+      "method": "img",
+      "score": 9,
+      "altText": "Example of Go To Bill feature available on every page of flsenate.gov",
+      "sourcePageUrl": "https://www.flsenate.gov/Senators/S16",
+      "rightsStatus": "review_required",
+      "identityReviewStatus": "unreviewed",
+      "httpStatus": 200,
+      "finalUrl": "https://www.flsenate.gov/UserContent/img/help/2013search-goBill.png",
+      "contentType": "image/png",
+      "byteSize": 5007,
+      "imageSha256": "a5603c435a93d2686367d1b9d1852b1ac6e1bdfda72b8d2ea6c888e66a377ffe",
+      "downloadStatus": "captured_for_hash"
+    },
+    {
+      "url": "https://www.flsenate.gov/UserContent/img/help/2013sitesearch.png",
+      "method": "img",
+      "score": 9,
+      "altText": "Example of Site Search available on every page of flsenate.gov",
+      "sourcePageUrl": "https://www.flsenate.gov/Senators/S16",
+      "rightsStatus": "review_required",
+      "identityReviewStatus": "unreviewed",
+      "httpStatus": 200,
+      "finalUrl": "https://www.flsenate.gov/UserContent/img/help/2013sitesearch.png",
+      "contentType": "image/png",
+      "byteSize": 4284,
+      "imageSha256": "a856ffdf809fbc2f0993fab57b3436909b092ef1d682a977310fc6edd2380dac",
+      "downloadStatus": "captured_for_hash"
+    },
+    {
+      "url": "https://www.flsenate.gov/UserContent/img/help/2013statutesearch.png",
+      "method": "img",
+      "score": 9,
+      "altText": "Example of Go To Bill feature available on every page of flsenate.gov",
+      "sourcePageUrl": "https://www.flsenate.gov/Senators/S16",
+      "rightsStatus": "review_required",
+      "identityReviewStatus": "unreviewed",
+      "httpStatus": 200,
+      "finalUrl": "https://www.flsenate.gov/UserContent/img/help/2013statutesearch.png",
+      "contentType": "image/png",
+      "byteSize": 5911,
+      "imageSha256": "34b5496e6e024221ffe3fae722107c6c23f4bf07f70c6607c863ef6def60bd3b",
+      "downloadStatus": "captured_for_hash"
+    },
+    {
+      "url": "https://www.flsenate.gov/UserContent/img/help/printerIcon.png",
+      "method": "img",
+      "score": -26,
+      "altText": "Acrobat print icon",
+      "sourcePageUrl": "https://www.flsenate.gov/Senators/S16",
+      "rightsStatus": "review_required",
+      "identityReviewStatus": "unreviewed",
+      "httpStatus": 200,
+      "finalUrl": "https://www.flsenate.gov/UserContent/img/help/printerIcon.png",
+      "contentType": "image/png",
+      "byteSize": 1535,
+      "imageSha256": "bd252613689747407dcc6f71fe992c940a3a21b2365a6d4e3851de2ae8fbcf5f",
+      "downloadStatus": "captured_for_hash"
+    }
+  ],
+  "contactCandidates": [
+    {
+      "type": "email",
+      "value": "rouson.darryl.web@flsenate.gov",
+      "label": "rouson.darryl.web@flsenate.gov",
+      "sourcePageUrl": "https://www.flsenate.gov/Senators/S16"
+    },
+    {
+      "type": "email",
+      "value": "webmaster@flsenate.gov",
+      "label": "email",
+      "sourcePageUrl": "https://www.flsenate.gov/Senators/S16"
+    },
+    {
+      "type": "phone",
+      "value": "(727) 822-6828",
+      "label": null,
+      "sourcePageUrl": "https://www.flsenate.gov/Senators/S16"
+    },
+    {
+      "type": "phone",
+      "value": "(850) 487-5016",
+      "label": null,
+      "sourcePageUrl": "https://www.flsenate.gov/Senators/S16"
+    },
+    {
+      "type": "phone",
+      "value": "1 (727) 822-6828",
+      "label": null,
+      "sourcePageUrl": "https://www.flsenate.gov/Senators/S16"
+    }
+  ],
+  "socialCandidates": [
+    {
+      "platform": "X",
+      "url": "http://www.twitter.com/flsenate",
+      "label": "Twitter",
+      "sourcePageUrl": "https://www.flsenate.gov/Senators/S16",
+      "reviewStatus": "unreviewed"
+    }
+  ],
+  "websiteCandidates": [
+    {
+      "url": "https://www.flsenate.gov/Session/ExecutiveAppointments",
+      "label": "Executive Appointments",
+      "sourcePageUrl": "https://www.flsenate.gov/Senators/S16",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "url": "https://www.flsenate.gov/Media/VideoSchedule",
+      "label": "Video Broadcast Schedule",
+      "sourcePageUrl": "https://www.flsenate.gov/Senators/S16",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "url": "https://www.flsenate.gov/About/Contact",
+      "label": "Contact Us",
+      "sourcePageUrl": "https://www.flsenate.gov/Senators/S16",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "url": "https://www.flsenate.gov/Offices",
+      "label": "Offices",
+      "sourcePageUrl": "https://www.flsenate.gov/Senators/S16",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "url": "https://www.flsenate.gov/Offices/President",
+      "label": "President's Office",
+      "sourcePageUrl": "https://www.flsenate.gov/Senators/S16",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "url": "https://www.flsenate.gov/Offices/Majority",
+      "label": "Majority Office",
+      "sourcePageUrl": "https://www.flsenate.gov/Senators/S16",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "url": "https://www.flsenate.gov/Offices/Minority",
+      "label": "Minority Office",
+      "sourcePageUrl": "https://www.flsenate.gov/Senators/S16",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "url": "https://www.flsenate.gov/Offices/Secretary",
+      "label": "Secretary's Office",
+      "sourcePageUrl": "https://www.flsenate.gov/Senators/S16",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "url": "https://www.flsenate.gov/Reference/PublicRecords",
+      "label": "Public Records",
+      "sourcePageUrl": "https://www.flsenate.gov/Senators/S16",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "url": "https://www.flsenate.gov/Session/ExecutiveAppointments/",
+      "label": "Executive Appointments",
+      "sourcePageUrl": "https://www.flsenate.gov/Senators/S16",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "url": "https://www.flsenate.gov/About/Contact#connect",
+      "label": "Connect with the Senate",
+      "sourcePageUrl": "https://www.flsenate.gov/Senators/S16",
+      "reviewStatus": "unreviewed"
+    }
+  ],
+  "errors": [],
+  "httpStatus": 200,
+  "finalUrl": "https://www.flsenate.gov/Senators/S16",
+  "sourceSnapshotSha256": "04ed130b95e2e418baaf258537085ba07c858f28cde2ba8422c738ac1bee6e9e",
+  "contentType": "text/html",
+  "pageTitle": "Senator Rouson - The Florida Senate",
+  "candidateSummary": {
+    "portraits": 6,
+    "contacts": 5,
+    "socials": 1,
+    "websites": 11
+  }
+}

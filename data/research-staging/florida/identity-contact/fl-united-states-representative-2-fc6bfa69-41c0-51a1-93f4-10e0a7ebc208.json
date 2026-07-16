@@ -1,0 +1,204 @@
+{
+  "enrichmentRecordVersion": "1.0.0",
+  "enrichmentRecordId": "09b1c147-1b6f-5f86-a81b-2751213ac672",
+  "taskId": "fc6bfa69-41c0-51a1-93f4-10e0a7ebc208",
+  "seatKey": "fl-united-states-representative-2",
+  "displayName": "Neal Dunn",
+  "officeTitle": "United States Representative",
+  "sourceUrl": "https://dunn.house.gov",
+  "fetchedAt": "2026-07-16T05:19:59Z",
+  "collectionStatus": "success",
+  "reviewStatus": "unreviewed",
+  "publicationAllowed": false,
+  "portraitCandidates": [
+    {
+      "url": "https://dunn.house.gov/images/img-01.png",
+      "method": "img",
+      "score": 33,
+      "altText": "Rep. Neal Dunn",
+      "sourcePageUrl": "https://dunn.house.gov/",
+      "rightsStatus": "review_required",
+      "identityReviewStatus": "unreviewed",
+      "httpStatus": 200,
+      "finalUrl": "https://dunn.house.gov/images/img-01.png",
+      "contentType": "image/png",
+      "byteSize": 887850,
+      "imageSha256": "c2f730f22c7503de07e8f709758847a9067ea3a85dc7f60de1eb25b4de8aac82",
+      "downloadStatus": "captured_for_hash"
+    },
+    {
+      "url": "https://dunn.house.gov/images/img-02.png",
+      "method": "img",
+      "score": 33,
+      "altText": "Rep. Neal Dunn speaking to one person",
+      "sourcePageUrl": "https://dunn.house.gov/",
+      "rightsStatus": "review_required",
+      "identityReviewStatus": "unreviewed",
+      "httpStatus": 200,
+      "finalUrl": "https://dunn.house.gov/images/img-02.png",
+      "contentType": "image/png",
+      "byteSize": 557691,
+      "imageSha256": "7ab089ec78fbb38dfd2ede41739197e53e7780103c2b5ea782d9db17c89cfe2a",
+      "downloadStatus": "captured_for_hash"
+    },
+    {
+      "url": "https://dunn.house.gov/images/img-10.jpg",
+      "method": "img",
+      "score": 33,
+      "altText": "Rep. Neal Dunn",
+      "sourcePageUrl": "https://dunn.house.gov/",
+      "rightsStatus": "review_required",
+      "identityReviewStatus": "unreviewed",
+      "httpStatus": 200,
+      "finalUrl": "https://dunn.house.gov/images/img-10.jpg",
+      "contentType": "image/jpeg",
+      "byteSize": 272632,
+      "imageSha256": "22edd6708fa0e47eff499f7af83b6c163a584aa838eeb87f5db097e055cb74e3",
+      "downloadStatus": "captured_for_hash"
+    },
+    {
+      "url": "https://dunn.house.gov/UploadedPhotos/HighResolution/0462733a-7cc7-4528-92c2-bb286438c720.jpg",
+      "method": "img",
+      "score": 21,
+      "altText": null,
+      "sourcePageUrl": "https://dunn.house.gov/",
+      "rightsStatus": "review_required",
+      "identityReviewStatus": "unreviewed",
+      "httpStatus": 200,
+      "finalUrl": "https://dunn.house.gov/uploadedphotos/highresolution/0462733a-7cc7-4528-92c2-bb286438c720.jpg",
+      "contentType": "image/jpeg",
+      "byteSize": 669562,
+      "imageSha256": "3a9a84ce4aaeb6225c6f642c112efc8b64ba07c5f7451775db4ba25deac52c9f",
+      "downloadStatus": "captured_for_hash"
+    },
+    {
+      "url": "https://dunn.house.gov/UploadedPhotos/HighResolution/128add64-9b20-4510-9300-27e1a2ac2e9b.jpg",
+      "method": "img",
+      "score": 21,
+      "altText": "Slide 1",
+      "sourcePageUrl": "https://dunn.house.gov/",
+      "rightsStatus": "review_required",
+      "identityReviewStatus": "unreviewed",
+      "httpStatus": 200,
+      "finalUrl": "https://dunn.house.gov/uploadedphotos/highresolution/128add64-9b20-4510-9300-27e1a2ac2e9b.jpg",
+      "contentType": "image/jpeg",
+      "byteSize": 58376,
+      "imageSha256": "ccbdc11ff2528022ac58adaa26555ac90c610c735e6605164114d68848f2ccaa",
+      "downloadStatus": "captured_for_hash"
+    },
+    {
+      "url": "https://dunn.house.gov/UploadedPhotos/HighResolution/1f0a2786-25d4-4f8c-9e33-04e5eaae9f49.jpg",
+      "method": "img",
+      "score": 21,
+      "altText": null,
+      "sourcePageUrl": "https://dunn.house.gov/",
+      "rightsStatus": "review_required",
+      "identityReviewStatus": "unreviewed",
+      "httpStatus": 200,
+      "finalUrl": "https://dunn.house.gov/uploadedphotos/highresolution/1f0a2786-25d4-4f8c-9e33-04e5eaae9f49.jpg",
+      "contentType": "image/jpeg",
+      "byteSize": 1226786,
+      "imageSha256": "625e92799e8357fd58ff81154c5e4b208b2457c14bb889de4bfb26bee1ef9347",
+      "downloadStatus": "captured_for_hash"
+    }
+  ],
+  "contactCandidates": [
+    {
+      "type": "phone",
+      "value": "8507850812",
+      "label": "(850) 785-0812",
+      "sourcePageUrl": "https://dunn.house.gov/"
+    },
+    {
+      "type": "phone",
+      "value": "2022255235",
+      "label": "(202) 225-5235",
+      "sourcePageUrl": "https://dunn.house.gov/"
+    },
+    {
+      "type": "phone",
+      "value": "8508918610",
+      "label": "(850) 891-8610",
+      "sourcePageUrl": "https://dunn.house.gov/"
+    },
+    {
+      "type": "phone",
+      "value": "(202) 225-5235",
+      "label": null,
+      "sourcePageUrl": "https://dunn.house.gov/"
+    },
+    {
+      "type": "phone",
+      "value": "(850) 785-0812",
+      "label": null,
+      "sourcePageUrl": "https://dunn.house.gov/"
+    },
+    {
+      "type": "phone",
+      "value": "(850) 891-8610",
+      "label": null,
+      "sourcePageUrl": "https://dunn.house.gov/"
+    }
+  ],
+  "socialCandidates": [
+    {
+      "platform": "Facebook",
+      "url": "https://www.facebook.com/DrNealDunnFL2/",
+      "label": null,
+      "sourcePageUrl": "https://dunn.house.gov/",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "platform": "X",
+      "url": "https://x.com/drnealdunnfl2",
+      "label": null,
+      "sourcePageUrl": "https://dunn.house.gov/",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "platform": "Instagram",
+      "url": "https://www.instagram.com/housegop/",
+      "label": null,
+      "sourcePageUrl": "https://dunn.house.gov/",
+      "reviewStatus": "unreviewed"
+    }
+  ],
+  "websiteCandidates": [
+    {
+      "url": "https://dunn.house.gov/contact/contactform.htm",
+      "label": "Email",
+      "sourcePageUrl": "https://dunn.house.gov/",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "url": "https://dunn.house.gov/contact/subscribe.htm",
+      "label": "Newsletter Subscription",
+      "sourcePageUrl": "https://dunn.house.gov/",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "url": "https://dunn.house.gov/contact/offices.htm",
+      "label": "Offices",
+      "sourcePageUrl": "https://dunn.house.gov/",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "url": "https://dunn.house.gov/contact/",
+      "label": "Contact",
+      "sourcePageUrl": "https://dunn.house.gov/",
+      "reviewStatus": "unreviewed"
+    }
+  ],
+  "errors": [],
+  "httpStatus": 200,
+  "finalUrl": "https://dunn.house.gov/",
+  "sourceSnapshotSha256": "32a64b795fb3ef9a65ccdf9d9136d86b284f5f12d762165fec70c594037683f4",
+  "contentType": "text/html",
+  "pageTitle": "U.S. Representative Neal Dunn",
+  "candidateSummary": {
+    "portraits": 6,
+    "contacts": 6,
+    "socials": 3,
+    "websites": 4
+  }
+}

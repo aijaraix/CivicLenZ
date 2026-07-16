@@ -1,0 +1,172 @@
+{
+  "enrichmentRecordVersion": "1.0.0",
+  "enrichmentRecordId": "be479f0a-827f-5cf3-b044-89ba04f8cc59",
+  "taskId": "3ea21ce5-dc96-5f0b-a7ac-36f3b39a641d",
+  "seatKey": "fl-governor-of-florida-at-large",
+  "displayName": "Ron DeSantis",
+  "officeTitle": "Governor of Florida",
+  "sourceUrl": "https://www.flgov.com/",
+  "fetchedAt": "2026-07-16T05:20:48Z",
+  "collectionStatus": "success",
+  "reviewStatus": "unreviewed",
+  "publicationAllowed": false,
+  "portraitCandidates": [
+    {
+      "url": "https://www.flgov.com/eog/sites/default/files/img/ron-desantis-inaugeration.png",
+      "method": "img",
+      "score": 7,
+      "altText": "Governor Ron DeSantis",
+      "sourcePageUrl": "https://www.flgov.com/eog/",
+      "rightsStatus": "review_required",
+      "identityReviewStatus": "unreviewed",
+      "httpStatus": 200,
+      "finalUrl": "https://www.flgov.com/eog/sites/default/files/img/ron-desantis-inaugeration.png",
+      "contentType": "image/png",
+      "byteSize": 1081154,
+      "imageSha256": "2c88bf60c96cbe909bf098d1180fd9ff760c448e28767573c026f9b2e7f749b0",
+      "downloadStatus": "captured_for_hash"
+    },
+    {
+      "url": "https://www.flgov.com/eog/sites/default/files/img/blueprint-economics.png",
+      "method": "img",
+      "score": -2,
+      "altText": "Ron DeSantis at press conference",
+      "sourcePageUrl": "https://www.flgov.com/eog/",
+      "rightsStatus": "review_required",
+      "identityReviewStatus": "unreviewed",
+      "httpStatus": 200,
+      "finalUrl": "https://www.flgov.com/eog/sites/default/files/img/blueprint-economics.png",
+      "contentType": "image/png",
+      "byteSize": 873612,
+      "imageSha256": "d63b108c449002c1ead62399708326b8ee7d2aaa31a82856261a3992a21a5edc",
+      "downloadStatus": "captured_for_hash"
+    },
+    {
+      "url": "https://www.flgov.com/eog/sites/default/files/img/blueprint-education.png",
+      "method": "img",
+      "score": -2,
+      "altText": "Ron Desantis with woman at press conference",
+      "sourcePageUrl": "https://www.flgov.com/eog/",
+      "rightsStatus": "review_required",
+      "identityReviewStatus": "unreviewed",
+      "httpStatus": 200,
+      "finalUrl": "https://www.flgov.com/eog/sites/default/files/img/blueprint-education.png",
+      "contentType": "image/png",
+      "byteSize": 2502505,
+      "imageSha256": "1fdd27a9940501f1b52af52d29f87bd0131cd74bdaa492cc471bb57e972dd661",
+      "downloadStatus": "captured_for_hash"
+    },
+    {
+      "url": "https://www.flgov.com/eog/sites/default/files/img/blueprint-law.png",
+      "method": "img",
+      "score": -2,
+      "altText": "Ron DeSantis with law enforcement",
+      "sourcePageUrl": "https://www.flgov.com/eog/",
+      "rightsStatus": "review_required",
+      "identityReviewStatus": "unreviewed",
+      "httpStatus": 200,
+      "finalUrl": "https://www.flgov.com/eog/sites/default/files/img/blueprint-law.png",
+      "contentType": "image/png",
+      "byteSize": 1192200,
+      "imageSha256": "441b7bf7c9c29fde3f1ca2677e34fc08a9ed43687a088573864239ab556c0230",
+      "downloadStatus": "captured_for_hash"
+    },
+    {
+      "url": "https://www.flgov.com/eog/sites/default/files/img/blueprint-welcome-2.jpg",
+      "method": "img",
+      "score": -26,
+      "altText": "Welcome to Florida sign",
+      "sourcePageUrl": "https://www.flgov.com/eog/",
+      "rightsStatus": "review_required",
+      "identityReviewStatus": "unreviewed",
+      "httpStatus": 200,
+      "finalUrl": "https://www.flgov.com/eog/sites/default/files/img/blueprint-welcome-2.jpg",
+      "contentType": "image/jpeg",
+      "byteSize": 267558,
+      "imageSha256": "7be3d7f4e88f9c2a23ef58192143ff5ec6d41ccc1baa1de7ea4c50db5f3ca5ae",
+      "downloadStatus": "captured_for_hash"
+    },
+    {
+      "url": "https://www.flgov.com/eog/sites/default/files/styles/carousel/public/img/carousel/carousel-920-550-capitol.png?itok=TGxhxibW",
+      "method": "img",
+      "score": -26,
+      "altText": "FL Capitol",
+      "sourcePageUrl": "https://www.flgov.com/eog/",
+      "rightsStatus": "review_required",
+      "identityReviewStatus": "unreviewed",
+      "httpStatus": 200,
+      "finalUrl": "https://www.flgov.com/eog/sites/default/files/styles/carousel/public/img/carousel/carousel-920-550-capitol.png?itok=TGxhxibW",
+      "contentType": "image/png",
+      "byteSize": 1082805,
+      "imageSha256": "2d6ff23ed7f89fef946304ef67d5fb2d35d8f23b57e885051a935e2c26c7196d",
+      "downloadStatus": "captured_for_hash"
+    }
+  ],
+  "contactCandidates": [],
+  "socialCandidates": [
+    {
+      "platform": "Facebook",
+      "url": "https://www.facebook.com/GovRonDeSantis/",
+      "label": null,
+      "sourcePageUrl": "https://www.flgov.com/eog/",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "platform": "X",
+      "url": "https://x.com/GovRonDeSantis",
+      "label": null,
+      "sourcePageUrl": "https://www.flgov.com/eog/",
+      "reviewStatus": "unreviewed"
+    }
+  ],
+  "websiteCandidates": [
+    {
+      "url": "https://www.flgov.com/eog",
+      "label": "Executive Office of the Governor",
+      "sourcePageUrl": "https://www.flgov.com/eog/",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "url": "https://www.flgov.com/eog/leadership/appointments",
+      "label": "Appointments",
+      "sourcePageUrl": "https://www.flgov.com/eog/",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "url": "https://www.flgov.com/eog/leadership/people/ron-desantis/contact",
+      "label": "Contact the Governor",
+      "sourcePageUrl": "https://www.flgov.com/eog/",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "url": "https://www.flgov.com/eog/leadership/people/casey-desantis/contact",
+      "label": "Contact the First Lady",
+      "sourcePageUrl": "https://www.flgov.com/eog/",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "url": "https://eogforms.eog.myflorida.com/pages/PRRequest.aspx",
+      "label": "Public Records Request",
+      "sourcePageUrl": "https://www.flgov.com/eog/",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "url": "https://flgov.com/eog/leadership/people/ron-desantis/contact",
+      "label": "Contact Us",
+      "sourcePageUrl": "https://www.flgov.com/eog/",
+      "reviewStatus": "unreviewed"
+    }
+  ],
+  "errors": [],
+  "httpStatus": 200,
+  "finalUrl": "https://www.flgov.com/eog/",
+  "sourceSnapshotSha256": "0a8a68cb318d2d11439b71178ff5442e6b3f87ca806ed4484c170e4ee3c0f0a4",
+  "contentType": "text/html",
+  "pageTitle": "Governor Ron DeSantis | Executive Office of the Governor",
+  "candidateSummary": {
+    "portraits": 6,
+    "contacts": 0,
+    "socials": 2,
+    "websites": 6
+  }
+}

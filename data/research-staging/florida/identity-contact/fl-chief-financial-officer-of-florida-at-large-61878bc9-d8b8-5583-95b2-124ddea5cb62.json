@@ -1,0 +1,166 @@
+{
+  "enrichmentRecordVersion": "1.0.0",
+  "enrichmentRecordId": "b7b63a3f-278c-505f-96a9-7ca51ef24450",
+  "taskId": "61878bc9-d8b8-5583-95b2-124ddea5cb62",
+  "seatKey": "fl-chief-financial-officer-of-florida-at-large",
+  "displayName": "Blaise Ingoglia",
+  "officeTitle": "Chief Financial Officer of Florida",
+  "sourceUrl": "https://www.myfloridacfo.com/",
+  "fetchedAt": "2026-07-16T05:20:01Z",
+  "collectionStatus": "success",
+  "reviewStatus": "unreviewed",
+  "publicationAllowed": false,
+  "portraitCandidates": [
+    {
+      "url": "https://www.myfloridacfo.com/sitefinity-images/default-source/assets/home-page-assets/old-buttons/bbb-scamtracker052206eb6511-b697-4c08-901c-3a2ea14cf4a2.webp",
+      "method": "img",
+      "score": -26,
+      "altText": "Better Business Bureau's Scam Tracker Button",
+      "sourcePageUrl": "https://www.myfloridacfo.com/",
+      "rightsStatus": "review_required",
+      "identityReviewStatus": "unreviewed",
+      "httpStatus": 200,
+      "finalUrl": "https://www.myfloridacfo.com/sitefinity-images/default-source/assets/home-page-assets/old-buttons/bbb-scamtracker052206eb6511-b697-4c08-901c-3a2ea14cf4a2.webp",
+      "contentType": "image/webp",
+      "byteSize": 13162,
+      "imageSha256": "8afe0452b878cf09ec0ee89b93c35cfb2bf166e4e92710b1f859aa1b81b069cc",
+      "downloadStatus": "captured_for_hash"
+    },
+    {
+      "url": "https://www.myfloridacfo.com/sitefinity-images/default-source/assets/home-page-assets/old-buttons/factsbutton35b2d211-3993-45f2-a991-8aff44ef089a.webp",
+      "method": "img",
+      "score": -26,
+      "altText": "FACTS Button",
+      "sourcePageUrl": "https://www.myfloridacfo.com/",
+      "rightsStatus": "review_required",
+      "identityReviewStatus": "unreviewed",
+      "httpStatus": 200,
+      "finalUrl": "https://www.myfloridacfo.com/sitefinity-images/default-source/assets/home-page-assets/old-buttons/factsbutton35b2d211-3993-45f2-a991-8aff44ef089a.webp",
+      "contentType": "image/webp",
+      "byteSize": 9740,
+      "imageSha256": "898ba636be850d2ddb9d3ffb3d9da5f610781f5f7f458ba272ff6ccc9e17831f",
+      "downloadStatus": "captured_for_hash"
+    },
+    {
+      "url": "https://www.myfloridacfo.com/sitefinity-images/default-source/assets/home-page-assets/old-buttons/finlitbuttondd14aa70-d40b-46a7-b51c-4ec3b4514075.webp",
+      "method": "img",
+      "score": -26,
+      "altText": "Financial Literacy Button",
+      "sourcePageUrl": "https://www.myfloridacfo.com/",
+      "rightsStatus": "review_required",
+      "identityReviewStatus": "unreviewed",
+      "httpStatus": 200,
+      "finalUrl": "https://www.myfloridacfo.com/sitefinity-images/default-source/assets/home-page-assets/old-buttons/finlitbuttondd14aa70-d40b-46a7-b51c-4ec3b4514075.webp",
+      "contentType": "image/webp",
+      "byteSize": 9560,
+      "imageSha256": "d791e5eb928c04ae240f831f9d0dfabf76f9d1591f3b0319f6e08e695f882bd3",
+      "downloadStatus": "captured_for_hash"
+    },
+    {
+      "url": "https://www.myfloridacfo.com/sitefinity-images/default-source/assets/home-page-assets/old-buttons/flpalmbutton962fd8ff-b01e-40b1-a9ca-4a0964c5302f.webp",
+      "method": "img",
+      "score": -26,
+      "altText": "Florida PALM  Button",
+      "sourcePageUrl": "https://www.myfloridacfo.com/",
+      "rightsStatus": "review_required",
+      "identityReviewStatus": "unreviewed",
+      "httpStatus": 200,
+      "finalUrl": "https://www.myfloridacfo.com/sitefinity-images/default-source/assets/home-page-assets/old-buttons/flpalmbutton962fd8ff-b01e-40b1-a9ca-4a0964c5302f.webp",
+      "contentType": "image/webp",
+      "byteSize": 10032,
+      "imageSha256": "d37278c9f9c2a281e181afb23a63e7653d1a4d08f6c3c7d54b772f621c3d71bf",
+      "downloadStatus": "captured_for_hash"
+    },
+    {
+      "url": "https://www.myfloridacfo.com/sitefinity-images/default-source/assets/home-page-assets/old-buttons/fraud-free-florida.webp",
+      "method": "img",
+      "score": -26,
+      "altText": "Fraud Free Florida Button",
+      "sourcePageUrl": "https://www.myfloridacfo.com/",
+      "rightsStatus": "review_required",
+      "identityReviewStatus": "unreviewed",
+      "httpStatus": 200,
+      "finalUrl": "https://www.myfloridacfo.com/sitefinity-images/default-source/assets/home-page-assets/old-buttons/fraud-free-florida.webp",
+      "contentType": "image/webp",
+      "byteSize": 8322,
+      "imageSha256": "af43a464d04f1eab28661dffbb4c953929cbaf0036ade1c9792337853f8c2602",
+      "downloadStatus": "captured_for_hash"
+    },
+    {
+      "url": "https://www.myfloridacfo.com/sitefinity-images/default-source/assets/home-page-assets/old-buttons/insurance-help05228aa87993-6511-4660-952a-3841d283f30b.webp",
+      "method": "img",
+      "score": -26,
+      "altText": "Insurance Help Button",
+      "sourcePageUrl": "https://www.myfloridacfo.com/",
+      "rightsStatus": "review_required",
+      "identityReviewStatus": "unreviewed",
+      "httpStatus": 200,
+      "finalUrl": "https://www.myfloridacfo.com/sitefinity-images/default-source/assets/home-page-assets/old-buttons/insurance-help05228aa87993-6511-4660-952a-3841d283f30b.webp",
+      "contentType": "image/webp",
+      "byteSize": 12762,
+      "imageSha256": "c0062930430e08f159fc5b7461496d5f4d319b2f7d4575a9ef8ba7b3cb9a8c10",
+      "downloadStatus": "captured_for_hash"
+    }
+  ],
+  "contactCandidates": [],
+  "socialCandidates": [
+    {
+      "platform": "Facebook",
+      "url": "https://www.facebook.com/FLDFS",
+      "label": null,
+      "sourcePageUrl": "https://www.myfloridacfo.com/",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "platform": "X",
+      "url": "https://twitter.com/FLDFS",
+      "label": null,
+      "sourcePageUrl": "https://www.myfloridacfo.com/",
+      "reviewStatus": "unreviewed"
+    }
+  ],
+  "websiteCandidates": [
+    {
+      "url": "https://www.myfloridacfo.com/about/meet-the-cfo",
+      "label": "Meet Your Chief Financial Officer Blaise Ingoglia",
+      "sourcePageUrl": "https://www.myfloridacfo.com/",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "url": "https://floir.gov/",
+      "label": "Office of Insurance Regulation",
+      "sourcePageUrl": "https://www.myfloridacfo.com/",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "url": "https://flofr.gov/",
+      "label": "Office of Financial Regulation",
+      "sourcePageUrl": "https://www.myfloridacfo.com/",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "url": "https://www.myfloridacfo.com/ask-fldfs",
+      "label": "Contact",
+      "sourcePageUrl": "https://www.myfloridacfo.com/",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "url": "https://www.myfloridacfo.com/publicrecords",
+      "label": "Public Records Request",
+      "sourcePageUrl": "https://www.myfloridacfo.com/",
+      "reviewStatus": "unreviewed"
+    }
+  ],
+  "errors": [],
+  "httpStatus": 200,
+  "finalUrl": "https://www.myfloridacfo.com/",
+  "sourceSnapshotSha256": "ecaa5d440a913e92745358304ac152ce19e29aebb22bf28c9d69a0bd90c5a524",
+  "contentType": "text/html",
+  "pageTitle": "Home",
+  "candidateSummary": {
+    "portraits": 6,
+    "contacts": 0,
+    "socials": 2,
+    "websites": 5
+  }
+}

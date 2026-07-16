@@ -1,0 +1,207 @@
+{
+  "enrichmentRecordVersion": "1.0.0",
+  "enrichmentRecordId": "e0f80bdc-bdba-527b-95c1-464ec9cb9392",
+  "taskId": "66bad2da-75a3-585b-855f-c47bc21d2c59",
+  "seatKey": "fl-united-states-representative-3",
+  "displayName": "Kat Cammack",
+  "officeTitle": "United States Representative",
+  "sourceUrl": "https://cammack.house.gov",
+  "fetchedAt": "2026-07-16T05:19:59Z",
+  "collectionStatus": "success",
+  "reviewStatus": "unreviewed",
+  "publicationAllowed": false,
+  "portraitCandidates": [
+    {
+      "url": "https://cammack.house.gov/profiles/evo/assets/images/Seal_of_the_United_States_House_of_Representatives.png",
+      "method": "og:image",
+      "score": 44,
+      "altText": null,
+      "sourcePageUrl": "https://cammack.house.gov/",
+      "rightsStatus": "review_required",
+      "identityReviewStatus": "unreviewed",
+      "httpStatus": 200,
+      "finalUrl": "https://cammack.house.gov/profiles/evo/assets/images/Seal_of_the_United_States_House_of_Representatives.png",
+      "contentType": "image/png",
+      "byteSize": 225630,
+      "imageSha256": "97f154eb8428c9c1c38c05112b6cdd943fea63ecdd486d084c167e10e0dec628",
+      "downloadStatus": "captured_for_hash"
+    },
+    {
+      "url": "https://cammack.house.gov/sites/evo-subsites/cammack.house.gov/files/styles/large/public/evo-media-image/backtotop_0.png?itok=ccjtAfk6",
+      "method": "img",
+      "score": 21,
+      "altText": "Back to top",
+      "sourcePageUrl": "https://cammack.house.gov/",
+      "rightsStatus": "review_required",
+      "identityReviewStatus": "unreviewed",
+      "httpStatus": 200,
+      "finalUrl": "https://cammack.house.gov/sites/evo-subsites/cammack.house.gov/files/styles/large/public/evo-media-image/backtotop_0.png?itok=ccjtAfk6",
+      "contentType": "image/png",
+      "byteSize": 1489,
+      "imageSha256": "3f349f0df620680c4c75152ca4a665a3ab0c4eddbcb7f09569594e7ab04af054",
+      "downloadStatus": "captured_for_hash"
+    },
+    {
+      "url": "https://cammack.house.gov/sites/evo-subsites/cammack.house.gov/files/cammack-logo2026resizedv2.png",
+      "method": "img",
+      "score": 7,
+      "altText": "Representative Kat Cammack logo",
+      "sourcePageUrl": "https://cammack.house.gov/",
+      "rightsStatus": "review_required",
+      "identityReviewStatus": "unreviewed",
+      "httpStatus": 200,
+      "finalUrl": "https://cammack.house.gov/sites/evo-subsites/cammack.house.gov/files/cammack-logo2026resizedv2.png",
+      "contentType": "image/png",
+      "byteSize": 123018,
+      "imageSha256": "0f982c20e84968d347ab45b73e71425cf005e27a1ffbb6b90b67f6e3db22281b",
+      "downloadStatus": "captured_for_hash"
+    }
+  ],
+  "contactCandidates": [
+    {
+      "type": "phone",
+      "value": "(202) 225-5744",
+      "label": null,
+      "sourcePageUrl": "https://cammack.house.gov/"
+    },
+    {
+      "type": "phone",
+      "value": "(352) 421-9052",
+      "label": null,
+      "sourcePageUrl": "https://cammack.house.gov/"
+    },
+    {
+      "type": "phone",
+      "value": "(352) 505-0838",
+      "label": null,
+      "sourcePageUrl": "https://cammack.house.gov/"
+    },
+    {
+      "type": "phone",
+      "value": "(771) 200-5542",
+      "label": null,
+      "sourcePageUrl": "https://cammack.house.gov/"
+    }
+  ],
+  "socialCandidates": [
+    {
+      "platform": "YouTube",
+      "url": "https://www.youtube.com/@repkatcammack",
+      "label": "Videos",
+      "sourcePageUrl": "https://cammack.house.gov/",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "platform": "X",
+      "url": "https://twitter.com/RepKatCammack",
+      "label": "Tweets by RepKatCammack",
+      "sourcePageUrl": "https://cammack.house.gov/",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "platform": "Facebook",
+      "url": "https://www.facebook.com/RepKatCammack",
+      "label": "RepKatCammack",
+      "sourcePageUrl": "https://cammack.house.gov/",
+      "reviewStatus": "unreviewed"
+    }
+  ],
+  "websiteCandidates": [
+    {
+      "url": "https://cammack.house.gov/contact/email-me",
+      "label": "Email Me",
+      "sourcePageUrl": "https://cammack.house.gov/",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "url": "https://cammack.house.gov/contact/offices",
+      "label": "Office Locations",
+      "sourcePageUrl": "https://cammack.house.gov/",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "url": "https://cammack.house.gov/contact/request-an-appearance",
+      "label": "Scheduling Requests",
+      "sourcePageUrl": "https://cammack.house.gov/",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "url": "https://cammack.house.gov/contact/newsletter-subscribe",
+      "label": "Newsletter Subscribe",
+      "sourcePageUrl": "https://cammack.house.gov/",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "url": "https://cammack.house.gov/contact/telephone-town-hall-sign",
+      "label": "Telephone Town Hall Sign-Up",
+      "sourcePageUrl": "https://cammack.house.gov/",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "url": "https://cammack.house.gov/contact/website-problem",
+      "label": "Website Problem",
+      "sourcePageUrl": "https://cammack.house.gov/",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "url": "https://cammack.house.gov/contact/privacy-policy-terms-use",
+      "label": "Privacy Policy & Terms of Use",
+      "sourcePageUrl": "https://cammack.house.gov/",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "url": "https://cammack.house.gov/media/newsletters",
+      "label": "Newsletters",
+      "sourcePageUrl": "https://cammack.house.gov/",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "url": "https://cammack.house.gov/veterans-services/veterans-newsletters",
+      "label": "Veterans' Newsletters",
+      "sourcePageUrl": "https://cammack.house.gov/",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "url": "https://cammack.house.gov/contact",
+      "label": "Contact Us",
+      "sourcePageUrl": "https://cammack.house.gov/",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "url": "https://cammack.house.gov/contact/offices/washington-dc-office",
+      "label": "Washington DC Office",
+      "sourcePageUrl": "https://cammack.house.gov/",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "url": "https://cammack.house.gov/contact/offices/ocala-office",
+      "label": "Ocala Office",
+      "sourcePageUrl": "https://cammack.house.gov/",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "url": "https://cammack.house.gov/contact/offices/gainesville-district-office",
+      "label": "Gainesville District Office",
+      "sourcePageUrl": "https://cammack.house.gov/",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "url": "https://cammack.house.gov/contact/newsletter-unsubscribe",
+      "label": "cancel or unsubscribe",
+      "sourcePageUrl": "https://cammack.house.gov/",
+      "reviewStatus": "unreviewed"
+    }
+  ],
+  "errors": [],
+  "httpStatus": 200,
+  "finalUrl": "https://cammack.house.gov/",
+  "sourceSnapshotSha256": "e17faa7ffd7c873a8ec33771e9590c2b73c5b7d67caaf95404eeff3f0d442c78",
+  "contentType": "text/html",
+  "pageTitle": "Representative Kat Cammack |",
+  "candidateSummary": {
+    "portraits": 3,
+    "contacts": 4,
+    "socials": 3,
+    "websites": 14
+  }
+}

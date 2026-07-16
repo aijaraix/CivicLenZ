@@ -1,0 +1,265 @@
+{
+  "enrichmentRecordVersion": "1.0.0",
+  "enrichmentRecordId": "693ae86c-0bdf-57cc-bf84-3c6227e3c8bc",
+  "taskId": "93283e27-47df-5da4-bbb9-8df081812501",
+  "seatKey": "fl-florida-state-senator-district-25-25",
+  "displayName": "Kristen Aston Arrington",
+  "officeTitle": "Florida State Senator, District 25",
+  "sourceUrl": "https://www.flsenate.gov/Senators/2024-2026/S25",
+  "fetchedAt": "2026-07-16T05:20:42Z",
+  "collectionStatus": "success",
+  "reviewStatus": "unreviewed",
+  "publicationAllowed": false,
+  "portraitCandidates": [
+    {
+      "url": "https://www.flsenate.gov/PublishedContent/Senators/2024-2026/Photos/s25_5494.jpg",
+      "method": "img",
+      "score": 30,
+      "altText": "Senator Arrington",
+      "sourcePageUrl": "https://www.flsenate.gov/Senators/S25",
+      "rightsStatus": "review_required",
+      "identityReviewStatus": "unreviewed",
+      "httpStatus": 200,
+      "finalUrl": "https://www.flsenate.gov/PublishedContent/Senators/2024-2026/Photos/s25_5494.jpg",
+      "contentType": "image/jpeg",
+      "byteSize": 51616,
+      "imageSha256": "92505ba27dd9024fa1fd77e6e46f344514bd5810e93cc0ca9efc11c3cfb3fb15",
+      "downloadStatus": "captured_for_hash"
+    },
+    {
+      "url": "https://www.flsenate.gov/PublishedContent/Offices/Senator/7-11_AA.jpg",
+      "method": "img",
+      "score": 18,
+      "altText": null,
+      "sourcePageUrl": "https://www.flsenate.gov/Senators/S25",
+      "rightsStatus": "review_required",
+      "identityReviewStatus": "unreviewed",
+      "httpStatus": 200,
+      "finalUrl": "https://www.flsenate.gov/PublishedContent/Offices/Senator/7-11_AA.jpg",
+      "contentType": "image/jpeg",
+      "byteSize": 5317,
+      "imageSha256": "de494d2a04502aad43054051a863c1d533347ad96a11a7aaebaef17886af43d1",
+      "downloadStatus": "captured_for_hash"
+    },
+    {
+      "url": "https://www.flsenate.gov/PublishedContent/Offices/Senator/SB_1180_SIGNED_eng___spa.jpg",
+      "method": "img",
+      "score": 18,
+      "altText": null,
+      "sourcePageUrl": "https://www.flsenate.gov/Senators/S25",
+      "rightsStatus": "review_required",
+      "identityReviewStatus": "unreviewed",
+      "httpStatus": 200,
+      "finalUrl": "https://www.flsenate.gov/PublishedContent/Offices/Senator/SB_1180_SIGNED_eng___spa.jpg",
+      "contentType": "image/jpeg",
+      "byteSize": 4670,
+      "imageSha256": "d3748bc8eb83e1896e09e8d3416d7ed20f65a9c186549bd6ba31c9492242146b",
+      "downloadStatus": "captured_for_hash"
+    },
+    {
+      "url": "https://www.flsenate.gov/PublishedContent/Offices/Senator/Week_in_Review__Budget_Breakdown.jpg",
+      "method": "img",
+      "score": 18,
+      "altText": null,
+      "sourcePageUrl": "https://www.flsenate.gov/Senators/S25",
+      "rightsStatus": "review_required",
+      "identityReviewStatus": "unreviewed",
+      "httpStatus": 200,
+      "finalUrl": "https://www.flsenate.gov/PublishedContent/Offices/Senator/Week_in_Review__Budget_Breakdown.jpg",
+      "contentType": "image/jpeg",
+      "byteSize": 5269,
+      "imageSha256": "43ad78425a6c0d39878b90905801b9eefb07d2ccdf5b7bfe50d6d1068841fc87",
+      "downloadStatus": "captured_for_hash"
+    },
+    {
+      "url": "https://www.flsenate.gov/PublishedContent/Offices/Senator/Week_in_Review__Special_Session_F.jpg",
+      "method": "img",
+      "score": 18,
+      "altText": null,
+      "sourcePageUrl": "https://www.flsenate.gov/Senators/S25",
+      "rightsStatus": "review_required",
+      "identityReviewStatus": "unreviewed",
+      "httpStatus": 200,
+      "finalUrl": "https://www.flsenate.gov/PublishedContent/Offices/Senator/Week_in_Review__Special_Session_F.jpg",
+      "contentType": "image/jpeg",
+      "byteSize": 5105,
+      "imageSha256": "a4f1ab83f77c595286edcbaa3eadaa2a55c4673303b00b376636cb231ed66bc0",
+      "downloadStatus": "captured_for_hash"
+    },
+    {
+      "url": "https://www.flsenate.gov/PublishedContent/Session/Redistricting/Districts/SD2022/webmaps/sd25_webmap.png",
+      "method": "img",
+      "score": 9,
+      "altText": "District 25 map",
+      "sourcePageUrl": "https://www.flsenate.gov/Senators/S25",
+      "rightsStatus": "review_required",
+      "identityReviewStatus": "unreviewed",
+      "httpStatus": 200,
+      "finalUrl": "https://www.flsenate.gov/PublishedContent/Session/Redistricting/Districts/SD2022/webmaps/sd25_webmap.png",
+      "contentType": "image/png",
+      "byteSize": 91808,
+      "imageSha256": "533e93f8cdcd89ed6f21754bf0132442b29f3272478cf9fc5333c893c436cb32",
+      "downloadStatus": "captured_for_hash"
+    }
+  ],
+  "contactCandidates": [
+    {
+      "type": "email",
+      "value": "arrington.kristen.web@flsenate.gov",
+      "label": "arrington.kristen.web@flsenate.gov",
+      "sourcePageUrl": "https://www.flsenate.gov/Senators/S25"
+    },
+    {
+      "type": "email",
+      "value": "webmaster@flsenate.gov",
+      "label": "email",
+      "sourcePageUrl": "https://www.flsenate.gov/Senators/S25"
+    },
+    {
+      "type": "phone",
+      "value": "(850) 487-5025",
+      "label": null,
+      "sourcePageUrl": "https://www.flsenate.gov/Senators/S25"
+    },
+    {
+      "type": "phone",
+      "value": "1 (407) 846-5187",
+      "label": null,
+      "sourcePageUrl": "https://www.flsenate.gov/Senators/S25"
+    }
+  ],
+  "socialCandidates": [
+    {
+      "platform": "Facebook",
+      "url": "http://www.FaceBook.com/@arrington4fl",
+      "label": null,
+      "sourcePageUrl": "https://www.flsenate.gov/Senators/S25",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "platform": "Instagram",
+      "url": "http://Instagram.com/arrington4fl",
+      "label": null,
+      "sourcePageUrl": "https://www.flsenate.gov/Senators/S25",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "platform": "X",
+      "url": "http://www.Twitter.com/arrington4fl",
+      "label": null,
+      "sourcePageUrl": "https://www.flsenate.gov/Senators/S25",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "platform": "X",
+      "url": "http://www.twitter.com/flsenate",
+      "label": "Twitter",
+      "sourcePageUrl": "https://www.flsenate.gov/Senators/S25",
+      "reviewStatus": "unreviewed"
+    }
+  ],
+  "websiteCandidates": [
+    {
+      "url": "https://www.flsenate.gov/Session/ExecutiveAppointments",
+      "label": "Executive Appointments",
+      "sourcePageUrl": "https://www.flsenate.gov/Senators/S25",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "url": "https://www.flsenate.gov/Media/VideoSchedule",
+      "label": "Video Broadcast Schedule",
+      "sourcePageUrl": "https://www.flsenate.gov/Senators/S25",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "url": "https://www.flsenate.gov/About/Contact",
+      "label": "Contact Us",
+      "sourcePageUrl": "https://www.flsenate.gov/Senators/S25",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "url": "https://www.flsenate.gov/Offices",
+      "label": "Offices",
+      "sourcePageUrl": "https://www.flsenate.gov/Senators/S25",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "url": "https://www.flsenate.gov/Offices/President",
+      "label": "President's Office",
+      "sourcePageUrl": "https://www.flsenate.gov/Senators/S25",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "url": "https://www.flsenate.gov/Offices/Majority",
+      "label": "Majority Office",
+      "sourcePageUrl": "https://www.flsenate.gov/Senators/S25",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "url": "https://www.flsenate.gov/Offices/Minority",
+      "label": "Minority Office",
+      "sourcePageUrl": "https://www.flsenate.gov/Senators/S25",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "url": "https://www.flsenate.gov/Offices/Secretary",
+      "label": "Secretary's Office",
+      "sourcePageUrl": "https://www.flsenate.gov/Senators/S25",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "url": "https://www.flsenate.gov/Reference/PublicRecords",
+      "label": "Public Records",
+      "sourcePageUrl": "https://www.flsenate.gov/Senators/S25",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "url": "https://www.flsenate.gov/PublishedContent/Offices/Senator/7-11_AA.pdf",
+      "label": "District Updates: July 1 - 11",
+      "sourcePageUrl": "https://www.flsenate.gov/Senators/S25",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "url": "https://www.flsenate.gov/PublishedContent/Offices/Senator/SB_1180_SIGNED_eng___spa.pdf",
+      "label": "Senator Arrington Applauds New Law Giving Residents a Greater Voice in Community Development District Governance",
+      "sourcePageUrl": "https://www.flsenate.gov/Senators/S25",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "url": "https://www.flsenate.gov/PublishedContent/Offices/Senator/Week_in_Review__Special_Session_F.pdf",
+      "label": "Week in Review: Special Session F",
+      "sourcePageUrl": "https://www.flsenate.gov/Senators/S25",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "url": "https://www.flsenate.gov/PublishedContent/Offices/Senator/Week_in_Review__Budget_Breakdown.pdf",
+      "label": "Week in Review: Budget Breakdown",
+      "sourcePageUrl": "https://www.flsenate.gov/Senators/S25",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "url": "https://www.flsenate.gov/Session/ExecutiveAppointments/",
+      "label": "Executive Appointments",
+      "sourcePageUrl": "https://www.flsenate.gov/Senators/S25",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "url": "https://www.flsenate.gov/About/Contact#connect",
+      "label": "Connect with the Senate",
+      "sourcePageUrl": "https://www.flsenate.gov/Senators/S25",
+      "reviewStatus": "unreviewed"
+    }
+  ],
+  "errors": [],
+  "httpStatus": 200,
+  "finalUrl": "https://www.flsenate.gov/Senators/S25",
+  "sourceSnapshotSha256": "1c55e6a4dc6312c9aedbc0be5203d68decb32c6c1e08efc88f52e3dd2e015b8b",
+  "contentType": "text/html",
+  "pageTitle": "Senator Arrington - The Florida Senate",
+  "candidateSummary": {
+    "portraits": 6,
+    "contacts": 4,
+    "socials": 4,
+    "websites": 15
+  }
+}

@@ -1,0 +1,236 @@
+{
+  "enrichmentRecordVersion": "1.0.0",
+  "enrichmentRecordId": "8d737d40-9c3a-57b6-9c5a-beaf3dfcedde",
+  "taskId": "9d8cb76c-eeb6-5ed0-81f1-6a5992730169",
+  "seatKey": "fl-united-states-representative-16",
+  "displayName": "Vern Buchanan",
+  "officeTitle": "United States Representative",
+  "sourceUrl": "https://buchanan.house.gov/",
+  "fetchedAt": "2026-07-16T05:20:00Z",
+  "collectionStatus": "success",
+  "reviewStatus": "unreviewed",
+  "publicationAllowed": false,
+  "portraitCandidates": [
+    {
+      "url": "https://buchanan.house.gov/wp-content/uploads/2025/12/vern-Portrait-Nobackground.png",
+      "method": "img",
+      "score": 42,
+      "altText": null,
+      "sourcePageUrl": "https://buchanan.house.gov/",
+      "rightsStatus": "review_required",
+      "identityReviewStatus": "unreviewed",
+      "httpStatus": 200,
+      "finalUrl": "https://buchanan.house.gov/wp-content/uploads/2025/12/vern-Portrait-Nobackground.png",
+      "contentType": "image/png",
+      "byteSize": 328163,
+      "imageSha256": "1648f59289a849f987c89c2bf735443772507e71d083eaed49573064f56ebe97",
+      "downloadStatus": "captured_for_hash"
+    },
+    {
+      "url": "https://buchanan.house.gov/wp-content/uploads/2026/04/vern-photo.jpg",
+      "method": "img",
+      "score": 33,
+      "altText": null,
+      "sourcePageUrl": "https://buchanan.house.gov/",
+      "rightsStatus": "review_required",
+      "identityReviewStatus": "unreviewed",
+      "httpStatus": 200,
+      "finalUrl": "https://buchanan.house.gov/wp-content/uploads/2026/04/vern-photo.jpg",
+      "contentType": "image/jpeg",
+      "byteSize": 32887,
+      "imageSha256": "4d8d76311b5469a34296b8f9b3b1fbe0b959d900f82dfed9f3096d917ebda5bc",
+      "downloadStatus": "captured_for_hash"
+    },
+    {
+      "url": "https://buchanan.house.gov/wp-content/uploads/2026/03/2025-Law-Enforcment-awards.jpg",
+      "method": "img",
+      "score": 21,
+      "altText": null,
+      "sourcePageUrl": "https://buchanan.house.gov/",
+      "rightsStatus": "review_required",
+      "identityReviewStatus": "unreviewed",
+      "httpStatus": 200,
+      "finalUrl": "https://buchanan.house.gov/wp-content/uploads/2026/03/2025-Law-Enforcment-awards.jpg",
+      "contentType": "image/jpeg",
+      "byteSize": 6792983,
+      "downloadStatus": "skipped_too_large"
+    },
+    {
+      "url": "https://buchanan.house.gov/wp-content/uploads/2026/06/6.26.26-House-Floor.png",
+      "method": "img",
+      "score": 21,
+      "altText": null,
+      "sourcePageUrl": "https://buchanan.house.gov/",
+      "rightsStatus": "review_required",
+      "identityReviewStatus": "unreviewed",
+      "httpStatus": 200,
+      "finalUrl": "https://buchanan.house.gov/wp-content/uploads/2026/06/6.26.26-House-Floor.png",
+      "contentType": "image/png",
+      "byteSize": 919483,
+      "imageSha256": "aaf99e87951014d17701cb31d03ab53da3935a3d0e6431959e7f2e7c947dda75",
+      "downloadStatus": "captured_for_hash"
+    },
+    {
+      "url": "https://buchanan.house.gov/wp-content/uploads/2025/12/map-florida-16th-district-blue.svg",
+      "method": "img",
+      "score": 17,
+      "altText": null,
+      "sourcePageUrl": "https://buchanan.house.gov/",
+      "rightsStatus": "review_required",
+      "identityReviewStatus": "unreviewed",
+      "httpStatus": 200,
+      "finalUrl": "https://buchanan.house.gov/wp-content/uploads/2025/12/map-florida-16th-district-blue.svg",
+      "contentType": "image/svg+xml",
+      "byteSize": 220740,
+      "imageSha256": "a662add8dfdddcbbeefdd7beadae82bffed4a8039311e5217a154822cc7335a2",
+      "downloadStatus": "captured_for_hash"
+    },
+    {
+      "url": "https://buchanan.house.gov/wp-content/uploads/2025/07/icon-academy-nominations.png",
+      "method": "img",
+      "score": -14,
+      "altText": null,
+      "sourcePageUrl": "https://buchanan.house.gov/",
+      "rightsStatus": "review_required",
+      "identityReviewStatus": "unreviewed",
+      "httpStatus": 200,
+      "finalUrl": "https://buchanan.house.gov/wp-content/uploads/2025/07/icon-academy-nominations.png",
+      "contentType": "image/png",
+      "byteSize": 13235,
+      "imageSha256": "f1a41e4fbb9e3fade310f4543fbe3d163a082ce1a328a2e6c64e3ac6a76ec76c",
+      "downloadStatus": "captured_for_hash"
+    }
+  ],
+  "contactCandidates": [
+    {
+      "type": "phone",
+      "value": "(202) 225-5015",
+      "label": null,
+      "sourcePageUrl": "https://buchanan.house.gov/"
+    },
+    {
+      "type": "phone",
+      "value": "(202) 226-0828",
+      "label": null,
+      "sourcePageUrl": "https://buchanan.house.gov/"
+    },
+    {
+      "type": "phone",
+      "value": "(771) 200-5798",
+      "label": null,
+      "sourcePageUrl": "https://buchanan.house.gov/"
+    },
+    {
+      "type": "phone",
+      "value": "(813) 657-1013",
+      "label": null,
+      "sourcePageUrl": "https://buchanan.house.gov/"
+    },
+    {
+      "type": "phone",
+      "value": "(941) 951-6643",
+      "label": null,
+      "sourcePageUrl": "https://buchanan.house.gov/"
+    }
+  ],
+  "socialCandidates": [
+    {
+      "platform": "Facebook",
+      "url": "https://www.facebook.com/CongressmanBuchanan/",
+      "label": "Follow",
+      "sourcePageUrl": "https://buchanan.house.gov/",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "platform": "X",
+      "url": "https://x.com/VernBuchanan",
+      "label": "Follow",
+      "sourcePageUrl": "https://buchanan.house.gov/",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "platform": "Instagram",
+      "url": "https://www.instagram.com/repvern",
+      "label": "Follow",
+      "sourcePageUrl": "https://buchanan.house.gov/",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "platform": "LinkedIn",
+      "url": "https://www.linkedin.com/in/vern-buchanan/",
+      "label": "Follow",
+      "sourcePageUrl": "https://buchanan.house.gov/",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "platform": "YouTube",
+      "url": "https://www.youtube.com/vernbuchanan",
+      "label": "Follow",
+      "sourcePageUrl": "https://buchanan.house.gov/",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "platform": "Instagram",
+      "url": "https://www.instagram.com/repvern/?hl=en",
+      "label": "Follow",
+      "sourcePageUrl": "https://buchanan.house.gov/",
+      "reviewStatus": "unreviewed"
+    }
+  ],
+  "websiteCandidates": [
+    {
+      "url": "https://buchanan.house.gov/services/constituent-validation-tours/",
+      "label": "Tour Requests",
+      "sourcePageUrl": "https://buchanan.house.gov/",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "url": "https://buchanan.house.gov/contact/",
+      "label": "Contact My Office",
+      "sourcePageUrl": "https://buchanan.house.gov/",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "url": "https://buchanan.house.gov/contact#footer",
+      "label": "Office Locations",
+      "sourcePageUrl": "https://buchanan.house.gov/",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "url": "https://buchanan.house.gov/contact/newsletter-sign-up/",
+      "label": "Newsletter Sign-Up",
+      "sourcePageUrl": "https://buchanan.house.gov/",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "url": "https://buchanan.house.gov/contact/website-problem/",
+      "label": "Website Problem",
+      "sourcePageUrl": "https://buchanan.house.gov/",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "url": "https://buchanan.house.gov/contact/email-me/",
+      "label": "Email Me",
+      "sourcePageUrl": "https://buchanan.house.gov/",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "url": "https://buchanan.house.gov/newsletter-sign-up",
+      "label": "Subscribe",
+      "sourcePageUrl": "https://buchanan.house.gov/",
+      "reviewStatus": "unreviewed"
+    }
+  ],
+  "errors": [],
+  "httpStatus": 200,
+  "finalUrl": "https://buchanan.house.gov/",
+  "sourceSnapshotSha256": "0d1772919aa6883265ae0e9ae7c09ce2af7b3a159e518a2d352b6e24d9f15a24",
+  "contentType": "text/html",
+  "pageTitle": "US Congressman Vern Buchanan | Representing Florida's 16th District",
+  "candidateSummary": {
+    "portraits": 6,
+    "contacts": 5,
+    "socials": 6,
+    "websites": 7
+  }
+}

@@ -1,0 +1,146 @@
+{
+  "enrichmentRecordVersion": "1.0.0",
+  "enrichmentRecordId": "96ddbf4e-e4da-523f-a98c-52102405be76",
+  "taskId": "f0adceff-aae1-5cdc-bd3b-85ba3baa3404",
+  "seatKey": "fl-vacant-united-states-house-seat-20",
+  "displayName": "Vacant — Florida 20th",
+  "officeTitle": "Vacant United States House seat",
+  "sourceUrl": "https://clerk.house.gov/members/FL20/vacancy",
+  "fetchedAt": "2026-07-16T05:20:00Z",
+  "collectionStatus": "success",
+  "reviewStatus": "unreviewed",
+  "publicationAllowed": false,
+  "portraitCandidates": [
+    {
+      "url": "https://clerk.house.gov/assets/img/clerk-logo-web.svg",
+      "method": "img",
+      "score": -21,
+      "altText": "Office of the Clerk, U.S. House of Representatives",
+      "sourcePageUrl": "https://clerk.house.gov/members/FL20/vacancy",
+      "rightsStatus": "review_required",
+      "identityReviewStatus": "unreviewed",
+      "httpStatus": 200,
+      "finalUrl": "https://clerk.house.gov/assets/img/clerk-logo-web.svg",
+      "contentType": "image/svg+xml",
+      "byteSize": 9138,
+      "imageSha256": "c4ae67115d85e72e3c74cecfb219b8444dfafec3906ed44b380e6cd2ac61cc6d",
+      "downloadStatus": "captured_for_hash"
+    },
+    {
+      "url": "https://clerk.house.gov/assets/img/clerk-logo-footer.svg",
+      "method": "img",
+      "score": -56,
+      "altText": "Office of the Clerk, U.S. House of Representatives",
+      "sourcePageUrl": "https://clerk.house.gov/members/FL20/vacancy",
+      "rightsStatus": "review_required",
+      "identityReviewStatus": "unreviewed",
+      "httpStatus": 200,
+      "finalUrl": "https://clerk.house.gov/assets/img/clerk-logo-footer.svg",
+      "contentType": "image/svg+xml",
+      "byteSize": 8651,
+      "imageSha256": "c3caaf4e0d8a955a20eaa9d18b0fb31cdbe97f7df9bc5a3932234c5292a80f3c",
+      "downloadStatus": "captured_for_hash"
+    }
+  ],
+  "contactCandidates": [
+    {
+      "type": "phone",
+      "value": "(202)225-7000",
+      "label": "p: (202) 225-7000",
+      "sourcePageUrl": "https://clerk.house.gov/members/FL20/vacancy"
+    },
+    {
+      "type": "email",
+      "value": "info.clerkweb@mail.house.gov",
+      "label": "info.clerkweb@mail.house.gov",
+      "sourcePageUrl": "https://clerk.house.gov/members/FL20/vacancy"
+    },
+    {
+      "type": "email",
+      "value": "techsupport.clerkweb@mail.house.gov",
+      "label": "techsupport.clerkweb@mail.house.gov",
+      "sourcePageUrl": "https://clerk.house.gov/members/FL20/vacancy"
+    },
+    {
+      "type": "phone",
+      "value": "(202) 225-1313",
+      "label": null,
+      "sourcePageUrl": "https://clerk.house.gov/members/FL20/vacancy"
+    },
+    {
+      "type": "phone",
+      "value": "(202) 225-7000",
+      "label": null,
+      "sourcePageUrl": "https://clerk.house.gov/members/FL20/vacancy"
+    },
+    {
+      "type": "phone",
+      "value": "(561) 461-6767",
+      "label": null,
+      "sourcePageUrl": "https://clerk.house.gov/members/FL20/vacancy"
+    },
+    {
+      "type": "phone",
+      "value": "1 (954) 733-2800",
+      "label": null,
+      "sourcePageUrl": "https://clerk.house.gov/members/FL20/vacancy"
+    }
+  ],
+  "socialCandidates": [],
+  "websiteCandidates": [
+    {
+      "url": "https://www.majorityleader.gov/schedule/weekly-schedule.htm",
+      "label": "House Schedule",
+      "sourcePageUrl": "https://clerk.house.gov/members/FL20/vacancy",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "url": "https://disclosures-clerk.house.gov/OfficeOfCongressionalConduct",
+      "label": "Office of Congressional Conduct",
+      "sourcePageUrl": "https://clerk.house.gov/members/FL20/vacancy",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "url": "https://clerk.house.gov/About#OverviewContact",
+      "label": "Overview and Contact",
+      "sourcePageUrl": "https://clerk.house.gov/members/FL20/vacancy",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "url": "https://clerk.house.gov/About#OfficeService",
+      "label": "Offices and Services",
+      "sourcePageUrl": "https://clerk.house.gov/members/FL20/vacancy",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "url": "https://clerk.house.gov/About#HistoryOfOffice",
+      "label": "History of the Office",
+      "sourcePageUrl": "https://clerk.house.gov/members/FL20/vacancy",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "url": "https://clerk.house.gov/member_info/vacancies/fl20-vacant-office-press-release.pdf",
+      "label": "Press Release",
+      "sourcePageUrl": "https://clerk.house.gov/members/FL20/vacancy",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "url": "https://chaplain.house.gov/",
+      "label": "Office of the Chaplain",
+      "sourcePageUrl": "https://clerk.house.gov/members/FL20/vacancy",
+      "reviewStatus": "unreviewed"
+    }
+  ],
+  "errors": [],
+  "httpStatus": 200,
+  "finalUrl": "https://clerk.house.gov/members/FL20/vacancy",
+  "sourceSnapshotSha256": "76ff41c02af205c2352519bdd5d954f87af241982a0e2d4e30438c2b7ffa51c7",
+  "contentType": "text/html",
+  "pageTitle": "Office of the Clerk, U.S. House of Representatives",
+  "candidateSummary": {
+    "portraits": 2,
+    "contacts": 7,
+    "socials": 0,
+    "websites": 7
+  }
+}

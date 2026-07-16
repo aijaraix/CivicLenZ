@@ -1,0 +1,239 @@
+{
+  "enrichmentRecordVersion": "1.0.0",
+  "enrichmentRecordId": "ea6f816d-5c4b-52a6-9ee1-d42a3e3012f7",
+  "taskId": "f543e388-3180-55ad-96ac-f38c4eaeeba3",
+  "seatKey": "fl-florida-state-senator-district-1-1",
+  "displayName": "Don Gaetz",
+  "officeTitle": "Florida State Senator, District 1",
+  "sourceUrl": "https://www.flsenate.gov/Senators/2024-2026/S1",
+  "fetchedAt": "2026-07-16T05:20:37Z",
+  "collectionStatus": "success",
+  "reviewStatus": "unreviewed",
+  "publicationAllowed": false,
+  "portraitCandidates": [
+    {
+      "url": "https://www.flsenate.gov/PublishedContent/Offices/Senator/Senator_Gaetz_and_Representative_Snyder_to_File_Key_Legislation_to_Improve_Access_and_Accountability_in_Floridas_Medicaid_Program.jpg",
+      "method": "img",
+      "score": 39,
+      "altText": null,
+      "sourcePageUrl": "https://www.flsenate.gov/Senators/S1",
+      "rightsStatus": "review_required",
+      "identityReviewStatus": "unreviewed",
+      "httpStatus": 200,
+      "finalUrl": "https://www.flsenate.gov/PublishedContent/Offices/Senator/Senator_Gaetz_and_Representative_Snyder_to_File_Key_Legislation_to_Improve_Access_and_Accountability_in_Floridas_Medicaid_Program.jpg",
+      "contentType": "image/jpeg",
+      "byteSize": 4863,
+      "imageSha256": "c518f9a5a21f1df50a3d956fcdcc95c8ba5c09ec3627e5e0e0a53cacc19d11d8",
+      "downloadStatus": "captured_for_hash"
+    },
+    {
+      "url": "https://www.flsenate.gov/PublishedContent/Senators/2024-2026/Photos/s01_4804.jpg",
+      "method": "img",
+      "score": 30,
+      "altText": "Senator Gaetz",
+      "sourcePageUrl": "https://www.flsenate.gov/Senators/S1",
+      "rightsStatus": "review_required",
+      "identityReviewStatus": "unreviewed",
+      "httpStatus": 200,
+      "finalUrl": "https://www.flsenate.gov/PublishedContent/Senators/2024-2026/Photos/s01_4804.jpg",
+      "contentType": "image/jpeg",
+      "byteSize": 52473,
+      "imageSha256": "813cb96d7cc033c6c10285e3738480bf4e9c2e16c5791ce868602f684951d8e8",
+      "downloadStatus": "captured_for_hash"
+    },
+    {
+      "url": "https://www.flsenate.gov/PublishedContent/Session/Redistricting/Districts/SD2022/webmaps/sd01_webmap.png",
+      "method": "img",
+      "score": 9,
+      "altText": "District 1 map",
+      "sourcePageUrl": "https://www.flsenate.gov/Senators/S1",
+      "rightsStatus": "review_required",
+      "identityReviewStatus": "unreviewed",
+      "httpStatus": 200,
+      "finalUrl": "https://www.flsenate.gov/PublishedContent/Session/Redistricting/Districts/SD2022/webmaps/sd01_webmap.png",
+      "contentType": "image/png",
+      "byteSize": 92809,
+      "imageSha256": "4c28ddd949d06e45a799864716de095f3f7fd85eb674ebe2367f5dd06ae99ab8",
+      "downloadStatus": "captured_for_hash"
+    },
+    {
+      "url": "https://www.flsenate.gov/UserContent/img/help/2013search-goBill.png",
+      "method": "img",
+      "score": 9,
+      "altText": "Example of Go To Bill feature available on every page of flsenate.gov",
+      "sourcePageUrl": "https://www.flsenate.gov/Senators/S1",
+      "rightsStatus": "review_required",
+      "identityReviewStatus": "unreviewed",
+      "httpStatus": 200,
+      "finalUrl": "https://www.flsenate.gov/UserContent/img/help/2013search-goBill.png",
+      "contentType": "image/png",
+      "byteSize": 5007,
+      "imageSha256": "a5603c435a93d2686367d1b9d1852b1ac6e1bdfda72b8d2ea6c888e66a377ffe",
+      "downloadStatus": "captured_for_hash"
+    },
+    {
+      "url": "https://www.flsenate.gov/UserContent/img/help/2013sitesearch.png",
+      "method": "img",
+      "score": 9,
+      "altText": "Example of Site Search available on every page of flsenate.gov",
+      "sourcePageUrl": "https://www.flsenate.gov/Senators/S1",
+      "rightsStatus": "review_required",
+      "identityReviewStatus": "unreviewed",
+      "httpStatus": 200,
+      "finalUrl": "https://www.flsenate.gov/UserContent/img/help/2013sitesearch.png",
+      "contentType": "image/png",
+      "byteSize": 4284,
+      "imageSha256": "a856ffdf809fbc2f0993fab57b3436909b092ef1d682a977310fc6edd2380dac",
+      "downloadStatus": "captured_for_hash"
+    },
+    {
+      "url": "https://www.flsenate.gov/UserContent/img/help/2013statutesearch.png",
+      "method": "img",
+      "score": 9,
+      "altText": "Example of Go To Bill feature available on every page of flsenate.gov",
+      "sourcePageUrl": "https://www.flsenate.gov/Senators/S1",
+      "rightsStatus": "review_required",
+      "identityReviewStatus": "unreviewed",
+      "httpStatus": 200,
+      "finalUrl": "https://www.flsenate.gov/UserContent/img/help/2013statutesearch.png",
+      "contentType": "image/png",
+      "byteSize": 5911,
+      "imageSha256": "34b5496e6e024221ffe3fae722107c6c23f4bf07f70c6607c863ef6def60bd3b",
+      "downloadStatus": "captured_for_hash"
+    }
+  ],
+  "contactCandidates": [
+    {
+      "type": "email",
+      "value": "gaetz.don.web@flsenate.gov",
+      "label": "gaetz.don.web@flsenate.gov",
+      "sourcePageUrl": "https://www.flsenate.gov/Senators/S1"
+    },
+    {
+      "type": "email",
+      "value": "webmaster@flsenate.gov",
+      "label": "email",
+      "sourcePageUrl": "https://www.flsenate.gov/Senators/S1"
+    },
+    {
+      "type": "phone",
+      "value": "(850) 300-7065",
+      "label": null,
+      "sourcePageUrl": "https://www.flsenate.gov/Senators/S1"
+    },
+    {
+      "type": "phone",
+      "value": "(850) 487-5001",
+      "label": null,
+      "sourcePageUrl": "https://www.flsenate.gov/Senators/S1"
+    },
+    {
+      "type": "phone",
+      "value": "(850) 595-1036",
+      "label": null,
+      "sourcePageUrl": "https://www.flsenate.gov/Senators/S1"
+    }
+  ],
+  "socialCandidates": [
+    {
+      "platform": "Facebook",
+      "url": "http://www.FaceBook.com/profile.php?id=61579607265690",
+      "label": null,
+      "sourcePageUrl": "https://www.flsenate.gov/Senators/S1",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "platform": "X",
+      "url": "http://www.twitter.com/flsenate",
+      "label": "Twitter",
+      "sourcePageUrl": "https://www.flsenate.gov/Senators/S1",
+      "reviewStatus": "unreviewed"
+    }
+  ],
+  "websiteCandidates": [
+    {
+      "url": "https://www.flsenate.gov/Session/ExecutiveAppointments",
+      "label": "Executive Appointments",
+      "sourcePageUrl": "https://www.flsenate.gov/Senators/S1",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "url": "https://www.flsenate.gov/Media/VideoSchedule",
+      "label": "Video Broadcast Schedule",
+      "sourcePageUrl": "https://www.flsenate.gov/Senators/S1",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "url": "https://www.flsenate.gov/About/Contact",
+      "label": "Contact Us",
+      "sourcePageUrl": "https://www.flsenate.gov/Senators/S1",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "url": "https://www.flsenate.gov/Offices",
+      "label": "Offices",
+      "sourcePageUrl": "https://www.flsenate.gov/Senators/S1",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "url": "https://www.flsenate.gov/Offices/President",
+      "label": "President's Office",
+      "sourcePageUrl": "https://www.flsenate.gov/Senators/S1",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "url": "https://www.flsenate.gov/Offices/Majority",
+      "label": "Majority Office",
+      "sourcePageUrl": "https://www.flsenate.gov/Senators/S1",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "url": "https://www.flsenate.gov/Offices/Minority",
+      "label": "Minority Office",
+      "sourcePageUrl": "https://www.flsenate.gov/Senators/S1",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "url": "https://www.flsenate.gov/Offices/Secretary",
+      "label": "Secretary's Office",
+      "sourcePageUrl": "https://www.flsenate.gov/Senators/S1",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "url": "https://www.flsenate.gov/Reference/PublicRecords",
+      "label": "Public Records",
+      "sourcePageUrl": "https://www.flsenate.gov/Senators/S1",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "url": "https://www.flsenate.gov/PublishedContent/Offices/Senator/Senator_Gaetz_and_Representative_Snyder_to_File_Key_Legislation_to_Improve_Access_and_Accountability_in_Floridas_Medicaid_Program.pdf",
+      "label": "Senator Gaetz and Representative Snyder to File Key Legislation to Improve Access and Accountability in Florida's Medicaid Program",
+      "sourcePageUrl": "https://www.flsenate.gov/Senators/S1",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "url": "https://www.flsenate.gov/Session/ExecutiveAppointments/",
+      "label": "Executive Appointments",
+      "sourcePageUrl": "https://www.flsenate.gov/Senators/S1",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "url": "https://www.flsenate.gov/About/Contact#connect",
+      "label": "Connect with the Senate",
+      "sourcePageUrl": "https://www.flsenate.gov/Senators/S1",
+      "reviewStatus": "unreviewed"
+    }
+  ],
+  "errors": [],
+  "httpStatus": 200,
+  "finalUrl": "https://www.flsenate.gov/Senators/S1",
+  "sourceSnapshotSha256": "4e22559ede4c1d3f1dcce125878321c4205a3d2d17176bbd06ede65d0d3b9aec",
+  "contentType": "text/html",
+  "pageTitle": "Senator Gaetz - The Florida Senate",
+  "candidateSummary": {
+    "portraits": 6,
+    "contacts": 5,
+    "socials": 2,
+    "websites": 12
+  }
+}

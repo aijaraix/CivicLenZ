@@ -1,0 +1,201 @@
+{
+  "enrichmentRecordVersion": "1.0.0",
+  "enrichmentRecordId": "78794138-8929-52f9-8e67-d28351db1cc8",
+  "taskId": "4d8fb369-5c44-5f29-beef-43a1fba9dd67",
+  "seatKey": "fl-united-states-representative-7",
+  "displayName": "Cory Mills",
+  "officeTitle": "United States Representative",
+  "sourceUrl": "https://mills.house.gov",
+  "fetchedAt": "2026-07-16T05:19:58Z",
+  "collectionStatus": "success",
+  "reviewStatus": "unreviewed",
+  "publicationAllowed": false,
+  "portraitCandidates": [
+    {
+      "url": "https://mills.house.gov/sites/evo-subsites/mills.house.gov/files/styles/evo_image_portrait_480/public/evo-media-image/mills_cory_official_fl07.jpg?itok=Abw_HuYY",
+      "method": "img",
+      "score": 51,
+      "altText": "Cory Mills Official Photo",
+      "sourcePageUrl": "https://mills.house.gov/",
+      "rightsStatus": "review_required",
+      "identityReviewStatus": "unreviewed",
+      "httpStatus": 200,
+      "finalUrl": "https://mills.house.gov/sites/evo-subsites/mills.house.gov/files/styles/evo_image_portrait_480/public/evo-media-image/mills_cory_official_fl07.jpg?itok=Abw_HuYY",
+      "contentType": "image/jpeg",
+      "byteSize": 37764,
+      "imageSha256": "abb2b4de407cdce239907ba7b3ffd863c21b530c21a8472e7d175a4111811a02",
+      "downloadStatus": "captured_for_hash"
+    },
+    {
+      "url": "https://mills.house.gov/profiles/evo/assets/images/Seal_of_the_United_States_House_of_Representatives.png",
+      "method": "og:image",
+      "score": 44,
+      "altText": null,
+      "sourcePageUrl": "https://mills.house.gov/",
+      "rightsStatus": "review_required",
+      "identityReviewStatus": "unreviewed",
+      "httpStatus": 200,
+      "finalUrl": "https://mills.house.gov/profiles/evo/assets/images/Seal_of_the_United_States_House_of_Representatives.png",
+      "contentType": "image/png",
+      "byteSize": 225630,
+      "imageSha256": "97f154eb8428c9c1c38c05112b6cdd943fea63ecdd486d084c167e10e0dec628",
+      "downloadStatus": "captured_for_hash"
+    },
+    {
+      "url": "https://mills.house.gov/sites/evo-subsites/mills.house.gov/files/styles/evo_image_full_width/public/evo-media-image/capitol_south_east_2560.jpg?h=c74750f6&itok=WS5OkV88",
+      "method": "img",
+      "score": 21,
+      "altText": "Capitol dome against blue sky",
+      "sourcePageUrl": "https://mills.house.gov/",
+      "rightsStatus": "review_required",
+      "identityReviewStatus": "unreviewed",
+      "httpStatus": 200,
+      "finalUrl": "https://mills.house.gov/sites/evo-subsites/mills.house.gov/files/styles/evo_image_full_width/public/evo-media-image/capitol_south_east_2560.jpg?h=c74750f6&itok=WS5OkV88",
+      "contentType": "image/jpeg",
+      "byteSize": 250676,
+      "imageSha256": "da8773899085adaf9cf19deebf41b1dde21f983765565566cbfec713b1176ace",
+      "downloadStatus": "captured_for_hash"
+    },
+    {
+      "url": "https://mills.house.gov/sites/evo-subsites/mills.house.gov/files/cory-mills-logo-png.png",
+      "method": "img",
+      "score": 7,
+      "altText": "Representative Mills logo",
+      "sourcePageUrl": "https://mills.house.gov/",
+      "rightsStatus": "review_required",
+      "identityReviewStatus": "unreviewed",
+      "httpStatus": 200,
+      "finalUrl": "https://mills.house.gov/sites/evo-subsites/mills.house.gov/files/cory-mills-logo-png.png",
+      "contentType": "image/png",
+      "byteSize": 66144,
+      "imageSha256": "372efc6c1740df28995976e7507257a2988cce2a5804bf02a60188d5250004a3",
+      "downloadStatus": "captured_for_hash"
+    },
+    {
+      "url": "https://mills.house.gov/sites/evo-subsites/mills.house.gov/files/styles/large/public/evo-media-image/cory-mills-logo-png.png?itok=eRlKq7TN",
+      "method": "img",
+      "score": -37,
+      "altText": "footer logo",
+      "sourcePageUrl": "https://mills.house.gov/",
+      "rightsStatus": "review_required",
+      "identityReviewStatus": "unreviewed",
+      "httpStatus": 200,
+      "finalUrl": "https://mills.house.gov/sites/evo-subsites/mills.house.gov/files/styles/large/public/evo-media-image/cory-mills-logo-png.png?itok=eRlKq7TN",
+      "contentType": "image/png",
+      "byteSize": 27271,
+      "imageSha256": "321197efdde7f093a7a31476a49fc557220798821713a319fddc57ed9fe38dcc",
+      "downloadStatus": "captured_for_hash"
+    }
+  ],
+  "contactCandidates": [
+    {
+      "type": "phone",
+      "value": "(202) 225-4035",
+      "label": null,
+      "sourcePageUrl": "https://mills.house.gov/"
+    },
+    {
+      "type": "phone",
+      "value": "(386) 238-9711",
+      "label": null,
+      "sourcePageUrl": "https://mills.house.gov/"
+    },
+    {
+      "type": "phone",
+      "value": "(407) 638-7900",
+      "label": null,
+      "sourcePageUrl": "https://mills.house.gov/"
+    }
+  ],
+  "socialCandidates": [
+    {
+      "platform": "Facebook",
+      "url": "https://www.facebook.com/profile.php?id=100089218152197",
+      "label": "Rep. Cory Mills",
+      "sourcePageUrl": "https://mills.house.gov/",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "platform": "Instagram",
+      "url": "https://www.instagram.com/repcorymills/?utm_source=ig_embed&utm_campaign=loading",
+      "label": "repcorymills",
+      "sourcePageUrl": "https://mills.house.gov/",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "platform": "X",
+      "url": "https://twitter.com/RepMillsPress",
+      "label": "Tweets by HouseGOP",
+      "sourcePageUrl": "https://mills.house.gov/",
+      "reviewStatus": "unreviewed"
+    }
+  ],
+  "websiteCandidates": [
+    {
+      "url": "https://mills.house.gov/contact",
+      "label": "Contact",
+      "sourcePageUrl": "https://mills.house.gov/",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "url": "https://mills.house.gov/contact/newsletter-subscribe",
+      "label": "Subscribe",
+      "sourcePageUrl": "https://mills.house.gov/",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "url": "https://mills.house.gov/contact/offices",
+      "label": "Office Locations",
+      "sourcePageUrl": "https://mills.house.gov/",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "url": "https://mills.house.gov/contact/request-an-appearance",
+      "label": "Request an Appearance",
+      "sourcePageUrl": "https://mills.house.gov/",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "url": "https://mills.house.gov/contact/website-problem",
+      "label": "Website Problem",
+      "sourcePageUrl": "https://mills.house.gov/",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "url": "https://mills.house.gov/services/constituent-casework-wins",
+      "label": "Constituent Casework Wins",
+      "sourcePageUrl": "https://mills.house.gov/",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "url": "https://mills.house.gov/services/constituent-casework-wins/huge-uscis-win-constituents-floridas-7th-district",
+      "label": "Constituent Wins",
+      "sourcePageUrl": "https://mills.house.gov/",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "url": "https://mills.house.gov/contact/offices/washington-dc-office",
+      "label": "Washington DC and District Offices",
+      "sourcePageUrl": "https://mills.house.gov/",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "url": "https://mills.house.gov/contact/newsletter-unsubscribe",
+      "label": "cancel or unsubscribe",
+      "sourcePageUrl": "https://mills.house.gov/",
+      "reviewStatus": "unreviewed"
+    }
+  ],
+  "errors": [],
+  "httpStatus": 200,
+  "finalUrl": "https://mills.house.gov/",
+  "sourceSnapshotSha256": "38e887cf05ef55c46d87e00893a5c29e4d52ed7b492521356380cae892cda6c1",
+  "contentType": "text/html",
+  "pageTitle": "Representative Mills |",
+  "candidateSummary": {
+    "portraits": 5,
+    "contacts": 3,
+    "socials": 3,
+    "websites": 9
+  }
+}

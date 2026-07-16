@@ -1,0 +1,227 @@
+{
+  "enrichmentRecordVersion": "1.0.0",
+  "enrichmentRecordId": "1bb9b623-c0a0-5824-a8bf-1c27ba9c8c10",
+  "taskId": "3fae742e-bbdf-5f5a-afd3-46b04153f09f",
+  "seatKey": "fl-united-states-representative-4",
+  "displayName": "Aaron Bean",
+  "officeTitle": "United States Representative",
+  "sourceUrl": "https://bean.house.gov",
+  "fetchedAt": "2026-07-16T05:19:58Z",
+  "collectionStatus": "success",
+  "reviewStatus": "unreviewed",
+  "publicationAllowed": false,
+  "portraitCandidates": [
+    {
+      "url": "https://bean.house.gov/sites/evo-subsites/bean.house.gov/files/styles/evo_image_portrait_480/public/evo-media-image/official-aaron-bean-fl04.jpg?itok=m4D9HG1n",
+      "method": "img",
+      "score": 51,
+      "altText": "Aaron Bean",
+      "sourcePageUrl": "https://bean.house.gov/",
+      "rightsStatus": "review_required",
+      "identityReviewStatus": "unreviewed",
+      "httpStatus": 200,
+      "finalUrl": "https://bean.house.gov/sites/evo-subsites/bean.house.gov/files/styles/evo_image_portrait_480/public/evo-media-image/official-aaron-bean-fl04.jpg?itok=m4D9HG1n",
+      "contentType": "image/jpeg",
+      "byteSize": 121656,
+      "imageSha256": "6991aec5328ab2bbc70922b0eeb130a576d0565d3d6325a688d6510894d43582",
+      "downloadStatus": "captured_for_hash"
+    },
+    {
+      "url": "https://bean.house.gov/profiles/evo/assets/images/Seal_of_the_United_States_House_of_Representatives.png",
+      "method": "og:image",
+      "score": 44,
+      "altText": null,
+      "sourcePageUrl": "https://bean.house.gov/",
+      "rightsStatus": "review_required",
+      "identityReviewStatus": "unreviewed",
+      "httpStatus": 200,
+      "finalUrl": "https://bean.house.gov/profiles/evo/assets/images/Seal_of_the_United_States_House_of_Representatives.png",
+      "contentType": "image/png",
+      "byteSize": 225630,
+      "imageSha256": "97f154eb8428c9c1c38c05112b6cdd943fea63ecdd486d084c167e10e0dec628",
+      "downloadStatus": "captured_for_hash"
+    },
+    {
+      "url": "https://bean.house.gov/sites/evo-subsites/bean.house.gov/files/styles/large/public/evo-media-image/bean_portrait_transparent.png?itok=RpUg42hc",
+      "method": "img",
+      "score": 39,
+      "altText": "Representative Bean",
+      "sourcePageUrl": "https://bean.house.gov/",
+      "rightsStatus": "review_required",
+      "identityReviewStatus": "unreviewed",
+      "httpStatus": 200,
+      "finalUrl": "https://bean.house.gov/sites/evo-subsites/bean.house.gov/files/styles/large/public/evo-media-image/bean_portrait_transparent.png?itok=RpUg42hc",
+      "contentType": "image/png",
+      "byteSize": 264360,
+      "imageSha256": "b72f3e050fca0ffeba6802b9feca7910c179834080b0601dac6a02c53f52920a",
+      "downloadStatus": "captured_for_hash"
+    },
+    {
+      "url": "https://bean.house.gov/sites/evo-subsites/bean.house.gov/files/styles/evo_image_full_width/public/evo-media-image/2023-07-03_mbo_0001.jpg?h=c9f93661&itok=HHPyIEz4",
+      "method": "img",
+      "score": 21,
+      "altText": "Capitol",
+      "sourcePageUrl": "https://bean.house.gov/",
+      "rightsStatus": "review_required",
+      "identityReviewStatus": "unreviewed",
+      "httpStatus": 200,
+      "finalUrl": "https://bean.house.gov/sites/evo-subsites/bean.house.gov/files/styles/evo_image_full_width/public/evo-media-image/2023-07-03_mbo_0001.jpg?h=c9f93661&itok=HHPyIEz4",
+      "contentType": "image/jpeg",
+      "byteSize": 182975,
+      "imageSha256": "35f212313922732d3853243b2ec7ac318136ae7d7b6ae7a29e73807454f5c5d5",
+      "downloadStatus": "captured_for_hash"
+    },
+    {
+      "url": "https://bean.house.gov/sites/evo-subsites/bean.house.gov/files/styles/evo_image_full_width/public/evo-media-image/f2jjrmfwsaacxsk.jpeg?h=cbd5cb9f&itok=NrKC8Pgb",
+      "method": "img",
+      "score": 21,
+      "altText": "Congressman Bean",
+      "sourcePageUrl": "https://bean.house.gov/",
+      "rightsStatus": "review_required",
+      "identityReviewStatus": "unreviewed",
+      "httpStatus": 200,
+      "finalUrl": "https://bean.house.gov/sites/evo-subsites/bean.house.gov/files/styles/evo_image_full_width/public/evo-media-image/f2jjrmfwsaacxsk.jpeg?h=cbd5cb9f&itok=NrKC8Pgb",
+      "contentType": "image/jpeg",
+      "byteSize": 140492,
+      "imageSha256": "c0abaae923d1894a832a991aab6cd1a84413cc43de11e13639b3895109ecc7bd",
+      "downloadStatus": "captured_for_hash"
+    },
+    {
+      "url": "https://bean.house.gov/sites/evo-subsites/bean.house.gov/files/styles/evo_image_full_width/public/evo-media-image/test-2.jpg?h=56d0ca2e&itok=eVJ_bYlo",
+      "method": "img",
+      "score": 21,
+      "altText": "Working Families Tax Cut",
+      "sourcePageUrl": "https://bean.house.gov/",
+      "rightsStatus": "review_required",
+      "identityReviewStatus": "unreviewed",
+      "httpStatus": 200,
+      "finalUrl": "https://bean.house.gov/sites/evo-subsites/bean.house.gov/files/styles/evo_image_full_width/public/evo-media-image/test-2.jpg?h=56d0ca2e&itok=eVJ_bYlo",
+      "contentType": "image/jpeg",
+      "byteSize": 220207,
+      "imageSha256": "0bb90722931bf39e4f864a8d1bf1023b662efcef492ef583b458d74e95068e4f",
+      "downloadStatus": "captured_for_hash"
+    }
+  ],
+  "contactCandidates": [
+    {
+      "type": "phone",
+      "value": "(202) 225-0123",
+      "label": null,
+      "sourcePageUrl": "https://bean.house.gov/"
+    },
+    {
+      "type": "phone",
+      "value": "(904) 319-9433",
+      "label": null,
+      "sourcePageUrl": "https://bean.house.gov/"
+    },
+    {
+      "type": "phone",
+      "value": "(904) 557-9550",
+      "label": null,
+      "sourcePageUrl": "https://bean.house.gov/"
+    },
+    {
+      "type": "phone",
+      "value": "(904) 830-3933",
+      "label": null,
+      "sourcePageUrl": "https://bean.house.gov/"
+    }
+  ],
+  "socialCandidates": [
+    {
+      "platform": "Facebook",
+      "url": "https://www.facebook.com/people/Congressman-Aaron-Bean/100089355874563/",
+      "label": "Congressman Aaron Bean",
+      "sourcePageUrl": "https://bean.house.gov/",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "platform": "X",
+      "url": "https://twitter.com/RepAaronBean",
+      "label": "Tweets by House Rep. Aaron Bean",
+      "sourcePageUrl": "https://bean.house.gov/",
+      "reviewStatus": "unreviewed"
+    }
+  ],
+  "websiteCandidates": [
+    {
+      "url": "https://bean.house.gov/contact/newsletter-subscribe",
+      "label": "Subscribe",
+      "sourcePageUrl": "https://bean.house.gov/",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "url": "https://bean.house.gov/contact",
+      "label": "Contact Us",
+      "sourcePageUrl": "https://bean.house.gov/",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "url": "https://bean.house.gov/contact/tth-signup",
+      "label": "Telephone Town Hall Sign-Up",
+      "sourcePageUrl": "https://bean.house.gov/",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "url": "https://bean.house.gov/contact/offices",
+      "label": "Office Locations",
+      "sourcePageUrl": "https://bean.house.gov/",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "url": "https://bean.house.gov/contact/request-an-appearance",
+      "label": "Schedule a Meeting",
+      "sourcePageUrl": "https://bean.house.gov/",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "url": "https://bean.house.gov/contact/website-problem",
+      "label": "Website Problem",
+      "sourcePageUrl": "https://bean.house.gov/",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "url": "https://bean.house.gov/contact/offices/washington-dc-office",
+      "label": "Washington DC Office",
+      "sourcePageUrl": "https://bean.house.gov/",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "url": "https://bean.house.gov/contact/offices/clay-county-district-office",
+      "label": "Clay County District Office",
+      "sourcePageUrl": "https://bean.house.gov/",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "url": "https://bean.house.gov/contact/offices/duval-county-district-office",
+      "label": "Duval County District Office",
+      "sourcePageUrl": "https://bean.house.gov/",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "url": "https://bean.house.gov/contact/offices/nassau-county-district-office",
+      "label": "Nassau County District Office",
+      "sourcePageUrl": "https://bean.house.gov/",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "url": "https://bean.house.gov/contact/newsletter-unsubscribe",
+      "label": "cancel or unsubscribe",
+      "sourcePageUrl": "https://bean.house.gov/",
+      "reviewStatus": "unreviewed"
+    }
+  ],
+  "errors": [],
+  "httpStatus": 200,
+  "finalUrl": "https://bean.house.gov/",
+  "sourceSnapshotSha256": "4755295a120f7dbdae8f325292b8e33173b7a571e22e88831a5f132743edfd40",
+  "contentType": "text/html",
+  "pageTitle": "Representative Bean |",
+  "candidateSummary": {
+    "portraits": 6,
+    "contacts": 4,
+    "socials": 2,
+    "websites": 11
+  }
+}

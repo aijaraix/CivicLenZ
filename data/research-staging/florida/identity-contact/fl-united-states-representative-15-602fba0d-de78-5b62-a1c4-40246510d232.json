@@ -1,0 +1,228 @@
+{
+  "enrichmentRecordVersion": "1.0.0",
+  "enrichmentRecordId": "1fa38767-522a-5483-844c-ea5c1697d176",
+  "taskId": "602fba0d-de78-5b62-a1c4-40246510d232",
+  "seatKey": "fl-united-states-representative-15",
+  "displayName": "Laurel Lee",
+  "officeTitle": "United States Representative",
+  "sourceUrl": "https://laurellee.house.gov",
+  "fetchedAt": "2026-07-16T05:19:59Z",
+  "collectionStatus": "success",
+  "reviewStatus": "unreviewed",
+  "publicationAllowed": false,
+  "portraitCandidates": [
+    {
+      "url": "https://laurellee.house.gov/sites/evo-subsites/laurellee.house.gov/files/styles/evo_image_portrait_480/public/evo-media-image/new-official-headshot-2.jpg?itok=SGMEUGHO",
+      "method": "img",
+      "score": 60,
+      "altText": "Laurel Lee Headshot",
+      "sourcePageUrl": "https://laurellee.house.gov/",
+      "rightsStatus": "review_required",
+      "identityReviewStatus": "unreviewed",
+      "httpStatus": 200,
+      "finalUrl": "https://laurellee.house.gov/sites/evo-subsites/laurellee.house.gov/files/styles/evo_image_portrait_480/public/evo-media-image/new-official-headshot-2.jpg?itok=SGMEUGHO",
+      "contentType": "image/jpeg",
+      "byteSize": 80869,
+      "imageSha256": "cbb926f64d0f682f6f41cc07629f058e7738a342a4ff975274344713a2fe66ab",
+      "downloadStatus": "captured_for_hash"
+    },
+    {
+      "url": "https://laurellee.house.gov/profiles/evo/assets/images/Seal_of_the_United_States_House_of_Representatives.png",
+      "method": "og:image",
+      "score": 56,
+      "altText": null,
+      "sourcePageUrl": "https://laurellee.house.gov/",
+      "rightsStatus": "review_required",
+      "identityReviewStatus": "unreviewed",
+      "httpStatus": 200,
+      "finalUrl": "https://laurellee.house.gov/profiles/evo/assets/images/Seal_of_the_United_States_House_of_Representatives.png",
+      "contentType": "image/png",
+      "byteSize": 225630,
+      "imageSha256": "97f154eb8428c9c1c38c05112b6cdd943fea63ecdd486d084c167e10e0dec628",
+      "downloadStatus": "captured_for_hash"
+    },
+    {
+      "url": "https://laurellee.house.gov/sites/evo-subsites/laurellee.house.gov/files/styles/evo_image_full_width/public/evo-media-image/Presser%20cropped.jpg?h=b1ba1d4f&itok=SMOfnqIu",
+      "method": "img",
+      "score": 33,
+      "altText": "presser 2",
+      "sourcePageUrl": "https://laurellee.house.gov/",
+      "rightsStatus": "review_required",
+      "identityReviewStatus": "unreviewed",
+      "httpStatus": 200,
+      "finalUrl": "https://laurellee.house.gov/sites/evo-subsites/laurellee.house.gov/files/styles/evo_image_full_width/public/evo-media-image/Presser%20cropped.jpg?h=b1ba1d4f&itok=SMOfnqIu",
+      "contentType": "image/jpeg",
+      "byteSize": 258146,
+      "imageSha256": "530b5e2775902addbec975b0ec8849431113cbabc6c7df7393a05b0084b518f4",
+      "downloadStatus": "captured_for_hash"
+    },
+    {
+      "url": "https://laurellee.house.gov/sites/evo-subsites/laurellee.house.gov/files/styles/evo_image_full_width/public/evo-media-image/screenshot-2025-06-16-at-9.38.18-am.png?h=762fb6be&itok=kdWJxSIk",
+      "method": "img",
+      "score": 33,
+      "altText": "Keeping Our Commitment Presser",
+      "sourcePageUrl": "https://laurellee.house.gov/",
+      "rightsStatus": "review_required",
+      "identityReviewStatus": "unreviewed",
+      "httpStatus": 200,
+      "finalUrl": "https://laurellee.house.gov/sites/evo-subsites/laurellee.house.gov/files/styles/evo_image_full_width/public/evo-media-image/screenshot-2025-06-16-at-9.38.18-am.png?h=762fb6be&itok=kdWJxSIk",
+      "contentType": "image/png",
+      "byteSize": 2412067,
+      "imageSha256": "9e1d43dec8d5f42e7217ed56d03a475e15ac2a2e531ddaf2aa2a8b46ff04d6ce",
+      "downloadStatus": "captured_for_hash"
+    },
+    {
+      "url": "https://laurellee.house.gov/sites/evo-subsites/laurellee.house.gov/files/styles/evo_image_full_width/public/evo-media-image/screenshot-2025-06-16-at-9.42.53-am.png?h=114cbc50&itok=91jidMDw",
+      "method": "img",
+      "score": 33,
+      "altText": "border trip slider",
+      "sourcePageUrl": "https://laurellee.house.gov/",
+      "rightsStatus": "review_required",
+      "identityReviewStatus": "unreviewed",
+      "httpStatus": 200,
+      "finalUrl": "https://laurellee.house.gov/sites/evo-subsites/laurellee.house.gov/files/styles/evo_image_full_width/public/evo-media-image/screenshot-2025-06-16-at-9.42.53-am.png?h=114cbc50&itok=91jidMDw",
+      "contentType": "image/png",
+      "byteSize": 1831186,
+      "imageSha256": "0c225235ffbc013d528295052145f26fcf899bfd8726ffa78c4afe5d671f2904",
+      "downloadStatus": "captured_for_hash"
+    },
+    {
+      "url": "https://laurellee.house.gov/sites/evo-subsites/laurellee.house.gov/files/styles/evo_image_full_width/public/evo-media-image/screenshot-2025-06-16-at-9.52.26-am.png?h=51b0233b&itok=9pfrliSO",
+      "method": "img",
+      "score": 33,
+      "altText": "Congressional Hearing",
+      "sourcePageUrl": "https://laurellee.house.gov/",
+      "rightsStatus": "review_required",
+      "identityReviewStatus": "unreviewed",
+      "httpStatus": 200,
+      "finalUrl": "https://laurellee.house.gov/sites/evo-subsites/laurellee.house.gov/files/styles/evo_image_full_width/public/evo-media-image/screenshot-2025-06-16-at-9.52.26-am.png?h=51b0233b&itok=9pfrliSO",
+      "contentType": "image/png",
+      "byteSize": 2144717,
+      "imageSha256": "860ff3ea4d0a2d1b8a852188c0b38e3930423bf2ab99f9b28c18cf3beef82fa9",
+      "downloadStatus": "captured_for_hash"
+    }
+  ],
+  "contactCandidates": [
+    {
+      "type": "phone",
+      "value": "(202) 225-5626",
+      "label": "(202) 225-5626",
+      "sourcePageUrl": "https://laurellee.house.gov/"
+    },
+    {
+      "type": "phone",
+      "value": "(813) 393-5077",
+      "label": null,
+      "sourcePageUrl": "https://laurellee.house.gov/"
+    }
+  ],
+  "socialCandidates": [
+    {
+      "platform": "Facebook",
+      "url": "https://www.facebook.com/RepLaurelLee/",
+      "label": "Rep. Laurel Lee",
+      "sourcePageUrl": "https://laurellee.house.gov/",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "platform": "Instagram",
+      "url": "https://www.instagram.com/replaurellee",
+      "label": "replaurellee",
+      "sourcePageUrl": "https://laurellee.house.gov/",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "platform": "X",
+      "url": "https://twitter.com/RepLaurelLee",
+      "label": "Tweets by Rep. Laurel Lee",
+      "sourcePageUrl": "https://laurellee.house.gov/",
+      "reviewStatus": "unreviewed"
+    }
+  ],
+  "websiteCandidates": [
+    {
+      "url": "https://laurellee.house.gov/contact",
+      "label": "Contact Us",
+      "sourcePageUrl": "https://laurellee.house.gov/",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "url": "https://laurellee.house.gov/contact/request-an-appearance",
+      "label": "Event Request",
+      "sourcePageUrl": "https://laurellee.house.gov/",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "url": "https://laurellee.house.gov/contact/meeting-request",
+      "label": "Meeting Request",
+      "sourcePageUrl": "https://laurellee.house.gov/",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "url": "https://laurellee.house.gov/contact/newsletter-subscribe",
+      "label": "Subscribe",
+      "sourcePageUrl": "https://laurellee.house.gov/",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "url": "https://laurellee.house.gov/contact/offices",
+      "label": "Office Locations",
+      "sourcePageUrl": "https://laurellee.house.gov/",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "url": "https://laurellee.house.gov/services/mobile-office-hours",
+      "label": "Mobile Office Hours",
+      "sourcePageUrl": "https://laurellee.house.gov/",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "url": "https://laurellee.house.gov/services/disaster-resources/state-local-contacts",
+      "label": "State & Local Contacts",
+      "sourcePageUrl": "https://laurellee.house.gov/",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "url": "https://laurelleeforms.house.gov/contact/",
+      "label": null,
+      "sourcePageUrl": "https://laurellee.house.gov/",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "url": "https://laurellee.house.gov/services",
+      "label": "Constituent Services",
+      "sourcePageUrl": "https://laurellee.house.gov/",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "url": "https://laurellee.house.gov/contact/offices/washington-dc-office",
+      "label": "Washington DC Office",
+      "sourcePageUrl": "https://laurellee.house.gov/",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "url": "https://laurellee.house.gov/contact/offices/tampa-district-office",
+      "label": "Tampa District Office",
+      "sourcePageUrl": "https://laurellee.house.gov/",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "url": "https://laurellee.house.gov/contact/newsletter-unsubscribe",
+      "label": "cancel or unsubscribe",
+      "sourcePageUrl": "https://laurellee.house.gov/",
+      "reviewStatus": "unreviewed"
+    }
+  ],
+  "errors": [],
+  "httpStatus": 200,
+  "finalUrl": "https://laurellee.house.gov/",
+  "sourceSnapshotSha256": "5334f4b3344607e2d4a29af96e334345d6b2b573a7b1022d181259e6933b424a",
+  "contentType": "text/html",
+  "pageTitle": "Congresswoman Laurel Lee | Representing the 15th District of Florida",
+  "candidateSummary": {
+    "portraits": 6,
+    "contacts": 2,
+    "socials": 3,
+    "websites": 12
+  }
+}
