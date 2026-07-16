@@ -1,92 +1,153 @@
 import Link from 'next/link';
-import { getAllOfficials } from '@/lib/officials';
 
-const features = [
-  ['01', 'Find your representatives', 'Start with an address or browse verified officials by jurisdiction and office.'],
-  ['02', 'Follow the public record', 'Review sourced votes, bills, actions, statements, finances, and public meetings.'],
-  ['03', 'Track promises', 'See campaign commitments, measurable criteria, progress, evidence, and status history.'],
-  ['04', 'Take informed action', 'Contact offices, follow petitions, subscribe to alerts, and prepare for public meetings.'],
+const pathways = [
+  {
+    number: '01',
+    title: 'Find your place in the picture',
+    copy: 'Start with your community. See the offices, officials, and public decisions closest to daily life.',
+  },
+  {
+    number: '02',
+    title: 'Read the record, not the spin',
+    copy: 'Votes, public statements, campaign promises, finances, and meetings are organized around their original sources.',
+  },
+  {
+    number: '03',
+    title: 'Know what is known',
+    copy: 'Every profile makes room for missing information, conflicting evidence, updates, and corrections.',
+  },
+];
+
+const recordSignals = [
+  ['Actions', 'Bills, votes, public statements, and meeting records in context.'],
+  ['Promises', 'Campaign commitments connected to measurable evidence and status history.'],
+  ['Money', 'Campaign finance, public disclosures, and ethics information with source trails.'],
 ];
 
 export default function HomePage() {
-  const officials = getAllOfficials();
-
   return (
     <>
-      <section className="hero-home">
-        <div className="shell hero-grid">
-          <div>
-            <span className="eyebrow">Evidence-first civic intelligence</span>
-            <h1>Know who represents you—and what they actually do.</h1>
+      <section className="human-hero" aria-labelledby="home-title">
+        <div className="shell hero-content-shell">
+          <div className="hero-content">
+            <span className="eyebrow">Civic intelligence for everyday people</span>
+            <h1 id="home-title">A clearer view of the people making public decisions.</h1>
             <p className="hero-copy">
-              CivicLenZ brings official records, promises, votes, campaign finance, policy positions,
-              public statements, and transparent AI analysis into one sourced profile.
+              CivicLenZ brings together the public record so you can understand who represents you,
+              what they have said and done, and where the evidence comes from—without having to dig
+              through dozens of websites.
             </p>
             <div className="hero-actions">
-              <Link className="button button-primary" href="/officials/">
-                Browse Officials
+              <Link className="button button-primary button-large" href="/officials/">
+                Explore Florida officials <span aria-hidden="true">→</span>
               </Link>
-              <a className="button button-secondary" href="#how-it-works">
-                See How It Works
+              <a className="button button-glass button-large" href="#what-you-can-do">
+                See what CivicLenZ does
               </a>
             </div>
-            <div className="trust-row">
-              <span>✓ Sources attached</span>
-              <span>✓ Uncertainty disclosed</span>
-              <span>✓ Corrections preserved</span>
+            <div className="hero-proof" aria-label="CivicLenZ principles">
+              <span><b>✓</b> Sources stay attached</span>
+              <span><b>✓</b> Context stays visible</span>
+              <span><b>✓</b> You decide what it means</span>
             </div>
           </div>
-          <aside className="lookup-card" aria-label="Representative lookup preview">
-            <h2>Who represents you?</h2>
-            <p>Address matching is the next live data service. Browse the verified seed profiles now.</p>
-            <form className="lookup-form">
-              <label htmlFor="address">Home address</label>
-              <input className="input" id="address" placeholder="Street, city, state, ZIP" disabled />
-              <button className="button button-primary" type="button" disabled>
-                Representative lookup coming next
-              </button>
-            </form>
+          <aside className="hero-signal" aria-label="CivicLenZ approach">
+            <span className="signal-kicker">Built for your real life</span>
+            <p>Schools. Streets. Safety. Jobs. Housing. Public money.</p>
+            <span>CivicLenZ makes the record easier to find, understand, and follow.</span>
           </aside>
         </div>
       </section>
 
-      <section className="section" id="how-it-works">
+      <section className="section section-intro" id="what-you-can-do">
         <div className="shell">
-          <div className="section-heading">
+          <div className="section-heading section-heading-centered">
             <div>
-              <span className="eyebrow">Built for accountability</span>
-              <h2>From source document to useful civic profile</h2>
+              <span className="eyebrow eyebrow-dark">Made for people, not political insiders</span>
+              <h2>Public information should feel useful the first time you see it.</h2>
             </div>
             <p>
-              Automated collection speeds up research, but evidence, conflicts, confidence, and human review remain visible.
+              No jargon wall. No forced point of view. Just a thoughtful path from a public record to a
+              clearer understanding of how it affects you and your community.
             </p>
           </div>
-          <div className="feature-grid">
-            {features.map(([number, title, description]) => (
-              <article className="card feature-card" key={number}>
-                <div className="feature-icon">{number}</div>
-                <h3>{title}</h3>
-                <p>{description}</p>
+          <div className="pathway-grid">
+            {pathways.map((pathway) => (
+              <article className="pathway-card" key={pathway.number}>
+                <span className="pathway-number">{pathway.number}</span>
+                <h3>{pathway.title}</h3>
+                <p>{pathway.copy}</p>
               </article>
             ))}
           </div>
         </div>
       </section>
 
-      <section className="section">
-        <div className="shell">
-          <div className="section-heading">
-            <div>
-              <span className="eyebrow">Data foundation live</span>
-              <h2>{officials.length} verified seed profile{officials.length === 1 ? '' : 's'}</h2>
-            </div>
+      <section className="section section-record">
+        <div className="shell record-layout">
+          <div className="record-copy">
+            <span className="eyebrow eyebrow-dark">One public profile, built around evidence</span>
+            <h2>See the whole picture—not a headline clipped out of context.</h2>
             <p>
-              Florida state officials are the first collection target. New scraper results enter a review branch before publication.
+              CivicLenZ turns scattered source material into a structured, readable profile. The goal is
+              not to tell you what to think. It is to make it easier to see the facts, the gaps, and the
+              questions worth asking.
+            </p>
+            <Link className="text-link" href="/officials/">
+              Browse the first profiles <span aria-hidden="true">→</span>
+            </Link>
+          </div>
+          <div className="record-panel" aria-label="Official profile information preview">
+            <div className="record-panel-top">
+              <div className="record-avatar" aria-hidden="true">◎</div>
+              <div>
+                <span>Public record overview</span>
+                <strong>What a CivicLenZ profile makes easier to see</strong>
+              </div>
+              <i>Evidence-led</i>
+            </div>
+            <div className="signal-list">
+              {recordSignals.map(([title, copy]) => (
+                <div className="signal-row" key={title}>
+                  <span className="signal-dot" aria-hidden="true" />
+                  <div><strong>{title}</strong><p>{copy}</p></div>
+                  <span aria-hidden="true">→</span>
+                </div>
+              ))}
+            </div>
+            <div className="record-note"><span aria-hidden="true">✓</span> Sources, dates, confidence, and corrections stay close to each claim.</div>
+          </div>
+        </div>
+      </section>
+
+      <section className="section section-trust" id="trust">
+        <div className="shell trust-layout">
+          <div>
+            <span className="eyebrow">Trust is a feature, not fine print</span>
+            <h2>We show the source, explain the uncertainty, and preserve the history.</h2>
+          </div>
+          <div className="trust-grid">
+            <article><strong>Source-led</strong><span>Claims point back to records people can inspect.</span></article>
+            <article><strong>Nonpartisan by design</strong><span>The same structure applies to every official and office.</span></article>
+            <article><strong>Open to correction</strong><span>Updates and credible contradictions belong in the record.</span></article>
+          </div>
+        </div>
+      </section>
+
+      <section className="section section-launch" id="florida">
+        <div className="shell launch-card">
+          <div>
+            <span className="eyebrow eyebrow-dark">Florida first. Built to grow.</span>
+            <h2>The first public profiles are beginning in Florida.</h2>
+            <p>
+              We are building the foundation carefully: a consistent profile framework, source policy,
+              evidence trail, and review process that can scale city by city and state by state.
             </p>
           </div>
-          <Link className="button button-primary" href="/officials/">
-            Open official directory
-          </Link>
+          <div className="launch-actions">
+            <Link className="button button-primary button-large" href="/officials/">Meet the first officials</Link>
+            <span>Address-based representative lookup is next.</span>
+          </div>
         </div>
       </section>
     </>
