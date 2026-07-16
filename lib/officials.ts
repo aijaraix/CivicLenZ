@@ -171,7 +171,24 @@ export type DirectoryEntry = {
 
 const dataRoot = path.join(process.cwd(), 'data', 'officials');
 const stagingRoot = path.join(process.cwd(), 'data', 'staging');
-const PUBLIC_SOURCE_LISTING_KEYS = new Set(['florida-senate-members']);
+type SourceListingMetadata = {
+  slugPrefix: string;
+  districtLabel: string;
+  sourceLabel: string;
+};
+
+const PUBLIC_SOURCE_LISTING_SOURCES: Record<string, SourceListingMetadata> = {
+  'florida-senate-members': {
+    slugPrefix: 'florida-state-senate',
+    districtLabel: 'Florida Senate District',
+    sourceLabel: 'Florida Senate — Senators',
+  },
+  'florida-house-members': {
+    slugPrefix: 'florida-state-house',
+    districtLabel: 'Florida House District',
+    sourceLabel: 'Florida House of Representatives — Members',
+  },
+};
 
 function findJsonFiles(directory: string): string[] {
   if (!fs.existsSync(directory)) return [];
@@ -201,7 +218,8 @@ function slugify(value: string): string {
 }
 
 function sourceListingSlug(record: StagingRecord): string {
-  return 'florida-state-senate-' + (record.districtNumber ?? 'member') + '-' + slugify(humanName(record.displayName));
+  const metadata = PUBLIC_SOURCE_LISTING_SOURCES[record.sourceKey];
+  return (metadata?.slugPrefix ?? 'government-source') + '-' + (record.districtNumber ?? 'member') + '-' + slugify(humanName(record.displayName));
 }
 
 export function getAllOfficials(): OfficialProfile[] {
@@ -219,28 +237,34 @@ export function getSourceListedOfficials(): SourceListedOfficial[] {
   return findJsonFiles(stagingRoot)
     .map((filePath) => readJson<StagingRecord>(filePath))
     .filter((record) => {
+      const metadata = PUBLIC_SOURCE_LISTING_SOURCES[record.sourceKey];
       return (
         record.extractionStatus === 'extracted_unreviewed' &&
-        PUBLIC_SOURCE_LISTING_KEYS.has(record.sourceKey) &&
+        Boolean(metadata) &&
         Boolean(record.displayName && record.officeTitle && record.jurisdictionName && record.sourceUrl)
       );
     })
-    .map((record) => ({
-      id: record.stagingRecordId,
-      slug: sourceListingSlug(record),
-      displayName: humanName(record.displayName),
-      officeTitle: record.officeTitle,
-      governmentLevel: record.governmentLevel,
-      jurisdictionName: record.jurisdictionName,
-      stateCode: record.stateCode,
-      districtName: record.districtNumber ? 'Florida Senate District ' + record.districtNumber : undefined,
-      partyName: record.partyName,
-      countyDescription: record.countyDescription,
-      sourceUrl: record.sourceMemberUrl ?? record.sourceUrl,
-      sourceDirectoryUrl: record.sourceUrl,
-      sourceLabel: 'Florida Senate — Senators',
-      fetchedAt: record.fetchedAt,
-    }))
+    .flatMap((record) => {
+      const metadata = PUBLIC_SOURCE_LISTING_SOURCES[record.sourceKey];
+      if (!metadata) return [];
+
+      return [{
+        id: record.stagingRecordId,
+        slug: sourceListingSlug(record),
+        displayName: humanName(record.displayName),
+        officeTitle: record.officeTitle,
+        governmentLevel: record.governmentLevel,
+        jurisdictionName: record.jurisdictionName,
+        stateCode: record.stateCode,
+        districtName: record.districtNumber ? metadata.districtLabel + ' ' + record.districtNumber : undefined,
+        partyName: record.partyName,
+        countyDescription: record.countyDescription,
+        sourceUrl: record.sourceMemberUrl ?? record.sourceUrl,
+        sourceDirectoryUrl: record.sourceUrl,
+        sourceLabel: metadata.sourceLabel,
+        fetchedAt: record.fetchedAt,
+      }];
+    })
     .sort((a, b) => a.displayName.localeCompare(b.displayName));
 }
 
