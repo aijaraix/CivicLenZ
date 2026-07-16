@@ -1,0 +1,400 @@
+{
+  "sourceDiscoveryVersion": "1.0.0",
+  "county": "Franklin",
+  "state": "Florida",
+  "stateCode": "FL",
+  "region": "northwest_florida_panhandle",
+  "rootSeedUrl": "https://www.franklincountyflorida.com/",
+  "finalRootUrl": "https://www.franklincountyflorida.com/",
+  "rootSeedStatus": "reachable_with_access_challenge",
+  "sitePlatformHint": "unknown",
+  "fetchedAt": "2026-07-16T07:22:33Z",
+  "collectionStatus": "success",
+  "publicationAllowed": false,
+  "reviewStatus": "unreviewed",
+  "visitedPages": [
+    {
+      "url": "https://www.franklincountyflorida.com/",
+      "httpStatus": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "pageTitle": "Franklin County Florida – Official Website for Franklin County Florida Government",
+      "sha256": "6a5fe18dffacd75c81a034f732993c4ba819e40c138474c279a1115afd263cc8"
+    },
+    {
+      "url": "https://www.franklincountyflorida.com/county-government/board-of-commissioners/",
+      "httpStatus": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "pageTitle": "Board of Commissioners",
+      "sha256": "2f9b3a441bc6d628da25cb1ce8a2d759d30c703f6f9bee40e0d85d9d5bd17090"
+    },
+    {
+      "url": "https://www.franklincountyflorida.com/constitutional-and-other-offices/clerk-of-courts/",
+      "httpStatus": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "pageTitle": "Clerk of Courts",
+      "sha256": "cddebc84bf344f2d826bda2224b7476d8d4cac0faaab28a64f621cfe5e9a5945"
+    },
+    {
+      "url": "https://www.franklincountyflorida.com/constitutional-and-other-offices/sheriffs-office/",
+      "httpStatus": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "pageTitle": "Sheriff’s Office",
+      "sha256": "11fe8f539abed205da625a807e5c02bc6cba69807dd8296660857691866bc236"
+    },
+    {
+      "url": "https://www.franklincountyflorida.com/constitutional-and-other-offices/tax-collector/",
+      "httpStatus": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "pageTitle": "Tax Collector",
+      "sha256": "fe0399e538ff71f19e3a38cd129ab0e8c9ee075c553282b8ae52c7bf3c52c971"
+    },
+    {
+      "url": "https://www.franklincountyflorida.com/constitutional-and-other-offices/property-appraiser/",
+      "httpStatus": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "pageTitle": "Property Appraiser",
+      "sha256": "cccee4dce568c67d5e5ea1dc3143b11199c0996716b6f6fac2e714579358fd10"
+    },
+    {
+      "url": "https://www.franklincountyflorida.com/constitutional-and-other-offices/supervisor-of-elections/",
+      "httpStatus": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "pageTitle": "Supervisor of Elections",
+      "sha256": "03ea624ae32aa849b7761eb8deb7ddf609d3a55d645850ba22e85752ad764ac9"
+    },
+    {
+      "url": "https://www.franklincountyflorida.com/constitutional-and-other-offices/county-judges-office/",
+      "httpStatus": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "pageTitle": "County Judge’s Office",
+      "sha256": "a43020f9f9dd0837f8d78bce3a7d312557bb8fc0cad93d4b45fc0137706ccc27"
+    },
+    {
+      "url": "https://www.franklincountyflorida.com/2026/05/30/bocc-executive-session-notice/",
+      "httpStatus": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "pageTitle": "BOCC Executive Session Notice",
+      "sha256": "c4ca20cd4a652d34e14d47b6689d100467d6c7f067a4a16eeddf9e7204f3af2d"
+    },
+    {
+      "url": "https://www.franklincountyflorida.com/county-government/board-of-commissioners/district-1-commissioner/",
+      "httpStatus": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "pageTitle": "Ricky Jones Franklin County Commissioner District 1",
+      "sha256": "d89071957c3be38fe9a20b432a61dcb75c1e4336a659c5c934e2e428ecd48a75"
+    },
+    {
+      "url": "https://www.franklincountyflorida.com/county-government/board-of-commissioners/district-2-commissioner/",
+      "httpStatus": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "pageTitle": "Cheryl K. Sanders Franklin County Commissioner District 2",
+      "sha256": "46a2c6eaf40623a236c54b3955ac6b5b988947578a338ef1c0625a9d169b4d3a"
+    },
+    {
+      "url": "https://www.franklincountyflorida.com/county-government/board-of-commissioners/district-3-commissioner/",
+      "httpStatus": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "pageTitle": "Noah Lockley, Jr. Franklin County Commissioner District 3",
+      "sha256": "8ade13af2f4ec0a97099cc9c2ced996aac760899525c2478f5bb6524387b3f95"
+    },
+    {
+      "url": "https://www.franklincountyflorida.com/county-government/board-of-commissioners/district-4-commissioner/",
+      "httpStatus": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "pageTitle": "Ottice D. Amison Franklin County Commissioner District 4",
+      "sha256": "b178b6ce2514c3b27d5361cbfe3285700c51b6ab4e294f862768c7649bc95df1"
+    },
+    {
+      "url": "https://www.franklincountyflorida.com/county-government/board-of-commissioners/district-5-commissioner/",
+      "httpStatus": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "pageTitle": "Jessica Varnes Ward Franklin County Commissioner District 5",
+      "sha256": "78cf433b25d8b6d7b745cb374f537fea43d35ff4be44f8e93654b53724a4af81"
+    }
+  ],
+  "sourceCandidates": {
+    "county_commission_directory": [
+      {
+        "url": "https://www.franklincountyflorida.com/documents/board_commissioners/1516%20Adopted%20BOCC%20Budget.pdf",
+        "label": "2015-16 Franklin County Annual Budget",
+        "discoveredOn": "https://www.franklincountyflorida.com/county-government/board-of-commissioners/",
+        "score": 22,
+        "sameHost": true,
+        "reviewStatus": "unreviewed"
+      },
+      {
+        "url": "https://www.franklincountyflorida.com/2026/05/30/bocc-executive-session-notice/",
+        "label": "BOCC Executive Session Notice",
+        "discoveredOn": "https://www.franklincountyflorida.com/",
+        "score": 19,
+        "sameHost": true,
+        "reviewStatus": "unreviewed"
+      },
+      {
+        "url": "https://www.franklincountyflorida.com/county-government/board-of-commissioners/",
+        "label": "Board of Commissioners",
+        "discoveredOn": "https://www.franklincountyflorida.com/",
+        "score": 19,
+        "sameHost": true,
+        "reviewStatus": "unreviewed"
+      },
+      {
+        "url": "https://www.franklincountyflorida.com/county-government/board-of-commissioners/district-1-commissioner/",
+        "label": null,
+        "discoveredOn": "https://www.franklincountyflorida.com/county-government/board-of-commissioners/",
+        "score": 19,
+        "sameHost": true,
+        "reviewStatus": "unreviewed"
+      },
+      {
+        "url": "https://www.franklincountyflorida.com/county-government/board-of-commissioners/district-2-commissioner/",
+        "label": null,
+        "discoveredOn": "https://www.franklincountyflorida.com/county-government/board-of-commissioners/",
+        "score": 19,
+        "sameHost": true,
+        "reviewStatus": "unreviewed"
+      },
+      {
+        "url": "https://www.franklincountyflorida.com/county-government/board-of-commissioners/district-3-commissioner/",
+        "label": null,
+        "discoveredOn": "https://www.franklincountyflorida.com/county-government/board-of-commissioners/",
+        "score": 19,
+        "sameHost": true,
+        "reviewStatus": "unreviewed"
+      },
+      {
+        "url": "https://www.franklincountyflorida.com/county-government/board-of-commissioners/district-4-commissioner/",
+        "label": null,
+        "discoveredOn": "https://www.franklincountyflorida.com/county-government/board-of-commissioners/",
+        "score": 19,
+        "sameHost": true,
+        "reviewStatus": "unreviewed"
+      },
+      {
+        "url": "https://www.franklincountyflorida.com/county-government/board-of-commissioners/district-5-commissioner/",
+        "label": null,
+        "discoveredOn": "https://www.franklincountyflorida.com/county-government/board-of-commissioners/",
+        "score": 19,
+        "sameHost": true,
+        "reviewStatus": "unreviewed"
+      },
+      {
+        "url": "https://www.franklincountyflorida.com/documents/board_commissioners/ClerktoBoardAnnualBudget-20112012.pdf",
+        "label": "Fiscal Year 2011/2012 Clerk to the Board Annual Budget",
+        "discoveredOn": "https://www.franklincountyflorida.com/county-government/board-of-commissioners/",
+        "score": 19,
+        "sameHost": true,
+        "reviewStatus": "unreviewed"
+      },
+      {
+        "url": "https://www.franklincountyflorida.com/documents/board_commissioners/ClerktoBoardAnnualBudget-20122013.pdf",
+        "label": "Fiscal Year 2012/2013 Clerk to the Board Annual Budget",
+        "discoveredOn": "https://www.franklincountyflorida.com/county-government/board-of-commissioners/",
+        "score": 19,
+        "sameHost": true,
+        "reviewStatus": "unreviewed"
+      },
+      {
+        "url": "https://www.franklincountyflorida.com/documents/board_commissioners/ClerktoBoardAnnualBudget-20132014.pdf",
+        "label": "Fiscal Year 2013/2014 Clerk to the Board Annual Budget",
+        "discoveredOn": "https://www.franklincountyflorida.com/county-government/board-of-commissioners/",
+        "score": 19,
+        "sameHost": true,
+        "reviewStatus": "unreviewed"
+      },
+      {
+        "url": "https://www.franklincountyflorida.com/documents/board_commissioners/ClerktoBoardAnnualBudget-20142015.pdf",
+        "label": "Fiscal Year 2014/2015 Clerk to the Board Annual Budget",
+        "discoveredOn": "https://www.franklincountyflorida.com/county-government/board-of-commissioners/",
+        "score": 19,
+        "sameHost": true,
+        "reviewStatus": "unreviewed"
+      },
+      {
+        "url": "https://www.franklincountyflorida.com/documents/board_commissioners/ClerktoBoardAnnualBudget-20152016.pdf",
+        "label": "Fiscal Year 2015/2016 Clerk to the Board Annual Budget",
+        "discoveredOn": "https://www.franklincountyflorida.com/county-government/board-of-commissioners/",
+        "score": 19,
+        "sameHost": true,
+        "reviewStatus": "unreviewed"
+      },
+      {
+        "url": "https://www.franklincountyflorida.com/documents/board_commissioners/Franklin_County_Water_Utility_Report_2008.pdf",
+        "label": "2008 Water Study",
+        "discoveredOn": "https://www.franklincountyflorida.com/county-government/board-of-commissioners/",
+        "score": 19,
+        "sameHost": true,
+        "reviewStatus": "unreviewed"
+      },
+      {
+        "url": "https://www.franklincountyflorida.com/documents/board_commissioners/annualfinancialstatements_2005_2006.pdf",
+        "label": "Fiscal Year 2005/2006 Audit Report",
+        "discoveredOn": "https://www.franklincountyflorida.com/county-government/board-of-commissioners/",
+        "score": 19,
+        "sameHost": true,
+        "reviewStatus": "unreviewed"
+      },
+      {
+        "url": "https://www.franklincountyflorida.com/documents/board_commissioners/annualfinancialstatements_2006_2007.pdf",
+        "label": "Fiscal Year 2006/2007 Audit Report",
+        "discoveredOn": "https://www.franklincountyflorida.com/county-government/board-of-commissioners/",
+        "score": 19,
+        "sameHost": true,
+        "reviewStatus": "unreviewed"
+      },
+      {
+        "url": "https://www.franklincountyflorida.com/documents/board_commissioners/annualfinancialstatements_2007_2008.pdf",
+        "label": "Fiscal Year 2007/2008 Audit Report",
+        "discoveredOn": "https://www.franklincountyflorida.com/county-government/board-of-commissioners/",
+        "score": 19,
+        "sameHost": true,
+        "reviewStatus": "unreviewed"
+      },
+      {
+        "url": "https://www.franklincountyflorida.com/documents/board_commissioners/annualfinancialstatements_2008_2009.pdf",
+        "label": "Fiscal Year 2008/2009 Audit Report",
+        "discoveredOn": "https://www.franklincountyflorida.com/county-government/board-of-commissioners/",
+        "score": 19,
+        "sameHost": true,
+        "reviewStatus": "unreviewed"
+      },
+      {
+        "url": "https://www.franklincountyflorida.com/documents/board_commissioners/annualfinancialstatements_2009_2010.pdf",
+        "label": "Fiscal Year 2009/2010 Audit Report",
+        "discoveredOn": "https://www.franklincountyflorida.com/county-government/board-of-commissioners/",
+        "score": 19,
+        "sameHost": true,
+        "reviewStatus": "unreviewed"
+      },
+      {
+        "url": "https://www.franklincountyflorida.com/documents/board_commissioners/annualfinancialstatements_2010_2011.pdf",
+        "label": "Fiscal Year 2010/2011 Audit Report",
+        "discoveredOn": "https://www.franklincountyflorida.com/county-government/board-of-commissioners/",
+        "score": 19,
+        "sameHost": true,
+        "reviewStatus": "unreviewed"
+      }
+    ],
+    "sheriff_directory": [
+      {
+        "url": "https://www.franklincountyflorida.com/constitutional-and-other-offices/sheriffs-office/",
+        "label": "Sheriff’s Office",
+        "discoveredOn": "https://www.franklincountyflorida.com/",
+        "score": 19,
+        "sameHost": true,
+        "reviewStatus": "unreviewed"
+      },
+      {
+        "url": "http://www.franklinsheriff.com/",
+        "label": "Visit the Sheriff's Office website",
+        "discoveredOn": "https://www.franklincountyflorida.com/constitutional-and-other-offices/sheriffs-office/",
+        "score": 16,
+        "sameHost": false,
+        "reviewStatus": "unreviewed"
+      }
+    ],
+    "clerk_directory": [
+      {
+        "url": "https://www.franklincountyflorida.com/constitutional-and-other-offices/clerk-of-courts/",
+        "label": "Clerk of Courts",
+        "discoveredOn": "https://www.franklincountyflorida.com/",
+        "score": 26,
+        "sameHost": true,
+        "reviewStatus": "unreviewed"
+      },
+      {
+        "url": "http://franklinclerk.com/",
+        "label": "Visit the Clerk of Courts website",
+        "discoveredOn": "https://www.franklincountyflorida.com/constitutional-and-other-offices/clerk-of-courts/",
+        "score": 16,
+        "sameHost": false,
+        "reviewStatus": "unreviewed"
+      }
+    ],
+    "supervisor_of_elections_directory": [
+      {
+        "url": "https://www.franklincountyflorida.com/constitutional-and-other-offices/supervisor-of-elections/",
+        "label": "Supervisor of Elections",
+        "discoveredOn": "https://www.franklincountyflorida.com/",
+        "score": 23,
+        "sameHost": true,
+        "reviewStatus": "unreviewed"
+      },
+      {
+        "url": "http://www.votefranklin.com/",
+        "label": "Visit the Supervisor of Elections website",
+        "discoveredOn": "https://www.franklincountyflorida.com/constitutional-and-other-offices/supervisor-of-elections/",
+        "score": 13,
+        "sameHost": false,
+        "reviewStatus": "unreviewed"
+      }
+    ],
+    "tax_collector_directory": [
+      {
+        "url": "https://www.franklincountyflorida.com/constitutional-and-other-offices/tax-collector/",
+        "label": "Tax Collector",
+        "discoveredOn": "https://www.franklincountyflorida.com/",
+        "score": 23,
+        "sameHost": true,
+        "reviewStatus": "unreviewed"
+      },
+      {
+        "url": "http://franklincountytaxcollector.com/",
+        "label": "Visit the Tax Collector website",
+        "discoveredOn": "https://www.franklincountyflorida.com/constitutional-and-other-offices/tax-collector/",
+        "score": 13,
+        "sameHost": false,
+        "reviewStatus": "unreviewed"
+      }
+    ],
+    "property_appraiser_directory": [
+      {
+        "url": "https://www.franklincountyflorida.com/constitutional-and-other-offices/property-appraiser/",
+        "label": "Property Appraiser",
+        "discoveredOn": "https://www.franklincountyflorida.com/",
+        "score": 23,
+        "sameHost": true,
+        "reviewStatus": "unreviewed"
+      },
+      {
+        "url": "https://franklincountypa.net/",
+        "label": "Visit the Property Appraiser website",
+        "discoveredOn": "https://www.franklincountyflorida.com/constitutional-and-other-offices/property-appraiser/",
+        "score": 13,
+        "sameHost": false,
+        "reviewStatus": "unreviewed"
+      }
+    ],
+    "school_board_directory": [],
+    "school_superintendent_status_and_directory": [],
+    "municipality_registry": [],
+    "special_district_registry": [],
+    "judicial_election_or_retention_sources": [
+      {
+        "url": "https://www.franklincountyflorida.com/constitutional-and-other-offices/county-judges-office/",
+        "label": "County Judge’s Office",
+        "discoveredOn": "https://www.franklincountyflorida.com/",
+        "score": 22,
+        "sameHost": true,
+        "reviewStatus": "unreviewed"
+      }
+    ],
+    "campaign_finance_and_candidate_filing_sources": [],
+    "financial_disclosure_sources": []
+  },
+  "resolvedCategoryCount": 7,
+  "requiredCategoryCount": 13,
+  "unresolvedCategories": [
+    "school_board_directory",
+    "school_superintendent_status_and_directory",
+    "municipality_registry",
+    "special_district_registry",
+    "campaign_finance_and_candidate_filing_sources",
+    "financial_disclosure_sources"
+  ],
+  "notes": [
+    "Candidate links require source review before they can seed an officeholder collector.",
+    "External constitutional-office and school-district domains are allowed only when linked from an attributable official source or independently verified."
+  ],
+  "errors": []
+}

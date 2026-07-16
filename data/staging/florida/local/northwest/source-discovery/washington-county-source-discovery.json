@@ -1,0 +1,360 @@
+{
+  "sourceDiscoveryVersion": "1.0.0",
+  "county": "Washington",
+  "state": "Florida",
+  "stateCode": "FL",
+  "region": "northwest_florida_panhandle",
+  "rootSeedUrl": "https://www.washingtonfl.com/",
+  "finalRootUrl": "https://www.washingtonfl.com/",
+  "rootSeedStatus": "reachable_official_site",
+  "sitePlatformHint": "wordpress_or_custom",
+  "fetchedAt": "2026-07-16T07:22:38Z",
+  "collectionStatus": "success",
+  "publicationAllowed": false,
+  "reviewStatus": "unreviewed",
+  "visitedPages": [
+    {
+      "url": "https://www.washingtonfl.com/",
+      "httpStatus": 200,
+      "contentType": "text/html; charset=utf-8",
+      "pageTitle": "Washington County Florida County Commission",
+      "sha256": "06960117a851eb3708a3c51c06f7c534ddb68cae2bf05413a8fc861cb499a5a6"
+    },
+    {
+      "url": "https://www.washingtonfl.com/news/1460/",
+      "httpStatus": 200,
+      "contentType": "text/html; charset=utf-8",
+      "pageTitle": "",
+      "sha256": "236fa0d5474e0d60e4e7c8017abe2b13f89443b5ecf9c7b77d8c69292d3326c9"
+    },
+    {
+      "url": "https://www.washingtonfl.com/departments/commission/about/",
+      "httpStatus": 200,
+      "contentType": "text/html; charset=utf-8",
+      "pageTitle": "Washington County Board of County Commissioners",
+      "sha256": "18b37c4ca0a978cf1751cd31fca6285fedb8b5e12fc84c345bd2af67b63811de"
+    },
+    {
+      "url": "https://www.washingtonfl.com/departments/washington-county-florida-sheriffs-department/washington-county-sheriffs-department/",
+      "httpStatus": 200,
+      "contentType": "text/html; charset=utf-8",
+      "pageTitle": "Washington County Florida Sheriff",
+      "sha256": "37301818b6fdcdcd2b8262fb912ab3922c420f0daa38343275374c5d3bc8d5a4"
+    },
+    {
+      "url": "https://www.washingtonfl.com/departments/commission/about/",
+      "httpStatus": 200,
+      "contentType": "text/html; charset=utf-8",
+      "pageTitle": "Washington County Board of County Commissioners",
+      "sha256": "18b37c4ca0a978cf1751cd31fca6285fedb8b5e12fc84c345bd2af67b63811de"
+    },
+    {
+      "url": "https://www.washingtonfl.com/news/bocc/press-release-washington-county-bocc-shares-resources-for-sunny-hills-water-customers-2/",
+      "httpStatus": 200,
+      "contentType": "text/html; charset=utf-8",
+      "pageTitle": "",
+      "sha256": "456ecaaeb9538240a5935e7e697ae2dee12ec251d3949e1ebbee715421d0b7f5"
+    },
+    {
+      "url": "https://www.washingtonfl.com/news/bocc/washington-county-announces-extended-independence-day-holiday/",
+      "httpStatus": 200,
+      "contentType": "text/html; charset=utf-8",
+      "pageTitle": "",
+      "sha256": "c3e61be726e0cb5cea33c3f84dc9d193cc6a4649222790ab94f9683c55195619"
+    },
+    {
+      "url": "https://www.washingtonfl.com/news/bocc/special-magistrate-hearing-06.30.26/",
+      "httpStatus": 200,
+      "contentType": "text/html; charset=utf-8",
+      "pageTitle": "",
+      "sha256": "1e1f3d74f50a52950e8c1087732867b30ce6e6fb427975e7e8135b027967b6f9"
+    },
+    {
+      "url": "https://www.washingtonfl.com/news/bocc/washington-county-board-of-county-commissioners-to-host-sunny-hills-community-meeting/",
+      "httpStatus": 200,
+      "contentType": "text/html; charset=utf-8",
+      "pageTitle": "",
+      "sha256": "360d501b8dcb1d401502d9baba8f7f76b1995bb0ca11e53666e9a3ba771350ab"
+    },
+    {
+      "url": "https://www.washingtonfl.com/news/bocc/press-release-melons-and-music-and-comin-in-hot-for-the-70th-annual-panhandle-watermelon-festival/",
+      "httpStatus": 200,
+      "contentType": "text/html; charset=utf-8",
+      "pageTitle": "",
+      "sha256": "23ce4a0c6cd8f8992b9f33f971e265e781cc6bb4171d2400c00486c502bcfdab"
+    },
+    {
+      "url": "https://www.washingtonfl.com/news/bocc/press-release-washington-county-introduces-new-business-to-community-commissioners-approve-tax-incentive-on-major-expansion-in/",
+      "httpStatus": 200,
+      "contentType": "text/html; charset=utf-8",
+      "pageTitle": "",
+      "sha256": "0abade6d9d663efd3e0d4bacec21b63d93c77f21ae3bcf1bd8985563f3d4f9cf"
+    },
+    {
+      "url": "https://www.washingtonfl.com/news/bocc/press-release-washington-county-tdc-to-launch-a-revolution-road-driving-tour-for-america-250/",
+      "httpStatus": 200,
+      "contentType": "text/html; charset=utf-8",
+      "pageTitle": "",
+      "sha256": "a81996b8ba205dbdc2fc200a09218c30c58b0abbe3d9bec96f2d89ad972738ce"
+    },
+    {
+      "url": "https://www.washingtonfl.com/news/bocc/notice-of-postponement-hunter-park-splash-pad-grand-opening/",
+      "httpStatus": 200,
+      "contentType": "text/html; charset=utf-8",
+      "pageTitle": "",
+      "sha256": "a976835034af98bd900297e738dac055d042d4102c9a4d3e1814149c69e3d1e6"
+    },
+    {
+      "url": "https://www.washingtonfl.com/news/bocc/press-release-washington-county-celebrates-national-public-works-week-honors-dedicated-team/",
+      "httpStatus": 200,
+      "contentType": "text/html; charset=utf-8",
+      "pageTitle": "",
+      "sha256": "65cd789c43592114cb4ac74e9254caac1f9d3ae55120d770ca844e8b14c5e7b9"
+    }
+  ],
+  "sourceCandidates": {
+    "county_commission_directory": [
+      {
+        "url": "https://www.washingtonfl.com/news/bocc/washington-county-board-of-county-commissioners-to-host-sunny-hills-community-meeting/",
+        "label": "Washington County Board of County Commissioners to Host Sunny Hills Community Meeting",
+        "discoveredOn": "https://www.washingtonfl.com/news/1460/",
+        "score": 26,
+        "sameHost": true,
+        "reviewStatus": "unreviewed"
+      },
+      {
+        "url": "https://www.washingtonfl.com/departments/commission",
+        "label": "County Commission",
+        "discoveredOn": "https://www.washingtonfl.com/",
+        "score": 21,
+        "sameHost": true,
+        "reviewStatus": "unreviewed"
+      },
+      {
+        "url": "https://www.washingtonfl.com/news/bocc/press-release-washington-county-introduces-new-business-to-community-commissioners-approve-tax-incentive-on-major-expansion-in/",
+        "label": "PRESS RELEASE: Washington County Introduces New Business to Community; Commissioners Approve Tax Incentive on Major Expansion in Chipley",
+        "discoveredOn": "https://www.washingtonfl.com/news/1460/",
+        "score": 20,
+        "sameHost": true,
+        "reviewStatus": "unreviewed"
+      },
+      {
+        "url": "https://www.washingtonfl.com/departments/commission/about/",
+        "label": "Our Commissioners",
+        "discoveredOn": "https://www.washingtonfl.com/",
+        "score": 17,
+        "sameHost": true,
+        "reviewStatus": "unreviewed"
+      },
+      {
+        "url": "https://www.washingtonfl.com/news/1460/",
+        "label": "BOCC News",
+        "discoveredOn": "https://www.washingtonfl.com/",
+        "score": 17,
+        "sameHost": true,
+        "reviewStatus": "unreviewed"
+      },
+      {
+        "url": "https://www.washingtonfl.com/news/bocc/notice-of-postponement-hunter-park-splash-pad-grand-opening/",
+        "label": "Notice of Postponement - Hunter Park Splash Pad Grand Opening",
+        "discoveredOn": "https://www.washingtonfl.com/news/1460/",
+        "score": 17,
+        "sameHost": true,
+        "reviewStatus": "unreviewed"
+      },
+      {
+        "url": "https://www.washingtonfl.com/news/bocc/on-thursday-april-28th-2026-a-special-magistrate-hearing/",
+        "label": "On Thursday, April 28th , 2026, a Special Magistrate Hearing",
+        "discoveredOn": "https://www.washingtonfl.com/news/1460/",
+        "score": 17,
+        "sameHost": true,
+        "reviewStatus": "unreviewed"
+      },
+      {
+        "url": "https://www.washingtonfl.com/news/bocc/oneblood-blood-drive-wcbocc-hosting-april-27-2026/",
+        "label": "OneBlood Blood Drive - WCBOCC Hosting April 27, 2026",
+        "discoveredOn": "https://www.washingtonfl.com/news/1460/",
+        "score": 17,
+        "sameHost": true,
+        "reviewStatus": "unreviewed"
+      },
+      {
+        "url": "https://www.washingtonfl.com/news/bocc/press-release-melons-and-music-and-comin-in-hot-for-the-70th-annual-panhandle-watermelon-festival/",
+        "label": "PRESS RELEASE: Melons and Music and Comin' in Hot for the 70th Annual Panhandle Watermelon Festival",
+        "discoveredOn": "https://www.washingtonfl.com/news/1460/",
+        "score": 17,
+        "sameHost": true,
+        "reviewStatus": "unreviewed"
+      },
+      {
+        "url": "https://www.washingtonfl.com/news/bocc/press-release-washington-county-announces-first-major-economic-development-project-at-industrial-rail-park/",
+        "label": "Press Release Washington County Announces First Major Economic Development Project at Industrial Rail Park",
+        "discoveredOn": "https://www.washingtonfl.com/news/1460/",
+        "score": 17,
+        "sameHost": true,
+        "reviewStatus": "unreviewed"
+      },
+      {
+        "url": "https://www.washingtonfl.com/news/bocc/press-release-washington-county-bocc-shares-resources-for-sunny-hills-water-customers-2/",
+        "label": "Press Release Washington County BOCC Shares Resources for Sunny Hills Water Customers",
+        "discoveredOn": "https://www.washingtonfl.com/",
+        "score": 17,
+        "sameHost": true,
+        "reviewStatus": "unreviewed"
+      },
+      {
+        "url": "https://www.washingtonfl.com/news/bocc/press-release-washington-county-celebrates-national-public-works-week-honors-dedicated-team/",
+        "label": "Press Release Washington County Celebrates National Public Works Week, Honors Dedicated Team",
+        "discoveredOn": "https://www.washingtonfl.com/news/1460/",
+        "score": 17,
+        "sameHost": true,
+        "reviewStatus": "unreviewed"
+      },
+      {
+        "url": "https://www.washingtonfl.com/news/bocc/press-release-washington-county-encourages-residents-to-improve-address-visibility-for-faster-emergency-response/",
+        "label": "Press Release Washington County Encourages Residents to Improve Address Visibility for Faster Emergency Response",
+        "discoveredOn": "https://www.washingtonfl.com/news/1460/",
+        "score": 17,
+        "sameHost": true,
+        "reviewStatus": "unreviewed"
+      },
+      {
+        "url": "https://www.washingtonfl.com/news/bocc/press-release-washington-county-tdc-to-launch-a-revolution-road-driving-tour-for-america-250/",
+        "label": "PRESS RELEASE: Washington County TDC to Launch a Revolution Road Driving Tour for America 250",
+        "discoveredOn": "https://www.washingtonfl.com/news/1460/",
+        "score": 17,
+        "sameHost": true,
+        "reviewStatus": "unreviewed"
+      },
+      {
+        "url": "https://www.washingtonfl.com/news/bocc/press-release-washington-county-to-celebrate-grand-opening-of-new-splash-pad-at-hunter-park/",
+        "label": "Press Release Washington County to Celebrate Grand Opening of New Splash Pad at Hunter Park",
+        "discoveredOn": "https://www.washingtonfl.com/news/1460/",
+        "score": 17,
+        "sameHost": true,
+        "reviewStatus": "unreviewed"
+      },
+      {
+        "url": "https://www.washingtonfl.com/news/bocc/special-magistrate-hearing-06.30.26/",
+        "label": "Special Magistrate Hearing 06.30.26",
+        "discoveredOn": "https://www.washingtonfl.com/",
+        "score": 17,
+        "sameHost": true,
+        "reviewStatus": "unreviewed"
+      },
+      {
+        "url": "https://www.washingtonfl.com/news/bocc/washington-county-announces-extended-independence-day-holiday/",
+        "label": "Washington County Announces Extended Independence Day Holiday Closure in Celebration of America's 250th Celebration",
+        "discoveredOn": "https://www.washingtonfl.com/",
+        "score": 17,
+        "sameHost": true,
+        "reviewStatus": "unreviewed"
+      },
+      {
+        "url": "https://www.washingtonfl.com/site/assets/files/3013/washington_county_board_of_county_commissioners_76063_3.pdf",
+        "label": "OneBlood Bus at Annex Thursday, July 30, 2026",
+        "discoveredOn": "https://www.washingtonfl.com/",
+        "score": 17,
+        "sameHost": true,
+        "reviewStatus": "unreviewed"
+      },
+      {
+        "url": "https://visitwcfla.com/?ref=wcbocc",
+        "label": "PLANNING ON VISITING?",
+        "discoveredOn": "https://www.washingtonfl.com/",
+        "score": 13,
+        "sameHost": false,
+        "reviewStatus": "unreviewed"
+      },
+      {
+        "url": "https://wcbocc.maps.arcgis.com/apps/mapviewer/index.html?webmap=0f486729bcf2467086ef36f5499a9fad",
+        "label": "District Map",
+        "discoveredOn": "https://www.washingtonfl.com/news/1460/",
+        "score": 13,
+        "sameHost": false,
+        "reviewStatus": "unreviewed"
+      }
+    ],
+    "sheriff_directory": [
+      {
+        "url": "https://www.wcso.us/",
+        "label": "Sheriff's Office",
+        "discoveredOn": "https://www.washingtonfl.com/",
+        "score": 20,
+        "sameHost": false,
+        "reviewStatus": "unreviewed"
+      },
+      {
+        "url": "https://www.washingtonfl.com/departments/washington-county-florida-sheriffs-department",
+        "label": "Sheriff's Department",
+        "discoveredOn": "https://www.washingtonfl.com/",
+        "score": 17,
+        "sameHost": true,
+        "reviewStatus": "unreviewed"
+      },
+      {
+        "url": "https://www.washingtonfl.com/departments/washington-county-florida-sheriffs-department/washington-county-sheriffs-department/",
+        "label": "Washington County Sheriff's Department",
+        "discoveredOn": "https://www.washingtonfl.com/departments/washington-county-florida-sheriffs-department/washington-county-sheriffs-department/",
+        "score": 17,
+        "sameHost": true,
+        "reviewStatus": "unreviewed"
+      }
+    ],
+    "clerk_directory": [],
+    "supervisor_of_elections_directory": [
+      {
+        "url": "https://www.wcsoe.org/",
+        "label": "Supervisor of Elections",
+        "discoveredOn": "https://www.washingtonfl.com/",
+        "score": 17,
+        "sameHost": false,
+        "reviewStatus": "unreviewed"
+      }
+    ],
+    "tax_collector_directory": [
+      {
+        "url": "http://www.washingtoncountytaxcollector.com/",
+        "label": "Tax Collector",
+        "discoveredOn": "https://www.washingtonfl.com/",
+        "score": 17,
+        "sameHost": false,
+        "reviewStatus": "unreviewed"
+      }
+    ],
+    "property_appraiser_directory": [
+      {
+        "url": "http://www.qpublic.net/fl/washington/",
+        "label": "Property Appraiser",
+        "discoveredOn": "https://www.washingtonfl.com/",
+        "score": 17,
+        "sameHost": false,
+        "reviewStatus": "unreviewed"
+      }
+    ],
+    "school_board_directory": [],
+    "school_superintendent_status_and_directory": [],
+    "municipality_registry": [],
+    "special_district_registry": [],
+    "judicial_election_or_retention_sources": [],
+    "campaign_finance_and_candidate_filing_sources": [],
+    "financial_disclosure_sources": []
+  },
+  "resolvedCategoryCount": 5,
+  "requiredCategoryCount": 13,
+  "unresolvedCategories": [
+    "clerk_directory",
+    "school_board_directory",
+    "school_superintendent_status_and_directory",
+    "municipality_registry",
+    "special_district_registry",
+    "judicial_election_or_retention_sources",
+    "campaign_finance_and_candidate_filing_sources",
+    "financial_disclosure_sources"
+  ],
+  "notes": [
+    "Candidate links require source review before they can seed an officeholder collector.",
+    "External constitutional-office and school-district domains are allowed only when linked from an attributable official source or independently verified."
+  ],
+  "errors": []
+}

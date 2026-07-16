@@ -1,0 +1,283 @@
+{
+  "sourceDiscoveryVersion": "1.0.0",
+  "county": "Leon",
+  "state": "Florida",
+  "stateCode": "FL",
+  "region": "northwest_florida_panhandle",
+  "rootSeedUrl": "https://cms.leoncountyfl.gov/",
+  "finalRootUrl": "https://cms.leoncountyfl.gov/",
+  "rootSeedStatus": "reachable_official_site",
+  "sitePlatformHint": "enterprise_cms",
+  "fetchedAt": "2026-07-16T07:22:35Z",
+  "collectionStatus": "success",
+  "publicationAllowed": false,
+  "reviewStatus": "unreviewed",
+  "visitedPages": [
+    {
+      "url": "https://cms.leoncountyfl.gov/",
+      "httpStatus": 200,
+      "contentType": "text/html; charset=utf-8",
+      "pageTitle": "Leon County Government",
+      "sha256": "fe462872ad638fa5984ae088ebf610b5967abb76a53750c31d0841a6310af3c6"
+    },
+    {
+      "url": "https://cms.leoncountyfl.gov/Government/County-Commission/Meet-Your-Commissioners",
+      "httpStatus": 200,
+      "contentType": "text/html; charset=utf-8",
+      "pageTitle": "Meet Your Commissioners",
+      "sha256": "e4921b9f4c77fafee1e27bd279a7bdc4e4a69ed668bcf6dc3cc501dddad9ce36"
+    },
+    {
+      "url": "https://cms.leoncountyfl.gov/Government/County-Commission/Christian-Caban",
+      "httpStatus": 200,
+      "contentType": "text/html; charset=utf-8",
+      "pageTitle": "Christian Caban",
+      "sha256": "4cb97f75ca7092f0c992e71454881b94def42b7f0a06cf645b1c222120ddfada"
+    },
+    {
+      "url": "https://cms.leoncountyfl.gov/Government/County-Commission/David-T-OKeefe",
+      "httpStatus": 200,
+      "contentType": "text/html; charset=utf-8",
+      "pageTitle": "David T. O'Keefe",
+      "sha256": "a8ac54bb696d7dc559da8c6a53b6ea71137236472b408daba4bb9a74cc27e707"
+    },
+    {
+      "url": "https://cms.leoncountyfl.gov/Government/County-Commission/Bill-Proctor",
+      "httpStatus": 200,
+      "contentType": "text/html; charset=utf-8",
+      "pageTitle": "Bill Proctor",
+      "sha256": "3a97857bad24601833451a7b6e04c2ccb7af528d4a2365346d1da96195281d18"
+    },
+    {
+      "url": "https://cms.leoncountyfl.gov/Government/County-Commission/Rick-Minor",
+      "httpStatus": 200,
+      "contentType": "text/html; charset=utf-8",
+      "pageTitle": "Rick Minor",
+      "sha256": "a2f204678c5a9196949d7f1022f999df0a2b662503d5104f77afd839845336e1"
+    },
+    {
+      "url": "https://cms.leoncountyfl.gov/Government/County-Commission/Brian-Welch",
+      "httpStatus": 200,
+      "contentType": "text/html; charset=utf-8",
+      "pageTitle": "Brian Welch",
+      "sha256": "607f44a2c1649e07de67e58952ea0d1d60b4cf842f91c9062150f6e5482cc3c9"
+    },
+    {
+      "url": "https://cms.leoncountyfl.gov/Government/County-Commission/Carolyn-D-Cummings",
+      "httpStatus": 200,
+      "contentType": "text/html; charset=utf-8",
+      "pageTitle": "Carolyn D. Cummings",
+      "sha256": "8497f8610dc4680e79f0ec21fa230fe87bca4488572dc2949554ca02ecc60e67"
+    },
+    {
+      "url": "https://cms.leoncountyfl.gov/Government/County-Commission/Nick-Maddox",
+      "httpStatus": 200,
+      "contentType": "text/html; charset=utf-8",
+      "pageTitle": "Nick Maddox",
+      "sha256": "25c1a111e842a89cc059e0d0ff13b231a971ff78fda0cf355aac931c509fb285"
+    },
+    {
+      "url": "https://cms.leoncountyfl.gov/Government/County-Commission/Contact-the-Commissioners",
+      "httpStatus": 200,
+      "contentType": "text/html; charset=utf-8",
+      "pageTitle": "Contact the Commissioners",
+      "sha256": "dbef3fd232a74d031b686077dc89844c1fe727ac465d8a21fb880672063583e7"
+    },
+    {
+      "url": "https://cms.leoncountyfl.gov/Government/Commission-Meetings/Upcoming-Meeting-Information",
+      "httpStatus": 200,
+      "contentType": "text/html; charset=utf-8",
+      "pageTitle": "Upcoming Meeting Information",
+      "sha256": "b1d8ed6a77d8b5f01376be78d1858f2d99e9982d1b7445fb0ba8e70715b6d5b2"
+    }
+  ],
+  "sourceCandidates": {
+    "county_commission_directory": [
+      {
+        "url": "https://cms.leoncountyfl.gov/Government/Commission-Meetings/Upcoming-Meeting-Information",
+        "label": "LeonCountyFL.gov/BOCCMeetings",
+        "discoveredOn": "https://cms.leoncountyfl.gov/Government/County-Commission/Nick-Maddox",
+        "score": 22,
+        "sameHost": true,
+        "reviewStatus": "unreviewed"
+      },
+      {
+        "url": "https://cms.leoncountyfl.gov/Government/County-Commission/Bill-Proctor",
+        "label": "Bill Proctor County Commissioner / District 1",
+        "discoveredOn": "https://cms.leoncountyfl.gov/Government/County-Commission/Meet-Your-Commissioners",
+        "score": 22,
+        "sameHost": true,
+        "reviewStatus": "unreviewed"
+      },
+      {
+        "url": "https://cms.leoncountyfl.gov/Government/County-Commission/Brian-Welch",
+        "label": "Brian Welch County Commissioner / District 4",
+        "discoveredOn": "https://cms.leoncountyfl.gov/Government/County-Commission/Meet-Your-Commissioners",
+        "score": 22,
+        "sameHost": true,
+        "reviewStatus": "unreviewed"
+      },
+      {
+        "url": "https://cms.leoncountyfl.gov/Government/County-Commission/Carolyn-D-Cummings",
+        "label": "Carolyn D. Cummings County Commissioner / District At-Large",
+        "discoveredOn": "https://cms.leoncountyfl.gov/Government/County-Commission/Meet-Your-Commissioners",
+        "score": 22,
+        "sameHost": true,
+        "reviewStatus": "unreviewed"
+      },
+      {
+        "url": "https://cms.leoncountyfl.gov/Government/County-Commission/Christian-Caban",
+        "label": "2025 - 2026 Chairman Christian Caban County Commissioner / District 2",
+        "discoveredOn": "https://cms.leoncountyfl.gov/Government/County-Commission/Meet-Your-Commissioners",
+        "score": 22,
+        "sameHost": true,
+        "reviewStatus": "unreviewed"
+      },
+      {
+        "url": "https://cms.leoncountyfl.gov/Government/County-Commission/Contact-the-Commissioners",
+        "label": "Email all the Commissioners",
+        "discoveredOn": "https://cms.leoncountyfl.gov/Government/County-Commission/Meet-Your-Commissioners",
+        "score": 22,
+        "sameHost": true,
+        "reviewStatus": "unreviewed"
+      },
+      {
+        "url": "https://cms.leoncountyfl.gov/Government/County-Commission/David-T-OKeefe",
+        "label": "2025 - 2026 Vice Chairman David T. O’Keefe County Commissioner / District 5",
+        "discoveredOn": "https://cms.leoncountyfl.gov/Government/County-Commission/Meet-Your-Commissioners",
+        "score": 22,
+        "sameHost": true,
+        "reviewStatus": "unreviewed"
+      },
+      {
+        "url": "https://cms.leoncountyfl.gov/Government/County-Commission/Meet-Your-Commissioners",
+        "label": "Meet Your Commissioners",
+        "discoveredOn": "https://cms.leoncountyfl.gov/",
+        "score": 22,
+        "sameHost": true,
+        "reviewStatus": "unreviewed"
+      },
+      {
+        "url": "https://cms.leoncountyfl.gov/Government/County-Commission/Nick-Maddox",
+        "label": "Nick Maddox County Commissioner / District At-Large",
+        "discoveredOn": "https://cms.leoncountyfl.gov/Government/County-Commission/Meet-Your-Commissioners",
+        "score": 22,
+        "sameHost": true,
+        "reviewStatus": "unreviewed"
+      },
+      {
+        "url": "https://cms.leoncountyfl.gov/Government/County-Commission/Rick-Minor",
+        "label": "Rick Minor County Commissioner / District 3",
+        "discoveredOn": "https://cms.leoncountyfl.gov/Government/County-Commission/Meet-Your-Commissioners",
+        "score": 22,
+        "sameHost": true,
+        "reviewStatus": "unreviewed"
+      },
+      {
+        "url": "https://mailchi.mp/leoncountyfl/commissioner-welch-newsletter-northeast-park",
+        "label": "We need your help! Email the Commissioners today and tell them \"Don't Cut our Park!\"",
+        "discoveredOn": "https://cms.leoncountyfl.gov/Government/County-Commission/Brian-Welch",
+        "score": 13,
+        "sameHost": false,
+        "reviewStatus": "unreviewed"
+      },
+      {
+        "url": "https://www.facebook.com/reelectnickmaddox",
+        "label": "Leon County Commissioner Nick Maddox",
+        "discoveredOn": "https://cms.leoncountyfl.gov/Government/County-Commission/Nick-Maddox",
+        "score": 13,
+        "sameHost": false,
+        "reviewStatus": "unreviewed"
+      }
+    ],
+    "sheriff_directory": [
+      {
+        "url": "https://www.leoncountyso.com/",
+        "label": "Sheriff",
+        "discoveredOn": "https://cms.leoncountyfl.gov/",
+        "score": 17,
+        "sameHost": false,
+        "reviewStatus": "unreviewed"
+      }
+    ],
+    "clerk_directory": [
+      {
+        "url": "https://leonclerk.com/",
+        "label": "Clerk of Courts",
+        "discoveredOn": "https://cms.leoncountyfl.gov/",
+        "score": 20,
+        "sameHost": false,
+        "reviewStatus": "unreviewed"
+      }
+    ],
+    "supervisor_of_elections_directory": [
+      {
+        "url": "https://www.leonvotes.gov/",
+        "label": "Supervisor of Elections",
+        "discoveredOn": "https://cms.leoncountyfl.gov/",
+        "score": 22,
+        "sameHost": false,
+        "reviewStatus": "unreviewed"
+      }
+    ],
+    "tax_collector_directory": [
+      {
+        "url": "https://www.leontaxcollector.net/",
+        "label": "Tax Collector",
+        "discoveredOn": "https://cms.leoncountyfl.gov/",
+        "score": 17,
+        "sameHost": false,
+        "reviewStatus": "unreviewed"
+      },
+      {
+        "url": "https://leonclerk.com/divisions/property-sales/tax-deeds/",
+        "label": "Leon County Tax Deeds",
+        "discoveredOn": "https://cms.leoncountyfl.gov/",
+        "score": 13,
+        "sameHost": false,
+        "reviewStatus": "unreviewed"
+      }
+    ],
+    "property_appraiser_directory": [
+      {
+        "url": "https://www.leonpa.gov/",
+        "label": "Property Appraiser",
+        "discoveredOn": "https://cms.leoncountyfl.gov/",
+        "score": 22,
+        "sameHost": false,
+        "reviewStatus": "unreviewed"
+      }
+    ],
+    "school_board_directory": [],
+    "school_superintendent_status_and_directory": [],
+    "municipality_registry": [],
+    "special_district_registry": [],
+    "judicial_election_or_retention_sources": [
+      {
+        "url": "https://2ndcircuit.leoncountyfl.gov/",
+        "label": "2nd Judicial Circuit",
+        "discoveredOn": "https://cms.leoncountyfl.gov/",
+        "score": 18,
+        "sameHost": false,
+        "reviewStatus": "unreviewed"
+      }
+    ],
+    "campaign_finance_and_candidate_filing_sources": [],
+    "financial_disclosure_sources": []
+  },
+  "resolvedCategoryCount": 7,
+  "requiredCategoryCount": 13,
+  "unresolvedCategories": [
+    "school_board_directory",
+    "school_superintendent_status_and_directory",
+    "municipality_registry",
+    "special_district_registry",
+    "campaign_finance_and_candidate_filing_sources",
+    "financial_disclosure_sources"
+  ],
+  "notes": [
+    "Candidate links require source review before they can seed an officeholder collector.",
+    "External constitutional-office and school-district domains are allowed only when linked from an attributable official source or independently verified."
+  ],
+  "errors": []
+}

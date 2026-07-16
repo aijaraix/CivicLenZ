@@ -1,0 +1,605 @@
+{
+  "sourceDiscoveryVersion": "1.0.0",
+  "county": "Gulf",
+  "state": "Florida",
+  "stateCode": "FL",
+  "region": "northwest_florida_panhandle",
+  "rootSeedUrl": "https://www.gulfcounty-fl.gov/",
+  "finalRootUrl": "https://www.gulfcounty-fl.gov/",
+  "rootSeedStatus": "reachable_official_site",
+  "sitePlatformHint": "custom",
+  "fetchedAt": "2026-07-16T07:22:33Z",
+  "collectionStatus": "success",
+  "publicationAllowed": false,
+  "reviewStatus": "unreviewed",
+  "visitedPages": [
+    {
+      "url": "https://www.gulfcounty-fl.gov/",
+      "httpStatus": 200,
+      "contentType": "text/html; charset=utf-8",
+      "pageTitle": "Home - Gulf County, FL",
+      "sha256": "fefaa2ef723586b93364624e85f3fd01217feb9d1347e1d250a53d946754aa73"
+    },
+    {
+      "url": "https://www.gulfcounty-fl.gov/county_government/board_of_county_commissioners",
+      "httpStatus": 200,
+      "contentType": "text/html; charset=utf-8",
+      "pageTitle": "Board of County Commissioners - Gulf County, FL",
+      "sha256": "4debbc4ad4f1869643db9cf46bc26ee522c487b99a4831da646b316c427de17a"
+    },
+    {
+      "url": "https://www.gulfcounty-fl.gov/county_government/board_of_county_commissioners/district_1",
+      "httpStatus": 200,
+      "contentType": "text/html; charset=utf-8",
+      "pageTitle": "District 1 - Gulf County, FL",
+      "sha256": "2d6865f9a9360e03e1785770db81d5cfc2984589bb4e50ad2fb293ac5b71bff5"
+    },
+    {
+      "url": "https://www.gulfcounty-fl.gov/county_government/board_of_county_commissioners/district_2",
+      "httpStatus": 200,
+      "contentType": "text/html; charset=utf-8",
+      "pageTitle": "District 2 - Gulf County, FL",
+      "sha256": "5c11d97f31d286b567c7b5aa8d9e3c3d140715ca09b669312933a2b04ed0d33c"
+    },
+    {
+      "url": "https://www.gulfcounty-fl.gov/county_government/board_of_county_commissioners/district_3",
+      "httpStatus": 200,
+      "contentType": "text/html; charset=utf-8",
+      "pageTitle": "District 3 - Gulf County, FL",
+      "sha256": "65e070162a5dcaa7345e4fe8f4a4ec8ac038a83850b1641995458823b99bc20a"
+    },
+    {
+      "url": "https://www.gulfcounty-fl.gov/county_government/board_of_county_commissioners/district_4",
+      "httpStatus": 200,
+      "contentType": "text/html; charset=utf-8",
+      "pageTitle": "District 4 - Gulf County, FL",
+      "sha256": "ae6c472de48193963f24d8a305985f346e05a36cc629469afb1628cba841a1c1"
+    },
+    {
+      "url": "https://www.gulfcounty-fl.gov/county_government/board_of_county_commissioners/district_5",
+      "httpStatus": 200,
+      "contentType": "text/html; charset=utf-8",
+      "pageTitle": "District 5 - Gulf County, FL",
+      "sha256": "8a7589a9b6bb01e68de4b369e0baca2e7b1e2998d9134e639e7acbbd165e4be3"
+    },
+    {
+      "url": "https://www.gulfclerk.com/",
+      "httpStatus": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "pageTitle": "Gulf County Clerk of Circuit Court& County Comptroller",
+      "sha256": "06f3591bbe678c41b33980bd7f72f1ab1f61dc178b25fac63d0a801770bc9ebc"
+    },
+    {
+      "url": "https://www.gulfcounty-fl.gov/our_government/property_appraiser",
+      "error": "HTTPError:403 Client Error: Forbidden for url: https://www.qpublic.net/gulf/"
+    },
+    {
+      "url": "https://www.gulfsheriff.com/",
+      "httpStatus": 200,
+      "contentType": "text/html; charset=utf-8",
+      "pageTitle": "Gulf County Sheriff's Office",
+      "sha256": "d9c87ac206f9f0a08eb192028754866c201403fb48112bfc67c87e00dbfe71c5"
+    },
+    {
+      "url": "https://votegulf.gov",
+      "httpStatus": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "pageTitle": "Gulf County Supervisor of Elections",
+      "sha256": "5a61f724a92a8e73052edbbc1749667a775e63ee49ccb3239102d9433898f81f"
+    },
+    {
+      "url": "https://gulftaxcollector.com/",
+      "httpStatus": 200,
+      "contentType": "text/html;charset=utf-8",
+      "pageTitle": "Gulf County Tax Collector",
+      "sha256": "23ae71391db76ab9dd1ea12966dc289471494c42f487934347c33038529b94d1"
+    },
+    {
+      "url": "https://www.gulfcounty-fl.gov/cms/one.aspx?portalId=6501074&pageId=6501090&objectId.97956=21342886&contextId.97956=6798197&parentId.97956=6798198&localStartDate=2026-07-21T09:00&localEndDate=2026-07-21T09:00&ref=mesTP9fg96fVsgzpWYeogDfCnFTqdO28f85%2B9iv90Pg%3D",
+      "httpStatus": 200,
+      "contentType": "text/html; charset=utf-8",
+      "pageTitle": "Calendar - Gulf County, FL",
+      "sha256": "ddc19024595c832bbc5b19ef205d7b601b3b41d3e00718aa2057324a625f6c78"
+    },
+    {
+      "url": "https://www.gulfcounty-fl.gov/cms/one.aspx?portalId=6501074&pageId=6501090&objectId.97956=19323316&contextId.97956=6798197&parentId.97956=6798198&localStartDate=2026-07-27T09:00&localEndDate=2026-07-27T11:00&ref=3MgQplOP4ZX4%2BALqld0%2F8yd1xHAgi73vsPy0h0zmMPI%3D",
+      "httpStatus": 200,
+      "contentType": "text/html; charset=utf-8",
+      "pageTitle": "Calendar - Gulf County, FL",
+      "sha256": "694441ba913ce54bffc93b5067a977b5293ac20270387a417f2d465b382b5a8c"
+    }
+  ],
+  "sourceCandidates": {
+    "county_commission_directory": [
+      {
+        "url": "http://www.gulfcounty-fl.gov/",
+        "label": "Board of County Commissioners",
+        "discoveredOn": "https://www.gulfclerk.com/",
+        "score": 35,
+        "sameHost": true,
+        "reviewStatus": "unreviewed"
+      },
+      {
+        "url": "https://www.gulfcounty-fl.gov/county_government/board_of_county_commissioners",
+        "label": "Board of County Commissioners",
+        "discoveredOn": "https://www.gulfcounty-fl.gov/",
+        "score": 35,
+        "sameHost": true,
+        "reviewStatus": "unreviewed"
+      },
+      {
+        "url": "https://www.gulfcounty-fl.gov/county_government/board_of_county_commissioners/",
+        "label": "Board of County Commissioners",
+        "discoveredOn": "https://www.gulfcounty-fl.gov/county_government/board_of_county_commissioners/district_1",
+        "score": 35,
+        "sameHost": true,
+        "reviewStatus": "unreviewed"
+      },
+      {
+        "url": "https://www.gulfclerk.com/other-services/county-commissioners/",
+        "label": "County Commissioners",
+        "discoveredOn": "https://www.gulfclerk.com/",
+        "score": 23,
+        "sameHost": false,
+        "reviewStatus": "unreviewed"
+      },
+      {
+        "url": "http://www.gulfcounty-fl.gov/meeting/agendas",
+        "label": "BOCC Agendas",
+        "discoveredOn": "https://www.gulfclerk.com/",
+        "score": 22,
+        "sameHost": true,
+        "reviewStatus": "unreviewed"
+      },
+      {
+        "url": "https://www.gulfcounty-fl.gov/cms/one.aspx?portalId=6501074&pageId=6501090&objectId.97956=19323316&contextId.97956=6798197&parentId.97956=6798198&localStartDate=2026-07-27T09:00&localEndDate=2026-07-27T11:00&ref=3MgQplOP4ZX4%2bALqld0%2f8yd1xHAgi73vsPy0h0zmMPI%3d",
+        "label": "Jul 27 GC BOCC Mtg Donald H. Butler Commission Chamber 9:00AM - 11:00AM",
+        "discoveredOn": "https://www.gulfcounty-fl.gov/",
+        "score": 22,
+        "sameHost": true,
+        "reviewStatus": "unreviewed"
+      },
+      {
+        "url": "https://www.gulfcounty-fl.gov/cms/one.aspx?portalId=6501074&pageId=6501090&objectId.97956=21342886&contextId.97956=6798197&parentId.97956=6798198&localStartDate=2026-07-21T09:00&localEndDate=2026-07-21T09:00&ref=mesTP9fg96fVsgzpWYeogDfCnFTqdO28f85%2b9iv90Pg%3d",
+        "label": "Jul 21 GC BOCC Special Mtg Donald H. Butler Commission Chamber 9:00AM - 9:00AM",
+        "discoveredOn": "https://www.gulfcounty-fl.gov/",
+        "score": 22,
+        "sameHost": true,
+        "reviewStatus": "unreviewed"
+      },
+      {
+        "url": "https://www.gulfcounty-fl.gov/county_government/board_of_county_commissioners/district_1",
+        "label": "District 1",
+        "discoveredOn": "https://www.gulfcounty-fl.gov/",
+        "score": 22,
+        "sameHost": true,
+        "reviewStatus": "unreviewed"
+      },
+      {
+        "url": "https://www.gulfcounty-fl.gov/county_government/board_of_county_commissioners/district_2",
+        "label": "District 2",
+        "discoveredOn": "https://www.gulfcounty-fl.gov/",
+        "score": 22,
+        "sameHost": true,
+        "reviewStatus": "unreviewed"
+      },
+      {
+        "url": "https://www.gulfcounty-fl.gov/county_government/board_of_county_commissioners/district_3",
+        "label": "District 3",
+        "discoveredOn": "https://www.gulfcounty-fl.gov/",
+        "score": 22,
+        "sameHost": true,
+        "reviewStatus": "unreviewed"
+      },
+      {
+        "url": "https://www.gulfcounty-fl.gov/county_government/board_of_county_commissioners/district_4",
+        "label": "District 4",
+        "discoveredOn": "https://www.gulfcounty-fl.gov/",
+        "score": 22,
+        "sameHost": true,
+        "reviewStatus": "unreviewed"
+      },
+      {
+        "url": "https://www.gulfcounty-fl.gov/county_government/board_of_county_commissioners/district_5",
+        "label": "District 5",
+        "discoveredOn": "https://www.gulfcounty-fl.gov/",
+        "score": 22,
+        "sameHost": true,
+        "reviewStatus": "unreviewed"
+      },
+      {
+        "url": "https://library.municode.com/fl/gulf_county/munidocs/munidocs?nodeId=minutes",
+        "label": "BOCC Minutes",
+        "discoveredOn": "https://www.gulfclerk.com/",
+        "score": 13,
+        "sameHost": false,
+        "reviewStatus": "unreviewed"
+      },
+      {
+        "url": "https://www.youtube.com/@GulfCoBOCC/streams",
+        "label": "Watch Gulf Co Commission Mtgs",
+        "discoveredOn": "https://www.gulfcounty-fl.gov/",
+        "score": 13,
+        "sameHost": false,
+        "reviewStatus": "unreviewed"
+      }
+    ],
+    "sheriff_directory": [
+      {
+        "url": "https://www.gulfcounty-fl.gov/our_government/gulf_county_sheriff",
+        "label": "Gulf County Sheriff",
+        "discoveredOn": "https://www.gulfcounty-fl.gov/",
+        "score": 22,
+        "sameHost": true,
+        "reviewStatus": "unreviewed"
+      },
+      {
+        "url": "https://www.gulfsheriff.com/",
+        "label": "Gulf County Sheriff's Office, FL",
+        "discoveredOn": "https://www.gulfsheriff.com/",
+        "score": 16,
+        "sameHost": false,
+        "reviewStatus": "unreviewed"
+      },
+      {
+        "url": "https://www.gulfsheriff.com/publicRecordsInformation",
+        "label": "For public records inquiries, please contact: Gulf County Sheriff's Office ATTN: Records Custodian 418 Cecil G. Costin Sr. Blvd. Port St. Joe, FL 32456 Phone: (850) 227-1115 Fax: (850) 227-2097",
+        "discoveredOn": "https://www.gulfsheriff.com/",
+        "score": 16,
+        "sameHost": false,
+        "reviewStatus": "unreviewed"
+      },
+      {
+        "url": "http://www.flsheriffs.org/",
+        "label": "Florida Sheriffs Association",
+        "discoveredOn": "https://www.gulfsheriff.com/",
+        "score": 13,
+        "sameHost": false,
+        "reviewStatus": "unreviewed"
+      },
+      {
+        "url": "http://www.youthranches.org/",
+        "label": "Florida Sheriffs Youth Ranches",
+        "discoveredOn": "https://www.gulfsheriff.com/",
+        "score": 13,
+        "sameHost": false,
+        "reviewStatus": "unreviewed"
+      },
+      {
+        "url": "https://fldeputysheriffs.org/",
+        "label": "Florida Deputy Sheriffs Association",
+        "discoveredOn": "https://www.gulfsheriff.com/",
+        "score": 13,
+        "sameHost": false,
+        "reviewStatus": "unreviewed"
+      },
+      {
+        "url": "https://thesheriffapp.com/",
+        "label": null,
+        "discoveredOn": "https://www.gulfsheriff.com/",
+        "score": 13,
+        "sameHost": false,
+        "reviewStatus": "unreviewed"
+      },
+      {
+        "url": "https://www.facebook.com/gulfsheriff",
+        "label": null,
+        "discoveredOn": "https://www.gulfsheriff.com/",
+        "score": 13,
+        "sameHost": false,
+        "reviewStatus": "unreviewed"
+      },
+      {
+        "url": "https://www.gulfsheriff.com/aboutTheProgram",
+        "label": "About The Program",
+        "discoveredOn": "https://www.gulfsheriff.com/",
+        "score": 13,
+        "sameHost": false,
+        "reviewStatus": "unreviewed"
+      },
+      {
+        "url": "https://www.gulfsheriff.com/administration",
+        "label": "Administration",
+        "discoveredOn": "https://www.gulfsheriff.com/",
+        "score": 13,
+        "sameHost": false,
+        "reviewStatus": "unreviewed"
+      },
+      {
+        "url": "https://www.gulfsheriff.com/beachDrivingFAQ",
+        "label": "Beach Driving FAQ",
+        "discoveredOn": "https://www.gulfsheriff.com/",
+        "score": 13,
+        "sameHost": false,
+        "reviewStatus": "unreviewed"
+      },
+      {
+        "url": "https://www.gulfsheriff.com/beachPatrol",
+        "label": "Beach Patrol",
+        "discoveredOn": "https://www.gulfsheriff.com/",
+        "score": 13,
+        "sameHost": false,
+        "reviewStatus": "unreviewed"
+      },
+      {
+        "url": "https://www.gulfsheriff.com/civilProcess",
+        "label": "Civil Process",
+        "discoveredOn": "https://www.gulfsheriff.com/",
+        "score": 13,
+        "sameHost": false,
+        "reviewStatus": "unreviewed"
+      },
+      {
+        "url": "https://www.gulfsheriff.com/codeOfEthics",
+        "label": "CODE OF ETHICS",
+        "discoveredOn": "https://www.gulfsheriff.com/",
+        "score": 13,
+        "sameHost": false,
+        "reviewStatus": "unreviewed"
+      },
+      {
+        "url": "https://www.gulfsheriff.com/communications",
+        "label": "Communications",
+        "discoveredOn": "https://www.gulfsheriff.com/",
+        "score": 13,
+        "sameHost": false,
+        "reviewStatus": "unreviewed"
+      },
+      {
+        "url": "https://www.gulfsheriff.com/contactUs",
+        "label": "Contact Us",
+        "discoveredOn": "https://www.gulfsheriff.com/",
+        "score": 13,
+        "sameHost": false,
+        "reviewStatus": "unreviewed"
+      },
+      {
+        "url": "https://www.gulfsheriff.com/coreValues",
+        "label": "CORE VALUES",
+        "discoveredOn": "https://www.gulfsheriff.com/",
+        "score": 13,
+        "sameHost": false,
+        "reviewStatus": "unreviewed"
+      },
+      {
+        "url": "https://www.gulfsheriff.com/crimeSceneInvestigations",
+        "label": "Crime Scene Investigations",
+        "discoveredOn": "https://www.gulfsheriff.com/",
+        "score": 13,
+        "sameHost": false,
+        "reviewStatus": "unreviewed"
+      },
+      {
+        "url": "https://www.gulfsheriff.com/criminalInvestigations",
+        "label": "Criminal Investigations",
+        "discoveredOn": "https://www.gulfsheriff.com/",
+        "score": 13,
+        "sameHost": false,
+        "reviewStatus": "unreviewed"
+      },
+      {
+        "url": "https://www.gulfsheriff.com/eventLocalNews",
+        "label": "VIEW RECENT POSTS",
+        "discoveredOn": "https://www.gulfsheriff.com/",
+        "score": 13,
+        "sameHost": false,
+        "reviewStatus": "unreviewed"
+      }
+    ],
+    "clerk_directory": [
+      {
+        "url": "https://www.gulfcounty-fl.gov/our_government/clerk_of_court",
+        "label": "Clerk of Court",
+        "discoveredOn": "https://www.gulfcounty-fl.gov/",
+        "score": 26,
+        "sameHost": true,
+        "reviewStatus": "unreviewed"
+      },
+      {
+        "url": "https://www.gulfclerk.com/clerk-of-court-budget/",
+        "label": "Clerk of Court Budget",
+        "discoveredOn": "https://www.gulfclerk.com/",
+        "score": 13,
+        "sameHost": false,
+        "reviewStatus": "unreviewed"
+      },
+      {
+        "url": "https://www.gulfclerk.com/contact/",
+        "label": "Clerk and Comptroller's Office",
+        "discoveredOn": "https://www.gulfclerk.com/",
+        "score": 13,
+        "sameHost": false,
+        "reviewStatus": "unreviewed"
+      }
+    ],
+    "supervisor_of_elections_directory": [
+      {
+        "url": "https://www.gulfcounty-fl.gov/our_government/supervisor_of_elections",
+        "label": "Supervisor of Elections",
+        "discoveredOn": "https://www.gulfcounty-fl.gov/",
+        "score": 26,
+        "sameHost": true,
+        "reviewStatus": "unreviewed"
+      },
+      {
+        "url": "https://files.floridados.gov/media/700479/dsde-139-eng-07-2019.pdf",
+        "label": "Vote By Mail Cure Affidavit",
+        "discoveredOn": "https://votegulf.gov",
+        "score": 18,
+        "sameHost": false,
+        "reviewStatus": "unreviewed"
+      },
+      {
+        "url": "https://registertovoteflorida.gov/",
+        "label": "Register To Vote",
+        "discoveredOn": "https://votegulf.gov",
+        "score": 18,
+        "sameHost": false,
+        "reviewStatus": "unreviewed"
+      },
+      {
+        "url": "https://registertovoteflorida.gov/home",
+        "label": "Register to Vote",
+        "discoveredOn": "https://votegulf.gov",
+        "score": 18,
+        "sameHost": false,
+        "reviewStatus": "unreviewed"
+      },
+      {
+        "url": "https://votegulf.gov/request-a-vote-by-mail-ballot/",
+        "label": "Request a Vote By Mail Ballot",
+        "discoveredOn": "https://votegulf.gov",
+        "score": 18,
+        "sameHost": false,
+        "reviewStatus": "unreviewed"
+      },
+      {
+        "url": "https://votegulf.gov/vote-by-mail/",
+        "label": "Vote by Mail",
+        "discoveredOn": "https://votegulf.gov",
+        "score": 18,
+        "sameHost": false,
+        "reviewStatus": "unreviewed"
+      },
+      {
+        "url": "https://votegulf.gov/vote-early/",
+        "label": "Vote Early",
+        "discoveredOn": "https://votegulf.gov",
+        "score": 18,
+        "sameHost": false,
+        "reviewStatus": "unreviewed"
+      },
+      {
+        "url": "https://votegulf.gov/vote-on-election-day/",
+        "label": "Vote on Election Day",
+        "discoveredOn": "https://votegulf.gov",
+        "score": 18,
+        "sameHost": false,
+        "reviewStatus": "unreviewed"
+      },
+      {
+        "url": "https://votegulf.gov/where-to-vote/",
+        "label": "Where To Vote",
+        "discoveredOn": "https://votegulf.gov",
+        "score": 18,
+        "sameHost": false,
+        "reviewStatus": "unreviewed"
+      },
+      {
+        "url": "https://www.votegulf.gov/request%20a%20vote%20by%20mail%20ballot",
+        "label": "Vote By Mail",
+        "discoveredOn": "https://votegulf.gov",
+        "score": 18,
+        "sameHost": false,
+        "reviewStatus": "unreviewed"
+      },
+      {
+        "url": "https://www.votegulf.gov/where-to-vote/",
+        "label": "Where To Vote",
+        "discoveredOn": "https://votegulf.gov",
+        "score": 18,
+        "sameHost": false,
+        "reviewStatus": "unreviewed"
+      }
+    ],
+    "tax_collector_directory": [
+      {
+        "url": "https://www.gulfcounty-fl.gov/our_government/tax_collector",
+        "label": "Tax Collector",
+        "discoveredOn": "https://www.gulfcounty-fl.gov/",
+        "score": 26,
+        "sameHost": true,
+        "reviewStatus": "unreviewed"
+      },
+      {
+        "url": "https://gulftaxcollector.com/concealed-weapon-pemits",
+        "label": "Gulf County Tax Collector’s Office Announces Replacement Concealed Weapon License Services",
+        "discoveredOn": "https://gulftaxcollector.com/",
+        "score": 16,
+        "sameHost": false,
+        "reviewStatus": "unreviewed"
+      }
+    ],
+    "property_appraiser_directory": [
+      {
+        "url": "https://www.gulfcounty-fl.gov/our_government/property_appraiser",
+        "label": "Property Appraiser",
+        "discoveredOn": "https://www.gulfcounty-fl.gov/",
+        "score": 26,
+        "sameHost": true,
+        "reviewStatus": "unreviewed"
+      }
+    ],
+    "school_board_directory": [],
+    "school_superintendent_status_and_directory": [],
+    "municipality_registry": [
+      {
+        "url": "http://fl-municipalities.com/",
+        "label": "Florida Municipal Guide",
+        "discoveredOn": "https://www.gulfcounty-fl.gov/county_government/board_of_county_commissioners",
+        "score": 13,
+        "sameHost": false,
+        "reviewStatus": "unreviewed"
+      }
+    ],
+    "special_district_registry": [],
+    "judicial_election_or_retention_sources": [
+      {
+        "url": "https://www.gulfsheriff.com/judicial",
+        "label": "Judicial",
+        "discoveredOn": "https://www.gulfsheriff.com/",
+        "score": 17,
+        "sameHost": false,
+        "reviewStatus": "unreviewed"
+      },
+      {
+        "url": "https://jud14.flcourts.org/judges",
+        "label": "14th Judicial Circuit",
+        "discoveredOn": "https://votegulf.gov",
+        "score": 16,
+        "sameHost": false,
+        "reviewStatus": "unreviewed"
+      }
+    ],
+    "campaign_finance_and_candidate_filing_sources": [
+      {
+        "url": "https://votegulf.gov/campaign-finance-search/",
+        "label": "Campaign Finance Search",
+        "discoveredOn": "https://votegulf.gov",
+        "score": 18,
+        "sameHost": false,
+        "reviewStatus": "unreviewed"
+      },
+      {
+        "url": "https://votegulf.gov/candidatereportsandprogiles/",
+        "label": "Candidate Reports and Profiles",
+        "discoveredOn": "https://votegulf.gov",
+        "score": 18,
+        "sameHost": false,
+        "reviewStatus": "unreviewed"
+      },
+      {
+        "url": "https://www.gulfclerk.com/other-services/annual-financial-reports/",
+        "label": "Annual Financial Reports",
+        "discoveredOn": "https://www.gulfclerk.com/",
+        "score": 13,
+        "sameHost": false,
+        "reviewStatus": "unreviewed"
+      }
+    ],
+    "financial_disclosure_sources": []
+  },
+  "resolvedCategoryCount": 9,
+  "requiredCategoryCount": 13,
+  "unresolvedCategories": [
+    "school_board_directory",
+    "school_superintendent_status_and_directory",
+    "special_district_registry",
+    "financial_disclosure_sources"
+  ],
+  "notes": [
+    "Candidate links require source review before they can seed an officeholder collector.",
+    "External constitutional-office and school-district domains are allowed only when linked from an attributable official source or independently verified."
+  ],
+  "errors": []
+}

@@ -1,0 +1,61 @@
+{
+  "sourceDiscoveryVersion": "1.0.0",
+  "county": "Holmes",
+  "state": "Florida",
+  "stateCode": "FL",
+  "region": "northwest_florida_panhandle",
+  "rootSeedUrl": "https://www.holmescountyonline.com/",
+  "finalRootUrl": "https://www.holmescountyonline.com/",
+  "rootSeedStatus": "seed_requires_reverification",
+  "sitePlatformHint": "unknown",
+  "fetchedAt": "2026-07-16T07:22:33Z",
+  "collectionStatus": "partial",
+  "publicationAllowed": false,
+  "reviewStatus": "unreviewed",
+  "visitedPages": [
+    {
+      "url": "https://www.holmescountyonline.com/",
+      "httpStatus": 200,
+      "contentType": "text/html",
+      "pageTitle": null,
+      "sha256": "6dc9c7fc93bb488bb0520a6c780a8d3c0fb5486a4711aca49b4c53fac7393023"
+    }
+  ],
+  "sourceCandidates": {
+    "county_commission_directory": [],
+    "sheriff_directory": [],
+    "clerk_directory": [],
+    "supervisor_of_elections_directory": [],
+    "tax_collector_directory": [],
+    "property_appraiser_directory": [],
+    "school_board_directory": [],
+    "school_superintendent_status_and_directory": [],
+    "municipality_registry": [],
+    "special_district_registry": [],
+    "judicial_election_or_retention_sources": [],
+    "campaign_finance_and_candidate_filing_sources": [],
+    "financial_disclosure_sources": []
+  },
+  "resolvedCategoryCount": 0,
+  "requiredCategoryCount": 13,
+  "unresolvedCategories": [
+    "county_commission_directory",
+    "sheriff_directory",
+    "clerk_directory",
+    "supervisor_of_elections_directory",
+    "tax_collector_directory",
+    "property_appraiser_directory",
+    "school_board_directory",
+    "school_superintendent_status_and_directory",
+    "municipality_registry",
+    "special_district_registry",
+    "judicial_election_or_retention_sources",
+    "campaign_finance_and_candidate_filing_sources",
+    "financial_disclosure_sources"
+  ],
+  "notes": [
+    "Candidate links require source review before they can seed an officeholder collector.",
+    "External constitutional-office and school-district domains are allowed only when linked from an attributable official source or independently verified."
+  ],
+  "errors": []
+}

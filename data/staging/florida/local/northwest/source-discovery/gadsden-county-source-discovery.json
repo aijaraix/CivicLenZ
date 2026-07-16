@@ -1,0 +1,44 @@
+{
+  "sourceDiscoveryVersion": "1.0.0",
+  "county": "Gadsden",
+  "state": "Florida",
+  "stateCode": "FL",
+  "region": "northwest_florida_panhandle",
+  "rootSeedUrl": "https://www.gadsdencountyfl.gov/",
+  "fetchedAt": "2026-07-16T07:22:33Z",
+  "collectionStatus": "failed",
+  "publicationAllowed": false,
+  "errors": [
+    "HTTPError:403 Client Error: Forbidden for url: https://www.gadsdencountyfl.gov/"
+  ],
+  "sourceCandidates": {
+    "county_commission_directory": [],
+    "sheriff_directory": [],
+    "clerk_directory": [],
+    "supervisor_of_elections_directory": [],
+    "tax_collector_directory": [],
+    "property_appraiser_directory": [],
+    "school_board_directory": [],
+    "school_superintendent_status_and_directory": [],
+    "municipality_registry": [],
+    "special_district_registry": [],
+    "judicial_election_or_retention_sources": [],
+    "campaign_finance_and_candidate_filing_sources": [],
+    "financial_disclosure_sources": []
+  },
+  "unresolvedCategories": [
+    "county_commission_directory",
+    "sheriff_directory",
+    "clerk_directory",
+    "supervisor_of_elections_directory",
+    "tax_collector_directory",
+    "property_appraiser_directory",
+    "school_board_directory",
+    "school_superintendent_status_and_directory",
+    "municipality_registry",
+    "special_district_registry",
+    "judicial_election_or_retention_sources",
+    "campaign_finance_and_candidate_filing_sources",
+    "financial_disclosure_sources"
+  ]
+}
