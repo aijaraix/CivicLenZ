@@ -99,7 +99,6 @@ def validate_plan(plan: dict[str, Any]) -> int:
             "Plan counties must be exactly Lake, Orange, Osceola, Polk, and Seminole"
         )
 
-    validate_active_claim()
     policy = plan["retrievalPolicy"]
     if not isinstance(policy, dict):
         raise SourcePlanError("retrievalPolicy must be an object")
@@ -477,6 +476,7 @@ def main() -> int:
         )
         return 0
 
+    validate_active_claim()
     policy = plan["retrievalPolicy"]
     session = requests.Session()
     session.headers.update(
