@@ -1,0 +1,220 @@
+{
+  "manifestVersion": "1.0.0",
+  "strategy": "seat_first_evidence_preserving",
+  "publicationRule": "Sections may display an explicit collection status, but claims, promise statuses, trackers, and scores require evidence and review.",
+  "agents": [
+    {
+      "agentKey": "seat-registry-agent",
+      "name": "Seat Registry Agent",
+      "phase": 1,
+      "enabled": true,
+      "scope": ["seat identity", "jurisdiction", "district", "legal structure", "occupancy status", "term boundaries", "vacancies", "successions"],
+      "sourcePriority": ["official government directory", "election authority", "statute or constitution", "official meeting record"],
+      "outputs": ["seat", "office_term", "occupancy_event"],
+      "refreshClass": "daily_and_event_driven",
+      "humanReviewRequired": false
+    },
+    {
+      "agentKey": "identity-portrait-agent",
+      "name": "Identity & Portrait Agent",
+      "phase": 2,
+      "enabled": false,
+      "scope": ["name normalization", "external identifiers", "official portrait", "portrait provenance", "portrait rights", "portrait hash"],
+      "sourcePriority": ["official government profile", "official campaign profile", "public-domain or clearly licensed repository"],
+      "disallowedShortcut": "Do not copy an arbitrary Google Images result. Search engines may locate a source, but the image must be retrieved from an attributable source with rights metadata.",
+      "outputs": ["person", "portrait_candidate", "asset", "evidence"],
+      "refreshClass": "term_based",
+      "humanReviewRequired": true
+    },
+    {
+      "agentKey": "contact-social-agent",
+      "name": "Contact & Public Channels Agent",
+      "phase": 2,
+      "enabled": false,
+      "scope": ["phones", "emails", "contact forms", "addresses", "office hours", "staff contacts", "websites", "newsletters", "official and campaign social accounts"],
+      "sourcePriority": ["official office website", "official legislative directory", "official campaign website", "attributable linked social account"],
+      "outputs": ["contact_point", "office_location", "website", "social_account", "evidence"],
+      "refreshClass": "daily",
+      "humanReviewRequired": true
+    },
+    {
+      "agentKey": "biography-background-agent",
+      "name": "Biography & Background Agent",
+      "phase": 3,
+      "enabled": false,
+      "scope": ["biography", "education", "military service", "career", "business ownership", "prior political roles", "public family summary"],
+      "sourcePriority": ["official biography", "official military or professional record", "institutional biography", "authoritative public record"],
+      "outputs": ["biography", "education", "military_service", "career_history", "political_history", "evidence"],
+      "refreshClass": "static_or_term_based",
+      "humanReviewRequired": true
+    },
+    {
+      "agentKey": "election-term-agent",
+      "name": "Election & Term Agent",
+      "phase": 3,
+      "enabled": false,
+      "scope": ["candidate filings", "opponents", "election results", "vote totals", "margins", "appointments", "recounts", "contests", "prior terms"],
+      "sourcePriority": ["official election authority", "official legislative or executive directory", "court record for election contests"],
+      "outputs": ["election", "office_term", "occupancy_event", "evidence"],
+      "refreshClass": "election_calendar_and_event_driven",
+      "humanReviewRequired": false
+    },
+    {
+      "agentKey": "committee-appointment-agent",
+      "name": "Committee, Leadership & Appointment Agent",
+      "phase": 3,
+      "enabled": false,
+      "scope": ["committees", "subcommittees", "leadership", "caucuses", "boards", "commissions", "appointments"],
+      "sourcePriority": ["official chamber directory", "official board roster", "appointment announcement", "meeting minutes"],
+      "outputs": ["public_role", "committee_membership", "appointment", "evidence"],
+      "refreshClass": "weekly_and_event_driven",
+      "humanReviewRequired": false
+    },
+    {
+      "agentKey": "promise-extraction-agent",
+      "name": "Promise Extraction Agent",
+      "phase": 4,
+      "enabled": false,
+      "scope": ["campaign promises", "governing commitments", "pledges", "explicit commitments", "deadlines", "quantitative targets", "conditions and qualifiers"],
+      "sourcePriority": ["official campaign platform", "debate transcript", "speech transcript", "campaign advertisement", "official interview", "press release", "newsletter", "attributable social post"],
+      "requiredFields": ["exactText", "speaker", "date", "context", "sourceUrl", "archiveUrl or stored asset", "measurability", "status=unclear until evaluation"],
+      "outputs": ["promise", "claim", "evidence"],
+      "refreshClass": "continuous_during_campaign_then_weekly",
+      "humanReviewRequired": true
+    },
+    {
+      "agentKey": "statement-quote-agent",
+      "name": "Statement & Quote Agent",
+      "phase": 4,
+      "enabled": false,
+      "scope": ["speeches", "debates", "hearings", "interviews", "press conferences", "newsletters", "official social statements", "clarifications", "retractions"],
+      "sourcePriority": ["official transcript or video", "official channel", "full interview transcript", "authoritative media recording"],
+      "requiredFields": ["exactQuote", "date", "venue", "context", "transcriptTimestamp when applicable", "evidence"],
+      "outputs": ["statement", "position_timeline", "evidence"],
+      "refreshClass": "daily",
+      "humanReviewRequired": true
+    },
+    {
+      "agentKey": "legislative-action-agent",
+      "name": "Legislative Action Agent",
+      "phase": 5,
+      "enabled": false,
+      "scope": ["bills", "sponsorships", "cosponsorships", "roll-call votes", "committee votes", "attendance", "amendments", "budgets", "veto overrides"],
+      "sourcePriority": ["official chamber API or journal", "official bill system", "official roll-call record"],
+      "outputs": ["government_action", "vote", "attendance_metric", "evidence"],
+      "refreshClass": "hourly_or_daily_when_in_session",
+      "humanReviewRequired": false
+    },
+    {
+      "agentKey": "executive-administrative-action-agent",
+      "name": "Executive & Administrative Action Agent",
+      "phase": 5,
+      "enabled": false,
+      "scope": ["executive orders", "vetoes", "appointments", "budgets", "contracts", "procurement", "rulemaking", "enforcement", "agency directives"],
+      "sourcePriority": ["official executive office", "official agency register", "procurement portal", "budget documents", "meeting records"],
+      "outputs": ["government_action", "appointment", "contract_action", "evidence"],
+      "refreshClass": "daily_and_event_driven",
+      "humanReviewRequired": true
+    },
+    {
+      "agentKey": "campaign-finance-agent",
+      "name": "Campaign Finance Agent",
+      "phase": 6,
+      "enabled": false,
+      "scope": ["committees", "receipts", "expenditures", "cash", "debt", "loans", "donors", "industries", "vendors", "outside spending", "violations"],
+      "sourcePriority": ["FEC", "Florida Division of Elections", "county or municipal election authority", "official filing documents"],
+      "outputs": ["campaign_finance_summary", "committee", "contribution", "expenditure", "finance_violation", "evidence"],
+      "refreshClass": "daily_during_filing_periods",
+      "humanReviewRequired": false
+    },
+    {
+      "agentKey": "financial-disclosure-agent",
+      "name": "Financial Disclosure Agent",
+      "phase": 6,
+      "enabled": false,
+      "scope": ["disclosure calendar", "filings", "assets", "liabilities", "income", "business interests", "property", "gifts", "travel", "amendments"],
+      "sourcePriority": ["official ethics portal", "official disclosure filing", "public records response"],
+      "outputs": ["financial_disclosure", "ocr_asset", "evidence", "potential_conflict_candidate"],
+      "refreshClass": "filing_calendar",
+      "humanReviewRequired": true
+    },
+    {
+      "agentKey": "integrity-legal-agent",
+      "name": "Integrity, Audit & Legal Agent",
+      "phase": 7,
+      "enabled": false,
+      "scope": ["ethics complaints", "investigations", "findings", "court records", "audits", "inspector-general reports", "campaign and disclosure compliance", "official responses"],
+      "sourcePriority": ["court docket or opinion", "ethics authority", "auditor", "inspector general", "law-enforcement or enforcement authority", "official response"],
+      "requiredRule": "Procedural status must be explicit. Allegations may not be presented as findings.",
+      "outputs": ["integrity_matter", "audit_finding", "official_response", "evidence"],
+      "refreshClass": "daily_and_event_driven",
+      "humanReviewRequired": true
+    },
+    {
+      "agentKey": "relationship-conflict-agent",
+      "name": "Relationship & Conflict Comparison Agent",
+      "phase": 7,
+      "enabled": false,
+      "scope": ["employers", "business interests", "boards", "donors", "endorsements", "lobbyists", "vendors", "appointments", "family interests where lawfully public"],
+      "sourcePriority": ["official disclosures", "campaign finance filings", "lobbyist registrations", "contracts", "appointment records"],
+      "outputs": ["relationship", "conflict_candidate", "evidence"],
+      "refreshClass": "weekly_and_event_driven",
+      "humanReviewRequired": true
+    },
+    {
+      "agentKey": "tracker-analysis-agent",
+      "name": "Issue Tracker Analysis Agent",
+      "phase": 8,
+      "enabled": false,
+      "scope": ["MAHA", "DOGE/government efficiency", "border and immigration", "energy", "trade and tariffs", "education and school choice", "fraud and integrity", "seat-specific trackers"],
+      "inputs": ["promises", "statements", "votes", "bills", "government actions", "finance", "official response"],
+      "requiredFields": ["frameworkVersion", "measurementPeriod", "applicability", "pillars", "completeness", "confidence", "evidence", "humanReviewStatus"],
+      "outputs": ["issue_tracker", "pillar_assessment"],
+      "refreshClass": "after_material_evidence_change",
+      "humanReviewRequired": true
+    },
+    {
+      "agentKey": "score-calculation-agent",
+      "name": "Civic Score Calculation Agent",
+      "phase": 9,
+      "enabled": false,
+      "scope": ["transparency", "responsiveness", "promise keeping", "attendance", "effectiveness", "civic engagement", "compliance"],
+      "requiredFields": ["methodologyVersion", "period", "numerator", "denominator", "completeness", "confidence", "evidenceIds", "humanReviewStatus"],
+      "outputs": ["performance_metric", "civic_score", "calculation_record"],
+      "refreshClass": "after_input_change",
+      "humanReviewRequired": true
+    },
+    {
+      "agentKey": "evidence-archive-ocr-agent",
+      "name": "Evidence Archive, OCR & Transcript Agent",
+      "phase": "shared",
+      "enabled": false,
+      "scope": ["HTML snapshots", "PDF download", "screenshots", "image metadata", "OCR", "audio/video transcript", "content hashes", "archive links", "rights metadata"],
+      "sourcePriority": ["original source", "official downloadable document", "lawful archival copy"],
+      "outputs": ["evidence", "asset", "ocr_text", "transcript"],
+      "refreshClass": "queue_driven",
+      "humanReviewRequired": false
+    },
+    {
+      "agentKey": "news-activity-agent",
+      "name": "News & Real-Time Activity Agent",
+      "phase": 10,
+      "enabled": false,
+      "scope": ["official announcements", "votes", "filings", "meetings", "news", "corrections", "seat changes", "material public activity"],
+      "sourcePriority": ["official feeds", "government calendars", "official filings", "authoritative news sources"],
+      "outputs": ["activity_event", "media_record", "alert_candidate", "evidence"],
+      "refreshClass": "hourly",
+      "humanReviewRequired": true
+    },
+    {
+      "agentKey": "quality-control-agent",
+      "name": "Entity Resolution & Quality Control Agent",
+      "phase": "shared",
+      "enabled": true,
+      "scope": ["seat/person/term matching", "duplicate detection", "source-count guards", "staleness", "conflicts", "schema validation", "publication gates"],
+      "outputs": ["review_queue", "validation_result", "conflict_record", "publication_decision"],
+      "refreshClass": "every_pipeline_run",
+      "humanReviewRequired": true
+    }
+  ]
+}

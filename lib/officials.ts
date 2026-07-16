@@ -9,6 +9,14 @@ export type CivicScore = {
 
 export type PublicationStage = 'reviewed_profile' | 'baseline_record';
 
+export type EvidenceLink = {
+  evidenceId?: string;
+  sourceUrl?: string;
+  archiveUrl?: string | null;
+  capturedAt?: string | null;
+  exactQuote?: string | null;
+};
+
 export type OfficialProfile = {
   schemaVersion: string;
   officialId: string;
@@ -20,28 +28,52 @@ export type OfficialProfile = {
   sourceUrl?: string;
   sourceMemberUrl?: string;
   sourceSnapshotSha256?: string;
+  seat?: {
+    seatId: string;
+    seatName: string;
+    seatType?: string | null;
+    occupancyStatus?: 'occupied' | 'vacant' | 'disputed' | 'acting' | 'unknown';
+    successionMethod?: string | null;
+    nextElectionDate?: string | null;
+    previousOccupants?: Array<{
+      personName: string;
+      startDate?: string | null;
+      endDate?: string | null;
+    }>;
+  };
   person: {
     displayName: string;
     firstName: string;
     lastName: string;
     portraitUrl?: string | null;
+    portraitSourceUrl?: string | null;
+    portraitCredit?: string | null;
+    portraitLicense?: string | null;
+    portraitSha256?: string | null;
   };
   office: {
+    officeId?: string;
     title: string;
     shortTitle?: string | null;
     governmentLevel: string;
     branch?: string | null;
     chamber?: string | null;
+    seatName?: string | null;
     districtName?: string | null;
     districtNumber?: string | null;
+    authoritySummary?: string | null;
+    responsibilities?: string[];
   };
   jurisdiction: {
     name: string;
     stateCode?: string | null;
   };
   term?: {
+    officeTermId?: string;
     startDate?: string | null;
     endDate?: string | null;
+    assumedOfficeDate?: string | null;
+    electedOrAppointed?: string | null;
     currentStatus?: string | null;
   };
   party?: {
@@ -52,6 +84,8 @@ export type OfficialProfile = {
     long?: string | null;
     birthDate?: string | null;
     birthplace?: string | null;
+    hometown?: string | null;
+    publicFamilySummary?: string | null;
   };
   websites?: Array<{
     type: string;
@@ -62,10 +96,103 @@ export type OfficialProfile = {
     label?: string | null;
     value: string;
   }>;
+  officeLocations?: Array<{
+    type: string;
+    label?: string | null;
+    address: string;
+    officeHours?: string | null;
+  }>;
   socialAccounts?: Array<{
     platform: string;
     handle?: string | null;
     url: string;
+    accountType?: string | null;
+  }>;
+  education?: Array<{
+    institution: string;
+    degree?: string | null;
+    field?: string | null;
+    endDate?: string | null;
+  }>;
+  militaryService?: Array<{
+    branch?: string | null;
+    rank?: string | null;
+    startDate?: string | null;
+    endDate?: string | null;
+  }>;
+  careerHistory?: Array<{
+    organization: string;
+    title?: string | null;
+    startDate?: string | null;
+    endDate?: string | null;
+  }>;
+  politicalHistory?: Array<{
+    title: string;
+    organizationOrOffice?: string | null;
+    startDate?: string | null;
+    endDate?: string | null;
+  }>;
+  committeesAndAppointments?: Array<{
+    name: string;
+    roleType: string;
+    title?: string | null;
+    current?: boolean | null;
+  }>;
+  elections?: Array<{
+    electionId?: string;
+    date: string;
+    type?: string | null;
+    officeTitle: string;
+    result?: string | null;
+    votes?: number | null;
+    votePercentage?: number | null;
+    opponents?: string[];
+  }>;
+  campaignFinanceSummary?: {
+    cycle?: string | null;
+    totalRaised?: number | null;
+    totalSpent?: number | null;
+    cashOnHand?: number | null;
+    debt?: number | null;
+    topDonors?: Array<{ name: string; amount: number; donorType?: string | null }>;
+    lastFiledAt?: string | null;
+  };
+  promises?: Array<{
+    promiseId?: string;
+    title: string;
+    exactText: string;
+    summary?: string | null;
+    date?: string | null;
+    context?: string | null;
+    issueTags?: string[];
+    targetDate?: string | null;
+    status: string;
+    progressPercentage?: number | null;
+    statusReason?: string | null;
+    confidence?: string;
+    evidence?: EvidenceLink[];
+  }>;
+  statements?: Array<{
+    statementId?: string;
+    statementDate: string;
+    exactQuote: string;
+    summary?: string | null;
+    context?: string | null;
+    venue?: string | null;
+    issueTags?: string[];
+    evidence?: EvidenceLink[];
+  }>;
+  governmentActions?: Array<{
+    actionId?: string;
+    actionType: string;
+    title: string;
+    identifier?: string | null;
+    date?: string | null;
+    role?: string | null;
+    status?: string | null;
+    summary?: string | null;
+    issueTags?: string[];
+    evidence?: EvidenceLink[];
   }>;
   civicScores?: CivicScore[];
   performanceMetrics?: Array<{
@@ -78,6 +205,59 @@ export type OfficialProfile = {
     score?: number | null;
     status: string;
     analysis?: string | null;
+    completeness?: number | null;
+    pillars?: Array<{
+      name: string;
+      status: string;
+      score?: number | null;
+      analysis?: string | null;
+    }>;
+  }>;
+  financialDisclosures?: Array<{
+    disclosureId?: string;
+    period: string;
+    filingDate?: string | null;
+    estimatedNetWorthMin?: number | null;
+    estimatedNetWorthMax?: number | null;
+    incomeSources?: string[];
+    assetSummary?: string | null;
+    liabilitySummary?: string | null;
+    businessInterestSummary?: string | null;
+  }>;
+  integrityMatters?: Array<{
+    matterId?: string;
+    matterType: string;
+    proceduralStatus: string;
+    title: string;
+    authority?: string | null;
+    summary?: string | null;
+    officialResponse?: string | null;
+    finalDisposition?: string | null;
+    humanReviewed?: boolean;
+  }>;
+  relationships?: Array<{
+    relationshipType: string;
+    relatedName: string;
+    relevanceNote?: string | null;
+    conflictFlag?: boolean | null;
+  }>;
+  newsAndMedia?: Array<{
+    title: string;
+    url?: string | null;
+    publishedAt?: string | null;
+    sourceName?: string | null;
+    summary?: string | null;
+  }>;
+  petitions?: Array<{
+    title: string;
+    status?: string | null;
+    signatureCount?: number | null;
+  }>;
+  recentActivity?: Array<{
+    eventType: string;
+    title: string;
+    occurredAt?: string | null;
+    summary?: string | null;
   }>;
   profileCompleteness?: number;
   lastTrackedAt?: string | null;
@@ -180,6 +360,16 @@ function normalizeDate(value?: string | null): string | null {
   return `${year.toString().padStart(4, '0')}-${month.padStart(2, '0')}-${day.padStart(2, '0')}`;
 }
 
+function baselineSeatId(record: BaselineRecord): string {
+  return slugify([
+    record.stateCode ?? record.jurisdictionName ?? 'unknown',
+    record.governmentLevel,
+    record.chamber ?? record.branch ?? 'office',
+    record.officeTitle,
+    record.districtNumber ?? 'at-large',
+  ].join('-'));
+}
+
 function baselineToOfficial(record: BaselineRecord): OfficialProfile | null {
   if (record.recordKind === 'vacancy' || record.stateCode !== 'FL') return null;
   if (record.extractionStatus !== 'extracted_unreviewed') return null;
@@ -188,6 +378,7 @@ function baselineToOfficial(record: BaselineRecord): OfficialProfile | null {
   const jurisdictionName = record.stateName ?? (record.stateCode === 'FL' ? 'Florida' : record.jurisdictionName) ?? 'Florida';
   const sourceMemberUrl = record.sourceMemberUrl || record.sourceUrl;
   const contactPoints: OfficialProfile['contactPoints'] = [];
+  const seatName = record.districtNumber ? `${record.officeTitle.replace(/,?\s*District\s*\d+$/i, '')}, District ${record.districtNumber}` : record.officeTitle;
 
   if (record.phone) contactPoints.push({ type: 'phone', label: 'Official phone', value: record.phone });
   if (record.officeAddress) contactPoints.push({ type: 'address', label: 'Office address', value: record.officeAddress });
@@ -203,11 +394,24 @@ function baselineToOfficial(record: BaselineRecord): OfficialProfile | null {
     sourceUrl: record.sourceUrl,
     sourceMemberUrl,
     sourceSnapshotSha256: record.sourceSnapshotSha256,
+    seat: {
+      seatId: baselineSeatId(record),
+      seatName,
+      seatType: record.chamber ?? record.branch ?? record.governmentLevel,
+      occupancyStatus: 'occupied',
+      successionMethod: 'Election or lawful succession; verification queued',
+      nextElectionDate: null,
+      previousOccupants: [],
+    },
     person: {
       displayName: name.displayName,
       firstName: name.firstName,
       lastName: name.lastName,
       portraitUrl: null,
+      portraitSourceUrl: null,
+      portraitCredit: null,
+      portraitLicense: null,
+      portraitSha256: null,
     },
     office: {
       title: record.officeTitle,
@@ -215,8 +419,11 @@ function baselineToOfficial(record: BaselineRecord): OfficialProfile | null {
       governmentLevel: record.governmentLevel,
       branch: record.branch ?? null,
       chamber: record.chamber ?? null,
+      seatName,
       districtName: record.districtNumber ? `District ${record.districtNumber}` : jurisdictionName,
       districtNumber: record.districtNumber ?? null,
+      authoritySummary: null,
+      responsibilities: [],
     },
     jurisdiction: {
       name: jurisdictionName,
@@ -230,9 +437,26 @@ function baselineToOfficial(record: BaselineRecord): OfficialProfile | null {
     party: record.partyName ? { name: record.partyName } : undefined,
     websites: sourceMemberUrl ? [{ type: 'official', url: sourceMemberUrl }] : [],
     contactPoints,
+    officeLocations: [],
+    socialAccounts: [],
+    education: [],
+    militaryService: [],
+    careerHistory: [],
+    politicalHistory: [],
+    committeesAndAppointments: [],
+    elections: [],
+    promises: [],
+    statements: [],
+    governmentActions: [],
     civicScores: [],
     performanceMetrics: [],
     issueTrackers: [],
+    financialDisclosures: [],
+    integrityMatters: [],
+    relationships: [],
+    newsAndMedia: [],
+    petitions: [],
+    recentActivity: [],
     lastTrackedAt: record.fetchedAt,
     lastUpdatedAt: record.fetchedAt,
   };
