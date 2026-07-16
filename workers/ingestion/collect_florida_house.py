@@ -1,5 +1,12 @@
 #!/usr/bin/env python3
-"""Collect current Florida House members and vacancies into review-only staging JSON."""
+"""Collect current Florida House members into review-only staging JSON.
+
+The official directory places each current member's name, party, district,
+represented counties, and service dates inside the member-profile link. Former
+members from the same legislative term also appear below the current roster, so
+records with a resigned, deceased, removed, or expelled status are excluded from
+the current-officeholder baseline and can be collected by a separate history job.
+"""
 
 from __future__ import annotations
 
@@ -18,13 +25,20 @@ from workers.ingestion.common import fetch, sha256_bytes, slugify, utc_now, writ
 SOURCE_URL = "https://www.flhouse.gov/Representatives"
 SOURCE_KEY = "florida-house-members"
 NAMESPACE = uuid.UUID("3ef20442-bf4d-4a0c-a58e-138b521ce595")
-MEMBER_LINK_PATTERN = re.compile(r"/Representatives/(?:Details|details\.aspx)", re.IGNORECASE)
-PARTY_PATTERN = re.compile(r"\b(Republican|Democrat(?:ic)?|No Party Affiliation|Independent)\b", re.IGNORECASE)
-DISTRICT_PATTERN = re.compile(r"\bDistrict\s*(?:No\.?\s*)?(\d{1,3})\b", re.IGNORECASE)
-COUNTY_PATTERN = re.compile(
-    r"\b(?:Count(?:y|ies)(?:\s+Represented)?|Representing)\s*:?\s*(.+?)(?=\s+(?:District|Party|Capitol|Office|Contact|Phone|Email|Committees?|Biography)\b|$)",
+MEMBER_LINK_PATTERN = re.compile(
+    r"/(?:Sections/)?Representatives/(?:Details|details\.aspx)$",
     re.IGNORECASE,
 )
+ENTRY_PATTERN = re.compile(
+    r"^(?P<name>.+?)\s+"
+    r"(?P<party>Republican|Democrat(?:ic)?|No Party Affiliation|Independent)\s+"
+    r"[—-]\s*District:\s*(?P<district>\d{1,3})\s*"
+    r"(?P<counties>.*?)\s+"
+    r"(?P<start>\d{2}/\d{2}/\d{2})\s*-\s*(?P<end>\d{2}/\d{2}/\d{2})"
+    r"(?:\s*\((?P<status>[^)]+)\))?$",
+    re.IGNORECASE,
+)
+INACTIVE_STATUSES = {"resigned", "deceased", "removed", "expelled"}
 
 
 def clean_text(value: str) -> str:
@@ -48,7 +62,7 @@ def normalize_party(value: str | None) -> str | None:
 
 def is_member_link(link: Tag) -> bool:
     href = str(link.get("href", ""))
-    return bool(MEMBER_LINK_PATTERN.search(urlparse(href).path))
+    return bool(MEMBER_LINK_PATTERN.fullmatch(urlparse(href).path))
 
 
 def member_id_from_url(url: str) -> str | None:
@@ -56,36 +70,23 @@ def member_id_from_url(url: str) -> str | None:
     for key in ("MemberId", "memberId", "memberid"):
         if values.get(key):
             return values[key][0]
-    match = re.search(r"(?:MemberId|memberId|memberid)[=/](\d+)", url)
-    return match.group(1) if match else None
-
-
-def candidate_container(link: Tag) -> Tag:
-    """Find the smallest useful directory entry surrounding one member link."""
-    for parent in link.parents:
-        if not isinstance(parent, Tag):
-            continue
-        if parent.name in {"article", "li", "tr"}:
-            return parent
-        classes = " ".join(parent.get("class", []))
-        if re.search(r"representative|member|profile|card|district", classes, re.IGNORECASE):
-            text = clean_text(parent.get_text(" ", strip=True))
-            if len(text) <= 1600:
-                return parent
-    return link.parent if isinstance(link.parent, Tag) else link
-
-
-def extract_district(container_text: str, link: Tag) -> str | None:
-    match = DISTRICT_PATTERN.search(container_text)
-    if match:
-        return str(int(match.group(1)))
-
-    href = str(link.get("href", ""))
-    query = parse_qs(urlparse(href).query)
-    for key in ("District", "district", "DistrictNumber", "districtNumber"):
-        if query.get(key) and str(query[key][0]).isdigit():
-            return str(int(query[key][0]))
     return None
+
+
+def parse_entry_text(text: str) -> dict[str, str | None] | None:
+    match = ENTRY_PATTERN.fullmatch(clean_text(text))
+    if not match:
+        return None
+    status = clean_text(match.group("status") or "") or None
+    return {
+        "name": clean_text(match.group("name")),
+        "party": normalize_party(match.group("party")),
+        "district": str(int(match.group("district"))),
+        "counties": clean_text(match.group("counties")) or None,
+        "start": match.group("start"),
+        "end": match.group("end"),
+        "status": status,
+    }
 
 
 def parse_directory(
@@ -98,41 +99,41 @@ def parse_directory(
     records: list[dict[str, object]] = []
     seen_member_urls: set[str] = set()
     seen_districts: set[str] = set()
+    matched_member_links = 0
+    inactive_entries = 0
+    unparsed_samples: list[str] = []
 
     for link in soup.find_all("a", href=True):
         if not is_member_link(link):
             continue
+        matched_member_links += 1
 
         source_member_url = urljoin(SOURCE_URL, str(link.get("href", "")))
         if source_member_url in seen_member_urls:
             continue
 
-        display_name = clean_text(link.get_text(" ", strip=True))
-        if not display_name or display_name.casefold() in {"details", "view profile", "read more"}:
-            image = link.find("img", alt=True)
-            display_name = clean_text(str(image.get("alt", ""))) if image else ""
-        if not display_name:
+        raw_text = clean_text(link.get_text(" ", strip=True))
+        parsed = parse_entry_text(raw_text)
+        if not parsed:
+            if raw_text:
+                unparsed_samples.append(raw_text[:300])
             continue
 
-        container = candidate_container(link)
-        raw_text = clean_text(container.get_text(" ", strip=True))
-        district = extract_district(raw_text, link)
-        if not district:
+        status = str(parsed["status"] or "").casefold()
+        if any(marker in status for marker in INACTIVE_STATUSES):
+            inactive_entries += 1
             continue
 
-        party_match = PARTY_PATTERN.search(raw_text)
-        party = normalize_party(party_match.group(1) if party_match else None)
-        county_match = COUNTY_PATTERN.search(raw_text)
-        counties = clean_text(county_match.group(1)) if county_match else None
-        is_vacant = display_name.casefold().startswith("vacant") or " vacancy" in raw_text.casefold()
-
+        district = str(parsed["district"])
+        display_name = str(parsed["name"])
         if district in seen_districts:
-            raise RuntimeError(f"Duplicate Florida House district {district} found while parsing {display_name}.")
+            raise RuntimeError(f"Duplicate current Florida House district {district} found while parsing {display_name}.")
+
         seen_districts.add(district)
         seen_member_urls.add(source_member_url)
-
         member_id = member_id_from_url(source_member_url)
         stable_key = f"florida-house|district-{district}|{member_id or source_member_url}"
+
         records.append(
             {
                 "candidateRecordVersion": "1.0.0",
@@ -143,8 +144,8 @@ def parse_directory(
                 "sourceSnapshotSha256": source_hash,
                 "fetchedAt": fetched_at,
                 "extractionStatus": "extracted_unreviewed",
-                "recordKind": "office_vacancy" if is_vacant else "person_officeholder",
-                "displayName": f"Vacant — Florida House District {district}" if is_vacant else display_name,
+                "recordKind": "person_officeholder",
+                "displayName": display_name,
                 "officeTitle": f"Florida State Representative, District {district}",
                 "governmentLevel": "state",
                 "branch": "legislative",
@@ -152,21 +153,25 @@ def parse_directory(
                 "jurisdictionName": "Florida",
                 "stateCode": "FL",
                 "districtNumber": district,
-                "partyName": party,
-                "countyDescription": counties,
+                "partyName": parsed["party"],
+                "countyDescription": parsed["counties"],
+                "serviceStartDateText": parsed["start"],
+                "serviceEndDateText": parsed["end"],
                 "externalMemberId": member_id,
-                "canonicalMatchStatus": "vacancy" if is_vacant else "unmatched",
+                "canonicalMatchStatus": "unmatched",
                 "refreshClass": "term_based",
-                "rawRowText": raw_text[:1600],
+                "rawRowText": raw_text,
             }
         )
 
     records.sort(key=lambda item: int(str(item["districtNumber"])))
     if len(records) < minimum_records or len(records) > 120:
         title = soup.title.get_text(" ", strip=True) if soup.title else "no-title"
+        samples = " || ".join(unparsed_samples[:3]) or "none"
         raise RuntimeError(
-            f"Extracted {len(records)} Florida House seats; expected between {minimum_records} and 120. "
-            f"Page title: {title!r}. The official directory layout may have changed."
+            f"Extracted {len(records)} current Florida House seats from {matched_member_links} member links; "
+            f"expected between {minimum_records} and 120. Inactive term entries skipped: {inactive_entries}. "
+            f"Page title: {title!r}. First unparsed samples: {samples}."
         )
     return records
 
