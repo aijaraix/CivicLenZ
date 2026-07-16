@@ -1,5 +1,9 @@
 #!/usr/bin/env python3
-"""Collect current Florida House members and vacancies into review-only staging JSON."""
+"""Collect current Florida House members and vacancies into review-only staging JSON.
+
+The live smoke test must confirm a near-complete 120-seat directory before the
+collector is accepted for scheduled aggregation.
+"""
 
 from __future__ import annotations
 
