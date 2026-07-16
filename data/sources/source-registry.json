@@ -1,7 +1,46 @@
 {
-  "registryVersion": "1.0.0",
-  "updatedAt": "2026-07-15T00:00:00Z",
+  "registryVersion": "1.1.0",
+  "updatedAt": "2026-07-16T00:00:00Z",
   "sources": [
+    {
+      "sourceKey": "us-house-members",
+      "name": "U.S. House of Representatives — Directory of Representatives",
+      "jurisdiction": "United States",
+      "sourceTier": "primary_official",
+      "sourceType": "html_directory",
+      "url": "https://www.house.gov/representatives",
+      "collectionMode": "scrape",
+      "schedule": "daily_during_aggregation",
+      "targets": ["people", "offices", "office_terms", "contact_points", "districts", "committees", "vacancies"],
+      "reviewRequired": true,
+      "enabled": true
+    },
+    {
+      "sourceKey": "us-senate-members",
+      "name": "U.S. Senate — Senator Contact Information XML",
+      "jurisdiction": "United States",
+      "sourceTier": "primary_official",
+      "sourceType": "xml_directory",
+      "url": "https://www.senate.gov/general/contact_information/senators_cfm.xml",
+      "collectionMode": "download_and_parse",
+      "schedule": "daily_during_aggregation",
+      "targets": ["people", "offices", "office_terms", "contact_points", "states", "leadership"],
+      "reviewRequired": true,
+      "enabled": true
+    },
+    {
+      "sourceKey": "white-house-administration",
+      "name": "The White House — Administration",
+      "jurisdiction": "United States",
+      "sourceTier": "primary_official",
+      "sourceType": "html_directory",
+      "url": "https://www.whitehouse.gov/administration/",
+      "collectionMode": "scrape",
+      "schedule": "daily_during_aggregation",
+      "targets": ["president", "vice_president", "offices", "office_terms"],
+      "reviewRequired": true,
+      "enabled": true
+    },
     {
       "sourceKey": "florida-house-members",
       "name": "Florida House of Representatives — Members",
