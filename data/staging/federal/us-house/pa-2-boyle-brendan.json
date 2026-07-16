@@ -1,0 +1,33 @@
+{
+  "candidateRecordVersion": "1.0.0",
+  "stagingRecordId": "183fed70-ae17-5092-bfb6-5037f7cab653",
+  "sourceKey": "us-house-members",
+  "sourceUrl": "https://www.house.gov/representatives",
+  "sourceMemberUrl": "https://boyle.house.gov/",
+  "sourceSnapshotSha256": "810e17d99b704ea3b2720a49433af0864653130511accb2f912aadef6b979aab",
+  "fetchedAt": "2026-07-16T01:40:58Z",
+  "extractionStatus": "extracted_unreviewed",
+  "recordKind": "person_officeholder",
+  "displayName": "Boyle, Brendan",
+  "formerMemberName": null,
+  "officeTitle": "United States Representative",
+  "governmentLevel": "federal",
+  "branch": "legislative",
+  "chamber": "house",
+  "jurisdictionName": "United States",
+  "stateName": "Pennsylvania",
+  "stateCode": "PA",
+  "districtLabel": "2nd",
+  "districtNumber": "2",
+  "partyCode": "D",
+  "partyName": "Democratic",
+  "officeRoom": "1502 LHOB",
+  "phone": "(202) 225-6111",
+  "committeeAssignments": [
+    "Budget",
+    "Ways and Means"
+  ],
+  "canonicalMatchStatus": "unmatched",
+  "refreshClass": "term_based",
+  "rawRowText": "2nd Boyle, Brendan D 1502 LHOB (202) 225-6111 Budget|Ways and Means"
+}

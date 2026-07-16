@@ -1,0 +1,32 @@
+{
+  "candidateRecordVersion": "1.0.0",
+  "stagingRecordId": "9942bcd3-95a8-5f0d-a301-79e5cdd9371d",
+  "sourceKey": "us-house-members",
+  "sourceUrl": "https://www.house.gov/representatives",
+  "sourceMemberUrl": "https://schrier.house.gov",
+  "sourceSnapshotSha256": "810e17d99b704ea3b2720a49433af0864653130511accb2f912aadef6b979aab",
+  "fetchedAt": "2026-07-16T01:40:58Z",
+  "extractionStatus": "extracted_unreviewed",
+  "recordKind": "person_officeholder",
+  "displayName": "Schrier, Kim",
+  "formerMemberName": null,
+  "officeTitle": "United States Representative",
+  "governmentLevel": "federal",
+  "branch": "legislative",
+  "chamber": "house",
+  "jurisdictionName": "United States",
+  "stateName": "Washington",
+  "stateCode": "WA",
+  "districtLabel": "8th",
+  "districtNumber": "8",
+  "partyCode": "D",
+  "partyName": "Democratic",
+  "officeRoom": "1110 LHOB",
+  "phone": "(202) 225-7761",
+  "committeeAssignments": [
+    "Energy and Commerce"
+  ],
+  "canonicalMatchStatus": "unmatched",
+  "refreshClass": "term_based",
+  "rawRowText": "8th Schrier, Kim D 1110 LHOB (202) 225-7761 Energy and Commerce"
+}

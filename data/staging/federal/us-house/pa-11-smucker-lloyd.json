@@ -1,0 +1,33 @@
+{
+  "candidateRecordVersion": "1.0.0",
+  "stagingRecordId": "4a23d381-a9a4-5629-a85a-8db5ef8e55f6",
+  "sourceKey": "us-house-members",
+  "sourceUrl": "https://www.house.gov/representatives",
+  "sourceMemberUrl": "https://smucker.house.gov/",
+  "sourceSnapshotSha256": "810e17d99b704ea3b2720a49433af0864653130511accb2f912aadef6b979aab",
+  "fetchedAt": "2026-07-16T01:40:58Z",
+  "extractionStatus": "extracted_unreviewed",
+  "recordKind": "person_officeholder",
+  "displayName": "Smucker, Lloyd",
+  "formerMemberName": null,
+  "officeTitle": "United States Representative",
+  "governmentLevel": "federal",
+  "branch": "legislative",
+  "chamber": "house",
+  "jurisdictionName": "United States",
+  "stateName": "Pennsylvania",
+  "stateCode": "PA",
+  "districtLabel": "11th",
+  "districtNumber": "11",
+  "partyCode": "R",
+  "partyName": "Republican",
+  "officeRoom": "302 CHOB",
+  "phone": "(202) 225-2411",
+  "committeeAssignments": [
+    "Budget",
+    "Ways and Means"
+  ],
+  "canonicalMatchStatus": "unmatched",
+  "refreshClass": "term_based",
+  "rawRowText": "11th Smucker, Lloyd R 302 CHOB (202) 225-2411 Budget|Ways and Means"
+}

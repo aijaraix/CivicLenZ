@@ -1,0 +1,33 @@
+{
+  "candidateRecordVersion": "1.0.0",
+  "stagingRecordId": "f7a98834-6892-5706-b84d-672a7f5c138e",
+  "sourceKey": "us-house-members",
+  "sourceUrl": "https://www.house.gov/representatives",
+  "sourceMemberUrl": "https://hill.house.gov/",
+  "sourceSnapshotSha256": "810e17d99b704ea3b2720a49433af0864653130511accb2f912aadef6b979aab",
+  "fetchedAt": "2026-07-16T01:40:58Z",
+  "extractionStatus": "extracted_unreviewed",
+  "recordKind": "person_officeholder",
+  "displayName": "Hill, J.",
+  "formerMemberName": null,
+  "officeTitle": "United States Representative",
+  "governmentLevel": "federal",
+  "branch": "legislative",
+  "chamber": "house",
+  "jurisdictionName": "United States",
+  "stateName": "Arkansas",
+  "stateCode": "AR",
+  "districtLabel": "2nd",
+  "districtNumber": "2",
+  "partyCode": "R",
+  "partyName": "Republican",
+  "officeRoom": "1533 LHOB",
+  "phone": "(202) 225-2506",
+  "committeeAssignments": [
+    "Financial Services",
+    "Intelligence"
+  ],
+  "canonicalMatchStatus": "unmatched",
+  "refreshClass": "term_based",
+  "rawRowText": "2nd Hill, J. R 1533 LHOB (202) 225-2506 Financial Services|Intelligence"
+}

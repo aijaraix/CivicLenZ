@@ -1,0 +1,33 @@
+{
+  "candidateRecordVersion": "1.0.0",
+  "stagingRecordId": "c69b6270-e318-5d8c-8eac-8a97b8762df6",
+  "sourceKey": "us-house-members",
+  "sourceUrl": "https://www.house.gov/representatives",
+  "sourceMemberUrl": "https://biggs.house.gov",
+  "sourceSnapshotSha256": "810e17d99b704ea3b2720a49433af0864653130511accb2f912aadef6b979aab",
+  "fetchedAt": "2026-07-16T01:40:58Z",
+  "extractionStatus": "extracted_unreviewed",
+  "recordKind": "person_officeholder",
+  "displayName": "Biggs, Andy",
+  "formerMemberName": null,
+  "officeTitle": "United States Representative",
+  "governmentLevel": "federal",
+  "branch": "legislative",
+  "chamber": "house",
+  "jurisdictionName": "United States",
+  "stateName": "Arizona",
+  "stateCode": "AZ",
+  "districtLabel": "5th",
+  "districtNumber": "5",
+  "partyCode": "R",
+  "partyName": "Republican",
+  "officeRoom": "464 CHOB",
+  "phone": "(202) 225-2635",
+  "committeeAssignments": [
+    "Oversight and Government Reform",
+    "Judiciary"
+  ],
+  "canonicalMatchStatus": "unmatched",
+  "refreshClass": "term_based",
+  "rawRowText": "5th Biggs, Andy R 464 CHOB (202) 225-2635 Oversight and Government Reform|Judiciary"
+}

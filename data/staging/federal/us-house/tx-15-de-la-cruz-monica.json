@@ -1,0 +1,33 @@
+{
+  "candidateRecordVersion": "1.0.0",
+  "stagingRecordId": "a190e7ae-003c-524f-b3eb-a12d9886e8c0",
+  "sourceKey": "us-house-members",
+  "sourceUrl": "https://www.house.gov/representatives",
+  "sourceMemberUrl": "https://delacruz.house.gov",
+  "sourceSnapshotSha256": "810e17d99b704ea3b2720a49433af0864653130511accb2f912aadef6b979aab",
+  "fetchedAt": "2026-07-16T01:40:58Z",
+  "extractionStatus": "extracted_unreviewed",
+  "recordKind": "person_officeholder",
+  "displayName": "De La Cruz, Monica",
+  "formerMemberName": null,
+  "officeTitle": "United States Representative",
+  "governmentLevel": "federal",
+  "branch": "legislative",
+  "chamber": "house",
+  "jurisdictionName": "United States",
+  "stateName": "Texas",
+  "stateCode": "TX",
+  "districtLabel": "15th",
+  "districtNumber": "15",
+  "partyCode": "R",
+  "partyName": "Republican",
+  "officeRoom": "1415 LHOB",
+  "phone": "(202) 225-9901",
+  "committeeAssignments": [
+    "Agriculture",
+    "Financial Services"
+  ],
+  "canonicalMatchStatus": "unmatched",
+  "refreshClass": "term_based",
+  "rawRowText": "15th De La Cruz, Monica R 1415 LHOB (202) 225-9901 Agriculture|Financial Services"
+}

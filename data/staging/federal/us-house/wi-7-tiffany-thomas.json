@@ -1,0 +1,33 @@
+{
+  "candidateRecordVersion": "1.0.0",
+  "stagingRecordId": "9033c494-1d83-50a2-b04d-87555a1a542f",
+  "sourceKey": "us-house-members",
+  "sourceUrl": "https://www.house.gov/representatives",
+  "sourceMemberUrl": "https://tiffany.house.gov/",
+  "sourceSnapshotSha256": "810e17d99b704ea3b2720a49433af0864653130511accb2f912aadef6b979aab",
+  "fetchedAt": "2026-07-16T01:40:58Z",
+  "extractionStatus": "extracted_unreviewed",
+  "recordKind": "person_officeholder",
+  "displayName": "Tiffany, Thomas",
+  "formerMemberName": null,
+  "officeTitle": "United States Representative",
+  "governmentLevel": "federal",
+  "branch": "legislative",
+  "chamber": "house",
+  "jurisdictionName": "United States",
+  "stateName": "Wisconsin",
+  "stateCode": "WI",
+  "districtLabel": "7th",
+  "districtNumber": "7",
+  "partyCode": "R",
+  "partyName": "Republican",
+  "officeRoom": "451 CHOB",
+  "phone": "(202) 225-3365",
+  "committeeAssignments": [
+    "Natural Resources",
+    "Judiciary"
+  ],
+  "canonicalMatchStatus": "unmatched",
+  "refreshClass": "term_based",
+  "rawRowText": "7th Tiffany, Thomas R 451 CHOB (202) 225-3365 Natural Resources|Judiciary"
+}

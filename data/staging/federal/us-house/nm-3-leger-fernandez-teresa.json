@@ -1,0 +1,33 @@
+{
+  "candidateRecordVersion": "1.0.0",
+  "stagingRecordId": "c344b073-d934-5fbe-9fed-f6f2550d5b2d",
+  "sourceKey": "us-house-members",
+  "sourceUrl": "https://www.house.gov/representatives",
+  "sourceMemberUrl": "https://fernandez.house.gov",
+  "sourceSnapshotSha256": "810e17d99b704ea3b2720a49433af0864653130511accb2f912aadef6b979aab",
+  "fetchedAt": "2026-07-16T01:40:58Z",
+  "extractionStatus": "extracted_unreviewed",
+  "recordKind": "person_officeholder",
+  "displayName": "Leger Fernandez, Teresa",
+  "formerMemberName": null,
+  "officeTitle": "United States Representative",
+  "governmentLevel": "federal",
+  "branch": "legislative",
+  "chamber": "house",
+  "jurisdictionName": "United States",
+  "stateName": "New Mexico",
+  "stateCode": "NM",
+  "districtLabel": "3rd",
+  "districtNumber": "3",
+  "partyCode": "D",
+  "partyName": "Democratic",
+  "officeRoom": "2417 RHOB",
+  "phone": "(202) 225-6190",
+  "committeeAssignments": [
+    "Natural Resources",
+    "Rules"
+  ],
+  "canonicalMatchStatus": "unmatched",
+  "refreshClass": "term_based",
+  "rawRowText": "3rd Leger Fernandez, Teresa D 2417 RHOB (202) 225-6190 Natural Resources|Rules"
+}

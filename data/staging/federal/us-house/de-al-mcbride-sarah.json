@@ -1,0 +1,33 @@
+{
+  "candidateRecordVersion": "1.0.0",
+  "stagingRecordId": "c41a1b92-86a0-5301-bf28-1462c697d152",
+  "sourceKey": "us-house-members",
+  "sourceUrl": "https://www.house.gov/representatives",
+  "sourceMemberUrl": "https://mcbride.house.gov/",
+  "sourceSnapshotSha256": "810e17d99b704ea3b2720a49433af0864653130511accb2f912aadef6b979aab",
+  "fetchedAt": "2026-07-16T01:40:58Z",
+  "extractionStatus": "extracted_unreviewed",
+  "recordKind": "person_officeholder",
+  "displayName": "McBride, Sarah",
+  "formerMemberName": null,
+  "officeTitle": "United States Representative",
+  "governmentLevel": "federal",
+  "branch": "legislative",
+  "chamber": "house",
+  "jurisdictionName": "United States",
+  "stateName": "Delaware",
+  "stateCode": "DE",
+  "districtLabel": "At Large",
+  "districtNumber": "AL",
+  "partyCode": "D",
+  "partyName": "Democratic",
+  "officeRoom": "1306 LHOB",
+  "phone": "(202) 225-4165",
+  "committeeAssignments": [
+    "Foreign Affairs",
+    "Science, Space, and Technology"
+  ],
+  "canonicalMatchStatus": "unmatched",
+  "refreshClass": "term_based",
+  "rawRowText": "At Large McBride, Sarah D 1306 LHOB (202) 225-4165 Foreign Affairs|Science, Space, and Technology"
+}

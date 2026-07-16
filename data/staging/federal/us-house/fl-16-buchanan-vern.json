@@ -1,0 +1,33 @@
+{
+  "candidateRecordVersion": "1.0.0",
+  "stagingRecordId": "45b4ac8e-1796-5577-ae44-6ee11a8f1b03",
+  "sourceKey": "us-house-members",
+  "sourceUrl": "https://www.house.gov/representatives",
+  "sourceMemberUrl": "https://buchanan.house.gov/",
+  "sourceSnapshotSha256": "810e17d99b704ea3b2720a49433af0864653130511accb2f912aadef6b979aab",
+  "fetchedAt": "2026-07-16T01:40:58Z",
+  "extractionStatus": "extracted_unreviewed",
+  "recordKind": "person_officeholder",
+  "displayName": "Buchanan, Vern",
+  "formerMemberName": null,
+  "officeTitle": "United States Representative",
+  "governmentLevel": "federal",
+  "branch": "legislative",
+  "chamber": "house",
+  "jurisdictionName": "United States",
+  "stateName": "Florida",
+  "stateCode": "FL",
+  "districtLabel": "16th",
+  "districtNumber": "16",
+  "partyCode": "R",
+  "partyName": "Republican",
+  "officeRoom": "2409 RHOB",
+  "phone": "(202) 225-5015",
+  "committeeAssignments": [
+    "Joint Committee on Taxation",
+    "Ways and Means"
+  ],
+  "canonicalMatchStatus": "unmatched",
+  "refreshClass": "term_based",
+  "rawRowText": "16th Buchanan, Vern R 2409 RHOB (202) 225-5015 Joint Committee on Taxation|Ways and Means"
+}

@@ -1,0 +1,32 @@
+{
+  "candidateRecordVersion": "1.0.0",
+  "stagingRecordId": "4a199e13-3b18-58b9-9a3c-55a6dc2dae2a",
+  "sourceKey": "us-house-members",
+  "sourceUrl": "https://www.house.gov/representatives",
+  "sourceMemberUrl": "https://mikethompson.house.gov/",
+  "sourceSnapshotSha256": "810e17d99b704ea3b2720a49433af0864653130511accb2f912aadef6b979aab",
+  "fetchedAt": "2026-07-16T01:40:58Z",
+  "extractionStatus": "extracted_unreviewed",
+  "recordKind": "person_officeholder",
+  "displayName": "Thompson, Mike",
+  "formerMemberName": null,
+  "officeTitle": "United States Representative",
+  "governmentLevel": "federal",
+  "branch": "legislative",
+  "chamber": "house",
+  "jurisdictionName": "United States",
+  "stateName": "California",
+  "stateCode": "CA",
+  "districtLabel": "4th",
+  "districtNumber": "4",
+  "partyCode": "D",
+  "partyName": "Democratic",
+  "officeRoom": "268 CHOB",
+  "phone": "(202) 225-3311",
+  "committeeAssignments": [
+    "Ways and Means"
+  ],
+  "canonicalMatchStatus": "unmatched",
+  "refreshClass": "term_based",
+  "rawRowText": "4th Thompson, Mike D 268 CHOB (202) 225-3311 Ways and Means"
+}

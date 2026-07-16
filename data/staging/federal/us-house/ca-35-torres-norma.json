@@ -1,0 +1,33 @@
+{
+  "candidateRecordVersion": "1.0.0",
+  "stagingRecordId": "23b08886-5d12-5def-a223-179cec5a8f94",
+  "sourceKey": "us-house-members",
+  "sourceUrl": "https://www.house.gov/representatives",
+  "sourceMemberUrl": "https://torres.house.gov/",
+  "sourceSnapshotSha256": "810e17d99b704ea3b2720a49433af0864653130511accb2f912aadef6b979aab",
+  "fetchedAt": "2026-07-16T01:40:58Z",
+  "extractionStatus": "extracted_unreviewed",
+  "recordKind": "person_officeholder",
+  "displayName": "Torres, Norma",
+  "formerMemberName": null,
+  "officeTitle": "United States Representative",
+  "governmentLevel": "federal",
+  "branch": "legislative",
+  "chamber": "house",
+  "jurisdictionName": "United States",
+  "stateName": "California",
+  "stateCode": "CA",
+  "districtLabel": "35th",
+  "districtNumber": "35",
+  "partyCode": "D",
+  "partyName": "Democratic",
+  "officeRoom": "2227 RHOB",
+  "phone": "(202) 225-6161",
+  "committeeAssignments": [
+    "Appropriations",
+    "House Administration"
+  ],
+  "canonicalMatchStatus": "unmatched",
+  "refreshClass": "term_based",
+  "rawRowText": "35th Torres, Norma D 2227 RHOB (202) 225-6161 Appropriations|House Administration"
+}

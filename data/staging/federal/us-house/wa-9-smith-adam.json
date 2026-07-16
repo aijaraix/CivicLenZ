@@ -1,0 +1,32 @@
+{
+  "candidateRecordVersion": "1.0.0",
+  "stagingRecordId": "c9669189-e10b-56b9-a20b-64aef96b0dc7",
+  "sourceKey": "us-house-members",
+  "sourceUrl": "https://www.house.gov/representatives",
+  "sourceMemberUrl": "https://adamsmith.house.gov/",
+  "sourceSnapshotSha256": "810e17d99b704ea3b2720a49433af0864653130511accb2f912aadef6b979aab",
+  "fetchedAt": "2026-07-16T01:40:58Z",
+  "extractionStatus": "extracted_unreviewed",
+  "recordKind": "person_officeholder",
+  "displayName": "Smith, Adam",
+  "formerMemberName": null,
+  "officeTitle": "United States Representative",
+  "governmentLevel": "federal",
+  "branch": "legislative",
+  "chamber": "house",
+  "jurisdictionName": "United States",
+  "stateName": "Washington",
+  "stateCode": "WA",
+  "districtLabel": "9th",
+  "districtNumber": "9",
+  "partyCode": "D",
+  "partyName": "Democratic",
+  "officeRoom": "2264 RHOB",
+  "phone": "(202) 225-8901",
+  "committeeAssignments": [
+    "Armed Services"
+  ],
+  "canonicalMatchStatus": "unmatched",
+  "refreshClass": "term_based",
+  "rawRowText": "9th Smith, Adam D 2264 RHOB (202) 225-8901 Armed Services"
+}

@@ -1,0 +1,33 @@
+{
+  "candidateRecordVersion": "1.0.0",
+  "stagingRecordId": "82430685-8087-511d-acc8-b8c3540ce4a3",
+  "sourceKey": "us-house-members",
+  "sourceUrl": "https://www.house.gov/representatives",
+  "sourceMemberUrl": "https://mcclaindelaney.house.gov/",
+  "sourceSnapshotSha256": "810e17d99b704ea3b2720a49433af0864653130511accb2f912aadef6b979aab",
+  "fetchedAt": "2026-07-16T01:40:58Z",
+  "extractionStatus": "extracted_unreviewed",
+  "recordKind": "person_officeholder",
+  "displayName": "McClain Delaney, April",
+  "formerMemberName": null,
+  "officeTitle": "United States Representative",
+  "governmentLevel": "federal",
+  "branch": "legislative",
+  "chamber": "house",
+  "jurisdictionName": "United States",
+  "stateName": "Maryland",
+  "stateCode": "MD",
+  "districtLabel": "6th",
+  "districtNumber": "6",
+  "partyCode": "D",
+  "partyName": "Democratic",
+  "officeRoom": "1130 LHOB",
+  "phone": "(202) 225-2721",
+  "committeeAssignments": [
+    "Agriculture",
+    "Science, Space, and Technology"
+  ],
+  "canonicalMatchStatus": "unmatched",
+  "refreshClass": "term_based",
+  "rawRowText": "6th McClain Delaney, April D 1130 LHOB (202) 225-2721 Agriculture|Science, Space, and Technology"
+}

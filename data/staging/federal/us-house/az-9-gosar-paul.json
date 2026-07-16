@@ -1,0 +1,33 @@
+{
+  "candidateRecordVersion": "1.0.0",
+  "stagingRecordId": "b8deedb0-1080-54a9-89df-033f7cdf0afd",
+  "sourceKey": "us-house-members",
+  "sourceUrl": "https://www.house.gov/representatives",
+  "sourceMemberUrl": "https://gosar.house.gov/",
+  "sourceSnapshotSha256": "810e17d99b704ea3b2720a49433af0864653130511accb2f912aadef6b979aab",
+  "fetchedAt": "2026-07-16T01:40:58Z",
+  "extractionStatus": "extracted_unreviewed",
+  "recordKind": "person_officeholder",
+  "displayName": "Gosar, Paul",
+  "formerMemberName": null,
+  "officeTitle": "United States Representative",
+  "governmentLevel": "federal",
+  "branch": "legislative",
+  "chamber": "house",
+  "jurisdictionName": "United States",
+  "stateName": "Arizona",
+  "stateCode": "AZ",
+  "districtLabel": "9th",
+  "districtNumber": "9",
+  "partyCode": "R",
+  "partyName": "Republican",
+  "officeRoom": "2057 RHOB",
+  "phone": "(202) 225-2315",
+  "committeeAssignments": [
+    "Oversight and Government Reform",
+    "Natural Resources"
+  ],
+  "canonicalMatchStatus": "unmatched",
+  "refreshClass": "term_based",
+  "rawRowText": "9th Gosar, Paul R 2057 RHOB (202) 225-2315 Oversight and Government Reform|Natural Resources"
+}

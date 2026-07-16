@@ -1,0 +1,33 @@
+{
+  "candidateRecordVersion": "1.0.0",
+  "stagingRecordId": "f6211e6d-8d1a-5086-b7bb-c84827074fbb",
+  "sourceKey": "us-house-members",
+  "sourceUrl": "https://www.house.gov/representatives",
+  "sourceMemberUrl": "https://omar.house.gov/",
+  "sourceSnapshotSha256": "810e17d99b704ea3b2720a49433af0864653130511accb2f912aadef6b979aab",
+  "fetchedAt": "2026-07-16T01:40:58Z",
+  "extractionStatus": "extracted_unreviewed",
+  "recordKind": "person_officeholder",
+  "displayName": "Omar, Ilhan",
+  "formerMemberName": null,
+  "officeTitle": "United States Representative",
+  "governmentLevel": "federal",
+  "branch": "legislative",
+  "chamber": "house",
+  "jurisdictionName": "United States",
+  "stateName": "Minnesota",
+  "stateCode": "MN",
+  "districtLabel": "5th",
+  "districtNumber": "5",
+  "partyCode": "D",
+  "partyName": "Democratic",
+  "officeRoom": "1730 LHOB",
+  "phone": "(202) 225-4755",
+  "committeeAssignments": [
+    "Budget",
+    "Education and Workforce"
+  ],
+  "canonicalMatchStatus": "unmatched",
+  "refreshClass": "term_based",
+  "rawRowText": "5th Omar, Ilhan D 1730 LHOB (202) 225-4755 Budget|Education and Workforce"
+}

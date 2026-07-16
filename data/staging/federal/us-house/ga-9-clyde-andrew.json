@@ -1,0 +1,33 @@
+{
+  "candidateRecordVersion": "1.0.0",
+  "stagingRecordId": "832b40c4-1a3f-53c7-a270-b791dc76b36f",
+  "sourceKey": "us-house-members",
+  "sourceUrl": "https://www.house.gov/representatives",
+  "sourceMemberUrl": "https://clyde.house.gov",
+  "sourceSnapshotSha256": "810e17d99b704ea3b2720a49433af0864653130511accb2f912aadef6b979aab",
+  "fetchedAt": "2026-07-16T01:40:58Z",
+  "extractionStatus": "extracted_unreviewed",
+  "recordKind": "person_officeholder",
+  "displayName": "Clyde, Andrew",
+  "formerMemberName": null,
+  "officeTitle": "United States Representative",
+  "governmentLevel": "federal",
+  "branch": "legislative",
+  "chamber": "house",
+  "jurisdictionName": "United States",
+  "stateName": "Georgia",
+  "stateCode": "GA",
+  "districtLabel": "9th",
+  "districtNumber": "9",
+  "partyCode": "R",
+  "partyName": "Republican",
+  "officeRoom": "445 CHOB",
+  "phone": "(202) 225-9893",
+  "committeeAssignments": [
+    "Appropriations",
+    "Budget"
+  ],
+  "canonicalMatchStatus": "unmatched",
+  "refreshClass": "term_based",
+  "rawRowText": "9th Clyde, Andrew R 445 CHOB (202) 225-9893 Appropriations|Budget"
+}

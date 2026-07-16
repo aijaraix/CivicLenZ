@@ -1,0 +1,33 @@
+{
+  "candidateRecordVersion": "1.0.0",
+  "stagingRecordId": "5ec1df59-b54f-5a70-8c9f-ac13cb5c25c7",
+  "sourceKey": "us-house-members",
+  "sourceUrl": "https://www.house.gov/representatives",
+  "sourceMemberUrl": "https://lalota.house.gov",
+  "sourceSnapshotSha256": "810e17d99b704ea3b2720a49433af0864653130511accb2f912aadef6b979aab",
+  "fetchedAt": "2026-07-16T01:40:58Z",
+  "extractionStatus": "extracted_unreviewed",
+  "recordKind": "person_officeholder",
+  "displayName": "LaLota, Nick",
+  "formerMemberName": null,
+  "officeTitle": "United States Representative",
+  "governmentLevel": "federal",
+  "branch": "legislative",
+  "chamber": "house",
+  "jurisdictionName": "United States",
+  "stateName": "New York",
+  "stateCode": "NY",
+  "districtLabel": "1st",
+  "districtNumber": "1",
+  "partyCode": "R",
+  "partyName": "Republican",
+  "officeRoom": "122 CHOB",
+  "phone": "(202) 225-3826",
+  "committeeAssignments": [
+    "Appropriations",
+    "Homeland Security"
+  ],
+  "canonicalMatchStatus": "unmatched",
+  "refreshClass": "term_based",
+  "rawRowText": "1st LaLota, Nick R 122 CHOB (202) 225-3826 Appropriations|Homeland Security"
+}

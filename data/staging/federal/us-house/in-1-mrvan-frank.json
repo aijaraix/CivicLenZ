@@ -1,0 +1,32 @@
+{
+  "candidateRecordVersion": "1.0.0",
+  "stagingRecordId": "813f83f0-27ff-54dc-ab88-eedfa62775b7",
+  "sourceKey": "us-house-members",
+  "sourceUrl": "https://www.house.gov/representatives",
+  "sourceMemberUrl": "https://mrvan.house.gov",
+  "sourceSnapshotSha256": "810e17d99b704ea3b2720a49433af0864653130511accb2f912aadef6b979aab",
+  "fetchedAt": "2026-07-16T01:40:58Z",
+  "extractionStatus": "extracted_unreviewed",
+  "recordKind": "person_officeholder",
+  "displayName": "Mrvan, Frank",
+  "formerMemberName": null,
+  "officeTitle": "United States Representative",
+  "governmentLevel": "federal",
+  "branch": "legislative",
+  "chamber": "house",
+  "jurisdictionName": "United States",
+  "stateName": "Indiana",
+  "stateCode": "IN",
+  "districtLabel": "1st",
+  "districtNumber": "1",
+  "partyCode": "D",
+  "partyName": "Democratic",
+  "officeRoom": "2441 RHOB",
+  "phone": "(202) 225-2461",
+  "committeeAssignments": [
+    "Appropriations"
+  ],
+  "canonicalMatchStatus": "unmatched",
+  "refreshClass": "term_based",
+  "rawRowText": "1st Mrvan, Frank D 2441 RHOB (202) 225-2461 Appropriations"
+}

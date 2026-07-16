@@ -1,0 +1,33 @@
+{
+  "candidateRecordVersion": "1.0.0",
+  "stagingRecordId": "6bf6f764-9f3b-5351-97e7-f4f180bf933a",
+  "sourceKey": "us-house-members",
+  "sourceUrl": "https://www.house.gov/representatives",
+  "sourceMemberUrl": "https://mills.house.gov",
+  "sourceSnapshotSha256": "810e17d99b704ea3b2720a49433af0864653130511accb2f912aadef6b979aab",
+  "fetchedAt": "2026-07-16T01:40:58Z",
+  "extractionStatus": "extracted_unreviewed",
+  "recordKind": "person_officeholder",
+  "displayName": "Mills, Cory",
+  "formerMemberName": null,
+  "officeTitle": "United States Representative",
+  "governmentLevel": "federal",
+  "branch": "legislative",
+  "chamber": "house",
+  "jurisdictionName": "United States",
+  "stateName": "Florida",
+  "stateCode": "FL",
+  "districtLabel": "7th",
+  "districtNumber": "7",
+  "partyCode": "R",
+  "partyName": "Republican",
+  "officeRoom": "346 CHOB",
+  "phone": "(202) 225-4035",
+  "committeeAssignments": [
+    "Armed Services",
+    "Foreign Affairs"
+  ],
+  "canonicalMatchStatus": "unmatched",
+  "refreshClass": "term_based",
+  "rawRowText": "7th Mills, Cory R 346 CHOB (202) 225-4035 Armed Services|Foreign Affairs"
+}

@@ -1,0 +1,33 @@
+{
+  "candidateRecordVersion": "1.0.0",
+  "stagingRecordId": "4c1761b3-8178-54e8-889a-8e8cd6a161f2",
+  "sourceKey": "us-house-members",
+  "sourceUrl": "https://www.house.gov/representatives",
+  "sourceMemberUrl": "https://pou.house.gov/",
+  "sourceSnapshotSha256": "810e17d99b704ea3b2720a49433af0864653130511accb2f912aadef6b979aab",
+  "fetchedAt": "2026-07-16T01:40:58Z",
+  "extractionStatus": "extracted_unreviewed",
+  "recordKind": "person_officeholder",
+  "displayName": "Pou, Nellie",
+  "formerMemberName": null,
+  "officeTitle": "United States Representative",
+  "governmentLevel": "federal",
+  "branch": "legislative",
+  "chamber": "house",
+  "jurisdictionName": "United States",
+  "stateName": "New Jersey",
+  "stateCode": "NJ",
+  "districtLabel": "9th",
+  "districtNumber": "9",
+  "partyCode": "D",
+  "partyName": "Democratic",
+  "officeRoom": "1007 LHOB",
+  "phone": "(202) 225-5751",
+  "committeeAssignments": [
+    "Homeland Security",
+    "Transportation and Infrastructure"
+  ],
+  "canonicalMatchStatus": "unmatched",
+  "refreshClass": "term_based",
+  "rawRowText": "9th Pou, Nellie D 1007 LHOB (202) 225-5751 Homeland Security|Transportation and Infrastructure"
+}

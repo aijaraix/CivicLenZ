@@ -1,0 +1,32 @@
+{
+  "candidateRecordVersion": "1.0.0",
+  "stagingRecordId": "536daf1c-830d-5c8c-bd19-3ba8ced8942e",
+  "sourceKey": "us-house-members",
+  "sourceUrl": "https://www.house.gov/representatives",
+  "sourceMemberUrl": "https://delauro.house.gov/",
+  "sourceSnapshotSha256": "810e17d99b704ea3b2720a49433af0864653130511accb2f912aadef6b979aab",
+  "fetchedAt": "2026-07-16T01:40:58Z",
+  "extractionStatus": "extracted_unreviewed",
+  "recordKind": "person_officeholder",
+  "displayName": "DeLauro, Rosa",
+  "formerMemberName": null,
+  "officeTitle": "United States Representative",
+  "governmentLevel": "federal",
+  "branch": "legislative",
+  "chamber": "house",
+  "jurisdictionName": "United States",
+  "stateName": "Connecticut",
+  "stateCode": "CT",
+  "districtLabel": "3rd",
+  "districtNumber": "3",
+  "partyCode": "D",
+  "partyName": "Democratic",
+  "officeRoom": "2413 RHOB",
+  "phone": "(202) 225-3661",
+  "committeeAssignments": [
+    "Appropriations"
+  ],
+  "canonicalMatchStatus": "unmatched",
+  "refreshClass": "term_based",
+  "rawRowText": "3rd DeLauro, Rosa D 2413 RHOB (202) 225-3661 Appropriations"
+}

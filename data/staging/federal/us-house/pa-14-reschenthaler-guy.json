@@ -1,0 +1,32 @@
+{
+  "candidateRecordVersion": "1.0.0",
+  "stagingRecordId": "c0e9624f-7031-52dd-9720-8516440e517a",
+  "sourceKey": "us-house-members",
+  "sourceUrl": "https://www.house.gov/representatives",
+  "sourceMemberUrl": "https://reschenthaler.house.gov/",
+  "sourceSnapshotSha256": "810e17d99b704ea3b2720a49433af0864653130511accb2f912aadef6b979aab",
+  "fetchedAt": "2026-07-16T01:40:58Z",
+  "extractionStatus": "extracted_unreviewed",
+  "recordKind": "person_officeholder",
+  "displayName": "Reschenthaler, Guy",
+  "formerMemberName": null,
+  "officeTitle": "United States Representative",
+  "governmentLevel": "federal",
+  "branch": "legislative",
+  "chamber": "house",
+  "jurisdictionName": "United States",
+  "stateName": "Pennsylvania",
+  "stateCode": "PA",
+  "districtLabel": "14th",
+  "districtNumber": "14",
+  "partyCode": "R",
+  "partyName": "Republican",
+  "officeRoom": "2209 RHOB",
+  "phone": "(202) 225-2065",
+  "committeeAssignments": [
+    "Appropriations"
+  ],
+  "canonicalMatchStatus": "unmatched",
+  "refreshClass": "term_based",
+  "rawRowText": "14th Reschenthaler, Guy R 2209 RHOB (202) 225-2065 Appropriations"
+}

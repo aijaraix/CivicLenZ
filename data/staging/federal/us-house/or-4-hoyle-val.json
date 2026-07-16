@@ -1,0 +1,33 @@
+{
+  "candidateRecordVersion": "1.0.0",
+  "stagingRecordId": "157fe7f3-0c9c-54e2-9ead-99c461972963",
+  "sourceKey": "us-house-members",
+  "sourceUrl": "https://www.house.gov/representatives",
+  "sourceMemberUrl": "https://hoyle.house.gov",
+  "sourceSnapshotSha256": "810e17d99b704ea3b2720a49433af0864653130511accb2f912aadef6b979aab",
+  "fetchedAt": "2026-07-16T01:40:58Z",
+  "extractionStatus": "extracted_unreviewed",
+  "recordKind": "person_officeholder",
+  "displayName": "Hoyle, Val",
+  "formerMemberName": null,
+  "officeTitle": "United States Representative",
+  "governmentLevel": "federal",
+  "branch": "legislative",
+  "chamber": "house",
+  "jurisdictionName": "United States",
+  "stateName": "Oregon",
+  "stateCode": "OR",
+  "districtLabel": "4th",
+  "districtNumber": "4",
+  "partyCode": "D",
+  "partyName": "Democratic",
+  "officeRoom": "1620 LHOB",
+  "phone": "(202) 225-6416",
+  "committeeAssignments": [
+    "Natural Resources",
+    "Transportation and Infrastructure"
+  ],
+  "canonicalMatchStatus": "unmatched",
+  "refreshClass": "term_based",
+  "rawRowText": "4th Hoyle, Val D 1620 LHOB (202) 225-6416 Natural Resources|Transportation and Infrastructure"
+}

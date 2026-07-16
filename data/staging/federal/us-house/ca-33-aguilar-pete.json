@@ -1,0 +1,32 @@
+{
+  "candidateRecordVersion": "1.0.0",
+  "stagingRecordId": "14586f6a-a264-5f5f-8bdf-c6994f29475f",
+  "sourceKey": "us-house-members",
+  "sourceUrl": "https://www.house.gov/representatives",
+  "sourceMemberUrl": "https://aguilar.house.gov/",
+  "sourceSnapshotSha256": "810e17d99b704ea3b2720a49433af0864653130511accb2f912aadef6b979aab",
+  "fetchedAt": "2026-07-16T01:40:58Z",
+  "extractionStatus": "extracted_unreviewed",
+  "recordKind": "person_officeholder",
+  "displayName": "Aguilar, Pete",
+  "formerMemberName": null,
+  "officeTitle": "United States Representative",
+  "governmentLevel": "federal",
+  "branch": "legislative",
+  "chamber": "house",
+  "jurisdictionName": "United States",
+  "stateName": "California",
+  "stateCode": "CA",
+  "districtLabel": "33rd",
+  "districtNumber": "33",
+  "partyCode": "D",
+  "partyName": "Democratic",
+  "officeRoom": "108 CHOB",
+  "phone": "(202) 225-3201",
+  "committeeAssignments": [
+    "Appropriations"
+  ],
+  "canonicalMatchStatus": "unmatched",
+  "refreshClass": "term_based",
+  "rawRowText": "33rd Aguilar, Pete D 108 CHOB (202) 225-3201 Appropriations"
+}

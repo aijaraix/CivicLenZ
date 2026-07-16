@@ -1,0 +1,33 @@
+{
+  "candidateRecordVersion": "1.0.0",
+  "stagingRecordId": "06c639dd-b146-50c3-b9fa-3322517e63e3",
+  "sourceKey": "us-house-members",
+  "sourceUrl": "https://www.house.gov/representatives",
+  "sourceMemberUrl": "https://pingree.house.gov/",
+  "sourceSnapshotSha256": "810e17d99b704ea3b2720a49433af0864653130511accb2f912aadef6b979aab",
+  "fetchedAt": "2026-07-16T01:40:58Z",
+  "extractionStatus": "extracted_unreviewed",
+  "recordKind": "person_officeholder",
+  "displayName": "Pingree, Chellie",
+  "formerMemberName": null,
+  "officeTitle": "United States Representative",
+  "governmentLevel": "federal",
+  "branch": "legislative",
+  "chamber": "house",
+  "jurisdictionName": "United States",
+  "stateName": "Maine",
+  "stateCode": "ME",
+  "districtLabel": "1st",
+  "districtNumber": "1",
+  "partyCode": "D",
+  "partyName": "Democratic",
+  "officeRoom": "2354 RHOB",
+  "phone": "(202) 225-6116",
+  "committeeAssignments": [
+    "Agriculture",
+    "Appropriations"
+  ],
+  "canonicalMatchStatus": "unmatched",
+  "refreshClass": "term_based",
+  "rawRowText": "1st Pingree, Chellie D 2354 RHOB (202) 225-6116 Agriculture|Appropriations"
+}

@@ -1,0 +1,33 @@
+{
+  "candidateRecordVersion": "1.0.0",
+  "stagingRecordId": "d2c8d123-5271-51ee-ac78-0b88f2f014ef",
+  "sourceKey": "us-house-members",
+  "sourceUrl": "https://www.house.gov/representatives",
+  "sourceMemberUrl": "https://balint.house.gov",
+  "sourceSnapshotSha256": "810e17d99b704ea3b2720a49433af0864653130511accb2f912aadef6b979aab",
+  "fetchedAt": "2026-07-16T01:40:58Z",
+  "extractionStatus": "extracted_unreviewed",
+  "recordKind": "person_officeholder",
+  "displayName": "Balint, Becca",
+  "formerMemberName": null,
+  "officeTitle": "United States Representative",
+  "governmentLevel": "federal",
+  "branch": "legislative",
+  "chamber": "house",
+  "jurisdictionName": "United States",
+  "stateName": "Vermont",
+  "stateCode": "VT",
+  "districtLabel": "At Large",
+  "districtNumber": "AL",
+  "partyCode": "D",
+  "partyName": "Democratic",
+  "officeRoom": "1510 LHOB",
+  "phone": "(202) 225-4115",
+  "committeeAssignments": [
+    "Budget",
+    "Judiciary"
+  ],
+  "canonicalMatchStatus": "unmatched",
+  "refreshClass": "term_based",
+  "rawRowText": "At Large Balint, Becca D 1510 LHOB (202) 225-4115 Budget|Judiciary"
+}

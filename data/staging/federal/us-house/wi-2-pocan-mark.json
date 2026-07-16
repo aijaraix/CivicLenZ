@@ -1,0 +1,33 @@
+{
+  "candidateRecordVersion": "1.0.0",
+  "stagingRecordId": "5903a8d4-af6f-5fe7-a7c6-10e517a10fd9",
+  "sourceKey": "us-house-members",
+  "sourceUrl": "https://www.house.gov/representatives",
+  "sourceMemberUrl": "https://pocan.house.gov",
+  "sourceSnapshotSha256": "810e17d99b704ea3b2720a49433af0864653130511accb2f912aadef6b979aab",
+  "fetchedAt": "2026-07-16T01:40:58Z",
+  "extractionStatus": "extracted_unreviewed",
+  "recordKind": "person_officeholder",
+  "displayName": "Pocan, Mark",
+  "formerMemberName": null,
+  "officeTitle": "United States Representative",
+  "governmentLevel": "federal",
+  "branch": "legislative",
+  "chamber": "house",
+  "jurisdictionName": "United States",
+  "stateName": "Wisconsin",
+  "stateCode": "WI",
+  "districtLabel": "2nd",
+  "districtNumber": "2",
+  "partyCode": "D",
+  "partyName": "Democratic",
+  "officeRoom": "1026 LHOB",
+  "phone": "(202) 225-2906",
+  "committeeAssignments": [
+    "Appropriations",
+    "Foreign Affairs"
+  ],
+  "canonicalMatchStatus": "unmatched",
+  "refreshClass": "term_based",
+  "rawRowText": "2nd Pocan, Mark D 1026 LHOB (202) 225-2906 Appropriations|Foreign Affairs"
+}

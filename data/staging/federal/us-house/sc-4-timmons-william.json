@@ -1,0 +1,33 @@
+{
+  "candidateRecordVersion": "1.0.0",
+  "stagingRecordId": "cb731ec7-4c53-52cf-b0f0-3ac8525a245e",
+  "sourceKey": "us-house-members",
+  "sourceUrl": "https://www.house.gov/representatives",
+  "sourceMemberUrl": "https://timmons.house.gov/",
+  "sourceSnapshotSha256": "810e17d99b704ea3b2720a49433af0864653130511accb2f912aadef6b979aab",
+  "fetchedAt": "2026-07-16T01:40:58Z",
+  "extractionStatus": "extracted_unreviewed",
+  "recordKind": "person_officeholder",
+  "displayName": "Timmons, William",
+  "formerMemberName": null,
+  "officeTitle": "United States Representative",
+  "governmentLevel": "federal",
+  "branch": "legislative",
+  "chamber": "house",
+  "jurisdictionName": "United States",
+  "stateName": "South Carolina",
+  "stateCode": "SC",
+  "districtLabel": "4th",
+  "districtNumber": "4",
+  "partyCode": "R",
+  "partyName": "Republican",
+  "officeRoom": "267 CHOB",
+  "phone": "(202) 225-6030",
+  "committeeAssignments": [
+    "Financial Services",
+    "Oversight and Government Reform"
+  ],
+  "canonicalMatchStatus": "unmatched",
+  "refreshClass": "term_based",
+  "rawRowText": "4th Timmons, William R 267 CHOB (202) 225-6030 Financial Services|Oversight and Government Reform"
+}

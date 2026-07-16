@@ -1,0 +1,33 @@
+{
+  "candidateRecordVersion": "1.0.0",
+  "stagingRecordId": "0c29db38-1c9c-5629-8be3-ae87111068c8",
+  "sourceKey": "us-house-members",
+  "sourceUrl": "https://www.house.gov/representatives",
+  "sourceMemberUrl": "https://rulli.house.gov",
+  "sourceSnapshotSha256": "810e17d99b704ea3b2720a49433af0864653130511accb2f912aadef6b979aab",
+  "fetchedAt": "2026-07-16T01:40:58Z",
+  "extractionStatus": "extracted_unreviewed",
+  "recordKind": "person_officeholder",
+  "displayName": "Rulli, Michael A.",
+  "formerMemberName": null,
+  "officeTitle": "United States Representative",
+  "governmentLevel": "federal",
+  "branch": "legislative",
+  "chamber": "house",
+  "jurisdictionName": "United States",
+  "stateName": "Ohio",
+  "stateCode": "OH",
+  "districtLabel": "6th",
+  "districtNumber": "6",
+  "partyCode": "R",
+  "partyName": "Republican",
+  "officeRoom": "421 CHOB",
+  "phone": "(202) 225-5705",
+  "committeeAssignments": [
+    "Education and Workforce",
+    "Energy and Commerce"
+  ],
+  "canonicalMatchStatus": "unmatched",
+  "refreshClass": "term_based",
+  "rawRowText": "6th Rulli, Michael A. R 421 CHOB (202) 225-5705 Education and Workforce|Energy and Commerce"
+}
