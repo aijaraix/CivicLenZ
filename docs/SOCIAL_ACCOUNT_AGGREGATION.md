@@ -56,3 +56,21 @@ Profiles group accounts by role—Office, Official, Campaign, or Personal public
 ## Correction path
 
 An office, campaign, or member may submit a correction with a direct official source. CivicLenZ preserves the existing record, review decision, and material change history.
+
+
+## Florida source-listing collection
+
+The unified collector extends this policy to the Florida House and Senate people already in protected staging:
+
+```bash
+# Inspect the target list without making web requests or writing files.
+python workers/ingestion/collect_public_channel_candidates.py --dry-run
+
+# Collect review-only candidates from official Florida member pages.
+python workers/ingestion/collect_public_channel_candidates.py
+
+# Include already-published canonical profiles as well.
+python workers/ingestion/collect_public_channel_candidates.py --include-canonical
+```
+
+It stores candidate contacts, public social links, and source-page image candidates in `data/staging/public-channels/`. Each output retains the government source URL, snapshot hash, retrieval time, and linked source record. It does **not** make an account, phone number, email, or image public. A reviewer must connect it to the correct officeholder and apply the rules above first.
