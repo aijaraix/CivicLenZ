@@ -1,0 +1,81 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://civicslenz.com/schemas/elected-seat.schema.json",
+  "title": "CivicLenZ Elected Seat",
+  "description": "Persistent elected-seat identity. The seat survives changes in the person occupying it; each occupant is attached through a separate office term.",
+  "type": "object",
+  "required": [
+    "schemaVersion",
+    "seatId",
+    "seatName",
+    "officeType",
+    "governmentLevel",
+    "jurisdictionId",
+    "occupancyStatus",
+    "currentTermId",
+    "monitoring"
+  ],
+  "properties": {
+    "schemaVersion": {"type": "string", "const": "1.0.0"},
+    "seatId": {"type": "string", "format": "uuid"},
+    "seatKey": {"type": "string", "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$"},
+    "seatName": {"type": "string", "minLength": 1},
+    "officeType": {"type": "string", "minLength": 1},
+    "governmentLevel": {
+      "type": "string",
+      "enum": ["municipal", "county", "regional", "special_district", "school_district", "state", "territorial", "federal", "tribal", "judicial", "other"]
+    },
+    "branch": {"type": ["string", "null"], "enum": ["executive", "legislative", "judicial", "administrative", "other", null]},
+    "chamber": {"type": ["string", "null"]},
+    "jurisdictionId": {"type": "string", "format": "uuid"},
+    "jurisdictionName": {"type": "string"},
+    "stateCode": {"type": ["string", "null"], "pattern": "^[A-Z]{2}$"},
+    "districtName": {"type": ["string", "null"]},
+    "districtNumber": {"type": ["string", "null"]},
+    "seatAtLarge": {"type": ["boolean", "null"]},
+    "authoritySummary": {"type": ["string", "null"]},
+    "responsibilities": {"type": "array", "items": {"type": "string"}},
+    "eligibilityRequirements": {"type": "array", "items": {"type": "string"}},
+    "termLengthMonths": {"type": ["integer", "null"], "minimum": 1},
+    "termLimitSummary": {"type": ["string", "null"]},
+    "compensationSummary": {"type": ["string", "null"]},
+    "successionMethod": {"type": ["string", "null"]},
+    "vacancyFillingMethod": {"type": ["string", "null"]},
+    "electionMethod": {"type": ["string", "null"]},
+    "partisanOffice": {"type": ["boolean", "null"]},
+    "nextElectionDate": {"type": ["string", "null"], "format": "date"},
+    "occupancyStatus": {"type": "string", "enum": ["occupied", "vacant", "acting", "disputed", "abolished", "unknown"]},
+    "currentTermId": {"type": ["string", "null"], "format": "uuid"},
+    "currentPersonId": {"type": ["string", "null"], "format": "uuid"},
+    "termHistoryIds": {"type": "array", "items": {"type": "string", "format": "uuid"}, "uniqueItems": true},
+    "boundary": {
+      "type": "object",
+      "properties": {
+        "version": {"type": ["string", "null"]},
+        "effectiveDate": {"type": ["string", "null"], "format": "date"},
+        "mapUrl": {"type": ["string", "null"], "format": "uri"},
+        "geojsonAssetId": {"type": ["string", "null"]},
+        "populationRepresented": {"type": ["integer", "null"], "minimum": 0}
+      },
+      "additionalProperties": false
+    },
+    "sourceUrls": {"type": "array", "items": {"type": "string", "format": "uri"}},
+    "evidenceIds": {"type": "array", "items": {"type": "string", "format": "uuid"}, "uniqueItems": true},
+    "monitoring": {
+      "type": "object",
+      "required": ["active", "occupancyCheckClass", "lastCheckedAt"],
+      "properties": {
+        "active": {"type": "boolean"},
+        "occupancyCheckClass": {"type": "string", "enum": ["hourly", "daily", "weekly", "event_driven", "manual"]},
+        "lastCheckedAt": {"type": ["string", "null"], "format": "date-time"},
+        "lastChangedAt": {"type": ["string", "null"], "format": "date-time"},
+        "nextScheduledCheckAt": {"type": ["string", "null"], "format": "date-time"},
+        "changeReason": {"type": ["string", "null"]}
+      },
+      "additionalProperties": false
+    },
+    "createdAt": {"type": "string", "format": "date-time"},
+    "lastUpdatedAt": {"type": "string", "format": "date-time"}
+  },
+  "additionalProperties": false
+}
