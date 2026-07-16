@@ -3,9 +3,20 @@ import Link from 'next/link';
 import './globals.css';
 
 export const metadata: Metadata = {
-  title: 'CivicLenZ — Know Your Representatives',
+  metadataBase: new URL('https://civicslenz.com'),
+  title: {
+    default: 'CivicLenZ — Know Your Representatives',
+    template: '%s | CivicLenZ',
+  },
   description:
-    'Evidence-first profiles, records, promises, finances, and civic activity for elected officials.',
+    'A clearer, source-led way to understand the people and public decisions shaping your community.',
+  openGraph: {
+    title: 'CivicLenZ — See the public record clearly',
+    description:
+      'Understand elected officials, public decisions, promises, and evidence without the noise.',
+    type: 'website',
+    url: '/',
+  },
 };
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
@@ -15,24 +26,30 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
         <header className="site-header">
           <div className="shell nav-shell">
             <Link className="brand" href="/" aria-label="CivicLenZ home">
-              CivicLenZ
+              <span className="brand-mark" aria-hidden="true">C</span>
+              <span>CivicLenZ</span>
             </Link>
             <nav className="desktop-nav" aria-label="Main navigation">
               <Link href="/">Home</Link>
               <Link href="/officials/">Find Officials</Link>
-              <a href="#coming-soon">Petitions</a>
-              <a href="#coming-soon">Map</a>
-              <a href="#coming-soon">Blog</a>
-              <a href="#coming-soon">Take Action</a>
-              <a href="#about">About</a>
+              <a href="/#what-you-can-do">How it works</a>
+              <a href="/#trust">Our standards</a>
+              <a href="/#florida">Florida first</a>
             </nav>
             <div className="nav-actions">
-              <button className="button button-primary" type="button">
-                Login
-              </button>
-              <button className="menu-button" type="button" aria-label="Open navigation menu">
-                ☰
-              </button>
+              <Link className="button button-primary nav-cta" href="/officials/">
+                Explore Florida
+              </Link>
+              <details className="mobile-menu">
+                <summary aria-label="Open navigation menu">Menu <span aria-hidden="true">☰</span></summary>
+                <nav aria-label="Mobile navigation">
+                  <Link href="/">Home</Link>
+                  <Link href="/officials/">Find Officials</Link>
+                  <a href="/#what-you-can-do">How it works</a>
+                  <a href="/#trust">Our standards</a>
+                  <a href="/#florida">Florida first</a>
+                </nav>
+              </details>
             </div>
           </div>
         </header>
@@ -41,19 +58,19 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
           <div className="shell footer-grid">
             <section>
               <strong className="footer-brand">CivicLenZ</strong>
-              <p>Transparent, sourced civic information built for citizens.</p>
+              <p>A clearer, source-led way to stay close to public life.</p>
             </section>
             <section>
-              <strong>Product</strong>
-              <Link href="/officials/">Find Officials</Link>
-              <span>Representative Lookup</span>
-              <span>Promise Tracker</span>
+              <strong>Explore</strong>
+              <Link href="/officials/">Florida officials</Link>
+              <span>Address lookup — coming next</span>
+              <span>Promise tracking — in development</span>
             </section>
             <section>
-              <strong>Trust</strong>
-              <span>Source Policy</span>
-              <span>Scoring Methodology</span>
-              <span>Corrections</span>
+              <strong>Our standards</strong>
+              <span>Sources stay attached</span>
+              <span>Uncertainty stays visible</span>
+              <span>Corrections stay public</span>
             </section>
           </div>
         </footer>
