@@ -217,7 +217,7 @@ function SourceListedProfile({ official }: { official: SourceListedOfficial }) {
           </p>
           <div className="profile-action-row">
             <a className="button button-primary" href={official.sourceUrl} rel="noreferrer" target="_blank">Open government source ↗</a>
-            <a className="text-link" href={official.sourceDirectoryUrl} rel="noreferrer" target="_blank">View the Senate directory ↗</a>
+            <a className="text-link" href={official.sourceDirectoryUrl} rel="noreferrer" target="_blank">View the official directory ↗</a>
           </div>
         </section>
 
