@@ -10,8 +10,11 @@ on:
       - 'workers/ingestion/common.py'
       - 'workers/ingestion/collect_florida_senate.py'
       - 'workers/ingestion/collect_florida_house.py'
+      - 'workers/ingestion/collect_florida_statewide_executive.py'
       - 'workers/ingestion/run_baseline_collectors.py'
       - 'data/sources/collector-manifest.json'
+      - 'data/sources/source-registry.json'
+      - 'data/sources/florida-county-source-registry.json'
       - '.github/workflows/collect-florida-senate.yml'
 
 concurrency:
@@ -53,19 +56,24 @@ jobs:
         run: |
           senate=$(find data/staging/florida/state-senate -name '*.json' -type f | wc -l | tr -d ' ')
           house=$(find data/staging/florida/state-house -name '*.json' -type f | wc -l | tr -d ' ')
-          total=$((senate + house))
+          statewide=$(find data/staging/florida/statewide-executive -name '*.json' -type f | wc -l | tr -d ' ')
+          total=$((senate + house + statewide))
           echo "senate=$senate" >> "$GITHUB_OUTPUT"
           echo "house=$house" >> "$GITHUB_OUTPUT"
+          echo "statewide=$statewide" >> "$GITHUB_OUTPUT"
           echo "total=$total" >> "$GITHUB_OUTPUT"
           {
             echo "### Florida baseline aggregation"
             echo "- Florida senators: **$senate**"
             echo "- Florida House seats/officeholders: **$house**"
-            echo "- Total Florida legislative staging records: **$total**"
-            echo "- Publication state: **review-only staging**"
+            echo "- Other statewide elected executive officers: **$statewide**"
+            echo "- Total Florida state-government staging records: **$total**"
+            echo "- County source-registry work queue: **67 counties**"
+            echo "- Publication state: **official-source baseline pending review**"
           } >> "$GITHUB_STEP_SUMMARY"
           test "$senate" -ge 30
           test "$house" -ge 115
+          test "$statewide" -eq 3
 
       - name: Upload Florida staging snapshot
         uses: actions/upload-artifact@v4
@@ -109,8 +117,8 @@ jobs:
             if gh pr create \
               --base main \
               --head "$BRANCH" \
-              --title "Data review: Florida legislative baseline" \
-              --body "Automated aggregation of ${{ steps.summary.outputs.total }} review-only Florida Senate and House baseline records from official legislative directories. These records must be normalized and promoted before public publication."; then
+              --title "Data review: Florida state-government baseline" \
+              --body "Automated aggregation of ${{ steps.summary.outputs.total }} review-only Florida Senate, House, and statewide executive baseline records from official government sources. These records must be normalized and enriched before sensitive analysis or civic scores are published."; then
               echo "Created Florida data-review pull request."
             else
               echo "Florida staging data was saved, but repository settings blocked workflow-created pull requests."

@@ -1,5 +1,5 @@
 {
-  "manifestVersion": "1.0.0",
+  "manifestVersion": "1.1.0",
   "collectionStrategy": "aggregation_first",
   "collectors": [
     {
@@ -60,6 +60,18 @@
       "outputDirectory": "data/staging/florida/state-house",
       "expectedMinimum": 115,
       "expectedMaximum": 120,
+      "refreshClass": "term_based"
+    },
+    {
+      "collectorKey": "florida-statewide-executive-baseline",
+      "sourceKey": "florida-statewide-executive",
+      "group": "florida",
+      "phase": "baseline",
+      "enabled": true,
+      "command": ["-m", "workers.ingestion.collect_florida_statewide_executive"],
+      "outputDirectory": "data/staging/florida/statewide-executive",
+      "expectedMinimum": 3,
+      "expectedMaximum": 3,
       "refreshClass": "term_based"
     }
   ]
