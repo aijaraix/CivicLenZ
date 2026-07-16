@@ -4,7 +4,7 @@ name: CivicLenZ collection heartbeat
 # The daily collector remains the only workflow that contacts official directories.
 on:
   schedule:
-    - cron: '15 * * * *'
+    - cron: '7,22,37,52 * * * *'
   workflow_dispatch:
   push:
     branches:
@@ -12,6 +12,8 @@ on:
       - 'agent/**'
     paths:
       - 'workers/operations/collection_health.py'
+      - 'scripts/validate_florida_work_allocation.py'
+      - 'data/operations/florida-work-allocation.json'
       - 'workers/ingestion/**'
       - 'workers/enrichment/**'
       - 'data/sources/**'
@@ -50,6 +52,12 @@ jobs:
         uses: actions/setup-python@v5
         with:
           python-version: '3.12'
+
+      - name: Validate Florida work allocation
+        run: >-
+          python scripts/validate_florida_work_allocation.py
+          --markdown
+          >> "$GITHUB_STEP_SUMMARY"
 
       - name: Select the latest Florida review snapshot
         id: snapshot
