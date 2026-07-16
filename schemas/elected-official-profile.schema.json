@@ -219,6 +219,12 @@
     },
     "publishedAt": {
       "$ref": "#/$defs/dateTimeOrNull"
+    },
+    "sourceReferences": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/sourceReference"
+      }
     }
   },
   "additionalProperties": false,
@@ -232,7 +238,10 @@
       "format": "date"
     },
     "dateOrNull": {
-      "type": ["string", "null"],
+      "type": [
+        "string",
+        "null"
+      ],
       "format": "date"
     },
     "dateTime": {
@@ -240,11 +249,17 @@
       "format": "date-time"
     },
     "dateTimeOrNull": {
-      "type": ["string", "null"],
+      "type": [
+        "string",
+        "null"
+      ],
       "format": "date-time"
     },
     "urlOrNull": {
-      "type": ["string", "null"],
+      "type": [
+        "string",
+        "null"
+      ],
       "format": "uri"
     },
     "dataState": {
@@ -261,55 +276,123 @@
     },
     "confidence": {
       "type": "string",
-      "enum": ["high", "medium", "low", "insufficient"]
+      "enum": [
+        "high",
+        "medium",
+        "low",
+        "insufficient"
+      ]
     },
     "evidenceReference": {
       "type": "object",
-      "required": ["evidenceId", "role"],
+      "required": [
+        "evidenceId",
+        "role"
+      ],
       "properties": {
         "evidenceId": {
           "$ref": "#/$defs/uuid"
         },
         "role": {
           "type": "string",
-          "enum": ["supports", "contradicts", "contextualizes", "official_response"]
+          "enum": [
+            "supports",
+            "contradicts",
+            "contextualizes",
+            "official_response"
+          ]
         }
       },
       "additionalProperties": false
     },
     "person": {
       "type": "object",
-      "required": ["displayName", "firstName", "lastName"],
+      "required": [
+        "displayName",
+        "firstName",
+        "lastName"
+      ],
       "properties": {
-        "fullLegalName": {"type": ["string", "null"]},
-        "displayName": {"type": "string", "minLength": 1},
-        "firstName": {"type": "string", "minLength": 1},
-        "middleName": {"type": ["string", "null"]},
-        "lastName": {"type": "string", "minLength": 1},
-        "suffix": {"type": ["string", "null"]},
-        "preferredName": {"type": ["string", "null"]},
+        "fullLegalName": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "displayName": {
+          "type": "string",
+          "minLength": 1
+        },
+        "firstName": {
+          "type": "string",
+          "minLength": 1
+        },
+        "middleName": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "lastName": {
+          "type": "string",
+          "minLength": 1
+        },
+        "suffix": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "preferredName": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
         "formerNames": {
           "type": "array",
-          "items": {"type": "string"},
+          "items": {
+            "type": "string"
+          },
           "uniqueItems": true
         },
         "aliases": {
           "type": "array",
-          "items": {"type": "string"},
+          "items": {
+            "type": "string"
+          },
           "uniqueItems": true
         },
-        "portraitUrl": {"$ref": "#/$defs/urlOrNull"},
-        "portraitSourceUrl": {"$ref": "#/$defs/urlOrNull"},
-        "portraitCredit": {"type": ["string", "null"]},
+        "portraitUrl": {
+          "$ref": "#/$defs/urlOrNull"
+        },
+        "portraitSourceUrl": {
+          "$ref": "#/$defs/urlOrNull"
+        },
+        "portraitCredit": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
         "externalIdentifiers": {
           "type": "array",
           "items": {
             "type": "object",
-            "required": ["system", "value"],
+            "required": [
+              "system",
+              "value"
+            ],
             "properties": {
-              "system": {"type": "string"},
-              "value": {"type": "string"},
-              "url": {"$ref": "#/$defs/urlOrNull"}
+              "system": {
+                "type": "string"
+              },
+              "value": {
+                "type": "string"
+              },
+              "url": {
+                "$ref": "#/$defs/urlOrNull"
+              }
             },
             "additionalProperties": false
           }
@@ -319,16 +402,49 @@
     },
     "office": {
       "type": "object",
-      "required": ["officeId", "title", "governmentLevel"],
+      "required": [
+        "officeId",
+        "title",
+        "governmentLevel"
+      ],
       "properties": {
-        "officeId": {"$ref": "#/$defs/uuid"},
-        "title": {"type": "string"},
-        "shortTitle": {"type": ["string", "null"]},
-        "normalizedTitle": {"type": ["string", "null"]},
-        "officeType": {"type": ["string", "null"]},
+        "officeId": {
+          "$ref": "#/$defs/uuid"
+        },
+        "title": {
+          "type": "string"
+        },
+        "shortTitle": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "normalizedTitle": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "officeType": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
         "branch": {
-          "type": ["string", "null"],
-          "enum": ["executive", "legislative", "judicial", "administrative", "other", null]
+          "type": [
+            "string",
+            "null"
+          ],
+          "enum": [
+            "executive",
+            "legislative",
+            "judicial",
+            "administrative",
+            "other",
+            null
+          ]
         },
         "governmentLevel": {
           "type": "string",
@@ -346,182 +462,499 @@
             "other"
           ]
         },
-        "seatName": {"type": ["string", "null"]},
-        "districtName": {"type": ["string", "null"]},
-        "districtNumber": {"type": ["string", "null"]},
-        "chamber": {"type": ["string", "null"]},
-        "leadershipTitle": {"type": ["string", "null"]},
-        "authoritySummary": {"type": ["string", "null"]},
+        "seatName": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "districtName": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "districtNumber": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "chamber": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "leadershipTitle": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "authoritySummary": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
         "responsibilities": {
           "type": "array",
-          "items": {"type": "string"}
+          "items": {
+            "type": "string"
+          }
         }
       },
       "additionalProperties": false
     },
     "jurisdiction": {
       "type": "object",
-      "required": ["jurisdictionId", "name", "type"],
+      "required": [
+        "jurisdictionId",
+        "name",
+        "type"
+      ],
       "properties": {
-        "jurisdictionId": {"$ref": "#/$defs/uuid"},
-        "name": {"type": "string"},
-        "type": {"type": "string"},
+        "jurisdictionId": {
+          "$ref": "#/$defs/uuid"
+        },
+        "name": {
+          "type": "string"
+        },
+        "type": {
+          "type": "string"
+        },
         "stateCode": {
-          "type": ["string", "null"],
+          "type": [
+            "string",
+            "null"
+          ],
           "pattern": "^[A-Z]{2}$"
         },
         "countyNames": {
           "type": "array",
-          "items": {"type": "string"}
+          "items": {
+            "type": "string"
+          }
         },
         "municipalityNames": {
           "type": "array",
-          "items": {"type": "string"}
+          "items": {
+            "type": "string"
+          }
         },
         "representedZipCodes": {
           "type": "array",
-          "items": {"type": "string", "pattern": "^[0-9]{5}(?:-[0-9]{4})?$"}
+          "items": {
+            "type": "string",
+            "pattern": "^[0-9]{5}(?:-[0-9]{4})?$"
+          }
         },
-        "boundaryVersion": {"type": ["string", "null"]},
-        "boundaryEffectiveDate": {"$ref": "#/$defs/dateOrNull"},
-        "mapUrl": {"$ref": "#/$defs/urlOrNull"},
-        "populationRepresented": {"type": ["integer", "null"], "minimum": 0}
+        "boundaryVersion": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "boundaryEffectiveDate": {
+          "$ref": "#/$defs/dateOrNull"
+        },
+        "mapUrl": {
+          "$ref": "#/$defs/urlOrNull"
+        },
+        "populationRepresented": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": 0
+        }
       },
       "additionalProperties": false
     },
     "term": {
       "type": "object",
       "properties": {
-        "officeTermId": {"$ref": "#/$defs/uuid"},
-        "startDate": {"$ref": "#/$defs/dateOrNull"},
-        "endDate": {"$ref": "#/$defs/dateOrNull"},
-        "assumedOfficeDate": {"$ref": "#/$defs/dateOrNull"},
-        "swornInDate": {"$ref": "#/$defs/dateOrNull"},
-        "termNumber": {"type": ["integer", "null"], "minimum": 1},
+        "officeTermId": {
+          "$ref": "#/$defs/uuid"
+        },
+        "startDate": {
+          "$ref": "#/$defs/dateOrNull"
+        },
+        "endDate": {
+          "$ref": "#/$defs/dateOrNull"
+        },
+        "assumedOfficeDate": {
+          "$ref": "#/$defs/dateOrNull"
+        },
+        "swornInDate": {
+          "$ref": "#/$defs/dateOrNull"
+        },
+        "termNumber": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": 1
+        },
         "electedOrAppointed": {
-          "type": ["string", "null"],
-          "enum": ["elected", "appointed", "succeeded", "acting", "other", null]
+          "type": [
+            "string",
+            "null"
+          ],
+          "enum": [
+            "elected",
+            "appointed",
+            "succeeded",
+            "acting",
+            "other",
+            null
+          ]
         },
         "currentStatus": {
-          "type": ["string", "null"],
-          "enum": ["current", "upcoming", "completed", "vacant", "disputed", null]
+          "type": [
+            "string",
+            "null"
+          ],
+          "enum": [
+            "current",
+            "upcoming",
+            "completed",
+            "vacant",
+            "disputed",
+            null
+          ]
         },
-        "termLimitStatus": {"type": ["string", "null"]}
+        "termLimitStatus": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
       },
       "additionalProperties": false
     },
     "party": {
       "type": "object",
       "properties": {
-        "partyId": {"$ref": "#/$defs/uuid"},
-        "name": {"type": "string"},
-        "partyAtElection": {"type": ["string", "null"]},
-        "caucus": {"type": ["string", "null"]}
+        "partyId": {
+          "$ref": "#/$defs/uuid"
+        },
+        "name": {
+          "type": "string"
+        },
+        "partyAtElection": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "caucus": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
       },
       "additionalProperties": false
     },
     "contactPoint": {
       "type": "object",
-      "required": ["type", "value"],
+      "required": [
+        "type",
+        "value"
+      ],
       "properties": {
         "type": {
           "type": "string",
-          "enum": ["email", "phone", "fax", "text", "contact_form", "public_records", "appointment", "other"]
+          "enum": [
+            "email",
+            "phone",
+            "fax",
+            "text",
+            "contact_form",
+            "public_records",
+            "appointment",
+            "other"
+          ]
         },
-        "label": {"type": ["string", "null"]},
-        "value": {"type": "string"},
-        "officialUse": {"type": ["boolean", "null"]},
-        "verifiedAt": {"$ref": "#/$defs/dateTimeOrNull"},
-        "dataState": {"$ref": "#/$defs/dataState"},
+        "label": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "value": {
+          "type": "string"
+        },
+        "officialUse": {
+          "type": [
+            "boolean",
+            "null"
+          ]
+        },
+        "verifiedAt": {
+          "$ref": "#/$defs/dateTimeOrNull"
+        },
+        "dataState": {
+          "$ref": "#/$defs/dataState"
+        },
         "evidenceIds": {
           "type": "array",
-          "items": {"$ref": "#/$defs/uuid"}
+          "items": {
+            "$ref": "#/$defs/uuid"
+          }
         }
       },
       "additionalProperties": false
     },
     "officeLocation": {
       "type": "object",
-      "required": ["type", "address"],
+      "required": [
+        "type",
+        "address"
+      ],
       "properties": {
-        "type": {"type": "string"},
-        "label": {"type": ["string", "null"]},
-        "address": {"type": "string"},
-        "officeHours": {"type": ["string", "null"]},
-        "public": {"type": "boolean", "default": true}
+        "type": {
+          "type": "string"
+        },
+        "label": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "address": {
+          "type": "string"
+        },
+        "officeHours": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "public": {
+          "type": "boolean",
+          "default": true
+        }
       },
       "additionalProperties": false
     },
     "website": {
       "type": "object",
-      "required": ["type", "url"],
+      "required": [
+        "type",
+        "url"
+      ],
       "properties": {
         "type": {
           "type": "string",
-          "enum": ["official", "campaign", "contact", "constituent_services", "newsletter", "archive", "other"]
+          "enum": [
+            "official",
+            "campaign",
+            "contact",
+            "constituent_services",
+            "newsletter",
+            "archive",
+            "other"
+          ]
         },
-        "url": {"type": "string", "format": "uri"},
-        "active": {"type": ["boolean", "null"]},
-        "verifiedAt": {"$ref": "#/$defs/dateTimeOrNull"}
+        "url": {
+          "type": "string",
+          "format": "uri"
+        },
+        "active": {
+          "type": [
+            "boolean",
+            "null"
+          ]
+        },
+        "verifiedAt": {
+          "$ref": "#/$defs/dateTimeOrNull"
+        }
       },
       "additionalProperties": false
     },
     "socialAccount": {
       "type": "object",
-      "required": ["platform", "url"],
+      "required": [
+        "platform",
+        "url"
+      ],
       "properties": {
-        "platform": {"type": "string"},
-        "handle": {"type": ["string", "null"]},
-        "url": {"type": "string", "format": "uri"},
-        "accountType": {
-          "type": ["string", "null"],
-          "enum": ["official", "campaign", "personal", "office", "other", null]
+        "platform": {
+          "type": "string"
         },
-        "verified": {"type": ["boolean", "null"]},
-        "active": {"type": ["boolean", "null"]},
-        "lastCheckedAt": {"$ref": "#/$defs/dateTimeOrNull"}
+        "handle": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "url": {
+          "type": "string",
+          "format": "uri"
+        },
+        "accountType": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "enum": [
+            "official",
+            "campaign",
+            "personal",
+            "office",
+            "other",
+            "unclassified",
+            null
+          ]
+        },
+        "verified": {
+          "type": [
+            "boolean",
+            "null"
+          ]
+        },
+        "active": {
+          "type": [
+            "boolean",
+            "null"
+          ]
+        },
+        "lastCheckedAt": {
+          "$ref": "#/$defs/dateTimeOrNull"
+        },
+        "sourceUrl": {
+          "$ref": "#/$defs/urlOrNull"
+        },
+        "sourceLabel": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "verificationState": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "enum": [
+            "official_source_confirmed",
+            "platform_verified",
+            "source_linked",
+            "under_review",
+            "unverified",
+            null
+          ]
+        }
       },
       "additionalProperties": false
     },
     "biography": {
       "type": "object",
       "properties": {
-        "short": {"type": ["string", "null"]},
-        "long": {"type": ["string", "null"]},
-        "birthDate": {"$ref": "#/$defs/dateOrNull"},
-        "birthplace": {"type": ["string", "null"]},
-        "hometown": {"type": ["string", "null"]},
-        "currentResidenceGeneral": {"type": ["string", "null"]},
+        "short": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "long": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "birthDate": {
+          "$ref": "#/$defs/dateOrNull"
+        },
+        "birthplace": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "hometown": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "currentResidenceGeneral": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
         "languagesSpoken": {
           "type": "array",
-          "items": {"type": "string"}
+          "items": {
+            "type": "string"
+          }
         },
-        "publicFamilySummary": {"type": ["string", "null"]},
+        "publicFamilySummary": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
         "evidenceIds": {
           "type": "array",
-          "items": {"$ref": "#/$defs/uuid"}
+          "items": {
+            "$ref": "#/$defs/uuid"
+          }
         }
       },
       "additionalProperties": false
     },
     "educationRecord": {
       "type": "object",
-      "required": ["institution"],
+      "required": [
+        "institution"
+      ],
       "properties": {
-        "institution": {"type": "string"},
-        "degree": {"type": ["string", "null"]},
-        "field": {"type": ["string", "null"]},
-        "startDate": {"$ref": "#/$defs/dateOrNull"},
-        "endDate": {"$ref": "#/$defs/dateOrNull"},
-        "graduationStatus": {"type": ["string", "null"]},
+        "institution": {
+          "type": "string"
+        },
+        "degree": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "field": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "startDate": {
+          "$ref": "#/$defs/dateOrNull"
+        },
+        "endDate": {
+          "$ref": "#/$defs/dateOrNull"
+        },
+        "graduationStatus": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
         "honors": {
           "type": "array",
-          "items": {"type": "string"}
+          "items": {
+            "type": "string"
+          }
         },
-        "dataState": {"$ref": "#/$defs/dataState"},
+        "dataState": {
+          "$ref": "#/$defs/dataState"
+        },
         "evidenceIds": {
           "type": "array",
-          "items": {"$ref": "#/$defs/uuid"}
+          "items": {
+            "$ref": "#/$defs/uuid"
+          }
         }
       },
       "additionalProperties": false
@@ -529,125 +962,410 @@
     "militaryServiceRecord": {
       "type": "object",
       "properties": {
-        "branch": {"type": ["string", "null"]},
-        "component": {"type": ["string", "null"]},
-        "rank": {"type": ["string", "null"]},
-        "startDate": {"$ref": "#/$defs/dateOrNull"},
-        "endDate": {"$ref": "#/$defs/dateOrNull"},
-        "units": {"type": "array", "items": {"type": "string"}},
-        "deployments": {"type": "array", "items": {"type": "string"}},
-        "awards": {"type": "array", "items": {"type": "string"}},
-        "dataState": {"$ref": "#/$defs/dataState"},
-        "evidenceIds": {"type": "array", "items": {"$ref": "#/$defs/uuid"}}
+        "branch": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "component": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "rank": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "startDate": {
+          "$ref": "#/$defs/dateOrNull"
+        },
+        "endDate": {
+          "$ref": "#/$defs/dateOrNull"
+        },
+        "units": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "deployments": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "awards": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "dataState": {
+          "$ref": "#/$defs/dataState"
+        },
+        "evidenceIds": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/uuid"
+          }
+        }
       },
       "additionalProperties": false
     },
     "careerRecord": {
       "type": "object",
-      "required": ["organization"],
+      "required": [
+        "organization"
+      ],
       "properties": {
-        "organization": {"type": "string"},
-        "title": {"type": ["string", "null"]},
-        "sector": {"type": ["string", "null"]},
-        "startDate": {"$ref": "#/$defs/dateOrNull"},
-        "endDate": {"$ref": "#/$defs/dateOrNull"},
-        "description": {"type": ["string", "null"]},
-        "conflictFlag": {"type": ["boolean", "null"]},
-        "evidenceIds": {"type": "array", "items": {"$ref": "#/$defs/uuid"}}
+        "organization": {
+          "type": "string"
+        },
+        "title": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "sector": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "startDate": {
+          "$ref": "#/$defs/dateOrNull"
+        },
+        "endDate": {
+          "$ref": "#/$defs/dateOrNull"
+        },
+        "description": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "conflictFlag": {
+          "type": [
+            "boolean",
+            "null"
+          ]
+        },
+        "evidenceIds": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/uuid"
+          }
+        }
       },
       "additionalProperties": false
     },
     "politicalRole": {
       "type": "object",
-      "required": ["title"],
+      "required": [
+        "title"
+      ],
       "properties": {
-        "title": {"type": "string"},
-        "organizationOrOffice": {"type": ["string", "null"]},
-        "startDate": {"$ref": "#/$defs/dateOrNull"},
-        "endDate": {"$ref": "#/$defs/dateOrNull"},
-        "electedOrAppointed": {"type": ["string", "null"]},
-        "evidenceIds": {"type": "array", "items": {"$ref": "#/$defs/uuid"}}
+        "title": {
+          "type": "string"
+        },
+        "organizationOrOffice": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "startDate": {
+          "$ref": "#/$defs/dateOrNull"
+        },
+        "endDate": {
+          "$ref": "#/$defs/dateOrNull"
+        },
+        "electedOrAppointed": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "evidenceIds": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/uuid"
+          }
+        }
       },
       "additionalProperties": false
     },
     "publicRole": {
       "type": "object",
-      "required": ["name", "roleType"],
+      "required": [
+        "name",
+        "roleType"
+      ],
       "properties": {
-        "name": {"type": "string"},
-        "roleType": {"type": "string"},
-        "title": {"type": ["string", "null"]},
-        "startDate": {"$ref": "#/$defs/dateOrNull"},
-        "endDate": {"$ref": "#/$defs/dateOrNull"},
-        "current": {"type": ["boolean", "null"]},
-        "evidenceIds": {"type": "array", "items": {"$ref": "#/$defs/uuid"}}
+        "name": {
+          "type": "string"
+        },
+        "roleType": {
+          "type": "string"
+        },
+        "title": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "startDate": {
+          "$ref": "#/$defs/dateOrNull"
+        },
+        "endDate": {
+          "$ref": "#/$defs/dateOrNull"
+        },
+        "current": {
+          "type": [
+            "boolean",
+            "null"
+          ]
+        },
+        "evidenceIds": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/uuid"
+          }
+        }
       },
       "additionalProperties": false
     },
     "electionRecord": {
       "type": "object",
-      "required": ["electionId", "date", "officeTitle"],
+      "required": [
+        "electionId",
+        "date",
+        "officeTitle"
+      ],
       "properties": {
-        "electionId": {"$ref": "#/$defs/uuid"},
-        "date": {"$ref": "#/$defs/date"},
-        "type": {"type": ["string", "null"]},
-        "officeTitle": {"type": "string"},
-        "district": {"type": ["string", "null"]},
-        "result": {"type": ["string", "null"]},
-        "votes": {"type": ["integer", "null"], "minimum": 0},
-        "votePercentage": {"type": ["number", "null"], "minimum": 0, "maximum": 100},
-        "margin": {"type": ["number", "null"]},
-        "opponents": {"type": "array", "items": {"type": "string"}},
-        "evidenceIds": {"type": "array", "items": {"$ref": "#/$defs/uuid"}}
+        "electionId": {
+          "$ref": "#/$defs/uuid"
+        },
+        "date": {
+          "$ref": "#/$defs/date"
+        },
+        "type": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "officeTitle": {
+          "type": "string"
+        },
+        "district": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "result": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "votes": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": 0
+        },
+        "votePercentage": {
+          "type": [
+            "number",
+            "null"
+          ],
+          "minimum": 0,
+          "maximum": 100
+        },
+        "margin": {
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "opponents": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "evidenceIds": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/uuid"
+          }
+        }
       },
       "additionalProperties": false
     },
     "campaignFinanceSummary": {
       "type": "object",
       "properties": {
-        "cycle": {"type": ["string", "null"]},
-        "currency": {"type": "string", "default": "USD"},
-        "totalRaised": {"type": ["number", "null"], "minimum": 0},
-        "totalSpent": {"type": ["number", "null"], "minimum": 0},
-        "cashOnHand": {"type": ["number", "null"]},
-        "debt": {"type": ["number", "null"], "minimum": 0},
-        "outsideSupport": {"type": ["number", "null"], "minimum": 0},
-        "outsideOpposition": {"type": ["number", "null"], "minimum": 0},
+        "cycle": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "currency": {
+          "type": "string",
+          "default": "USD"
+        },
+        "totalRaised": {
+          "type": [
+            "number",
+            "null"
+          ],
+          "minimum": 0
+        },
+        "totalSpent": {
+          "type": [
+            "number",
+            "null"
+          ],
+          "minimum": 0
+        },
+        "cashOnHand": {
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "debt": {
+          "type": [
+            "number",
+            "null"
+          ],
+          "minimum": 0
+        },
+        "outsideSupport": {
+          "type": [
+            "number",
+            "null"
+          ],
+          "minimum": 0
+        },
+        "outsideOpposition": {
+          "type": [
+            "number",
+            "null"
+          ],
+          "minimum": 0
+        },
         "topDonors": {
           "type": "array",
           "items": {
             "type": "object",
-            "required": ["name", "amount"],
+            "required": [
+              "name",
+              "amount"
+            ],
             "properties": {
-              "name": {"type": "string"},
-              "amount": {"type": "number", "minimum": 0},
-              "donorType": {"type": ["string", "null"]},
-              "evidenceIds": {"type": "array", "items": {"$ref": "#/$defs/uuid"}}
+              "name": {
+                "type": "string"
+              },
+              "amount": {
+                "type": "number",
+                "minimum": 0
+              },
+              "donorType": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "evidenceIds": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/$defs/uuid"
+                }
+              }
             },
             "additionalProperties": false
           }
         },
-        "lastFiledAt": {"$ref": "#/$defs/dateTimeOrNull"},
-        "dataState": {"$ref": "#/$defs/dataState"},
-        "evidenceIds": {"type": "array", "items": {"$ref": "#/$defs/uuid"}}
+        "lastFiledAt": {
+          "$ref": "#/$defs/dateTimeOrNull"
+        },
+        "dataState": {
+          "$ref": "#/$defs/dataState"
+        },
+        "evidenceIds": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/uuid"
+          }
+        }
       },
       "additionalProperties": false
     },
     "promise": {
       "type": "object",
-      "required": ["promiseId", "title", "exactText", "status"],
+      "required": [
+        "promiseId",
+        "title",
+        "exactText",
+        "status"
+      ],
       "properties": {
-        "promiseId": {"$ref": "#/$defs/uuid"},
-        "title": {"type": "string"},
-        "exactText": {"type": "string"},
-        "summary": {"type": ["string", "null"]},
-        "date": {"$ref": "#/$defs/dateOrNull"},
-        "context": {"type": ["string", "null"]},
-        "issueTags": {"type": "array", "items": {"type": "string"}},
-        "targetDate": {"$ref": "#/$defs/dateOrNull"},
+        "promiseId": {
+          "$ref": "#/$defs/uuid"
+        },
+        "title": {
+          "type": "string"
+        },
+        "exactText": {
+          "type": "string"
+        },
+        "summary": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "date": {
+          "$ref": "#/$defs/dateOrNull"
+        },
+        "context": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "issueTags": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "targetDate": {
+          "$ref": "#/$defs/dateOrNull"
+        },
         "measurability": {
-          "type": ["string", "null"],
-          "enum": ["high", "medium", "low", "not_measurable", null]
+          "type": [
+            "string",
+            "null"
+          ],
+          "enum": [
+            "high",
+            "medium",
+            "low",
+            "not_measurable",
+            null
+          ]
         },
         "status": {
           "type": "string",
@@ -664,152 +1382,520 @@
             "not_applicable"
           ]
         },
-        "progressPercentage": {"type": ["number", "null"], "minimum": 0, "maximum": 100},
-        "statusReason": {"type": ["string", "null"]},
-        "blockingAuthority": {"type": ["string", "null"]},
-        "officialResponse": {"type": ["string", "null"]},
-        "lastEvaluatedAt": {"$ref": "#/$defs/dateTimeOrNull"},
-        "confidence": {"$ref": "#/$defs/confidence"},
-        "evidence": {"type": "array", "items": {"$ref": "#/$defs/evidenceReference"}}
+        "progressPercentage": {
+          "type": [
+            "number",
+            "null"
+          ],
+          "minimum": 0,
+          "maximum": 100
+        },
+        "statusReason": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "blockingAuthority": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "officialResponse": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "lastEvaluatedAt": {
+          "$ref": "#/$defs/dateTimeOrNull"
+        },
+        "confidence": {
+          "$ref": "#/$defs/confidence"
+        },
+        "evidence": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/evidenceReference"
+          }
+        }
       },
       "additionalProperties": false
     },
     "statement": {
       "type": "object",
-      "required": ["statementId", "statementDate", "exactQuote"],
+      "required": [
+        "statementId",
+        "statementDate",
+        "exactQuote"
+      ],
       "properties": {
-        "statementId": {"$ref": "#/$defs/uuid"},
-        "statementDate": {"$ref": "#/$defs/date"},
-        "type": {"type": ["string", "null"]},
-        "exactQuote": {"type": "string"},
-        "summary": {"type": ["string", "null"]},
-        "context": {"type": ["string", "null"]},
-        "venue": {"type": ["string", "null"]},
-        "issueTags": {"type": "array", "items": {"type": "string"}},
-        "positionLabel": {"type": ["string", "null"]},
-        "transcriptTimestamp": {"type": ["string", "null"]},
-        "evidence": {"type": "array", "items": {"$ref": "#/$defs/evidenceReference"}}
+        "statementId": {
+          "$ref": "#/$defs/uuid"
+        },
+        "statementDate": {
+          "$ref": "#/$defs/date"
+        },
+        "type": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "exactQuote": {
+          "type": "string"
+        },
+        "summary": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "context": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "venue": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "issueTags": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "positionLabel": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "transcriptTimestamp": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "evidence": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/evidenceReference"
+          }
+        }
       },
       "additionalProperties": false
     },
     "governmentAction": {
       "type": "object",
-      "required": ["actionId", "actionType", "title"],
+      "required": [
+        "actionId",
+        "actionType",
+        "title"
+      ],
       "properties": {
-        "actionId": {"$ref": "#/$defs/uuid"},
-        "actionType": {"type": "string"},
-        "title": {"type": "string"},
-        "identifier": {"type": ["string", "null"]},
-        "date": {"$ref": "#/$defs/dateOrNull"},
-        "role": {"type": ["string", "null"]},
-        "status": {"type": ["string", "null"]},
-        "summary": {"type": ["string", "null"]},
-        "fiscalImpact": {"type": ["number", "null"]},
-        "issueTags": {"type": "array", "items": {"type": "string"}},
-        "evidence": {"type": "array", "items": {"$ref": "#/$defs/evidenceReference"}}
+        "actionId": {
+          "$ref": "#/$defs/uuid"
+        },
+        "actionType": {
+          "type": "string"
+        },
+        "title": {
+          "type": "string"
+        },
+        "identifier": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "date": {
+          "$ref": "#/$defs/dateOrNull"
+        },
+        "role": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "status": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "summary": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "fiscalImpact": {
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "issueTags": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "evidence": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/evidenceReference"
+          }
+        }
       },
       "additionalProperties": false
     },
     "issueTracker": {
       "type": "object",
-      "required": ["trackerId", "title", "status"],
+      "required": [
+        "trackerId",
+        "title",
+        "status"
+      ],
       "properties": {
-        "trackerId": {"$ref": "#/$defs/uuid"},
-        "title": {"type": "string"},
-        "description": {"type": ["string", "null"]},
-        "frameworkVersion": {"type": ["string", "null"]},
-        "measurementStart": {"$ref": "#/$defs/dateOrNull"},
-        "measurementEnd": {"$ref": "#/$defs/dateOrNull"},
-        "score": {"type": ["number", "null"], "minimum": 0, "maximum": 100},
-        "status": {"type": "string"},
-        "analysis": {"type": ["string", "null"]},
-        "confidence": {"$ref": "#/$defs/confidence"},
-        "completeness": {"type": ["number", "null"], "minimum": 0, "maximum": 100},
+        "trackerId": {
+          "$ref": "#/$defs/uuid"
+        },
+        "title": {
+          "type": "string"
+        },
+        "description": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "frameworkVersion": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "measurementStart": {
+          "$ref": "#/$defs/dateOrNull"
+        },
+        "measurementEnd": {
+          "$ref": "#/$defs/dateOrNull"
+        },
+        "score": {
+          "type": [
+            "number",
+            "null"
+          ],
+          "minimum": 0,
+          "maximum": 100
+        },
+        "status": {
+          "type": "string"
+        },
+        "analysis": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "confidence": {
+          "$ref": "#/$defs/confidence"
+        },
+        "completeness": {
+          "type": [
+            "number",
+            "null"
+          ],
+          "minimum": 0,
+          "maximum": 100
+        },
         "pillars": {
           "type": "array",
           "items": {
             "type": "object",
-            "required": ["name", "status"],
+            "required": [
+              "name",
+              "status"
+            ],
             "properties": {
-              "name": {"type": "string"},
-              "description": {"type": ["string", "null"]},
-              "status": {"type": "string"},
-              "score": {"type": ["number", "null"], "minimum": 0, "maximum": 100},
-              "analysis": {"type": ["string", "null"]},
-              "evidence": {"type": "array", "items": {"$ref": "#/$defs/evidenceReference"}}
+              "name": {
+                "type": "string"
+              },
+              "description": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "status": {
+                "type": "string"
+              },
+              "score": {
+                "type": [
+                  "number",
+                  "null"
+                ],
+                "minimum": 0,
+                "maximum": 100
+              },
+              "analysis": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "evidence": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/$defs/evidenceReference"
+                }
+              }
             },
             "additionalProperties": false
           }
         },
-        "lastEvaluatedAt": {"$ref": "#/$defs/dateTimeOrNull"},
-        "evidence": {"type": "array", "items": {"$ref": "#/$defs/evidenceReference"}}
+        "lastEvaluatedAt": {
+          "$ref": "#/$defs/dateTimeOrNull"
+        },
+        "evidence": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/evidenceReference"
+          }
+        }
       },
       "additionalProperties": false
     },
     "performanceMetric": {
       "type": "object",
-      "required": ["metricType", "value"],
+      "required": [
+        "metricType",
+        "value"
+      ],
       "properties": {
-        "metricType": {"type": "string"},
-        "value": {"type": "number"},
-        "scaleMin": {"type": "number", "default": 0},
-        "scaleMax": {"type": "number", "default": 100},
-        "periodStart": {"$ref": "#/$defs/dateOrNull"},
-        "periodEnd": {"$ref": "#/$defs/dateOrNull"},
-        "numerator": {"type": ["number", "null"]},
-        "denominator": {"type": ["number", "null"]},
-        "methodologyVersion": {"type": ["string", "null"]},
-        "confidence": {"$ref": "#/$defs/confidence"},
-        "completeness": {"type": ["number", "null"], "minimum": 0, "maximum": 100},
-        "evidenceIds": {"type": "array", "items": {"$ref": "#/$defs/uuid"}}
+        "metricType": {
+          "type": "string"
+        },
+        "value": {
+          "type": "number"
+        },
+        "scaleMin": {
+          "type": "number",
+          "default": 0
+        },
+        "scaleMax": {
+          "type": "number",
+          "default": 100
+        },
+        "periodStart": {
+          "$ref": "#/$defs/dateOrNull"
+        },
+        "periodEnd": {
+          "$ref": "#/$defs/dateOrNull"
+        },
+        "numerator": {
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "denominator": {
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "methodologyVersion": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "confidence": {
+          "$ref": "#/$defs/confidence"
+        },
+        "completeness": {
+          "type": [
+            "number",
+            "null"
+          ],
+          "minimum": 0,
+          "maximum": 100
+        },
+        "evidenceIds": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/uuid"
+          }
+        }
       },
       "additionalProperties": false
     },
     "score": {
       "type": "object",
-      "required": ["scoreId", "scoreType", "value", "methodologyVersion"],
+      "required": [
+        "scoreId",
+        "scoreType",
+        "value",
+        "methodologyVersion"
+      ],
       "properties": {
-        "scoreId": {"$ref": "#/$defs/uuid"},
-        "scoreType": {"type": "string"},
-        "value": {"type": "number", "minimum": 0, "maximum": 100},
-        "label": {"type": ["string", "null"]},
-        "periodStart": {"$ref": "#/$defs/dateOrNull"},
-        "periodEnd": {"$ref": "#/$defs/dateOrNull"},
-        "methodologyVersion": {"type": "string"},
-        "confidence": {"$ref": "#/$defs/confidence"},
-        "completeness": {"type": ["number", "null"], "minimum": 0, "maximum": 100},
-        "calculatedAt": {"$ref": "#/$defs/dateTimeOrNull"},
-        "humanReviewStatus": {"type": ["string", "null"]},
-        "evidenceIds": {"type": "array", "items": {"$ref": "#/$defs/uuid"}}
+        "scoreId": {
+          "$ref": "#/$defs/uuid"
+        },
+        "scoreType": {
+          "type": "string"
+        },
+        "value": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 100
+        },
+        "label": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "periodStart": {
+          "$ref": "#/$defs/dateOrNull"
+        },
+        "periodEnd": {
+          "$ref": "#/$defs/dateOrNull"
+        },
+        "methodologyVersion": {
+          "type": "string"
+        },
+        "confidence": {
+          "$ref": "#/$defs/confidence"
+        },
+        "completeness": {
+          "type": [
+            "number",
+            "null"
+          ],
+          "minimum": 0,
+          "maximum": 100
+        },
+        "calculatedAt": {
+          "$ref": "#/$defs/dateTimeOrNull"
+        },
+        "humanReviewStatus": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "evidenceIds": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/uuid"
+          }
+        }
       },
       "additionalProperties": false
     },
     "financialDisclosure": {
       "type": "object",
-      "required": ["disclosureId", "period"],
+      "required": [
+        "disclosureId",
+        "period"
+      ],
       "properties": {
-        "disclosureId": {"$ref": "#/$defs/uuid"},
-        "period": {"type": "string"},
-        "filingDate": {"$ref": "#/$defs/dateOrNull"},
-        "amended": {"type": ["boolean", "null"]},
-        "late": {"type": ["boolean", "null"]},
-        "estimatedNetWorthMin": {"type": ["number", "null"]},
-        "estimatedNetWorthMax": {"type": ["number", "null"]},
-        "incomeSources": {"type": "array", "items": {"type": "string"}},
-        "assetSummary": {"type": ["string", "null"]},
-        "liabilitySummary": {"type": ["string", "null"]},
-        "businessInterestSummary": {"type": ["string", "null"]},
-        "propertyInterestSummary": {"type": ["string", "null"]},
-        "evidenceIds": {"type": "array", "items": {"$ref": "#/$defs/uuid"}}
+        "disclosureId": {
+          "$ref": "#/$defs/uuid"
+        },
+        "period": {
+          "type": "string"
+        },
+        "filingDate": {
+          "$ref": "#/$defs/dateOrNull"
+        },
+        "amended": {
+          "type": [
+            "boolean",
+            "null"
+          ]
+        },
+        "late": {
+          "type": [
+            "boolean",
+            "null"
+          ]
+        },
+        "estimatedNetWorthMin": {
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "estimatedNetWorthMax": {
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "incomeSources": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "assetSummary": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "liabilitySummary": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "businessInterestSummary": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "propertyInterestSummary": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "evidenceIds": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/uuid"
+          }
+        }
       },
       "additionalProperties": false
     },
     "integrityMatter": {
       "type": "object",
-      "required": ["matterId", "matterType", "proceduralStatus", "title"],
+      "required": [
+        "matterId",
+        "matterType",
+        "proceduralStatus",
+        "title"
+      ],
       "properties": {
-        "matterId": {"$ref": "#/$defs/uuid"},
-        "matterType": {"type": "string"},
+        "matterId": {
+          "$ref": "#/$defs/uuid"
+        },
+        "matterType": {
+          "type": "string"
+        },
         "proceduralStatus": {
           "type": "string",
           "enum": [
@@ -830,98 +1916,337 @@
             "closed_other"
           ]
         },
-        "title": {"type": "string"},
-        "authority": {"type": ["string", "null"]},
-        "openedDate": {"$ref": "#/$defs/dateOrNull"},
-        "closedDate": {"$ref": "#/$defs/dateOrNull"},
-        "summary": {"type": ["string", "null"]},
-        "officialResponse": {"type": ["string", "null"]},
-        "finalDisposition": {"type": ["string", "null"]},
-        "humanReviewed": {"type": "boolean"},
-        "confidence": {"$ref": "#/$defs/confidence"},
-        "evidence": {"type": "array", "items": {"$ref": "#/$defs/evidenceReference"}}
+        "title": {
+          "type": "string"
+        },
+        "authority": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "openedDate": {
+          "$ref": "#/$defs/dateOrNull"
+        },
+        "closedDate": {
+          "$ref": "#/$defs/dateOrNull"
+        },
+        "summary": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "officialResponse": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "finalDisposition": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "humanReviewed": {
+          "type": "boolean"
+        },
+        "confidence": {
+          "$ref": "#/$defs/confidence"
+        },
+        "evidence": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/evidenceReference"
+          }
+        }
       },
       "additionalProperties": false
     },
     "relationship": {
       "type": "object",
-      "required": ["relationshipType", "relatedName"],
+      "required": [
+        "relationshipType",
+        "relatedName"
+      ],
       "properties": {
-        "relationshipType": {"type": "string"},
-        "relatedName": {"type": "string"},
-        "relatedEntityId": {"type": ["string", "null"], "format": "uuid"},
-        "startDate": {"$ref": "#/$defs/dateOrNull"},
-        "endDate": {"$ref": "#/$defs/dateOrNull"},
-        "relevanceNote": {"type": ["string", "null"]},
-        "conflictFlag": {"type": ["boolean", "null"]},
-        "evidenceIds": {"type": "array", "items": {"$ref": "#/$defs/uuid"}}
+        "relationshipType": {
+          "type": "string"
+        },
+        "relatedName": {
+          "type": "string"
+        },
+        "relatedEntityId": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "format": "uuid"
+        },
+        "startDate": {
+          "$ref": "#/$defs/dateOrNull"
+        },
+        "endDate": {
+          "$ref": "#/$defs/dateOrNull"
+        },
+        "relevanceNote": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "conflictFlag": {
+          "type": [
+            "boolean",
+            "null"
+          ]
+        },
+        "evidenceIds": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/uuid"
+          }
+        }
       },
       "additionalProperties": false
     },
     "mediaRecord": {
       "type": "object",
-      "required": ["mediaId", "type", "title"],
+      "required": [
+        "mediaId",
+        "type",
+        "title"
+      ],
       "properties": {
-        "mediaId": {"$ref": "#/$defs/uuid"},
-        "type": {"type": "string"},
-        "title": {"type": "string"},
-        "publisher": {"type": ["string", "null"]},
-        "date": {"$ref": "#/$defs/dateOrNull"},
-        "url": {"$ref": "#/$defs/urlOrNull"},
-        "summary": {"type": ["string", "null"]},
-        "issueTags": {"type": "array", "items": {"type": "string"}},
-        "correctionOrRetraction": {"type": ["boolean", "null"]},
-        "evidenceIds": {"type": "array", "items": {"$ref": "#/$defs/uuid"}}
+        "mediaId": {
+          "$ref": "#/$defs/uuid"
+        },
+        "type": {
+          "type": "string"
+        },
+        "title": {
+          "type": "string"
+        },
+        "publisher": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "date": {
+          "$ref": "#/$defs/dateOrNull"
+        },
+        "url": {
+          "$ref": "#/$defs/urlOrNull"
+        },
+        "summary": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "issueTags": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "correctionOrRetraction": {
+          "type": [
+            "boolean",
+            "null"
+          ]
+        },
+        "evidenceIds": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/uuid"
+          }
+        }
       },
       "additionalProperties": false
     },
     "petition": {
       "type": "object",
-      "required": ["petitionId", "title", "status"],
+      "required": [
+        "petitionId",
+        "title",
+        "status"
+      ],
       "properties": {
-        "petitionId": {"$ref": "#/$defs/uuid"},
-        "title": {"type": "string"},
-        "summary": {"type": ["string", "null"]},
-        "status": {"type": "string"},
-        "signatureCount": {"type": ["integer", "null"], "minimum": 0},
-        "signatureGoal": {"type": ["integer", "null"], "minimum": 0},
-        "startDate": {"$ref": "#/$defs/dateOrNull"},
-        "endDate": {"$ref": "#/$defs/dateOrNull"},
-        "eligibilitySummary": {"type": ["string", "null"]},
-        "url": {"$ref": "#/$defs/urlOrNull"}
+        "petitionId": {
+          "$ref": "#/$defs/uuid"
+        },
+        "title": {
+          "type": "string"
+        },
+        "summary": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "status": {
+          "type": "string"
+        },
+        "signatureCount": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": 0
+        },
+        "signatureGoal": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": 0
+        },
+        "startDate": {
+          "$ref": "#/$defs/dateOrNull"
+        },
+        "endDate": {
+          "$ref": "#/$defs/dateOrNull"
+        },
+        "eligibilitySummary": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "url": {
+          "$ref": "#/$defs/urlOrNull"
+        }
       },
       "additionalProperties": false
     },
     "activityEvent": {
       "type": "object",
-      "required": ["activityId", "activityType", "occurredAt", "title"],
+      "required": [
+        "activityId",
+        "activityType",
+        "occurredAt",
+        "title"
+      ],
       "properties": {
-        "activityId": {"$ref": "#/$defs/uuid"},
-        "activityType": {"type": "string"},
-        "occurredAt": {"$ref": "#/$defs/dateTime"},
-        "title": {"type": "string"},
-        "summary": {"type": ["string", "null"]},
-        "relatedEntityType": {"type": ["string", "null"]},
-        "relatedEntityId": {"type": ["string", "null"], "format": "uuid"},
-        "evidenceIds": {"type": "array", "items": {"$ref": "#/$defs/uuid"}}
+        "activityId": {
+          "$ref": "#/$defs/uuid"
+        },
+        "activityType": {
+          "type": "string"
+        },
+        "occurredAt": {
+          "$ref": "#/$defs/dateTime"
+        },
+        "title": {
+          "type": "string"
+        },
+        "summary": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "relatedEntityType": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "relatedEntityId": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "format": "uuid"
+        },
+        "evidenceIds": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/uuid"
+          }
+        }
       },
       "additionalProperties": false
     },
     "monitoringStatus": {
       "type": "object",
       "properties": {
-        "active": {"type": "boolean"},
+        "active": {
+          "type": "boolean"
+        },
         "health": {
           "type": "string",
-          "enum": ["healthy", "degraded", "failed", "paused", "unknown"]
+          "enum": [
+            "healthy",
+            "degraded",
+            "failed",
+            "paused",
+            "unknown"
+          ]
         },
-        "lastFullResearchAt": {"$ref": "#/$defs/dateTimeOrNull"},
-        "lastSourceScanAt": {"$ref": "#/$defs/dateTimeOrNull"},
-        "lastActivitySyncAt": {"$ref": "#/$defs/dateTimeOrNull"},
-        "nextScheduledRunAt": {"$ref": "#/$defs/dateTimeOrNull"},
-        "staleSections": {"type": "array", "items": {"type": "string"}}
+        "lastFullResearchAt": {
+          "$ref": "#/$defs/dateTimeOrNull"
+        },
+        "lastSourceScanAt": {
+          "$ref": "#/$defs/dateTimeOrNull"
+        },
+        "lastActivitySyncAt": {
+          "$ref": "#/$defs/dateTimeOrNull"
+        },
+        "nextScheduledRunAt": {
+          "$ref": "#/$defs/dateTimeOrNull"
+        },
+        "staleSections": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "additionalProperties": false
+    },
+    "sourceReference": {
+      "type": "object",
+      "required": [
+        "label",
+        "url"
+      ],
+      "properties": {
+        "label": {
+          "type": "string",
+          "minLength": 1
+        },
+        "url": {
+          "type": "string",
+          "format": "uri"
+        },
+        "publisher": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "sourceType": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "fields": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "uniqueItems": true
+        },
+        "checkedAt": {
+          "$ref": "#/$defs/dateTimeOrNull"
+        }
       },
       "additionalProperties": false
     }
   }
-}
+}\n
