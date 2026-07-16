@@ -1,5 +1,5 @@
 {
-  "registryVersion": "1.1.0",
+  "registryVersion": "1.2.0",
   "updatedAt": "2026-07-16T00:00:00Z",
   "sources": [
     {
@@ -66,6 +66,24 @@
       "targets": ["people", "offices", "office_terms", "contact_points", "districts", "former_officeholders"],
       "reviewRequired": true,
       "enabled": true
+    },
+    {
+      "sourceKey": "florida-statewide-executive",
+      "name": "Florida Statewide Elected Cabinet Offices",
+      "jurisdiction": "Florida",
+      "sourceTier": "primary_official",
+      "sourceType": "multi_page_official_directory",
+      "urls": [
+        "https://www.myfloridalegal.com/",
+        "https://www.myfloridacfo.com/",
+        "https://www.fdacs.gov/"
+      ],
+      "collectionMode": "scrape_and_assert_officeholder",
+      "schedule": "daily_during_aggregation",
+      "targets": ["people", "offices", "office_terms", "official_websites"],
+      "reviewRequired": true,
+      "enabled": true,
+      "notes": "The Governor remains a canonical seed profile. This collector currently verifies the Attorney General, Chief Financial Officer, and Commissioner of Agriculture from their official agency websites."
     },
     {
       "sourceKey": "florida-campaign-finance",
