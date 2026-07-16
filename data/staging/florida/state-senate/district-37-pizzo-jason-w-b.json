@@ -1,0 +1,21 @@
+{
+  "candidateRecordVersion": "1.0.0",
+  "stagingRecordId": "abd390b0-fd32-575c-a0e4-6cd9458d38d9",
+  "sourceKey": "florida-senate-members",
+  "sourceUrl": "https://www.flsenate.gov/Senators",
+  "sourceMemberUrl": "https://www.flsenate.gov/Senators/2024-2026/S37",
+  "sourceSnapshotSha256": "9d117b2a6757f6aac9e8f78e14fe42d4adb86d5a6313e669907a233088bf8b73",
+  "fetchedAt": "2026-07-16T00:33:06Z",
+  "extractionStatus": "extracted_unreviewed",
+  "termLabel": "2024-2026 Senators",
+  "displayName": "Pizzo, Jason W. B.",
+  "districtNumber": "37",
+  "partyName": "No Party Affiliation",
+  "countyDescription": "Consists of parts of Broward, Miami-Dade counties",
+  "officeTitle": "Florida State Senator, District 37",
+  "governmentLevel": "state",
+  "jurisdictionName": "Florida",
+  "stateCode": "FL",
+  "canonicalMatchStatus": "unmatched",
+  "rawRowText": "Pizzo, Jason W. B. Pizzo, Jason W. B. 37 No Party Affiliation Consists of parts of Broward, Miami-Dade counties"
+}

@@ -1,0 +1,21 @@
+{
+  "candidateRecordVersion": "1.0.0",
+  "stagingRecordId": "ebe79e3c-d8b7-5b33-9e58-59cd77b615bd",
+  "sourceKey": "florida-senate-members",
+  "sourceUrl": "https://www.flsenate.gov/Senators",
+  "sourceMemberUrl": "https://www.flsenate.gov/Senators/2024-2026/S2",
+  "sourceSnapshotSha256": "9d117b2a6757f6aac9e8f78e14fe42d4adb86d5a6313e669907a233088bf8b73",
+  "fetchedAt": "2026-07-16T00:33:06Z",
+  "extractionStatus": "extracted_unreviewed",
+  "termLabel": "2024-2026 Senators",
+  "displayName": "Trumbull, Jay",
+  "districtNumber": "2",
+  "partyName": "Republican",
+  "countyDescription": "Consists of Bay, Calhoun, Holmes, Jackson, Walton, Washington counties and part of Okaloosa county",
+  "officeTitle": "Florida State Senator, District 2",
+  "governmentLevel": "state",
+  "jurisdictionName": "Florida",
+  "stateCode": "FL",
+  "canonicalMatchStatus": "unmatched",
+  "rawRowText": "Trumbull, Jay Trumbull, Jay 2 Republican Consists of Bay, Calhoun, Holmes, Jackson, Walton, Washington counties and part of Okaloosa county"
+}

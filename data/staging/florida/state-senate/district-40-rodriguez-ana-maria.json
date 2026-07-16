@@ -1,0 +1,21 @@
+{
+  "candidateRecordVersion": "1.0.0",
+  "stagingRecordId": "98233e8a-6fdf-5a62-a78e-059aa4636a79",
+  "sourceKey": "florida-senate-members",
+  "sourceUrl": "https://www.flsenate.gov/Senators",
+  "sourceMemberUrl": "https://www.flsenate.gov/Senators/2024-2026/S40",
+  "sourceSnapshotSha256": "9d117b2a6757f6aac9e8f78e14fe42d4adb86d5a6313e669907a233088bf8b73",
+  "fetchedAt": "2026-07-16T00:33:06Z",
+  "extractionStatus": "extracted_unreviewed",
+  "termLabel": "2024-2026 Senators",
+  "displayName": "Rodriguez, Ana Maria",
+  "districtNumber": "40",
+  "partyName": "Republican",
+  "countyDescription": "Consists of Monroe county and part of Miami-Dade county",
+  "officeTitle": "Florida State Senator, District 40",
+  "governmentLevel": "state",
+  "jurisdictionName": "Florida",
+  "stateCode": "FL",
+  "canonicalMatchStatus": "unmatched",
+  "rawRowText": "Rodriguez, Ana Maria Rodriguez, Ana Maria 40 Republican Consists of Monroe county and part of Miami-Dade county"
+}

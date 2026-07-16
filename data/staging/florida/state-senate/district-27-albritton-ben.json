@@ -1,0 +1,21 @@
+{
+  "candidateRecordVersion": "1.0.0",
+  "stagingRecordId": "5375ab2d-3bb2-5c47-80d7-f127309d9fcd",
+  "sourceKey": "florida-senate-members",
+  "sourceUrl": "https://www.flsenate.gov/Senators",
+  "sourceMemberUrl": "https://www.flsenate.gov/Senators/2024-2026/S27",
+  "sourceSnapshotSha256": "9d117b2a6757f6aac9e8f78e14fe42d4adb86d5a6313e669907a233088bf8b73",
+  "fetchedAt": "2026-07-16T00:33:06Z",
+  "extractionStatus": "extracted_unreviewed",
+  "termLabel": "2024-2026 Senators",
+  "displayName": "Albritton, Ben",
+  "districtNumber": "27",
+  "partyName": "Republican",
+  "countyDescription": "Consists of Charlotte, DeSoto, Hardee counties and parts of Lee, Polk counties",
+  "officeTitle": "Florida State Senator, District 27",
+  "governmentLevel": "state",
+  "jurisdictionName": "Florida",
+  "stateCode": "FL",
+  "canonicalMatchStatus": "unmatched",
+  "rawRowText": "Albritton, Ben Albritton, Ben President 27 Republican Consists of Charlotte, DeSoto, Hardee counties and parts of Lee, Polk counties"
+}

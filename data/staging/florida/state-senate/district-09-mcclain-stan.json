@@ -1,0 +1,21 @@
+{
+  "candidateRecordVersion": "1.0.0",
+  "stagingRecordId": "ba4627b7-b5fb-51fa-9eea-2902d44eb18c",
+  "sourceKey": "florida-senate-members",
+  "sourceUrl": "https://www.flsenate.gov/Senators",
+  "sourceMemberUrl": "https://www.flsenate.gov/Senators/2024-2026/S9",
+  "sourceSnapshotSha256": "9d117b2a6757f6aac9e8f78e14fe42d4adb86d5a6313e669907a233088bf8b73",
+  "fetchedAt": "2026-07-16T00:33:06Z",
+  "extractionStatus": "extracted_unreviewed",
+  "termLabel": "2024-2026 Senators",
+  "displayName": "McClain, Stan",
+  "districtNumber": "9",
+  "partyName": "Republican",
+  "countyDescription": "Consists of Levy, Marion counties and part of Alachua county",
+  "officeTitle": "Florida State Senator, District 9",
+  "governmentLevel": "state",
+  "jurisdictionName": "Florida",
+  "stateCode": "FL",
+  "canonicalMatchStatus": "unmatched",
+  "rawRowText": "McClain, Stan McClain, Stan 9 Republican Consists of Levy, Marion counties and part of Alachua county"
+}

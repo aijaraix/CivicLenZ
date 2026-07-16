@@ -1,0 +1,21 @@
+{
+  "candidateRecordVersion": "1.0.0",
+  "stagingRecordId": "18682e3f-b22e-52da-9a5f-01b31f67a62f",
+  "sourceKey": "florida-senate-members",
+  "sourceUrl": "https://www.flsenate.gov/Senators",
+  "sourceMemberUrl": "https://www.flsenate.gov/Senators/2024-2026/S7",
+  "sourceSnapshotSha256": "9d117b2a6757f6aac9e8f78e14fe42d4adb86d5a6313e669907a233088bf8b73",
+  "fetchedAt": "2026-07-16T00:33:06Z",
+  "extractionStatus": "extracted_unreviewed",
+  "termLabel": "2024-2026 Senators",
+  "displayName": "Leek, Thomas J. \"Tom\"",
+  "districtNumber": "7",
+  "partyName": "Republican",
+  "countyDescription": "Consists of Flagler, Putnam, St. Johns counties and part of Volusia county",
+  "officeTitle": "Florida State Senator, District 7",
+  "governmentLevel": "state",
+  "jurisdictionName": "Florida",
+  "stateCode": "FL",
+  "canonicalMatchStatus": "unmatched",
+  "rawRowText": "Leek, Thomas J. \"Tom\" Leek, Thomas J. \"Tom\" 7 Republican Consists of Flagler, Putnam, St. Johns counties and part of Volusia county"
+}
