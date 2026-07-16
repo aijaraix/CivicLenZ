@@ -1,0 +1,31 @@
+{
+  "candidateRecordVersion": "1.0.0",
+  "stagingRecordId": "49d390fb-93f1-5a98-8185-17731ea59713",
+  "sourceKey": "florida-statewide-executive",
+  "sourceUrl": "https://www.myfloridalegal.com/",
+  "sourceMemberUrl": "https://www.myfloridalegal.com/",
+  "sourceSnapshotSha256": "47829f5a606e59ed0cc07af9c9c4d656668f1e5ef74f3c4fdaffed9a76905d81",
+  "fetchedAt": "2026-07-16T03:41:42Z",
+  "extractionStatus": "extracted_unreviewed",
+  "recordKind": "person_officeholder",
+  "displayName": "James Uthmeier",
+  "firstName": "James",
+  "lastName": "Uthmeier",
+  "officeTitle": "Attorney General of Florida",
+  "governmentLevel": "state",
+  "branch": "executive",
+  "chamber": null,
+  "jurisdictionName": "Florida",
+  "stateCode": "FL",
+  "districtNumber": null,
+  "partyName": null,
+  "canonicalMatchStatus": "unmatched",
+  "refreshClass": "term_based",
+  "rawSourceRecord": {
+    "requiredPhrases": [
+      "Attorney General James Uthmeier",
+      "State of Florida"
+    ],
+    "officialSource": "https://www.myfloridalegal.com/"
+  }
+}
