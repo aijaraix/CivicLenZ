@@ -1,8 +1,8 @@
 {
-  "allocationVersion": "1.0.0",
+  "allocationVersion": "1.1.0",
   "state": "Florida",
   "stateCode": "FL",
-  "updatedAt": "2026-07-16T06:00:00Z",
+  "updatedAt": "2026-07-16T10:24:06Z",
   "purpose": "Prevent duplicate collection work and merge conflicts while multiple CivicLenZ agents complete Florida in parallel.",
   "rules": {
     "claimBeforeCollection": true,
@@ -144,16 +144,116 @@
         "Do not publish unreviewed portraits, campaign promises, finance interpretations, allegations, trackers, or scores.",
         "Do not write directly to canonical public profiles; use the shared promotion pipeline."
       ]
+    },
+    {
+      "workstreamId": "fl-central-florida-local-source-discovery",
+      "ownerKey": "agent-central-florida-source-discovery",
+      "status": "active_claimed",
+      "description": "Review-only source discovery for local elected-seat source maps in Central Florida. This workstream must establish authoritative source coverage before collecting officeholder records.",
+      "scope": {
+        "governmentLevels": [
+          "county",
+          "school_district",
+          "municipal",
+          "special_district",
+          "judicial"
+        ],
+        "regions": ["central_florida"],
+        "counties": ["Lake", "Orange", "Osceola", "Polk", "Seminole"],
+        "officeFamilies": [
+          "county_commission",
+          "sheriff",
+          "clerk_of_circuit_court_and_comptroller",
+          "supervisor_of_elections",
+          "tax_collector",
+          "property_appraiser",
+          "school_board",
+          "elected_school_superintendent",
+          "municipal_mayor",
+          "municipal_council_or_commission",
+          "special_district_board",
+          "elected_or_retention_judicial_seat"
+        ],
+        "dataPhases": ["source_discovery"]
+      },
+      "branchPrefix": "build/fl-central-local-",
+      "outputRoots": [
+        "data/sources/florida-regions/central",
+        "data/staging/florida/local/central",
+        "data/research-staging/florida/local/central",
+        "data/operations/florida/central"
+      ],
+      "claimedAt": "2026-07-16T10:24:06Z",
+      "heartbeat": {
+        "coordinationCheckCadence": "15_minutes",
+        "expectedMaterialProgressCadence": "daily",
+        "staleAfterHours": 36,
+        "lastProgressAt": "2026-07-16T10:24:06Z"
+      },
+      "exclusions": [
+        "Do not collect current officeholder, portrait, social, contact, biography, finance, score, or monitoring records until the source maps are reviewed.",
+        "Do not modify Northwest, state, federal, shared-worker-registry, canonical profile, or public presentation paths.",
+        "Do not publish candidate discovery data."
+      ]
+    },
+    {
+      "workstreamId": "fl-south-florida-local-source-discovery",
+      "ownerKey": "agent-south-florida-source-discovery",
+      "status": "active_claimed",
+      "description": "Review-only source discovery for local elected-seat source maps in Broward and Miami-Dade counties. This workstream must establish authoritative source coverage before collecting officeholder records.",
+      "scope": {
+        "governmentLevels": [
+          "county",
+          "school_district",
+          "municipal",
+          "special_district",
+          "judicial"
+        ],
+        "regions": ["broward_and_miami_dade"],
+        "counties": ["Broward", "Miami-Dade"],
+        "officeFamilies": [
+          "county_commission",
+          "sheriff",
+          "clerk_of_circuit_court_and_comptroller",
+          "supervisor_of_elections",
+          "tax_collector",
+          "property_appraiser",
+          "school_board",
+          "elected_school_superintendent",
+          "municipal_mayor",
+          "municipal_council_or_commission",
+          "special_district_board",
+          "elected_or_retention_judicial_seat"
+        ],
+        "dataPhases": ["source_discovery"]
+      },
+      "branchPrefix": "build/fl-south-local-",
+      "outputRoots": [
+        "data/sources/florida-regions/south-florida",
+        "data/staging/florida/local/south-florida",
+        "data/research-staging/florida/local/south-florida",
+        "data/operations/florida/south-florida"
+      ],
+      "claimedAt": "2026-07-16T10:24:06Z",
+      "heartbeat": {
+        "coordinationCheckCadence": "15_minutes",
+        "expectedMaterialProgressCadence": "daily",
+        "staleAfterHours": 36,
+        "lastProgressAt": "2026-07-16T10:24:06Z"
+      },
+      "exclusions": [
+        "Do not collect current officeholder, portrait, social, contact, biography, finance, score, or monitoring records until the source maps are reviewed.",
+        "Do not modify Northwest, state, federal, shared-worker-registry, canonical profile, or public presentation paths.",
+        "Do not publish candidate discovery data."
+      ]
     }
   ],
   "unassignedLocalRegions": [
     "northeast_florida",
     "north_central_florida",
-    "central_florida",
     "tampa_bay_and_nature_coast",
     "southwest_florida",
     "treasure_coast_and_palm_beach",
-    "broward_and_miami_dade",
     "florida_keys"
   ]
 }
