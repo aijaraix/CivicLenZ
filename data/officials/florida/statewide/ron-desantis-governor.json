@@ -65,17 +65,84 @@
     "partyAtElection": "Republican",
     "caucus": null
   },
-  "contactPoints": [],
-  "officeLocations": [],
+  "contactPoints": [
+    {
+      "type": "contact_form",
+      "label": "Contact Governor Ron DeSantis",
+      "value": "https://www.flgov.com/eog/leadership/people/ron-desantis/contact",
+      "officialUse": true,
+      "verifiedAt": "2026-07-16T00:00:00Z",
+      "dataState": "verified",
+      "evidenceIds": []
+    }
+  ],
+  "officeLocations": [
+    {
+      "type": "state_capitol_office",
+      "label": "Executive Office of the Governor",
+      "address": "400 S Monroe St, Tallahassee, FL 32399",
+      "officeHours": null,
+      "public": true
+    }
+  ],
   "websites": [
     {
       "type": "official",
       "url": "https://www.flgov.com/",
       "active": true,
-      "verifiedAt": "2026-07-15T00:00:00Z"
+      "verifiedAt": "2026-07-16T00:00:00Z"
+    },
+    {
+      "type": "official",
+      "url": "https://www.flgov.com/eog/leadership/people/ron-desantis",
+      "active": true,
+      "verifiedAt": "2026-07-16T00:00:00Z"
+    },
+    {
+      "type": "contact",
+      "url": "https://www.flgov.com/eog/leadership/people/ron-desantis/contact",
+      "active": true,
+      "verifiedAt": "2026-07-16T00:00:00Z"
     }
   ],
-  "socialAccounts": [],
+  "socialAccounts": [
+    {
+      "platform": "Facebook",
+      "handle": "GovRonDeSantis",
+      "url": "https://www.facebook.com/GovRonDeSantis",
+      "accountType": "office",
+      "verified": true,
+      "active": null,
+      "lastCheckedAt": "2026-07-16T00:00:00Z",
+      "sourceUrl": "https://www.flgov.com/eog/leadership/communications",
+      "sourceLabel": "Executive Office of the Governor — Communications Office",
+      "verificationState": "official_source_confirmed"
+    },
+    {
+      "platform": "X",
+      "handle": "GovRonDeSantis",
+      "url": "https://twitter.com/GovRonDeSantis",
+      "accountType": "office",
+      "verified": true,
+      "active": null,
+      "lastCheckedAt": "2026-07-16T00:00:00Z",
+      "sourceUrl": "https://www.flgov.com/eog/leadership/communications",
+      "sourceLabel": "Executive Office of the Governor — Communications Office",
+      "verificationState": "official_source_confirmed"
+    },
+    {
+      "platform": "Rumble",
+      "handle": "GovRonDeSantis",
+      "url": "https://rumble.com/c/GovRonDeSantis",
+      "accountType": "office",
+      "verified": true,
+      "active": null,
+      "lastCheckedAt": "2026-07-16T00:00:00Z",
+      "sourceUrl": "https://www.flgov.com/eog/leadership/communications",
+      "sourceLabel": "Executive Office of the Governor — Communications Office",
+      "verificationState": "official_source_confirmed"
+    }
+  ],
   "education": [],
   "militaryService": [],
   "careerHistory": [],
@@ -115,10 +182,58 @@
       "civicScores"
     ]
   },
-  "profileCompleteness": 8,
+  "profileCompleteness": 22,
   "dataState": "partially_verified",
   "evidenceIds": [],
-  "lastTrackedAt": "2026-07-15T00:00:00Z",
-  "lastUpdatedAt": "2026-07-15T00:00:00Z",
-  "publishedAt": null
-}
+  "lastTrackedAt": "2026-07-16T00:00:00Z",
+  "lastUpdatedAt": "2026-07-16T00:00:00Z",
+  "publishedAt": "2026-07-16T00:00:00Z",
+  "biography": {
+    "short": "Ron DeSantis is the 46th Governor of Florida. The Executive Office of the Governor publishes his official biography, public contact channel, and government activity.",
+    "long": null,
+    "birthDate": null,
+    "birthplace": null,
+    "hometown": null,
+    "currentResidenceGeneral": null,
+    "languagesSpoken": [],
+    "publicFamilySummary": null,
+    "evidenceIds": []
+  },
+  "sourceReferences": [
+    {
+      "label": "Ron DeSantis — Executive Office of the Governor",
+      "url": "https://www.flgov.com/eog/leadership/people/ron-desantis",
+      "publisher": "Executive Office of Governor Ron DeSantis",
+      "sourceType": "official_profile",
+      "fields": [
+        "office",
+        "official biography",
+        "official website"
+      ],
+      "checkedAt": "2026-07-16T00:00:00Z"
+    },
+    {
+      "label": "Contact Governor Ron DeSantis",
+      "url": "https://www.flgov.com/eog/leadership/people/ron-desantis/contact",
+      "publisher": "Executive Office of Governor Ron DeSantis",
+      "sourceType": "official_contact_form",
+      "fields": [
+        "official contact form"
+      ],
+      "checkedAt": "2026-07-16T00:00:00Z"
+    },
+    {
+      "label": "Executive Office of the Governor — Communications Office",
+      "url": "https://www.flgov.com/eog/leadership/communications",
+      "publisher": "Executive Office of Governor Ron DeSantis",
+      "sourceType": "official_communications_page",
+      "fields": [
+        "office address",
+        "public Facebook",
+        "public X",
+        "public Rumble"
+      ],
+      "checkedAt": "2026-07-16T00:00:00Z"
+    }
+  ]
+}\n
