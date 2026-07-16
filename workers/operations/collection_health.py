@@ -1,16 +1,16 @@
 #!/usr/bin/env python3
 """Create an evidence-safe health snapshot for CivicLenZ collection pipelines.
 
-This script never publishes or promotes civic data. It only measures staged source
-records, the seat research queue, and review-only identity/contact candidates so a
-scheduled worker can prove what was collected and flag stale or incomplete runs.
+This script never publishes or promotes civic data. It measures staged source
+records, research queues, review-only candidates, and local source-discovery
+coverage so scheduled operations can expose what is collected, what is only
+queued, and which Florida areas still have no claimed collection stream.
 """
 
 from __future__ import annotations
 
 import argparse
 import json
-import sys
 from collections import Counter
 from datetime import datetime, timezone
 from pathlib import Path
@@ -20,6 +20,17 @@ DEFAULT_ROOT = Path(__file__).resolve().parents[2]
 MANIFEST_PATH = Path("data/sources/collector-manifest.json")
 QUEUE_PATH = Path("data/operations/florida-profile-research-queue.json")
 IDENTITY_PATH = Path("data/research-staging/florida/identity-contact")
+COUNTY_REGISTRY_PATH = Path("data/sources/florida-county-source-registry.json")
+WORK_ALLOCATION_PATH = Path("data/operations/florida-work-allocation.json")
+LOCAL_STAGING_ROOT = Path("data/staging/florida/local")
+LOCAL_RESEARCH_ROOT = Path("data/research-staging/florida/local")
+LOCAL_GOVERNMENT_LEVELS = {
+    "county",
+    "school_district",
+    "municipal",
+    "special_district",
+    "judicial",
+}
 
 
 def now_iso() -> str:
@@ -148,7 +159,9 @@ def queue_summary(root: Path) -> tuple[dict[str, Any], list[dict[str, str]]]:
         if isinstance(section, dict)
     ]
     canonical_tasks = sum(
-        1 for task in tasks if task.get("sections") and all(section.get("canonicalRecordExists") is True for section in task["sections"])
+        1
+        for task in tasks
+        if task.get("sections") and all(section.get("canonicalRecordExists") is True for section in task["sections"])
     )
     latest_baseline = max_timestamp(
         [str(task["lastBaselineCollectedAt"]) for task in tasks if task.get("lastBaselineCollectedAt")]
@@ -204,11 +217,200 @@ def identity_summary(root: Path) -> dict[str, Any]:
     }
 
 
-def build_report(root: Path) -> dict[str, Any]:
+def local_coverage_summary(root: Path) -> tuple[dict[str, Any], list[dict[str, str]]]:
+    """Measure Florida local coverage from the coordination checkout.
+
+    The local source registry and allocation file live on the current reviewed
+    checkout. The state/federal review snapshot can be a different ref, so this
+    function deliberately accepts a separate root.
+    """
+
+    registry = read_json(root / COUNTY_REGISTRY_PATH) or {}
+    allocation = read_json(root / WORK_ALLOCATION_PATH) or {}
+    signals: list[dict[str, str]] = []
+
+    counties = sorted({str(county) for county in registry.get("counties", []) if isinstance(county, str)})
+    if not counties:
+        signals.append(
+            {
+                "level": "error",
+                "code": "county_registry_missing",
+                "message": "Florida's county source registry is unavailable or contains no counties.",
+            }
+        )
+
+    active_streams = [
+        stream
+        for stream in allocation.get("workstreams", [])
+        if isinstance(stream, dict) and stream.get("status") in {"active_claimed", "active_reserved"}
+    ]
+    local_streams = []
+    assigned_counties: set[str] = set()
+    for stream in active_streams:
+        scope = stream.get("scope") if isinstance(stream.get("scope"), dict) else {}
+        levels = {str(level) for level in scope.get("governmentLevels", []) if isinstance(level, str)}
+        if not (levels & LOCAL_GOVERNMENT_LEVELS):
+            continue
+        local_streams.append(stream)
+        assigned_counties.update(str(county) for county in scope.get("counties", []) if isinstance(county, str))
+
+    if not local_streams:
+        signals.append(
+            {
+                "level": "warning",
+                "code": "local_workstream_unclaimed",
+                "message": "No active Florida local-government collection workstream is claimed.",
+            }
+        )
+
+    source_discovery_root = root / LOCAL_STAGING_ROOT
+    source_discovery_records: list[dict[str, Any]] = []
+    officeholder_records: list[dict[str, Any]] = []
+    if source_discovery_root.exists():
+        for path in sorted(source_discovery_root.rglob("*.json")):
+            record = read_json(path)
+            if not record:
+                continue
+            if "source-discovery" in path.parts:
+                source_discovery_records.append(record)
+            else:
+                officeholder_records.append(record)
+
+    local_research_records: list[dict[str, Any]] = []
+    research_root = root / LOCAL_RESEARCH_ROOT
+    if research_root.exists():
+        for path in sorted(research_root.rglob("*.json")):
+            if record := read_json(path):
+                local_research_records.append(record)
+
+    discovered_counties = {
+        str(record.get("county"))
+        for record in source_discovery_records
+        if isinstance(record.get("county"), str)
+    }
+    valid_discovered_counties = discovered_counties & set(counties)
+    unknown_discovery_counties = sorted(discovered_counties - set(counties))
+    resolved_categories = sum(
+        int(record.get("resolvedCategoryCount", 0))
+        for record in source_discovery_records
+        if isinstance(record.get("resolvedCategoryCount"), int)
+    )
+    required_categories = sum(
+        int(record.get("requiredCategoryCount", 0))
+        for record in source_discovery_records
+        if isinstance(record.get("requiredCategoryCount"), int)
+    )
+    unresolved_categories = sum(
+        len(record.get("unresolvedCategories", []))
+        for record in source_discovery_records
+        if isinstance(record.get("unresolvedCategories"), list)
+    )
+    registry_progress = registry.get("sourceDiscovery") if isinstance(registry.get("sourceDiscovery"), dict) else {}
+    reported_completed = registry_progress.get("completedCounties")
+    unassigned_counties = sorted(set(counties) - assigned_counties)
+
+    if source_discovery_records and isinstance(reported_completed, int) and reported_completed != len(valid_discovered_counties):
+        signals.append(
+            {
+                "level": "warning",
+                "code": "county_registry_progress_stale",
+                "message": (
+                    f"County registry reports {reported_completed} completed counties, but "
+                    f"{len(valid_discovered_counties)} review-only source-discovery records are present."
+                ),
+            }
+        )
+    if counties and len(valid_discovered_counties) < len(counties):
+        signals.append(
+            {
+                "level": "warning",
+                "code": "county_source_discovery_incomplete",
+                "message": (
+                    f"County source discovery covers {len(valid_discovered_counties)}/{len(counties)} Florida counties; "
+                    f"{len(counties) - len(valid_discovered_counties)} still have no saved discovery record."
+                ),
+            }
+        )
+    if counter_dict([record.get("collectionStatus") for record in source_discovery_records]).get("failed", 0):
+        signals.append(
+            {
+                "level": "warning",
+                "code": "county_source_discovery_failed",
+                "message": "One or more county source-discovery runs failed and need a source-specific retry or manual source map.",
+            }
+        )
+    if source_discovery_records and not officeholder_records:
+        signals.append(
+            {
+                "level": "warning",
+                "code": "local_officeholder_registry_empty",
+                "message": "Local coverage is still source discovery only; no Florida local officeholder staging records exist yet.",
+            }
+        )
+    if counties and unassigned_counties:
+        signals.append(
+            {
+                "level": "warning",
+                "code": "local_counties_unassigned",
+                "message": (
+                    f"{len(unassigned_counties)} Florida counties have no active local collection claim. "
+                    "Assign a non-overlapping regional workstream before collecting them."
+                ),
+            }
+        )
+    if unknown_discovery_counties:
+        signals.append(
+            {
+                "level": "warning",
+                "code": "county_source_discovery_unknown_county",
+                "message": "Source-discovery output contains county names not present in the Florida county registry.",
+            }
+        )
+
+    return (
+        {
+            "available": bool(counties),
+            "countyRegistryPath": str(COUNTY_REGISTRY_PATH),
+            "workAllocationPath": str(WORK_ALLOCATION_PATH),
+            "totalCountyCount": len(counties),
+            "activeLocalWorkstreams": [
+                {
+                    "workstreamId": stream.get("workstreamId"),
+                    "ownerKey": stream.get("ownerKey"),
+                    "status": stream.get("status"),
+                }
+                for stream in local_streams
+            ],
+            "assignedCountyCount": len(assigned_counties & set(counties)),
+            "unassignedCountyCount": len(unassigned_counties),
+            "unassignedCounties": unassigned_counties,
+            "unassignedRegions": allocation.get("unassignedLocalRegions", []),
+            "sourceDiscovery": {
+                "recordCount": len(source_discovery_records),
+                "countyCount": len(valid_discovered_counties),
+                "collectionStatusCounts": counter_dict([record.get("collectionStatus") for record in source_discovery_records]),
+                "resolvedCategoryCount": resolved_categories,
+                "requiredCategoryCount": required_categories,
+                "unresolvedCategoryCount": unresolved_categories,
+                "latestFetchedAt": max_timestamp(
+                    [str(record["fetchedAt"]) for record in source_discovery_records if record.get("fetchedAt")]
+                ),
+                "unknownCounties": unknown_discovery_counties,
+                "registryReportedCompletedCount": reported_completed,
+            },
+            "localOfficeholderStagingRecordCount": len(officeholder_records),
+            "localResearchCandidateRecordCount": len(local_research_records),
+        },
+        signals,
+    )
+
+
+def build_report(root: Path, coordination_root: Path | None = None) -> dict[str, Any]:
     baselines, baseline_signals = florida_baseline_summary(root)
     queue, queue_signals = queue_summary(root)
     identity = identity_summary(root)
-    signals = [*baseline_signals, *queue_signals]
+    local_coverage, local_signals = local_coverage_summary(coordination_root or root)
+    signals = [*baseline_signals, *queue_signals, *local_signals]
 
     baseline_total = sum(item["records"] for item in baselines.values())
     if queue["available"] and queue["taskCount"] < baseline_total:
@@ -254,13 +456,16 @@ def build_report(root: Path) -> dict[str, Any]:
         state = "attention"
 
     return {
-        "schemaVersion": "1.0.0",
+        "schemaVersion": "1.1.0",
         "generatedAt": now_iso(),
         "scope": "Florida first",
+        "snapshotRoot": str(root),
+        "coordinationRoot": str(coordination_root or root),
         "state": state,
         "baseline": {"totalRecords": baseline_total, "collectors": baselines},
         "researchQueue": queue,
         "identityContactCandidates": identity,
+        "localCoverage": local_coverage,
         "signals": signals,
         "publicationBoundary": "Staged and candidate records require evidence and review before public promotion.",
     }
@@ -270,18 +475,30 @@ def markdown(report: dict[str, Any]) -> str:
     queue = report["researchQueue"]
     identity = report["identityContactCandidates"]
     baseline = report["baseline"]
+    local = report["localCoverage"]
+    discovery = local["sourceDiscovery"]
 
     lines = [
         "### CivicLenZ collection heartbeat",
         f"- State: **{report['state']}**",
-        f"- Florida baseline records: **{baseline['totalRecords']}**",
-        f"- Seat/profile research tasks: **{queue['taskCount']}**",
+        f"- Florida state baseline records: **{baseline['totalRecords']}**",
+        f"- State/federal seat/profile research tasks: **{queue['taskCount']}**",
         f"- Required research sections per task: **{queue['requiredSectionCountPerSeat']}**",
         f"- Reviewed canonical profiles: **{queue.get('canonicalProfileTasks', 0)}**",
         f"- Review-only identity/contact candidate records: **{identity['recordCount']}**",
+        (
+            f"- County source-discovery coverage: **{discovery['countyCount']}/{local['totalCountyCount']}** "
+            "(source maps only; not officials)"
+        ),
+        f"- Counties with an active local claim: **{local['assignedCountyCount']}**",
+        f"- Counties still unassigned: **{local['unassignedCountyCount']}**",
+        f"- Local officeholder staging records: **{local['localOfficeholderStagingRecordCount']}**",
+        f"- Local review-only research candidates: **{local['localResearchCandidateRecordCount']}**",
     ]
     if queue.get("latestBaselineCollectedAt"):
-        lines.append(f"- Latest queue baseline: **{queue['latestBaselineCollectedAt']}**")
+        lines.append(f"- Latest state/federal queue baseline: **{queue['latestBaselineCollectedAt']}**")
+    if discovery.get("latestFetchedAt"):
+        lines.append(f"- Latest county source discovery: **{discovery['latestFetchedAt']}**")
     if report["signals"]:
         lines.append("")
         lines.append("#### Signals")
@@ -297,14 +514,20 @@ def markdown(report: dict[str, Any]) -> str:
 
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("--root", type=Path, default=DEFAULT_ROOT, help="Repository root to inspect.")
+    parser.add_argument("--root", type=Path, default=DEFAULT_ROOT, help="Repository root holding the data snapshot to inspect.")
+    parser.add_argument(
+        "--coordination-root",
+        type=Path,
+        help="Optional separate checkout containing Florida allocation and local-coverage records.",
+    )
     parser.add_argument("--output", type=Path, help="Optional JSON report destination, relative to --root unless absolute.")
     parser.add_argument("--markdown", action="store_true", help="Print a Markdown summary instead of JSON.")
     parser.add_argument("--fail-on-error", action="store_true", help="Exit nonzero only when the report state is error.")
     args = parser.parse_args()
 
     root = args.root.resolve()
-    report = build_report(root)
+    coordination_root = args.coordination_root.resolve() if args.coordination_root else root
+    report = build_report(root, coordination_root)
 
     if args.output:
         destination = args.output if args.output.is_absolute() else root / args.output
