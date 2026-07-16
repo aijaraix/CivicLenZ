@@ -1,5 +1,6 @@
 name: Collect federal baseline officials
 
+# Aggregation-first worker: collect and preserve the federal roster without manual dispatch.
 on:
   schedule:
     - cron: '17 7 * * *'
