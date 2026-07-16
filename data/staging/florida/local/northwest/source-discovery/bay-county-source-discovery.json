@@ -1,0 +1,247 @@
+{
+  "sourceDiscoveryVersion": "1.0.0",
+  "county": "Bay",
+  "state": "Florida",
+  "stateCode": "FL",
+  "region": "northwest_florida_panhandle",
+  "rootSeedUrl": "https://www.baycountyfl.gov/",
+  "finalRootUrl": "https://www.baycountyfl.gov/",
+  "rootSeedStatus": "reachable_official_site",
+  "sitePlatformHint": "civicplus",
+  "fetchedAt": "2026-07-16T07:22:33Z",
+  "collectionStatus": "success",
+  "publicationAllowed": false,
+  "reviewStatus": "unreviewed",
+  "visitedPages": [
+    {
+      "url": "https://www.baycountyfl.gov/",
+      "httpStatus": 200,
+      "contentType": "text/html; charset=utf-8",
+      "pageTitle": "Bay County, FL | Official Website",
+      "sha256": "c7e0db4f7437e4746e459c51c0e35063068b68e8c745ccad67f9eec55e52a360"
+    },
+    {
+      "url": "https://www.baycountyfl.gov/m/newsflash/home/detail/264",
+      "httpStatus": 200,
+      "contentType": "text/html; charset=utf-8",
+      "pageTitle": "Bay County Commission launches new phone app • Bay County, FL",
+      "sha256": "65f615904a261fddf0e91610d9a0433cd677ab87b9cdff352f93108bd25f90c2"
+    },
+    {
+      "url": "https://www.baycountyfl.gov/m/newsflash/home/detail/297",
+      "httpStatus": 200,
+      "contentType": "text/html; charset=utf-8",
+      "pageTitle": "Bay County Commission seeking applications for appointment • Bay County, FL",
+      "sha256": "a39ec26c897038d0da2dc1dfcc9625350fa0ec33983f436b3e25b0871cd1b9d2"
+    },
+    {
+      "url": "https://www.baycountyfl.gov/m/newsflash/home/detail/268",
+      "httpStatus": 200,
+      "contentType": "text/html; charset=utf-8",
+      "pageTitle": "Bay County Commission establishes Navy Boulevard • Bay County, FL",
+      "sha256": "a6c2123e3c3991245edd3e5b166a18a4d0837cfc03d910036d08ef8c218e5397"
+    },
+    {
+      "url": "https://www.baycountyfl.gov/m/newsflash/home/detail/258",
+      "httpStatus": 200,
+      "contentType": "text/html; charset=utf-8",
+      "pageTitle": "County Commission invites public to annual Christmas Tree Lighting Ceremony • Bay County, FL",
+      "sha256": "edea0c3203641a548f0aef983f5d7a15c3353a1fad1ec197deee6f03fcef08fb"
+    },
+    {
+      "url": "https://www.baycountyfl.gov/Calendar.aspx?EID=1600",
+      "httpStatus": 200,
+      "contentType": "text/html; charset=utf-8",
+      "pageTitle": "Calendar • Bay County Board of County Commissioners Meeting",
+      "sha256": "e66ff6a08ec700f7918a3317023c24b57fdd13933cd4ce274b8bb840c7adba67"
+    },
+    {
+      "url": "https://www.bayvotesfl.gov/",
+      "httpStatus": 200,
+      "contentType": "text/html; charset=utf-8",
+      "pageTitle": "Bay County Supervisor of Elections | Nina Ward",
+      "sha256": "4ae9bdbcbc3262200b620ddd866b58300c763fffb6e1b68394c6bef5423743eb"
+    }
+  ],
+  "sourceCandidates": {
+    "county_commission_directory": [
+      {
+        "url": "https://www.baycountyfl.gov/Calendar.aspx?EID=1600",
+        "label": "Bay County Board of County Commissioners Meeting",
+        "discoveredOn": "https://www.baycountyfl.gov/",
+        "score": 31,
+        "sameHost": true,
+        "reviewStatus": "unreviewed"
+      },
+      {
+        "url": "https://www.baycountyfl.gov/CivicAlerts.aspx?AID=258",
+        "label": "County Commission invites public to annual Christmas Tree Lighting Ceremony",
+        "discoveredOn": "https://www.baycountyfl.gov/",
+        "score": 22,
+        "sameHost": true,
+        "reviewStatus": "unreviewed"
+      },
+      {
+        "url": "https://www.baycountyfl.gov/CivicAlerts.aspx?AID=264",
+        "label": "Bay County Commission launches new phone app",
+        "discoveredOn": "https://www.baycountyfl.gov/",
+        "score": 22,
+        "sameHost": true,
+        "reviewStatus": "unreviewed"
+      },
+      {
+        "url": "https://www.baycountyfl.gov/CivicAlerts.aspx?AID=268",
+        "label": "Bay County Commission establishes Navy Boulevard",
+        "discoveredOn": "https://www.baycountyfl.gov/",
+        "score": 22,
+        "sameHost": true,
+        "reviewStatus": "unreviewed"
+      },
+      {
+        "url": "https://www.baycountyfl.gov/CivicAlerts.aspx?AID=297",
+        "label": "Bay County Commission seeking applications for appointment",
+        "discoveredOn": "https://www.baycountyfl.gov/",
+        "score": 22,
+        "sameHost": true,
+        "reviewStatus": "unreviewed"
+      },
+      {
+        "url": "https://www.baycoclerk.com/comptroller-services/county-commissioners/",
+        "label": null,
+        "discoveredOn": "https://www.baycountyfl.gov/",
+        "score": 13,
+        "sameHost": false,
+        "reviewStatus": "unreviewed"
+      }
+    ],
+    "sheriff_directory": [
+      {
+        "url": "http://bayso.org/",
+        "label": "Bay County Sheriff's Office",
+        "discoveredOn": "https://www.baycountyfl.gov/",
+        "score": 16,
+        "sameHost": false,
+        "reviewStatus": "unreviewed"
+      }
+    ],
+    "clerk_directory": [
+      {
+        "url": "https://baycoclerk.com/",
+        "label": "Bay County Clerk of Court",
+        "discoveredOn": "https://www.baycountyfl.gov/",
+        "score": 16,
+        "sameHost": false,
+        "reviewStatus": "unreviewed"
+      }
+    ],
+    "supervisor_of_elections_directory": [
+      {
+        "url": "https://www.baycountyfl.gov/334/Supervisor-of-Elections",
+        "label": "Supervisor of Elections",
+        "discoveredOn": "https://www.baycountyfl.gov/",
+        "score": 26,
+        "sameHost": true,
+        "reviewStatus": "unreviewed"
+      },
+      {
+        "url": "https://registertovoteflorida.gov/home",
+        "label": "Register to Vote",
+        "discoveredOn": "https://www.bayvotesfl.gov/",
+        "score": 18,
+        "sameHost": false,
+        "reviewStatus": "unreviewed"
+      },
+      {
+        "url": "https://www.bayvotesfl.gov/events/book-closing-primary-election/",
+        "label": "Jul 20, 2026 Deadline to register to vote in the Primary Election.",
+        "discoveredOn": "https://www.bayvotesfl.gov/",
+        "score": 18,
+        "sameHost": false,
+        "reviewStatus": "unreviewed"
+      },
+      {
+        "url": "https://www.bayvotesfl.gov/voters/vote-early/",
+        "label": "Vote Early",
+        "discoveredOn": "https://www.bayvotesfl.gov/",
+        "score": 18,
+        "sameHost": false,
+        "reviewStatus": "unreviewed"
+      },
+      {
+        "url": "https://www.bayvotesfl.gov/voters/vote-on-election-day/",
+        "label": "Vote on Election Day",
+        "discoveredOn": "https://www.bayvotesfl.gov/",
+        "score": 18,
+        "sameHost": false,
+        "reviewStatus": "unreviewed"
+      },
+      {
+        "url": "https://www.bayvotesfl.gov/voters/ways-to-vote/",
+        "label": "3 Ways to Vote",
+        "discoveredOn": "https://www.bayvotesfl.gov/",
+        "score": 18,
+        "sameHost": false,
+        "reviewStatus": "unreviewed"
+      },
+      {
+        "url": "https://www.bayvotesfl.gov/voters/where-to-vote-in-person/",
+        "label": "Where to Vote in Person",
+        "discoveredOn": "https://www.bayvotesfl.gov/",
+        "score": 18,
+        "sameHost": false,
+        "reviewStatus": "unreviewed"
+      },
+      {
+        "url": "https://www.bayvotesfl.gov/ways-to-vote/",
+        "label": "Ways to Vote",
+        "discoveredOn": "https://www.bayvotesfl.gov/",
+        "score": 18,
+        "sameHost": false,
+        "reviewStatus": "unreviewed"
+      }
+    ],
+    "tax_collector_directory": [
+      {
+        "url": "https://www.baytaxcollector.com/",
+        "label": "Bay County Tax Collector",
+        "discoveredOn": "https://www.baycountyfl.gov/",
+        "score": 16,
+        "sameHost": false,
+        "reviewStatus": "unreviewed"
+      }
+    ],
+    "property_appraiser_directory": [
+      {
+        "url": "http://baypa.net/",
+        "label": "Bay County Property Appraiser",
+        "discoveredOn": "https://www.baycountyfl.gov/",
+        "score": 13,
+        "sameHost": false,
+        "reviewStatus": "unreviewed"
+      }
+    ],
+    "school_board_directory": [],
+    "school_superintendent_status_and_directory": [],
+    "municipality_registry": [],
+    "special_district_registry": [],
+    "judicial_election_or_retention_sources": [],
+    "campaign_finance_and_candidate_filing_sources": [],
+    "financial_disclosure_sources": []
+  },
+  "resolvedCategoryCount": 6,
+  "requiredCategoryCount": 13,
+  "unresolvedCategories": [
+    "school_board_directory",
+    "school_superintendent_status_and_directory",
+    "municipality_registry",
+    "special_district_registry",
+    "judicial_election_or_retention_sources",
+    "campaign_finance_and_candidate_filing_sources",
+    "financial_disclosure_sources"
+  ],
+  "notes": [
+    "Candidate links require source review before they can seed an officeholder collector.",
+    "External constitutional-office and school-district domains are allowed only when linked from an attributable official source or independently verified."
+  ],
+  "errors": []
+}

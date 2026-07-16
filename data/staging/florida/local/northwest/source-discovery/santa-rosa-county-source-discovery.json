@@ -1,0 +1,84 @@
+{
+  "sourceDiscoveryVersion": "1.0.0",
+  "county": "Santa Rosa",
+  "state": "Florida",
+  "stateCode": "FL",
+  "region": "northwest_florida_panhandle",
+  "rootSeedUrl": "https://www.santarosa.fl.gov/",
+  "finalRootUrl": "https://www.santarosa.fl.gov/",
+  "rootSeedStatus": "reachable_official_site",
+  "sitePlatformHint": "civicplus",
+  "fetchedAt": "2026-07-16T07:22:36Z",
+  "collectionStatus": "success",
+  "publicationAllowed": false,
+  "reviewStatus": "unreviewed",
+  "visitedPages": [
+    {
+      "url": "https://www.santarosa.fl.gov/",
+      "httpStatus": 200,
+      "contentType": "text/html; charset=utf-8",
+      "pageTitle": "Santa Rosa County, FL | Official Website",
+      "sha256": "b1ebd2ad27928224b3d09dfc63eb1aea5df959e656353056ffb83d5eb6286849"
+    },
+    {
+      "url": "https://www.santarosa.fl.gov/FormCenter/BOCCAdmin-21/Citizen-Input-Form-for-agenda-items-or-p-95",
+      "httpStatus": 200,
+      "contentType": "text/html; charset=utf-8",
+      "pageTitle": "Form Center • Citizen Input Form - for agenda items or publi",
+      "sha256": "b2aea5737384e724b878664a27688a11daaed1be5e93bab1d638857a41f6e9eb"
+    }
+  ],
+  "sourceCandidates": {
+    "county_commission_directory": [
+      {
+        "url": "https://www.santarosa.fl.gov/FormCenter/BOCCAdmin-21/Citizen-Input-Form-for-agenda-items-or-p-95",
+        "label": null,
+        "discoveredOn": "https://www.santarosa.fl.gov/",
+        "score": 22,
+        "sameHost": true,
+        "reviewStatus": "unreviewed"
+      },
+      {
+        "url": "https://www.youtube.com/@SantaRosaCountyBOCC",
+        "label": "YouTube",
+        "discoveredOn": "https://www.santarosa.fl.gov/",
+        "score": 13,
+        "sameHost": false,
+        "reviewStatus": "unreviewed"
+      }
+    ],
+    "sheriff_directory": [],
+    "clerk_directory": [],
+    "supervisor_of_elections_directory": [],
+    "tax_collector_directory": [],
+    "property_appraiser_directory": [],
+    "school_board_directory": [],
+    "school_superintendent_status_and_directory": [],
+    "municipality_registry": [],
+    "special_district_registry": [],
+    "judicial_election_or_retention_sources": [],
+    "campaign_finance_and_candidate_filing_sources": [],
+    "financial_disclosure_sources": []
+  },
+  "resolvedCategoryCount": 1,
+  "requiredCategoryCount": 13,
+  "unresolvedCategories": [
+    "sheriff_directory",
+    "clerk_directory",
+    "supervisor_of_elections_directory",
+    "tax_collector_directory",
+    "property_appraiser_directory",
+    "school_board_directory",
+    "school_superintendent_status_and_directory",
+    "municipality_registry",
+    "special_district_registry",
+    "judicial_election_or_retention_sources",
+    "campaign_finance_and_candidate_filing_sources",
+    "financial_disclosure_sources"
+  ],
+  "notes": [
+    "Candidate links require source review before they can seed an officeholder collector.",
+    "External constitutional-office and school-district domains are allowed only when linked from an attributable official source or independently verified."
+  ],
+  "errors": []
+}

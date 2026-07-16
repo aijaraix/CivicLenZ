@@ -1,0 +1,92 @@
+{
+  "sourceDiscoveryVersion": "1.0.0",
+  "county": "Calhoun",
+  "state": "Florida",
+  "stateCode": "FL",
+  "region": "northwest_florida_panhandle",
+  "rootSeedUrl": "https://www.calhouncountyfl.gov/",
+  "finalRootUrl": "https://www.calhouncountyfl.gov/",
+  "rootSeedStatus": "reachable_official_site",
+  "sitePlatformHint": "unknown",
+  "fetchedAt": "2026-07-16T07:22:33Z",
+  "collectionStatus": "success",
+  "publicationAllowed": false,
+  "reviewStatus": "unreviewed",
+  "visitedPages": [
+    {
+      "url": "https://www.calhouncountyfl.gov/",
+      "httpStatus": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "pageTitle": "Calhoun County, Florida | Commissioners, Officials & Information",
+      "sha256": "48be611fc3bdae36520b6735d97d9709a7d6ee93254aed7411edb792dc0f345d"
+    },
+    {
+      "url": "https://www.calhouncountyfl.gov/government/",
+      "httpStatus": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "pageTitle": "Government | Calhoun County, Florida",
+      "sha256": "7f8146e7568bccef1c6832459e1c76b75bc171ebc716b01bd6d0102c5601475d"
+    }
+  ],
+  "sourceCandidates": {
+    "county_commission_directory": [
+      {
+        "url": "https://www.calhouncountyfl.gov/government/",
+        "label": "Meet Your Commissioners",
+        "discoveredOn": "https://www.calhouncountyfl.gov/",
+        "score": 22,
+        "sameHost": true,
+        "reviewStatus": "unreviewed"
+      }
+    ],
+    "sheriff_directory": [
+      {
+        "url": "https://www.calhounsheriff.com/",
+        "label": "visit website",
+        "discoveredOn": "https://www.calhouncountyfl.gov/government/",
+        "score": 13,
+        "sameHost": false,
+        "reviewStatus": "unreviewed"
+      }
+    ],
+    "clerk_directory": [
+      {
+        "url": "http://www.calhounclerk.com/",
+        "label": "Calhoun County Clerk",
+        "discoveredOn": "https://www.calhouncountyfl.gov/",
+        "score": 13,
+        "sameHost": false,
+        "reviewStatus": "unreviewed"
+      }
+    ],
+    "supervisor_of_elections_directory": [],
+    "tax_collector_directory": [],
+    "property_appraiser_directory": [],
+    "school_board_directory": [],
+    "school_superintendent_status_and_directory": [],
+    "municipality_registry": [],
+    "special_district_registry": [],
+    "judicial_election_or_retention_sources": [],
+    "campaign_finance_and_candidate_filing_sources": [],
+    "financial_disclosure_sources": []
+  },
+  "resolvedCategoryCount": 3,
+  "requiredCategoryCount": 13,
+  "unresolvedCategories": [
+    "supervisor_of_elections_directory",
+    "tax_collector_directory",
+    "property_appraiser_directory",
+    "school_board_directory",
+    "school_superintendent_status_and_directory",
+    "municipality_registry",
+    "special_district_registry",
+    "judicial_election_or_retention_sources",
+    "campaign_finance_and_candidate_filing_sources",
+    "financial_disclosure_sources"
+  ],
+  "notes": [
+    "Candidate links require source review before they can seed an officeholder collector.",
+    "External constitutional-office and school-district domains are allowed only when linked from an attributable official source or independently verified."
+  ],
+  "errors": []
+}
