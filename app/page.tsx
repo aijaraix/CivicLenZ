@@ -126,18 +126,43 @@ export default function HomePage() {
         </div>
       </section>
 
+      <section className="section human-story-section">
+        <div className="shell human-story-layout">
+          <figure className="human-story-image">
+            <img src="/images/launch/community-research.svg" alt="Illustrative community members reviewing civic information together." />
+            <figcaption>Illustrative civic-use imagery.</figcaption>
+          </figure>
+          <div>
+            <span className="eyebrow eyebrow-dark">Designed for civic life, not just a news cycle</span>
+            <h2>Better information makes a community better prepared to ask the next question.</h2>
+            <p>
+              CivicLenZ is being built for the conversation around a kitchen table, at a neighborhood meeting,
+              in a newsroom, or before a call to a public office. The point is not to create more noise—it is
+              to make the public record easier to use.
+            </p>
+            <Link className="text-link" href="/how-it-works/">See the process <span aria-hidden="true">→</span></Link>
+          </div>
+        </div>
+      </section>
+
       <section className="section member-section">
         <div className="shell member-layout">
-          <div className="member-preview" aria-label="Upcoming CivicLenZ member dashboard preview">
-            <div className="member-preview-top">
-              <span>MY CIVICLENZ</span>
-              <i>Preview</i>
+          <div className="member-visual-stack">
+            <figure className="app-moment-image">
+              <img src="/images/launch/app-moment.svg" alt="Illustrative person checking a phone beside a civic-style information dashboard." />
+              <figcaption>App interface shown is an illustrative concept.</figcaption>
+            </figure>
+            <div className="member-preview" aria-label="Upcoming CivicLenZ member dashboard preview">
+              <div className="member-preview-top">
+                <span>MY CIVICLENZ</span>
+                <i>Preview</i>
+              </div>
+              <strong>Your civic picture</strong>
+              <p>Set your location. Follow the people and issues that matter. Keep the public record close.</p>
+              <div className="member-preview-row"><b>My representatives</b><span>Starting in Florida</span></div>
+              <div className="member-preview-row"><b>Following</b><span>Choose your alerts</span></div>
+              <div className="member-preview-row"><b>Civic activity</b><span>Sources stay visible</span></div>
             </div>
-            <strong>Your civic picture</strong>
-            <p>Set your location. Follow the people and issues that matter. Keep the public record close.</p>
-            <div className="member-preview-row"><b>My representatives</b><span>Starting in Florida</span></div>
-            <div className="member-preview-row"><b>Following</b><span>Choose your alerts</span></div>
-            <div className="member-preview-row"><b>Civic activity</b><span>Sources stay visible</span></div>
           </div>
           <div>
             <span className="eyebrow eyebrow-dark">Member dashboard and mobile app — in development</span>
