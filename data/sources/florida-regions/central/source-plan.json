@@ -1,0 +1,398 @@
+{
+  "sourcePlanVersion": "1.0.0",
+  "workstreamId": "fl-central-florida-local-source-discovery",
+  "ownerKey": "agent-central-florida-source-discovery",
+  "scope": {
+    "state": "Florida",
+    "stateCode": "FL",
+    "counties": [
+      "Lake",
+      "Orange",
+      "Osceola",
+      "Polk",
+      "Seminole"
+    ],
+    "governmentLevels": [
+      "county",
+      "school_district",
+      "municipal",
+      "special_district",
+      "judicial"
+    ],
+    "dataPhase": "source_discovery"
+  },
+  "publicationAllowed": false,
+  "reviewStatus": "unreviewed",
+  "collectionBoundary": "Source entry-point mapping only. Do not extract, infer, score, or publish a person, officeholder, social account, portrait, contact point, biography, finance record, or election result.",
+  "retrievalPolicy": {
+    "recursiveCrawling": false,
+    "maxRequestsPerRun": 15,
+    "maxRequestsPerHost": 2,
+    "minimumDelaySecondsPerHost": 1.5,
+    "robotsTxt": "honor",
+    "requestUserAgent": "CivicLenZSourceDiscovery/0.1 (+https://civicslenz.com; research@civicslenz.com)",
+    "allowedContentTypes": [
+      "text/html",
+      "application/xhtml+xml",
+      "application/pdf"
+    ],
+    "sourceReviewRule": "A successful HTTP retrieval verifies only that the configured entry point responded. It does not prove completeness or identify an elected official."
+  },
+  "categoryDefinitions": {
+    "county_government_hub": "Official county-government entry point; may link to county commission and constitutional offices.",
+    "election_authority_hub": "Official county election authority entry point; may link to candidate and election resources.",
+    "school_board_hub": "Official public-school-district entry point; may link to board and meeting resources.",
+    "county_commission_roster": "Direct, current county-commission roster source still requires review.",
+    "constitutional_officer_rosters": "Direct constitutional-officer roster sources still require review.",
+    "municipal_elected_offices": "Municipal elected-office source map still requires review.",
+    "special_district_elected_boards": "Special-district elected-board source map still requires review.",
+    "elected_or_retention_judicial_seats": "Elected or retention judicial-seat source map still requires review."
+  },
+  "counties": [
+    {
+      "county": "Lake",
+      "state": "Florida",
+      "stateCode": "FL",
+      "requiredCategories": [
+        "county_government_hub",
+        "election_authority_hub",
+        "school_board_hub",
+        "county_commission_roster",
+        "constitutional_officer_rosters",
+        "municipal_elected_offices",
+        "special_district_elected_boards",
+        "elected_or_retention_judicial_seats"
+      ],
+      "sourceCandidates": {
+        "county_government_hub": [
+          {
+            "sourceKey": "central-fl-lake-county-government-hub",
+            "sourceUrl": "https://www.lakecountyfl.gov/",
+            "authority": "Lake County Government",
+            "authorityType": "county_government",
+            "expectedEvidence": [
+              "county-government navigation and public meeting entry points"
+            ],
+            "sourceRole": "entry_point_only",
+            "sourceProvenance": "manual_official_domain_verification"
+          }
+        ],
+        "election_authority_hub": [
+          {
+            "sourceKey": "central-fl-lake-elections-hub",
+            "sourceUrl": "https://www.lakevotes.gov/",
+            "authority": "Lake County Supervisor of Elections",
+            "authorityType": "election_authority",
+            "expectedEvidence": [
+              "candidate, office, ballot, and election-information entry points"
+            ],
+            "sourceRole": "entry_point_only",
+            "sourceProvenance": "manual_official_domain_verification"
+          }
+        ],
+        "school_board_hub": [
+          {
+            "sourceKey": "central-fl-lake-school-board-hub",
+            "sourceUrl": "https://www.lake.k12.fl.us/",
+            "authority": "Lake County public-school district",
+            "authorityType": "school_district",
+            "expectedEvidence": [
+              "school-board roster, district, and meeting entry points"
+            ],
+            "sourceRole": "entry_point_only",
+            "sourceProvenance": "manual_official_domain_verification"
+          }
+        ],
+        "county_commission_roster": [],
+        "constitutional_officer_rosters": [],
+        "municipal_elected_offices": [],
+        "special_district_elected_boards": [],
+        "elected_or_retention_judicial_seats": []
+      },
+      "unresolvedCategories": [
+        "county_commission_roster",
+        "constitutional_officer_rosters",
+        "municipal_elected_offices",
+        "special_district_elected_boards",
+        "elected_or_retention_judicial_seats"
+      ],
+      "notes": "Lake County government, elections, and public-school district official entry points are configured. Direct roster-level sources remain unresolved."
+    },
+    {
+      "county": "Orange",
+      "state": "Florida",
+      "stateCode": "FL",
+      "requiredCategories": [
+        "county_government_hub",
+        "election_authority_hub",
+        "school_board_hub",
+        "county_commission_roster",
+        "constitutional_officer_rosters",
+        "municipal_elected_offices",
+        "special_district_elected_boards",
+        "elected_or_retention_judicial_seats"
+      ],
+      "sourceCandidates": {
+        "county_government_hub": [
+          {
+            "sourceKey": "central-fl-orange-county-government-hub",
+            "sourceUrl": "https://www.ocfl.net/",
+            "authority": "Orange County Government",
+            "authorityType": "county_government",
+            "expectedEvidence": [
+              "county-government navigation and public meeting entry points"
+            ],
+            "sourceRole": "entry_point_only",
+            "sourceProvenance": "manual_official_domain_verification"
+          }
+        ],
+        "election_authority_hub": [
+          {
+            "sourceKey": "central-fl-orange-elections-hub",
+            "sourceUrl": "https://voteorangefl.gov/",
+            "authority": "Orange County Supervisor of Elections",
+            "authorityType": "election_authority",
+            "expectedEvidence": [
+              "candidate, office, ballot, and election-information entry points"
+            ],
+            "sourceRole": "entry_point_only",
+            "sourceProvenance": "manual_official_domain_verification"
+          }
+        ],
+        "school_board_hub": [
+          {
+            "sourceKey": "central-fl-orange-school-board-hub",
+            "sourceUrl": "https://www.ocps.net/",
+            "authority": "Orange County public-school district",
+            "authorityType": "school_district",
+            "expectedEvidence": [
+              "school-board roster, district, and meeting entry points"
+            ],
+            "sourceRole": "entry_point_only",
+            "sourceProvenance": "manual_official_domain_verification"
+          }
+        ],
+        "county_commission_roster": [],
+        "constitutional_officer_rosters": [],
+        "municipal_elected_offices": [],
+        "special_district_elected_boards": [],
+        "elected_or_retention_judicial_seats": []
+      },
+      "unresolvedCategories": [
+        "county_commission_roster",
+        "constitutional_officer_rosters",
+        "municipal_elected_offices",
+        "special_district_elected_boards",
+        "elected_or_retention_judicial_seats"
+      ],
+      "notes": "Orange County government, elections, and public-school district official entry points are configured. Direct roster-level sources remain unresolved."
+    },
+    {
+      "county": "Osceola",
+      "state": "Florida",
+      "stateCode": "FL",
+      "requiredCategories": [
+        "county_government_hub",
+        "election_authority_hub",
+        "school_board_hub",
+        "county_commission_roster",
+        "constitutional_officer_rosters",
+        "municipal_elected_offices",
+        "special_district_elected_boards",
+        "elected_or_retention_judicial_seats"
+      ],
+      "sourceCandidates": {
+        "county_government_hub": [
+          {
+            "sourceKey": "central-fl-osceola-county-government-hub",
+            "sourceUrl": "https://www.osceola.org/",
+            "authority": "Osceola County Government",
+            "authorityType": "county_government",
+            "expectedEvidence": [
+              "county-government navigation and public meeting entry points"
+            ],
+            "sourceRole": "entry_point_only",
+            "sourceProvenance": "manual_official_domain_verification"
+          }
+        ],
+        "election_authority_hub": [
+          {
+            "sourceKey": "central-fl-osceola-elections-hub",
+            "sourceUrl": "https://www.voteosceola.gov/en-us/",
+            "authority": "Osceola County Supervisor of Elections",
+            "authorityType": "election_authority",
+            "expectedEvidence": [
+              "candidate, office, ballot, and election-information entry points"
+            ],
+            "sourceRole": "entry_point_only",
+            "sourceProvenance": "manual_official_domain_verification"
+          }
+        ],
+        "school_board_hub": [
+          {
+            "sourceKey": "central-fl-osceola-school-board-hub",
+            "sourceUrl": "https://www.osceolaschools.net/",
+            "authority": "Osceola County public-school district",
+            "authorityType": "school_district",
+            "expectedEvidence": [
+              "school-board roster, district, and meeting entry points"
+            ],
+            "sourceRole": "entry_point_only",
+            "sourceProvenance": "manual_official_domain_verification"
+          }
+        ],
+        "county_commission_roster": [],
+        "constitutional_officer_rosters": [],
+        "municipal_elected_offices": [],
+        "special_district_elected_boards": [],
+        "elected_or_retention_judicial_seats": []
+      },
+      "unresolvedCategories": [
+        "county_commission_roster",
+        "constitutional_officer_rosters",
+        "municipal_elected_offices",
+        "special_district_elected_boards",
+        "elected_or_retention_judicial_seats"
+      ],
+      "notes": "Osceola County government, elections, and public-school district official entry points are configured. Direct roster-level sources remain unresolved."
+    },
+    {
+      "county": "Polk",
+      "state": "Florida",
+      "stateCode": "FL",
+      "requiredCategories": [
+        "county_government_hub",
+        "election_authority_hub",
+        "school_board_hub",
+        "county_commission_roster",
+        "constitutional_officer_rosters",
+        "municipal_elected_offices",
+        "special_district_elected_boards",
+        "elected_or_retention_judicial_seats"
+      ],
+      "sourceCandidates": {
+        "county_government_hub": [
+          {
+            "sourceKey": "central-fl-polk-county-government-hub",
+            "sourceUrl": "https://www.polkfl.gov/",
+            "authority": "Polk County Government",
+            "authorityType": "county_government",
+            "expectedEvidence": [
+              "county-government navigation and public meeting entry points"
+            ],
+            "sourceRole": "entry_point_only",
+            "sourceProvenance": "manual_official_domain_verification"
+          }
+        ],
+        "election_authority_hub": [
+          {
+            "sourceKey": "central-fl-polk-elections-hub",
+            "sourceUrl": "https://www.polkelections.gov/",
+            "authority": "Polk County Supervisor of Elections",
+            "authorityType": "election_authority",
+            "expectedEvidence": [
+              "candidate, office, ballot, and election-information entry points"
+            ],
+            "sourceRole": "entry_point_only",
+            "sourceProvenance": "manual_official_domain_verification"
+          }
+        ],
+        "school_board_hub": [
+          {
+            "sourceKey": "central-fl-polk-school-board-hub",
+            "sourceUrl": "https://www.polkschoolsfl.com/",
+            "authority": "Polk County public-school district",
+            "authorityType": "school_district",
+            "expectedEvidence": [
+              "school-board roster, district, and meeting entry points"
+            ],
+            "sourceRole": "entry_point_only",
+            "sourceProvenance": "manual_official_domain_verification"
+          }
+        ],
+        "county_commission_roster": [],
+        "constitutional_officer_rosters": [],
+        "municipal_elected_offices": [],
+        "special_district_elected_boards": [],
+        "elected_or_retention_judicial_seats": []
+      },
+      "unresolvedCategories": [
+        "county_commission_roster",
+        "constitutional_officer_rosters",
+        "municipal_elected_offices",
+        "special_district_elected_boards",
+        "elected_or_retention_judicial_seats"
+      ],
+      "notes": "Polk County government, elections, and public-school district official entry points are configured. Direct roster-level sources remain unresolved."
+    },
+    {
+      "county": "Seminole",
+      "state": "Florida",
+      "stateCode": "FL",
+      "requiredCategories": [
+        "county_government_hub",
+        "election_authority_hub",
+        "school_board_hub",
+        "county_commission_roster",
+        "constitutional_officer_rosters",
+        "municipal_elected_offices",
+        "special_district_elected_boards",
+        "elected_or_retention_judicial_seats"
+      ],
+      "sourceCandidates": {
+        "county_government_hub": [
+          {
+            "sourceKey": "central-fl-seminole-county-government-hub",
+            "sourceUrl": "https://www.seminolecountyfl.gov/",
+            "authority": "Seminole County Government",
+            "authorityType": "county_government",
+            "expectedEvidence": [
+              "county-government navigation and public meeting entry points"
+            ],
+            "sourceRole": "entry_point_only",
+            "sourceProvenance": "manual_official_domain_verification"
+          }
+        ],
+        "election_authority_hub": [
+          {
+            "sourceKey": "central-fl-seminole-elections-hub",
+            "sourceUrl": "https://voteseminole.gov/",
+            "authority": "Seminole County Supervisor of Elections",
+            "authorityType": "election_authority",
+            "expectedEvidence": [
+              "candidate, office, ballot, and election-information entry points"
+            ],
+            "sourceRole": "entry_point_only",
+            "sourceProvenance": "manual_official_domain_verification"
+          }
+        ],
+        "school_board_hub": [
+          {
+            "sourceKey": "central-fl-seminole-school-board-hub",
+            "sourceUrl": "https://www.scps.k12.fl.us/",
+            "authority": "Seminole County public-school district",
+            "authorityType": "school_district",
+            "expectedEvidence": [
+              "school-board roster, district, and meeting entry points"
+            ],
+            "sourceRole": "entry_point_only",
+            "sourceProvenance": "manual_official_domain_verification"
+          }
+        ],
+        "county_commission_roster": [],
+        "constitutional_officer_rosters": [],
+        "municipal_elected_offices": [],
+        "special_district_elected_boards": [],
+        "elected_or_retention_judicial_seats": []
+      },
+      "unresolvedCategories": [
+        "county_commission_roster",
+        "constitutional_officer_rosters",
+        "municipal_elected_offices",
+        "special_district_elected_boards",
+        "elected_or_retention_judicial_seats"
+      ],
+      "notes": "Seminole County government, elections, and public-school district official entry points are configured. Direct roster-level sources remain unresolved."
+    }
+  ]
+}
