@@ -46,3 +46,22 @@ Before a source listing becomes a published profile:
 ## What visitors see
 
 The directory shows what is available now and the research status of each record. The profile page makes clear whether a section is verified, in progress, unavailable from a source, conflicting, or not applicable.
+
+
+## Seat research queue
+
+The collector output is organized around the **seat**, not only the current person. This means a district or statewide office can retain its historical source record when the officeholder changes.
+
+Create or refresh review work items for every Florida House and Senate source listing:
+
+```bash
+python workers/research/build_official_research_queue.py --dry-run
+python workers/research/build_official_research_queue.py
+```
+
+The queue writes to `data/review-queue/`, outside the public canonical profile directory. It creates six review bundles for each seat: term/seat identity, official channels, portrait/biography, public actions, finance/disclosures, and promises/issues.
+
+- Re-running the command refreshes source metadata but preserves reviewer status, notes, assignee, and attached evidence for each bundle.
+- A queue item is never public by itself.
+- A staff member or review agent must attach source evidence and make a promotion decision before a canonical CivicLenZ profile is published.
+- If an officeholder changes, create a new tenure under the same seat key; do not overwrite the earlier person's record.
