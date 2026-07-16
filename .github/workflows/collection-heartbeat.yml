@@ -75,13 +75,14 @@ jobs:
           if git ls-remote --exit-code origin refs/heads/bot/florida-baseline-refresh >/dev/null 2>&1; then
             git fetch --no-tags origin bot/florida-baseline-refresh
             git worktree add --detach "$snapshot_dir" FETCH_HEAD
-            echo "ref=bot/florida-baseline-refresh" >> "$GITHUB_OUTPUT"
+            ref="bot/florida-baseline-refresh"
           else
             git worktree add --detach "$snapshot_dir" "$GITHUB_SHA"
-            echo "ref=$GITHUB_SHA" >> "$GITHUB_OUTPUT"
+            ref="$GITHUB_SHA"
           fi
 
-          echo "- State/federal snapshot ref: `${{ steps.snapshot.outputs.ref }}`" >> "$GITHUB_STEP_SUMMARY"
+          echo "ref=$ref" >> "$GITHUB_OUTPUT"
+          echo "- State/federal snapshot ref: \`$ref\`" >> "$GITHUB_STEP_SUMMARY"
 
       - name: Generate health snapshot
         run: >-
