@@ -2,7 +2,7 @@
 
 import { useMemo, useState } from 'react';
 import Link from 'next/link';
-import { initials, type DirectoryEntry } from '@/lib/officials';
+import type { DirectoryEntry } from '@/lib/officials';
 
 type ListingFilter = 'all' | 'profile' | 'source_listing';
 
@@ -11,6 +11,15 @@ const filters: Array<{ value: ListingFilter; label: string }> = [
   { value: 'profile', label: 'Published profiles' },
   { value: 'source_listing', label: 'Source listings' },
 ];
+
+function initials(name: string): string {
+  return name
+    .split(/\s+/)
+    .filter(Boolean)
+    .slice(0, 2)
+    .map((part) => part[0]?.toUpperCase())
+    .join('');
+}
 
 function listingLabel(entry: DirectoryEntry): string {
   return entry.listingType === 'profile'
