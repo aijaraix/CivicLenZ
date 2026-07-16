@@ -404,3 +404,33 @@ body { font-family: Satoshi, Inter, ui-sans-serif, system-ui, -apple-system, Bli
   .member-links .button { width: 100%; }
   .member-links .text-link { justify-content: center; }
 }
+
+
+/* Human imagery: editorial context, never a stand-in for an actual public official. */
+.human-story-section { background: #fff; }
+.human-story-layout { display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(300px, .85fr); gap: clamp(34px, 7vw, 94px); align-items: center; }
+.human-story-image { position: relative; margin: 0; overflow: hidden; border-radius: 21px; box-shadow: 0 20px 55px rgba(9, 31, 62, .15); }
+.human-story-image::after { content: ''; position: absolute; inset: 0; background: linear-gradient(110deg, rgba(6, 21, 47, .18), transparent 55%); pointer-events: none; }
+.human-story-image img { display: block; width: 100%; aspect-ratio: 16 / 9; object-fit: cover; }
+.human-story-image figcaption, .app-moment-image figcaption { position: absolute; right: 10px; bottom: 9px; z-index: 1; padding: 4px 7px; border-radius: 5px; color: rgba(245, 250, 255, .9); background: rgba(7, 21, 45, .56); font-size: .61rem; }
+.human-story-layout h2 { max-width: 550px; margin: 11px 0 15px; color: var(--navy); font-size: clamp(2rem, 3.5vw, 3.3rem); line-height: 1.03; letter-spacing: -.05em; }
+.human-story-layout > div > p { margin: 0; color: #52637a; font-size: 1.05rem; }
+.human-story-layout .text-link { margin-top: 24px; }
+.member-visual-stack { position: relative; width: min(100%, 510px); min-height: 475px; }
+.app-moment-image { position: absolute; left: 0; top: 0; z-index: 1; width: 57%; margin: 0; overflow: hidden; border-radius: 19px; box-shadow: 0 20px 50px rgba(9, 31, 62, .22); }
+.app-moment-image img { display: block; width: 100%; aspect-ratio: 4 / 5; object-fit: cover; object-position: 57% center; }
+.member-visual-stack .member-preview { position: absolute; z-index: 2; right: 0; bottom: 0; width: 62%; }
+.member-visual-stack .member-preview > strong { font-size: 1.25rem; }
+.member-visual-stack .member-preview > p { font-size: .78rem; }
+.member-visual-stack .member-preview-row { font-size: .72rem; }
+
+@media (max-width: 930px) {
+  .human-story-layout { grid-template-columns: 1fr; }
+  .human-story-image { width: min(100%, 650px); }
+}
+
+@media (max-width: 700px) {
+  .member-visual-stack { width: 100%; min-height: 470px; }
+  .human-story-image { border-radius: 16px; }
+  .human-story-image img { aspect-ratio: 4 / 3; }
+}
