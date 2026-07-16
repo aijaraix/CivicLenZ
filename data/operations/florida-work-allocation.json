@@ -1,0 +1,159 @@
+{
+  "allocationVersion": "1.0.0",
+  "state": "Florida",
+  "stateCode": "FL",
+  "updatedAt": "2026-07-16T06:00:00Z",
+  "purpose": "Prevent duplicate collection work and merge conflicts while multiple CivicLenZ agents complete Florida in parallel.",
+  "rules": {
+    "claimBeforeCollection": true,
+    "oneActiveOwnerPerScope": true,
+    "scopeKeyFormat": "government-level|region-or-jurisdiction|office-family|data-phase",
+    "sharedCanonicalWrites": "promotion-only",
+    "researchOutputMustBeNamespaced": true,
+    "existingClaimsWin": true,
+    "conflictResolution": "Pause the newer claim, compare source and output coverage, then reassign the narrower uncovered scope.",
+    "requiredClaimFields": [
+      "workstreamId",
+      "ownerKey",
+      "status",
+      "scope",
+      "branchPrefix",
+      "outputRoots",
+      "claimedAt"
+    ]
+  },
+  "workstreams": [
+    {
+      "workstreamId": "fl-state-federal-existing-parallel",
+      "ownerKey": "parallel-agent-existing",
+      "status": "active_reserved",
+      "description": "Existing parallel work on Florida federal and state officeholders, public channels, profile enrichment, and public presentation.",
+      "scope": {
+        "governmentLevels": ["federal", "state"],
+        "regions": ["statewide"],
+        "officeFamilies": [
+          "federal_delegation",
+          "statewide_executive",
+          "state_legislature"
+        ],
+        "dataPhases": [
+          "identity",
+          "portrait",
+          "contact",
+          "social",
+          "biography",
+          "committee",
+          "public_profile_presentation"
+        ]
+      },
+      "branchPrefix": "agent/",
+      "outputRoots": [
+        "data/research-staging/florida/identity-contact",
+        "data/research-staging/florida/legislative-details",
+        "app/officials"
+      ],
+      "claimedAt": "2026-07-16T05:00:00Z",
+      "notes": [
+        "The Northwest Florida local workstream must not edit or regenerate these state/federal research outputs.",
+        "Cross-level links may reference state or federal records but may not replace them."
+      ]
+    },
+    {
+      "workstreamId": "fl-northwest-local-complete",
+      "ownerKey": "gpt-5.6-thinking-northwest-local",
+      "status": "active_claimed",
+      "description": "Complete elected-seat discovery and evidence collection for county, school, municipal, special-district, and locally elected judicial offices in Northwest Florida and the Panhandle.",
+      "scope": {
+        "governmentLevels": [
+          "county",
+          "school_district",
+          "municipal",
+          "special_district",
+          "judicial"
+        ],
+        "regions": ["northwest_florida_panhandle"],
+        "counties": [
+          "Bay",
+          "Calhoun",
+          "Escambia",
+          "Franklin",
+          "Gadsden",
+          "Gulf",
+          "Holmes",
+          "Jackson",
+          "Jefferson",
+          "Leon",
+          "Liberty",
+          "Okaloosa",
+          "Santa Rosa",
+          "Wakulla",
+          "Walton",
+          "Washington"
+        ],
+        "officeFamilies": [
+          "county_commission",
+          "sheriff",
+          "clerk_of_circuit_court_and_comptroller",
+          "supervisor_of_elections",
+          "tax_collector",
+          "property_appraiser",
+          "school_board",
+          "elected_school_superintendent",
+          "municipal_mayor",
+          "municipal_council_or_commission",
+          "special_district_board",
+          "elected_or_retention_judicial_seat"
+        ],
+        "dataPhases": [
+          "source_discovery",
+          "seat_registry",
+          "current_officeholder",
+          "portrait",
+          "contact",
+          "social",
+          "biography",
+          "education",
+          "career",
+          "election_history",
+          "campaign_finance",
+          "financial_disclosure",
+          "promises",
+          "statements",
+          "government_actions",
+          "ethics_and_legal",
+          "relationships_and_conflicts",
+          "trackers",
+          "continuous_monitoring"
+        ]
+      },
+      "branchPrefix": "build/fl-nw-local-",
+      "outputRoots": [
+        "data/sources/florida-regions/northwest",
+        "data/staging/florida/local/northwest",
+        "data/research-staging/florida/local/northwest",
+        "data/operations/florida/northwest"
+      ],
+      "claimedAt": "2026-07-16T06:00:00Z",
+      "heartbeat": {
+        "expectedCadence": "daily",
+        "staleAfterHours": 36,
+        "lastProgressAt": "2026-07-16T06:00:00Z"
+      },
+      "exclusions": [
+        "Do not modify state legislative, statewide executive, or federal delegation candidate datasets.",
+        "Do not publish unreviewed portraits, campaign promises, finance interpretations, allegations, trackers, or scores.",
+        "Do not write directly to canonical public profiles; use the shared promotion pipeline."
+      ]
+    }
+  ],
+  "unassignedLocalRegions": [
+    "northeast_florida",
+    "north_central_florida",
+    "central_florida",
+    "tampa_bay_and_nature_coast",
+    "southwest_florida",
+    "treasure_coast_and_palm_beach",
+    "broward_and_miami_dade",
+    "florida_keys"
+  ]
+}
