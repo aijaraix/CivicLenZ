@@ -86,8 +86,8 @@ jobs:
       - name: Install collector dependencies
         run: pip install -r workers/ingestion/requirements.txt
 
-      - name: Validate source plan and active workstream claim
-        run: python workers/ingestion/discover_central_florida_local_sources.py --validate-plan
+      - name: Confirm source plan and active workstream claim
+        run: python workers/ingestion/discover_central_florida_local_sources.py --validate-active-claim
 
       - name: Fetch fixed official source entry points
         run: python workers/ingestion/discover_central_florida_local_sources.py
