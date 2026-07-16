@@ -18,6 +18,15 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v6
 
+      - name: Validate Florida work allocation
+        shell: bash
+        run: |
+          if [[ -f data/operations/florida-work-allocation.json ]]; then
+            python scripts/validate_florida_work_allocation.py
+          else
+            echo "Florida work allocation is supplied by the target branch; it is validated on pull-request merge refs and main."
+          fi
+
       - name: Set up Node
         uses: actions/setup-node@v4
         with:

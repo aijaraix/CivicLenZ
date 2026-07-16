@@ -1,0 +1,116 @@
+name: CivicLenZ collection heartbeat
+
+# Lightweight health check. It never fetches public source sites or publishes data.
+# The daily collector remains the only workflow that contacts official directories.
+on:
+  schedule:
+    # Offset from the top of the hour to avoid GitHub's busiest schedule window.
+    - cron: '7,22,37,52 * * * *'
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+    paths:
+      - 'workers/operations/collection_health.py'
+      - 'scripts/validate_florida_work_allocation.py'
+      - 'data/operations/florida-work-allocation.json'
+      - 'data/staging/florida/local/**'
+      - 'data/research-staging/florida/local/**'
+      - 'workers/ingestion/**'
+      - 'workers/enrichment/**'
+      - 'data/sources/**'
+      - '.github/workflows/collection-heartbeat.yml'
+      - '.github/workflows/collect-florida-senate.yml'
+      - '.github/workflows/collect-federal-baseline.yml'
+  pull_request:
+    paths:
+      - 'workers/operations/collection_health.py'
+      - 'scripts/validate_florida_work_allocation.py'
+      - 'data/operations/florida-work-allocation.json'
+      - 'data/staging/florida/local/**'
+      - 'data/research-staging/florida/local/**'
+      - 'workers/ingestion/**'
+      - 'workers/enrichment/**'
+      - 'data/sources/**'
+      - '.github/workflows/collection-heartbeat.yml'
+      - '.github/workflows/collect-florida-senate.yml'
+      - '.github/workflows/collect-federal-baseline.yml'
+
+permissions:
+  contents: read
+
+concurrency:
+  group: collection-heartbeat-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  heartbeat:
+    name: Report collection health
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Checkout reporting code
+        uses: actions/checkout@v6
+        with:
+          fetch-depth: 1
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Validate Florida work allocation
+        run: >-
+          python scripts/validate_florida_work_allocation.py
+          --markdown
+          >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Prepare the latest Florida review snapshot
+        id: snapshot
+        shell: bash
+        run: |
+          set -euo pipefail
+          snapshot_dir="$RUNNER_TEMP/florida-review-snapshot"
+
+          if git ls-remote --exit-code origin refs/heads/bot/florida-baseline-refresh >/dev/null 2>&1; then
+            git fetch --no-tags origin bot/florida-baseline-refresh
+            git worktree add --detach "$snapshot_dir" FETCH_HEAD
+            ref="bot/florida-baseline-refresh"
+          else
+            git worktree add --detach "$snapshot_dir" "$GITHUB_SHA"
+            ref="$GITHUB_SHA"
+          fi
+
+          echo "ref=$ref" >> "$GITHUB_OUTPUT"
+          echo "- State/federal snapshot ref: \`$ref\`" >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Generate health snapshot
+        run: >-
+          python workers/operations/collection_health.py
+          --root "$RUNNER_TEMP/florida-review-snapshot"
+          --coordination-root "$GITHUB_WORKSPACE"
+          --output "$RUNNER_TEMP/collection-health.json"
+
+      - name: Write heartbeat summary
+        run: >-
+          python workers/operations/collection_health.py
+          --root "$RUNNER_TEMP/florida-review-snapshot"
+          --coordination-root "$GITHUB_WORKSPACE"
+          --markdown
+          >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Fail only for critical collection errors
+        run: >-
+          python workers/operations/collection_health.py
+          --root "$RUNNER_TEMP/florida-review-snapshot"
+          --coordination-root "$GITHUB_WORKSPACE"
+          --fail-on-error
+          > /dev/null
+
+      - name: Upload health snapshot
+        uses: actions/upload-artifact@v4
+        with:
+          name: civiclenz-collection-health-${{ github.run_number }}
+          path: ${{ runner.temp }}/collection-health.json
+          if-no-files-found: error
+          retention-days: 30
