@@ -12,8 +12,10 @@ on:
       - 'workers/ingestion/collect_florida_house.py'
       - 'workers/ingestion/collect_florida_statewide_executive.py'
       - 'workers/ingestion/run_baseline_collectors.py'
+      - 'workers/enrichment/build_profile_research_queue.py'
       - 'data/sources/collector-manifest.json'
       - 'data/sources/source-registry.json'
+      - 'data/sources/enrichment-agent-manifest.json'
       - 'data/sources/florida-county-source-registry.json'
       - '.github/workflows/collect-florida-senate.yml'
 
@@ -48,6 +50,9 @@ jobs:
       - name: Run enabled Florida baseline collectors
         run: python workers/ingestion/run_baseline_collectors.py --group florida
 
+      - name: Build seat research queue
+        run: python workers/enrichment/build_profile_research_queue.py
+
       - name: Validate all data
         run: python scripts/validate_officials.py
 
@@ -57,29 +62,38 @@ jobs:
           senate=$(find data/staging/florida/state-senate -name '*.json' -type f | wc -l | tr -d ' ')
           house=$(find data/staging/florida/state-house -name '*.json' -type f | wc -l | tr -d ' ')
           statewide=$(find data/staging/florida/statewide-executive -name '*.json' -type f | wc -l | tr -d ' ')
+          research_tasks=$(python -c "import json; print(json.load(open('data/operations/florida-profile-research-queue.json'))['taskCount'])")
+          sections=$(python -c "import json; print(json.load(open('data/operations/florida-profile-research-queue.json'))['requiredSectionCountPerSeat'])")
           total=$((senate + house + statewide))
           echo "senate=$senate" >> "$GITHUB_OUTPUT"
           echo "house=$house" >> "$GITHUB_OUTPUT"
           echo "statewide=$statewide" >> "$GITHUB_OUTPUT"
           echo "total=$total" >> "$GITHUB_OUTPUT"
+          echo "research_tasks=$research_tasks" >> "$GITHUB_OUTPUT"
           {
             echo "### Florida baseline aggregation"
             echo "- Florida senators: **$senate**"
             echo "- Florida House seats/officeholders: **$house**"
             echo "- Other statewide elected executive officers: **$statewide**"
             echo "- Total Florida state-government staging records: **$total**"
+            echo "- Florida seat/profile research tasks: **$research_tasks**"
+            echo "- Standard research sections per seat: **$sections**"
             echo "- County source-registry work queue: **67 counties**"
-            echo "- Publication state: **official-source baseline pending review**"
+            echo "- Publication state: **official-source baseline plus visible research status**"
           } >> "$GITHUB_STEP_SUMMARY"
           test "$senate" -ge 30
           test "$house" -ge 115
           test "$statewide" -eq 3
+          test "$research_tasks" -ge 160
+          test "$sections" -ge 20
 
-      - name: Upload Florida staging snapshot
+      - name: Upload Florida collection snapshot
         uses: actions/upload-artifact@v4
         with:
-          name: florida-baseline-staging-${{ github.run_number }}
-          path: data/staging/florida/**/*.json
+          name: florida-baseline-and-research-queue-${{ github.run_number }}
+          path: |
+            data/staging/florida/**/*.json
+            data/operations/florida-profile-research-queue.json
           if-no-files-found: error
           retention-days: 14
 
@@ -89,39 +103,40 @@ jobs:
         run: |
           set -euo pipefail
           STAGING_PATH="data/staging/florida"
+          QUEUE_PATH="data/operations/florida-profile-research-queue.json"
           BRANCH="bot/florida-baseline-refresh"
-          CHANGES=$(git status --porcelain --untracked-files=all -- "$STAGING_PATH")
+          CHANGES=$(git status --porcelain --untracked-files=all -- "$STAGING_PATH" "$QUEUE_PATH")
 
           if [ -z "$CHANGES" ]; then
-            echo "No Florida baseline changes detected."
+            echo "No Florida baseline or research-queue changes detected."
             exit 0
           fi
 
           git config user.name "civiclenz-data-bot"
           git config user.email "civiclenz-data-bot@users.noreply.github.com"
           git checkout -B "$BRANCH"
-          git add "$STAGING_PATH"
+          git add "$STAGING_PATH" "$QUEUE_PATH"
 
           if git diff --cached --quiet; then
             echo "No staged Florida differences remained."
             exit 0
           fi
 
-          git commit -m "Refresh Florida baseline staging records"
+          git commit -m "Refresh Florida baseline and seat research queue"
           git push --force origin "HEAD:refs/heads/$BRANCH"
           git ls-remote --exit-code --heads origin "refs/heads/$BRANCH"
-          echo "Saved ${{ steps.summary.outputs.total }} Florida staging records to $BRANCH."
+          echo "Saved ${{ steps.summary.outputs.total }} Florida staging records and ${{ steps.summary.outputs.research_tasks }} research tasks to $BRANCH."
 
           OPEN_PR=$(gh pr list --head "$BRANCH" --base main --state open --json number --jq '.[0].number // empty')
           if [ -z "$OPEN_PR" ]; then
             if gh pr create \
               --base main \
               --head "$BRANCH" \
-              --title "Data review: Florida state-government baseline" \
-              --body "Automated aggregation of ${{ steps.summary.outputs.total }} review-only Florida Senate, House, and statewide executive baseline records from official government sources. These records must be normalized and enriched before sensitive analysis or civic scores are published."; then
+              --title "Data review: Florida state-government baseline and research queue" \
+              --body "Automated aggregation of ${{ steps.summary.outputs.total }} review-only Florida Senate, House, and statewide executive baseline records plus ${{ steps.summary.outputs.research_tasks }} seat-centered enrichment tasks. Sensitive analysis and civic scores still require evidence and review."; then
               echo "Created Florida data-review pull request."
             else
-              echo "Florida staging data was saved, but repository settings blocked workflow-created pull requests."
+              echo "Florida data was saved, but repository settings blocked workflow-created pull requests."
               echo "The branch remains available at $BRANCH; collection itself is complete."
             fi
           else
