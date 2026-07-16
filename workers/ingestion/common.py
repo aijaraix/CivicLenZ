@@ -39,7 +39,7 @@ def fetch(url: str, accept: str = "text/html,application/xhtml+xml,application/x
         url,
         headers={
             "User-Agent": BROWSER_USER_AGENT,
-            "From": "research@civiclenz.ai",
+            "From": "research@civicslenz.com",
             "Accept": accept,
             "Accept-Language": "en-US,en;q=0.9",
             "Cache-Control": "no-cache",
