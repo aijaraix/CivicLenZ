@@ -898,3 +898,142 @@ body { font-family: Satoshi, Inter, ui-sans-serif, system-ui, -apple-system, Bli
     grid-template-columns: 1fr;
   }
 }
+
+
+/* Continuous seat record: separates an office's history and evidence from its current holder. */
+.seat-record-card {
+  border-color: #cddbf0;
+  background: linear-gradient(145deg, #ffffff 0%, #f5f9ff 100%);
+}
+
+.seat-record-head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1.2rem;
+  margin-bottom: 1.2rem;
+}
+
+.seat-record-head h2 {
+  margin: 0.4rem 0 0.45rem;
+  color: #0b1531;
+  font-size: clamp(1.35rem, 2.4vw, 1.85rem);
+  line-height: 1.08;
+}
+
+.seat-record-head p {
+  max-width: 48rem;
+  margin: 0;
+  color: #596a82;
+}
+
+.seat-record-status {
+  flex: 0 0 auto;
+  padding: 0.42rem 0.65rem;
+  border: 1px solid #d6e0ee;
+  border-radius: 999px;
+  color: #35506f;
+  background: #f8fafc;
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+}
+
+.seat-record-status.is-published {
+  border-color: #b8ddc9;
+  color: #08704a;
+  background: #effbf4;
+}
+
+.seat-record-grid,
+.seat-evidence-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.75rem;
+}
+
+.seat-record-grid {
+  padding: 0.9rem;
+  border: 1px solid #dfe7f2;
+  border-radius: 0.85rem;
+  background: rgba(255, 255, 255, 0.72);
+}
+
+.seat-record-grid > div,
+.seat-evidence-grid > div {
+  display: grid;
+  gap: 0.22rem;
+  min-width: 0;
+}
+
+.seat-record-grid span {
+  color: #67778f;
+  font-size: 0.73rem;
+  font-weight: 750;
+  letter-spacing: 0.025em;
+  text-transform: uppercase;
+}
+
+.seat-record-grid strong {
+  color: #142542;
+  font-size: 0.88rem;
+  line-height: 1.35;
+}
+
+.seat-evidence-grid {
+  margin-top: 0.85rem;
+}
+
+.seat-evidence-grid > div {
+  padding: 0.78rem;
+  border: 1px solid #dfe7f2;
+  border-radius: 0.75rem;
+  background: #fbfcfe;
+}
+
+.seat-evidence-grid > div.is-linked {
+  border-color: #bde4cd;
+  background: #f0fbf5;
+}
+
+.seat-evidence-grid strong {
+  color: #183153;
+  font-size: 0.84rem;
+}
+
+.seat-evidence-grid span {
+  color: #64748b;
+  font-size: 0.77rem;
+  line-height: 1.42;
+}
+
+.seat-source-link {
+  display: inline-flex;
+  margin-top: 1rem;
+  color: #164cad;
+  font-size: 0.86rem;
+  font-weight: 750;
+}
+
+@media (max-width: 900px) {
+  .seat-record-grid,
+  .seat-evidence-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 620px) {
+  .seat-record-head {
+    display: grid;
+  }
+
+  .seat-record-status {
+    width: fit-content;
+  }
+
+  .seat-record-grid,
+  .seat-evidence-grid {
+    grid-template-columns: 1fr;
+  }
+}
