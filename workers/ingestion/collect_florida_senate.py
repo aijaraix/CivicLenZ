@@ -68,6 +68,7 @@ class ExtractedSenator:
     jurisdictionName: str
     stateCode: str
     canonicalMatchStatus: str
+    refreshClass: str
     rawRowText: str
 
 
@@ -193,7 +194,10 @@ def parse_directory(
 
         party = normalize_party(party_match.group(1))
         counties = " ".join(county_match.group(1).split())
-        raw_record_text = " ".join(f"{display_name} {entry_text}".split())
+        # Store only the normalized directory facts for the row. The prior DOM
+        # walk could include footer text when the final responsive card lacked a
+        # following member link, which made the evidence fragment misleading.
+        raw_record_text = f"{display_name} | District {district} | {party} | {counties}"
 
         seen_member_urls.add(member_url)
         seen_districts.add(district_number)
@@ -218,6 +222,7 @@ def parse_directory(
                 jurisdictionName="Florida",
                 stateCode="FL",
                 canonicalMatchStatus="unmatched",
+                refreshClass="term_based",
                 rawRowText=raw_record_text,
             )
         )
