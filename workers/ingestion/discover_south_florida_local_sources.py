@@ -543,8 +543,6 @@ def main() -> int:
     claim_present = verify_active_claim(allow_missing=args.allow_missing_claim)
     if args.verify_claim:
         return 0
-    if not claim_present:
-        raise SystemExit("Live source discovery is blocked until the coordination claim is active.")
     if args.dry_run:
         print(
             json.dumps(
@@ -560,6 +558,8 @@ def main() -> int:
             )
         )
         return 0
+    if not claim_present:
+        raise SystemExit("Live source discovery is blocked until the coordination claim is active.")
 
     payload = json.loads(args.seeds.read_text(encoding="utf-8"))
     counties = list(payload.get("counties", []))
