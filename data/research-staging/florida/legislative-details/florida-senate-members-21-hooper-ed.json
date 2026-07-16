@@ -1,0 +1,463 @@
+{
+  "detailRecordVersion": "1.0.0",
+  "detailRecordId": "1c64cc58-7fc9-5439-af06-39a329ae1dad",
+  "stagingRecordId": "620add54-6b8a-5a25-83de-aa8bb5bd6206",
+  "sourceKey": "florida-senate-members",
+  "displayName": "Hooper, Ed",
+  "officeTitle": "Florida State Senator, District 21",
+  "districtNumber": "21",
+  "sourceUrl": "https://www.flsenate.gov/Senators/2024-2026/S21",
+  "fetchedAt": "2026-07-16T05:26:36Z",
+  "collectionStatus": "success",
+  "reviewStatus": "unreviewed",
+  "publicationAllowed": false,
+  "errors": [],
+  "httpStatus": 200,
+  "finalUrl": "https://www.flsenate.gov/Senators/S21",
+  "sourceSnapshotSha256": "b470dfec35d7d291e06593223d13e2f73663d7ee56b8565b2107866d4c63eb9d",
+  "partyAndDistrictText": "Party: Republican",
+  "staffCandidates": [
+    {
+      "role": "Legislative Aide",
+      "name": "Track this Senator's Media",
+      "reviewStatus": "unreviewed"
+    }
+  ],
+  "biographyCandidates": {
+    "occupation": "Retired Firefighter; Consus Group, LLC, Partner",
+    "spouse": "Lee Hooper of Queens, NY",
+    "children": "Brian, Ann",
+    "bornRaw": "in Statesville, North Carolina. Moved to Florida in 1972.",
+    "religiousAffiliation": null,
+    "recreation": "Golf"
+  },
+  "educationCandidates": [],
+  "committeeCandidates": [
+    {
+      "name": "Appropriations , Chair",
+      "roleType": "member",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "name": "Banking and Insurance",
+      "roleType": "member",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "name": "Finance and Tax",
+      "roleType": "member",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "name": "Judiciary",
+      "roleType": "member",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "name": "Rules",
+      "roleType": "member",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "name": "Joint Legislative Budget Commission , Alternating Chair",
+      "roleType": "member",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "name": "District 21",
+      "roleType": "member",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "name": "Bills Introduced",
+      "roleType": "member",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "name": "Media",
+      "roleType": "member",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "name": "Personal & Career",
+      "roleType": "member",
+      "reviewStatus": "unreviewed"
+    }
+  ],
+  "publicServiceCandidates": [
+    {
+      "rawText": "Clearwater City Commissioner, 1996-2000",
+      "reviewStatus": "unreviewed"
+    }
+  ],
+  "affiliationCandidates": [],
+  "awardCandidates": [
+    {
+      "rawText": "The Able Trust, Representative of the Year, 2014",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "rawText": "Manufacturers Association of Florida, Legislator of the Year, 2013",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "rawText": "Associated Industries of Florida Hospital Council, Legislator of the Year, 2012",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "rawText": "Clearwater Downtown Parnership Appreciation Award, 2012",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "rawText": "Florida Chamber of Commerce Honor Roll \"A\" Legislative Report Card, 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "rawText": "Florida Education Association \"A\" Legislative Report Card, 2008, 2011, 2012",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "rawText": "Florida League of Cities Legislative Appreciation Award, 2010, 2012, 2014",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "rawText": "Leading Age Florida, Legislator of the Year, 2012",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "rawText": "National Association of Social Workers, Tampa Bay, Elected Official of the Year, 2012",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "rawText": "Pinellas County Osteopathic Medical Society, Legislator of the Year, 2012",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "rawText": "Florida Dental Association, Legislative Award, 2011",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "rawText": "Florida Association of Counties, Legislative Leader Award, 2010",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "rawText": "Florida Sheriffs Association, Legislative Award, 2010",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "rawText": "Florida Tax Collectors, \"Taxpayer Advocate of the Year,\" 2014",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "rawText": "Big Brothers Big Sisters, Legislative Appreciation Award, 2010",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "rawText": "Florida Chamber of Commerce, \"Distinguished Advocate\" Award for Private Flood Insurance Legislation, 2014",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "rawText": "St. Petersburg College, \"Outstanding Alumnus Award,\" 2013",
+      "reviewStatus": "unreviewed"
+    }
+  ],
+  "legislativeServiceCandidates": [
+    {
+      "rawText": "2024-2026",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "rawText": "2022-2024",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "rawText": "2020-2022",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "rawText": "2018-2020",
+      "reviewStatus": "unreviewed"
+    }
+  ],
+  "officeLocationCandidates": [
+    {
+      "label": "District Office",
+      "rawLines": [],
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "label": "Tallahassee Office",
+      "rawLines": [
+        "Track this Senator's Media"
+      ],
+      "reviewStatus": "unreviewed"
+    }
+  ],
+  "contactCandidates": [
+    {
+      "type": "email",
+      "value": "hooper.ed.web@flsenate.gov",
+      "label": "hooper.ed.web@flsenate.gov",
+      "sourcePageUrl": "https://www.flsenate.gov/Senators/S21"
+    },
+    {
+      "type": "email",
+      "value": "webmaster@flsenate.gov",
+      "label": "email",
+      "sourcePageUrl": "https://www.flsenate.gov/Senators/S21"
+    },
+    {
+      "type": "phone",
+      "value": "(727) 771-2102",
+      "label": null,
+      "sourcePageUrl": "https://www.flsenate.gov/Senators/S21"
+    },
+    {
+      "type": "phone",
+      "value": "(850) 487-5021",
+      "label": null,
+      "sourcePageUrl": "https://www.flsenate.gov/Senators/S21"
+    }
+  ],
+  "socialCandidates": [
+    {
+      "platform": "X",
+      "url": "http://www.twitter.com/flsenate",
+      "label": "Twitter",
+      "sourcePageUrl": "https://www.flsenate.gov/Senators/S21",
+      "reviewStatus": "unreviewed"
+    }
+  ],
+  "websiteCandidates": [
+    {
+      "url": "https://www.flsenate.gov/Session/ExecutiveAppointments",
+      "label": "Executive Appointments",
+      "sourcePageUrl": "https://www.flsenate.gov/Senators/S21",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "url": "https://www.flsenate.gov/Media/VideoSchedule",
+      "label": "Video Broadcast Schedule",
+      "sourcePageUrl": "https://www.flsenate.gov/Senators/S21",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "url": "https://www.flsenate.gov/About/Contact",
+      "label": "Contact Us",
+      "sourcePageUrl": "https://www.flsenate.gov/Senators/S21",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "url": "https://www.flsenate.gov/Offices",
+      "label": "Offices",
+      "sourcePageUrl": "https://www.flsenate.gov/Senators/S21",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "url": "https://www.flsenate.gov/Offices/President",
+      "label": "President's Office",
+      "sourcePageUrl": "https://www.flsenate.gov/Senators/S21",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "url": "https://www.flsenate.gov/Offices/Majority",
+      "label": "Majority Office",
+      "sourcePageUrl": "https://www.flsenate.gov/Senators/S21",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "url": "https://www.flsenate.gov/Offices/Minority",
+      "label": "Minority Office",
+      "sourcePageUrl": "https://www.flsenate.gov/Senators/S21",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "url": "https://www.flsenate.gov/Offices/Secretary",
+      "label": "Secretary's Office",
+      "sourcePageUrl": "https://www.flsenate.gov/Senators/S21",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "url": "https://www.flsenate.gov/Reference/PublicRecords",
+      "label": "Public Records",
+      "sourcePageUrl": "https://www.flsenate.gov/Senators/S21",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "url": "https://www.flsenate.gov/Session/ExecutiveAppointments/",
+      "label": "Executive Appointments",
+      "sourcePageUrl": "https://www.flsenate.gov/Senators/S21",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "url": "https://www.flsenate.gov/About/Contact#connect",
+      "label": "Connect with the Senate",
+      "sourcePageUrl": "https://www.flsenate.gov/Senators/S21",
+      "reviewStatus": "unreviewed"
+    }
+  ],
+  "portraitCandidates": [
+    {
+      "url": "https://www.flsenate.gov/PublishedContent/Senators/2024-2026/Photos/s21_5344.jpg",
+      "method": "img",
+      "score": 30,
+      "altText": "Senator Hooper",
+      "sourcePageUrl": "https://www.flsenate.gov/Senators/S21",
+      "rightsStatus": "review_required",
+      "identityReviewStatus": "unreviewed"
+    },
+    {
+      "url": "https://www.flsenate.gov/PublishedContent/Session/Redistricting/Districts/SD2022/webmaps/sd21_webmap.png",
+      "method": "img",
+      "score": 9,
+      "altText": "District 21 map",
+      "sourcePageUrl": "https://www.flsenate.gov/Senators/S21",
+      "rightsStatus": "review_required",
+      "identityReviewStatus": "unreviewed"
+    },
+    {
+      "url": "https://www.flsenate.gov/UserContent/img/help/2013search-goBill.png",
+      "method": "img",
+      "score": 9,
+      "altText": "Example of Go To Bill feature available on every page of flsenate.gov",
+      "sourcePageUrl": "https://www.flsenate.gov/Senators/S21",
+      "rightsStatus": "review_required",
+      "identityReviewStatus": "unreviewed"
+    },
+    {
+      "url": "https://www.flsenate.gov/UserContent/img/help/2013sitesearch.png",
+      "method": "img",
+      "score": 9,
+      "altText": "Example of Site Search available on every page of flsenate.gov",
+      "sourcePageUrl": "https://www.flsenate.gov/Senators/S21",
+      "rightsStatus": "review_required",
+      "identityReviewStatus": "unreviewed"
+    },
+    {
+      "url": "https://www.flsenate.gov/UserContent/img/help/2013statutesearch.png",
+      "method": "img",
+      "score": 9,
+      "altText": "Example of Go To Bill feature available on every page of flsenate.gov",
+      "sourcePageUrl": "https://www.flsenate.gov/Senators/S21",
+      "rightsStatus": "review_required",
+      "identityReviewStatus": "unreviewed"
+    },
+    {
+      "url": "https://www.flsenate.gov/UserContent/img/help/printerIcon.png",
+      "method": "img",
+      "score": -26,
+      "altText": "Acrobat print icon",
+      "sourcePageUrl": "https://www.flsenate.gov/Senators/S21",
+      "rightsStatus": "review_required",
+      "identityReviewStatus": "unreviewed"
+    }
+  ],
+  "mapLinks": [
+    {
+      "label": "District Maps",
+      "url": "https://www.flsenate.gov/Senators/Districts"
+    },
+    {
+      "label": "Letter Size",
+      "url": "https://www.flsenate.gov/PublishedContent/Session/Redistricting/Districts/sd2022/Letter/sd21_Lettersize.pdf"
+    },
+    {
+      "label": "Poster Size",
+      "url": "https://www.flsenate.gov/PublishedContent/Session/Redistricting/Districts/SD2022/poster/sd21_poster.pdf"
+    }
+  ],
+  "billLinks": [
+    {
+      "label": "Bills",
+      "url": "https://www.flsenate.gov/Session/Bills"
+    },
+    {
+      "label": "Bills Introduced",
+      "url": "https://www.flsenate.gov/Senators/S21?Tab=Bills#Bills"
+    },
+    {
+      "label": "S 62",
+      "url": "https://www.flsenate.gov/Session/Bill/2026/62"
+    },
+    {
+      "label": "S 1062",
+      "url": "https://www.flsenate.gov/Session/Bill/2026/1062"
+    },
+    {
+      "label": "S 1574",
+      "url": "https://www.flsenate.gov/Session/Bill/2026/1574"
+    },
+    {
+      "label": "Bill Search Tips",
+      "url": "https://www.flsenate.gov/search/billsearchtips"
+    },
+    {
+      "label": "Bill Search Tips",
+      "url": "https://www.flsenate.gov/Search/BillSearchTips"
+    }
+  ],
+  "mediaLinks": [
+    {
+      "label": "Committee Publications",
+      "url": "https://www.flsenate.gov/Committees/Publications"
+    },
+    {
+      "label": "Media",
+      "url": "https://www.flsenate.gov/Media"
+    },
+    {
+      "label": "Video Broadcast Schedule",
+      "url": "https://www.flsenate.gov/Media/VideoSchedule"
+    },
+    {
+      "label": "Publications",
+      "url": "https://www.flsenate.gov/Media/Publications"
+    },
+    {
+      "label": "Videos",
+      "url": "https://www.flsenate.gov/Media/Videos"
+    },
+    {
+      "label": "Topics",
+      "url": "https://www.flsenate.gov/Media/Topics"
+    },
+    {
+      "label": "Publications",
+      "url": "https://www.flsenate.gov/Reference/Publications"
+    },
+    {
+      "label": "Handbooks",
+      "url": "https://www.flsenate.gov/Reference/Publications/SenateHandbooks"
+    },
+    {
+      "label": "Senate Chamber Seating Chart",
+      "url": "https://www.flsenate.gov/PublishedContent/AdministrativePublications/seatingchart.pdf"
+    },
+    {
+      "label": "Track this Senator's Media",
+      "url": "https://www.flsenate.gov/Tracker/Track?key=3_21"
+    },
+    {
+      "label": "Media",
+      "url": "https://www.flsenate.gov/Senators/S21?Tab=Media#Media"
+    },
+    {
+      "label": "Press Releases",
+      "url": "https://www.flsenate.gov/Media/PressReleases"
+    }
+  ],
+  "candidateCounts": {
+    "staffCandidates": 1,
+    "educationCandidates": 0,
+    "committeeCandidates": 10,
+    "publicServiceCandidates": 1,
+    "affiliationCandidates": 0,
+    "awardCandidates": 17,
+    "legislativeServiceCandidates": 4,
+    "officeLocationCandidates": 2,
+    "contactCandidates": 4,
+    "socialCandidates": 1,
+    "websiteCandidates": 11,
+    "portraitCandidates": 6
+  }
+}

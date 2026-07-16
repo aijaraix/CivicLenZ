@@ -1,0 +1,157 @@
+{
+  "detailRecordVersion": "1.0.0",
+  "detailRecordId": "cbd0445e-92c4-558e-b214-0ec5529fe88d",
+  "stagingRecordId": "72d5cd06-7fe3-5bf8-a39f-84c896d37d33",
+  "sourceKey": "florida-house-members",
+  "displayName": "Scott, Samantha",
+  "officeTitle": "Florida State Representative, District 52",
+  "districtNumber": "52",
+  "sourceUrl": "https://www.flhouse.gov/Sections/Representatives/details.aspx?MemberId=5070&LegislativeTermId=91",
+  "fetchedAt": "2026-07-16T05:26:26Z",
+  "collectionStatus": "success",
+  "reviewStatus": "unreviewed",
+  "publicationAllowed": false,
+  "errors": [],
+  "httpStatus": 200,
+  "finalUrl": "https://www.flhouse.gov/Sections/Representatives/details.aspx?MemberId=5070&LegislativeTermId=91",
+  "sourceSnapshotSha256": "01505c47c81802cfab6d16d02e519f014f368b5f5f17a37380da078ab44db18b",
+  "partyAndDistrictText": "District: 52 -- Republican",
+  "staffCandidates": [
+    {
+      "role": "Legislative Aide",
+      "name": "Ronalee Skees",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "role": "District Aide",
+      "name": "Nancy Bowers",
+      "reviewStatus": "unreviewed"
+    }
+  ],
+  "biographyCandidates": {
+    "cityOfResidence": "Bushnell",
+    "occupation": "Director of Marketing",
+    "spouse": "Shawn Scott",
+    "educationRaw": null,
+    "bornRaw": "June 18, 1981, Orlando, FL",
+    "movedToFlorida": null,
+    "recreationalInterests": "boating, decorating, drinking coffee, reading, spending time with family"
+  },
+  "educationCandidates": [],
+  "committeeCandidates": [],
+  "publicServiceCandidates": [],
+  "affiliationCandidates": [
+    {
+      "name": "The Florida House of Representatives does not maintain the content in the site you are about to access.",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "name": "Thank you for visiting FLHouse.gov",
+      "reviewStatus": "unreviewed"
+    }
+  ],
+  "awardCandidates": [],
+  "officeLocationCandidates": [],
+  "contactCandidates": [],
+  "socialCandidates": [
+    {
+      "platform": "YouTube",
+      "url": "https://www.youtube.com/channel/UCGiMELcyYCuDPP3N0Tg5sTg",
+      "label": "Subscribe",
+      "sourcePageUrl": "https://www.flhouse.gov/Sections/Representatives/details.aspx?MemberId=5070&LegislativeTermId=91",
+      "reviewStatus": "unreviewed"
+    }
+  ],
+  "websiteCandidates": [
+    {
+      "url": "https://www.flhouse.gov/Sections/HouseSchedule/houseschedule.aspx",
+      "label": "House Schedule",
+      "sourcePageUrl": "https://www.flhouse.gov/Sections/Representatives/details.aspx?MemberId=5070&LegislativeTermId=91",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "url": "https://www.flhouse.gov/Sections/Representatives/contactmember.aspx?MemberId=5070&SessionId=113",
+      "label": "Contact Member",
+      "sourcePageUrl": "https://www.flhouse.gov/Sections/Representatives/details.aspx?MemberId=5070&LegislativeTermId=91",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "url": "https://www.flhouse.gov/contentViewer.aspx?Category=website&File=contact us.htm",
+      "label": "Contact Us",
+      "sourcePageUrl": "https://www.flhouse.gov/Sections/Representatives/details.aspx?MemberId=5070&LegislativeTermId=91",
+      "reviewStatus": "unreviewed"
+    }
+  ],
+  "portraitCandidates": [
+    {
+      "url": "https://www.flhouse.gov/FileStores/Web/Imaging/Member/5070.jpg",
+      "method": "img",
+      "score": 39,
+      "altText": "Representative Scott Photo",
+      "sourcePageUrl": "https://www.flhouse.gov/Sections/Representatives/details.aspx?MemberId=5070&LegislativeTermId=91",
+      "rightsStatus": "review_required",
+      "identityReviewStatus": "unreviewed"
+    },
+    {
+      "url": "https://www.flhouse.gov/Images/bronze-seal-250.png?cb=4.6.654349",
+      "method": "og:image",
+      "score": 14,
+      "altText": null,
+      "sourcePageUrl": "https://www.flhouse.gov/Sections/Representatives/details.aspx?MemberId=5070&LegislativeTermId=91",
+      "rightsStatus": "review_required",
+      "identityReviewStatus": "unreviewed"
+    },
+    {
+      "url": "https://www.flhouse.gov/Images/svg/house_seal.svg",
+      "method": "img",
+      "score": -30,
+      "altText": "Seal Of Florida",
+      "sourcePageUrl": "https://www.flhouse.gov/Sections/Representatives/details.aspx?MemberId=5070&LegislativeTermId=91",
+      "rightsStatus": "review_required",
+      "identityReviewStatus": "unreviewed"
+    }
+  ],
+  "mapLinks": [
+    {
+      "label": "Detailed District 52 Map",
+      "url": "https://www.flhouse.gov/FileStores/Web/District/DistrictMaps/small/HD_52.pdf"
+    },
+    {
+      "label": "Large Format District 52 Map",
+      "url": "https://www.flhouse.gov/FileStores/Web/District/DistrictMaps/large/HD_52_Large.pdf"
+    }
+  ],
+  "billLinks": [
+    {
+      "label": "Bills",
+      "url": "https://www.flhouse.gov/Sections/Bills/bills.aspx"
+    },
+    {
+      "label": "Sponsored Bills",
+      "url": "https://www.flhouse.gov/Sections/Representatives/sponsoredbills.aspx?MemberId=5070&SessionId=113"
+    }
+  ],
+  "mediaLinks": [
+    {
+      "label": "Communications",
+      "url": "https://www.flhouse.gov/Sections/Representatives/communications.aspx?MemberId=5070&LegislativeTermId=91"
+    },
+    {
+      "label": "Subscribe to the Florida House YouTube Channel:",
+      "url": "https://www.youtube.com/channel/UCGiMELcyYCuDPP3N0Tg5sTg"
+    }
+  ],
+  "candidateCounts": {
+    "staffCandidates": 2,
+    "educationCandidates": 0,
+    "committeeCandidates": 0,
+    "publicServiceCandidates": 0,
+    "affiliationCandidates": 2,
+    "awardCandidates": 0,
+    "officeLocationCandidates": 0,
+    "contactCandidates": 0,
+    "socialCandidates": 1,
+    "websiteCandidates": 3,
+    "portraitCandidates": 3
+  }
+}

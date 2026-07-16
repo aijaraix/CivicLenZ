@@ -1,0 +1,216 @@
+{
+  "detailRecordVersion": "1.0.0",
+  "detailRecordId": "cd1bd3e8-c055-575a-b2f1-87b57791bfdc",
+  "stagingRecordId": "3fcd22b8-d405-5422-88fc-a16c7c4ef0e9",
+  "sourceKey": "florida-house-members",
+  "displayName": "Tant, Allison",
+  "officeTitle": "Florida State Representative, District 9",
+  "districtNumber": "9",
+  "sourceUrl": "https://www.flhouse.gov/Sections/Representatives/details.aspx?MemberId=4765&LegislativeTermId=91",
+  "fetchedAt": "2026-07-16T05:26:21Z",
+  "collectionStatus": "success",
+  "reviewStatus": "unreviewed",
+  "publicationAllowed": false,
+  "errors": [],
+  "httpStatus": 200,
+  "finalUrl": "https://www.flhouse.gov/Sections/Representatives/custom/details.aspx?MemberId=4765&LegislativeTermId=91",
+  "sourceSnapshotSha256": "c3f0b353efb6a4d8fd5ae776f8b45c2a26870f425af3d59a89fd7541bbfbbd23",
+  "partyAndDistrictText": "District: 9 -- Democrat",
+  "staffCandidates": [
+    {
+      "role": "Legislative Aide",
+      "name": "Mitchell Allen",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "role": "District Aide",
+      "name": "Stacey Fike",
+      "reviewStatus": "unreviewed"
+    }
+  ],
+  "biographyCandidates": {
+    "cityOfResidence": null,
+    "occupation": null,
+    "spouse": null,
+    "educationRaw": null,
+    "bornRaw": null,
+    "movedToFlorida": null,
+    "recreationalInterests": null
+  },
+  "educationCandidates": [],
+  "committeeCandidates": [
+    {
+      "name": "Careers & Workforce Subcommittee Democratic Ranking Member",
+      "roleType": "member",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "name": "Budget Committee",
+      "roleType": "member",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "name": "Health Care Budget Subcommittee",
+      "roleType": "member",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "name": "Health & Human Services Committee",
+      "roleType": "member",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "name": "Joint Legislative Budget Commission",
+      "roleType": "member",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "name": "Rules & Ethics Committee",
+      "roleType": "member",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "name": "Select Committee on Property Taxes",
+      "roleType": "member",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "name": "Natural Resources & Disasters Subcommittee",
+      "roleType": "member",
+      "reviewStatus": "unreviewed"
+    }
+  ],
+  "publicServiceCandidates": [],
+  "affiliationCandidates": [],
+  "awardCandidates": [],
+  "officeLocationCandidates": [],
+  "contactCandidates": [
+    {
+      "type": "email",
+      "value": "Allison.Tant@flhouse.gov",
+      "label": null,
+      "sourcePageUrl": "https://www.flhouse.gov/Sections/Representatives/custom/details.aspx?MemberId=4765&LegislativeTermId=91"
+    },
+    {
+      "type": "phone",
+      "value": "(850) 717-5009",
+      "label": null,
+      "sourcePageUrl": "https://www.flhouse.gov/Sections/Representatives/custom/details.aspx?MemberId=4765&LegislativeTermId=91"
+    }
+  ],
+  "socialCandidates": [],
+  "websiteCandidates": [
+    {
+      "url": "https://www.flhouse.gov/Sections/Representatives/custom/contactmember.aspx?MemberId=4765&LegislativeTermId=91",
+      "label": "Contact Member",
+      "sourcePageUrl": "https://www.flhouse.gov/Sections/Representatives/custom/details.aspx?MemberId=4765&LegislativeTermId=91",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "url": "https://www.flhouse.gov/Sections/Representatives/custom/maps-and-offices.aspx?MemberId=4765&LegislativeTermId=91",
+      "label": "Maps & Offices",
+      "sourcePageUrl": "https://www.flhouse.gov/Sections/Representatives/custom/details.aspx?MemberId=4765&LegislativeTermId=91",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "url": "https://lp.constantcontactpages.com/sl/y3gkTnZ/HD9Updates",
+      "label": "Sign Up For My Newsletter",
+      "sourcePageUrl": "https://www.flhouse.gov/Sections/Representatives/custom/details.aspx?MemberId=4765&LegislativeTermId=91",
+      "reviewStatus": "unreviewed"
+    }
+  ],
+  "portraitCandidates": [
+    {
+      "url": "https://www.flhouse.gov/FileStores/Web/Imaging/Member/cutout%2f4765.png",
+      "method": "img",
+      "score": 39,
+      "altText": "Representative Tant Photo",
+      "sourcePageUrl": "https://www.flhouse.gov/Sections/Representatives/custom/details.aspx?MemberId=4765&LegislativeTermId=91",
+      "rightsStatus": "review_required",
+      "identityReviewStatus": "unreviewed"
+    },
+    {
+      "url": "https://www.flhouse.gov/FileStores/Web/Imaging/PhotoAlbums/HousePhotoSized8103.jpg",
+      "method": "img",
+      "score": 30,
+      "altText": "Representative Tant Photo",
+      "sourcePageUrl": "https://www.flhouse.gov/Sections/Representatives/custom/details.aspx?MemberId=4765&LegislativeTermId=91",
+      "rightsStatus": "review_required",
+      "identityReviewStatus": "unreviewed"
+    },
+    {
+      "url": "https://www.flhouse.gov/Images/bronze-seal-250.png?cb=4.6.654349",
+      "method": "og:image",
+      "score": 14,
+      "altText": null,
+      "sourcePageUrl": "https://www.flhouse.gov/Sections/Representatives/custom/details.aspx?MemberId=4765&LegislativeTermId=91",
+      "rightsStatus": "review_required",
+      "identityReviewStatus": "unreviewed"
+    },
+    {
+      "url": "https://www.flhouse.gov/api/Member/get-member-uploaded-photo/4765/MemberPhotoSized8537.jpg/image",
+      "method": "img",
+      "score": 14,
+      "altText": null,
+      "sourcePageUrl": "https://www.flhouse.gov/Sections/Representatives/custom/details.aspx?MemberId=4765&LegislativeTermId=91",
+      "rightsStatus": "review_required",
+      "identityReviewStatus": "unreviewed"
+    },
+    {
+      "url": "https://www.flhouse.gov/api/Member/get-member-uploaded-photo/4765/MemberPhotoSized8538.jpg/image",
+      "method": "img",
+      "score": 14,
+      "altText": null,
+      "sourcePageUrl": "https://www.flhouse.gov/Sections/Representatives/custom/details.aspx?MemberId=4765&LegislativeTermId=91",
+      "rightsStatus": "review_required",
+      "identityReviewStatus": "unreviewed"
+    },
+    {
+      "url": "https://www.flhouse.gov/api/Member/get-member-uploaded-photo/4765/MemberPhotoSized8539.jpg/image",
+      "method": "img",
+      "score": 14,
+      "altText": null,
+      "sourcePageUrl": "https://www.flhouse.gov/Sections/Representatives/custom/details.aspx?MemberId=4765&LegislativeTermId=91",
+      "rightsStatus": "review_required",
+      "identityReviewStatus": "unreviewed"
+    }
+  ],
+  "mapLinks": [],
+  "billLinks": [
+    {
+      "label": "Sponsored Bills",
+      "url": "https://www.flhouse.gov/Sections/Representatives/custom/sponsoredbills.aspx?MemberId=4765&LegislativeTermId=91"
+    },
+    {
+      "label": "Allison Tant Sponsored Bills",
+      "url": "https://www.flhouse.gov/Sections/Representatives/custom/sponsoredbills.aspx?MemberId=4765&LegislativeTermId=91&SessionId=113"
+    }
+  ],
+  "mediaLinks": [
+    {
+      "label": "Social Media",
+      "url": "https://www.flhouse.gov/Sections/Representatives/custom/social-media.aspx?MemberId=4765&LegislativeTermId=91"
+    },
+    {
+      "label": "Communications",
+      "url": "https://www.flhouse.gov/Sections/Representatives/custom/communications.aspx?MemberId=4765&LegislativeTermId=91"
+    },
+    {
+      "label": "Official House Gallery",
+      "url": "https://www.flhouse.gov/Sections/PhotoAlbums/custom/photoAlbum.aspx?MemberId=4765"
+    }
+  ],
+  "candidateCounts": {
+    "staffCandidates": 2,
+    "educationCandidates": 0,
+    "committeeCandidates": 8,
+    "publicServiceCandidates": 0,
+    "affiliationCandidates": 0,
+    "awardCandidates": 0,
+    "officeLocationCandidates": 0,
+    "contactCandidates": 2,
+    "socialCandidates": 0,
+    "websiteCandidates": 3,
+    "portraitCandidates": 6
+  }
+}

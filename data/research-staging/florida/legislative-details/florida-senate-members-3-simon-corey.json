@@ -1,0 +1,517 @@
+{
+  "detailRecordVersion": "1.0.0",
+  "detailRecordId": "2e845c62-4c2e-58b5-bcda-ac978deb9aa6",
+  "stagingRecordId": "2a2d3d9c-5bb8-5d98-a4e1-d866a8ca259a",
+  "sourceKey": "florida-senate-members",
+  "displayName": "Simon, Corey",
+  "officeTitle": "Florida State Senator, District 3",
+  "districtNumber": "3",
+  "sourceUrl": "https://www.flsenate.gov/Senators/2024-2026/S3",
+  "fetchedAt": "2026-07-16T05:26:33Z",
+  "collectionStatus": "success",
+  "reviewStatus": "unreviewed",
+  "publicationAllowed": false,
+  "errors": [],
+  "httpStatus": 200,
+  "finalUrl": "https://www.flsenate.gov/Senators/S3",
+  "sourceSnapshotSha256": "b11ac2aed5b9a57bcdf14640f4307803ec6fb20c0661012fec827909ac3c096e",
+  "partyAndDistrictText": "Party: Republican",
+  "staffCandidates": [],
+  "biographyCandidates": {
+    "occupation": "Athlete Alumni Engagement and Development Director",
+    "spouse": "Natasha Givens Simon of Wildwood, FL",
+    "children": "Corey \"CJ, \" Jr.",
+    "bornRaw": "in Pompano Beach, Florida",
+    "religiousAffiliation": "Christian",
+    "recreation": "Hunting, fishing, golfing, cooking"
+  },
+  "educationCandidates": [],
+  "committeeCandidates": [
+    {
+      "name": "Education Pre-K - 12 , Chair",
+      "roleType": "member",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "name": "Education Postsecondary , Vice Chair",
+      "roleType": "member",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "name": "Appropriations Committee on Criminal and Civil Justice",
+      "roleType": "member",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "name": "Appropriations Committee on Pre-K - 12 Education",
+      "roleType": "member",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "name": "Children, Families, and Elder Affairs",
+      "roleType": "member",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "name": "Criminal Justice",
+      "roleType": "member",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "name": "Fiscal Policy",
+      "roleType": "member",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "name": "Rules",
+      "roleType": "member",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "name": "Joint Legislative Auditing Committee",
+      "roleType": "member",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "name": "District 3",
+      "roleType": "member",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "name": "Bills Introduced",
+      "roleType": "member",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "name": "Media",
+      "roleType": "member",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "name": "Personal & Career",
+      "roleType": "member",
+      "reviewStatus": "unreviewed"
+    }
+  ],
+  "publicServiceCandidates": [
+    {
+      "rawText": "Children and Youth Cabinet Member, 2021-present",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "rawText": "Big Bend Pop Warner, President, 2011-present",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "rawText": "Corey's Kids, Founder",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "rawText": "Youth Sports Volunteer Coach",
+      "reviewStatus": "unreviewed"
+    }
+  ],
+  "affiliationCandidates": [],
+  "awardCandidates": [
+    {
+      "rawText": "Volunteer Florida, CEO",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "rawText": "Sickle Cell Foundation of the Big Bend, Servant's Heart Award",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "rawText": "Boys Town, Spirit of Youth Award",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "rawText": "Omega Lamplighters, Community Dad Award",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "rawText": "David and I. Lorraine Thomas, Child Advocate of the Year",
+      "reviewStatus": "unreviewed"
+    }
+  ],
+  "legislativeServiceCandidates": [
+    {
+      "rawText": "2024-2026",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "rawText": "2022-2024",
+      "reviewStatus": "unreviewed"
+    }
+  ],
+  "officeLocationCandidates": [
+    {
+      "label": "District Office",
+      "rawLines": [],
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "label": "Satellite Office",
+      "rawLines": [],
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "label": "Tallahassee Office",
+      "rawLines": [
+        "Track this Senator's Media"
+      ],
+      "reviewStatus": "unreviewed"
+    }
+  ],
+  "contactCandidates": [
+    {
+      "type": "email",
+      "value": "simon.corey.web@flsenate.gov",
+      "label": "simon.corey.web@flsenate.gov",
+      "sourcePageUrl": "https://www.flsenate.gov/Senators/S3"
+    },
+    {
+      "type": "email",
+      "value": "webmaster@flsenate.gov",
+      "label": "email",
+      "sourcePageUrl": "https://www.flsenate.gov/Senators/S3"
+    },
+    {
+      "type": "phone",
+      "value": "(850) 487-5003",
+      "label": null,
+      "sourcePageUrl": "https://www.flsenate.gov/Senators/S3"
+    },
+    {
+      "type": "phone",
+      "value": "(850) 487-5086",
+      "label": null,
+      "sourcePageUrl": "https://www.flsenate.gov/Senators/S3"
+    }
+  ],
+  "socialCandidates": [
+    {
+      "platform": "X",
+      "url": "http://www.twitter.com/flsenate",
+      "label": "Twitter",
+      "sourcePageUrl": "https://www.flsenate.gov/Senators/S3",
+      "reviewStatus": "unreviewed"
+    }
+  ],
+  "websiteCandidates": [
+    {
+      "url": "https://www.flsenate.gov/Session/ExecutiveAppointments",
+      "label": "Executive Appointments",
+      "sourcePageUrl": "https://www.flsenate.gov/Senators/S3",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "url": "https://www.flsenate.gov/Media/VideoSchedule",
+      "label": "Video Broadcast Schedule",
+      "sourcePageUrl": "https://www.flsenate.gov/Senators/S3",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "url": "https://www.flsenate.gov/About/Contact",
+      "label": "Contact Us",
+      "sourcePageUrl": "https://www.flsenate.gov/Senators/S3",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "url": "https://www.flsenate.gov/Offices",
+      "label": "Offices",
+      "sourcePageUrl": "https://www.flsenate.gov/Senators/S3",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "url": "https://www.flsenate.gov/Offices/President",
+      "label": "President's Office",
+      "sourcePageUrl": "https://www.flsenate.gov/Senators/S3",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "url": "https://www.flsenate.gov/Offices/Majority",
+      "label": "Majority Office",
+      "sourcePageUrl": "https://www.flsenate.gov/Senators/S3",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "url": "https://www.flsenate.gov/Offices/Minority",
+      "label": "Minority Office",
+      "sourcePageUrl": "https://www.flsenate.gov/Senators/S3",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "url": "https://www.flsenate.gov/Offices/Secretary",
+      "label": "Secretary's Office",
+      "sourcePageUrl": "https://www.flsenate.gov/Senators/S3",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "url": "https://www.flsenate.gov/Reference/PublicRecords",
+      "label": "Public Records",
+      "sourcePageUrl": "https://www.flsenate.gov/Senators/S3",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "url": "https://www.flsenate.gov/Session/ExecutiveAppointments/",
+      "label": "Executive Appointments",
+      "sourcePageUrl": "https://www.flsenate.gov/Senators/S3",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "url": "https://www.flsenate.gov/About/Contact#connect",
+      "label": "Connect with the Senate",
+      "sourcePageUrl": "https://www.flsenate.gov/Senators/S3",
+      "reviewStatus": "unreviewed"
+    }
+  ],
+  "portraitCandidates": [
+    {
+      "url": "https://www.flsenate.gov/PublishedContent/Senators/2024-2026/Photos/s03_5522.jpg",
+      "method": "img",
+      "score": 30,
+      "altText": "Senator Simon",
+      "sourcePageUrl": "https://www.flsenate.gov/Senators/S3",
+      "rightsStatus": "review_required",
+      "identityReviewStatus": "unreviewed"
+    },
+    {
+      "url": "https://www.flsenate.gov/PublishedContent/Session/Redistricting/Districts/SD2022/webmaps/sd03_webmap.png",
+      "method": "img",
+      "score": 9,
+      "altText": "District 3 map",
+      "sourcePageUrl": "https://www.flsenate.gov/Senators/S3",
+      "rightsStatus": "review_required",
+      "identityReviewStatus": "unreviewed"
+    },
+    {
+      "url": "https://www.flsenate.gov/UserContent/img/help/2013search-goBill.png",
+      "method": "img",
+      "score": 9,
+      "altText": "Example of Go To Bill feature available on every page of flsenate.gov",
+      "sourcePageUrl": "https://www.flsenate.gov/Senators/S3",
+      "rightsStatus": "review_required",
+      "identityReviewStatus": "unreviewed"
+    },
+    {
+      "url": "https://www.flsenate.gov/UserContent/img/help/2013sitesearch.png",
+      "method": "img",
+      "score": 9,
+      "altText": "Example of Site Search available on every page of flsenate.gov",
+      "sourcePageUrl": "https://www.flsenate.gov/Senators/S3",
+      "rightsStatus": "review_required",
+      "identityReviewStatus": "unreviewed"
+    },
+    {
+      "url": "https://www.flsenate.gov/UserContent/img/help/2013statutesearch.png",
+      "method": "img",
+      "score": 9,
+      "altText": "Example of Go To Bill feature available on every page of flsenate.gov",
+      "sourcePageUrl": "https://www.flsenate.gov/Senators/S3",
+      "rightsStatus": "review_required",
+      "identityReviewStatus": "unreviewed"
+    },
+    {
+      "url": "https://www.flsenate.gov/UserContent/img/help/printerIcon.png",
+      "method": "img",
+      "score": -26,
+      "altText": "Acrobat print icon",
+      "sourcePageUrl": "https://www.flsenate.gov/Senators/S3",
+      "rightsStatus": "review_required",
+      "identityReviewStatus": "unreviewed"
+    }
+  ],
+  "mapLinks": [
+    {
+      "label": "District Maps",
+      "url": "https://www.flsenate.gov/Senators/Districts"
+    },
+    {
+      "label": "Letter Size",
+      "url": "https://www.flsenate.gov/PublishedContent/Session/Redistricting/Districts/sd2022/Letter/sd03_Lettersize.pdf"
+    },
+    {
+      "label": "Poster Size",
+      "url": "https://www.flsenate.gov/PublishedContent/Session/Redistricting/Districts/SD2022/poster/sd03_poster.pdf"
+    }
+  ],
+  "billLinks": [
+    {
+      "label": "Bills",
+      "url": "https://www.flsenate.gov/Session/Bills"
+    },
+    {
+      "label": "Bills Introduced",
+      "url": "https://www.flsenate.gov/Senators/S3?Tab=Bills#Bills"
+    },
+    {
+      "label": "S 250",
+      "url": "https://www.flsenate.gov/Session/Bill/2026/250"
+    },
+    {
+      "label": "S 320",
+      "url": "https://www.flsenate.gov/Session/Bill/2026/320"
+    },
+    {
+      "label": "S 520",
+      "url": "https://www.flsenate.gov/Session/Bill/2026/520"
+    },
+    {
+      "label": "S 524",
+      "url": "https://www.flsenate.gov/Session/Bill/2026/524"
+    },
+    {
+      "label": "S 530",
+      "url": "https://www.flsenate.gov/Session/Bill/2026/530"
+    },
+    {
+      "label": "S 532",
+      "url": "https://www.flsenate.gov/Session/Bill/2026/532"
+    },
+    {
+      "label": "S 538",
+      "url": "https://www.flsenate.gov/Session/Bill/2026/538"
+    },
+    {
+      "label": "S 578",
+      "url": "https://www.flsenate.gov/Session/Bill/2026/578"
+    },
+    {
+      "label": "S 630",
+      "url": "https://www.flsenate.gov/Session/Bill/2026/630"
+    },
+    {
+      "label": "S 778",
+      "url": "https://www.flsenate.gov/Session/Bill/2026/778"
+    },
+    {
+      "label": "S 808",
+      "url": "https://www.flsenate.gov/Session/Bill/2026/808"
+    },
+    {
+      "label": "S 810",
+      "url": "https://www.flsenate.gov/Session/Bill/2026/810"
+    },
+    {
+      "label": "S 812",
+      "url": "https://www.flsenate.gov/Session/Bill/2026/812"
+    },
+    {
+      "label": "S 1524",
+      "url": "https://www.flsenate.gov/Session/Bill/2026/1524"
+    },
+    {
+      "label": "S 1560",
+      "url": "https://www.flsenate.gov/Session/Bill/2026/1560"
+    },
+    {
+      "label": "S 1646",
+      "url": "https://www.flsenate.gov/Session/Bill/2026/1646"
+    },
+    {
+      "label": "S 1654",
+      "url": "https://www.flsenate.gov/Session/Bill/2026/1654"
+    },
+    {
+      "label": "S 1768",
+      "url": "https://www.flsenate.gov/Session/Bill/2026/1768"
+    },
+    {
+      "label": "S 1790",
+      "url": "https://www.flsenate.gov/Session/Bill/2026/1790"
+    },
+    {
+      "label": "S 318",
+      "url": "https://www.flsenate.gov/Session/Bill/2026/318"
+    },
+    {
+      "label": "S 556",
+      "url": "https://www.flsenate.gov/Session/Bill/2026/556"
+    },
+    {
+      "label": "S 694",
+      "url": "https://www.flsenate.gov/Session/Bill/2026/694"
+    },
+    {
+      "label": "S 1062",
+      "url": "https://www.flsenate.gov/Session/Bill/2026/1062"
+    },
+    {
+      "label": "S 1574",
+      "url": "https://www.flsenate.gov/Session/Bill/2026/1574"
+    },
+    {
+      "label": "Bill Search Tips",
+      "url": "https://www.flsenate.gov/search/billsearchtips"
+    },
+    {
+      "label": "Bill Search Tips",
+      "url": "https://www.flsenate.gov/Search/BillSearchTips"
+    }
+  ],
+  "mediaLinks": [
+    {
+      "label": "Committee Publications",
+      "url": "https://www.flsenate.gov/Committees/Publications"
+    },
+    {
+      "label": "Media",
+      "url": "https://www.flsenate.gov/Media"
+    },
+    {
+      "label": "Video Broadcast Schedule",
+      "url": "https://www.flsenate.gov/Media/VideoSchedule"
+    },
+    {
+      "label": "Publications",
+      "url": "https://www.flsenate.gov/Media/Publications"
+    },
+    {
+      "label": "Videos",
+      "url": "https://www.flsenate.gov/Media/Videos"
+    },
+    {
+      "label": "Topics",
+      "url": "https://www.flsenate.gov/Media/Topics"
+    },
+    {
+      "label": "Publications",
+      "url": "https://www.flsenate.gov/Reference/Publications"
+    },
+    {
+      "label": "Handbooks",
+      "url": "https://www.flsenate.gov/Reference/Publications/SenateHandbooks"
+    },
+    {
+      "label": "Senate Chamber Seating Chart",
+      "url": "https://www.flsenate.gov/PublishedContent/AdministrativePublications/seatingchart.pdf"
+    },
+    {
+      "label": "Track this Senator's Media",
+      "url": "https://www.flsenate.gov/Tracker/Track?key=3_3"
+    },
+    {
+      "label": "Media",
+      "url": "https://www.flsenate.gov/Senators/S3?Tab=Media#Media"
+    },
+    {
+      "label": "Press Releases",
+      "url": "https://www.flsenate.gov/Media/PressReleases"
+    }
+  ],
+  "candidateCounts": {
+    "staffCandidates": 0,
+    "educationCandidates": 0,
+    "committeeCandidates": 13,
+    "publicServiceCandidates": 4,
+    "affiliationCandidates": 0,
+    "awardCandidates": 5,
+    "legislativeServiceCandidates": 2,
+    "officeLocationCandidates": 3,
+    "contactCandidates": 4,
+    "socialCandidates": 1,
+    "websiteCandidates": 11,
+    "portraitCandidates": 6
+  }
+}

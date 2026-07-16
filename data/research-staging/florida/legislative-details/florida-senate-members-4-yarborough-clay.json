@@ -1,0 +1,577 @@
+{
+  "detailRecordVersion": "1.0.0",
+  "detailRecordId": "bd8f133d-781b-584e-9386-3c222eaa51f3",
+  "stagingRecordId": "6d025591-4fa8-55fe-8688-a664e7e78760",
+  "sourceKey": "florida-senate-members",
+  "displayName": "Yarborough, Clay",
+  "officeTitle": "Florida State Senator, District 4",
+  "districtNumber": "4",
+  "sourceUrl": "https://www.flsenate.gov/Senators/2024-2026/S4",
+  "fetchedAt": "2026-07-16T05:26:33Z",
+  "collectionStatus": "success",
+  "reviewStatus": "unreviewed",
+  "publicationAllowed": false,
+  "errors": [],
+  "httpStatus": 200,
+  "finalUrl": "https://www.flsenate.gov/Senators/S4",
+  "sourceSnapshotSha256": "96980b13171fad6dcb725f4afc445d84f4e824f9da3975ca6032477353b4aa52",
+  "partyAndDistrictText": "Party: Republican",
+  "staffCandidates": [
+    {
+      "role": "Legislative Aide",
+      "name": "Track this Senator's Media",
+      "reviewStatus": "unreviewed"
+    }
+  ],
+  "biographyCandidates": {
+    "occupation": "Business development",
+    "spouse": "Jordan Ellison of Merritt Island, FL",
+    "children": "Emerson, Grayson, Barrett, Archer",
+    "bornRaw": "in Mobile, Alabama. Moved to Florida in 1985.",
+    "religiousAffiliation": "Baptist",
+    "recreation": "Spending time with family"
+  },
+  "educationCandidates": [],
+  "committeeCandidates": [
+    {
+      "name": "Judiciary , Chair",
+      "roleType": "member",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "name": "Appropriations Committee on Criminal and Civil Justice",
+      "roleType": "member",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "name": "Appropriations Committee on Pre-K - 12 Education",
+      "roleType": "member",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "name": "Commerce and Tourism",
+      "roleType": "member",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "name": "Criminal Justice",
+      "roleType": "member",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "name": "Education Pre-K - 12",
+      "roleType": "member",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "name": "Fiscal Policy",
+      "roleType": "member",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "name": "Joint Administrative Procedures Committee",
+      "roleType": "member",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "name": "District 4",
+      "roleType": "member",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "name": "Bills Introduced",
+      "roleType": "member",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "name": "Media",
+      "roleType": "member",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "name": "Personal & Career",
+      "roleType": "member",
+      "reviewStatus": "unreviewed"
+    }
+  ],
+  "publicServiceCandidates": [
+    {
+      "rawText": "Jacksonville City Council, 2007-2015, President, 2014-2015",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "rawText": "Duval Soil and Water Conservation Board, 2000-2007",
+      "reviewStatus": "unreviewed"
+    }
+  ],
+  "affiliationCandidates": [
+    {
+      "name": "City Rescue Mission, Board Member",
+      "reviewStatus": "unreviewed"
+    }
+  ],
+  "awardCandidates": [],
+  "legislativeServiceCandidates": [
+    {
+      "rawText": "2024-2026",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "rawText": "2022-2024",
+      "reviewStatus": "unreviewed"
+    }
+  ],
+  "officeLocationCandidates": [
+    {
+      "label": "District Office",
+      "rawLines": [],
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "label": "Satellite Office",
+      "rawLines": [],
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "label": "Satellite Office",
+      "rawLines": [],
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "label": "Tallahassee Office",
+      "rawLines": [
+        "Track this Senator's Media"
+      ],
+      "reviewStatus": "unreviewed"
+    }
+  ],
+  "contactCandidates": [
+    {
+      "type": "email",
+      "value": "yarborough.clay.web@flsenate.gov",
+      "label": "yarborough.clay.web@flsenate.gov",
+      "sourcePageUrl": "https://www.flsenate.gov/Senators/S4"
+    },
+    {
+      "type": "email",
+      "value": "webmaster@flsenate.gov",
+      "label": "email",
+      "sourcePageUrl": "https://www.flsenate.gov/Senators/S4"
+    },
+    {
+      "type": "phone",
+      "value": "(850) 410-4805",
+      "label": null,
+      "sourcePageUrl": "https://www.flsenate.gov/Senators/S4"
+    },
+    {
+      "type": "phone",
+      "value": "(850) 487-5004",
+      "label": null,
+      "sourcePageUrl": "https://www.flsenate.gov/Senators/S4"
+    },
+    {
+      "type": "phone",
+      "value": "(904) 723-2035",
+      "label": null,
+      "sourcePageUrl": "https://www.flsenate.gov/Senators/S4"
+    }
+  ],
+  "socialCandidates": [
+    {
+      "platform": "X",
+      "url": "http://www.twitter.com/flsenate",
+      "label": "Twitter",
+      "sourcePageUrl": "https://www.flsenate.gov/Senators/S4",
+      "reviewStatus": "unreviewed"
+    }
+  ],
+  "websiteCandidates": [
+    {
+      "url": "https://www.flsenate.gov/Session/ExecutiveAppointments",
+      "label": "Executive Appointments",
+      "sourcePageUrl": "https://www.flsenate.gov/Senators/S4",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "url": "https://www.flsenate.gov/Media/VideoSchedule",
+      "label": "Video Broadcast Schedule",
+      "sourcePageUrl": "https://www.flsenate.gov/Senators/S4",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "url": "https://www.flsenate.gov/About/Contact",
+      "label": "Contact Us",
+      "sourcePageUrl": "https://www.flsenate.gov/Senators/S4",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "url": "https://www.flsenate.gov/Offices",
+      "label": "Offices",
+      "sourcePageUrl": "https://www.flsenate.gov/Senators/S4",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "url": "https://www.flsenate.gov/Offices/President",
+      "label": "President's Office",
+      "sourcePageUrl": "https://www.flsenate.gov/Senators/S4",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "url": "https://www.flsenate.gov/Offices/Majority",
+      "label": "Majority Office",
+      "sourcePageUrl": "https://www.flsenate.gov/Senators/S4",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "url": "https://www.flsenate.gov/Offices/Minority",
+      "label": "Minority Office",
+      "sourcePageUrl": "https://www.flsenate.gov/Senators/S4",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "url": "https://www.flsenate.gov/Offices/Secretary",
+      "label": "Secretary's Office",
+      "sourcePageUrl": "https://www.flsenate.gov/Senators/S4",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "url": "https://www.flsenate.gov/Reference/PublicRecords",
+      "label": "Public Records",
+      "sourcePageUrl": "https://www.flsenate.gov/Senators/S4",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "url": "https://www.flsenate.gov/Session/ExecutiveAppointments/",
+      "label": "Executive Appointments",
+      "sourcePageUrl": "https://www.flsenate.gov/Senators/S4",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "url": "https://www.flsenate.gov/About/Contact#connect",
+      "label": "Connect with the Senate",
+      "sourcePageUrl": "https://www.flsenate.gov/Senators/S4",
+      "reviewStatus": "unreviewed"
+    }
+  ],
+  "portraitCandidates": [
+    {
+      "url": "https://www.flsenate.gov/PublishedContent/Senators/2024-2026/Photos/s04_5394.jpg",
+      "method": "img",
+      "score": 30,
+      "altText": "Senator Yarborough",
+      "sourcePageUrl": "https://www.flsenate.gov/Senators/S4",
+      "rightsStatus": "review_required",
+      "identityReviewStatus": "unreviewed"
+    },
+    {
+      "url": "https://www.flsenate.gov/PublishedContent/Session/Redistricting/Districts/SD2022/webmaps/sd04_webmap.png",
+      "method": "img",
+      "score": 9,
+      "altText": "District 4 map",
+      "sourcePageUrl": "https://www.flsenate.gov/Senators/S4",
+      "rightsStatus": "review_required",
+      "identityReviewStatus": "unreviewed"
+    },
+    {
+      "url": "https://www.flsenate.gov/UserContent/img/help/2013search-goBill.png",
+      "method": "img",
+      "score": 9,
+      "altText": "Example of Go To Bill feature available on every page of flsenate.gov",
+      "sourcePageUrl": "https://www.flsenate.gov/Senators/S4",
+      "rightsStatus": "review_required",
+      "identityReviewStatus": "unreviewed"
+    },
+    {
+      "url": "https://www.flsenate.gov/UserContent/img/help/2013sitesearch.png",
+      "method": "img",
+      "score": 9,
+      "altText": "Example of Site Search available on every page of flsenate.gov",
+      "sourcePageUrl": "https://www.flsenate.gov/Senators/S4",
+      "rightsStatus": "review_required",
+      "identityReviewStatus": "unreviewed"
+    },
+    {
+      "url": "https://www.flsenate.gov/UserContent/img/help/2013statutesearch.png",
+      "method": "img",
+      "score": 9,
+      "altText": "Example of Go To Bill feature available on every page of flsenate.gov",
+      "sourcePageUrl": "https://www.flsenate.gov/Senators/S4",
+      "rightsStatus": "review_required",
+      "identityReviewStatus": "unreviewed"
+    },
+    {
+      "url": "https://www.flsenate.gov/UserContent/img/help/printerIcon.png",
+      "method": "img",
+      "score": -26,
+      "altText": "Acrobat print icon",
+      "sourcePageUrl": "https://www.flsenate.gov/Senators/S4",
+      "rightsStatus": "review_required",
+      "identityReviewStatus": "unreviewed"
+    }
+  ],
+  "mapLinks": [
+    {
+      "label": "District Maps",
+      "url": "https://www.flsenate.gov/Senators/Districts"
+    },
+    {
+      "label": "Letter Size",
+      "url": "https://www.flsenate.gov/PublishedContent/Session/Redistricting/Districts/sd2022/Letter/sd04_Lettersize.pdf"
+    },
+    {
+      "label": "Poster Size",
+      "url": "https://www.flsenate.gov/PublishedContent/Session/Redistricting/Districts/SD2022/poster/sd04_poster.pdf"
+    }
+  ],
+  "billLinks": [
+    {
+      "label": "Bills",
+      "url": "https://www.flsenate.gov/Session/Bills"
+    },
+    {
+      "label": "Bills Introduced",
+      "url": "https://www.flsenate.gov/Senators/S4?Tab=Bills#Bills"
+    },
+    {
+      "label": "S 426",
+      "url": "https://www.flsenate.gov/Session/Bill/2026/426"
+    },
+    {
+      "label": "S 428",
+      "url": "https://www.flsenate.gov/Session/Bill/2026/428"
+    },
+    {
+      "label": "S 430",
+      "url": "https://www.flsenate.gov/Session/Bill/2026/430"
+    },
+    {
+      "label": "S 432",
+      "url": "https://www.flsenate.gov/Session/Bill/2026/432"
+    },
+    {
+      "label": "S 442",
+      "url": "https://www.flsenate.gov/Session/Bill/2026/442"
+    },
+    {
+      "label": "S 564",
+      "url": "https://www.flsenate.gov/Session/Bill/2026/564"
+    },
+    {
+      "label": "S 566",
+      "url": "https://www.flsenate.gov/Session/Bill/2026/566"
+    },
+    {
+      "label": "S 624",
+      "url": "https://www.flsenate.gov/Session/Bill/2026/624"
+    },
+    {
+      "label": "S 670",
+      "url": "https://www.flsenate.gov/Session/Bill/2026/670"
+    },
+    {
+      "label": "S 710",
+      "url": "https://www.flsenate.gov/Session/Bill/2026/710"
+    },
+    {
+      "label": "S 712",
+      "url": "https://www.flsenate.gov/Session/Bill/2026/712"
+    },
+    {
+      "label": "S 744",
+      "url": "https://www.flsenate.gov/Session/Bill/2026/744"
+    },
+    {
+      "label": "S 834",
+      "url": "https://www.flsenate.gov/Session/Bill/2026/834"
+    },
+    {
+      "label": "S 838",
+      "url": "https://www.flsenate.gov/Session/Bill/2026/838"
+    },
+    {
+      "label": "S 878",
+      "url": "https://www.flsenate.gov/Session/Bill/2026/878"
+    },
+    {
+      "label": "S 998",
+      "url": "https://www.flsenate.gov/Session/Bill/2026/998"
+    },
+    {
+      "label": "S 1006",
+      "url": "https://www.flsenate.gov/Session/Bill/2026/1006"
+    },
+    {
+      "label": "S 1010",
+      "url": "https://www.flsenate.gov/Session/Bill/2026/1010"
+    },
+    {
+      "label": "S 1012",
+      "url": "https://www.flsenate.gov/Session/Bill/2026/1012"
+    },
+    {
+      "label": "S 1134",
+      "url": "https://www.flsenate.gov/Session/Bill/2026/1134"
+    },
+    {
+      "label": "S 1164",
+      "url": "https://www.flsenate.gov/Session/Bill/2026/1164"
+    },
+    {
+      "label": "S 1316",
+      "url": "https://www.flsenate.gov/Session/Bill/2026/1316"
+    },
+    {
+      "label": "S 1506",
+      "url": "https://www.flsenate.gov/Session/Bill/2026/1506"
+    },
+    {
+      "label": "S 1582",
+      "url": "https://www.flsenate.gov/Session/Bill/2026/1582"
+    },
+    {
+      "label": "S 1600",
+      "url": "https://www.flsenate.gov/Session/Bill/2026/1600"
+    },
+    {
+      "label": "S 1704",
+      "url": "https://www.flsenate.gov/Session/Bill/2026/1704"
+    },
+    {
+      "label": "S 1738",
+      "url": "https://www.flsenate.gov/Session/Bill/2026/1738"
+    },
+    {
+      "label": "S 1756",
+      "url": "https://www.flsenate.gov/Session/Bill/2026/1756"
+    },
+    {
+      "label": "S 1792",
+      "url": "https://www.flsenate.gov/Session/Bill/2026/1792"
+    },
+    {
+      "label": "S 164",
+      "url": "https://www.flsenate.gov/Session/Bill/2026/164"
+    },
+    {
+      "label": "S 182",
+      "url": "https://www.flsenate.gov/Session/Bill/2026/182"
+    },
+    {
+      "label": "S 382",
+      "url": "https://www.flsenate.gov/Session/Bill/2026/382"
+    },
+    {
+      "label": "S 408",
+      "url": "https://www.flsenate.gov/Session/Bill/2026/408"
+    },
+    {
+      "label": "S 420",
+      "url": "https://www.flsenate.gov/Session/Bill/2026/420"
+    },
+    {
+      "label": "S 484",
+      "url": "https://www.flsenate.gov/Session/Bill/2026/484"
+    },
+    {
+      "label": "S 550",
+      "url": "https://www.flsenate.gov/Session/Bill/2026/550"
+    },
+    {
+      "label": "S 552",
+      "url": "https://www.flsenate.gov/Session/Bill/2026/552"
+    },
+    {
+      "label": "S 584",
+      "url": "https://www.flsenate.gov/Session/Bill/2026/584"
+    },
+    {
+      "label": "S 606",
+      "url": "https://www.flsenate.gov/Session/Bill/2026/606"
+    },
+    {
+      "label": "S 1062",
+      "url": "https://www.flsenate.gov/Session/Bill/2026/1062"
+    },
+    {
+      "label": "S 1516",
+      "url": "https://www.flsenate.gov/Session/Bill/2026/1516"
+    },
+    {
+      "label": "S 1574",
+      "url": "https://www.flsenate.gov/Session/Bill/2026/1574"
+    },
+    {
+      "label": "Bill Search Tips",
+      "url": "https://www.flsenate.gov/search/billsearchtips"
+    },
+    {
+      "label": "Bill Search Tips",
+      "url": "https://www.flsenate.gov/Search/BillSearchTips"
+    }
+  ],
+  "mediaLinks": [
+    {
+      "label": "Committee Publications",
+      "url": "https://www.flsenate.gov/Committees/Publications"
+    },
+    {
+      "label": "Media",
+      "url": "https://www.flsenate.gov/Media"
+    },
+    {
+      "label": "Video Broadcast Schedule",
+      "url": "https://www.flsenate.gov/Media/VideoSchedule"
+    },
+    {
+      "label": "Publications",
+      "url": "https://www.flsenate.gov/Media/Publications"
+    },
+    {
+      "label": "Videos",
+      "url": "https://www.flsenate.gov/Media/Videos"
+    },
+    {
+      "label": "Topics",
+      "url": "https://www.flsenate.gov/Media/Topics"
+    },
+    {
+      "label": "Publications",
+      "url": "https://www.flsenate.gov/Reference/Publications"
+    },
+    {
+      "label": "Handbooks",
+      "url": "https://www.flsenate.gov/Reference/Publications/SenateHandbooks"
+    },
+    {
+      "label": "Senate Chamber Seating Chart",
+      "url": "https://www.flsenate.gov/PublishedContent/AdministrativePublications/seatingchart.pdf"
+    },
+    {
+      "label": "Track this Senator's Media",
+      "url": "https://www.flsenate.gov/Tracker/Track?key=3_4"
+    },
+    {
+      "label": "Media",
+      "url": "https://www.flsenate.gov/Senators/S4?Tab=Media#Media"
+    },
+    {
+      "label": "Press Releases",
+      "url": "https://www.flsenate.gov/Media/PressReleases"
+    }
+  ],
+  "candidateCounts": {
+    "staffCandidates": 1,
+    "educationCandidates": 0,
+    "committeeCandidates": 12,
+    "publicServiceCandidates": 2,
+    "affiliationCandidates": 1,
+    "awardCandidates": 0,
+    "legislativeServiceCandidates": 2,
+    "officeLocationCandidates": 4,
+    "contactCandidates": 5,
+    "socialCandidates": 1,
+    "websiteCandidates": 11,
+    "portraitCandidates": 6
+  }
+}

@@ -1,0 +1,219 @@
+{
+  "detailRecordVersion": "1.0.0",
+  "detailRecordId": "16655711-1d47-53bb-933d-6cd1ac042fe6",
+  "stagingRecordId": "db47e2a1-4c7e-5bdf-b4f3-610fedf0f182",
+  "sourceKey": "florida-house-members",
+  "displayName": "Gonzalez Pittman, Karen",
+  "officeTitle": "Florida State Representative, District 65",
+  "districtNumber": "65",
+  "sourceUrl": "https://www.flhouse.gov/Sections/Representatives/details.aspx?MemberId=4888&LegislativeTermId=91",
+  "fetchedAt": "2026-07-16T05:26:27Z",
+  "collectionStatus": "success",
+  "reviewStatus": "unreviewed",
+  "publicationAllowed": false,
+  "errors": [],
+  "httpStatus": 200,
+  "finalUrl": "https://www.flhouse.gov/Sections/Representatives/details.aspx?MemberId=4888&LegislativeTermId=91",
+  "sourceSnapshotSha256": "5d9ae6ff1a46c70fbd93bd4fc21c26af5b1c367867560bfcce92645a219dfd12",
+  "partyAndDistrictText": "District: 65 -- Republican",
+  "staffCandidates": [
+    {
+      "role": "Legislative Aide",
+      "name": "William Kirkpatrick",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "role": "District Aide",
+      "name": "Joyce Thompson",
+      "reviewStatus": "unreviewed"
+    }
+  ],
+  "biographyCandidates": {
+    "cityOfResidence": "Tampa",
+    "occupation": "Business Owner, Educator",
+    "spouse": "C. Christopher \"Chris\" Pittman",
+    "educationRaw": "University of South Florida, Elementary Education, 1980-1984; University of South Florida, Measurement, Evaluation and Testing, 1989-1991",
+    "bornRaw": "Tampa, FL",
+    "movedToFlorida": null,
+    "recreationalInterests": "boating, fishing"
+  },
+  "educationCandidates": [
+    {
+      "rawText": "University of South Florida, Elementary Education, 1980-1984",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "rawText": "University of South Florida, Measurement, Evaluation and Testing, 1989-1991",
+      "reviewStatus": "unreviewed"
+    }
+  ],
+  "committeeCandidates": [
+    {
+      "name": "Health Care Budget Subcommittee Vice Chair",
+      "roleType": "member",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "name": "Select Committee on Property Taxes",
+      "roleType": "member",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "name": "State Affairs Committee",
+      "roleType": "member",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "name": "Information Technology Budget & Policy Subcommittee",
+      "roleType": "member",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "name": "Human Services Subcommittee",
+      "roleType": "member",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "name": "Insurance & Banking Subcommittee",
+      "roleType": "member",
+      "reviewStatus": "unreviewed"
+    }
+  ],
+  "publicServiceCandidates": [],
+  "affiliationCandidates": [],
+  "awardCandidates": [],
+  "officeLocationCandidates": [],
+  "contactCandidates": [],
+  "socialCandidates": [
+    {
+      "platform": "YouTube",
+      "url": "https://www.youtube.com/channel/UCGiMELcyYCuDPP3N0Tg5sTg",
+      "label": "Subscribe",
+      "sourcePageUrl": "https://www.flhouse.gov/Sections/Representatives/details.aspx?MemberId=4888&LegislativeTermId=91",
+      "reviewStatus": "unreviewed"
+    }
+  ],
+  "websiteCandidates": [
+    {
+      "url": "https://www.flhouse.gov/Sections/HouseSchedule/houseschedule.aspx",
+      "label": "House Schedule",
+      "sourcePageUrl": "https://www.flhouse.gov/Sections/Representatives/details.aspx?MemberId=4888&LegislativeTermId=91",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "url": "https://www.flhouse.gov/Sections/Representatives/contactmember.aspx?MemberId=4888&SessionId=113",
+      "label": "Contact Member",
+      "sourcePageUrl": "https://www.flhouse.gov/Sections/Representatives/details.aspx?MemberId=4888&LegislativeTermId=91",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "url": "https://www.flhouse.gov/contentViewer.aspx?Category=website&File=contact us.htm",
+      "label": "Contact Us",
+      "sourcePageUrl": "https://www.flhouse.gov/Sections/Representatives/details.aspx?MemberId=4888&LegislativeTermId=91",
+      "reviewStatus": "unreviewed"
+    }
+  ],
+  "portraitCandidates": [
+    {
+      "url": "https://www.flhouse.gov/FileStores/Web/Imaging/Member/4888.jpg",
+      "method": "img",
+      "score": 51,
+      "altText": "Representative Gonzalez Pittman Photo",
+      "sourcePageUrl": "https://www.flhouse.gov/Sections/Representatives/details.aspx?MemberId=4888&LegislativeTermId=91",
+      "rightsStatus": "review_required",
+      "identityReviewStatus": "unreviewed"
+    },
+    {
+      "url": "https://www.flhouse.gov/Images/bronze-seal-250.png?cb=4.6.654349",
+      "method": "og:image",
+      "score": 14,
+      "altText": null,
+      "sourcePageUrl": "https://www.flhouse.gov/Sections/Representatives/details.aspx?MemberId=4888&LegislativeTermId=91",
+      "rightsStatus": "review_required",
+      "identityReviewStatus": "unreviewed"
+    },
+    {
+      "url": "https://www.flhouse.gov/FileStores/Web/Imaging/PhotoAlbums/HousePhotoSized7684.jpg",
+      "method": "img",
+      "score": 9,
+      "altText": null,
+      "sourcePageUrl": "https://www.flhouse.gov/Sections/Representatives/details.aspx?MemberId=4888&LegislativeTermId=91",
+      "rightsStatus": "review_required",
+      "identityReviewStatus": "unreviewed"
+    },
+    {
+      "url": "https://www.flhouse.gov/FileStores/Web/Imaging/PhotoAlbums/HousePhotoSized7685.jpg",
+      "method": "img",
+      "score": 9,
+      "altText": null,
+      "sourcePageUrl": "https://www.flhouse.gov/Sections/Representatives/details.aspx?MemberId=4888&LegislativeTermId=91",
+      "rightsStatus": "review_required",
+      "identityReviewStatus": "unreviewed"
+    },
+    {
+      "url": "https://www.flhouse.gov/FileStores/Web/Imaging/PhotoAlbums/HousePhotoSized7697.jpg",
+      "method": "img",
+      "score": 9,
+      "altText": null,
+      "sourcePageUrl": "https://www.flhouse.gov/Sections/Representatives/details.aspx?MemberId=4888&LegislativeTermId=91",
+      "rightsStatus": "review_required",
+      "identityReviewStatus": "unreviewed"
+    },
+    {
+      "url": "https://www.flhouse.gov/FileStores/Web/Imaging/PhotoAlbums/HousePhotoSized7728.JPG",
+      "method": "img",
+      "score": 9,
+      "altText": null,
+      "sourcePageUrl": "https://www.flhouse.gov/Sections/Representatives/details.aspx?MemberId=4888&LegislativeTermId=91",
+      "rightsStatus": "review_required",
+      "identityReviewStatus": "unreviewed"
+    }
+  ],
+  "mapLinks": [
+    {
+      "label": "Detailed District 65 Map",
+      "url": "https://www.flhouse.gov/FileStores/Web/District/DistrictMaps/small/HD_65.pdf"
+    },
+    {
+      "label": "Large Format District 65 Map",
+      "url": "https://www.flhouse.gov/FileStores/Web/District/DistrictMaps/large/HD_65_Large.pdf"
+    }
+  ],
+  "billLinks": [
+    {
+      "label": "Bills",
+      "url": "https://www.flhouse.gov/Sections/Bills/bills.aspx"
+    },
+    {
+      "label": "Sponsored Bills",
+      "url": "https://www.flhouse.gov/Sections/Representatives/sponsoredbills.aspx?MemberId=4888&SessionId=113"
+    }
+  ],
+  "mediaLinks": [
+    {
+      "label": "Communications",
+      "url": "https://www.flhouse.gov/Sections/Representatives/communications.aspx?MemberId=4888&LegislativeTermId=91"
+    },
+    {
+      "label": "Full Gallery",
+      "url": "https://www.flhouse.gov/Sections/PhotoAlbums/photoAlbum.aspx?MemberId=4888"
+    },
+    {
+      "label": "Subscribe to the Florida House YouTube Channel:",
+      "url": "https://www.youtube.com/channel/UCGiMELcyYCuDPP3N0Tg5sTg"
+    }
+  ],
+  "candidateCounts": {
+    "staffCandidates": 2,
+    "educationCandidates": 2,
+    "committeeCandidates": 6,
+    "publicServiceCandidates": 0,
+    "affiliationCandidates": 0,
+    "awardCandidates": 0,
+    "officeLocationCandidates": 0,
+    "contactCandidates": 0,
+    "socialCandidates": 1,
+    "websiteCandidates": 3,
+    "portraitCandidates": 6
+  }
+}

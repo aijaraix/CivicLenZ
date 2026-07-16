@@ -1,0 +1,236 @@
+{
+  "detailRecordVersion": "1.0.0",
+  "detailRecordId": "b14c2274-1047-5450-bb11-d7165dfb007b",
+  "stagingRecordId": "48b89b32-2835-582c-8f2d-624e6911d1b6",
+  "sourceKey": "florida-house-members",
+  "displayName": "Bankson, Douglas Michael \"Doug\"",
+  "officeTitle": "Florida State Representative, District 39",
+  "districtNumber": "39",
+  "sourceUrl": "https://www.flhouse.gov/Sections/Representatives/details.aspx?MemberId=4873&LegislativeTermId=91",
+  "fetchedAt": "2026-07-16T05:26:24Z",
+  "collectionStatus": "success",
+  "reviewStatus": "unreviewed",
+  "publicationAllowed": false,
+  "errors": [],
+  "httpStatus": 200,
+  "finalUrl": "https://www.flhouse.gov/Sections/Representatives/details.aspx?MemberId=4873&LegislativeTermId=91",
+  "sourceSnapshotSha256": "093556f4e11d10739541b046a437a77a5e248f0ed55d961ceb018860a5ff3c4f",
+  "partyAndDistrictText": "District: 39 -- Republican",
+  "staffCandidates": [
+    {
+      "role": "Legislative Aide",
+      "name": "Nicole Kennedy",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "role": "District Aide",
+      "name": "Madison Wagner",
+      "reviewStatus": "unreviewed"
+    }
+  ],
+  "biographyCandidates": {
+    "cityOfResidence": "Apopka",
+    "occupation": "Pastor/Ministry Founder, Faith-based School Founder/President",
+    "spouse": "Jeri Bankson of Sioux City, IA",
+    "educationRaw": "Missouri Southern, Music Education, 1981-1982; Word of Faith Leadership and Bible Institute, 1983-1984; Life Christian University, BTh, 2011; Life Christian University, MTh, 2012; School of Bible Theology Seminary and University, DDiv, 2015",
+    "bornRaw": "February 18, 1963, Altadena, CA",
+    "movedToFlorida": "1982",
+    "recreationalInterests": "certified SCUBA diver, golf, instrument rated pilot, musician, producer, overseas missions, singer/songwriter, tennis, time with wife, children, grandchildren"
+  },
+  "educationCandidates": [
+    {
+      "rawText": "Missouri Southern, Music Education, 1981-1982",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "rawText": "Word of Faith Leadership and Bible Institute, 1983-1984",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "rawText": "Life Christian University, BTh, 2011",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "rawText": "Life Christian University, MTh, 2012",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "rawText": "School of Bible Theology Seminary and University, DDiv, 2015",
+      "reviewStatus": "unreviewed"
+    }
+  ],
+  "committeeCandidates": [
+    {
+      "name": "Student Academic Success Subcommittee Vice Chair",
+      "roleType": "member",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "name": "Rules & Ethics Committee",
+      "roleType": "member",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "name": "Select Committee on Property Taxes",
+      "roleType": "member",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "name": "Ways & Means Committee",
+      "roleType": "member",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "name": "Careers & Workforce Subcommittee",
+      "roleType": "member",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "name": "Criminal Justice Subcommittee",
+      "roleType": "member",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "name": "State Administration Budget Subcommittee",
+      "roleType": "member",
+      "reviewStatus": "unreviewed"
+    }
+  ],
+  "publicServiceCandidates": [],
+  "affiliationCandidates": [],
+  "awardCandidates": [],
+  "officeLocationCandidates": [],
+  "contactCandidates": [],
+  "socialCandidates": [
+    {
+      "platform": "YouTube",
+      "url": "https://www.youtube.com/channel/UCGiMELcyYCuDPP3N0Tg5sTg",
+      "label": "Subscribe",
+      "sourcePageUrl": "https://www.flhouse.gov/Sections/Representatives/details.aspx?MemberId=4873&LegislativeTermId=91",
+      "reviewStatus": "unreviewed"
+    }
+  ],
+  "websiteCandidates": [
+    {
+      "url": "https://www.flhouse.gov/Sections/HouseSchedule/houseschedule.aspx",
+      "label": "House Schedule",
+      "sourcePageUrl": "https://www.flhouse.gov/Sections/Representatives/details.aspx?MemberId=4873&LegislativeTermId=91",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "url": "https://www.flhouse.gov/Sections/Representatives/contactmember.aspx?MemberId=4873&SessionId=113",
+      "label": "Contact Member",
+      "sourcePageUrl": "https://www.flhouse.gov/Sections/Representatives/details.aspx?MemberId=4873&LegislativeTermId=91",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "url": "https://www.flhouse.gov/contentViewer.aspx?Category=website&File=contact us.htm",
+      "label": "Contact Us",
+      "sourcePageUrl": "https://www.flhouse.gov/Sections/Representatives/details.aspx?MemberId=4873&LegislativeTermId=91",
+      "reviewStatus": "unreviewed"
+    }
+  ],
+  "portraitCandidates": [
+    {
+      "url": "https://www.flhouse.gov/FileStores/Web/Imaging/Member/4873.jpg",
+      "method": "img",
+      "score": 39,
+      "altText": "Representative Bankson Photo",
+      "sourcePageUrl": "https://www.flhouse.gov/Sections/Representatives/details.aspx?MemberId=4873&LegislativeTermId=91",
+      "rightsStatus": "review_required",
+      "identityReviewStatus": "unreviewed"
+    },
+    {
+      "url": "https://www.flhouse.gov/Images/bronze-seal-250.png?cb=4.6.654349",
+      "method": "og:image",
+      "score": 14,
+      "altText": null,
+      "sourcePageUrl": "https://www.flhouse.gov/Sections/Representatives/details.aspx?MemberId=4873&LegislativeTermId=91",
+      "rightsStatus": "review_required",
+      "identityReviewStatus": "unreviewed"
+    },
+    {
+      "url": "https://www.flhouse.gov/FileStores/Web/Imaging/PhotoAlbums/HousePhotoSized7461.jpg",
+      "method": "img",
+      "score": 9,
+      "altText": null,
+      "sourcePageUrl": "https://www.flhouse.gov/Sections/Representatives/details.aspx?MemberId=4873&LegislativeTermId=91",
+      "rightsStatus": "review_required",
+      "identityReviewStatus": "unreviewed"
+    },
+    {
+      "url": "https://www.flhouse.gov/FileStores/Web/Imaging/PhotoAlbums/HousePhotoSized7480.jpg",
+      "method": "img",
+      "score": 9,
+      "altText": null,
+      "sourcePageUrl": "https://www.flhouse.gov/Sections/Representatives/details.aspx?MemberId=4873&LegislativeTermId=91",
+      "rightsStatus": "review_required",
+      "identityReviewStatus": "unreviewed"
+    },
+    {
+      "url": "https://www.flhouse.gov/FileStores/Web/Imaging/PhotoAlbums/HousePhotoSized7743.JPG",
+      "method": "img",
+      "score": 9,
+      "altText": null,
+      "sourcePageUrl": "https://www.flhouse.gov/Sections/Representatives/details.aspx?MemberId=4873&LegislativeTermId=91",
+      "rightsStatus": "review_required",
+      "identityReviewStatus": "unreviewed"
+    },
+    {
+      "url": "https://www.flhouse.gov/FileStores/Web/Imaging/PhotoAlbums/HousePhotoSized8185.JPG",
+      "method": "img",
+      "score": 9,
+      "altText": null,
+      "sourcePageUrl": "https://www.flhouse.gov/Sections/Representatives/details.aspx?MemberId=4873&LegislativeTermId=91",
+      "rightsStatus": "review_required",
+      "identityReviewStatus": "unreviewed"
+    }
+  ],
+  "mapLinks": [
+    {
+      "label": "Detailed District 39 Map",
+      "url": "https://www.flhouse.gov/FileStores/Web/District/DistrictMaps/small/HD_39.pdf"
+    },
+    {
+      "label": "Large Format District 39 Map",
+      "url": "https://www.flhouse.gov/FileStores/Web/District/DistrictMaps/large/HD_39_Large.pdf"
+    }
+  ],
+  "billLinks": [
+    {
+      "label": "Bills",
+      "url": "https://www.flhouse.gov/Sections/Bills/bills.aspx"
+    },
+    {
+      "label": "Sponsored Bills",
+      "url": "https://www.flhouse.gov/Sections/Representatives/sponsoredbills.aspx?MemberId=4873&SessionId=113"
+    }
+  ],
+  "mediaLinks": [
+    {
+      "label": "Communications",
+      "url": "https://www.flhouse.gov/Sections/Representatives/communications.aspx?MemberId=4873&LegislativeTermId=91"
+    },
+    {
+      "label": "Full Gallery",
+      "url": "https://www.flhouse.gov/Sections/PhotoAlbums/photoAlbum.aspx?MemberId=4873"
+    },
+    {
+      "label": "Subscribe to the Florida House YouTube Channel:",
+      "url": "https://www.youtube.com/channel/UCGiMELcyYCuDPP3N0Tg5sTg"
+    }
+  ],
+  "candidateCounts": {
+    "staffCandidates": 2,
+    "educationCandidates": 5,
+    "committeeCandidates": 7,
+    "publicServiceCandidates": 0,
+    "affiliationCandidates": 0,
+    "awardCandidates": 0,
+    "officeLocationCandidates": 0,
+    "contactCandidates": 0,
+    "socialCandidates": 1,
+    "websiteCandidates": 3,
+    "portraitCandidates": 6
+  }
+}

@@ -1,0 +1,205 @@
+{
+  "detailRecordVersion": "1.0.0",
+  "detailRecordId": "f1aac799-d81f-56b2-bfde-088aa3ef829c",
+  "stagingRecordId": "6282e214-fbce-524a-bd30-3d1465815212",
+  "sourceKey": "florida-house-members",
+  "displayName": "Busatta, Demi",
+  "officeTitle": "Florida State Representative, District 114",
+  "districtNumber": "114",
+  "sourceUrl": "https://www.flhouse.gov/Sections/Representatives/details.aspx?MemberId=4800&LegislativeTermId=91",
+  "fetchedAt": "2026-07-16T05:26:33Z",
+  "collectionStatus": "success",
+  "reviewStatus": "unreviewed",
+  "publicationAllowed": false,
+  "errors": [],
+  "httpStatus": 200,
+  "finalUrl": "https://www.flhouse.gov/Sections/Representatives/details.aspx?MemberId=4800&LegislativeTermId=91",
+  "sourceSnapshotSha256": "7ccbb75d0ef722299f0153c24d1ca72d081d67fedfe1e34be9b188fab4f338b3",
+  "partyAndDistrictText": "District: 114 -- Republican",
+  "staffCandidates": [
+    {
+      "role": "Legislative Aide",
+      "name": "Brandon Dunnigan",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "role": "District Aide",
+      "name": "Jose Dominguez",
+      "reviewStatus": "unreviewed"
+    }
+  ],
+  "biographyCandidates": {
+    "cityOfResidence": "Coral Gables",
+    "occupation": "Nonprofit Development Director",
+    "spouse": null,
+    "educationRaw": "Florida State University, BS",
+    "bornRaw": "November 4, 1990, Cape Coral, FL",
+    "movedToFlorida": null,
+    "recreationalInterests": null
+  },
+  "educationCandidates": [
+    {
+      "rawText": "Florida State University, BS",
+      "reviewStatus": "unreviewed"
+    }
+  ],
+  "committeeCandidates": [
+    {
+      "name": "Higher Education Budget Subcommittee Chair",
+      "roleType": "member",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "name": "Budget Committee",
+      "roleType": "member",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "name": "Health & Human Services Committee",
+      "roleType": "member",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "name": "Joint Legislative Budget Commission",
+      "roleType": "member",
+      "reviewStatus": "unreviewed"
+    }
+  ],
+  "publicServiceCandidates": [],
+  "affiliationCandidates": [],
+  "awardCandidates": [],
+  "officeLocationCandidates": [],
+  "contactCandidates": [],
+  "socialCandidates": [
+    {
+      "platform": "YouTube",
+      "url": "https://www.youtube.com/channel/UCGiMELcyYCuDPP3N0Tg5sTg",
+      "label": "Subscribe",
+      "sourcePageUrl": "https://www.flhouse.gov/Sections/Representatives/details.aspx?MemberId=4800&LegislativeTermId=91",
+      "reviewStatus": "unreviewed"
+    }
+  ],
+  "websiteCandidates": [
+    {
+      "url": "https://www.flhouse.gov/Sections/HouseSchedule/houseschedule.aspx",
+      "label": "House Schedule",
+      "sourcePageUrl": "https://www.flhouse.gov/Sections/Representatives/details.aspx?MemberId=4800&LegislativeTermId=91",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "url": "https://www.flhouse.gov/Sections/Representatives/contactmember.aspx?MemberId=4800&SessionId=113",
+      "label": "Contact Member",
+      "sourcePageUrl": "https://www.flhouse.gov/Sections/Representatives/details.aspx?MemberId=4800&LegislativeTermId=91",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "url": "https://www.flhouse.gov/contentViewer.aspx?Category=website&File=contact us.htm",
+      "label": "Contact Us",
+      "sourcePageUrl": "https://www.flhouse.gov/Sections/Representatives/details.aspx?MemberId=4800&LegislativeTermId=91",
+      "reviewStatus": "unreviewed"
+    }
+  ],
+  "portraitCandidates": [
+    {
+      "url": "https://www.flhouse.gov/FileStores/Web/Imaging/Member/4800.jpg",
+      "method": "img",
+      "score": 39,
+      "altText": "Representative Busatta Photo",
+      "sourcePageUrl": "https://www.flhouse.gov/Sections/Representatives/details.aspx?MemberId=4800&LegislativeTermId=91",
+      "rightsStatus": "review_required",
+      "identityReviewStatus": "unreviewed"
+    },
+    {
+      "url": "https://www.flhouse.gov/Images/bronze-seal-250.png?cb=4.6.654349",
+      "method": "og:image",
+      "score": 14,
+      "altText": null,
+      "sourcePageUrl": "https://www.flhouse.gov/Sections/Representatives/details.aspx?MemberId=4800&LegislativeTermId=91",
+      "rightsStatus": "review_required",
+      "identityReviewStatus": "unreviewed"
+    },
+    {
+      "url": "https://www.flhouse.gov/FileStores/Web/Imaging/PhotoAlbums/HousePhotoSized7715.jpg",
+      "method": "img",
+      "score": 9,
+      "altText": null,
+      "sourcePageUrl": "https://www.flhouse.gov/Sections/Representatives/details.aspx?MemberId=4800&LegislativeTermId=91",
+      "rightsStatus": "review_required",
+      "identityReviewStatus": "unreviewed"
+    },
+    {
+      "url": "https://www.flhouse.gov/FileStores/Web/Imaging/PhotoAlbums/HousePhotoSized7716.jpg",
+      "method": "img",
+      "score": 9,
+      "altText": null,
+      "sourcePageUrl": "https://www.flhouse.gov/Sections/Representatives/details.aspx?MemberId=4800&LegislativeTermId=91",
+      "rightsStatus": "review_required",
+      "identityReviewStatus": "unreviewed"
+    },
+    {
+      "url": "https://www.flhouse.gov/FileStores/Web/Imaging/PhotoAlbums/HousePhotoSized7717.jpg",
+      "method": "img",
+      "score": 9,
+      "altText": null,
+      "sourcePageUrl": "https://www.flhouse.gov/Sections/Representatives/details.aspx?MemberId=4800&LegislativeTermId=91",
+      "rightsStatus": "review_required",
+      "identityReviewStatus": "unreviewed"
+    },
+    {
+      "url": "https://www.flhouse.gov/FileStores/Web/Imaging/PhotoAlbums/HousePhotoSized7718.jpg",
+      "method": "img",
+      "score": 9,
+      "altText": null,
+      "sourcePageUrl": "https://www.flhouse.gov/Sections/Representatives/details.aspx?MemberId=4800&LegislativeTermId=91",
+      "rightsStatus": "review_required",
+      "identityReviewStatus": "unreviewed"
+    }
+  ],
+  "mapLinks": [
+    {
+      "label": "Detailed District 114 Map",
+      "url": "https://www.flhouse.gov/FileStores/Web/District/DistrictMaps/small/HD_114.pdf"
+    },
+    {
+      "label": "Large Format District 114 Map",
+      "url": "https://www.flhouse.gov/FileStores/Web/District/DistrictMaps/large/HD_114_Large.pdf"
+    }
+  ],
+  "billLinks": [
+    {
+      "label": "Bills",
+      "url": "https://www.flhouse.gov/Sections/Bills/bills.aspx"
+    },
+    {
+      "label": "Sponsored Bills",
+      "url": "https://www.flhouse.gov/Sections/Representatives/sponsoredbills.aspx?MemberId=4800&SessionId=113"
+    }
+  ],
+  "mediaLinks": [
+    {
+      "label": "Communications",
+      "url": "https://www.flhouse.gov/Sections/Representatives/communications.aspx?MemberId=4800&LegislativeTermId=91"
+    },
+    {
+      "label": "Full Gallery",
+      "url": "https://www.flhouse.gov/Sections/PhotoAlbums/photoAlbum.aspx?MemberId=4800"
+    },
+    {
+      "label": "Subscribe to the Florida House YouTube Channel:",
+      "url": "https://www.youtube.com/channel/UCGiMELcyYCuDPP3N0Tg5sTg"
+    }
+  ],
+  "candidateCounts": {
+    "staffCandidates": 2,
+    "educationCandidates": 1,
+    "committeeCandidates": 4,
+    "publicServiceCandidates": 0,
+    "affiliationCandidates": 0,
+    "awardCandidates": 0,
+    "officeLocationCandidates": 0,
+    "contactCandidates": 0,
+    "socialCandidates": 1,
+    "websiteCandidates": 3,
+    "portraitCandidates": 6
+  }
+}

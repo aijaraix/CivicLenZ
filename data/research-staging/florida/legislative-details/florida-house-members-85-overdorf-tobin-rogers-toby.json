@@ -1,0 +1,243 @@
+{
+  "detailRecordVersion": "1.0.0",
+  "detailRecordId": "f813aca6-011b-52c5-8995-f46863ce5ce5",
+  "stagingRecordId": "68fdcb1d-1cf0-5ada-ade0-3b740bbdf064",
+  "sourceKey": "florida-house-members",
+  "displayName": "Overdorf, Tobin Rogers \"Toby\"",
+  "officeTitle": "Florida State Representative, District 85",
+  "districtNumber": "85",
+  "sourceUrl": "https://www.flhouse.gov/Sections/Representatives/details.aspx?MemberId=4728&LegislativeTermId=91",
+  "fetchedAt": "2026-07-16T05:26:29Z",
+  "collectionStatus": "success",
+  "reviewStatus": "unreviewed",
+  "publicationAllowed": false,
+  "errors": [],
+  "httpStatus": 200,
+  "finalUrl": "https://www.flhouse.gov/Sections/Representatives/custom/details.aspx?MemberId=4728&LegislativeTermId=91",
+  "sourceSnapshotSha256": "9fbcf61cedd165823d5deccf780acb0a9f23d65726bc1e83ba8c2089bcad26dc",
+  "partyAndDistrictText": "District: 85 -- Republican",
+  "staffCandidates": [
+    {
+      "role": "Legislative Aide",
+      "name": "Blake Cross",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "role": "District Aide",
+      "name": "Heather Schott",
+      "reviewStatus": "unreviewed"
+    }
+  ],
+  "biographyCandidates": {
+    "cityOfResidence": "Palm City",
+    "occupation": "Environmental Consultant",
+    "spouse": "Margaret L. \"Maggie\" Overdorf of Baltimore, MD",
+    "educationRaw": "Union College, BS, Biology, 1991; Florida Atlantic University, MS, Biology; Florida Atlantic University, Environmental MBA",
+    "bornRaw": "May 6 1969 Newport RI",
+    "movedToFlorida": "1992",
+    "recreationalInterests": "fishing, golf, scuba diving, skiing, sporting clays"
+  },
+  "educationCandidates": [
+    {
+      "rawText": "Union College, BS, Biology, 1991",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "rawText": "Florida Atlantic University, MS, Biology",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "rawText": "Florida Atlantic University, Environmental MBA",
+      "reviewStatus": "unreviewed"
+    }
+  ],
+  "committeeCandidates": [
+    {
+      "name": "Joint Administrative Procedures Committee Alternating Chair",
+      "roleType": "member",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "name": "Select Committee on Property Taxes Chair",
+      "roleType": "member",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "name": "Budget Committee",
+      "roleType": "member",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "name": "PreK-12 Budget Subcommittee",
+      "roleType": "member",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "name": "Health & Human Services Committee",
+      "roleType": "member",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "name": "Security & Threat Assessment Committee",
+      "roleType": "member",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "name": "Industries & Professional Activities Subcommittee",
+      "roleType": "member",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "name": "Insurance & Banking Subcommittee",
+      "roleType": "member",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "name": "Tobin Rogers \"Toby\" Overdorf (@ Tobin Rogers \"Toby\" Overdorf ) • Instagram photos and videos",
+      "roleType": "member",
+      "reviewStatus": "unreviewed"
+    }
+  ],
+  "publicServiceCandidates": [],
+  "affiliationCandidates": [],
+  "awardCandidates": [],
+  "officeLocationCandidates": [],
+  "contactCandidates": [
+    {
+      "type": "phone",
+      "value": "(772) 403-9560",
+      "label": null,
+      "sourcePageUrl": "https://www.flhouse.gov/Sections/Representatives/custom/details.aspx?MemberId=4728&LegislativeTermId=91"
+    },
+    {
+      "type": "phone",
+      "value": "(850) 717-5085",
+      "label": null,
+      "sourcePageUrl": "https://www.flhouse.gov/Sections/Representatives/custom/details.aspx?MemberId=4728&LegislativeTermId=91"
+    }
+  ],
+  "socialCandidates": [
+    {
+      "platform": "Facebook",
+      "url": "https://www.facebook.com/FLRepTobyOverdorf/",
+      "label": "Tobin Rogers \"Toby\" Overdorf",
+      "sourcePageUrl": "https://www.flhouse.gov/Sections/Representatives/custom/details.aspx?MemberId=4728&LegislativeTermId=91",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "platform": "Instagram",
+      "url": "https://www.instagram.com/reptobyoverdorf/?utm_source=ig_embed&utm_campaign=loading",
+      "label": "Tobin Rogers \"Toby\" Overdorf",
+      "sourcePageUrl": "https://www.flhouse.gov/Sections/Representatives/custom/details.aspx?MemberId=4728&LegislativeTermId=91",
+      "reviewStatus": "unreviewed"
+    }
+  ],
+  "websiteCandidates": [
+    {
+      "url": "https://www.flhouse.gov/Sections/Representatives/custom/contactmember.aspx?MemberId=4728&LegislativeTermId=91",
+      "label": "Contact Member",
+      "sourcePageUrl": "https://www.flhouse.gov/Sections/Representatives/custom/details.aspx?MemberId=4728&LegislativeTermId=91",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "url": "https://www.flhouse.gov/Sections/Representatives/custom/maps-and-offices.aspx?MemberId=4728&LegislativeTermId=91",
+      "label": "Maps & Offices",
+      "sourcePageUrl": "https://www.flhouse.gov/Sections/Representatives/custom/details.aspx?MemberId=4728&LegislativeTermId=91",
+      "reviewStatus": "unreviewed"
+    }
+  ],
+  "portraitCandidates": [
+    {
+      "url": "https://www.flhouse.gov/FileStores/Web/Imaging/Member/cutout%2f4728.png",
+      "method": "img",
+      "score": 39,
+      "altText": "Representative Overdorf Photo",
+      "sourcePageUrl": "https://www.flhouse.gov/Sections/Representatives/custom/details.aspx?MemberId=4728&LegislativeTermId=91",
+      "rightsStatus": "review_required",
+      "identityReviewStatus": "unreviewed"
+    },
+    {
+      "url": "https://www.flhouse.gov/FileStores/Web/Imaging/PhotoAlbums/HousePhotoSized7565.jpg",
+      "method": "img",
+      "score": 30,
+      "altText": "Representative Overdorf Photo",
+      "sourcePageUrl": "https://www.flhouse.gov/Sections/Representatives/custom/details.aspx?MemberId=4728&LegislativeTermId=91",
+      "rightsStatus": "review_required",
+      "identityReviewStatus": "unreviewed"
+    },
+    {
+      "url": "https://www.flhouse.gov/Images/bronze-seal-250.png?cb=4.6.654349",
+      "method": "og:image",
+      "score": 14,
+      "altText": null,
+      "sourcePageUrl": "https://www.flhouse.gov/Sections/Representatives/custom/details.aspx?MemberId=4728&LegislativeTermId=91",
+      "rightsStatus": "review_required",
+      "identityReviewStatus": "unreviewed"
+    },
+    {
+      "url": "https://www.flhouse.gov/api/Member/get-member-uploaded-photo/4728/MemberPhotoSized7943.jpg/image",
+      "method": "img",
+      "score": 14,
+      "altText": null,
+      "sourcePageUrl": "https://www.flhouse.gov/Sections/Representatives/custom/details.aspx?MemberId=4728&LegislativeTermId=91",
+      "rightsStatus": "review_required",
+      "identityReviewStatus": "unreviewed"
+    },
+    {
+      "url": "https://www.flhouse.gov/api/Member/get-member-uploaded-photo/4728/MemberPhotoSized7944.jpg/image",
+      "method": "img",
+      "score": 14,
+      "altText": null,
+      "sourcePageUrl": "https://www.flhouse.gov/Sections/Representatives/custom/details.aspx?MemberId=4728&LegislativeTermId=91",
+      "rightsStatus": "review_required",
+      "identityReviewStatus": "unreviewed"
+    },
+    {
+      "url": "https://www.flhouse.gov/api/Member/get-member-uploaded-photo/4728/MemberPhotoSized8138.jpg/image",
+      "method": "img",
+      "score": 14,
+      "altText": null,
+      "sourcePageUrl": "https://www.flhouse.gov/Sections/Representatives/custom/details.aspx?MemberId=4728&LegislativeTermId=91",
+      "rightsStatus": "review_required",
+      "identityReviewStatus": "unreviewed"
+    }
+  ],
+  "mapLinks": [],
+  "billLinks": [
+    {
+      "label": "Sponsored Bills",
+      "url": "https://www.flhouse.gov/Sections/Representatives/custom/sponsoredbills.aspx?MemberId=4728&LegislativeTermId=91"
+    },
+    {
+      "label": "Tobin Rogers \"Toby\" Overdorf Sponsored Bills",
+      "url": "https://www.flhouse.gov/Sections/Representatives/custom/sponsoredbills.aspx?MemberId=4728&LegislativeTermId=91&SessionId=113"
+    }
+  ],
+  "mediaLinks": [
+    {
+      "label": "Social Media",
+      "url": "https://www.flhouse.gov/Sections/Representatives/custom/social-media.aspx?MemberId=4728&LegislativeTermId=91"
+    },
+    {
+      "label": "Communications",
+      "url": "https://www.flhouse.gov/Sections/Representatives/custom/communications.aspx?MemberId=4728&LegislativeTermId=91"
+    },
+    {
+      "label": "Official House Gallery",
+      "url": "https://www.flhouse.gov/Sections/PhotoAlbums/custom/photoAlbum.aspx?MemberId=4728"
+    }
+  ],
+  "candidateCounts": {
+    "staffCandidates": 2,
+    "educationCandidates": 3,
+    "committeeCandidates": 9,
+    "publicServiceCandidates": 0,
+    "affiliationCandidates": 0,
+    "awardCandidates": 0,
+    "officeLocationCandidates": 0,
+    "contactCandidates": 2,
+    "socialCandidates": 2,
+    "websiteCandidates": 2,
+    "portraitCandidates": 6
+  }
+}

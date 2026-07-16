@@ -1,0 +1,582 @@
+{
+  "detailRecordVersion": "1.0.0",
+  "detailRecordId": "9b347569-e382-5b63-9a51-73c3e9ee2673",
+  "stagingRecordId": "38371cf6-2956-5137-a4f2-f0bcede9513d",
+  "sourceKey": "florida-senate-members",
+  "displayName": "Gruters, Joe",
+  "officeTitle": "Florida State Senator, District 22",
+  "districtNumber": "22",
+  "sourceUrl": "https://www.flsenate.gov/Senators/2024-2026/S22",
+  "fetchedAt": "2026-07-16T05:26:36Z",
+  "collectionStatus": "success",
+  "reviewStatus": "unreviewed",
+  "publicationAllowed": false,
+  "errors": [],
+  "httpStatus": 200,
+  "finalUrl": "https://www.flsenate.gov/Senators/S22",
+  "sourceSnapshotSha256": "48c58996746f81f8b38e43c02b23cbeebd9a901048de52f3fa3713321c3171f9",
+  "partyAndDistrictText": "Party: Republican",
+  "staffCandidates": [],
+  "biographyCandidates": {
+    "occupation": "Certified Public Accountant",
+    "spouse": "Sydney Spence of Citrus Hills, FL",
+    "children": "Spencer, Jack Ryan, Elle",
+    "bornRaw": "in Tampa, Florida",
+    "religiousAffiliation": "Roman Catholic",
+    "recreation": "College football, mountaineering, heli-skiing, concerts"
+  },
+  "educationCandidates": [],
+  "committeeCandidates": [
+    {
+      "name": "Banking and Insurance , Chair",
+      "roleType": "member",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "name": "Fiscal Policy , Chair",
+      "roleType": "member",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "name": "District 22",
+      "roleType": "member",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "name": "Bills Introduced",
+      "roleType": "member",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "name": "Media",
+      "roleType": "member",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "name": "Personal & Career",
+      "roleType": "member",
+      "reviewStatus": "unreviewed"
+    }
+  ],
+  "publicServiceCandidates": [
+    {
+      "rawText": "Homeland Security Advisory Council, Vice Chair",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "rawText": "Electoral College, Florida member, 2016, 2020, 2024",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "rawText": "Sarasota County Planning Commission, Chairman",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "rawText": "Florida Sports Foundation Board of Directors, member",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "rawText": "Florida State University Board of Trustees, member",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "rawText": "The National Railroad Passenger Corporation (Amtrak), President, appointed and awaiting Senate confirmation",
+      "reviewStatus": "unreviewed"
+    }
+  ],
+  "affiliationCandidates": [
+    {
+      "name": "University of South Florida, Community Leadership Council",
+      "reviewStatus": "unreviewed"
+    }
+  ],
+  "awardCandidates": [
+    {
+      "rawText": "Keiser University, Distinguished Leadership Award, 2025",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "rawText": "Take Stock in Children, Champion of Education, 2022, 2025",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "rawText": "Associated Industries of Florida, 100% Voting Record, 2024",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "rawText": "Florida Education Association, Unity Award, 2024",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "rawText": "Florida Farm Bureau, Appreciation, 2023",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "rawText": "Florida Chamber of Commerce, Honor Roll, 2017, 2019, 2021, 2022, 2023",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "rawText": "Florida Swimming Pool and Spa Association, Champion, 2022",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "rawText": "Film Florida, Legislative Star, 2022",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "rawText": "Florida Education Association, Friend of Public Education, 2021, 2022",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "rawText": "GCSAA, Legislator of the Year, 2022",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "rawText": "Florida Chamber of Commerce, Distinguished Advocate, 2018, 2019, 2021",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "rawText": "Florida School Boards Association, Legislator of the Year, 2021",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "rawText": "American Conservative Union Foundation, Conservative Excellence Award, 2021",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "rawText": "Florida League of Cities, Legislative Appreciation, 2021",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "rawText": "Florida Homebuilders Association, Champion of Housing, 2019, 2021",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "rawText": "Big Brothers Big Sisters, Legislative Champion, 2020, 2021",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "rawText": "Association of Florida Community Developers, Legislator of the Year, 2020",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "rawText": "Nakomis Venice Osprey Republican Club, Statesman of the Year, 2020",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "rawText": "Florida Homebuilder Association, Senator of the Year, 2019",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "rawText": "Fraternal Order of Police, Senator of the Year, 2019",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "rawText": "Small County Coalition, Legislative Appreciation Award, 2019",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "rawText": "Florida Association of Crime Stoppers, Representative of the Year, 2019",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "rawText": "Manufacturers Association of Florida, Legislator of the Year, 2019",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "rawText": "Florida Animal Control Association, Animal Ally Award, 2019",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "rawText": "Associated Industries of Florida, Champion for Business, 2018, 2019",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "rawText": "Building Industry Association, Defender of Housing, 2019",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "rawText": "Americans for Prosperity, Champion of Economic Freedom, 2018",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "rawText": "Florida Retail Association, Retail Champion",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "rawText": "U.S. Term Limits, Champion of Term Limits",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "rawText": "Florida Gulf Coast University, Appreciation",
+      "reviewStatus": "unreviewed"
+    }
+  ],
+  "legislativeServiceCandidates": [
+    {
+      "rawText": "2024-2026",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "rawText": "2022-2024",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "rawText": "2020-2022",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "rawText": "2018-2020",
+      "reviewStatus": "unreviewed"
+    }
+  ],
+  "officeLocationCandidates": [
+    {
+      "label": "District Office",
+      "rawLines": [],
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "label": "Tallahassee Office",
+      "rawLines": [
+        "Track this Senator's Media"
+      ],
+      "reviewStatus": "unreviewed"
+    }
+  ],
+  "contactCandidates": [
+    {
+      "type": "email",
+      "value": "gruters.joe.web@flsenate.gov",
+      "label": "gruters.joe.web@flsenate.gov",
+      "sourcePageUrl": "https://www.flsenate.gov/Senators/S22"
+    },
+    {
+      "type": "email",
+      "value": "webmaster@flsenate.gov",
+      "label": "email",
+      "sourcePageUrl": "https://www.flsenate.gov/Senators/S22"
+    },
+    {
+      "type": "phone",
+      "value": "(850) 487-5022",
+      "label": null,
+      "sourcePageUrl": "https://www.flsenate.gov/Senators/S22"
+    },
+    {
+      "type": "phone",
+      "value": "(941) 378-6309",
+      "label": null,
+      "sourcePageUrl": "https://www.flsenate.gov/Senators/S22"
+    }
+  ],
+  "socialCandidates": [
+    {
+      "platform": "X",
+      "url": "http://www.twitter.com/flsenate",
+      "label": "Twitter",
+      "sourcePageUrl": "https://www.flsenate.gov/Senators/S22",
+      "reviewStatus": "unreviewed"
+    }
+  ],
+  "websiteCandidates": [
+    {
+      "url": "https://www.flsenate.gov/Session/ExecutiveAppointments",
+      "label": "Executive Appointments",
+      "sourcePageUrl": "https://www.flsenate.gov/Senators/S22",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "url": "https://www.flsenate.gov/Media/VideoSchedule",
+      "label": "Video Broadcast Schedule",
+      "sourcePageUrl": "https://www.flsenate.gov/Senators/S22",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "url": "https://www.flsenate.gov/About/Contact",
+      "label": "Contact Us",
+      "sourcePageUrl": "https://www.flsenate.gov/Senators/S22",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "url": "https://www.flsenate.gov/Offices",
+      "label": "Offices",
+      "sourcePageUrl": "https://www.flsenate.gov/Senators/S22",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "url": "https://www.flsenate.gov/Offices/President",
+      "label": "President's Office",
+      "sourcePageUrl": "https://www.flsenate.gov/Senators/S22",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "url": "https://www.flsenate.gov/Offices/Majority",
+      "label": "Majority Office",
+      "sourcePageUrl": "https://www.flsenate.gov/Senators/S22",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "url": "https://www.flsenate.gov/Offices/Minority",
+      "label": "Minority Office",
+      "sourcePageUrl": "https://www.flsenate.gov/Senators/S22",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "url": "https://www.flsenate.gov/Offices/Secretary",
+      "label": "Secretary's Office",
+      "sourcePageUrl": "https://www.flsenate.gov/Senators/S22",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "url": "https://www.flsenate.gov/Reference/PublicRecords",
+      "label": "Public Records",
+      "sourcePageUrl": "https://www.flsenate.gov/Senators/S22",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "url": "https://www.flsenate.gov/Session/ExecutiveAppointments/",
+      "label": "Executive Appointments",
+      "sourcePageUrl": "https://www.flsenate.gov/Senators/S22",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "url": "https://www.flsenate.gov/About/Contact#connect",
+      "label": "Connect with the Senate",
+      "sourcePageUrl": "https://www.flsenate.gov/Senators/S22",
+      "reviewStatus": "unreviewed"
+    }
+  ],
+  "portraitCandidates": [
+    {
+      "url": "https://www.flsenate.gov/PublishedContent/Senators/2024-2026/Photos/s22_5347.jpg",
+      "method": "img",
+      "score": 30,
+      "altText": "Senator Gruters",
+      "sourcePageUrl": "https://www.flsenate.gov/Senators/S22",
+      "rightsStatus": "review_required",
+      "identityReviewStatus": "unreviewed"
+    },
+    {
+      "url": "https://www.flsenate.gov/PublishedContent/Session/Redistricting/Districts/SD2022/webmaps/sd22_webmap.png",
+      "method": "img",
+      "score": 9,
+      "altText": "District 22 map",
+      "sourcePageUrl": "https://www.flsenate.gov/Senators/S22",
+      "rightsStatus": "review_required",
+      "identityReviewStatus": "unreviewed"
+    },
+    {
+      "url": "https://www.flsenate.gov/UserContent/img/help/2013search-goBill.png",
+      "method": "img",
+      "score": 9,
+      "altText": "Example of Go To Bill feature available on every page of flsenate.gov",
+      "sourcePageUrl": "https://www.flsenate.gov/Senators/S22",
+      "rightsStatus": "review_required",
+      "identityReviewStatus": "unreviewed"
+    },
+    {
+      "url": "https://www.flsenate.gov/UserContent/img/help/2013sitesearch.png",
+      "method": "img",
+      "score": 9,
+      "altText": "Example of Site Search available on every page of flsenate.gov",
+      "sourcePageUrl": "https://www.flsenate.gov/Senators/S22",
+      "rightsStatus": "review_required",
+      "identityReviewStatus": "unreviewed"
+    },
+    {
+      "url": "https://www.flsenate.gov/UserContent/img/help/2013statutesearch.png",
+      "method": "img",
+      "score": 9,
+      "altText": "Example of Go To Bill feature available on every page of flsenate.gov",
+      "sourcePageUrl": "https://www.flsenate.gov/Senators/S22",
+      "rightsStatus": "review_required",
+      "identityReviewStatus": "unreviewed"
+    },
+    {
+      "url": "https://www.flsenate.gov/UserContent/img/help/printerIcon.png",
+      "method": "img",
+      "score": -26,
+      "altText": "Acrobat print icon",
+      "sourcePageUrl": "https://www.flsenate.gov/Senators/S22",
+      "rightsStatus": "review_required",
+      "identityReviewStatus": "unreviewed"
+    }
+  ],
+  "mapLinks": [
+    {
+      "label": "District Maps",
+      "url": "https://www.flsenate.gov/Senators/Districts"
+    },
+    {
+      "label": "Letter Size",
+      "url": "https://www.flsenate.gov/PublishedContent/Session/Redistricting/Districts/sd2022/Letter/sd22_Lettersize.pdf"
+    },
+    {
+      "label": "Poster Size",
+      "url": "https://www.flsenate.gov/PublishedContent/Session/Redistricting/Districts/SD2022/poster/sd22_poster.pdf"
+    }
+  ],
+  "billLinks": [
+    {
+      "label": "Bills",
+      "url": "https://www.flsenate.gov/Session/Bills"
+    },
+    {
+      "label": "Bills Introduced",
+      "url": "https://www.flsenate.gov/Senators/S22?Tab=Bills#Bills"
+    },
+    {
+      "label": "S 20",
+      "url": "https://www.flsenate.gov/Session/Bill/2026/20"
+    },
+    {
+      "label": "S 22",
+      "url": "https://www.flsenate.gov/Session/Bill/2026/22"
+    },
+    {
+      "label": "S 24",
+      "url": "https://www.flsenate.gov/Session/Bill/2026/24"
+    },
+    {
+      "label": "S 246",
+      "url": "https://www.flsenate.gov/Session/Bill/2026/246"
+    },
+    {
+      "label": "S 364",
+      "url": "https://www.flsenate.gov/Session/Bill/2026/364"
+    },
+    {
+      "label": "S 822",
+      "url": "https://www.flsenate.gov/Session/Bill/2026/822"
+    },
+    {
+      "label": "S 986",
+      "url": "https://www.flsenate.gov/Session/Bill/2026/986"
+    },
+    {
+      "label": "S 994",
+      "url": "https://www.flsenate.gov/Session/Bill/2026/994"
+    },
+    {
+      "label": "S 1028",
+      "url": "https://www.flsenate.gov/Session/Bill/2026/1028"
+    },
+    {
+      "label": "S 1030",
+      "url": "https://www.flsenate.gov/Session/Bill/2026/1030"
+    },
+    {
+      "label": "S 1038",
+      "url": "https://www.flsenate.gov/Session/Bill/2026/1038"
+    },
+    {
+      "label": "S 1040",
+      "url": "https://www.flsenate.gov/Session/Bill/2026/1040"
+    },
+    {
+      "label": "S 1122",
+      "url": "https://www.flsenate.gov/Session/Bill/2026/1122"
+    },
+    {
+      "label": "S 1588",
+      "url": "https://www.flsenate.gov/Session/Bill/2026/1588"
+    },
+    {
+      "label": "S 1592",
+      "url": "https://www.flsenate.gov/Session/Bill/2026/1592"
+    },
+    {
+      "label": "S 1728",
+      "url": "https://www.flsenate.gov/Session/Bill/2026/1728"
+    },
+    {
+      "label": "S 1782",
+      "url": "https://www.flsenate.gov/Session/Bill/2026/1782"
+    },
+    {
+      "label": "S 706",
+      "url": "https://www.flsenate.gov/Session/Bill/2026/706"
+    },
+    {
+      "label": "S 1062",
+      "url": "https://www.flsenate.gov/Session/Bill/2026/1062"
+    },
+    {
+      "label": "S 1574",
+      "url": "https://www.flsenate.gov/Session/Bill/2026/1574"
+    },
+    {
+      "label": "Bill Search Tips",
+      "url": "https://www.flsenate.gov/search/billsearchtips"
+    },
+    {
+      "label": "Bill Search Tips",
+      "url": "https://www.flsenate.gov/Search/BillSearchTips"
+    }
+  ],
+  "mediaLinks": [
+    {
+      "label": "Committee Publications",
+      "url": "https://www.flsenate.gov/Committees/Publications"
+    },
+    {
+      "label": "Media",
+      "url": "https://www.flsenate.gov/Media"
+    },
+    {
+      "label": "Video Broadcast Schedule",
+      "url": "https://www.flsenate.gov/Media/VideoSchedule"
+    },
+    {
+      "label": "Publications",
+      "url": "https://www.flsenate.gov/Media/Publications"
+    },
+    {
+      "label": "Videos",
+      "url": "https://www.flsenate.gov/Media/Videos"
+    },
+    {
+      "label": "Topics",
+      "url": "https://www.flsenate.gov/Media/Topics"
+    },
+    {
+      "label": "Publications",
+      "url": "https://www.flsenate.gov/Reference/Publications"
+    },
+    {
+      "label": "Handbooks",
+      "url": "https://www.flsenate.gov/Reference/Publications/SenateHandbooks"
+    },
+    {
+      "label": "Senate Chamber Seating Chart",
+      "url": "https://www.flsenate.gov/PublishedContent/AdministrativePublications/seatingchart.pdf"
+    },
+    {
+      "label": "Track this Senator's Media",
+      "url": "https://www.flsenate.gov/Tracker/Track?key=3_22"
+    },
+    {
+      "label": "Media",
+      "url": "https://www.flsenate.gov/Senators/S22?Tab=Media#Media"
+    },
+    {
+      "label": "Press Releases",
+      "url": "https://www.flsenate.gov/Media/PressReleases"
+    }
+  ],
+  "candidateCounts": {
+    "staffCandidates": 0,
+    "educationCandidates": 0,
+    "committeeCandidates": 6,
+    "publicServiceCandidates": 6,
+    "affiliationCandidates": 1,
+    "awardCandidates": 30,
+    "legislativeServiceCandidates": 4,
+    "officeLocationCandidates": 2,
+    "contactCandidates": 4,
+    "socialCandidates": 1,
+    "websiteCandidates": 11,
+    "portraitCandidates": 6
+  }
+}

@@ -1,0 +1,217 @@
+{
+  "detailRecordVersion": "1.0.0",
+  "detailRecordId": "fabc6d11-e317-5d9f-990f-81b92ce5f858",
+  "stagingRecordId": "744acb20-e2bd-56f6-9ad8-6f9693fb44cd",
+  "sourceKey": "florida-house-members",
+  "displayName": "Conerly, William \"Bill\"",
+  "officeTitle": "Florida State Representative, District 72",
+  "districtNumber": "72",
+  "sourceUrl": "https://www.flhouse.gov/Sections/Representatives/details.aspx?MemberId=4920&LegislativeTermId=91",
+  "fetchedAt": "2026-07-16T05:26:28Z",
+  "collectionStatus": "success",
+  "reviewStatus": "unreviewed",
+  "publicationAllowed": false,
+  "errors": [],
+  "httpStatus": 200,
+  "finalUrl": "https://www.flhouse.gov/Sections/Representatives/custom/details.aspx?MemberId=4920&LegislativeTermId=91",
+  "sourceSnapshotSha256": "bb3e8ca9779edf396fb98b08fe2177a9882ca382a005495d83e4ff1aa24a4d7e",
+  "partyAndDistrictText": "District: 72 -- Republican",
+  "staffCandidates": [
+    {
+      "role": "Legislative Aide",
+      "name": "Olivia Borden",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "role": "District Aide",
+      "name": "None",
+      "reviewStatus": "unreviewed"
+    }
+  ],
+  "biographyCandidates": {
+    "cityOfResidence": null,
+    "occupation": null,
+    "spouse": null,
+    "educationRaw": null,
+    "bornRaw": null,
+    "movedToFlorida": null,
+    "recreationalInterests": null
+  },
+  "educationCandidates": [],
+  "committeeCandidates": [
+    {
+      "name": "Joint Administrative Procedures Committee",
+      "roleType": "member",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "name": "Select Committee on Property Taxes",
+      "roleType": "member",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "name": "Ways & Means Committee",
+      "roleType": "member",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "name": "Economic Infrastructure Subcommittee",
+      "roleType": "member",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "name": "Government Operations Subcommittee",
+      "roleType": "member",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "name": "Natural Resources & Disasters Subcommittee",
+      "roleType": "member",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "name": "Transportation & Economic Development Budget Subcommittee",
+      "roleType": "member",
+      "reviewStatus": "unreviewed"
+    }
+  ],
+  "publicServiceCandidates": [],
+  "affiliationCandidates": [],
+  "awardCandidates": [],
+  "officeLocationCandidates": [],
+  "contactCandidates": [
+    {
+      "type": "email",
+      "value": "Morgan.Ross@FLHouse.gov",
+      "label": null,
+      "sourcePageUrl": "https://www.flhouse.gov/Sections/Representatives/custom/details.aspx?MemberId=4920&LegislativeTermId=91"
+    },
+    {
+      "type": "email",
+      "value": "Olivia.Borden@FLHouse.gov",
+      "label": null,
+      "sourcePageUrl": "https://www.flhouse.gov/Sections/Representatives/custom/details.aspx?MemberId=4920&LegislativeTermId=91"
+    },
+    {
+      "type": "phone",
+      "value": "(850) 717-5072",
+      "label": null,
+      "sourcePageUrl": "https://www.flhouse.gov/Sections/Representatives/custom/details.aspx?MemberId=4920&LegislativeTermId=91"
+    },
+    {
+      "type": "phone",
+      "value": "(941) 327-0150",
+      "label": null,
+      "sourcePageUrl": "https://www.flhouse.gov/Sections/Representatives/custom/details.aspx?MemberId=4920&LegislativeTermId=91"
+    }
+  ],
+  "socialCandidates": [],
+  "websiteCandidates": [
+    {
+      "url": "https://www.flhouse.gov/Sections/Representatives/custom/contactmember.aspx?MemberId=4920&LegislativeTermId=91",
+      "label": "Contact Member",
+      "sourcePageUrl": "https://www.flhouse.gov/Sections/Representatives/custom/details.aspx?MemberId=4920&LegislativeTermId=91",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "url": "https://www.flhouse.gov/Sections/Representatives/custom/maps-and-offices.aspx?MemberId=4920&LegislativeTermId=91",
+      "label": "Maps & Offices",
+      "sourcePageUrl": "https://www.flhouse.gov/Sections/Representatives/custom/details.aspx?MemberId=4920&LegislativeTermId=91",
+      "reviewStatus": "unreviewed"
+    }
+  ],
+  "portraitCandidates": [
+    {
+      "url": "https://www.flhouse.gov/FileStores/Web/Imaging/Member/cutout%2f4920.png",
+      "method": "img",
+      "score": 39,
+      "altText": "Representative Conerly Photo",
+      "sourcePageUrl": "https://www.flhouse.gov/Sections/Representatives/custom/details.aspx?MemberId=4920&LegislativeTermId=91",
+      "rightsStatus": "review_required",
+      "identityReviewStatus": "unreviewed"
+    },
+    {
+      "url": "https://www.flhouse.gov/FileStores/Web/Imaging/PhotoAlbums/HousePhotoSized8178.JPG",
+      "method": "img",
+      "score": 30,
+      "altText": "Representative Conerly Photo",
+      "sourcePageUrl": "https://www.flhouse.gov/Sections/Representatives/custom/details.aspx?MemberId=4920&LegislativeTermId=91",
+      "rightsStatus": "review_required",
+      "identityReviewStatus": "unreviewed"
+    },
+    {
+      "url": "https://www.flhouse.gov/Images/bronze-seal-250.png?cb=4.6.654349",
+      "method": "og:image",
+      "score": 14,
+      "altText": null,
+      "sourcePageUrl": "https://www.flhouse.gov/Sections/Representatives/custom/details.aspx?MemberId=4920&LegislativeTermId=91",
+      "rightsStatus": "review_required",
+      "identityReviewStatus": "unreviewed"
+    },
+    {
+      "url": "https://www.flhouse.gov/FileStores/Web/Imaging/PhotoAlbums/HousePhotoSized8228.JPG",
+      "method": "img",
+      "score": 9,
+      "altText": null,
+      "sourcePageUrl": "https://www.flhouse.gov/Sections/Representatives/custom/details.aspx?MemberId=4920&LegislativeTermId=91",
+      "rightsStatus": "review_required",
+      "identityReviewStatus": "unreviewed"
+    },
+    {
+      "url": "https://www.flhouse.gov/FileStores/Web/Imaging/PhotoAlbums/HousePhotoSized8361.JPG",
+      "method": "img",
+      "score": 9,
+      "altText": null,
+      "sourcePageUrl": "https://www.flhouse.gov/Sections/Representatives/custom/details.aspx?MemberId=4920&LegislativeTermId=91",
+      "rightsStatus": "review_required",
+      "identityReviewStatus": "unreviewed"
+    },
+    {
+      "url": "https://www.flhouse.gov/FileStores/Web/Imaging/member-page-banners/3.jpg",
+      "method": "img",
+      "score": -17,
+      "altText": "The Old Florida Capitol",
+      "sourcePageUrl": "https://www.flhouse.gov/Sections/Representatives/custom/details.aspx?MemberId=4920&LegislativeTermId=91",
+      "rightsStatus": "review_required",
+      "identityReviewStatus": "unreviewed"
+    }
+  ],
+  "mapLinks": [],
+  "billLinks": [
+    {
+      "label": "Sponsored Bills",
+      "url": "https://www.flhouse.gov/Sections/Representatives/custom/sponsoredbills.aspx?MemberId=4920&LegislativeTermId=91"
+    },
+    {
+      "label": "William \"Bill\" Conerly Sponsored Bills",
+      "url": "https://www.flhouse.gov/Sections/Representatives/custom/sponsoredbills.aspx?MemberId=4920&LegislativeTermId=91&SessionId=113"
+    }
+  ],
+  "mediaLinks": [
+    {
+      "label": "Social Media",
+      "url": "https://www.flhouse.gov/Sections/Representatives/custom/social-media.aspx?MemberId=4920&LegislativeTermId=91"
+    },
+    {
+      "label": "Communications",
+      "url": "https://www.flhouse.gov/Sections/Representatives/custom/communications.aspx?MemberId=4920&LegislativeTermId=91"
+    },
+    {
+      "label": "Official House Gallery",
+      "url": "https://www.flhouse.gov/Sections/PhotoAlbums/custom/photoAlbum.aspx?MemberId=4920"
+    }
+  ],
+  "candidateCounts": {
+    "staffCandidates": 2,
+    "educationCandidates": 0,
+    "committeeCandidates": 7,
+    "publicServiceCandidates": 0,
+    "affiliationCandidates": 0,
+    "awardCandidates": 0,
+    "officeLocationCandidates": 0,
+    "contactCandidates": 4,
+    "socialCandidates": 0,
+    "websiteCandidates": 2,
+    "portraitCandidates": 6
+  }
+}

@@ -1,0 +1,618 @@
+{
+  "detailRecordVersion": "1.0.0",
+  "detailRecordId": "ef05e68f-aaac-5f75-a236-6f484f52a66e",
+  "stagingRecordId": "d016c539-3c54-5861-85de-656c3244ea33",
+  "sourceKey": "florida-senate-members",
+  "displayName": "Grall, Erin",
+  "officeTitle": "Florida State Senator, District 29",
+  "districtNumber": "29",
+  "sourceUrl": "https://www.flsenate.gov/Senators/2024-2026/S29",
+  "fetchedAt": "2026-07-16T05:26:38Z",
+  "collectionStatus": "success",
+  "reviewStatus": "unreviewed",
+  "publicationAllowed": false,
+  "errors": [],
+  "httpStatus": 200,
+  "finalUrl": "https://www.flsenate.gov/Senators/S29",
+  "sourceSnapshotSha256": "3ea4448b100e1c7f161762ec91d3ca109311f534166b84ffe1e277535ae4499c",
+  "partyAndDistrictText": "Party: Republican",
+  "staffCandidates": [
+    {
+      "role": "Legislative Aide",
+      "name": "Track this Senator's Media",
+      "reviewStatus": "unreviewed"
+    }
+  ],
+  "biographyCandidates": {
+    "occupation": "Attorney",
+    "spouse": "Michael Bielecki of Highland, MI",
+    "children": "One daughter, two sons",
+    "bornRaw": "in Vero Beach, Florida",
+    "religiousAffiliation": "Catholic",
+    "recreation": "Traveling, reading, watching our children discover their talents"
+  },
+  "educationCandidates": [],
+  "committeeCandidates": [
+    {
+      "name": "Children, Families, and Elder Affairs , Chair",
+      "roleType": "member",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "name": "Agriculture , Vice Chair",
+      "roleType": "member",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "name": "Appropriations",
+      "roleType": "member",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "name": "Appropriations Committee on Agriculture, Environment, and General Government",
+      "roleType": "member",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "name": "Appropriations Committee on Transportation, Tourism, and Economic Development",
+      "roleType": "member",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "name": "Ethics and Elections",
+      "roleType": "member",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "name": "Governmental Oversight and Accountability",
+      "roleType": "member",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "name": "Rules",
+      "roleType": "member",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "name": "Joint Administrative Procedures Committee , Alternating Chair",
+      "roleType": "member",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "name": "Joint Select Committee on Collective Bargaining",
+      "roleType": "member",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "name": "District 29",
+      "roleType": "member",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "name": "Bills Introduced",
+      "roleType": "member",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "name": "Media",
+      "roleType": "member",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "name": "Personal & Career",
+      "roleType": "member",
+      "reviewStatus": "unreviewed"
+    }
+  ],
+  "publicServiceCandidates": [],
+  "affiliationCandidates": [
+    {
+      "name": "Florida Bar Association",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "name": "Wisconsin Bar Association",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "name": "Marine Bank and Trust, Director, 2016-present",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "name": "Childcare Resources of Indian River County, Board President, 2008-2010",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "name": "Exchange Club of the Treasure Coast, President, 2006-2008",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "name": "Florida District Exchange Club, District Director, 2008-2010",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "name": "Indian River County Bar Association, Board President, 2014-2015",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "name": "Junior League of Indian River County, President, 2009-2010",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "name": "St. Helen Catholic Church, Parish Council, Secretary, member since 2006",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "name": "United Way of Indian River County, Board of Directors, 2012-2018",
+      "reviewStatus": "unreviewed"
+    }
+  ],
+  "awardCandidates": [
+    {
+      "rawText": "Christian Coalition, Friend of the Family Award, 2022",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "rawText": "Florida Conference of Catholic Bishops, Defensor Vitae Award, 2021",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "rawText": "The Florida Bar Trial Lawyers Section, Legislative Leadership Award, 2021",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "rawText": "Parental Rights Florida, Parental Rights Champion, 2021",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "rawText": "Florida Family Policy Council, The William Wilberforce Award, 2020",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "rawText": "Florida Association for the Education of Young Children, Legislative Advocacy Award, 2018",
+      "reviewStatus": "unreviewed"
+    }
+  ],
+  "legislativeServiceCandidates": [
+    {
+      "rawText": "2024-2026",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "rawText": "2022-2024",
+      "reviewStatus": "unreviewed"
+    }
+  ],
+  "officeLocationCandidates": [
+    {
+      "label": "District Office",
+      "rawLines": [],
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "label": "Satellite Office",
+      "rawLines": [],
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "label": "Tallahassee Office",
+      "rawLines": [
+        "Track this Senator's Media"
+      ],
+      "reviewStatus": "unreviewed"
+    }
+  ],
+  "contactCandidates": [
+    {
+      "type": "email",
+      "value": "grall.erin.web@flsenate.gov",
+      "label": "grall.erin.web@flsenate.gov",
+      "sourcePageUrl": "https://www.flsenate.gov/Senators/S29"
+    },
+    {
+      "type": "email",
+      "value": "webmaster@flsenate.gov",
+      "label": "email",
+      "sourcePageUrl": "https://www.flsenate.gov/Senators/S29"
+    },
+    {
+      "type": "phone",
+      "value": "(850) 487-5029",
+      "label": null,
+      "sourcePageUrl": "https://www.flsenate.gov/Senators/S29"
+    },
+    {
+      "type": "phone",
+      "value": "(863) 699-1080",
+      "label": null,
+      "sourcePageUrl": "https://www.flsenate.gov/Senators/S29"
+    },
+    {
+      "type": "phone",
+      "value": "1 (772) 595-1398",
+      "label": null,
+      "sourcePageUrl": "https://www.flsenate.gov/Senators/S29"
+    }
+  ],
+  "socialCandidates": [
+    {
+      "platform": "X",
+      "url": "http://www.twitter.com/flsenate",
+      "label": "Twitter",
+      "sourcePageUrl": "https://www.flsenate.gov/Senators/S29",
+      "reviewStatus": "unreviewed"
+    }
+  ],
+  "websiteCandidates": [
+    {
+      "url": "https://www.flsenate.gov/Session/ExecutiveAppointments",
+      "label": "Executive Appointments",
+      "sourcePageUrl": "https://www.flsenate.gov/Senators/S29",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "url": "https://www.flsenate.gov/Media/VideoSchedule",
+      "label": "Video Broadcast Schedule",
+      "sourcePageUrl": "https://www.flsenate.gov/Senators/S29",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "url": "https://www.flsenate.gov/About/Contact",
+      "label": "Contact Us",
+      "sourcePageUrl": "https://www.flsenate.gov/Senators/S29",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "url": "https://www.flsenate.gov/Offices",
+      "label": "Offices",
+      "sourcePageUrl": "https://www.flsenate.gov/Senators/S29",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "url": "https://www.flsenate.gov/Offices/President",
+      "label": "President's Office",
+      "sourcePageUrl": "https://www.flsenate.gov/Senators/S29",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "url": "https://www.flsenate.gov/Offices/Majority",
+      "label": "Majority Office",
+      "sourcePageUrl": "https://www.flsenate.gov/Senators/S29",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "url": "https://www.flsenate.gov/Offices/Minority",
+      "label": "Minority Office",
+      "sourcePageUrl": "https://www.flsenate.gov/Senators/S29",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "url": "https://www.flsenate.gov/Offices/Secretary",
+      "label": "Secretary's Office",
+      "sourcePageUrl": "https://www.flsenate.gov/Senators/S29",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "url": "https://www.flsenate.gov/Reference/PublicRecords",
+      "label": "Public Records",
+      "sourcePageUrl": "https://www.flsenate.gov/Senators/S29",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "url": "https://www.flsenate.gov/Session/ExecutiveAppointments/",
+      "label": "Executive Appointments",
+      "sourcePageUrl": "https://www.flsenate.gov/Senators/S29",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "url": "https://www.flsenate.gov/About/Contact#connect",
+      "label": "Connect with the Senate",
+      "sourcePageUrl": "https://www.flsenate.gov/Senators/S29",
+      "reviewStatus": "unreviewed"
+    }
+  ],
+  "portraitCandidates": [
+    {
+      "url": "https://www.flsenate.gov/PublishedContent/Senators/2022-2024/5426/Documents/Senator_Erin_Grall__Representative_Berny_Jacques_File_Bill_to_Establish_Pregnancy_Parenting_Resources_Website.jpg",
+      "method": "img",
+      "score": 51,
+      "altText": null,
+      "sourcePageUrl": "https://www.flsenate.gov/Senators/S29",
+      "rightsStatus": "review_required",
+      "identityReviewStatus": "unreviewed"
+    },
+    {
+      "url": "https://www.flsenate.gov/PublishedContent/Senators/2024-2026/Photos/s29_5426.jpg",
+      "method": "img",
+      "score": 30,
+      "altText": "Senator Grall",
+      "sourcePageUrl": "https://www.flsenate.gov/Senators/S29",
+      "rightsStatus": "review_required",
+      "identityReviewStatus": "unreviewed"
+    },
+    {
+      "url": "https://www.flsenate.gov/PublishedContent/Session/Redistricting/Districts/SD2022/webmaps/sd29_webmap.png",
+      "method": "img",
+      "score": 9,
+      "altText": "District 29 map",
+      "sourcePageUrl": "https://www.flsenate.gov/Senators/S29",
+      "rightsStatus": "review_required",
+      "identityReviewStatus": "unreviewed"
+    },
+    {
+      "url": "https://www.flsenate.gov/UserContent/img/help/2013search-goBill.png",
+      "method": "img",
+      "score": 9,
+      "altText": "Example of Go To Bill feature available on every page of flsenate.gov",
+      "sourcePageUrl": "https://www.flsenate.gov/Senators/S29",
+      "rightsStatus": "review_required",
+      "identityReviewStatus": "unreviewed"
+    },
+    {
+      "url": "https://www.flsenate.gov/UserContent/img/help/2013sitesearch.png",
+      "method": "img",
+      "score": 9,
+      "altText": "Example of Site Search available on every page of flsenate.gov",
+      "sourcePageUrl": "https://www.flsenate.gov/Senators/S29",
+      "rightsStatus": "review_required",
+      "identityReviewStatus": "unreviewed"
+    },
+    {
+      "url": "https://www.flsenate.gov/UserContent/img/help/2013statutesearch.png",
+      "method": "img",
+      "score": 9,
+      "altText": "Example of Go To Bill feature available on every page of flsenate.gov",
+      "sourcePageUrl": "https://www.flsenate.gov/Senators/S29",
+      "rightsStatus": "review_required",
+      "identityReviewStatus": "unreviewed"
+    }
+  ],
+  "mapLinks": [
+    {
+      "label": "District Maps",
+      "url": "https://www.flsenate.gov/Senators/Districts"
+    },
+    {
+      "label": "Letter Size",
+      "url": "https://www.flsenate.gov/PublishedContent/Session/Redistricting/Districts/sd2022/Letter/sd29_Lettersize.pdf"
+    },
+    {
+      "label": "Poster Size",
+      "url": "https://www.flsenate.gov/PublishedContent/Session/Redistricting/Districts/SD2022/poster/sd29_poster.pdf"
+    }
+  ],
+  "billLinks": [
+    {
+      "label": "Bills",
+      "url": "https://www.flsenate.gov/Session/Bills"
+    },
+    {
+      "label": "Bills Introduced",
+      "url": "https://www.flsenate.gov/Senators/S29?Tab=Bills#Bills"
+    },
+    {
+      "label": "S 164",
+      "url": "https://www.flsenate.gov/Session/Bill/2026/164"
+    },
+    {
+      "label": "S 166",
+      "url": "https://www.flsenate.gov/Session/Bill/2026/166"
+    },
+    {
+      "label": "S 344",
+      "url": "https://www.flsenate.gov/Session/Bill/2026/344"
+    },
+    {
+      "label": "S 350",
+      "url": "https://www.flsenate.gov/Session/Bill/2026/350"
+    },
+    {
+      "label": "S 408",
+      "url": "https://www.flsenate.gov/Session/Bill/2026/408"
+    },
+    {
+      "label": "S 444",
+      "url": "https://www.flsenate.gov/Session/Bill/2026/444"
+    },
+    {
+      "label": "S 522",
+      "url": "https://www.flsenate.gov/Session/Bill/2026/522"
+    },
+    {
+      "label": "S 526",
+      "url": "https://www.flsenate.gov/Session/Bill/2026/526"
+    },
+    {
+      "label": "S 644",
+      "url": "https://www.flsenate.gov/Session/Bill/2026/644"
+    },
+    {
+      "label": "S 1000",
+      "url": "https://www.flsenate.gov/Session/Bill/2026/1000"
+    },
+    {
+      "label": "S 1044",
+      "url": "https://www.flsenate.gov/Session/Bill/2026/1044"
+    },
+    {
+      "label": "S 1052",
+      "url": "https://www.flsenate.gov/Session/Bill/2026/1052"
+    },
+    {
+      "label": "S 1078",
+      "url": "https://www.flsenate.gov/Session/Bill/2026/1078"
+    },
+    {
+      "label": "S 1082",
+      "url": "https://www.flsenate.gov/Session/Bill/2026/1082"
+    },
+    {
+      "label": "S 1090",
+      "url": "https://www.flsenate.gov/Session/Bill/2026/1090"
+    },
+    {
+      "label": "S 1114",
+      "url": "https://www.flsenate.gov/Session/Bill/2026/1114"
+    },
+    {
+      "label": "S 1128",
+      "url": "https://www.flsenate.gov/Session/Bill/2026/1128"
+    },
+    {
+      "label": "S 1140",
+      "url": "https://www.flsenate.gov/Session/Bill/2026/1140"
+    },
+    {
+      "label": "S 1152",
+      "url": "https://www.flsenate.gov/Session/Bill/2026/1152"
+    },
+    {
+      "label": "S 1158",
+      "url": "https://www.flsenate.gov/Session/Bill/2026/1158"
+    },
+    {
+      "label": "S 1168",
+      "url": "https://www.flsenate.gov/Session/Bill/2026/1168"
+    },
+    {
+      "label": "S 1172",
+      "url": "https://www.flsenate.gov/Session/Bill/2026/1172"
+    },
+    {
+      "label": "S 1178",
+      "url": "https://www.flsenate.gov/Session/Bill/2026/1178"
+    },
+    {
+      "label": "S 1188",
+      "url": "https://www.flsenate.gov/Session/Bill/2026/1188"
+    },
+    {
+      "label": "S 1256",
+      "url": "https://www.flsenate.gov/Session/Bill/2026/1256"
+    },
+    {
+      "label": "S 1334",
+      "url": "https://www.flsenate.gov/Session/Bill/2026/1334"
+    },
+    {
+      "label": "S 1630",
+      "url": "https://www.flsenate.gov/Session/Bill/2026/1630"
+    },
+    {
+      "label": "S 1632",
+      "url": "https://www.flsenate.gov/Session/Bill/2026/1632"
+    },
+    {
+      "label": "S 1634",
+      "url": "https://www.flsenate.gov/Session/Bill/2026/1634"
+    },
+    {
+      "label": "S 1680",
+      "url": "https://www.flsenate.gov/Session/Bill/2026/1680"
+    },
+    {
+      "label": "S 1700",
+      "url": "https://www.flsenate.gov/Session/Bill/2026/1700"
+    },
+    {
+      "label": "S 42",
+      "url": "https://www.flsenate.gov/Session/Bill/2026/42"
+    },
+    {
+      "label": "S 856",
+      "url": "https://www.flsenate.gov/Session/Bill/2026/856"
+    },
+    {
+      "label": "S 1010",
+      "url": "https://www.flsenate.gov/Session/Bill/2026/1010"
+    },
+    {
+      "label": "S 1062",
+      "url": "https://www.flsenate.gov/Session/Bill/2026/1062"
+    },
+    {
+      "label": "S 1574",
+      "url": "https://www.flsenate.gov/Session/Bill/2026/1574"
+    },
+    {
+      "label": "Senator Erin Grall and Representative Berny Jacques File Legislation to Establish Online Hub of Pregnancy and Parenting Resources",
+      "url": "https://www.flsenate.gov/PublishedContent/Senators/2022-2024/5426/Documents/Senator_Erin_Grall__Representative_Berny_Jacques_File_Bill_to_Establish_Pregnancy_Parenting_Resources_Website.pdf"
+    },
+    {
+      "label": "Bill Search Tips",
+      "url": "https://www.flsenate.gov/search/billsearchtips"
+    },
+    {
+      "label": "Bill Search Tips",
+      "url": "https://www.flsenate.gov/Search/BillSearchTips"
+    }
+  ],
+  "mediaLinks": [
+    {
+      "label": "Committee Publications",
+      "url": "https://www.flsenate.gov/Committees/Publications"
+    },
+    {
+      "label": "Media",
+      "url": "https://www.flsenate.gov/Media"
+    },
+    {
+      "label": "Video Broadcast Schedule",
+      "url": "https://www.flsenate.gov/Media/VideoSchedule"
+    },
+    {
+      "label": "Publications",
+      "url": "https://www.flsenate.gov/Media/Publications"
+    },
+    {
+      "label": "Videos",
+      "url": "https://www.flsenate.gov/Media/Videos"
+    },
+    {
+      "label": "Topics",
+      "url": "https://www.flsenate.gov/Media/Topics"
+    },
+    {
+      "label": "Publications",
+      "url": "https://www.flsenate.gov/Reference/Publications"
+    },
+    {
+      "label": "Handbooks",
+      "url": "https://www.flsenate.gov/Reference/Publications/SenateHandbooks"
+    },
+    {
+      "label": "Senate Chamber Seating Chart",
+      "url": "https://www.flsenate.gov/PublishedContent/AdministrativePublications/seatingchart.pdf"
+    },
+    {
+      "label": "Track this Senator's Media",
+      "url": "https://www.flsenate.gov/Tracker/Track?key=3_29"
+    },
+    {
+      "label": "Media",
+      "url": "https://www.flsenate.gov/Senators/S29?Tab=Media#Media"
+    },
+    {
+      "label": "View All Publications",
+      "url": "https://www.flsenate.gov/Media/Publications/Author/29"
+    },
+    {
+      "label": "Press Releases",
+      "url": "https://www.flsenate.gov/Media/PressReleases"
+    }
+  ],
+  "candidateCounts": {
+    "staffCandidates": 1,
+    "educationCandidates": 0,
+    "committeeCandidates": 14,
+    "publicServiceCandidates": 0,
+    "affiliationCandidates": 10,
+    "awardCandidates": 6,
+    "legislativeServiceCandidates": 2,
+    "officeLocationCandidates": 3,
+    "contactCandidates": 5,
+    "socialCandidates": 1,
+    "websiteCandidates": 11,
+    "portraitCandidates": 6
+  }
+}
