@@ -1,0 +1,133 @@
+name: Collect Florida legislative profile details
+
+on:
+  schedule:
+    - cron: '17 11 * * *'
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - 'workers/enrichment/collect_florida_legislative_details.py'
+      - 'workers/enrichment/collect_identity_contact_candidates.py'
+      - 'data/staging/florida/state-house/**'
+      - 'data/staging/florida/state-senate/**'
+      - '.github/workflows/collect-florida-legislative-details.yml'
+
+concurrency:
+  group: florida-legislative-detail-enrichment
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  collect-details:
+    runs-on: ubuntu-latest
+    timeout-minutes: 35
+    steps:
+      - name: Checkout main
+        uses: actions/checkout@v6
+        with:
+          ref: main
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+          cache: pip
+          cache-dependency-path: workers/ingestion/requirements.txt
+
+      - name: Install dependencies
+        run: pip install -r workers/ingestion/requirements.txt
+
+      - name: Run parser tests
+        run: python -m unittest tests.test_florida_legislative_details tests.test_identity_contact_candidates
+
+      - name: Collect all Florida House and Senate detail candidates
+        run: >-
+          python -m workers.enrichment.collect_florida_legislative_details
+          --workers 8
+          --minimum-success-rate 0.80
+
+      - name: Summarize candidate coverage
+        id: summary
+        run: |
+          python - <<'PY' >> "$GITHUB_OUTPUT"
+          import json
+          from pathlib import Path
+          records = [json.loads(path.read_text()) for path in Path('data/research-staging/florida/legislative-details').glob('*.json')]
+          successes = sum(item.get('collectionStatus') == 'success' for item in records)
+          portraits = sum(bool(item.get('portraitCandidates')) for item in records)
+          biographies = sum(bool(item.get('biographyCandidates')) for item in records)
+          education = sum(bool(item.get('educationCandidates')) for item in records)
+          committees = sum(bool(item.get('committeeCandidates')) for item in records)
+          offices = sum(bool(item.get('officeLocationCandidates')) for item in records)
+          contacts = sum(bool(item.get('contactCandidates')) for item in records)
+          print(f'records={len(records)}')
+          print(f'successes={successes}')
+          print(f'portraits={portraits}')
+          print(f'biographies={biographies}')
+          print(f'education={education}')
+          print(f'committees={committees}')
+          print(f'offices={offices}')
+          print(f'contacts={contacts}')
+          assert len(records) >= 150
+          assert successes >= 125
+          PY
+
+      - name: Write workflow summary
+        run: |
+          {
+            echo "### Florida legislative detail enrichment"
+            echo "- House and Senate detail records: **${{ steps.summary.outputs.records }}**"
+            echo "- Successful official-page collections: **${{ steps.summary.outputs.successes }}**"
+            echo "- Records with portrait candidates: **${{ steps.summary.outputs.portraits }}**"
+            echo "- Records with biography candidates: **${{ steps.summary.outputs.biographies }}**"
+            echo "- Records with education candidates: **${{ steps.summary.outputs.education }}**"
+            echo "- Records with committee candidates: **${{ steps.summary.outputs.committees }}**"
+            echo "- Records with office-location candidates: **${{ steps.summary.outputs.offices }}**"
+            echo "- Records with contact candidates: **${{ steps.summary.outputs.contacts }}**"
+            echo "- Publication state: **review-only candidates**"
+          } >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Upload detail snapshot
+        uses: actions/upload-artifact@v4
+        with:
+          name: florida-legislative-details-${{ github.run_number }}
+          path: data/research-staging/florida/legislative-details/*.json
+          if-no-files-found: error
+          retention-days: 14
+
+      - name: Save or refresh detail review branch
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          DETAIL_PATH="data/research-staging/florida/legislative-details"
+          BRANCH="bot/florida-legislative-details-refresh"
+          CHANGES=$(git status --porcelain --untracked-files=all -- "$DETAIL_PATH")
+          if [ -z "$CHANGES" ]; then
+            echo "No Florida legislative detail changes detected."
+            exit 0
+          fi
+
+          git config user.name "civiclenz-data-bot"
+          git config user.email "civiclenz-data-bot@users.noreply.github.com"
+          git checkout -B "$BRANCH"
+          git add "$DETAIL_PATH"
+          git commit -m "Refresh Florida legislative detail candidates"
+          git push --force origin "HEAD:refs/heads/$BRANCH"
+          git ls-remote --exit-code --heads origin "refs/heads/$BRANCH"
+
+          OPEN_PR=$(gh pr list --head "$BRANCH" --base main --state open --json number --jq '.[0].number // empty')
+          if [ -z "$OPEN_PR" ]; then
+            gh pr create \
+              --base main \
+              --head "$BRANCH" \
+              --title "Data review: Florida legislative profile details" \
+              --body "Automated review-only detail candidates for ${{ steps.summary.outputs.records }} Florida House and Senate seats, including portrait, biography, education, staff, committee, office, contact, map, bill, and media candidates from official legislative pages. Candidates require normalization, provenance review, and promotion before public use."
+          else
+            echo "Updated existing detail review PR #$OPEN_PR"
+          fi
