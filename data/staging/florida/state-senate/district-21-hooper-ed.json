@@ -4,8 +4,8 @@
   "sourceKey": "florida-senate-members",
   "sourceUrl": "https://www.flsenate.gov/Senators",
   "sourceMemberUrl": "https://www.flsenate.gov/Senators/2024-2026/S21",
-  "sourceSnapshotSha256": "9d117b2a6757f6aac9e8f78e14fe42d4adb86d5a6313e669907a233088bf8b73",
-  "fetchedAt": "2026-07-16T00:33:06Z",
+  "sourceSnapshotSha256": "7962180bc7470490c67654d8f9da83246f16f5f180d9ccca30beb43d728e776b",
+  "fetchedAt": "2026-07-16T01:39:07Z",
   "extractionStatus": "extracted_unreviewed",
   "termLabel": "2024-2026 Senators",
   "displayName": "Hooper, Ed",
@@ -17,5 +17,6 @@
   "jurisdictionName": "Florida",
   "stateCode": "FL",
   "canonicalMatchStatus": "unmatched",
-  "rawRowText": "Hooper, Ed Hooper, Ed 21 Republican Consists of parts of Pasco, Pinellas counties"
+  "refreshClass": "term_based",
+  "rawRowText": "Hooper, Ed | District 21 | Republican | Consists of parts of Pasco, Pinellas counties"
 }

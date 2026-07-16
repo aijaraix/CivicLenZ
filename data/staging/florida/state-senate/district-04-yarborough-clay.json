@@ -4,8 +4,8 @@
   "sourceKey": "florida-senate-members",
   "sourceUrl": "https://www.flsenate.gov/Senators",
   "sourceMemberUrl": "https://www.flsenate.gov/Senators/2024-2026/S4",
-  "sourceSnapshotSha256": "9d117b2a6757f6aac9e8f78e14fe42d4adb86d5a6313e669907a233088bf8b73",
-  "fetchedAt": "2026-07-16T00:33:06Z",
+  "sourceSnapshotSha256": "7962180bc7470490c67654d8f9da83246f16f5f180d9ccca30beb43d728e776b",
+  "fetchedAt": "2026-07-16T01:39:07Z",
   "extractionStatus": "extracted_unreviewed",
   "termLabel": "2024-2026 Senators",
   "displayName": "Yarborough, Clay",
@@ -17,5 +17,6 @@
   "jurisdictionName": "Florida",
   "stateCode": "FL",
   "canonicalMatchStatus": "unmatched",
-  "rawRowText": "Yarborough, Clay Yarborough, Clay 4 Republican Consists of Nassau county and part of Duval county Former Senators in this Term: Collins, Jay - District 14, Republican, Resigned 8/12/2025 Fine, Randy - District 19, Republican, Resigned 3/31/2025 Ingoglia, Blaise - District 11, Republican, Resigned 7/21/2025 Thompson, Geraldine F. \"Geri\" - District 15, Democrat, Died in Office 2/13/2025 Full Column: End #main:end #main-container:end Footer: begin Footer Site Map Nav: begin Home Senators Senator List Find Your Legislators District Maps Vote Disclosures Committees Committee List Committee Publications Search Bill Search Tips Statute Search Tips Site Search Tips Session Bills Calendars Journals Appropriations Conferences Reports Executive Appointments Executive Suspensions Redistricting Laws Statutes Constitution Laws of Florida Order - Legistore Media Publications Videos Topics Video Broadcast Schedule About Employment Visit Us Contact Us Page Program Offices President's Office Majority Office Minority Office Secretary's Office Reference Glossary FAQ Help Links Search Tips Publications Rules Handbooks Advisory Opinions Public Records Connect with the Senate Twitter RSS Senate Tracker Login Sign Up Tracker Help Plug-ins Adobe Acrobat Reader WinZip footer site map nav:end noindex class tells Site Crawler to ignore html inside this tag Disclaimer: The information on this system is unverified. The journals or printed bills of the respective chambers should be consulted for official purposes. Privacy Statement"
+  "refreshClass": "term_based",
+  "rawRowText": "Yarborough, Clay | District 4 | Republican | Consists of Nassau county and part of Duval county"
 }
