@@ -1,0 +1,63 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://civicslenz.com/schemas/evidence-record.schema.json",
+  "title": "CivicLenZ Evidence Record",
+  "description": "Preserved evidence supporting a seat, term, person, promise, statement, action, tracker, score, finance record, or integrity matter.",
+  "type": "object",
+  "required": ["schemaVersion", "evidenceId", "evidenceType", "sourceUrl", "publisher", "capturedAt", "contentSha256", "reviewStatus"],
+  "properties": {
+    "schemaVersion": {"type": "string", "const": "1.0.0"},
+    "evidenceId": {"type": "string", "format": "uuid"},
+    "evidenceType": {
+      "type": "string",
+      "enum": ["web_page", "pdf", "image", "video", "audio", "transcript", "social_post", "filing", "database_record", "meeting_record", "public_records_response", "other"]
+    },
+    "sourceUrl": {"type": "string", "format": "uri"},
+    "canonicalUrl": {"type": ["string", "null"], "format": "uri"},
+    "archiveUrl": {"type": ["string", "null"], "format": "uri"},
+    "publisher": {"type": "string"},
+    "publisherType": {"type": ["string", "null"], "enum": ["government", "campaign", "candidate", "court", "ethics_authority", "news", "nonprofit", "academic", "commercial", "social_platform", "other", null]},
+    "title": {"type": ["string", "null"]},
+    "publishedAt": {"type": ["string", "null"], "format": "date-time"},
+    "capturedAt": {"type": "string", "format": "date-time"},
+    "contentSha256": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+    "mimeType": {"type": ["string", "null"]},
+    "httpStatus": {"type": ["integer", "null"]},
+    "etag": {"type": ["string", "null"]},
+    "lastModified": {"type": ["string", "null"]},
+    "storageAssetId": {"type": ["string", "null"]},
+    "screenshotAssetIds": {"type": "array", "items": {"type": "string"}},
+    "ocrAssetId": {"type": ["string", "null"]},
+    "transcriptAssetId": {"type": ["string", "null"]},
+    "exactExcerpt": {"type": ["string", "null"]},
+    "transcriptTimestamp": {"type": ["string", "null"]},
+    "pageNumber": {"type": ["integer", "null"], "minimum": 1},
+    "speaker": {"type": ["string", "null"]},
+    "contextBefore": {"type": ["string", "null"]},
+    "contextAfter": {"type": ["string", "null"]},
+    "language": {"type": ["string", "null"]},
+    "extractionMethod": {"type": ["string", "null"], "enum": ["structured_api", "html_parser", "pdf_text", "ocr", "speech_to_text", "manual", "hybrid", null]},
+    "sourceTier": {"type": ["string", "null"], "enum": ["primary_official", "primary_campaign", "official_filing", "court_record", "authoritative_secondary", "secondary", "other", null]},
+    "rights": {
+      "type": "object",
+      "properties": {
+        "copyrightStatus": {"type": ["string", "null"], "enum": ["public_domain", "licensed", "fair_use_excerpt", "permission_granted", "unknown", null]},
+        "license": {"type": ["string", "null"]},
+        "credit": {"type": ["string", "null"]},
+        "reuseAllowed": {"type": ["boolean", "null"]}
+      },
+      "additionalProperties": false
+    },
+    "relatedSeatIds": {"type": "array", "items": {"type": "string", "format": "uuid"}},
+    "relatedTermIds": {"type": "array", "items": {"type": "string", "format": "uuid"}},
+    "relatedPersonIds": {"type": "array", "items": {"type": "string", "format": "uuid"}},
+    "relatedClaimIds": {"type": "array", "items": {"type": "string", "format": "uuid"}},
+    "reviewStatus": {"type": "string", "enum": ["unreviewed", "machine_checked", "human_reviewed", "rejected", "superseded"]},
+    "reviewNotes": {"type": ["string", "null"]},
+    "reviewedBy": {"type": ["string", "null"]},
+    "reviewedAt": {"type": ["string", "null"], "format": "date-time"},
+    "createdAt": {"type": "string", "format": "date-time"},
+    "lastUpdatedAt": {"type": "string", "format": "date-time"}
+  },
+  "additionalProperties": false
+}
