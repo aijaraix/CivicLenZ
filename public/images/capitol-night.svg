@@ -1,0 +1,16 @@
+<svg width="1600" height="1000" viewBox="0 0 1600 1000" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs><linearGradient id="night" x1="0" y1="0" x2="1600" y2="1000" gradientUnits="userSpaceOnUse"><stop stop-color="#112D54"/><stop offset=".5" stop-color="#07172E"/><stop offset="1" stop-color="#020816"/></linearGradient><linearGradient id="water" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#102C4C"/><stop offset="1" stop-color="#020816"/></linearGradient><linearGradient id="dome" x1="0" y1="220" x2="0" y2="790" gradientUnits="userSpaceOnUse"><stop stop-color="#FFE0A1"/><stop offset="1" stop-color="#9C6424"/></linearGradient><filter id="blur"><feGaussianBlur stdDeviation="13"/></filter></defs>
+  <rect width="1600" height="1000" fill="url(#night)"/>
+  <g fill="#E8F4FF" opacity=".76"><circle cx="101" cy="105" r="2"/><circle cx="244" cy="68" r="1.5"/><circle cx="438" cy="146" r="2"/><circle cx="696" cy="75" r="1.4"/><circle cx="840" cy="154" r="2"/><circle cx="1124" cy="72" r="1.8"/><circle cx="1419" cy="147" r="2"/><circle cx="1510" cy="248" r="1.3"/><circle cx="1275" cy="269" r="1.6"/><circle cx="627" cy="242" r="1.3"/></g>
+  <path d="M0 659C177 628 276 680 465 636s330-76 515-20 370 41 620-22v406H0Z" fill="#08172B"/>
+  <g opacity=".6" filter="url(#blur)"><ellipse cx="1060" cy="607" rx="350" ry="90" fill="#E2A85A"/><ellipse cx="1180" cy="714" rx="430" ry="45" fill="#6175B6"/></g>
+  <g transform="translate(820 138)">
+    <path d="M0 569h640v84H0z" fill="#49331B"/><path d="M28 521h584v48H28z" fill="#C8964B"/><path d="M83 420h474v101H83z" fill="#A46929"/>
+    <path d="M163 420v-139c0-107 71-193 157-193s157 86 157 193v139Z" fill="url(#dome)"/>
+    <path d="M203 280c0-83 52-151 117-151s117 68 117 151Z" stroke="#FFEFBE" stroke-width="10" opacity=".7"/>
+    <path d="M262 88V22h116v66" stroke="#FFEFBE" stroke-width="9"/><path d="M305 22V0h30v22" fill="#FFEFBE"/>
+    <path d="M118 420v-127M187 420V277M256 420V269M325 420V264M394 420V269M463 420V277M532 420v127" stroke="#FFE7A9" stroke-width="25"/>
+    <path d="M105 294h430M76 420h490M60 521h520" stroke="#FFF0C6" stroke-width="14" opacity=".8"/>
+  </g>
+  <rect y="764" width="1600" height="236" fill="url(#water)"/><g opacity=".26" stroke="#F9E2AC" stroke-width="11"><path d="M750 814h650M836 852h480M923 895h310"/></g>
+</svg>

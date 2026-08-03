@@ -16,6 +16,19 @@ export type MarketingPage = {
 };
 
 export const marketingPages: Record<string, MarketingPage> = {
+  features: {
+    label: 'CivicLenZ features',
+    title: 'Everything you need to follow the public record clearly.',
+    intro: 'CivicLenZ combines representative discovery, structured official profiles, monitoring, petitions, and a personal dashboard into one approachable civic experience.',
+    primary: { label: 'Find my officials', href: '/search/' },
+    secondary: { label: 'Preview the dashboard', href: '/dashboard/' },
+    visual: 'record-preview',
+    blocks: [
+      { eyebrow: 'Find & understand', title: 'An address becomes your civic picture.', copy: 'Search an address to see the federal, state, local, and school-board offices that represent that place.', points: ['Address-based discovery', 'Map of representation', 'Clear government-level filters'] },
+      { eyebrow: 'Monitor & compare', title: 'The record stays organized over time.', copy: 'Follow officials, review source-linked updates, compare activity, and understand where the record is still incomplete.', points: ['Votes and bills', 'Promises and public statements', 'Finance and source trails'] },
+      { eyebrow: 'Take action', title: 'Turn awareness into participation.', copy: 'Contact an office, support a petition, save an issue, and see the civic actions you choose to take.', points: ['Message drafting', 'Petition flows', 'Private activity history'] },
+    ],
+  },
   'how-it-works': {
     label: 'How CivicLenZ works',
     title: 'From a public record to a clearer civic decision.',
@@ -153,8 +166,8 @@ export const marketingPages: Record<string, MarketingPage> = {
       },
       {
         eyebrow: 'Contact',
-        title: 'CivicLenZ is based in Miami, Florida.',
-        copy: '8310 Byron Avenue, Miami, Florida 33141. For general inquiries, reach us at Ori@AICreates.ai.',
+        title: 'CivicLenZ is Florida-first and built to grow.',
+        copy: 'Use the early-access flow to tell us whether you are a resident, researcher, newsroom, nonprofit, public office, or potential partner.',
         points: ['Product and partnerships', 'Press and general inquiry', 'Early-access interest'],
       },
     ],
@@ -164,7 +177,7 @@ export const marketingPages: Record<string, MarketingPage> = {
     title: 'Help shape CivicLenZ before the next stage of launch.',
     intro:
       'Tell us whether you are here as a resident, researcher, newsroom, nonprofit, public office, or potential partner. We will use that feedback to shape the first usable release.',
-    primary: { label: 'Email CivicLenZ', href: 'mailto:Ori@AICreates.ai?subject=CivicLenZ%20early%20access' },
+    primary: { label: 'Join early access', href: '/sign-up/' },
     secondary: { label: 'See the app preview', href: '/app/' },
     visual: 'contact-preview',
     blocks: [
@@ -193,7 +206,7 @@ export const marketingPages: Record<string, MarketingPage> = {
     title: 'A civic record should be able to improve.',
     intro:
       'CivicLenZ is building a visible corrections process for members, offices, subjects, and researchers. Before the full form is live, send the specific record and supporting source by email.',
-    primary: { label: 'Send a correction', href: 'mailto:Ori@AICreates.ai?subject=CivicLenZ%20correction%20request' },
+    primary: { label: 'Join the correction queue', href: '/sign-up/' },
     secondary: { label: 'Read our standards', href: '/research/' },
     blocks: [
       {
@@ -234,4 +247,3 @@ export const marketingPages: Record<string, MarketingPage> = {
     ],
   },
 };
-

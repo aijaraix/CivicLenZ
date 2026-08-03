@@ -1,0 +1,12 @@
+<svg width="704" height="152" viewBox="0 0 704 152" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <g transform="translate(2 12)">
+    <circle cx="55" cy="54" r="39" stroke="#0D1B2A" stroke-width="10"/>
+    <path d="M91 90 119 118" stroke="#E63946" stroke-width="14" stroke-linecap="round"/>
+    <path d="M91 90 108 107" stroke="#0D1B2A" stroke-width="5" stroke-linecap="round"/>
+    <path d="M28 65h54M33 55h44M39 45h32M45 35h20M51 26h8" stroke="#0D1B2A" stroke-width="4.5" stroke-linecap="round"/>
+    <path d="M36 65V43M46 65V43M56 65V43M66 65V43M76 65V43" stroke="#0D1B2A" stroke-width="4" stroke-linecap="round"/>
+  </g>
+  <text x="150" y="77" fill="#0D1B2A" font-family="Poppins, Arial, sans-serif" font-size="62" font-weight="700" letter-spacing="-3">Civics</text>
+  <text x="378" y="77" fill="#E63946" font-family="Poppins, Arial, sans-serif" font-size="62" font-weight="700" letter-spacing="-3">LenZ</text>
+  <text x="155" y="115" fill="#667280" font-family="Inter, Arial, sans-serif" font-size="22" font-weight="500">See Clearly. Hold Accountable.</text>
+</svg>
