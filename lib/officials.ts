@@ -519,3 +519,4 @@ export function humanize(value: string): string {
     .replaceAll('_', ' ')
     .replace(/\b\w/g, (letter) => letter.toUpperCase());
 }
+

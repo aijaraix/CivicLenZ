@@ -108,3 +108,4 @@ export function OfficialDirectory({ officials }: { officials: OfficialProfile[] 
     </>
   );
 }
+
