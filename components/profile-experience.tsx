@@ -7,7 +7,7 @@ import { Icon } from '@/components/icons';
 import { MapVisual } from '@/components/map-visual';
 import { activityItems, DemoOfficial } from '@/lib/demo-data';
 
-const tabs = ['Overview', 'Votes', 'Bills', 'Campaign Finance', 'Committees', 'News', 'More'];
+const tabs = ['Overview', 'Votes', 'Promises', 'AI Monitor', 'Financials', 'Legislation', 'Bio'];
 
 export function ProfileExperience({ official }: { official: DemoOfficial }) {
   const [active, setActive] = useState('Overview');
@@ -30,7 +30,7 @@ export function ProfileExperience({ official }: { official: DemoOfficial }) {
       </section>
       <div className="site-width profile-content-grid">
         <main className="profile-main-content">
-          {active === 'Overview' ? <Overview official={official} /> : <TabPlaceholder active={active} official={official} />}
+          {active === 'Overview' ? <Overview official={official} /> : <ProfileTabPanel active={active} official={official} />}
         </main>
         <aside className="profile-side-column"><ProfileQuickActions /><div className="profile-mini-card"><h2>Where they represent</h2><MapVisual compact labelled={false} /><p><Icon name="pin" size={15} /> {official.district}</p></div></aside>
       </div>
@@ -47,9 +47,44 @@ function Overview({ official }: { official: DemoOfficial }) {
   </>;
 }
 
-function TabPlaceholder({ active, official }: { active: string; official: DemoOfficial }) {
-  const title = active === 'Campaign Finance' ? 'Campaign finance' : active;
-  return <section className="profile-card tab-panel"><span className="small-label">{title.toUpperCase()}</span><h2>{title} will be organized in this same profile.</h2><p>This interactive wireframe shows where structured, source-linked {title.toLowerCase()} records will live for {official.name}. It is deliberately using sample content until the production data pipeline is connected.</p><div className="tab-placeholder-lines"><span /><span /><span /><span /></div></section>;
+function ProfileTabPanel({ active, official }: { active: string; official: DemoOfficial }) {
+  if (active === 'Votes') return <VotesPanel official={official} />;
+  if (active === 'Promises') return <PromisesPanel official={official} />;
+  if (active === 'AI Monitor') return <MonitorPanel official={official} />;
+  if (active === 'Financials') return <FinancialsPanel official={official} />;
+  if (active === 'Legislation') return <LegislationPanel official={official} />;
+  return <BioPanel official={official} />;
+}
+
+function VotesPanel({ official }: { official: DemoOfficial }) {
+  const rows = [
+    ['May 7, 2026', 'Community Schools Act', 'Voted yes', 'Vote record'],
+    ['April 24, 2026', 'Public Infrastructure Amendment', 'Voted no', 'Vote record'],
+    ['April 3, 2026', 'Local Services Funding Bill', 'Present', 'Vote record'],
+  ];
+  return <section className="profile-card tab-panel profile-data-panel"><div className="profile-card-heading"><div><span className="small-label">VOTING RECORD</span><h2>Votes and attendance</h2></div><span className="profile-panel-stat">{official.votes} recorded</span></div><p>Each production row will link directly to its official vote, meeting record, or source document.</p><div className="profile-record-list">{rows.map(([date, title, stance, source]) => <article key={title}><span className="record-date">{date}</span><div><h3>{title}</h3><small>{source} · Illustrative sample</small></div><span className={`vote-chip ${stance === 'Voted no' ? 'no' : stance === 'Present' ? 'present' : ''}`}>{stance}</span><Icon name="chevron-right" size={18} /></article>)}</div></section>;
+}
+
+function PromisesPanel({ official }: { official: DemoOfficial }) {
+  const rows = [['Affordable housing commitment', 'In progress', 'May 5, 2026', 'orange'], ['Support public-school funding', 'Kept', 'April 19, 2026', 'green'], ['Publish district town-hall dates', 'Needs review', 'April 8, 2026', 'blue']];
+  return <section className="profile-card tab-panel profile-data-panel"><div className="profile-card-heading"><div><span className="small-label">PROMISE TRACKER</span><h2>{official.promises} commitments tracked</h2></div><Icon name="target" size={22} /></div><p>Production data will preserve the original statement, source date, related actions, status rationale, and every change in the record.</p><div className="profile-promise-grid"><article><b>8</b><span>Kept</span></article><article><b>5</b><span>Needs review</span></article><article><b>11</b><span>In progress</span></article></div><div className="profile-record-list">{rows.map(([title, status, date, tone]) => <article key={title}><span className={`status-dot ${tone}`} /><div><h3>{title}</h3><small>Last updated {date} · Sample source-linked record</small></div><span className={`status-pill ${tone}`}>{status}</span><Icon name="chevron-right" size={18} /></article>)}</div></section>;
+}
+
+function MonitorPanel({ official }: { official: DemoOfficial }) {
+  return <section className="profile-card tab-panel profile-data-panel"><div className="profile-card-heading"><div><span className="small-label">AI MONITOR</span><h2>What changed around this office</h2></div><Link href="/monitor/" className="card-inline-link">Open monitor <Icon name="arrow-right" size={15} /></Link></div><p>AI assists with organizing source-backed changes; it does not replace the underlying record or silently invent conclusions.</p><div className="profile-record-list monitor-record-list">{activityItems.slice(0, 3).map((item) => <article key={item.title}><span className={`activity-icon ${item.tone}`}><Icon name={item.type === 'Vote' ? 'check' : item.type === 'Promise' ? 'target' : 'file'} size={15} /></span><div><small>{item.type} · {item.date}</small><h3>{item.title}</h3><p>Illustrative monitoring summary with space for source link, context, and review state.</p></div><Icon name="chevron-right" size={18} /></article>)}</div></section>;
+}
+
+function FinancialsPanel({ official }: { official: DemoOfficial }) {
+  return <section className="profile-card tab-panel profile-data-panel"><div className="profile-card-heading"><div><span className="small-label">FINANCIALS</span><h2>Campaign and disclosure record</h2></div><Icon name="chart" size={22} /></div><p>Finance records are shown with their filing period and original source so users can distinguish reported dollars, external analysis, and data gaps.</p><div className="financial-summary"><article><span>Latest filing</span><b>Q1 2026</b><small>Illustrative filing window</small></article><article><span>Contributions</span><b>Source-linked</b><small>Database field and source index</small></article><article><span>Disclosures</span><b>4 records</b><small>Example only</small></article></div><div className="profile-record-list"><article><span className="record-date">Q1 2026</span><div><h3>Campaign finance filing</h3><small>Original filing link and indexed details appear here.</small></div><Link href="/research/" className="card-inline-link">Source standards</Link><Icon name="chevron-right" size={18} /></article><article><span className="record-date">2025</span><div><h3>Annual financial disclosure</h3><small>Production view includes the document, source agency, and review status.</small></div><span className="status-pill blue">Indexed</span><Icon name="chevron-right" size={18} /></article></div></section>;
+}
+
+function LegislationPanel({ official }: { official: DemoOfficial }) {
+  const rows = [['Public Infrastructure Amendment', 'Co-sponsored', 'April 24, 2026'], ['Community Schools Act', 'Voted', 'May 7, 2026'], ['Open Government Records Bill', 'In committee', 'March 29, 2026']];
+  return <section className="profile-card tab-panel profile-data-panel"><div className="profile-card-heading"><div><span className="small-label">LEGISLATION</span><h2>Bills, resolutions, and actions</h2></div><span className="profile-panel-stat">{official.bills} total</span></div><p>Every bill or action in the live product can carry sponsorship, vote, committee, topic, date, and a direct public-source connection.</p><div className="profile-record-list">{rows.map(([title, status, date]) => <article key={title}><span className="record-date">{date}</span><div><h3>{title}</h3><small>Legislative record · Sample data</small></div><span className="status-pill blue">{status}</span><Icon name="chevron-right" size={18} /></article>)}</div></section>;
+}
+
+function BioPanel({ official }: { official: DemoOfficial }) {
+  return <section className="profile-card tab-panel profile-data-panel"><div className="profile-card-heading"><div><span className="small-label">BIOGRAPHY & OFFICE</span><h2>Background and public service</h2></div><Icon name="user" size={22} /></div><p>This is the structured home for verified biography, office history, education, career experience, district information, and source provenance—not a marketing biography.</p><dl className="bio-fact-grid"><div><dt>Current office</dt><dd>{official.title}</dd></div><div><dt>District</dt><dd>{official.district}</dd></div><div><dt>Next election</dt><dd>{official.nextElection}</dd></div><div><dt>Public office</dt><dd>{official.office}</dd></div></dl><section className="bio-source-panel"><span className="small-label">SOURCE PROVENANCE</span><h3>What the live profile will show</h3><ul><li>Original publisher and date for every factual claim.</li><li>Clear distinction between verified, incomplete, and contested information.</li><li>A correction path with review history for material updates.</li></ul></section></section>;
 }
 
 function ProfileQuickActions() {

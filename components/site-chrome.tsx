@@ -75,9 +75,16 @@ export function SiteFooter() {
   );
 }
 
-export function MobileTabs() {
+export function MobileTabs({ pathname }: { pathname: string }) {
   const tabs = [
     ['Home', '/', 'home'], ['Officials', '/search/', 'users'], ['Monitor', '/monitor/', 'watch'], ['Action', '/petitions/', 'edit'],
   ] as const;
-  return <nav className="mobile-tabs" aria-label="Mobile application navigation">{tabs.map(([label, href, icon]) => <Link key={label} href={href}><Icon name={icon} size={19} /><span>{label}</span></Link>)}</nav>;
+  const active = pathname.startsWith('/search') || pathname.startsWith('/officials') || pathname.startsWith('/watchlist')
+    ? 'Officials'
+    : pathname.startsWith('/monitor') || pathname.startsWith('/alerts') || pathname.startsWith('/promises')
+      ? 'Monitor'
+      : pathname.startsWith('/petitions') || pathname.startsWith('/contact-official')
+        ? 'Action'
+        : 'Home';
+  return <nav className="mobile-tabs" aria-label="Mobile application navigation">{tabs.map(([label, href, icon]) => <Link key={label} href={href} className={label === active ? 'active' : ''}><Icon name={icon} size={19} /><span>{label}</span></Link>)}</nav>;
 }

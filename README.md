@@ -16,8 +16,13 @@ This branch is the full, responsive CivicLenZ visual frontend created from the a
 | AI Monitor | `/monitor/` | Filterable-style activity feed, source-led monitoring layout, and monitoring preferences. |
 | Alerts | `/alerts/` | Alerts-focused version of the monitoring screen. |
 | My Officials / Watchlist | `/watchlist/` | Saved-official cards and individual profile links. |
+| Promise Tracker | `/promises/` | Commitment status totals, source-linked promise rows, update dates, and status-process panel. |
+| Contact Officials | `/contact-official/` | Official selector, private message-draft layout, recipient details, and pre-send confirmation state. |
 | Petitions | `/petitions/` | Petition directory, category tags, signature progress, signed state, and create-petition entry point. |
 | Petition detail | `/petitions/protect-public-housing/` | Petition story, requested action, progress, signing state, and sharing panel. |
+| My Activity | `/activity/` | Private civic timeline for follows, alerts, petitions, and message drafts. |
+| Reports | `/reports/` | Report library, report-preview actions, and member delivery schedule. |
+| Settings | `/settings/` | Alert, digest, location, research, privacy, and account-control layout. |
 | Sign in | `/sign-in/` | Google and email-code sign-in layout, confirmation state, dashboard handoff. |
 | Sign up | `/sign-up/` | Account-creation layout, terms check, confirmation state, dashboard handoff. |
 | Product / explanation pages | `/features/`, `/how-it-works/`, `/about/`, `/research/`, `/app/`, `/pricing/`, `/contact/`, `/corrections/` | Complete informative layouts describing the product, rollout, source policy, and member experience. |
@@ -32,6 +37,12 @@ This branch is the full, responsive CivicLenZ visual frontend created from the a
 - **Responsive behavior:** desktop, tablet, and mobile layouts; mobile product tab bar included for the app surfaces
 
 All branded graphics live in `public/brand/` and `public/images/`. They are plain SVG files, so they can be resized, recolored, or reused without a bitmap-quality loss.
+
+## Google AI Studio handoff
+
+- [Complete page map](docs/PAGE-MAP.md) — content placement and mobile rules for every screen.
+- [Google AI Studio handoff](docs/GOOGLE-AI-STUDIO-HANDOFF.md) — exact integration instructions and a copy/paste implementation prompt.
+- `lib/civic-data-contract.ts` — the data-provider contract to connect this UI to the existing elected-official database without changing its wireframe design.
 
 ## Important prototype note
 

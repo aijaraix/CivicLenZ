@@ -5,7 +5,7 @@ import { MapVisual } from '@/components/map-visual';
 import { activityItems, demoOfficials } from '@/lib/demo-data';
 
 const sidebarItems = [
-  ['Dashboard', '/dashboard/', 'home'], ['My Officials', '/watchlist/', 'users'], ['Alerts', '/alerts/', 'bell'], ['AI Monitor', '/monitor/', 'watch'], ['Promise Tracker', '/monitor/', 'target'], ['Contact Officials', '/sign-up/', 'message'], ['Petitions', '/petitions/', 'edit'], ['My Activity', '/monitor/', 'chart'], ['Reports', '/monitor/', 'file'], ['Settings', '/sign-up/', 'settings'],
+  ['Dashboard', '/dashboard/', 'home'], ['My Officials', '/watchlist/', 'users'], ['Alerts', '/alerts/', 'bell'], ['AI Monitor', '/monitor/', 'watch'], ['Promise Tracker', '/promises/', 'target'], ['Contact Officials', '/contact-official/', 'message'], ['Petitions', '/petitions/', 'edit'], ['My Activity', '/activity/', 'chart'], ['Reports', '/reports/', 'file'], ['Settings', '/settings/', 'settings'],
 ] as const;
 
 export function AppShell({ active, children }: { active: string; children: React.ReactNode }) {

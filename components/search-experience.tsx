@@ -34,7 +34,7 @@ export function SearchExperience({ directory = false }: { directory?: boolean })
             <div className="official-result-list">
               {submitted && result.map((official) => <article className="official-result" key={official.slug}><DemoAvatar official={official} size="md" /><div className="official-result-copy"><span>{official.level}</span><h2>{official.name}</h2><p>{official.title}</p><small>{official.party}</small></div><Link href={`/officials/${official.slug}/`} className="profile-arrow" aria-label={`View ${official.name} profile`}><Icon name="chevron-right" size={20} /></Link></article>)}
             </div>
-            <Link href="/officials/elena-morgan/" className="view-all-link">View all 12 officials <Icon name="arrow-right" size={17} /></Link>
+            <Link href="/officials/" className="view-all-link">Explore all matching officials <Icon name="arrow-right" size={17} /></Link>
           </section>
           <aside className="representation-panel"><div className="section-panel-heading"><div><span className="small-label">WHERE THEY REPRESENT YOU</span><h2>Representation map</h2></div><Icon name="map" size={21} /></div><MapVisual /><div className="representation-address"><Icon name="pin" size={16} /><span>{search}</span></div></aside>
         </div>
