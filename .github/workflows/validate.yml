@@ -38,5 +38,8 @@ jobs:
       - name: Type check
         run: npm run typecheck
 
+      - name: Public officials list must not include staging
+        run: npm run test:public-officials
+
       - name: Build
         run: npm run build

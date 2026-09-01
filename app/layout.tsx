@@ -3,7 +3,7 @@ import Link from 'next/link';
 import './globals.css';
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://civicslenz.com'),
+  metadataBase: new URL('https://www.civicslenz.com'),
   title: {
     default: 'CivicLenZ — Clearer civic insight',
     template: '%s | CivicLenZ',
