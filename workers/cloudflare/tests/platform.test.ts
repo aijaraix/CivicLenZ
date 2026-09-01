@@ -27,6 +27,7 @@ import { firstWaveSourceAdapters, parserCoveredSources, sourceAdapter } from "..
 import { createMemoryStore } from "../shared/src/store.ts";
 import { canAutoVerify, planClaimTransition } from "../shared/src/validation.ts";
 import {
+  assertPublicRead,
   getCandidatesForElection,
   getCompletenessForSubject,
   getElection,
@@ -36,8 +37,9 @@ import {
   getPerson,
   getSeat,
   getVerifiedClaimsForSubject,
-} from "../../../lib/civic-data/adapter.ts";
-import { assertPublicRead, isInternalTable, verifiedClaimsOnly } from "../../../lib/civic-data/public.ts";
+  isInternalTable,
+  verifiedClaimsOnly,
+} from "../../../lib/civic-data/public.ts";
 import { cloudflareConsumesHeavy, createRailwayHeavyPayload } from "../shared/src/heavy.ts";
 import { newsCanIndependentlyVerify, NEWS_WORKER_STATE } from "../shared/src/news.ts";
 
@@ -422,6 +424,13 @@ test("identity resolver never merges on name alone and documents identifier prio
     candidate: { canonicalName: "Jane Roe" },
   });
   assert.equal(unmatched.status, "unmatched");
+});
+
+test("site civic-data modules do not use .ts import extensions", () => {
+  const publicSrc = readFileSync(path.join(repoRoot, "lib/civic-data/public.ts"), "utf8");
+  const indexSrc = readFileSync(path.join(repoRoot, "lib/civic-data/index.ts"), "utf8");
+  assert.doesNotMatch(publicSrc, /from ["'][^"']+\.ts["']/);
+  assert.doesNotMatch(indexSrc, /from ["'][^"']+\.ts["']/);
 });
 
 test("scheduler DRY_RUN stays true in wrangler and If-None-Match is sent", async () => {

@@ -1,2 +1,1 @@
-export * from "./adapter.ts";
-export * from "./public.ts";
+export * from "./public";
