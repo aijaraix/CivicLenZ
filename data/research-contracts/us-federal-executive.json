@@ -1,0 +1,35 @@
+{
+  "schemaVersion": "1.0.0",
+  "researchContractKey": "us-federal-executive",
+  "name": "United States president and vice president",
+  "appliesToOfficeTypes": ["president", "vice_president"],
+  "governmentLevels": ["federal"],
+  "requiredFieldKeys": [
+    "seatKey",
+    "seatName",
+    "occupancyStatus",
+    "display_name",
+    "official_profile_url"
+  ],
+  "optionalFieldKeys": [
+    "executive_orders",
+    "appointments_made",
+    "portrait_url"
+  ],
+  "notApplicableFieldKeys": [
+    "district_number",
+    "bills_sponsored"
+  ],
+  "sourcePriority": [
+    "Official White House administration pages",
+    "Official executive orders and proclamations"
+  ],
+  "disallowedShortcuts": [
+    "Staging White House extracts are not independently VERIFIED occupancy."
+  ],
+  "publicationGate": "reviewed_canonical_profile",
+  "humanReviewRequired": true,
+  "notes": [
+    "These national offices are enumerated because they are known counts in the Florida expected-seat ledger."
+  ]
+}

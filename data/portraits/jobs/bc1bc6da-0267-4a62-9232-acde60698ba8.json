@@ -1,0 +1,24 @@
+{
+  "schemaVersion": "1.0.0",
+  "portraitJobId": "1ddda3ee-fe09-5f7c-85cd-0098c1c6b0f8",
+  "officialId": "bc1bc6da-0267-4a62-9232-acde60698ba8",
+  "seatKey": "fl-governor-of-florida-at-large",
+  "status": "fetched_unreviewed",
+  "reviewStatus": "unreviewed",
+  "imageUrl": "https://www.flgov.com/eog/sites/default/files/img/ron-desantis-inaugeration.png",
+  "sourcePageUrl": "https://www.flgov.com/eog/",
+  "retrievedAt": "2026-09-01T22:42:48Z",
+  "contentSha256": "2c88bf60c96cbe909bf098d1180fd9ff760c448e28767573c026f9b2e7f749b0",
+  "width": 800,
+  "height": 983,
+  "mimeType": "image/png",
+  "rights": "unknown_pending_review",
+  "credit": "www.flgov.com",
+  "urlsTried": [
+    "https://www.flgov.com/",
+    "https://www.flgov.com/eog/sites/default/files/img/ron-desantis-inaugeration.png"
+  ],
+  "failureReason": null,
+  "checkedAt": "2026-09-01T22:42:48Z",
+  "notes": "Fetched from an official website. reviewStatus remains unreviewed. HTTP 200 is not VERIFIED publication."
+}

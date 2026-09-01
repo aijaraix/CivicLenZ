@@ -1,0 +1,32 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://civicslenz.com/schemas/research-contract.schema.json",
+  "title": "CivicLenZ Research Contract",
+  "description": "Which ontology fields, sources, and review gates apply to a seat family. A contract is not occupancy evidence.",
+  "type": "object",
+  "required": [
+    "schemaVersion",
+    "researchContractKey",
+    "name",
+    "appliesToOfficeTypes",
+    "requiredFieldKeys",
+    "sourcePriority",
+    "publicationGate"
+  ],
+  "properties": {
+    "schemaVersion": {"type": "string", "const": "1.0.0"},
+    "researchContractKey": {"type": "string", "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$"},
+    "name": {"type": "string"},
+    "appliesToOfficeTypes": {"type": "array", "items": {"type": "string"}, "minItems": 1},
+    "governmentLevels": {"type": "array", "items": {"type": "string"}},
+    "requiredFieldKeys": {"type": "array", "items": {"type": "string"}, "minItems": 1},
+    "optionalFieldKeys": {"type": "array", "items": {"type": "string"}},
+    "notApplicableFieldKeys": {"type": "array", "items": {"type": "string"}},
+    "sourcePriority": {"type": "array", "items": {"type": "string"}, "minItems": 1},
+    "disallowedShortcuts": {"type": "array", "items": {"type": "string"}},
+    "publicationGate": {"type": "string"},
+    "humanReviewRequired": {"type": "boolean"},
+    "notes": {"type": "array", "items": {"type": "string"}}
+  },
+  "additionalProperties": false
+}

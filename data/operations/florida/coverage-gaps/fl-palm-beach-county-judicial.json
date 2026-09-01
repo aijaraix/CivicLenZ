@@ -1,0 +1,14 @@
+{
+  "schemaVersion": "1.0.0",
+  "coverageGapId": "102dcd69-9e9c-5068-aa04-b5696e898f06",
+  "gapKey": "fl-palm-beach-county-judicial",
+  "jurisdictionName": "Palm Beach County",
+  "stateCode": "FL",
+  "governmentLevel": "judicial",
+  "officeFamily": "judicial",
+  "expectedCountStatus": "expected_count_unknown",
+  "expectedCount": null,
+  "reason": "Judicial elected or retention seats counts for Palm Beach County are not declared as expected seats. County commission district counts vary; municipal, school, judicial, and special-district inventories are not invented.",
+  "coverageRegion": "palm_beach",
+  "ledgerStatus": "coverage_gap"
+}
