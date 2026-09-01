@@ -24,14 +24,14 @@ export async function withWorkerRun<T>(input: {
       recordsRead: 0,
       recordsWritten: 0,
       claimsVerified: 0,
-      metadata: { route: input.message?.route, sourceKey: input.message?.sourceKey },
+      metadata: { queueRoute: input.message?.route, sourceKey: input.message?.sourceKey },
     });
     if (input.message) {
       await input.store.leaseJob(input.message.jobId, input.worker.workerKey);
     }
     const finished = await input.run();
     if (input.message) {
-      await input.store.completeJob(input.message.jobId);
+      await input.store.completeJob(input.message.jobId, "succeeded");
     }
     await input.store.recordWorkerRun({
       workerKey: input.worker.workerKey,
@@ -44,7 +44,7 @@ export async function withWorkerRun<T>(input: {
       recordsRead: finished.recordsRead,
       recordsWritten: finished.recordsWritten,
       claimsVerified: finished.claimsVerified,
-      metadata: { priorRunId: run.id },
+      metadata: { priorRunId: run.workerRunId },
     });
     return finished.result;
   } catch (error) {
@@ -72,7 +72,7 @@ export async function withWorkerRun<T>(input: {
       runtime: input.worker.runtime,
       deploymentId: input.worker.deploymentId,
       jobId: input.message?.jobId,
-      status: dead ? "dead_lettered" : "failed",
+      status: "failed",
       startedAt,
       completedAt: new Date().toISOString(),
       recordsRead: 0,
@@ -80,7 +80,7 @@ export async function withWorkerRun<T>(input: {
       claimsVerified: 0,
       errorClass: civic.errorClass,
       errorMessage: message,
-      metadata: { priorRunId: run?.id },
+      metadata: { priorRunId: run?.workerRunId, deadLetter: dead },
     });
     throw civic;
   }

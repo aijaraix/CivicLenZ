@@ -10,9 +10,8 @@ export type SeatQuery = {
 };
 
 export type PersonQuery = {
+  canonicalName?: string;
   displayName?: string;
-  normalizedName?: string;
-  personKey?: string;
 };
 
 export type MatchResult<T> = {
@@ -48,14 +47,9 @@ export function matchSeat(seats: SeatRecord[], query: SeatQuery): MatchResult<Se
 }
 
 export function matchPerson(people: PersonRecord[], query: PersonQuery): MatchResult<PersonRecord> {
-  if (query.personKey) {
-    const exact = people.filter((person) => person.personKey === query.personKey);
-    if (exact.length === 1) return { status: "matched", record: exact[0], candidates: exact };
-    if (exact.length > 1) return { status: "ambiguous", candidates: exact };
-  }
-  const needle = query.normalizedName ?? (query.displayName ? normalizePersonName(query.displayName) : "");
+  const needle = normalizePersonName(query.canonicalName ?? query.displayName ?? "");
   if (!needle) return { status: "unmatched", candidates: [] };
-  const filtered = people.filter((person) => person.normalizedName === needle);
+  const filtered = people.filter((person) => normalizePersonName(person.canonicalName) === needle);
   if (filtered.length === 1) return { status: "matched", record: filtered[0], candidates: filtered };
   if (filtered.length > 1) return { status: "ambiguous", candidates: filtered };
   return { status: "unmatched", candidates: [] };
@@ -78,14 +72,14 @@ export function matchCandidateCampaign(
 
 export function matchElection(
   elections: ElectionRecord[],
-  query: { jurisdictionId: string; seatId?: string; electionDate?: string; electionKind?: string },
+  query: { seatId?: string; electionDate?: string; electionType?: string; electionKey?: string },
 ): MatchResult<ElectionRecord> {
   const filtered = elections.filter((election) => {
-    if (election.jurisdictionId !== query.jurisdictionId) return false;
     if (query.seatId && election.seatId !== query.seatId) return false;
     if (query.electionDate && election.electionDate !== query.electionDate) return false;
-    if (query.electionKind && election.electionKind !== query.electionKind) return false;
-    return true;
+    if (query.electionType && election.electionType !== query.electionType) return false;
+    if (query.electionKey && election.electionKey !== query.electionKey) return false;
+    return Boolean(query.seatId || query.electionDate || query.electionType || query.electionKey);
   });
   if (filtered.length === 1) return { status: "matched", record: filtered[0], candidates: filtered };
   if (filtered.length > 1) return { status: "ambiguous", candidates: filtered };

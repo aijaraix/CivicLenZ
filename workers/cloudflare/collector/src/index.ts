@@ -69,7 +69,7 @@ export default {
             queues: queues(env),
             worker: identity,
           });
-          if (result.status === "failed" || result.status === "dead_lettered") {
+          if (result.status === "failed" || result.status === "dead_letter") {
             throw new CivicError(result.errorClass ?? "collector_failed", result.errorMessage ?? "collector failed");
           }
           return {

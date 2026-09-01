@@ -1,4 +1,4 @@
-import { normalizePersonName, slugify } from "./ids.ts";
+import { valueHash } from "./hash.ts";
 import { portraitSourceDecision } from "./portraits.ts";
 import type { CivicStore } from "./store.ts";
 
@@ -15,6 +15,8 @@ export const BASELINE_RESEARCH_FIELDS = [
   "biography",
   "election_history",
 ] as const;
+
+const OPEN_BASELINE_FIELDS = new Set(["contact", "biography", "election_history", "evidence"]);
 
 export async function upsertBaselineResearchContract(
   store: CivicStore,
@@ -33,103 +35,81 @@ export async function upsertBaselineResearchContract(
   const jurisdiction = await store.upsertJurisdiction({
     jurisdictionKey: input.jurisdictionKey,
     name: input.jurisdictionName,
-    kind: input.governmentLevel === "state" ? "state" : input.governmentLevel,
+    jurisdictionType: input.governmentLevel === "state" ? "state" : input.governmentLevel,
     stateCode: "FL",
   });
   const seat = await store.upsertSeat({
     seatKey: input.seatKey,
-    jurisdictionId: jurisdiction.id,
+    jurisdictionId: jurisdiction.jurisdictionId,
     seatName: input.seatName,
     officeType: input.officeType,
     governmentLevel: input.governmentLevel,
     branch: "executive",
     occupancyStatus: "unknown",
-    recordStatus: "extracted",
+    researchContractKey: `${input.officeType}-baseline`,
+    baselineStatus: "unknown",
+    monitoringActive: true,
   });
   const person = await store.upsertPerson({
-    personKey: `person:${slugify(input.personDisplayName)}`,
-    displayName: input.personDisplayName,
-    normalizedName: normalizePersonName(input.personDisplayName),
-    recordStatus: "extracted",
+    canonicalName: input.personDisplayName,
   });
   const occupancy = await store.upsertOccupancy({
-    seatId: seat.id,
-    personId: person.id,
-    currentStatus: "unknown",
-    recordStatus: "extracted",
+    seatId: seat.seatId,
+    personId: person.personId,
+    occupancyStatus: "unknown",
+    evidenceState: "unreviewed",
   });
   const occupancyClaim = await store.recordClaim({
-    claimKey: `occupancy:${seat.seatKey}:${person.personKey}:baseline`,
-    claimType: "occupancy",
-    status: "COLLECTED_UNREVIEWED",
-    jurisdictionId: jurisdiction.id,
-    seatId: seat.id,
-    personId: person.id,
-    predicate: "occupied_by",
-    objectValue: input.personDisplayName,
-    metadata: { displayName: input.personDisplayName, officeTitle: input.seatName },
+    subjectType: "seat",
+    subjectId: seat.seatId,
+    seatId: seat.seatId,
+    fieldKey: "current_occupant",
+    normalizedValue: input.personDisplayName,
+    displayValue: input.personDisplayName,
+    valueHash: await valueHash("current_occupant", input.personDisplayName),
+    verificationState: "collected_unreviewed",
   });
   const portraitDecision = input.portraitUrl
     ? portraitSourceDecision(input.portraitUrl)
     : { allowedForVerified: false, reason: "portrait_missing" };
   const portraitClaim = await store.recordClaim({
-    claimKey: `portrait:${person.personKey}:baseline`,
-    claimType: "portrait",
-    status: "COLLECTED_UNREVIEWED",
-    personId: person.id,
-    seatId: seat.id,
-    metadata: { portraitUrl: input.portraitUrl, displayName: input.personDisplayName },
+    subjectType: "person",
+    subjectId: person.personId,
+    seatId: seat.seatId,
+    fieldKey: "portrait",
+    normalizedValue: input.portraitUrl ?? "",
+    displayValue: input.portraitUrl,
+    valueHash: await valueHash("portrait", input.portraitUrl ?? ""),
+    verificationState: "collected_unreviewed",
   });
   const contract = await store.upsertResearchContract({
-    contractKey: `baseline:${input.seatKey}`,
-    seatId: seat.id,
-    personId: person.id,
-    title: `${input.seatName} baseline research`,
-    status: "open",
+    contractKey: `${input.officeType}-baseline`,
+    name: `${input.officeType} baseline research`,
+    officeClass: input.officeType,
+    version: 1,
+    active: true,
+    description: `${input.seatName} baseline research contract`,
   });
   const fields = [];
-  for (const fieldKey of BASELINE_RESEARCH_FIELDS) {
-    let status = "open";
-    let notes = "incomplete is correct until evidence exists";
-    if (fieldKey === "jurisdiction") {
-      status = "present_unverified";
-      notes = jurisdiction.jurisdictionKey;
-    } else if (fieldKey === "seat") {
-      status = "present_unverified";
-      notes = seat.seatKey;
-    } else if (fieldKey === "person") {
-      status = "present_unverified";
-      notes = person.displayName;
-    } else if (fieldKey === "occupancy") {
-      status = "present_unverified";
-      notes = occupancy.id;
-    } else if (fieldKey === "claims") {
-      status = "present_unverified";
-      notes = occupancyClaim.status;
-    } else if (fieldKey === "evidence") {
-      status = "open";
-      notes = "no evidence object attached in baseline seed";
-    } else if (fieldKey === "portrait") {
-      status = portraitDecision.allowedForVerified ? "present_unverified" : "open";
-      notes = `${portraitDecision.reason}; claim=${portraitClaim.status}`;
-    } else if (fieldKey === "monitoring") {
-      status = "present_unverified";
-      notes = "monitoring_state row upserted separately";
-    }
+  for (const [index, fieldKey] of BASELINE_RESEARCH_FIELDS.entries()) {
     fields.push(
       await store.upsertResearchContractField({
-        contractId: contract.id,
+        researchContractId: contract.researchContractId,
         fieldKey,
-        status,
-        notes,
+        category: OPEN_BASELINE_FIELDS.has(fieldKey) ? "open" : "core",
+        requiredForBaseline: true,
+        verificationRequirement: fieldKey === "evidence" || fieldKey === "portrait" ? "official_source" : "review",
+        sortOrder: index,
       }),
     );
   }
   const monitoring = await store.upsertMonitoringState({
-    entityType: "seat",
-    entityKey: seat.seatKey,
-    checkClass: "daily",
+    targetType: "seat",
+    targetId: seat.seatId,
+    seatId: seat.seatId,
     active: true,
+    monitoringClass: "daily",
+    configuration: { seatKey: seat.seatKey },
   });
   return {
     jurisdiction,

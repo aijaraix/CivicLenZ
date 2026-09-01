@@ -1,7 +1,8 @@
 import { electionMonitorDedupeKey, ingestDedupeKey, monitorDedupeKey, toQueueMessage } from "./jobs.ts";
+import { isUuid, uuidFromName } from "./ids.ts";
 import { COUNTY_JURISDICTION_KEYS, SOUTH_FLORIDA_COUNTIES, firstWaveIngestSources } from "./slice.ts";
 import type { CivicStore } from "./store.ts";
-import type { JobRecord, QueueJobMessage, RuntimeQueues } from "./types.ts";
+import type { JobRecord, JobRoute, QueueJobMessage, RuntimeQueues } from "./types.ts";
 
 export type SchedulerPlan = {
   scheduled: JobRecord[];
@@ -25,7 +26,7 @@ export async function planAndEnqueue(input: {
       dedupeKey: ingestDedupeKey(source.sourceKey, now),
       route: "ingest",
       sourceKey: source.sourceKey,
-      payload: { sourceUrl: source.url, sourceType: source.sourceType },
+      payload: { sourceUrl: source.url, sourceType: source.sourceType, sourceKey: source.sourceKey },
       scheduledFor: now.toISOString(),
     });
     if (result.created) scheduled.push(result.job);
@@ -36,10 +37,10 @@ export async function planAndEnqueue(input: {
     dedupeKey: electionMonitorDedupeKey("us-fl", now),
     route: "monitor",
     entityType: "election_calendar",
-    entityId: "us-fl",
     payload: {
       sourceUrl: "https://dos.fl.gov/elections/",
-      checkClass: "daily",
+      entityId: "us-fl",
+      monitoringClass: "daily",
       note: "Florida election calendar monitor. Does not ingest candidate lists in first wave.",
     },
     scheduledFor: now.toISOString(),
@@ -49,14 +50,22 @@ export async function planAndEnqueue(input: {
 
   for (const county of SOUTH_FLORIDA_COUNTIES) {
     const key = COUNTY_JURISDICTION_KEYS[county];
+    const jurisdiction = await input.store.upsertJurisdiction({
+      jurisdictionKey: key,
+      name: `${county} County`,
+      jurisdictionType: "county",
+      stateCode: "FL",
+      countyName: county,
+    });
     const monitor = await input.store.scheduleJob({
       dedupeKey: monitorDedupeKey("jurisdiction", key, "daily", now),
       route: "monitor",
       entityType: "jurisdiction",
-      entityId: key,
+      entityId: jurisdiction.jurisdictionId,
       payload: {
         county,
-        checkClass: "daily",
+        entityId: key,
+        monitoringClass: "daily",
         note:
           county === "Miami-Dade"
             ? "Miami-Dade official PDF is the first-wave ingest source."
@@ -67,22 +76,25 @@ export async function planAndEnqueue(input: {
     if (monitor.created) scheduled.push(monitor.job);
     else skippedActive.push(monitor.job.dedupeKey);
     await input.store.upsertMonitoringState({
-      entityType: "jurisdiction",
-      entityKey: key,
-      checkClass: "daily",
+      targetType: "jurisdiction",
+      targetId: jurisdiction.jurisdictionId,
       active: true,
+      monitoringClass: "daily",
       nextCheckAt: now.toISOString(),
+      configuration: { jurisdictionKey: key },
     });
   }
 
+  const governorSeatId = await uuidFromName("seat:us-fl-governor");
   const governorMonitor = await input.store.scheduleJob({
     dedupeKey: monitorDedupeKey("seat", "us-fl-governor", "daily", now),
     route: "monitor",
     entityType: "seat",
-    entityId: "us-fl-governor",
+    entityId: governorSeatId,
     payload: {
       sourceUrl: "https://www.flgov.com/",
-      checkClass: "daily",
+      entityId: "us-fl-governor",
+      monitoringClass: "daily",
       note: "Governor seat monitor. Not a person-name special case.",
     },
     scheduledFor: now.toISOString(),
@@ -95,7 +107,7 @@ export async function planAndEnqueue(input: {
   if (!input.dryRun && input.queues) {
     for (const job of due) {
       const message = toQueueMessage(job, false);
-      const queue = queueFor(job.route, input.queues);
+      const queue = queueFor(job.jobType, input.queues);
       if (!queue) continue;
       await queue.send(message);
       enqueued.push(message);
@@ -104,9 +116,11 @@ export async function planAndEnqueue(input: {
   return { scheduled, skippedActive, enqueued, dryRun: input.dryRun };
 }
 
-function queueFor(route: JobRecord["route"], queues: RuntimeQueues) {
+function queueFor(route: JobRoute, queues: RuntimeQueues) {
   if (route === "ingest") return queues.ingest;
   if (route === "validate") return queues.validate;
   if (route === "monitor") return queues.monitor;
   return queues.heavy;
 }
+
+export { isUuid };

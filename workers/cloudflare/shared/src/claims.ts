@@ -1,30 +1,33 @@
 import { CLAIM_STATUSES, type ClaimStatus } from "./types.ts";
 
 const TERMINAL = new Set<ClaimStatus>([
-  "VERIFIED",
-  "CONFLICT",
-  "REJECTED",
-  "STALE",
-  "CHECKED_NO_AUTHORITATIVE_RESULT",
+  "verified",
+  "conflict",
+  "rejected",
+  "stale",
+  "checked_no_authoritative_result",
 ]);
 
 const FORWARD: Record<ClaimStatus, ClaimStatus[]> = {
-  COLLECTED_UNREVIEWED: ["EXTRACTED", "REJECTED", "STALE"],
-  EXTRACTED: ["ENTITY_MATCH_PENDING", "REJECTED", "STALE"],
-  ENTITY_MATCH_PENDING: ["EVIDENCE_PENDING", "REJECTED", "CONFLICT", "STALE"],
-  EVIDENCE_PENDING: ["VERIFICATION_PENDING", "REJECTED", "STALE"],
-  VERIFICATION_PENDING: [
-    "VERIFIED",
-    "CONFLICT",
-    "REJECTED",
-    "STALE",
-    "CHECKED_NO_AUTHORITATIVE_RESULT",
+  not_collected: ["collected_unreviewed", "source_found", "checked_no_authoritative_result"],
+  collected_unreviewed: ["source_found", "extracted", "rejected", "stale"],
+  source_found: ["extracted", "rejected", "stale"],
+  extracted: ["entity_match_pending", "rejected", "stale"],
+  entity_match_pending: ["evidence_pending", "rejected", "conflict", "stale"],
+  evidence_pending: ["verification_pending", "rejected", "stale"],
+  verification_pending: [
+    "verified",
+    "conflict",
+    "rejected",
+    "stale",
+    "checked_no_authoritative_result",
   ],
-  VERIFIED: ["STALE", "CONFLICT"],
-  CONFLICT: ["VERIFICATION_PENDING", "REJECTED", "STALE"],
-  REJECTED: [],
-  STALE: ["COLLECTED_UNREVIEWED"],
-  CHECKED_NO_AUTHORITATIVE_RESULT: ["COLLECTED_UNREVIEWED", "STALE"],
+  verified: ["stale", "conflict", "superseded"],
+  conflict: ["verification_pending", "rejected", "stale"],
+  rejected: [],
+  stale: ["collected_unreviewed"],
+  superseded: [],
+  checked_no_authoritative_result: ["collected_unreviewed", "stale"],
 };
 
 export function isClaimStatus(value: string): value is ClaimStatus {
@@ -48,13 +51,13 @@ export function isTerminalClaimStatus(status: ClaimStatus): boolean {
 }
 
 export function isPublicationEligible(input: {
-  status: ClaimStatus;
+  verificationState: ClaimStatus;
   hasEvidence: boolean;
   hasContradiction: boolean;
   entityMatched: boolean;
 }): boolean {
   return (
-    input.status === "VERIFIED" &&
+    input.verificationState === "verified" &&
     input.hasEvidence &&
     input.entityMatched &&
     !input.hasContradiction

@@ -1,407 +1,500 @@
--- CivicLenZ civic collection runtime (seat-centric)
+-- CivicLenZ collection runtime reconstruction.
 --
--- CONSERVATIVE MIGRATION
--- Live CivicLenZ tables already exist on project ref uazqyzmzydtmbypjuqjw.
--- This file uses CREATE IF NOT EXISTS / exception-safe type creation only.
--- It does NOT DROP, TRUNCATE, or recreate live civic tables.
+-- LIVE SUPABASE (project CivicLenZ, ref uazqyzmzydtmbypjuqjw) is authoritative.
+-- This file reconstructs the live civic / collection tables for a FRESH database
+-- so local / CI / review environments match production columns, PKs, and RLS.
 --
--- Live column dump was NOT available when this migration was written
--- (missing infrastructure: Supabase MCP and a service-role connection from
--- this coding environment). Column names here are a conservative seat-centric
--- contract matching the production table names. If live columns differ, do
--- not apply blindly to production — reconcile first.
+-- DO NOT apply this file to live production. Live already has these tables
+-- (empty, RLS enabled) from:
+--   20260901222128 civiclenz_canonical_civic_foundation
+--   20260901222145 civiclenz_foundation_security_hardening
 --
--- This migration does not invent VERIFIED counters, fake completeness
--- metrics, or public-read policies on internal operational tables.
+-- lease_due_job() is NEW relative to live. After review, add it to live via a
+-- separate additive migration. Do not apply this reconstruction to production.
 
-create extension if not exists postgis;
-create extension if not exists pgcrypto;
-
-create or replace function public.civic_set_updated_at()
-returns trigger
-language plpgsql
-set search_path = ''
-as $$
-begin
-  new.updated_at = now();
-  return new;
-end;
-$$;
+CREATE EXTENSION IF NOT EXISTS pgcrypto;
+CREATE EXTENSION IF NOT EXISTS postgis;
 
 -- ---------------------------------------------------------------------------
--- Canonical geography and offices
+-- Civic entities
 -- ---------------------------------------------------------------------------
 
-create table if not exists public.jurisdictions (
-  id uuid primary key default gen_random_uuid(),
-  jurisdiction_key text not null unique,
-  name text not null,
-  kind text not null,
+CREATE TABLE IF NOT EXISTS public.jurisdictions (
+  jurisdiction_id uuid PRIMARY KEY DEFAULT gen_random_uuid(),
+  jurisdiction_key text NOT NULL UNIQUE,
+  name text NOT NULL,
+  jurisdiction_type text NOT NULL,
+  parent_jurisdiction_id uuid REFERENCES public.jurisdictions (jurisdiction_id),
   state_code text,
   county_name text,
-  parent_id uuid references public.jurisdictions(id) on delete set null,
+  municipality_name text,
   fips_code text,
-  metadata jsonb not null default '{}'::jsonb,
-  created_at timestamptz not null default now(),
-  updated_at timestamptz not null default now()
+  status text NOT NULL DEFAULT 'active',
+  created_at timestamptz NOT NULL DEFAULT now(),
+  updated_at timestamptz NOT NULL DEFAULT now()
 );
 
-create table if not exists public.jurisdiction_boundaries (
-  id uuid primary key default gen_random_uuid(),
-  jurisdiction_id uuid not null references public.jurisdictions(id) on delete cascade,
-  version_label text,
-  effective_on date,
-  geom geometry(MultiPolygon, 4326),
-  geojson jsonb,
-  source_url text,
-  metadata jsonb not null default '{}'::jsonb,
-  created_at timestamptz not null default now()
+CREATE TABLE IF NOT EXISTS public.jurisdiction_boundaries (
+  boundary_id uuid PRIMARY KEY DEFAULT gen_random_uuid(),
+  jurisdiction_id uuid NOT NULL REFERENCES public.jurisdictions (jurisdiction_id),
+  geometry geometry,
+  version text,
+  effective_from date,
+  effective_to date,
+  source_hash text
 );
 
-create table if not exists public.seats (
-  id uuid primary key default gen_random_uuid(),
-  seat_key text not null unique,
-  jurisdiction_id uuid not null references public.jurisdictions(id) on delete restrict,
-  seat_name text not null,
-  office_type text not null,
-  government_level text not null,
+CREATE TABLE IF NOT EXISTS public.seats (
+  seat_id uuid PRIMARY KEY DEFAULT gen_random_uuid(),
+  seat_key text NOT NULL UNIQUE,
+  seat_name text NOT NULL,
+  office_type text,
+  government_level text,
   branch text,
   chamber text,
+  jurisdiction_id uuid NOT NULL REFERENCES public.jurisdictions (jurisdiction_id),
   district_name text,
   district_number text,
-  seat_at_large boolean,
-  occupancy_status text not null default 'unknown',
-  record_status text not null default 'extracted',
-  metadata jsonb not null default '{}'::jsonb,
-  created_at timestamptz not null default now(),
-  updated_at timestamptz not null default now(),
-  constraint seats_record_status_check
-    check (record_status in ('extracted', 'canonical', 'rejected', 'superseded'))
+  seat_at_large boolean NOT NULL DEFAULT false,
+  selection_method text,
+  partisan_office boolean,
+  term_length_months integer,
+  term_limit_summary text,
+  vacancy_filling_method text,
+  authority_summary text,
+  responsibilities text,
+  eligibility_requirements text,
+  occupancy_status text,
+  next_election_date date,
+  research_contract_key text,
+  baseline_status text,
+  monitoring_active boolean NOT NULL DEFAULT false,
+  created_at timestamptz NOT NULL DEFAULT now(),
+  updated_at timestamptz NOT NULL DEFAULT now()
 );
 
-create table if not exists public.persons (
-  id uuid primary key default gen_random_uuid(),
-  person_key text not null unique,
-  display_name text not null,
-  full_legal_name text,
+CREATE TABLE IF NOT EXISTS public.persons (
+  person_id uuid PRIMARY KEY DEFAULT gen_random_uuid(),
+  canonical_name text NOT NULL,
   first_name text,
+  middle_name text,
   last_name text,
-  normalized_name text not null,
-  record_status text not null default 'extracted',
-  metadata jsonb not null default '{}'::jsonb,
-  created_at timestamptz not null default now(),
-  updated_at timestamptz not null default now(),
-  constraint persons_record_status_check
-    check (record_status in ('extracted', 'canonical', 'rejected', 'superseded'))
+  suffix text,
+  preferred_name text,
+  aliases jsonb NOT NULL DEFAULT '[]'::jsonb,
+  date_of_birth date,
+  birthplace text,
+  portrait_url text,
+  portrait_source_url text,
+  portrait_credit text,
+  portrait_status text,
+  identity_status text,
+  external_identifiers jsonb NOT NULL DEFAULT '{}'::jsonb,
+  created_at timestamptz NOT NULL DEFAULT now(),
+  updated_at timestamptz NOT NULL DEFAULT now()
 );
 
-create table if not exists public.seat_occupancies (
-  id uuid primary key default gen_random_uuid(),
-  seat_id uuid not null references public.seats(id) on delete restrict,
-  person_id uuid not null references public.persons(id) on delete restrict,
-  term_label text,
-  started_on date,
-  ended_on date,
-  elected_or_appointed text,
-  current_status text not null default 'unknown',
-  record_status text not null default 'extracted',
-  metadata jsonb not null default '{}'::jsonb,
-  created_at timestamptz not null default now(),
-  updated_at timestamptz not null default now(),
-  unique (seat_id, person_id, started_on),
-  constraint seat_occupancies_record_status_check
-    check (record_status in ('extracted', 'canonical', 'rejected', 'superseded'))
-);
-
-create table if not exists public.elections (
-  id uuid primary key default gen_random_uuid(),
-  election_key text not null unique,
-  jurisdiction_id uuid not null references public.jurisdictions(id) on delete restrict,
-  seat_id uuid references public.seats(id) on delete set null,
-  name text not null,
+CREATE TABLE IF NOT EXISTS public.elections (
+  election_id uuid PRIMARY KEY DEFAULT gen_random_uuid(),
+  seat_id uuid NOT NULL REFERENCES public.seats (seat_id),
+  election_key text NOT NULL UNIQUE,
+  election_type text,
   election_date date,
-  election_kind text,
-  record_status text not null default 'extracted',
-  metadata jsonb not null default '{}'::jsonb,
-  created_at timestamptz not null default now(),
-  updated_at timestamptz not null default now()
+  filing_open_date date,
+  filing_deadline date,
+  qualifying_open_date date,
+  qualifying_deadline date,
+  status text,
+  source_url text,
+  certification_date date,
+  created_at timestamptz NOT NULL DEFAULT now(),
+  updated_at timestamptz NOT NULL DEFAULT now()
 );
 
-create table if not exists public.candidate_campaigns (
-  id uuid primary key default gen_random_uuid(),
-  campaign_key text not null unique,
-  election_id uuid not null references public.elections(id) on delete restrict,
-  seat_id uuid not null references public.seats(id) on delete restrict,
-  person_id uuid not null references public.persons(id) on delete restrict,
-  party_name text,
-  outcome text,
-  record_status text not null default 'extracted',
-  metadata jsonb not null default '{}'::jsonb,
-  created_at timestamptz not null default now(),
-  updated_at timestamptz not null default now(),
-  unique (election_id, seat_id, person_id)
+CREATE TABLE IF NOT EXISTS public.seat_occupancies (
+  occupancy_id uuid PRIMARY KEY DEFAULT gen_random_uuid(),
+  seat_id uuid NOT NULL REFERENCES public.seats (seat_id),
+  person_id uuid NOT NULL REFERENCES public.persons (person_id),
+  start_date date,
+  end_date date,
+  assumed_office_date date,
+  sworn_in_date date,
+  occupancy_status text,
+  elected_or_appointed text,
+  election_id uuid REFERENCES public.elections (election_id),
+  evidence_state text,
+  created_at timestamptz NOT NULL DEFAULT now(),
+  updated_at timestamptz NOT NULL DEFAULT now(),
+  UNIQUE (seat_id, person_id, start_date)
 );
 
--- ---------------------------------------------------------------------------
--- Evidence and claims
--- ---------------------------------------------------------------------------
+CREATE TABLE IF NOT EXISTS public.candidate_campaigns (
+  candidate_campaign_id uuid PRIMARY KEY DEFAULT gen_random_uuid(),
+  person_id uuid NOT NULL REFERENCES public.persons (person_id),
+  seat_id uuid NOT NULL REFERENCES public.seats (seat_id),
+  election_id uuid NOT NULL REFERENCES public.elections (election_id),
+  party text,
+  candidate_status text,
+  filing_date date,
+  qualified_date date,
+  withdrawal_date date,
+  campaign_website text,
+  committee_name text,
+  committee_identifier text,
+  portrait_status text,
+  baseline_status text,
+  created_at timestamptz NOT NULL DEFAULT now(),
+  updated_at timestamptz NOT NULL DEFAULT now(),
+  UNIQUE (person_id, seat_id, election_id)
+);
 
-create table if not exists public.sources (
-  id uuid primary key default gen_random_uuid(),
-  source_key text not null unique,
-  name text not null,
-  source_url text not null,
-  source_tier text,
+CREATE TABLE IF NOT EXISTS public.sources (
+  source_id uuid PRIMARY KEY DEFAULT gen_random_uuid(),
+  source_key text NOT NULL UNIQUE,
+  name text NOT NULL,
+  source_url text NOT NULL,
   source_type text,
-  jurisdiction_label text,
-  enabled boolean not null default false,
-  metadata jsonb not null default '{}'::jsonb,
-  created_at timestamptz not null default now(),
-  updated_at timestamptz not null default now()
+  authority_tier text,
+  jurisdiction_id uuid REFERENCES public.jurisdictions (jurisdiction_id),
+  host text,
+  active boolean NOT NULL DEFAULT true,
+  refresh_class text,
+  normal_poll_interval text,
+  election_poll_interval text,
+  rate_limit_policy jsonb,
+  parser_key text,
+  parser_version text,
+  last_success_at timestamptz,
+  last_failure_at timestamptz,
+  next_poll_at timestamptz,
+  health_state text,
+  created_at timestamptz NOT NULL DEFAULT now(),
+  updated_at timestamptz NOT NULL DEFAULT now()
 );
 
-create table if not exists public.raw_retrievals (
-  id uuid primary key default gen_random_uuid(),
-  source_id uuid not null references public.sources(id) on delete restrict,
-  source_url text not null,
-  retrieved_at timestamptz not null,
+CREATE TABLE IF NOT EXISTS public.jobs (
+  job_id uuid PRIMARY KEY DEFAULT gen_random_uuid(),
+  job_type text NOT NULL,
+  target_type text,
+  target_id uuid,
+  seat_id uuid REFERENCES public.seats (seat_id),
+  source_id uuid REFERENCES public.sources (source_id),
+  priority integer NOT NULL DEFAULT 100,
+  status text NOT NULL DEFAULT 'queued'
+    CHECK (status IN ('queued', 'leased', 'running', 'succeeded', 'failed', 'dead_letter', 'cancelled')),
+  attempt_count integer NOT NULL DEFAULT 0,
+  max_attempts integer NOT NULL DEFAULT 5,
+  leased_by text,
+  lease_expires_at timestamptz,
+  checkpoint jsonb,
+  dedupe_key text UNIQUE,
+  payload jsonb NOT NULL DEFAULT '{}'::jsonb,
+  scheduled_for timestamptz,
+  started_at timestamptz,
+  completed_at timestamptz,
+  error_class text,
+  error_message text,
+  created_at timestamptz NOT NULL DEFAULT now(),
+  updated_at timestamptz NOT NULL DEFAULT now()
+);
+
+CREATE TABLE IF NOT EXISTS public.raw_retrievals (
+  retrieval_id uuid PRIMARY KEY DEFAULT gen_random_uuid(),
+  source_id uuid NOT NULL REFERENCES public.sources (source_id),
+  job_id uuid REFERENCES public.jobs (job_id),
+  retrieved_at timestamptz NOT NULL DEFAULT now(),
+  source_url text NOT NULL,
   http_status integer,
   content_type text,
   etag text,
   last_modified text,
-  content_sha256 text not null,
-  byte_length integer,
-  r2_bucket text,
-  r2_key text,
+  content_hash text,
+  raw_object_uri text,
+  byte_length bigint,
+  parser_key text,
   parser_version text,
-  parse_status text not null default 'unparsed',
-  metadata jsonb not null default '{}'::jsonb,
-  created_at timestamptz not null default now(),
-  unique (source_id, content_sha256)
+  retrieval_status text,
+  metadata jsonb NOT NULL DEFAULT '{}'::jsonb
 );
 
-create table if not exists public.evidence_objects (
-  id uuid primary key default gen_random_uuid(),
-  raw_retrieval_id uuid references public.raw_retrievals(id) on delete set null,
-  source_id uuid references public.sources(id) on delete set null,
-  evidence_type text not null,
-  source_url text not null,
-  content_sha256 text not null,
-  captured_at timestamptz not null,
-  exact_excerpt text,
-  page_number integer,
-  review_status text not null default 'unreviewed',
-  metadata jsonb not null default '{}'::jsonb,
-  created_at timestamptz not null default now()
+CREATE TABLE IF NOT EXISTS public.evidence_objects (
+  evidence_id uuid PRIMARY KEY DEFAULT gen_random_uuid(),
+  source_id uuid REFERENCES public.sources (source_id),
+  retrieval_id uuid REFERENCES public.raw_retrievals (retrieval_id),
+  evidence_type text,
+  source_url text,
+  supporting_locator text,
+  excerpt text,
+  asset_uri text,
+  content_hash text,
+  verification_state text,
+  rights_metadata jsonb,
+  created_at timestamptz NOT NULL DEFAULT now(),
+  updated_at timestamptz NOT NULL DEFAULT now()
 );
 
-create table if not exists public.claims (
-  id uuid primary key default gen_random_uuid(),
-  claim_key text not null unique,
-  claim_type text not null,
-  status text not null default 'COLLECTED_UNREVIEWED',
+CREATE TABLE IF NOT EXISTS public.claims (
+  claim_id uuid PRIMARY KEY DEFAULT gen_random_uuid(),
+  subject_type text NOT NULL,
+  subject_id uuid NOT NULL,
+  seat_id uuid REFERENCES public.seats (seat_id),
+  field_key text NOT NULL,
+  normalized_value text,
+  display_value text,
+  value_hash text,
+  valid_from timestamptz,
+  valid_to timestamptz,
+  first_seen_at timestamptz,
+  last_seen_at timestamptz,
+  last_verified_at timestamptz,
+  verification_state text NOT NULL DEFAULT 'not_collected'
+    CHECK (verification_state IN (
+      'not_collected',
+      'collected_unreviewed',
+      'source_found',
+      'extracted',
+      'entity_match_pending',
+      'evidence_pending',
+      'verification_pending',
+      'verified',
+      'conflict',
+      'stale',
+      'rejected',
+      'superseded',
+      'checked_no_authoritative_result'
+    )),
+  confidence numeric,
+  volatility_class text,
+  recheck_after timestamptz,
+  supersedes_claim_id uuid REFERENCES public.claims (claim_id),
+  created_at timestamptz NOT NULL DEFAULT now(),
+  updated_at timestamptz NOT NULL DEFAULT now(),
+  UNIQUE (subject_type, subject_id, field_key, value_hash)
+);
+
+CREATE TABLE IF NOT EXISTS public.claim_evidence (
+  claim_id uuid NOT NULL REFERENCES public.claims (claim_id) ON DELETE CASCADE,
+  evidence_id uuid NOT NULL REFERENCES public.evidence_objects (evidence_id) ON DELETE CASCADE,
+  role text NOT NULL
+    CHECK (role IN ('supports', 'contradicts', 'contextualizes', 'official_response')),
+  PRIMARY KEY (claim_id, evidence_id)
+);
+
+CREATE TABLE IF NOT EXISTS public.validation_runs (
+  validation_run_id uuid PRIMARY KEY DEFAULT gen_random_uuid(),
   subject_type text,
   subject_id uuid,
-  predicate text,
-  object_value text,
-  jurisdiction_id uuid references public.jurisdictions(id) on delete set null,
-  seat_id uuid references public.seats(id) on delete set null,
-  person_id uuid references public.persons(id) on delete set null,
-  election_id uuid references public.elections(id) on delete set null,
-  raw_retrieval_id uuid references public.raw_retrievals(id) on delete set null,
-  publication_eligible boolean not null default false,
-  metadata jsonb not null default '{}'::jsonb,
-  created_at timestamptz not null default now(),
-  updated_at timestamptz not null default now(),
-  constraint claims_status_check check (status in (
-    'COLLECTED_UNREVIEWED',
-    'EXTRACTED',
-    'ENTITY_MATCH_PENDING',
-    'EVIDENCE_PENDING',
-    'VERIFICATION_PENDING',
-    'VERIFIED',
-    'CONFLICT',
-    'REJECTED',
-    'STALE',
-    'CHECKED_NO_AUTHORITATIVE_RESULT'
-  ))
+  seat_id uuid REFERENCES public.seats (seat_id),
+  validator_key text,
+  status text,
+  input_summary jsonb,
+  result_summary jsonb,
+  started_at timestamptz,
+  completed_at timestamptz,
+  created_at timestamptz NOT NULL DEFAULT now()
 );
 
-create table if not exists public.claim_evidence (
-  id uuid primary key default gen_random_uuid(),
-  claim_id uuid not null references public.claims(id) on delete cascade,
-  evidence_id uuid not null references public.evidence_objects(id) on delete cascade,
-  relation text not null default 'supports',
-  created_at timestamptz not null default now(),
-  unique (claim_id, evidence_id)
+CREATE TABLE IF NOT EXISTS public.contradictions (
+  contradiction_id uuid PRIMARY KEY DEFAULT gen_random_uuid(),
+  subject_type text,
+  subject_id uuid,
+  seat_id uuid REFERENCES public.seats (seat_id),
+  field_key text,
+  claim_ids uuid[] NOT NULL DEFAULT '{}'::uuid[],
+  status text,
+  severity text,
+  resolution_summary text,
+  resolved_at timestamptz,
+  created_at timestamptz NOT NULL DEFAULT now(),
+  updated_at timestamptz NOT NULL DEFAULT now()
 );
 
-create table if not exists public.validation_runs (
-  id uuid primary key default gen_random_uuid(),
-  claim_id uuid references public.claims(id) on delete set null,
-  job_id uuid,
-  result text not null,
-  detail jsonb not null default '{}'::jsonb,
-  started_at timestamptz not null default now(),
-  completed_at timestamptz
+CREATE TABLE IF NOT EXISTS public.research_contracts (
+  research_contract_id uuid PRIMARY KEY DEFAULT gen_random_uuid(),
+  contract_key text NOT NULL UNIQUE,
+  name text NOT NULL,
+  office_class text,
+  version text,
+  active boolean NOT NULL DEFAULT true,
+  description text,
+  created_at timestamptz NOT NULL DEFAULT now(),
+  updated_at timestamptz NOT NULL DEFAULT now()
 );
 
-create table if not exists public.contradictions (
-  id uuid primary key default gen_random_uuid(),
-  claim_id uuid not null references public.claims(id) on delete cascade,
-  conflicting_claim_id uuid references public.claims(id) on delete set null,
-  summary text not null,
-  status text not null default 'open',
-  metadata jsonb not null default '{}'::jsonb,
-  created_at timestamptz not null default now()
+CREATE TABLE IF NOT EXISTS public.research_contract_fields (
+  research_contract_field_id uuid PRIMARY KEY DEFAULT gen_random_uuid(),
+  research_contract_id uuid NOT NULL REFERENCES public.research_contracts (research_contract_id) ON DELETE CASCADE,
+  field_key text NOT NULL,
+  category text,
+  required_for_baseline boolean NOT NULL DEFAULT false,
+  verification_requirement text,
+  source_priority jsonb,
+  volatility_class text,
+  recheck_policy text,
+  sensitivity_rule text,
+  sort_order integer,
+  created_at timestamptz NOT NULL DEFAULT now(),
+  updated_at timestamptz NOT NULL DEFAULT now(),
+  UNIQUE (research_contract_id, field_key)
 );
 
-create table if not exists public.research_contracts (
-  id uuid primary key default gen_random_uuid(),
-  contract_key text not null unique,
-  seat_id uuid references public.seats(id) on delete set null,
-  person_id uuid references public.persons(id) on delete set null,
-  title text not null,
-  status text not null default 'open',
-  metadata jsonb not null default '{}'::jsonb,
-  created_at timestamptz not null default now(),
-  updated_at timestamptz not null default now()
-);
-
-create table if not exists public.research_contract_fields (
-  id uuid primary key default gen_random_uuid(),
-  contract_id uuid not null references public.research_contracts(id) on delete cascade,
-  field_key text not null,
-  status text not null default 'open',
-  notes text,
-  created_at timestamptz not null default now(),
-  unique (contract_id, field_key)
-);
-
-create table if not exists public.monitoring_state (
-  id uuid primary key default gen_random_uuid(),
-  entity_type text not null,
-  entity_key text not null,
-  check_class text not null,
-  active boolean not null default true,
+CREATE TABLE IF NOT EXISTS public.monitoring_state (
+  monitoring_state_id uuid PRIMARY KEY DEFAULT gen_random_uuid(),
+  target_type text NOT NULL,
+  target_id uuid NOT NULL,
+  seat_id uuid REFERENCES public.seats (seat_id),
+  active boolean NOT NULL DEFAULT true,
+  monitoring_class text,
   last_checked_at timestamptz,
   last_changed_at timestamptz,
   next_check_at timestamptz,
-  last_content_sha256 text,
-  metadata jsonb not null default '{}'::jsonb,
-  created_at timestamptz not null default now(),
-  updated_at timestamptz not null default now(),
-  unique (entity_type, entity_key, check_class)
+  consecutive_failures integer NOT NULL DEFAULT 0,
+  last_result text,
+  configuration jsonb,
+  created_at timestamptz NOT NULL DEFAULT now(),
+  updated_at timestamptz NOT NULL DEFAULT now(),
+  UNIQUE (target_type, target_id, monitoring_class)
 );
 
-create table if not exists public.jobs (
-  id uuid primary key default gen_random_uuid(),
-  dedupe_key text not null,
-  route text not null,
-  status text not null default 'pending',
-  source_key text,
-  entity_type text,
-  entity_id text,
-  payload jsonb not null default '{}'::jsonb,
-  attempt_count integer not null default 0,
-  lease_owner text,
-  leased_at timestamptz,
-  lease_expires_at timestamptz,
-  last_error_class text,
-  last_error_message text,
-  scheduled_for timestamptz not null default now(),
-  started_at timestamptz,
-  completed_at timestamptz,
-  created_at timestamptz not null default now(),
-  updated_at timestamptz not null default now(),
-  constraint jobs_route_check check (route in ('ingest', 'validate', 'monitor', 'heavy')),
-  constraint jobs_status_check check (status in (
-    'pending', 'leased', 'running', 'completed', 'failed', 'dead_lettered', 'routed_heavy'
-  ))
-);
-
-create unique index if not exists jobs_active_dedupe_key
-  on public.jobs (dedupe_key)
-  where status in ('pending', 'leased', 'running');
-
-create index if not exists jobs_due_idx
-  on public.jobs (scheduled_for)
-  where status = 'pending';
-
-create table if not exists public.worker_runs (
-  id uuid primary key default gen_random_uuid(),
-  worker_key text not null,
-  runtime text not null default 'cloudflare',
+CREATE TABLE IF NOT EXISTS public.worker_runs (
+  worker_run_id uuid PRIMARY KEY DEFAULT gen_random_uuid(),
+  worker_key text NOT NULL,
+  runtime text,
   deployment_id text,
-  job_id uuid references public.jobs(id) on delete set null,
-  status text not null,
-  started_at timestamptz not null,
+  job_id uuid REFERENCES public.jobs (job_id),
+  status text NOT NULL DEFAULT 'started'
+    CHECK (status IN ('started', 'succeeded', 'failed', 'degraded', 'cancelled')),
+  started_at timestamptz NOT NULL DEFAULT now(),
   completed_at timestamptz,
-  records_read integer not null default 0,
-  records_written integer not null default 0,
-  claims_verified integer not null default 0,
+  records_read integer NOT NULL DEFAULT 0,
+  records_written integer NOT NULL DEFAULT 0,
+  claims_verified integer NOT NULL DEFAULT 0,
   error_class text,
   error_message text,
-  metadata jsonb not null default '{}'::jsonb,
-  constraint worker_runs_status_check check (status in (
-    'started', 'succeeded', 'failed', 'dead_lettered'
-  ))
+  metadata jsonb NOT NULL DEFAULT '{}'::jsonb,
+  created_at timestamptz NOT NULL DEFAULT now()
 );
 
-create index if not exists worker_runs_worker_started_idx
-  on public.worker_runs (worker_key, started_at desc);
+CREATE INDEX IF NOT EXISTS idx_jobs_lease_queue
+  ON public.jobs (status, scheduled_for, priority DESC, created_at);
+CREATE INDEX IF NOT EXISTS idx_claims_subject
+  ON public.claims (subject_type, subject_id, field_key);
+CREATE INDEX IF NOT EXISTS idx_seats_jurisdiction
+  ON public.seats (jurisdiction_id);
+CREATE INDEX IF NOT EXISTS idx_monitoring_next_check
+  ON public.monitoring_state (active, next_check_at);
 
--- updated_at triggers (skip if a live trigger already exists)
-do $$
-declare
-  tbl text;
-begin
-  foreach tbl in array array[
-    'jurisdictions', 'seats', 'persons', 'seat_occupancies', 'elections',
-    'candidate_campaigns', 'sources', 'claims', 'research_contracts',
-    'monitoring_state', 'jobs'
-  ]
-  loop
-    execute format(
-      'create trigger %I before update on public.%I for each row execute function public.civic_set_updated_at()',
-      tbl || '_set_updated_at',
-      tbl
-    );
-  exception
-    when duplicate_object then null;
-  end loop;
-end
+-- ---------------------------------------------------------------------------
+-- Atomic job lease (GitHub reconstruction only — do not apply to live yet)
+-- Live needs this function added later via a NEW additive migration after review.
+-- ---------------------------------------------------------------------------
+
+CREATE OR REPLACE FUNCTION public.lease_due_job(
+  p_leased_by text,
+  p_lease_seconds integer DEFAULT 300,
+  p_job_id uuid DEFAULT NULL
+)
+RETURNS SETOF public.jobs
+LANGUAGE plpgsql
+AS $$
+DECLARE
+  claimed public.jobs;
+BEGIN
+  UPDATE public.jobs
+  SET
+    status = 'leased',
+    leased_by = p_leased_by,
+    lease_expires_at = now() + make_interval(secs => p_lease_seconds),
+    attempt_count = attempt_count + 1,
+    started_at = COALESCE(started_at, now()),
+    updated_at = now()
+  WHERE job_id = (
+    SELECT j.job_id
+    FROM public.jobs j
+    WHERE (
+        j.status = 'queued'
+        OR (j.status = 'leased' AND (j.lease_expires_at IS NULL OR j.lease_expires_at < now()))
+      )
+      AND (j.scheduled_for IS NULL OR j.scheduled_for <= now())
+      AND (p_job_id IS NULL OR j.job_id = p_job_id)
+    ORDER BY j.priority DESC, j.scheduled_for ASC NULLS FIRST, j.created_at ASC
+    FOR UPDATE SKIP LOCKED
+    LIMIT 1
+  )
+  RETURNING * INTO claimed;
+
+  IF claimed.job_id IS NOT NULL THEN
+    RETURN NEXT claimed;
+  END IF;
+END;
 $$;
 
+REVOKE ALL ON FUNCTION public.lease_due_job(text, integer, uuid) FROM PUBLIC;
+GRANT EXECUTE ON FUNCTION public.lease_due_job(text, integer, uuid) TO service_role;
+
 -- ---------------------------------------------------------------------------
--- RLS: keep ON. Internal operational tables have no public SELECT.
--- Service role bypasses RLS (Supabase default). Website must use anon key
--- only and must not receive SUPABASE_SERVICE_ROLE_KEY.
+-- RLS: match live. Public SELECT only on the listed civic tables.
+-- Internal tables: RLS on, no policies (service_role only).
 -- ---------------------------------------------------------------------------
 
-alter table public.jurisdictions enable row level security;
-alter table public.jurisdiction_boundaries enable row level security;
-alter table public.seats enable row level security;
-alter table public.persons enable row level security;
-alter table public.seat_occupancies enable row level security;
-alter table public.elections enable row level security;
-alter table public.candidate_campaigns enable row level security;
-alter table public.sources enable row level security;
-alter table public.raw_retrievals enable row level security;
-alter table public.evidence_objects enable row level security;
-alter table public.claims enable row level security;
-alter table public.claim_evidence enable row level security;
-alter table public.validation_runs enable row level security;
-alter table public.contradictions enable row level security;
-alter table public.research_contracts enable row level security;
-alter table public.research_contract_fields enable row level security;
-alter table public.monitoring_state enable row level security;
-alter table public.jobs enable row level security;
-alter table public.worker_runs enable row level security;
+ALTER TABLE public.jurisdictions ENABLE ROW LEVEL SECURITY;
+ALTER TABLE public.jurisdiction_boundaries ENABLE ROW LEVEL SECURITY;
+ALTER TABLE public.seats ENABLE ROW LEVEL SECURITY;
+ALTER TABLE public.persons ENABLE ROW LEVEL SECURITY;
+ALTER TABLE public.seat_occupancies ENABLE ROW LEVEL SECURITY;
+ALTER TABLE public.elections ENABLE ROW LEVEL SECURITY;
+ALTER TABLE public.candidate_campaigns ENABLE ROW LEVEL SECURITY;
+ALTER TABLE public.sources ENABLE ROW LEVEL SECURITY;
+ALTER TABLE public.raw_retrievals ENABLE ROW LEVEL SECURITY;
+ALTER TABLE public.evidence_objects ENABLE ROW LEVEL SECURITY;
+ALTER TABLE public.claims ENABLE ROW LEVEL SECURITY;
+ALTER TABLE public.claim_evidence ENABLE ROW LEVEL SECURITY;
+ALTER TABLE public.validation_runs ENABLE ROW LEVEL SECURITY;
+ALTER TABLE public.contradictions ENABLE ROW LEVEL SECURITY;
+ALTER TABLE public.research_contracts ENABLE ROW LEVEL SECURITY;
+ALTER TABLE public.research_contract_fields ENABLE ROW LEVEL SECURITY;
+ALTER TABLE public.monitoring_state ENABLE ROW LEVEL SECURITY;
+ALTER TABLE public.jobs ENABLE ROW LEVEL SECURITY;
+ALTER TABLE public.worker_runs ENABLE ROW LEVEL SECURITY;
 
--- Intentionally no policies on:
---   jobs, worker_runs, raw_retrievals, validation_runs,
---   contradictions, monitoring_state
--- Those tables are internal-only. Authenticated website roles cannot read them.
--- Canonical civic rows are also not publicly readable in this migration;
--- publication to Vercel remains a later reviewed step.
+DROP POLICY IF EXISTS jurisdictions_public_read ON public.jurisdictions;
+CREATE POLICY jurisdictions_public_read ON public.jurisdictions
+  FOR SELECT TO anon, authenticated USING (true);
+
+DROP POLICY IF EXISTS seats_public_read ON public.seats;
+CREATE POLICY seats_public_read ON public.seats
+  FOR SELECT TO anon, authenticated USING (true);
+
+DROP POLICY IF EXISTS persons_public_read ON public.persons;
+CREATE POLICY persons_public_read ON public.persons
+  FOR SELECT TO anon, authenticated USING (true);
+
+DROP POLICY IF EXISTS occupancies_public_read ON public.seat_occupancies;
+CREATE POLICY occupancies_public_read ON public.seat_occupancies
+  FOR SELECT TO anon, authenticated USING (true);
+
+DROP POLICY IF EXISTS elections_public_read ON public.elections;
+CREATE POLICY elections_public_read ON public.elections
+  FOR SELECT TO anon, authenticated USING (true);
+
+DROP POLICY IF EXISTS campaigns_public_read ON public.candidate_campaigns;
+CREATE POLICY campaigns_public_read ON public.candidate_campaigns
+  FOR SELECT TO anon, authenticated USING (true);
+
+DROP POLICY IF EXISTS claims_public_verified_read ON public.claims;
+CREATE POLICY claims_public_verified_read ON public.claims
+  FOR SELECT TO anon, authenticated
+  USING (verification_state = 'verified');
+
+DROP POLICY IF EXISTS evidence_public_verified_read ON public.evidence_objects;
+CREATE POLICY evidence_public_verified_read ON public.evidence_objects
+  FOR SELECT TO anon, authenticated
+  USING (verification_state = 'verified');
+
+DROP POLICY IF EXISTS research_contracts_public_read ON public.research_contracts;
+CREATE POLICY research_contracts_public_read ON public.research_contracts
+  FOR SELECT TO anon, authenticated USING (true);
+
+DROP POLICY IF EXISTS research_contract_fields_public_read ON public.research_contract_fields;
+CREATE POLICY research_contract_fields_public_read ON public.research_contract_fields
+  FOR SELECT TO anon, authenticated USING (true);

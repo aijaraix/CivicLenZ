@@ -23,9 +23,15 @@ See `workers/cloudflare/*/wrangler.jsonc` and the per-Worker README files.
 
 ## Migration
 
-`supabase/migrations/202609020001_civic_collection_runtime.sql` is conservative: `CREATE IF NOT EXISTS` only, RLS on, no public SELECT on `jobs`, `worker_runs`, `raw_retrievals`, `validation_runs`, `contradictions`, or `monitoring_state`.
+`supabase/migrations/202609020001_civic_collection_runtime.sql` reconstructs the **live** CivicLenZ civic / collection schema for a fresh database. It is not an invented-column overlay.
 
-A live column dump was **not** available (missing Supabase MCP / service-role from this environment). If production columns differ, reconcile before applying.
+- Live project `uazqyzmzydtmbypjuqjw` is authoritative. **Do not apply this file to production.**
+- Entity-specific PKs only (`jurisdiction_id`, `seat_id`, `person_id`, `job_id`, …). Never generic `id`.
+- Claims use lowercase `verification_state`. Jobs use `queued|leased|running|succeeded|failed|dead_letter|cancelled`.
+- Raw bytes are stored as `content_hash` + `raw_object_uri` (`r2://civiclenzevidence/{key}`), not `content_sha256` / `r2_key`.
+- `lease_due_job(p_leased_by, p_lease_seconds, p_job_id)` is **new relative to live**. After review, add it to production via a **new additive migration**. Do not apply this reconstruction to live.
+
+Public SELECT matches live: jurisdictions, seats, persons, occupancies, elections, candidate_campaigns, verified claims, verified evidence, research contracts/fields. Internal tables have RLS on and no policies.
 
 ## First safe deploy order
 

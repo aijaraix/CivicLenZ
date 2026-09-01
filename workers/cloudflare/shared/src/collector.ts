@@ -1,14 +1,15 @@
 import { CivicError } from "./errors.ts";
 import { createDeadLetterPayload, shouldDeadLetter } from "./dead-letter.ts";
-import { sha256Hex } from "./hash.ts";
+import { sha256Hex, valueHash } from "./hash.ts";
 import { fetchDocument } from "./http.ts";
 import { electionMonitorDedupeKey, heavyDedupeKey, toQueueMessage, validateDedupeKey } from "./jobs.ts";
 import { miamiDadeSeatKey } from "./miami-dade.ts";
 import { extractOfficeholders } from "./parsers.ts";
-import { evidenceObjectKey } from "./r2-keys.ts";
-import { slugify } from "./ids.ts";
+import { evidenceObjectKey, rawObjectUri } from "./r2-keys.ts";
+import { uuidFromName } from "./ids.ts";
 import type { CivicStore } from "./store.ts";
 import {
+  EVIDENCE_BUCKET_NAME,
   PARSER_VERSION,
   type EvidenceBucket,
   type ExtractedOfficeholder,
@@ -18,7 +19,7 @@ import {
 } from "./types.ts";
 
 export type CollectorResult = {
-  status: "collected" | "unchanged" | "routed_heavy" | "failed" | "dead_lettered" | "dry_run";
+  status: "collected" | "unchanged" | "routed_heavy" | "failed" | "dead_letter" | "dry_run";
   retrievalId?: string;
   r2Key?: string;
   sha256?: string;
@@ -47,11 +48,15 @@ export async function runCollectorJob(input: {
   const sourceUrl = input.message.sourceUrl;
   const sourceKey = input.message.sourceKey;
   if (input.message.route === "monitor" && !sourceUrl) {
+    const subjectId = await uuidFromName(`monitor:${input.message.entityType ?? "unknown"}:${input.message.entityId ?? "unknown"}`);
     await input.store.recordClaim({
-      claimKey: `monitor:${input.message.entityType ?? "unknown"}:${input.message.entityId ?? "unknown"}:no-source`,
-      claimType: "monitor",
-      status: "CHECKED_NO_AUTHORITATIVE_RESULT",
-      metadata: { note: "No first-wave official source URL is registered for this monitor target." },
+      subjectType: "monitor",
+      subjectId,
+      fieldKey: "authoritative_source",
+      normalizedValue: "none",
+      displayValue: "No first-wave official source URL is registered for this monitor target.",
+      valueHash: await valueHash("authoritative_source", "none"),
+      verificationState: "checked_no_authoritative_result",
     });
     return { status: "collected", extractedCount: 0, claimsWritten: 1 };
   }
@@ -86,26 +91,31 @@ export async function runCollectorJob(input: {
       sourceKey,
       name: sourceKey,
       sourceUrl,
-      enabled: true,
+      sourceType: "official_directory",
+      authorityTier: "official",
+      host: new URL(sourceUrl).host,
+      active: true,
+      healthState: "ok",
     });
     const retrieval = await input.store.recordRawRetrieval({
-      sourceId: source.id,
-      sourceUrl,
+      sourceId: source.sourceId,
+      jobId: input.message.jobId,
       retrievedAt: document.retrievedAt,
+      sourceUrl,
       httpStatus: document.status,
       contentType: document.contentType,
       etag: document.etag,
       lastModified: document.lastModified,
-      contentSha256: sha256,
+      contentHash: sha256,
+      rawObjectUri: rawObjectUri(EVIDENCE_BUCKET_NAME, r2Key),
       byteLength: document.bytes.byteLength,
-      r2Bucket: "civiclenzevidence",
-      r2Key,
+      parserKey: "miami-dade-elected-officials",
       parserVersion,
-      parseStatus: "stored",
+      retrievalStatus: "stored",
     });
 
     let holders: ExtractedOfficeholder[] = [];
-    let parseStatus = "parsed";
+    let retrievalStatus = "parsed";
     try {
       holders = await extractOfficeholders({
         sourceKey,
@@ -115,50 +125,55 @@ export async function runCollectorJob(input: {
       await persistExtractedHolders(input.store, {
         sourceKey,
         sourceUrl,
-        retrievalId: retrieval.id,
+        sourceId: source.sourceId,
+        retrievalId: retrieval.retrievalId,
+        contentHash: sha256,
+        assetUri: rawObjectUri(EVIDENCE_BUCKET_NAME, r2Key),
         holders,
       });
     } catch (error) {
       if (!(error instanceof CivicError) || error.errorClass !== "parser_failure") throw error;
       if (error.routeHeavy) throw error;
-      parseStatus = "parser_unavailable";
+      retrievalStatus = "parser_unavailable";
       await input.store.recordClaim({
-        claimKey: `retrieval:${sourceKey}:${retrieval.id}`,
-        claimType: "source_retrieval",
-        status: "COLLECTED_UNREVIEWED",
-        rawRetrievalId: retrieval.id,
-        metadata: { sourceKey, sourceUrl, parserError: error.message },
+        subjectType: "source",
+        subjectId: source.sourceId,
+        fieldKey: "source_retrieval",
+        normalizedValue: retrieval.retrievalId,
+        displayValue: sourceUrl,
+        valueHash: await valueHash("source_retrieval", retrieval.retrievalId),
+        verificationState: "collected_unreviewed",
       });
     }
-    if (parseStatus !== "parsed") {
+    if (retrievalStatus !== "parsed") {
       await input.store.recordRawRetrieval({
         ...retrieval,
-        parseStatus,
+        retrievalStatus,
       });
     }
 
     const validate = await input.store.scheduleJob({
-      dedupeKey: validateDedupeKey(retrieval.id),
+      dedupeKey: validateDedupeKey(retrieval.retrievalId),
       route: "validate",
       sourceKey,
-      payload: { retrievalId: retrieval.id, sourceUrl },
+      payload: { retrievalId: retrieval.retrievalId, sourceUrl },
     });
     if (validate.created && input.queues?.validate) {
       await input.queues.validate.send(toQueueMessage(validate.job, false));
     }
 
     await input.store.upsertMonitoringState({
-      entityType: "source",
-      entityKey: sourceKey,
-      checkClass: "daily",
+      targetType: "source",
+      targetId: source.sourceId,
       active: true,
+      monitoringClass: "daily",
       lastCheckedAt: document.retrievedAt,
-      lastContentSha256: sha256,
+      lastResult: sha256,
     });
 
     return {
       status: "collected",
-      retrievalId: retrieval.id,
+      retrievalId: retrieval.retrievalId,
       r2Key,
       sha256,
       extractedCount: holders.length,
@@ -171,79 +186,75 @@ export async function runCollectorJob(input: {
 
 async function persistExtractedHolders(
   store: CivicStore,
-  input: { sourceKey: string; sourceUrl: string; retrievalId: string; holders: ExtractedOfficeholder[] },
+  input: {
+    sourceKey: string;
+    sourceUrl: string;
+    sourceId: string;
+    retrievalId: string;
+    contentHash: string;
+    assetUri: string;
+    holders: ExtractedOfficeholder[];
+  },
 ): Promise<void> {
   const parent = await store.upsertJurisdiction({
     jurisdictionKey: "us-fl",
     name: "Florida",
-    kind: "state",
+    jurisdictionType: "state",
     stateCode: "FL",
   });
   const county = await store.upsertJurisdiction({
     jurisdictionKey: "us-fl-miami-dade",
     name: "Miami-Dade County",
-    kind: "county",
+    jurisdictionType: "county",
     stateCode: "FL",
     countyName: "Miami-Dade",
-    parentId: parent.id,
+    parentJurisdictionId: parent.jurisdictionId,
   });
   for (const holder of input.holders) {
     const seat = await store.upsertSeat({
       seatKey: miamiDadeSeatKey(holder),
-      jurisdictionId: county.id,
+      jurisdictionId: county.jurisdictionId,
       seatName: holder.officeTitle,
       officeType: holder.officeKind,
       governmentLevel: holder.governmentLevel,
       branch: holder.branch,
       districtNumber: holder.districtNumber,
       occupancyStatus: "unknown",
-      recordStatus: "extracted",
+      baselineStatus: "unknown",
+      monitoringActive: false,
     });
     const person = await store.upsertPerson({
-      personKey: `person:${slugify(holder.displayName)}`,
-      displayName: holder.displayName,
-      recordStatus: "extracted",
+      canonicalName: holder.displayName,
     });
     await store.upsertOccupancy({
-      seatId: seat.id,
-      personId: person.id,
-      termLabel: holder.termLabel,
+      seatId: seat.seatId,
+      personId: person.personId,
+      occupancyStatus: "unknown",
       electedOrAppointed: holder.electedOrAppointed,
-      currentStatus: "unknown",
-      recordStatus: "extracted",
+      evidenceState: "unreviewed",
     });
+    const normalized = holder.displayName;
     const claim = await store.recordClaim({
-      claimKey: `occupancy:${seat.seatKey}:${person.personKey}:${input.retrievalId}`,
-      claimType: "occupancy",
-      status: "COLLECTED_UNREVIEWED",
       subjectType: "seat",
-      subjectId: seat.id,
-      predicate: "occupied_by",
-      objectValue: holder.displayName,
-      jurisdictionId: county.id,
-      seatId: seat.id,
-      personId: person.id,
-      rawRetrievalId: input.retrievalId,
-      metadata: {
-        displayName: holder.displayName,
-        officeTitle: holder.officeTitle,
-        officeType: holder.officeKind,
-        districtNumber: holder.districtNumber,
-        sourceKey: input.sourceKey,
-        sourceUrl: input.sourceUrl,
-        rawRowText: holder.rawRowText,
-      },
+      subjectId: seat.seatId,
+      seatId: seat.seatId,
+      fieldKey: "current_occupant",
+      normalizedValue: normalized,
+      displayValue: holder.displayName,
+      valueHash: await valueHash("current_occupant", normalized),
+      verificationState: "collected_unreviewed",
     });
     const evidence = await store.recordEvidence({
-      rawRetrievalId: input.retrievalId,
-      evidenceType: "pdf",
+      sourceId: input.sourceId,
+      retrievalId: input.retrievalId,
+      evidenceType: "pdf_excerpt",
       sourceUrl: input.sourceUrl,
-      contentSha256: (await store.getRetrieval(input.retrievalId))?.contentSha256 ?? "",
-      capturedAt: new Date().toISOString(),
-      exactExcerpt: holder.rawRowText,
-      reviewStatus: "unreviewed",
+      excerpt: holder.rawRowText,
+      assetUri: input.assetUri,
+      contentHash: input.contentHash,
+      verificationState: "collected_unreviewed",
     });
-    await store.attachClaimEvidence(claim.id, evidence.id);
+    await store.attachClaimEvidence(claim.claimId, evidence.evidenceId, "supports");
   }
 }
 
@@ -290,7 +301,7 @@ async function handleCollectorFailure(
     );
   }
   return {
-    status: dead ? "dead_lettered" : "failed",
+    status: dead ? "dead_letter" : "failed",
     extractedCount: 0,
     claimsWritten: 0,
     errorClass: civic.errorClass,

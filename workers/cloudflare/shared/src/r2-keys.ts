@@ -18,6 +18,10 @@ export function extensionForContentType(contentType: string | undefined, fallbac
   return EXTENSIONS[normalized] ?? fallback;
 }
 
+export function rawObjectUri(bucketName: string, objectKey: string): string {
+  return `r2://${bucketName}/${objectKey}`;
+}
+
 export function evidenceObjectKey(input: {
   sourceKey: string;
   retrievedAt: Date | string;

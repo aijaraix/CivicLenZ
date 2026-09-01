@@ -8,3 +8,7 @@ export async function sha256Hex(data: BufferSource | Uint8Array | string): Promi
 export function isSha256Hex(value: string): boolean {
   return /^[a-f0-9]{64}$/.test(value);
 }
+
+export async function valueHash(fieldKey: string, normalizedValue: string): Promise<string> {
+  return sha256Hex(`${fieldKey}\0${normalizedValue}`);
+}

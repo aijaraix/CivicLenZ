@@ -43,3 +43,10 @@ export function normalizePersonName(value: string): string {
 export function slugify(value: string): string {
   return normalizePersonName(value).replace(/\s+/g, "-");
 }
+
+export function isUuid(value: string | undefined): value is string {
+  return Boolean(
+    value &&
+      /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(value),
+  );
+}

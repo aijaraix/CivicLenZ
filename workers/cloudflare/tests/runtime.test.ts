@@ -29,6 +29,21 @@ import { evidenceObjectKey } from "../shared/src/r2-keys.ts";
 import { upsertBaselineResearchContract } from "../shared/src/research.ts";
 import { planAndEnqueue } from "../shared/src/scheduler.ts";
 import { CONTROLLED_SLICE_SOURCES, firstWaveIngestSources } from "../shared/src/slice.ts";
+import {
+  GLOBAL_FORBIDDEN_WRITE_COLUMNS,
+  LIVE_TABLE_COLUMNS,
+  assertLiveWrite,
+  campaignRow,
+  claimRow,
+  evidenceRow,
+  jobRow,
+  jurisdictionRow,
+  occupancyRow,
+  personRow,
+  retrievalRow,
+  seatRow,
+  sourceRow,
+} from "../shared/src/live-rows.ts";
 import { createMemoryStore, isWorkerActive } from "../shared/src/store.ts";
 import { createSupabaseStore } from "../shared/src/supabase-store.ts";
 import type { PersonRecord, QueueJobMessage, SeatRecord } from "../shared/src/types.ts";
@@ -78,10 +93,11 @@ test("job dedupe never enqueues a second active job", async () => {
   const second = await store.scheduleJob({ dedupeKey: key, route: "ingest", sourceKey: "miami-dade-county-elected-officials" });
   assert.equal(first.created, true);
   assert.equal(second.created, false);
-  assert.equal(second.job.id, first.job.id);
+  assert.equal(second.job.jobId, first.job.jobId);
+  assert.equal(first.job.status, "queued");
   assert.equal(hasActiveJob(await store.listJobs(), key), true);
   assert.equal(shouldEnqueueJob(first.job), false);
-  await store.completeJob(first.job.id);
+  await store.completeJob(first.job.jobId);
   assert.equal(hasActiveJob(await store.listJobs(), key), false);
 });
 
@@ -140,7 +156,7 @@ test("Supabase write failure is classified and does not look like success", asyn
     fetchImpl: async () => new Response(JSON.stringify({ message: "row-level security" }), { status: 401 }),
   });
   await assert.rejects(
-    () => store.recordSource({ sourceKey: "x", name: "x", sourceUrl: "https://example.gov", enabled: true }),
+    () => store.recordSource({ sourceKey: "x", name: "x", sourceUrl: "https://example.gov", active: true, healthState: "unknown" }),
     (error: unknown) => error instanceof CivicError && error.errorClass === "supabase_write_failed",
   );
 });
@@ -148,75 +164,75 @@ test("Supabase write failure is classified and does not look like success", asyn
 test("seat, person, and winning-candidate matching reuse the existing person", () => {
   const seats: SeatRecord[] = [
     {
-      id: "seat-1",
+      seatId: "seat-1",
       seatKey: "us-fl-governor",
       jurisdictionId: "fl",
       seatName: "Governor of Florida",
       officeType: "governor",
       governmentLevel: "state",
       occupancyStatus: "unknown",
-      recordStatus: "extracted",
+      baselineStatus: "unknown",
+      monitoringActive: false,
     },
   ];
   const people: PersonRecord[] = [
     {
-      id: "person-1",
-      personKey: "person:ron-desantis",
-      displayName: "Ron DeSantis",
-      normalizedName: "ron desantis",
-      recordStatus: "extracted",
+      personId: "person-1",
+      canonicalName: "Ron DeSantis",
     },
   ];
   assert.equal(matchSeat(seats, { jurisdictionId: "fl", officeType: "governor" }).status, "matched");
-  assert.equal(matchPerson(people, { displayName: "Ron DeSantis" }).record?.id, "person-1");
+  assert.equal(matchPerson(people, { displayName: "Ron DeSantis" }).record?.personId, "person-1");
   const reused = reusePersonForWinningCandidate({
     existingOccupant: people[0],
-    existingPerson: { ...people[0], id: "other" },
+    existingPerson: { ...people[0], personId: "other" },
   });
-  assert.equal(reused?.id, "person-1");
+  assert.equal(reused?.personId, "person-1");
   const campaign = matchCandidateCampaign(
-    [{ id: "c1", campaignKey: "k", electionId: "e1", seatId: "seat-1", personId: "person-1", recordStatus: "extracted" }],
+    [{ candidateCampaignId: "c1", electionId: "e1", seatId: "seat-1", personId: "person-1" }],
     { electionId: "e1", seatId: "seat-1", personId: "person-1" },
   );
   assert.equal(campaign.status, "matched");
 });
 
 test("claim lifecycle walks legal hops and rejects illegal ones", () => {
-  assert.equal(canTransitionClaim("COLLECTED_UNREVIEWED", "EXTRACTED"), true);
-  assert.equal(canTransitionClaim("COLLECTED_UNREVIEWED", "VERIFIED"), false);
-  assert.throws(() => transitionClaim("COLLECTED_UNREVIEWED", "VERIFIED"), /illegal claim transition/);
-  assert.equal(isPublicationEligible({ status: "VERIFIED", hasEvidence: true, hasContradiction: false, entityMatched: true }), true);
-  assert.equal(isPublicationEligible({ status: "EXTRACTED", hasEvidence: true, hasContradiction: false, entityMatched: true }), false);
+  assert.equal(canTransitionClaim("collected_unreviewed", "extracted"), true);
+  assert.equal(canTransitionClaim("collected_unreviewed", "verified"), false);
+  assert.throws(() => transitionClaim("collected_unreviewed", "verified"), /illegal claim transition/);
+  assert.equal(isPublicationEligible({ verificationState: "verified", hasEvidence: true, hasContradiction: false, entityMatched: true }), true);
+  assert.equal(isPublicationEligible({ verificationState: "extracted", hasEvidence: true, hasContradiction: false, entityMatched: true }), false);
 });
 
 test("validation rejection and evidence-backed-not-verified", async () => {
   const store = createMemoryStore();
   const claim = await store.recordClaim({
-    claimKey: "reject-me",
-    claimType: "occupancy",
-    status: "VERIFICATION_PENDING",
-    metadata: { forceReject: true, rejectReason: "schema_mismatch" },
+    subjectType: "seat",
+    subjectId: "11111111-1111-4111-8111-111111111111",
+    seatId: "11111111-1111-4111-8111-111111111111",
+    fieldKey: "test_force_reject",
+    normalizedValue: "schema_mismatch",
+    displayValue: "schema_mismatch",
+    verificationState: "verification_pending",
   });
   const rejected = await validateClaim(store, claim);
-  assert.equal(rejected.to, "REJECTED");
+  assert.equal(rejected.to, "rejected");
   assert.equal(rejected.publicationEligible, false);
 
   const pending = await store.recordClaim({
-    claimKey: "pending-me",
-    claimType: "occupancy",
-    status: "VERIFICATION_PENDING",
-    seatId: "seat",
-    personId: "person",
-    rawRetrievalId: "ret",
-    metadata: {},
+    subjectType: "seat",
+    subjectId: "22222222-2222-4222-8222-222222222222",
+    seatId: "22222222-2222-4222-8222-222222222222",
+    fieldKey: "current_occupant",
+    normalizedValue: "Example Person",
+    displayValue: "Example Person",
+    verificationState: "verification_pending",
   });
   await store.recordEvidence({
-    rawRetrievalId: "ret",
+    retrievalId: "33333333-3333-4333-8333-333333333333",
     evidenceType: "pdf",
     sourceUrl: "https://www.miamidade.gov/elections/library/reports/elected-officials.pdf",
-    contentSha256: "a".repeat(64),
-    capturedAt: "2026-09-01T00:00:00Z",
-    reviewStatus: "unreviewed",
+    contentHash: "a".repeat(64),
+    verificationState: "collected_unreviewed",
   });
   const plan = planClaimTransition({
     claim: pending,
@@ -224,7 +240,7 @@ test("validation rejection and evidence-backed-not-verified", async () => {
     hasEvidence: true,
     hasContradiction: false,
   });
-  assert.equal(plan.to, "VERIFICATION_PENDING");
+  assert.equal(plan.to, "verification_pending");
   assert.match(plan.reason, /not_auto_verified|evidence_backed/);
 });
 
@@ -324,11 +340,12 @@ test("collector fetch stores R2 object, raw retrieval, and unreviewed claims; HT
   const retrievals = await store.listRetrievals();
   assert.equal(retrievals[0]?.httpStatus, 200);
   assert.equal(retrievals[0]?.etag, "W/\"abc\"");
-  assert.equal(retrievals[0]?.contentSha256, result.sha256);
+  assert.equal(retrievals[0]?.contentHash, result.sha256);
+  assert.ok(retrievals[0]?.rawObjectUri?.startsWith("r2://civiclenzevidence/"));
   const claims = await store.listClaims();
   assert.ok(claims.length >= 19);
-  assert.ok(claims.every((claim) => claim.status === "COLLECTED_UNREVIEWED"));
-  assert.ok(claims.every((claim) => claim.publicationEligible === false));
+  assert.ok(claims.every((claim) => claim.verificationState === "collected_unreviewed"));
+  assert.ok(claims.every((claim) => claim.fieldKey === "current_occupant"));
   const validated = await runValidatorJob({
     store,
     message: createQueueJobMessage({
@@ -342,7 +359,7 @@ test("collector fetch stores R2 object, raw retrieval, and unreviewed claims; HT
     }),
   });
   assert.equal(validated.claimsVerified, 0);
-  assert.ok(validated.outcomes.every((item) => item.to !== "VERIFIED"));
+  assert.ok(validated.outcomes.every((item) => item.to !== "verified"));
 });
 
 test("Ron DeSantis is a baseline research test, not special-case worker code", async () => {
@@ -364,15 +381,17 @@ test("Ron DeSantis is a baseline research test, not special-case worker code", a
   });
   assert.equal(seeded.jurisdiction.jurisdictionKey, "us-fl");
   assert.equal(seeded.seat.seatKey, "us-fl-governor");
-  assert.equal(seeded.person.displayName, "Ron DeSantis");
-  assert.equal(seeded.occupancy.recordStatus, "extracted");
-  assert.equal(seeded.occupancyClaim.status, "COLLECTED_UNREVIEWED");
+  assert.equal(seeded.person.canonicalName, "Ron DeSantis");
+  assert.equal(seeded.occupancy.occupancyStatus, "unknown");
+  assert.equal(seeded.occupancyClaim.verificationState, "collected_unreviewed");
   assert.equal(seeded.portraitDecision.allowedForVerified, false);
   assert.equal(seeded.portraitDecision.reason, "not_official_gov_host");
-  assert.equal(seeded.contract.status, "open");
-  const openFields = seeded.fields.filter((field) => field.status === "open");
+  assert.equal(seeded.contract.active, true);
+  const openFields = seeded.fields.filter((field) => field.category === "open");
   assert.ok(openFields.length >= 3);
-  assert.equal(seeded.monitoring.entityKey, "us-fl-governor");
+  assert.equal(seeded.monitoring.targetType, "seat");
+  assert.equal(seeded.monitoring.targetId, seeded.seat.seatId);
+  assert.equal(seeded.monitoring.configuration.seatKey, "us-fl-governor");
   const searchPortrait = portraitSourceDecision("https://www.google.com/imgres?imgurl=https://example.com/x.jpg");
   assert.equal(searchPortrait.allowedForVerified, false);
   assert.equal(searchPortrait.reason, "search_engine_image_rejected");
@@ -461,4 +480,275 @@ test("each Worker directory has its own wrangler config and no accidental civicl
   assert.ok(names.includes("scheduler"));
   assert.ok(names.includes("collector"));
   assert.ok(names.includes("validator"));
+});
+
+test("schema-contract builders refuse invented columns that live tables do not have", () => {
+  const payloads: Array<[string, Record<string, unknown>]> = [
+    ["jurisdictions", jurisdictionRow({ jurisdictionKey: "us-fl", name: "Florida", jurisdictionType: "state" })],
+    [
+      "seats",
+      seatRow({
+        seatKey: "us-fl-governor",
+        seatName: "Governor",
+        jurisdictionId: "11111111-1111-4111-8111-111111111111",
+        officeType: "governor",
+        occupancyStatus: "unknown",
+        baselineStatus: "unknown",
+        monitoringActive: false,
+      }),
+    ],
+    ["persons", personRow({ canonicalName: "Example Person" })],
+    [
+      "seat_occupancies",
+      occupancyRow({
+        seatId: "11111111-1111-4111-8111-111111111111",
+        personId: "22222222-2222-4222-8222-222222222222",
+        occupancyStatus: "unknown",
+        evidenceState: "unreviewed",
+      }),
+    ],
+    [
+      "raw_retrievals",
+      retrievalRow({
+        sourceId: "11111111-1111-4111-8111-111111111111",
+        retrievedAt: "2026-09-01T00:00:00.000Z",
+        sourceUrl: "https://example.gov",
+        contentHash: "a".repeat(64),
+        rawObjectUri: "r2://civiclenzevidence/raw/x/a.pdf",
+        retrievalStatus: "stored",
+      }),
+    ],
+    [
+      "evidence_objects",
+      evidenceRow({
+        contentHash: "a".repeat(64),
+        retrievalId: "11111111-1111-4111-8111-111111111111",
+        verificationState: "collected_unreviewed",
+      }),
+    ],
+    [
+      "claims",
+      claimRow({
+        subjectType: "seat",
+        subjectId: "11111111-1111-4111-8111-111111111111",
+        fieldKey: "current_occupant",
+        verificationState: "collected_unreviewed",
+      }),
+    ],
+    [
+      "jobs",
+      jobRow({
+        jobType: "ingest",
+        status: "queued",
+        dedupeKey: "ingest:x",
+        payload: { sourceKey: "x" },
+      }),
+    ],
+    [
+      "candidate_campaigns",
+      campaignRow({
+        personId: "11111111-1111-4111-8111-111111111111",
+        seatId: "22222222-2222-4222-8222-222222222222",
+        electionId: "33333333-3333-4333-8333-333333333333",
+      }),
+    ],
+    ["sources", sourceRow({ sourceKey: "x", name: "x", sourceUrl: "https://example.gov", active: true })],
+  ];
+  for (const [table, payload] of payloads) {
+    assertLiveWrite(table, payload);
+    for (const column of GLOBAL_FORBIDDEN_WRITE_COLUMNS) {
+      assert.equal(column in payload, false, `${table} must not write ${column}`);
+    }
+    for (const column of Object.keys(payload)) {
+      assert.ok(LIVE_TABLE_COLUMNS[table].includes(column), `${table}.${column} is not a live column`);
+    }
+  }
+  assert.throws(() => assertLiveWrite("claims", { id: "x", claim_key: "k", field_key: "x" }), /not live|unknown/);
+  assert.throws(() => assertLiveWrite("jobs", { route: "ingest", status: "queued" }), /route/);
+  assert.throws(() => assertLiveWrite("persons", { person_key: "p", canonical_name: "n" }), /person_key/);
+  assert.throws(() => assertLiveWrite("raw_retrievals", { content_sha256: "a", source_id: "s" }), /content_sha256/);
+  assert.throws(() => assertLiveWrite("raw_retrievals", { r2_key: "k", source_id: "s" }), /r2_key/);
+  assert.throws(() => assertLiveWrite("seats", { record_status: "extracted", seat_key: "x" }), /record_status/);
+});
+
+test("supabase-store write bodies never include invented columns", async () => {
+  const bodies: Array<{ path: string; body: unknown }> = [];
+  const store = createSupabaseStore({
+    url: "https://example.supabase.co",
+    serviceRoleKey: "service-role-test-key",
+    fetchImpl: async (input, init) => {
+      const path = String(input);
+      const parsed = init?.body ? JSON.parse(String(init.body)) : {};
+      bodies.push({ path, body: parsed });
+      const representation = path.includes("rpc/lease_due_job")
+        ? []
+        : [
+            {
+              jurisdiction_id: "11111111-1111-4111-8111-111111111111",
+              jurisdiction_key: "us-fl",
+              name: "Florida",
+              jurisdiction_type: "state",
+              status: "active",
+              seat_id: "22222222-2222-4222-8222-222222222222",
+              seat_key: "us-fl-governor",
+              seat_name: "Governor",
+              person_id: "33333333-3333-4333-8333-333333333333",
+              canonical_name: "Example",
+              occupancy_id: "44444444-4444-4444-8444-444444444444",
+              occupancy_status: "unknown",
+              evidence_state: "unreviewed",
+              source_id: "55555555-5555-4555-8555-555555555555",
+              source_key: "x",
+              source_url: "https://example.gov",
+              active: true,
+              health_state: "unknown",
+              retrieval_id: "66666666-6666-4666-8666-666666666666",
+              content_hash: "a".repeat(64),
+              raw_object_uri: "r2://civiclenzevidence/raw/x/a.pdf",
+              retrieval_status: "stored",
+              retrieved_at: "2026-09-01T00:00:00.000Z",
+              evidence_id: "77777777-7777-4777-8777-777777777777",
+              verification_state: "collected_unreviewed",
+              claim_id: "88888888-8888-4888-8888-888888888888",
+              field_key: "current_occupant",
+              job_id: "99999999-9999-4999-8999-999999999999",
+              job_type: "ingest",
+              dedupe_key: "ingest:x",
+              payload: {},
+              checkpoint: {},
+              attempt_count: 0,
+              max_attempts: 5,
+              priority: 100,
+              scheduled_for: "2026-09-01T00:00:00.000Z",
+              worker_run_id: "aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaaa",
+              worker_key: "civiclenz-collector",
+              runtime: "test",
+              started_at: "2026-09-01T00:00:00.000Z",
+              records_read: 0,
+              records_written: 0,
+              claims_verified: 0,
+              metadata: {},
+              monitoring_state_id: "bbbbbbbb-bbbb-4bbb-8bbb-bbbbbbbbbbbb",
+              target_type: "source",
+              target_id: "55555555-5555-4555-8555-555555555555",
+              monitoring_class: "daily",
+              consecutive_failures: 0,
+              configuration: {},
+              research_contract_id: "cccccccc-cccc-4ccc-8ccc-cccccccccccc",
+              contract_key: "governor-baseline",
+              office_class: "governor",
+              version: "1",
+              research_contract_field_id: "dddddddd-dddd-4ddd-8ddd-dddddddddddd",
+            },
+          ];
+      return new Response(JSON.stringify(representation), { status: 201 });
+    },
+  });
+  await store.upsertJurisdiction({ jurisdictionKey: "us-fl", name: "Florida", jurisdictionType: "state" });
+  await store.upsertSeat({
+    seatKey: "us-fl-governor",
+    seatName: "Governor",
+    jurisdictionId: "11111111-1111-4111-8111-111111111111",
+    officeType: "governor",
+    governmentLevel: "state",
+    occupancyStatus: "unknown",
+    baselineStatus: "unknown",
+    monitoringActive: false,
+  });
+  await store.upsertPerson({ canonicalName: "Example" });
+  await store.recordSource({ sourceKey: "x", name: "x", sourceUrl: "https://example.gov", active: true, healthState: "ok" });
+  await store.recordRawRetrieval({
+    sourceId: "55555555-5555-4555-8555-555555555555",
+    retrievedAt: "2026-09-01T00:00:00.000Z",
+    sourceUrl: "https://example.gov",
+    contentHash: "a".repeat(64),
+    rawObjectUri: "r2://civiclenzevidence/raw/x/a.pdf",
+    retrievalStatus: "stored",
+  });
+  await store.recordClaim({
+    subjectType: "seat",
+    subjectId: "22222222-2222-4222-8222-222222222222",
+    fieldKey: "current_occupant",
+    normalizedValue: "Example",
+    verificationState: "collected_unreviewed",
+  });
+  await store.scheduleJob({ dedupeKey: "ingest:x:2026-09-01", route: "ingest", sourceKey: "x" });
+  await store.leaseDueJob("civiclenz-collector");
+  for (const item of bodies) {
+    if (String(item.path).includes("/rpc/")) continue;
+    const rows = Array.isArray(item.body) ? item.body : [item.body];
+    for (const row of rows) {
+      if (!row || typeof row !== "object") continue;
+      for (const column of GLOBAL_FORBIDDEN_WRITE_COLUMNS) {
+        assert.equal(column in row, false, `${item.path} wrote forbidden ${column}`);
+      }
+    }
+  }
+});
+
+test("two concurrent leaseDueJob attempts claim exactly one queued job", async () => {
+  const store = createMemoryStore();
+  const { job } = await store.scheduleJob({
+    dedupeKey: "ingest:concurrent:2026-09-01",
+    route: "ingest",
+    sourceKey: "miami-dade-county-elected-officials",
+    scheduledFor: "2026-09-01T00:00:00.000Z",
+  });
+  const [first, second] = await Promise.all([
+    store.leaseDueJob("worker-a"),
+    store.leaseDueJob("worker-b"),
+  ]);
+  const winners = [first, second].filter(Boolean);
+  assert.equal(winners.length, 1);
+  assert.equal(winners[0]?.jobId, job.jobId);
+  assert.equal(winners[0]?.status, "leased");
+  assert.equal(winners[0]?.attemptCount, 1);
+  const leftover = first && second ? null : first ? second : first;
+  assert.equal(leftover, undefined);
+  const leased = await store.leaseJob(job.jobId, "worker-c");
+  assert.equal(leased, undefined);
+});
+
+test("workers and supabase adapter do not reference invented live columns", () => {
+  const files = [
+    "workers/cloudflare/shared/src/supabase-store.ts",
+    "workers/cloudflare/shared/src/collector.ts",
+    "workers/cloudflare/shared/src/research.ts",
+    "workers/cloudflare/shared/src/validation.ts",
+    "workers/cloudflare/shared/src/scheduler.ts",
+    "workers/cloudflare/shared/src/store.ts",
+  ];
+  const forbiddenWriteTokens = [
+    "content_sha256",
+    "r2_key",
+    "claim_key",
+    "person_key",
+    "record_status",
+    "lease_owner",
+    "dead_lettered",
+    "raw_retrieval_id",
+  ];
+  for (const rel of files) {
+    const src = readFileSync(path.join(repoRoot, rel), "utf8");
+    for (const token of forbiddenWriteTokens) {
+      assert.equal(src.includes(token), false, `${rel} still references ${token}`);
+    }
+    if (rel.endsWith("supabase-store.ts")) {
+      assert.equal(/\broute:/.test(src), false, "supabase-store must not write jobs.route");
+      assert.ok(src.includes("rpc/lease_due_job"));
+      assert.ok(src.includes("job_id="));
+      assert.ok(src.includes("claim_id="));
+    }
+  }
+  const migration = readFileSync(path.join(repoRoot, "supabase/migrations/202609020001_civic_collection_runtime.sql"), "utf8");
+  assert.match(migration, /jurisdiction_id uuid PRIMARY KEY/);
+  assert.match(migration, /seat_id uuid PRIMARY KEY/);
+  assert.match(migration, /person_id uuid PRIMARY KEY/);
+  assert.match(migration, /content_hash text/);
+  assert.match(migration, /raw_object_uri text/);
+  assert.doesNotMatch(migration, /content_sha256/);
+  assert.doesNotMatch(migration, /\br2_key\b/);
+  assert.doesNotMatch(migration, /\bclaim_key\b/);
+  assert.match(migration, /CREATE OR REPLACE FUNCTION public.lease_due_job/);
+  assert.match(migration, /FOR UPDATE SKIP LOCKED/);
 });
