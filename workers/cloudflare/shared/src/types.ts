@@ -76,6 +76,7 @@ export type QueueJobMessage = {
 export type DeadLetterPayload = {
   schemaVersion: "1.0.0";
   jobId: string;
+  jobType?: string;
   worker: string;
   sourceKey?: string;
   errorClass: string;

@@ -3,6 +3,7 @@ import type { DeadLetterPayload } from "./types.ts";
 
 export function createDeadLetterPayload(input: {
   jobId: string;
+  jobType?: string;
   worker: string;
   sourceKey?: string;
   errorClass: string;
@@ -17,6 +18,7 @@ export function createDeadLetterPayload(input: {
   return {
     schemaVersion: "1.0.0",
     jobId: input.jobId,
+    jobType: input.jobType,
     worker: input.worker,
     sourceKey: input.sourceKey,
     errorClass: input.errorClass,

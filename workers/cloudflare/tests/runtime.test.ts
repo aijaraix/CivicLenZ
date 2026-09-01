@@ -924,6 +924,10 @@ test("lease_due_job additive migration uses live job columns and SKIP LOCKED", (
   assert.match(additive, /attempt_count = attempt_count \+ 1/);
   assert.match(additive, /started_at = COALESCE\(started_at, now\(\)\)/);
   assert.match(additive, /RETURNS SETOF public\.jobs/);
+  assert.match(additive, /SET search_path = pg_catalog, public/);
+  assert.match(additive, /p_lease_seconds must be greater than zero/);
+  assert.match(additive, /REVOKE ALL ON FUNCTION public\.lease_due_job/);
+  assert.match(additive, /GRANT EXECUTE ON FUNCTION public\.lease_due_job\(text, integer, uuid\) TO service_role/);
   assert.doesNotMatch(additive, /DROP TABLE/);
   assert.doesNotMatch(additive, /DROP COLUMN/);
   assert.doesNotMatch(additive, /TRUNCATE/);

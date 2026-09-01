@@ -403,10 +403,16 @@ CREATE OR REPLACE FUNCTION public.lease_due_job(
 )
 RETURNS SETOF public.jobs
 LANGUAGE plpgsql
+SECURITY INVOKER
+SET search_path = pg_catalog, public
 AS $$
 DECLARE
   claimed public.jobs;
 BEGIN
+  IF p_lease_seconds IS NULL OR p_lease_seconds <= 0 THEN
+    RAISE EXCEPTION 'p_lease_seconds must be greater than zero';
+  END IF;
+
   UPDATE public.jobs
   SET
     status = 'leased',

@@ -20,6 +20,8 @@ export async function fetchDocument(
     maxBytes?: number;
     retrievedAt?: string;
     headers?: Record<string, string>;
+    ifNoneMatch?: string;
+    ifModifiedSince?: string;
   } = {},
 ): Promise<FetchedDocument> {
   const fetchImpl = options.fetchImpl ?? fetch;
@@ -35,6 +37,8 @@ export async function fetchDocument(
         Accept: "application/pdf,application/json,text/csv,text/html,application/xhtml+xml,application/xml,text/plain;q=0.9,*/*;q=0.5",
         "Accept-Language": "en-US,en;q=0.9",
         "Cache-Control": "no-cache",
+        ...(options.ifNoneMatch ? { "If-None-Match": options.ifNoneMatch } : {}),
+        ...(options.ifModifiedSince ? { "If-Modified-Since": options.ifModifiedSince } : {}),
         ...options.headers,
       },
     });
@@ -46,6 +50,17 @@ export async function fetchDocument(
   const contentLength = Number(response.headers.get("content-length") ?? "0");
   if (contentLength > maxBytes) {
     throw new ParserError(`payload ${contentLength} bytes exceeds Cloudflare collector limit ${maxBytes}`, true);
+  }
+  if (response.status === 304) {
+    return {
+      url: response.url || url,
+      status: 304,
+      contentType: response.headers.get("content-type") ?? undefined,
+      etag: response.headers.get("etag") ?? options.ifNoneMatch,
+      lastModified: response.headers.get("last-modified") ?? options.ifModifiedSince,
+      retrievedAt: options.retrievedAt ?? new Date().toISOString(),
+      bytes: new Uint8Array(),
+    };
   }
   if (!response.ok) {
     throw new HttpFetchError(`source returned HTTP ${response.status} for ${url}`, response.status);

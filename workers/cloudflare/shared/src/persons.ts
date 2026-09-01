@@ -1,16 +1,53 @@
 import { normalizePersonName, uuidFromName } from "./ids.ts";
 import type { OccupancyRecord, PersonRecord, SeatRecord } from "./types.ts";
 
-export const PERSON_IDENTITY_KEYS = [
-  "bioguide",
+export const PERSON_IDENTITY_PRIORITY = [
+  "person_id",
+  "official_source_id",
+  "source_person_id",
   "fec",
   "fec_id",
+  "bioguide",
   "state_id",
-  "source_person_id",
-  "wikidata",
+  "state_candidate_id",
+  "legislative_id",
+  "election_filing_id",
   "ocd_person",
+  "wikidata",
   "ballotpedia",
 ] as const;
+
+export const PERSON_IDENTITY_KEYS = PERSON_IDENTITY_PRIORITY.filter((key) => key !== "person_id");
+
+export type IdentityResolution =
+  | { status: "matched"; method: string; person: PersonRecord }
+  | { status: "unmatched"; method: "none"; queue: "manual" }
+  | { status: "conflict"; method: string; queue: "conflict"; candidates: PersonRecord[] };
+
+export function resolveIdentity(input: {
+  people: PersonRecord[];
+  occupancies: OccupancyRecord[];
+  seats: SeatRecord[];
+  candidate: UpsertPersonInput;
+}): IdentityResolution {
+  const resolved = resolveExistingPerson(input);
+  if (resolved) {
+    const method = input.candidate.personId
+      ? "person_id"
+      : identityEntries(input.candidate.externalIdentifiers).length
+        ? "external_identifier"
+        : input.candidate.seatId
+          ? "normalized_name_seat"
+          : "normalized_name_jurisdiction";
+    return { status: "matched", method, person: resolved };
+  }
+  const needle = normalizePersonName(input.candidate.canonicalName);
+  const namesakes = input.people.filter((person) => normalizePersonName(person.canonicalName) === needle);
+  if (namesakes.length > 1 && !input.candidate.seatId && !input.candidate.jurisdictionId) {
+    return { status: "conflict", method: "name_only", queue: "conflict", candidates: namesakes };
+  }
+  return { status: "unmatched", method: "none", queue: "manual" };
+}
 
 export type UpsertPersonInput = Omit<PersonRecord, "personId"> & {
   personId?: string;

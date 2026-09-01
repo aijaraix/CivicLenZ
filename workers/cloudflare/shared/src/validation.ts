@@ -1,3 +1,4 @@
+import { isGovernmentPrimary, type AuthorityTier } from "./authority.ts";
 import { isPublicationEligible } from "./claims.ts";
 import { matchPerson, matchSeat } from "./matching.ts";
 import { portraitSourceDecision } from "./portraits.ts";
@@ -14,11 +15,32 @@ export type ValidationOutcome = {
 
 type Plan = { to: ClaimStatus; reason: string };
 
+export function canAutoVerify(input: {
+  authorityTier?: AuthorityTier;
+  schemaCertified?: boolean;
+  uniqueEntityMatch: boolean;
+  hasEvidence: boolean;
+  hasContradiction: boolean;
+  consistentField?: boolean;
+}): boolean {
+  return Boolean(
+    input.authorityTier &&
+      isGovernmentPrimary(input.authorityTier) &&
+      input.schemaCertified &&
+      input.uniqueEntityMatch &&
+      input.hasEvidence &&
+      input.consistentField !== false &&
+      !input.hasContradiction,
+  );
+}
+
 export function planClaimTransition(input: {
   claim: ClaimRecord;
   entityMatched: boolean;
   hasEvidence: boolean;
   hasContradiction: boolean;
+  authorityTier?: AuthorityTier;
+  schemaCertified?: boolean;
 }): Plan {
   const { claim, entityMatched, hasEvidence, hasContradiction } = input;
   if (claim.fieldKey === "test_force_reject") {
@@ -45,6 +67,17 @@ export function planClaimTransition(input: {
         return { to: "verification_pending", reason: "portrait_gov_host_still_requires_review" };
       }
       if (!hasEvidence) return { to: "checked_no_authoritative_result", reason: "no_authoritative_evidence" };
+      if (
+        canAutoVerify({
+          authorityTier: input.authorityTier,
+          schemaCertified: input.schemaCertified,
+          uniqueEntityMatch: entityMatched,
+          hasEvidence,
+          hasContradiction,
+        })
+      ) {
+        return { to: "verified", reason: "tier1_schema_unique_evidence" };
+      }
       return { to: "verification_pending", reason: "evidence_backed_not_auto_verified" };
     default:
       return { to: claim.verificationState, reason: "no_change" };

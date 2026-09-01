@@ -35,6 +35,8 @@ See `workers/cloudflare/*/wrangler.jsonc` and the per-Worker README files.
 
 Public SELECT matches live: jurisdictions, seats, persons, occupancies, elections, candidate_campaigns, verified claims, verified evidence, research contracts/fields. Internal tables have RLS on and no policies.
 
+Operator deployment steps (do not run from this agent) are in `docs/PRODUCTION_COLLECTION_DEPLOYMENT.md`. Apply `202609020002` only after review. Never apply `202609020001` to live.
+
 ## First safe deploy order
 
 1. Confirm queues and R2 already exist (do not recreate).

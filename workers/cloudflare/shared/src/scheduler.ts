@@ -9,6 +9,14 @@ export type SchedulerPlan = {
   skippedActive: string[];
   enqueued: QueueJobMessage[];
   dryRun: boolean;
+  dueSources: number;
+  dueJobs: number;
+  dueElections: number;
+  dueMonitoringTargets: number;
+  staleClaims: number;
+  wouldEnqueue: number;
+  queueRoutes: string[];
+  dedupeKeys: string[];
 };
 
 export async function planAndEnqueue(input: {
@@ -113,7 +121,25 @@ export async function planAndEnqueue(input: {
       enqueued.push(message);
     }
   }
-  return { scheduled, skippedActive, enqueued, dryRun: input.dryRun };
+  const [elections, claims, monitoring] = await Promise.all([
+    input.store.listElections(),
+    input.store.listClaims(),
+    input.store.listMonitoringState(),
+  ]);
+  return {
+    scheduled,
+    skippedActive,
+    enqueued,
+    dryRun: input.dryRun,
+    dueSources: firstWaveIngestSources().length,
+    dueJobs: due.length,
+    dueElections: elections.filter((row) => row.electionDate && Date.parse(row.electionDate) >= now.getTime()).length,
+    dueMonitoringTargets: monitoring.filter((row) => row.active && (!row.nextCheckAt || Date.parse(row.nextCheckAt) <= now.getTime())).length,
+    staleClaims: claims.filter((claim) => claim.verificationState === "stale").length,
+    wouldEnqueue: due.length,
+    queueRoutes: due.map((job) => job.jobType),
+    dedupeKeys: due.map((job) => job.dedupeKey),
+  };
 }
 
 function queueFor(route: JobRoute, queues: RuntimeQueues) {

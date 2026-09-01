@@ -4,7 +4,9 @@ import { sha256Hex, valueHash } from "./hash.ts";
 import { fetchDocument } from "./http.ts";
 import { electionMonitorDedupeKey, heavyDedupeKey, toQueueMessage, validateDedupeKey } from "./jobs.ts";
 import { miamiDadeSeatKey } from "./miami-dade.ts";
-import { extractOfficeholders } from "./parsers.ts";
+import { dispatchSourceAdapter } from "./adapters.ts";
+import { httpUnchanged, retrievalUnchanged } from "./change-detection.ts";
+import { sourceAdapter } from "./source-config.ts";
 import { evidenceObjectKey, rawObjectUri } from "./r2-keys.ts";
 import { uuidFromName } from "./ids.ts";
 import type { CivicStore } from "./store.ts";
@@ -65,8 +67,21 @@ export async function runCollectorJob(input: {
   }
 
   try {
-    const document = await fetchDocument(sourceUrl, { fetchImpl: input.fetchImpl });
+    const config = sourceAdapter(sourceKey);
+    const priorRetrievals = await input.store.listRetrievals();
+    const prior = priorRetrievals.find((item) => item.sourceUrl === sourceUrl);
+    const document = await fetchDocument(sourceUrl, {
+      fetchImpl: input.fetchImpl,
+      ifNoneMatch: prior?.etag,
+      ifModifiedSince: prior?.lastModified,
+    });
+    if (httpUnchanged(document.status)) {
+      return { status: "unchanged", extractedCount: 0, claimsWritten: 0, sha256: prior?.contentHash };
+    }
     const sha256 = await sha256Hex(document.bytes);
+    if (retrievalUnchanged({ contentHash: prior?.contentHash, etag: prior?.etag }, { contentHash: sha256, etag: document.etag })) {
+      return { status: "unchanged", extractedCount: 0, claimsWritten: 0, sha256 };
+    }
     const r2Key = evidenceObjectKey({
       sourceKey,
       retrievedAt: document.retrievedAt,
@@ -76,23 +91,27 @@ export async function runCollectorJob(input: {
     if (!input.bucket) {
       throw new CivicError("r2_binding_missing", "EVIDENCE_BUCKET binding is required");
     }
-    await input.bucket.put(r2Key, document.bytes, {
-      contentType: document.contentType,
-      customMetadata: {
-        sourceKey,
-        sourceUrl,
-        sha256,
-        retrievedAt: document.retrievedAt,
-        parserVersion,
-      },
-    });
+    try {
+      await input.bucket.put(r2Key, document.bytes, {
+        contentType: document.contentType,
+        customMetadata: {
+          sourceKey,
+          sourceUrl,
+          sha256,
+          retrievedAt: document.retrievedAt,
+          parserVersion,
+        },
+      });
+    } catch (error) {
+      throw new CivicError("r2_write_failed", error instanceof Error ? error.message : "R2 put failed");
+    }
 
     const source = await input.store.recordSource({
       sourceKey,
-      name: sourceKey,
+      name: config?.sourceName ?? sourceKey,
       sourceUrl,
-      sourceType: "official_directory",
-      authorityTier: "official",
+      sourceType: config?.sourceType ?? "html_directory",
+      authorityTier: config?.authorityTier ?? "TIER_1_PRIMARY_OFFICIAL",
       host: new URL(sourceUrl).host,
       active: true,
       healthState: "ok",
@@ -109,7 +128,7 @@ export async function runCollectorJob(input: {
       contentHash: sha256,
       rawObjectUri: rawObjectUri(EVIDENCE_BUCKET_NAME, r2Key),
       byteLength: document.bytes.byteLength,
-      parserKey: "miami-dade-elected-officials",
+      parserKey: config?.parserKey ?? "unknown",
       parserVersion,
       retrievalStatus: "stored",
     });
@@ -117,11 +136,24 @@ export async function runCollectorJob(input: {
     let holders: ExtractedOfficeholder[] = [];
     let retrievalStatus = "parsed";
     try {
-      holders = await extractOfficeholders({
+      const parsed = await dispatchSourceAdapter({
         sourceKey,
         bytes: document.bytes,
         contentType: document.contentType,
+        sourceUrl,
       });
+      holders = parsed.holders;
+      if (holders.length === 0 && parsed.verificationState === "source_found") {
+        await input.store.recordClaim({
+          subjectType: "source",
+          subjectId: source.sourceId,
+          fieldKey: "source_discovery",
+          normalizedValue: "discovered_unverified",
+          displayValue: parsed.discoveredUrls.join(" "),
+          valueHash: await valueHash("source_discovery", parsed.discoveredUrls.join(" ")),
+          verificationState: "source_found",
+        });
+      }
       await persistExtractedHolders(input.store, {
         sourceKey,
         sourceUrl,
