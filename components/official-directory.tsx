@@ -72,7 +72,7 @@ export function OfficialDirectory({ officials }: { officials: OfficialProfile[] 
         <div>
           <h2>{filtered.length} Florida official{filtered.length === 1 ? '' : 's'} indexed</h2>
         </div>
-        <p>Baseline records come from official government directories. Deep profile research is added section by section.</p>
+        <p>These cards are reviewed canonical profiles. Unreviewed collector extracts are not shown here.</p>
       </div>
 
       {filtered.length ? (

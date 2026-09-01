@@ -11,6 +11,7 @@ on:
       - 'workers/ingestion/collect_florida_senate.py'
       - 'workers/ingestion/collect_florida_house.py'
       - 'workers/ingestion/collect_florida_statewide_executive.py'
+      - 'workers/ingestion/collect_miami_dade.py'
       - 'workers/ingestion/run_baseline_collectors.py'
       - 'workers/enrichment/build_profile_research_queue.py'
       - 'workers/enrichment/collect_identity_contact_candidates.py'
@@ -81,6 +82,7 @@ jobs:
           senate=$(find data/staging/florida/state-senate -name '*.json' -type f | wc -l | tr -d ' ')
           house=$(find data/staging/florida/state-house -name '*.json' -type f | wc -l | tr -d ' ')
           statewide=$(find data/staging/florida/statewide-executive -name '*.json' -type f | wc -l | tr -d ' ')
+          miamidade=$(find data/staging/florida/local/miami-dade -name '*.json' -type f | wc -l | tr -d ' ')
           research_tasks=$(python -c "import json; print(json.load(open('data/operations/florida-profile-research-queue.json'))['taskCount'])")
           sections=$(python -c "import json; print(json.load(open('data/operations/florida-profile-research-queue.json'))['requiredSectionCountPerSeat'])")
           identity_records=$(find data/research-staging/florida/identity-contact -name '*.json' -type f | wc -l | tr -d ' ')
@@ -105,10 +107,11 @@ jobs:
           print(sum(bool(item.get('contactCandidates')) for item in records))
           PY
           )
-          total=$((senate + house + statewide))
+          total=$((senate + house + statewide + miamidade))
           echo "senate=$senate" >> "$GITHUB_OUTPUT"
           echo "house=$house" >> "$GITHUB_OUTPUT"
           echo "statewide=$statewide" >> "$GITHUB_OUTPUT"
+          echo "miamidade=$miamidade" >> "$GITHUB_OUTPUT"
           echo "total=$total" >> "$GITHUB_OUTPUT"
           echo "research_tasks=$research_tasks" >> "$GITHUB_OUTPUT"
           echo "identity_records=$identity_records" >> "$GITHUB_OUTPUT"
@@ -118,7 +121,8 @@ jobs:
             echo "- Florida senators: **$senate**"
             echo "- Florida House seats/officeholders: **$house**"
             echo "- Other statewide elected executive officers: **$statewide**"
-            echo "- Total Florida state-government staging records: **$total**"
+            echo "- Miami-Dade County mayor/commission/constitutional officers: **$miamidade**"
+            echo "- Total Florida staging records in this run: **$total**"
             echo "- Florida seat/profile research tasks: **$research_tasks**"
             echo "- Standard research sections per seat: **$sections**"
             echo "- Official-source pages successfully inspected: **$identity_successes / $identity_records**"
@@ -130,6 +134,7 @@ jobs:
           test "$senate" -ge 30
           test "$house" -ge 115
           test "$statewide" -eq 3
+          test "$miamidade" -ge 14
           test "$research_tasks" -ge 160
           test "$sections" -ge 20
           test "$identity_records" -ge 160

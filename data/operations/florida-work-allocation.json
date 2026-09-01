@@ -2,7 +2,7 @@
   "allocationVersion": "1.0.0",
   "state": "Florida",
   "stateCode": "FL",
-  "updatedAt": "2026-07-16T06:00:00Z",
+  "updatedAt": "2026-09-02T00:00:00Z",
   "purpose": "Prevent duplicate collection work and merge conflicts while multiple CivicLenZ agents complete Florida in parallel.",
   "rules": {
     "claimBeforeCollection": true,
@@ -144,6 +144,43 @@
         "Do not publish unreviewed portraits, campaign promises, finance interpretations, allegations, trackers, or scores.",
         "Do not write directly to canonical public profiles; use the shared promotion pipeline."
       ]
+    },
+    {
+      "workstreamId": "fl-miami-dade-county-directory",
+      "ownerKey": "cursor-civiclenz-south-florida-slice",
+      "status": "active_claimed",
+      "description": "Collect the current Miami-Dade County mayor, Board of County Commissioners, and county constitutional officers from the official Supervisor of Elections directory into review-only staging.",
+      "scope": {
+        "governmentLevels": ["county"],
+        "regions": ["miami_dade"],
+        "counties": ["Miami-Dade"],
+        "officeFamilies": [
+          "county_mayor",
+          "county_commission",
+          "sheriff",
+          "clerk_of_circuit_court_and_comptroller",
+          "supervisor_of_elections",
+          "tax_collector",
+          "property_appraiser"
+        ],
+        "dataPhases": ["current_officeholder"]
+      },
+      "branchPrefix": "cursor/",
+      "outputRoots": [
+        "data/staging/florida/local/miami-dade",
+        "data/operations/florida/miami-dade"
+      ],
+      "claimedAt": "2026-09-02T00:00:00Z",
+      "heartbeat": {
+        "expectedCadence": "daily",
+        "staleAfterHours": 36,
+        "lastProgressAt": "2026-09-02T00:00:00Z"
+      },
+      "exclusions": [
+        "Do not collect Broward, Palm Beach, or other South Florida counties in this workstream.",
+        "Do not extract federal, state legislative, school-board, soil-and-water, or community-council rows from the same directory.",
+        "Do not write directly to canonical public profiles; staging remains extracted_unreviewed."
+      ]
     }
   ],
   "unassignedLocalRegions": [
@@ -153,7 +190,7 @@
     "tampa_bay_and_nature_coast",
     "southwest_florida",
     "treasure_coast_and_palm_beach",
-    "broward_and_miami_dade",
+    "broward",
     "florida_keys"
   ]
 }

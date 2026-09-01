@@ -73,6 +73,18 @@
       "expectedMinimum": 3,
       "expectedMaximum": 3,
       "refreshClass": "term_based"
+    },
+    {
+      "collectorKey": "miami-dade-county-baseline",
+      "sourceKey": "miami-dade-county-elected-officials",
+      "group": "florida",
+      "phase": "baseline",
+      "enabled": true,
+      "command": ["-m", "workers.ingestion.collect_miami_dade"],
+      "outputDirectory": "data/staging/florida/local/miami-dade",
+      "expectedMinimum": 14,
+      "expectedMaximum": 20,
+      "refreshClass": "term_based"
     }
   ]
 }

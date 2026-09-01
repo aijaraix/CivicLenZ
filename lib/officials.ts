@@ -293,10 +293,11 @@ type BaselineRecord = {
 };
 
 const canonicalDataRoot = path.join(process.cwd(), 'data', 'officials');
-const baselineRoots = [
+const reviewStagingRoots = [
   path.join(process.cwd(), 'data', 'staging', 'florida', 'state-house'),
   path.join(process.cwd(), 'data', 'staging', 'florida', 'state-senate'),
   path.join(process.cwd(), 'data', 'staging', 'florida', 'statewide-executive'),
+  path.join(process.cwd(), 'data', 'staging', 'florida', 'local'),
   path.join(process.cwd(), 'data', 'staging', 'federal', 'us-house'),
   path.join(process.cwd(), 'data', 'staging', 'federal', 'us-senate'),
 ];
@@ -474,21 +475,8 @@ function dedupeKey(official: OfficialProfile): string {
     .replace(/[^a-z0-9|]+/g, '');
 }
 
-export function getAllOfficials(): OfficialProfile[] {
-  const canonical = findJsonFiles(canonicalDataRoot)
-    .map((filePath) => JSON.parse(fs.readFileSync(filePath, 'utf8')) as OfficialProfile)
-    .filter((official) => official.recordStatus !== 'duplicate' && official.recordStatus !== 'archived')
-    .map((official) => ({ ...official, publicationStage: 'reviewed_profile' as const }));
-
-  const canonicalKeys = new Set(canonical.map(dedupeKey));
-  const baseline = baselineRoots
-    .flatMap(findJsonFiles)
-    .map((filePath) => JSON.parse(fs.readFileSync(filePath, 'utf8')) as BaselineRecord)
-    .map(baselineToOfficial)
-    .filter((official): official is OfficialProfile => Boolean(official))
-    .filter((official) => !canonicalKeys.has(dedupeKey(official)));
-
-  return [...canonical, ...baseline].sort((a, b) => {
+function sortOfficials(officials: OfficialProfile[]): OfficialProfile[] {
+  return [...officials].sort((a, b) => {
     const levelOrder = (official: OfficialProfile) => {
       if (official.office.governmentLevel === 'federal') return 0;
       if (official.office.branch === 'executive') return 1;
@@ -499,6 +487,31 @@ export function getAllOfficials(): OfficialProfile[] {
 
     return levelOrder(a) - levelOrder(b) || a.person.displayName.localeCompare(b.person.displayName);
   });
+}
+
+function loadCanonicalOfficials(): OfficialProfile[] {
+  return findJsonFiles(canonicalDataRoot)
+    .map((filePath) => JSON.parse(fs.readFileSync(filePath, 'utf8')) as OfficialProfile)
+    .filter((official) => official.recordStatus !== 'duplicate' && official.recordStatus !== 'archived')
+    .map((official) => ({ ...official, publicationStage: 'reviewed_profile' as const }));
+}
+
+export function getAllOfficials(): OfficialProfile[] {
+  // Public directory cards come only from reviewed canonical records.
+  return sortOfficials(loadCanonicalOfficials());
+}
+
+export function getStagingRecordsForReview(): OfficialProfile[] {
+  const canonicalKeys = new Set(loadCanonicalOfficials().map(dedupeKey));
+  const staging = reviewStagingRoots
+    .flatMap(findJsonFiles)
+    .filter((filePath) => !filePath.split(path.sep).includes('source-discovery'))
+    .map((filePath) => JSON.parse(fs.readFileSync(filePath, 'utf8')) as BaselineRecord)
+    .map(baselineToOfficial)
+    .filter((official): official is OfficialProfile => Boolean(official))
+    .filter((official) => !canonicalKeys.has(dedupeKey(official)));
+
+  return sortOfficials(staging);
 }
 
 export function getOfficialBySlug(slug: string): OfficialProfile | undefined {

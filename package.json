@@ -7,7 +7,8 @@
     "build": "next build",
     "start": "next start",
     "typecheck": "tsc --noEmit",
-    "validate:data": "python scripts/validate_officials.py"
+    "validate:data": "python scripts/validate_officials.py",
+    "test:public-officials": "node --experimental-strip-types --no-warnings tests/assert_public_officials_listing.ts"
   },
   "dependencies": {
     "next": "^16.2.0",
