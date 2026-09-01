@@ -11,7 +11,7 @@ export default function OfficialsPage() {
           <span className="eyebrow">Florida official directory</span>
           <h1>Find the people representing Florida</h1>
           <p>
-            CivicLenZ now publishes validated baseline records from official government directories while deeper research—contact details, biography, votes, promises, finance, and evidence—is completed.
+            CivicLenZ publishes reviewed official profiles. Newly collected directory extracts remain in staging until a reviewer promotes them.
           </p>
         </div>
       </section>

@@ -1,6 +1,6 @@
 {
-  "registryVersion": "1.2.0",
-  "updatedAt": "2026-07-16T00:00:00Z",
+  "registryVersion": "1.3.0",
+  "updatedAt": "2026-09-02T00:00:00Z",
   "sources": [
     {
       "sourceKey": "us-house-members",
@@ -84,6 +84,20 @@
       "reviewRequired": true,
       "enabled": true,
       "notes": "The Governor remains a canonical seed profile. This collector currently verifies the Attorney General, Chief Financial Officer, and Commissioner of Agriculture from their official agency websites."
+    },
+    {
+      "sourceKey": "miami-dade-county-elected-officials",
+      "name": "Miami-Dade County Supervisor of Elections — Current Elected Officials",
+      "jurisdiction": "Miami-Dade County, Florida",
+      "sourceTier": "primary_official",
+      "sourceType": "pdf_directory",
+      "url": "https://www.miamidade.gov/elections/library/reports/elected-officials.pdf",
+      "collectionMode": "download_and_parse",
+      "schedule": "daily_during_aggregation",
+      "targets": ["people", "offices", "office_terms", "county_commission", "county_mayor", "constitutional_officers"],
+      "reviewRequired": true,
+      "enabled": true,
+      "notes": "Single official roster for the county mayor, 13-member Board of County Commissioners, and county constitutional officers. Federal, state, school-board, and community-council rows on the same PDF are ignored."
     },
     {
       "sourceKey": "florida-campaign-finance",
