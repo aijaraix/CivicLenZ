@@ -29,7 +29,9 @@ See `workers/cloudflare/*/wrangler.jsonc` and the per-Worker README files.
 - Entity-specific PKs only (`jurisdiction_id`, `seat_id`, `person_id`, `job_id`, …). Never generic `id`.
 - Claims use lowercase `verification_state`. Jobs use `queued|leased|running|succeeded|failed|dead_letter|cancelled`.
 - Raw bytes are stored as `content_hash` + `raw_object_uri` (`r2://civiclenzevidence/{key}`), not `content_sha256` / `r2_key`.
-- `lease_due_job(p_leased_by, p_lease_seconds, p_job_id)` is **new relative to live**. After review, add it to production via a **new additive migration**. Do not apply this reconstruction to live.
+- Occupancies: live unique is the partial index `UNIQUE (seat_id) WHERE occupancy_status IN ('current','acting')`. Adapters query `seat_id + person_id + start_date` then UPDATE/INSERT. They do **not** use `on_conflict=seat_id,person_id,start_date` (that constraint is not live).
+- Persons: no `UNIQUE(canonical_name)`. Resolve by `person_id`, then external identifiers, then name plus seat/jurisdiction occupancy context. Same display name can be two people.
+- `lease_due_job` is **not on live**. Additive file: `supabase/migrations/202609020002_atomic_job_leasing.sql`. After review, apply that file only. Do not apply `202609020001` to production.
 
 Public SELECT matches live: jurisdictions, seats, persons, occupancies, elections, candidate_campaigns, verified claims, verified evidence, research contracts/fields. Internal tables have RLS on and no policies.
 

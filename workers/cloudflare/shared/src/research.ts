@@ -52,6 +52,8 @@ export async function upsertBaselineResearchContract(
   });
   const person = await store.upsertPerson({
     canonicalName: input.personDisplayName,
+    seatId: seat.seatId,
+    jurisdictionId: jurisdiction.jurisdictionId,
   });
   const occupancy = await store.upsertOccupancy({
     seatId: seat.seatId,

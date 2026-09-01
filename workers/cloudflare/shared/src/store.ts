@@ -1,9 +1,15 @@
 import { CivicError, StoreWriteError } from "./errors.ts";
 import { valueHash } from "./hash.ts";
-import { isUuid, newId, normalizePersonName, uuidFromName } from "./ids.ts";
+import { isUuid, newId, uuidFromName } from "./ids.ts";
 import { canTransitionClaim, transitionClaim } from "./claims.ts";
 import { hasActiveJob, jobDedupeKey } from "./jobs.ts";
-import { matchPerson, reusePersonForWinningCandidate } from "./matching.ts";
+import { demoteOccupancy, findOccupancy, occupanciesToDemote } from "./occupancy.ts";
+import {
+  mergeExternalIdentifiers,
+  personIdFromExternalIdentifiers,
+  resolveExistingPerson,
+  type UpsertPersonInput,
+} from "./persons.ts";
 import type {
   CandidateCampaignRecord,
   ClaimEvidenceRecord,
@@ -42,7 +48,7 @@ export type ScheduleJobInput = {
 export type CivicStore = {
   upsertJurisdiction(input: Omit<JurisdictionRecord, "jurisdictionId"> & { jurisdictionId?: string }): Promise<JurisdictionRecord>;
   upsertSeat(input: Omit<SeatRecord, "seatId"> & { seatId?: string }): Promise<SeatRecord>;
-  upsertPerson(input: Omit<PersonRecord, "personId"> & { personId?: string }): Promise<PersonRecord>;
+  upsertPerson(input: UpsertPersonInput): Promise<PersonRecord>;
   upsertOccupancy(input: Omit<OccupancyRecord, "occupancyId"> & { occupancyId?: string }): Promise<OccupancyRecord>;
   upsertElection(input: Omit<ElectionRecord, "electionId"> & { electionId?: string; seatId: string }): Promise<ElectionRecord>;
   upsertCandidateCampaign(input: Omit<CandidateCampaignRecord, "candidateCampaignId"> & { candidateCampaignId?: string }): Promise<CandidateCampaignRecord>;
@@ -133,7 +139,7 @@ type MemoryTables = {
 
 function isLeasable(job: JobRecord, nowMs: number): boolean {
   if (job.status === "queued") return Date.parse(job.scheduledFor) <= nowMs;
-  if (job.status === "leased") return !job.leaseExpiresAt || Date.parse(job.leaseExpiresAt) <= nowMs;
+  if (job.status === "leased") return Boolean(job.leaseExpiresAt && Date.parse(job.leaseExpiresAt) < nowMs);
   return false;
 }
 
@@ -162,6 +168,16 @@ export function createMemoryStore(): CivicStore & { tables: MemoryTables } {
   const serializeLease = <T>(fn: () => T | Promise<T>): Promise<T> => {
     const run = leaseTail.then(fn, fn);
     leaseTail = run.then(
+      () => undefined,
+      () => undefined,
+    );
+    return run;
+  };
+
+  let personTail = Promise.resolve();
+  const serializePerson = <T>(fn: () => T | Promise<T>): Promise<T> => {
+    const run = personTail.then(fn, fn);
+    personTail = run.then(
       () => undefined,
       () => undefined,
     );
@@ -214,32 +230,62 @@ export function createMemoryStore(): CivicStore & { tables: MemoryTables } {
       return record;
     },
     async upsertPerson(input) {
-      const existing = matchPerson([...tables.persons.values()], { canonicalName: input.canonicalName }).record;
-      const occupantReuse = reusePersonForWinningCandidate({ existingPerson: existing });
-      if (occupantReuse) {
-        const merged: PersonRecord = {
-          ...occupantReuse,
-          ...input,
-          personId: occupantReuse.personId,
-          canonicalName: occupantReuse.canonicalName,
-        };
-        tables.persons.set(occupantReuse.personId, merged);
-        return merged;
-      }
-      const personId = input.personId ?? (await uuidFromName(`person:${normalizePersonName(input.canonicalName)}`));
-      const record: PersonRecord = { ...input, personId };
-      tables.persons.set(personId, record);
-      return record;
-    },
-    async upsertOccupancy(input) {
-      for (const item of tables.occupancies.values()) {
-        if (item.seatId === input.seatId && item.personId === input.personId && item.startDate === input.startDate) {
-          const merged = { ...item, ...input, occupancyId: item.occupancyId };
-          tables.occupancies.set(item.occupancyId, merged);
+      return serializePerson(async () => {
+        const existing = resolveExistingPerson({
+          people: [...tables.persons.values()],
+          occupancies: [...tables.occupancies.values()],
+          seats: [...tables.seats.values()],
+          candidate: input,
+        });
+        if (existing) {
+          const merged: PersonRecord = {
+            ...existing,
+            ...input,
+            personId: existing.personId,
+            canonicalName: existing.canonicalName,
+            externalIdentifiers: mergeExternalIdentifiers(existing.externalIdentifiers, input.externalIdentifiers),
+          };
+          tables.persons.set(existing.personId, merged);
           return merged;
         }
+        const personId =
+          input.personId ?? (await personIdFromExternalIdentifiers(input.externalIdentifiers)) ?? newId();
+        const collision = tables.persons.get(personId);
+        if (collision) {
+          const merged: PersonRecord = {
+            ...collision,
+            ...input,
+            personId: collision.personId,
+            canonicalName: collision.canonicalName,
+            externalIdentifiers: mergeExternalIdentifiers(collision.externalIdentifiers, input.externalIdentifiers),
+          };
+          tables.persons.set(collision.personId, merged);
+          return merged;
+        }
+        const record: PersonRecord = {
+          ...input,
+          personId,
+          externalIdentifiers: input.externalIdentifiers,
+        };
+        tables.persons.set(personId, record);
+        return record;
+      });
+    },
+    async upsertOccupancy(input) {
+      const existing = findOccupancy([...tables.occupancies.values()], input);
+      const occupancyId = existing?.occupancyId ?? input.occupancyId ?? newId();
+      for (const row of occupanciesToDemote([...tables.occupancies.values()], {
+        seatId: input.seatId,
+        keepOccupancyId: occupancyId,
+        nextStatus: input.occupancyStatus,
+      })) {
+        tables.occupancies.set(row.occupancyId, demoteOccupancy(row, input.startDate));
       }
-      const record: OccupancyRecord = { ...input, occupancyId: input.occupancyId ?? newId() };
+      const record: OccupancyRecord = {
+        ...existing,
+        ...input,
+        occupancyId,
+      };
       tables.occupancies.set(record.occupancyId, record);
       return record;
     },

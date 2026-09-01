@@ -1,5 +1,12 @@
 import { StoreWriteError, sanitizeErrorMessage } from "./errors.ts";
 import { isUuid, uuidFromName } from "./ids.ts";
+import { DEMOTED_OCCUPANCY_STATUS, isCurrentOrActing } from "./occupancy.ts";
+import {
+  identityEntries,
+  mergeExternalIdentifiers,
+  personIdFromExternalIdentifiers,
+  resolveExistingPerson,
+} from "./persons.ts";
 import {
   assertLiveWrite,
   campaignRow,
@@ -100,6 +107,29 @@ export function createSupabaseStore(config: SupabaseConfig): CivicStore {
     return rows[0] as T;
   };
 
+  const insertOrConflict = async (table: string, row: Json): Promise<{ row?: Json; conflict: boolean }> => {
+    const body = liveWriteBody(table, row);
+    const headers = new Headers();
+    headers.set("apikey", key);
+    headers.set("Authorization", `Bearer ${key}`);
+    headers.set("Content-Type", "application/json");
+    headers.set("Prefer", "return=representation");
+    let response: Response;
+    try {
+      response = await fetchImpl(`${baseUrl}/rest/v1/${table}`, { method: "POST", headers, body });
+    } catch (error) {
+      throw new StoreWriteError(`Supabase request failed: ${error instanceof Error ? error.message : "network error"}`);
+    }
+    const text = await response.text();
+    const sanitized = sanitizeErrorMessage(text, [key]);
+    if (response.status === 409) return { conflict: true };
+    if (!response.ok) {
+      throw new StoreWriteError(`Supabase write/read failed HTTP ${response.status}: ${sanitized.slice(0, 300)}`);
+    }
+    const rows = text ? (JSON.parse(sanitized) as Json[]) : [];
+    return { row: rows[0], conflict: false };
+  };
+
   const patch = async <T>(table: string, filter: string, row: Json): Promise<T[]> => {
     const body = liveWriteBody(table, row);
     return request<T[]>(`${table}?${filter}`, {
@@ -132,27 +162,79 @@ export function createSupabaseStore(config: SupabaseConfig): CivicStore {
       return fromSeat(await upsert("seats", seatRow(input), "seat_key"));
     },
     async upsertPerson(input) {
-      const existing = await request<Json[]>(
-        `persons?canonical_name=eq.${encodeURIComponent(input.canonicalName)}&limit=1`,
-      );
-      if (existing[0]) {
-        const personId = String(existing[0].person_id);
-        const rows = await patch("persons", `person_id=eq.${personId}`, personRow({ ...input, personId }));
-        return fromPerson(rows[0] ?? existing[0]);
+      const people = (await request<Json[]>("persons?select=*")).map(fromPerson);
+      const occupancies = (await request<Json[]>("seat_occupancies?select=*")).map(fromOccupancy);
+      const seats = (await request<Json[]>("seats?select=*")).map(fromSeat);
+      const existing = resolveExistingPerson({ people, occupancies, seats, candidate: input });
+      if (existing) {
+        const personId = existing.personId;
+        const rows = await patch(
+          "persons",
+          `person_id=eq.${personId}`,
+          personRow({
+            ...input,
+            personId,
+            externalIdentifiers: mergeExternalIdentifiers(existing.externalIdentifiers, input.externalIdentifiers),
+          }),
+        );
+        return fromPerson(rows[0] ?? { person_id: personId, canonical_name: existing.canonicalName });
       }
-      return fromPerson(await insert("persons", personRow(input)));
+
+      const personId = input.personId ?? (await personIdFromExternalIdentifiers(input.externalIdentifiers));
+      const attempt = await insertOrConflict("persons", personRow({ ...input, personId }));
+      if (attempt.row) return fromPerson(attempt.row);
+      if (attempt.conflict && personId) {
+        const again = await request<Json[]>(`persons?person_id=eq.${personId}&limit=1`);
+        if (again[0]) return fromPerson(again[0]);
+      }
+      if (attempt.conflict) {
+        const identifiers = identityEntries(input.externalIdentifiers);
+        for (const [key, value] of identifiers) {
+          const rows = await request<Json[]>(
+            `persons?external_identifiers->>${key}=eq.${encodeURIComponent(value)}&limit=1`,
+          );
+          if (rows[0]) return fromPerson(rows[0]);
+        }
+      }
+      throw new StoreWriteError("person insert conflicted and re-query found no row");
     },
     async upsertOccupancy(input) {
-      if (input.startDate) {
-        return fromOccupancy(await upsert("seat_occupancies", occupancyRow(input), "seat_id,person_id,start_date"));
+      const startFilter = input.startDate ? `start_date=eq.${input.startDate}` : "start_date=is.null";
+      const lookup = input.occupancyId
+        ? `occupancy_id=eq.${input.occupancyId}`
+        : `seat_id=eq.${input.seatId}&person_id=eq.${input.personId}&${startFilter}`;
+      const existing = await request<Json[]>(`seat_occupancies?${lookup}&limit=1`);
+      const occupancyId = input.occupancyId ?? (existing[0] ? String(existing[0].occupancy_id) : undefined);
+
+      if (isCurrentOrActing(input.occupancyStatus)) {
+        const current = await request<Json[]>(
+          `seat_occupancies?seat_id=eq.${input.seatId}&occupancy_status=in.(current,acting)`,
+        );
+        for (const row of current) {
+          if (occupancyId && String(row.occupancy_id) === occupancyId) continue;
+          await patch("seat_occupancies", `occupancy_id=eq.${String(row.occupancy_id)}`, {
+            occupancy_status: DEMOTED_OCCUPANCY_STATUS,
+            end_date: input.startDate,
+            updated_at: new Date().toISOString(),
+          });
+        }
       }
-      return fromOccupancy(await insert("seat_occupancies", occupancyRow(input)));
+
+      if (existing[0]) {
+        const rows = await patch(
+          "seat_occupancies",
+          `occupancy_id=eq.${String(existing[0].occupancy_id)}`,
+          occupancyRow({ ...input, occupancyId: String(existing[0].occupancy_id) }),
+        );
+        return fromOccupancy(rows[0] ?? existing[0]);
+      }
+      return fromOccupancy(await insert("seat_occupancies", occupancyRow({ ...input, occupancyId })));
     },
     async upsertElection(input) {
       return fromElection(await upsert("elections", electionRow({ ...input, seatId: input.seatId }), "election_key"));
     },
     async upsertCandidateCampaign(input) {
-      return fromCampaign(await upsert("candidate_campaigns", campaignRow(input), "person_id,seat_id,election_id"));
+      return fromCampaign(await upsert("candidate_campaigns", campaignRow(input), "person_id,election_id,seat_id"));
     },
     async recordSource(input) {
       return fromSource(await upsert("sources", sourceRow(input), "source_key"));

@@ -735,6 +735,8 @@ test("workers and supabase adapter do not reference invented live columns", () =
     }
     if (rel.endsWith("supabase-store.ts")) {
       assert.equal(/\broute:/.test(src), false, "supabase-store must not write jobs.route");
+      assert.equal(src.includes("on_conflict=seat_id,person_id,start_date"), false);
+      assert.equal(src.includes("seat_id,person_id,start_date"), false);
       assert.ok(src.includes("rpc/lease_due_job"));
       assert.ok(src.includes("job_id="));
       assert.ok(src.includes("claim_id="));
@@ -749,6 +751,216 @@ test("workers and supabase adapter do not reference invented live columns", () =
   assert.doesNotMatch(migration, /content_sha256/);
   assert.doesNotMatch(migration, /\br2_key\b/);
   assert.doesNotMatch(migration, /\bclaim_key\b/);
-  assert.match(migration, /CREATE OR REPLACE FUNCTION public.lease_due_job/);
-  assert.match(migration, /FOR UPDATE SKIP LOCKED/);
+  assert.doesNotMatch(migration, /^\s*UNIQUE \(seat_id, person_id, start_date\)/m);
+  assert.doesNotMatch(migration, /^\s*UNIQUE \(canonical_name\)/m);
+  assert.doesNotMatch(migration, /canonical_name text NOT NULL UNIQUE/);
+  assert.match(migration, /occupancy_status IN \('current', 'acting'\)/);
+});
+
+test("occupancy upsert queries then updates; current/acting is one per seat", async () => {
+  const store = createMemoryStore();
+  const seatId = "aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaaa";
+  const firstPerson = await store.upsertPerson({ canonicalName: "Alex Rivera" });
+  const secondPerson = await store.upsertPerson({ canonicalName: "Blair Chen" });
+  const first = await store.upsertOccupancy({
+    seatId,
+    personId: firstPerson.personId,
+    startDate: "2020-01-07",
+    occupancyStatus: "current",
+    evidenceState: "unreviewed",
+  });
+  const again = await store.upsertOccupancy({
+    seatId,
+    personId: firstPerson.personId,
+    startDate: "2020-01-07",
+    occupancyStatus: "current",
+    evidenceState: "reviewed",
+  });
+  assert.equal(again.occupancyId, first.occupancyId);
+  assert.equal(again.evidenceState, "reviewed");
+
+  const successor = await store.upsertOccupancy({
+    seatId,
+    personId: secondPerson.personId,
+    startDate: "2024-01-02",
+    occupancyStatus: "current",
+    evidenceState: "unreviewed",
+  });
+  const rows = await store.listOccupancies();
+  assert.equal(rows.filter((row) => row.occupancyStatus === "current").length, 1);
+  assert.equal(rows.find((row) => row.occupancyId === first.occupancyId)?.occupancyStatus, "former");
+  assert.equal(successor.occupancyStatus, "current");
+});
+
+test("same person can hold two non-overlapping terms in the same seat", async () => {
+  const store = createMemoryStore();
+  const seatId = "bbbbbbbb-bbbb-4bbb-8bbb-bbbbbbbbbbbb";
+  const person = await store.upsertPerson({ canonicalName: "Casey Ng" });
+  const termOne = await store.upsertOccupancy({
+    seatId,
+    personId: person.personId,
+    startDate: "2015-01-06",
+    endDate: "2019-01-08",
+    occupancyStatus: "former",
+    evidenceState: "unreviewed",
+  });
+  const termTwo = await store.upsertOccupancy({
+    seatId,
+    personId: person.personId,
+    startDate: "2023-01-03",
+    occupancyStatus: "current",
+    evidenceState: "unreviewed",
+  });
+  assert.notEqual(termOne.occupancyId, termTwo.occupancyId);
+  const rows = (await store.listOccupancies()).filter((row) => row.personId === person.personId && row.seatId === seatId);
+  assert.equal(rows.length, 2);
+});
+
+test("two different people with the same canonical_name stay two person_id rows", async () => {
+  const store = createMemoryStore();
+  const left = await store.upsertPerson({ canonicalName: "John Smith" });
+  const right = await store.upsertPerson({ canonicalName: "John Smith" });
+  assert.notEqual(left.personId, right.personId);
+  assert.equal((await store.listPersons()).length, 2);
+});
+
+test("concurrent identified-person inserts re-query on collision instead of merging by name", async () => {
+  const store = createMemoryStore();
+  const [first, second] = await Promise.all([
+    store.upsertPerson({
+      canonicalName: "Ron DeSantis",
+      externalIdentifiers: { bioguide: "D000647" },
+    }),
+    store.upsertPerson({
+      canonicalName: "Ron DeSantis",
+      externalIdentifiers: { bioguide: "D000647" },
+    }),
+  ]);
+  assert.equal(first.personId, second.personId);
+  assert.equal((await store.listPersons()).length, 1);
+
+  const otherJohn = await store.upsertPerson({
+    canonicalName: "Ron DeSantis",
+    externalIdentifiers: { bioguide: "OTHER-PERSON" },
+  });
+  assert.notEqual(otherJohn.personId, first.personId);
+  assert.equal((await store.listPersons()).length, 2);
+});
+
+test("name plus seat occupancy context reuses the occupant, not a namesake", async () => {
+  const store = createMemoryStore();
+  const jurisdiction = await store.upsertJurisdiction({
+    jurisdictionKey: "us-fl",
+    name: "Florida",
+    jurisdictionType: "state",
+  });
+  const seat = await store.upsertSeat({
+    seatKey: "us-fl-governor",
+    seatName: "Governor",
+    officeType: "governor",
+    governmentLevel: "state",
+    jurisdictionId: jurisdiction.jurisdictionId,
+    occupancyStatus: "unknown",
+    baselineStatus: "unknown",
+    monitoringActive: false,
+  });
+  const occupant = await store.upsertPerson({ canonicalName: "Jane Doe" });
+  await store.upsertOccupancy({
+    seatId: seat.seatId,
+    personId: occupant.personId,
+    occupancyStatus: "current",
+    evidenceState: "unreviewed",
+  });
+  const namesake = await store.upsertPerson({ canonicalName: "Jane Doe" });
+  assert.notEqual(namesake.personId, occupant.personId);
+  const resolved = await store.upsertPerson({
+    canonicalName: "Jane Doe",
+    seatId: seat.seatId,
+    jurisdictionId: jurisdiction.jurisdictionId,
+  });
+  assert.equal(resolved.personId, occupant.personId);
+});
+
+test("supabase occupancy writes never use on_conflict seat_id,person_id,start_date", async () => {
+  const urls: string[] = [];
+  const store = createSupabaseStore({
+    url: "https://example.supabase.co",
+    serviceRoleKey: "service-role-test-key",
+    fetchImpl: async (input) => {
+      urls.push(String(input));
+      return new Response(JSON.stringify([]), { status: 200 });
+    },
+  });
+  await store.upsertOccupancy({
+    seatId: "11111111-1111-4111-8111-111111111111",
+    personId: "22222222-2222-4222-8222-222222222222",
+    startDate: "2024-01-02",
+    occupancyStatus: "unknown",
+    evidenceState: "unreviewed",
+  }).catch(() => undefined);
+  assert.equal(
+    urls.some((url) => url.includes("on_conflict=seat_id,person_id,start_date")),
+    false,
+  );
+  assert.equal(
+    urls.some((url) => url.includes("seat_occupancies?") && url.includes("seat_id=eq.") && url.includes("person_id=eq.")),
+    true,
+  );
+});
+
+test("lease_due_job additive migration uses live job columns and SKIP LOCKED", () => {
+  const additive = readFileSync(
+    path.join(repoRoot, "supabase/migrations/202609020002_atomic_job_leasing.sql"),
+    "utf8",
+  );
+  assert.match(additive, /CREATE OR REPLACE FUNCTION public\.lease_due_job/);
+  assert.match(additive, /p_leased_by text/);
+  assert.match(additive, /p_job_id uuid/);
+  assert.match(additive, /FOR UPDATE SKIP LOCKED/);
+  assert.match(additive, /LIMIT 1/);
+  assert.match(additive, /j\.status = 'queued'/);
+  assert.match(additive, /j\.status = 'leased' AND j\.lease_expires_at < now\(\)/);
+  assert.match(additive, /leased_by = p_leased_by/);
+  assert.match(additive, /attempt_count = attempt_count \+ 1/);
+  assert.match(additive, /started_at = COALESCE\(started_at, now\(\)\)/);
+  assert.match(additive, /RETURNS SETOF public\.jobs/);
+  assert.doesNotMatch(additive, /DROP TABLE/);
+  assert.doesNotMatch(additive, /DROP COLUMN/);
+  assert.doesNotMatch(additive, /TRUNCATE/);
+  assert.doesNotMatch(additive, /\broute\b/);
+  for (const status of ["queued", "leased", "running", "succeeded", "failed", "dead_letter", "cancelled"]) {
+    assert.match(
+      readFileSync(path.join(repoRoot, "supabase/migrations/202609020001_civic_collection_runtime.sql"), "utf8"),
+      new RegExp(status),
+    );
+  }
+  assert.equal(
+    readFileSync(path.join(repoRoot, "supabase/migrations/202609020003_proposed_historical_occupancy_unique.sql"), "utf8").includes(
+      "PROPOSAL ONLY",
+    ),
+    true,
+  );
+});
+
+test("expired lease is reclaimable; two racers still produce one winner", async () => {
+  const store = createMemoryStore();
+  const { job } = await store.scheduleJob({
+    dedupeKey: "ingest:expired:2026-09-01",
+    route: "ingest",
+    sourceKey: "miami-dade-county-elected-officials",
+    scheduledFor: "2026-09-01T00:00:00.000Z",
+  });
+  const firstLease = await store.leaseDueJob("worker-a");
+  assert.equal(firstLease?.jobId, job.jobId);
+  const current = store.tables.jobs.get(job.jobId);
+  assert.ok(current);
+  current.leaseExpiresAt = "2020-01-01T00:00:00.000Z";
+  store.tables.jobs.set(job.jobId, current);
+  const [winner, loser] = await Promise.all([store.leaseDueJob("worker-b"), store.leaseDueJob("worker-c")]);
+  const claimed = [winner, loser].filter(Boolean);
+  assert.equal(claimed.length, 1);
+  assert.equal(claimed[0]?.jobId, job.jobId);
+  assert.equal(claimed[0]?.leasedBy === "worker-b" || claimed[0]?.leasedBy === "worker-c", true);
+  assert.equal(claimed[0]?.attemptCount, 2);
+  assert.equal(claimed[0]?.status, "leased");
 });

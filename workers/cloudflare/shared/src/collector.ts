@@ -225,6 +225,8 @@ async function persistExtractedHolders(
     });
     const person = await store.upsertPerson({
       canonicalName: holder.displayName,
+      seatId: seat.seatId,
+      jurisdictionId: county.jurisdictionId,
     });
     await store.upsertOccupancy({
       seatId: seat.seatId,

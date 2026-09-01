@@ -9,8 +9,10 @@
 --   20260901222128 civiclenz_canonical_civic_foundation
 --   20260901222145 civiclenz_foundation_security_hardening
 --
--- lease_due_job() is NEW relative to live. After review, add it to live via a
--- separate additive migration. Do not apply this reconstruction to production.
+-- lease_due_job() is NEW relative to live. The independently applicable
+-- additive file is 202609020002_atomic_job_leasing.sql. This reconstruction
+-- includes the same function so a fresh local database can run tests.
+-- Do not apply this reconstruction to production.
 
 CREATE EXTENSION IF NOT EXISTS pgcrypto;
 CREATE EXTENSION IF NOT EXISTS postgis;
@@ -124,9 +126,14 @@ CREATE TABLE IF NOT EXISTS public.seat_occupancies (
   election_id uuid REFERENCES public.elections (election_id),
   evidence_state text,
   created_at timestamptz NOT NULL DEFAULT now(),
-  updated_at timestamptz NOT NULL DEFAULT now(),
-  UNIQUE (seat_id, person_id, start_date)
+  updated_at timestamptz NOT NULL DEFAULT now()
 );
+
+-- Confirmed live constraint: one current/acting occupancy per seat.
+-- Live does NOT have UNIQUE (seat_id, person_id, start_date).
+CREATE UNIQUE INDEX IF NOT EXISTS seat_occupancies_one_current_acting
+  ON public.seat_occupancies (seat_id)
+  WHERE occupancy_status IN ('current', 'acting');
 
 CREATE TABLE IF NOT EXISTS public.candidate_campaigns (
   candidate_campaign_id uuid PRIMARY KEY DEFAULT gen_random_uuid(),
@@ -385,8 +392,8 @@ CREATE INDEX IF NOT EXISTS idx_monitoring_next_check
   ON public.monitoring_state (active, next_check_at);
 
 -- ---------------------------------------------------------------------------
--- Atomic job lease (GitHub reconstruction only — do not apply to live yet)
--- Live needs this function added later via a NEW additive migration after review.
+-- Atomic job lease (also shipped as additive 202609020002 for live apply-later).
+-- Keep in sync with supabase/migrations/202609020002_atomic_job_leasing.sql.
 -- ---------------------------------------------------------------------------
 
 CREATE OR REPLACE FUNCTION public.lease_due_job(
@@ -413,11 +420,11 @@ BEGIN
     FROM public.jobs j
     WHERE (
         j.status = 'queued'
-        OR (j.status = 'leased' AND (j.lease_expires_at IS NULL OR j.lease_expires_at < now()))
+        OR (j.status = 'leased' AND j.lease_expires_at < now())
       )
       AND (j.scheduled_for IS NULL OR j.scheduled_for <= now())
       AND (p_job_id IS NULL OR j.job_id = p_job_id)
-    ORDER BY j.priority DESC, j.scheduled_for ASC NULLS FIRST, j.created_at ASC
+    ORDER BY j.priority DESC, j.scheduled_for ASC NULLS FIRST, j.created_at ASC, j.job_id ASC
     FOR UPDATE SKIP LOCKED
     LIMIT 1
   )
