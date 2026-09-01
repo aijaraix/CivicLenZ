@@ -78,7 +78,11 @@ export type DeadLetterPayload = {
   jobId: string;
   jobType?: string;
   worker: string;
+  source?: string;
   sourceKey?: string;
+  targetType?: string;
+  targetId?: string;
+  target?: string;
   errorClass: string;
   errorMessage: string;
   attemptCount: number;

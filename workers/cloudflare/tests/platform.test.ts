@@ -26,7 +26,20 @@ import { planAndEnqueue } from "../shared/src/scheduler.ts";
 import { firstWaveSourceAdapters, parserCoveredSources, sourceAdapter } from "../shared/src/source-config.ts";
 import { createMemoryStore } from "../shared/src/store.ts";
 import { canAutoVerify, planClaimTransition } from "../shared/src/validation.ts";
+import {
+  getCandidatesForElection,
+  getCompletenessForSubject,
+  getElection,
+  getEvidenceForClaim,
+  getMonitoringSummary,
+  getOfficialForSeat,
+  getPerson,
+  getSeat,
+  getVerifiedClaimsForSubject,
+} from "../../../lib/civic-data/adapter.ts";
 import { assertPublicRead, isInternalTable, verifiedClaimsOnly } from "../../../lib/civic-data/public.ts";
+import { cloudflareConsumesHeavy, createRailwayHeavyPayload } from "../shared/src/heavy.ts";
+import { newsCanIndependentlyVerify, NEWS_WORKER_STATE } from "../shared/src/news.ts";
 
 const here = path.dirname(fileURLToPath(import.meta.url));
 const repoRoot = path.resolve(here, "../../..");
@@ -284,12 +297,16 @@ test("rate limiting, dead-letter, stale claim scheduling, and monitor cadence", 
     jobType: "ingest",
     worker: "civiclenz-collector",
     sourceKey: "miami-dade-county-elected-officials",
+    targetType: "source",
+    targetId: "miami-dade-county-elected-officials",
     errorClass: "http_fetch_failed",
     errorMessage: "503",
     attemptCount: 5,
     payload: ingestMessage(),
   });
   assert.equal(dlq.jobType, "ingest");
+  assert.equal(dlq.source, "miami-dade-county-elected-officials");
+  assert.equal(dlq.target, "source:miami-dade-county-elected-officials");
   const store = createMemoryStore();
   const stale = await store.recordClaim({
     subjectType: "seat",
@@ -320,6 +337,45 @@ test("public civic adapter excludes internal tables; control plane uses persiste
     ]).map((row) => row.verification_state),
     ["verified"],
   );
+  const snapshot = {
+    seats: [{ seat_id: "seat-1", seat_key: "us-fl-governor", seat_name: "Governor", office_type: "governor", government_level: "state", jurisdiction_id: "j-1", occupancy_status: "occupied", secret: "nope" }],
+    persons: [{ person_id: "p-1", canonical_name: "Example Official", portrait_url: "https://example.gov/p.jpg" }],
+    occupancies: [{ occupancy_id: "o-1", seat_id: "seat-1", person_id: "p-1", occupancy_status: "current" }],
+    elections: [{ election_id: "e-1", election_key: "us-fl-governor-2026", seat_id: "seat-1", election_date: "2026-11-03" }],
+    campaigns: [{ candidate_campaign_id: "c-1", person_id: "p-2", election_id: "e-1", seat_id: "seat-1" }],
+    claims: [
+      { claim_id: "cl-1", subject_type: "person", subject_id: "p-1", field_key: "current_occupant", display_value: "Example Official", verification_state: "verified" },
+      { claim_id: "cl-2", subject_type: "person", subject_id: "p-1", field_key: "biography", display_value: "unreviewed", verification_state: "collected_unreviewed" },
+    ],
+    evidence: [{ evidence_id: "ev-1", evidence_type: "official_page", source_url: "https://example.gov", excerpt: "ok", verification_state: "verified", raw_object_uri: "hidden" }],
+    claimEvidence: [{ claim_id: "cl-1", evidence_id: "ev-1" }],
+    researchContractFields: [{ research_contract_field_id: "f", research_contract_id: "c", field_key: "current_occupant", required_for_baseline: true }],
+    monitoringProjections: [{ subjectType: "seat", subjectId: "seat-1", coverage: "PRESENT" as const, overdue: false }],
+  };
+  assert.equal(getSeat(snapshot, "us-fl-governor")?.seat_key, "us-fl-governor");
+  assert.equal("secret" in (getSeat(snapshot, "us-fl-governor") ?? {}), false);
+  assert.equal(getOfficialForSeat(snapshot, "seat-1").person?.canonical_name, "Example Official");
+  assert.equal(getOfficialForSeat(snapshot, "seat-1").verifiedClaims.length, 1);
+  assert.equal(getPerson(snapshot, "p-1")?.canonical_name, "Example Official");
+  assert.equal(getElection(snapshot, "us-fl-governor-2026")?.election_id, "e-1");
+  assert.equal(getCandidatesForElection(snapshot, "e-1").length, 1);
+  assert.equal(getVerifiedClaimsForSubject(snapshot, "person", "p-1").length, 1);
+  assert.equal(getEvidenceForClaim(snapshot, "cl-1").length, 1);
+  assert.equal(getEvidenceForClaim(snapshot, "cl-2").length, 0);
+  assert.equal(getMonitoringSummary(snapshot, "seat", "seat-1").coverage, "PRESENT");
+  assert.equal(getCompletenessForSubject(snapshot, { seatId: "seat-1", personId: "p-1" }).officeholderBaseline, "PRESENT");
+  assert.equal(NEWS_WORKER_STATE, "PREPARE_ONLY");
+  assert.equal(newsCanIndependentlyVerify(), false);
+  assert.equal(cloudflareConsumesHeavy(), false);
+  const heavy = createRailwayHeavyPayload({
+    jobId: "h-1",
+    jobType: "large_pdf_parse",
+    attemptCount: 1,
+    payloadSummary: { sourceKey: "fec-api" },
+  });
+  assert.equal(heavy.runtime, "railway");
+  assert.equal(sourceAdapter("florida-attorney-general")?.coverage, "discovered");
+  assert.equal(sourceAdapter("us-house-members")?.coverage, "discovered");
   const store = createMemoryStore();
   await store.upsertJurisdiction({ jurisdictionKey: "us-fl", name: "Florida", jurisdictionType: "state" });
   const snap = await controlPlaneSnapshot(store, new Date("2026-09-01T00:00:00Z"));

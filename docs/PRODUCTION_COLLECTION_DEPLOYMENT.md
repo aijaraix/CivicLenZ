@@ -73,7 +73,7 @@ Confirm `workers/cloudflare/scheduler/wrangler.jsonc` still has `"DRY_RUN": "tru
 3. Confirm `raw_retrievals.raw_object_uri` looks like `r2://civiclenzevidence/raw/...`
 4. Confirm claims start `collected_unreviewed` / `extracted` — never `verified` from HTTP 200
 5. Confirm validator runs and does not auto-verify unless TIER_1 + schemaCertified + unique match + evidence + no conflict
-6. Confirm the website publication path only reads verified claims via the public civic adapter / RLS
+6. Confirm the website publication path only reads verified claims via `lib/civic-data` (`getVerifiedClaimsForSubject`, field allowlists). Unverified claims must not appear as verified. Do not switch `app/officials` off reviewed JSON until live rows exist and RLS is confirmed.
 
 ## 17–18. Enable controlled scheduling
 

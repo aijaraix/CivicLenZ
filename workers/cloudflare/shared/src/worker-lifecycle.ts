@@ -58,8 +58,11 @@ export async function withWorkerRun<T>(input: {
       await input.queues.deadLetter.send(
         createDeadLetterPayload({
           jobId: input.message.jobId,
+          jobType: input.message.route,
           worker: input.worker.workerKey,
           sourceKey: input.message.sourceKey,
+          targetType: input.message.entityType,
+          targetId: input.message.entityId,
           errorClass: civic.errorClass,
           errorMessage: message,
           attemptCount: input.message.attempt + 1,

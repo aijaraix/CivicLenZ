@@ -257,9 +257,11 @@ test("dead-letter payload is complete and never silent", () => {
   });
   assert.equal(payload.jobId, "job-1");
   assert.equal(payload.worker, "civiclenz-collector");
+  assert.equal(payload.source, "miami-dade-county-elected-officials");
   assert.equal(payload.errorClass, "http_fetch_failed");
   assert.equal(payload.attemptCount, 5);
   assert.ok(payload.payloadSummary.dedupeKey);
+  assert.ok(payload.timestamp);
   assert.equal(shouldDeadLetter(1, true), false);
   assert.equal(shouldDeadLetter(5, true), true);
   assert.equal(shouldDeadLetter(1, false), true);

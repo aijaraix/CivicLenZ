@@ -6,6 +6,8 @@ export function createDeadLetterPayload(input: {
   jobType?: string;
   worker: string;
   sourceKey?: string;
+  targetType?: string;
+  targetId?: string;
   errorClass: string;
   errorMessage: string;
   attemptCount: number;
@@ -15,12 +17,18 @@ export function createDeadLetterPayload(input: {
   if (!input.jobId) throw new Error("dead-letter payload requires jobId");
   if (!input.worker) throw new Error("dead-letter payload requires worker");
   if (!input.errorClass) throw new Error("dead-letter payload requires errorClass");
+  const target =
+    input.targetType || input.targetId ? `${input.targetType ?? ""}:${input.targetId ?? ""}` : undefined;
   return {
     schemaVersion: "1.0.0",
     jobId: input.jobId,
     jobType: input.jobType,
     worker: input.worker,
+    source: input.sourceKey,
     sourceKey: input.sourceKey,
+    targetType: input.targetType,
+    targetId: input.targetId,
+    target,
     errorClass: input.errorClass,
     errorMessage: input.errorMessage,
     attemptCount: input.attemptCount,
