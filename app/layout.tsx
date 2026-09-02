@@ -78,6 +78,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
             <section>
               <strong>Trust</strong>
               <Link href="/research/">Research & standards</Link>
+              <Link href="/control-plane/">Florida seat ledger</Link>
               <Link href="/corrections/">Corrections</Link>
               <span>Sources stay attached</span>
               <span>Uncertainty stays visible</span>

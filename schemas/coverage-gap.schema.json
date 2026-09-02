@@ -1,0 +1,30 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://civicslenz.com/schemas/coverage-gap.schema.json",
+  "title": "CivicLenZ Coverage Gap",
+  "description": "Declared office families whose expected seat counts are unknown. A gap is not an estimated count.",
+  "type": "object",
+  "required": [
+    "schemaVersion",
+    "coverageGapId",
+    "gapKey",
+    "jurisdictionName",
+    "officeFamily",
+    "expectedCountStatus"
+  ],
+  "properties": {
+    "schemaVersion": {"type": "string", "const": "1.0.0"},
+    "coverageGapId": {"type": "string", "format": "uuid"},
+    "gapKey": {"type": "string"},
+    "jurisdictionName": {"type": "string"},
+    "stateCode": {"type": ["string", "null"]},
+    "governmentLevel": {"type": "string"},
+    "officeFamily": {"type": "string"},
+    "expectedCountStatus": {"type": "string", "enum": ["expected_count_unknown"]},
+    "expectedCount": {"type": ["integer", "null"]},
+    "reason": {"type": "string"},
+    "coverageRegion": {"type": ["string", "null"]},
+    "ledgerStatus": {"type": "string", "const": "coverage_gap"}
+  },
+  "additionalProperties": false
+}

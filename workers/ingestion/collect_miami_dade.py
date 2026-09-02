@@ -20,6 +20,8 @@ import requests
 from bs4 import BeautifulSoup
 
 from workers.ingestion.common import slugify, utc_now, write_json_records
+from workers.seats.catalog import all_expected_seats
+from workers.seats.miami_dade_occupancy import occupancy_candidates_from_named_offices
 
 SOURCE_URL = "https://www.miamidade.gov/elections/library/reports/elected-officials.pdf"
 SOURCE_KEY = "miami-dade-county-elected-officials"
@@ -350,6 +352,19 @@ def ensure_staging_output(output_dir: Path) -> Path:
     return output_dir
 
 
+def ensure_review_only_output(output_dir: Path) -> Path:
+    resolved = (output_dir if output_dir.is_absolute() else Path.cwd() / output_dir).resolve()
+    officials = OFFICIALS_ROOT.resolve()
+    if resolved == officials or officials in resolved.parents:
+        raise RuntimeError("Miami-Dade collector must not write under data/officials.")
+    posix_parts = Path(output_dir).as_posix().split("/")
+    if "staging" not in posix_parts and "occupancy-candidates" not in posix_parts:
+        raise RuntimeError(
+            f"Miami-Dade occupancy output must be under data/staging or occupancy-candidates, not {output_dir}."
+        )
+    return output_dir
+
+
 def filename_for(record: dict[str, object]) -> str:
     name = slugify(str(record["displayName"]))
     district = record.get("districtNumber")
@@ -359,9 +374,26 @@ def filename_for(record: dict[str, object]) -> str:
     return f"{title}-{name}.json"
 
 
+def attach_occupancy_candidates(records: list[dict[str, object]], output_dir: Path, fetched_at: str) -> int:
+    expected_keys = {str(seat["seatKey"]) for seat in all_expected_seats()}
+    candidates = occupancy_candidates_from_named_offices(records, expected_keys, created_at=fetched_at)
+    occupancy_dir = ensure_review_only_output(output_dir)
+    occupancy_dir.mkdir(parents=True, exist_ok=True)
+
+    def occupancy_filename(candidate: dict[str, object]) -> str:
+        return f"{candidate['seatKey']}--{slugify(str(candidate['displayName']))}.json"
+
+    return write_json_records(candidates, occupancy_dir, occupancy_filename)
+
+
 def main() -> int:
     parser = argparse.ArgumentParser()
     parser.add_argument("--output", type=Path, default=DEFAULT_OUTPUT)
+    parser.add_argument(
+        "--occupancy-output",
+        type=Path,
+        help="Optional review-only occupancy-candidate directory. Never data/officials.",
+    )
     args = parser.parse_args()
     output_dir = ensure_staging_output(args.output)
 
@@ -376,6 +408,9 @@ def main() -> int:
     records = parse_directory(content, source_hash, fetched_at)
     count = write_json_records(records, output_dir, filename_for)
     print(f"Wrote {count} review-only Miami-Dade staging records to {output_dir}")
+    if args.occupancy_output:
+        occupancy_count = attach_occupancy_candidates(records, args.occupancy_output, fetched_at)
+        print(f"Wrote {occupancy_count} review-only Miami-Dade occupancy candidates to {args.occupancy_output}")
     return 0
 
 

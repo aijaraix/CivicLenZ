@@ -1,0 +1,42 @@
+{
+  "schemaVersion": "1.0.0",
+  "researchContractKey": "us-legislator",
+  "name": "United States legislator representing Florida",
+  "appliesToOfficeTypes": ["us_senator", "us_representative"],
+  "governmentLevels": ["federal"],
+  "requiredFieldKeys": [
+    "seatKey",
+    "seatName",
+    "district_number",
+    "chamber",
+    "occupancyStatus",
+    "display_name",
+    "official_profile_url"
+  ],
+  "optionalFieldKeys": [
+    "party_name",
+    "committees",
+    "bills_sponsored",
+    "official_votes",
+    "campaign_finance_summary",
+    "portrait_url"
+  ],
+  "notApplicableFieldKeys": [
+    "executive_orders"
+  ],
+  "sourcePriority": [
+    "Official US House and Senate directories",
+    "Official member websites",
+    "Clerk of the House vacancy notices"
+  ],
+  "disallowedShortcuts": [
+    "Do not drop a vacant House seat from the expected registry.",
+    "Florida's two Senate seats are distinct expected seats; recovered at-large queue rows are ambiguous until assigned.",
+    "FEC ingestion is out of scope for this slice."
+  ],
+  "publicationGate": "reviewed_canonical_profile",
+  "humanReviewRequired": true,
+  "notes": [
+    "Florida US House expected count is 28, including District 20 when recovered occupancy is a vacancy."
+  ]
+}

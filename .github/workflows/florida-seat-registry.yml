@@ -1,0 +1,42 @@
+name: Florida seat registry and quality control
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+    paths:
+      - 'data/seats/**'
+      - 'data/operations/**'
+      - 'workers/seats/**'
+      - 'workers/quality/**'
+      - 'schemas/elected-seat.schema.json'
+      - 'schemas/occupancy-candidate.schema.json'
+      - '.github/workflows/florida-seat-registry.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  seat-registry:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+          cache: pip
+          cache-dependency-path: workers/ingestion/requirements.txt
+
+      - name: Install dependencies
+        run: pip install -r workers/ingestion/requirements.txt
+
+      - name: Check persisted seats against the known-count catalog
+        run: python -m workers.seats.build_florida_seat_registry --check
+
+      - name: Quality control
+        run: python -m workers.quality.quality_control --markdown >> "$GITHUB_STEP_SUMMARY"

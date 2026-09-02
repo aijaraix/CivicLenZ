@@ -181,6 +181,72 @@
         "Do not extract federal, state legislative, school-board, soil-and-water, or community-council rows from the same directory.",
         "Do not write directly to canonical public profiles; staging remains extracted_unreviewed."
       ]
+    },
+    {
+      "workstreamId": "fl-south-florida-production-slice",
+      "ownerKey": "cursor-florida-production-slice",
+      "status": "active_claimed",
+      "description": "Declare Florida expected seats from known counts, recover queue occupancy as RECOVERED, publish the control-plane ledger, and claim South Florida county constitutional expected seats for Miami-Dade, Broward, and Palm Beach.",
+      "scope": {
+        "governmentLevels": [
+          "federal",
+          "state",
+          "county",
+          "school_district",
+          "municipal",
+          "special_district",
+          "judicial"
+        ],
+        "regions": ["statewide", "south_florida"],
+        "counties": ["Miami-Dade", "Broward", "Palm Beach"],
+        "officeFamilies": [
+          "federal_delegation",
+          "statewide_executive",
+          "state_legislature",
+          "sheriff",
+          "clerk_of_circuit_court_and_comptroller",
+          "supervisor_of_elections",
+          "tax_collector",
+          "property_appraiser",
+          "county_commission",
+          "school_board",
+          "municipal_mayor",
+          "municipal_council_or_commission",
+          "special_district_board",
+          "elected_or_retention_judicial_seat"
+        ],
+        "dataPhases": [
+          "declared_expected_seats",
+          "occupancy_recovery",
+          "coverage_gap_declaration",
+          "control_plane_ledger",
+          "research_contract_authoring",
+          "portrait_job_interface",
+          "ontology_extraction",
+          "quality_control"
+        ]
+      },
+      "branchPrefix": "cursor/",
+      "outputRoots": [
+        "data/seats",
+        "data/operations/florida/coverage-gaps",
+        "data/operations/florida/occupancy-candidates",
+        "data/operations/control-plane",
+        "data/research-contracts",
+        "data/portraits"
+      ],
+      "claimedAt": "2026-09-01T22:30:00Z",
+      "heartbeat": {
+        "expectedCadence": "daily",
+        "staleAfterHours": 36,
+        "lastProgressAt": "2026-09-01T22:30:00Z"
+      },
+      "exclusions": [
+        "Do not modify Northwest Florida claimed counties, output roots, or local source-discovery work.",
+        "Do not write recovered occupancy or expected seats into data/officials.",
+        "Do not invent municipal, school, judicial, special-district, or county-commission seat counts.",
+        "Do not treat recovered queue data as independently VERIFIED occupancy."
+      ]
     }
   ],
   "unassignedLocalRegions": [
@@ -189,8 +255,7 @@
     "central_florida",
     "tampa_bay_and_nature_coast",
     "southwest_florida",
-    "treasure_coast_and_palm_beach",
-    "broward",
+    "treasure_coast",
     "florida_keys"
   ]
 }

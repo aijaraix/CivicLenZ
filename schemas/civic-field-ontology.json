@@ -1,0 +1,5715 @@
+{
+  "ontologyVersion": "1.0.0",
+  "extractionRule": "Fields are extracted from existing CivicLenZ schemas, the official-profile data dictionary, the enrichment-agent manifest, and the 23 research-queue sections. Gaps are DECLARED_NOT_IMPLEMENTED. No speculative thousand-field catalog is added.",
+  "sourceDocuments": [
+    "schemas/elected-official-profile.schema.json",
+    "schemas/elected-seat.schema.json",
+    "docs/OFFICIAL_PROFILE_DATA_DICTIONARY.md",
+    "data/sources/enrichment-agent-manifest.json",
+    "data/operations/florida-profile-research-queue.json"
+  ],
+  "queueSectionCount": 23,
+  "queueSections": [
+    "seat_and_occupancy",
+    "portrait_and_identity",
+    "contact_and_public_channels",
+    "biography_education_military_career",
+    "election_and_term_history",
+    "committees_leadership_appointments",
+    "campaign_promises",
+    "quotes_and_statements",
+    "actions_decisions_bills_votes",
+    "campaign_finance",
+    "civic_scores_and_performance",
+    "maha_tracker",
+    "doge_government_efficiency_tracker",
+    "border_immigration_tracker",
+    "energy_independence_tracker",
+    "trade_tariffs_tracker",
+    "education_school_choice_tracker",
+    "fraud_integrity_tracker",
+    "financial_disclosures",
+    "ethics_integrity_legal",
+    "relationships_endorsements_conflicts",
+    "news_and_real_time_activity",
+    "sources_archives_methodology"
+  ],
+  "enrichmentAgents": [
+    {
+      "agentKey": "seat-registry-agent",
+      "enabled": true,
+      "outputs": [
+        "seat",
+        "office_term",
+        "occupancy_event"
+      ],
+      "scope": [
+        "seat identity",
+        "jurisdiction",
+        "district",
+        "legal structure",
+        "occupancy status",
+        "term boundaries",
+        "vacancies",
+        "successions"
+      ]
+    },
+    {
+      "agentKey": "identity-portrait-agent",
+      "enabled": false,
+      "outputs": [
+        "person",
+        "portrait_candidate",
+        "asset",
+        "evidence"
+      ],
+      "scope": [
+        "name normalization",
+        "external identifiers",
+        "official portrait",
+        "portrait provenance",
+        "portrait rights",
+        "portrait hash"
+      ]
+    },
+    {
+      "agentKey": "contact-social-agent",
+      "enabled": false,
+      "outputs": [
+        "contact_point",
+        "office_location",
+        "website",
+        "social_account",
+        "evidence"
+      ],
+      "scope": [
+        "phones",
+        "emails",
+        "contact forms",
+        "addresses",
+        "office hours",
+        "staff contacts",
+        "websites",
+        "newsletters",
+        "official and campaign social accounts"
+      ]
+    },
+    {
+      "agentKey": "biography-background-agent",
+      "enabled": false,
+      "outputs": [
+        "biography",
+        "education",
+        "military_service",
+        "career_history",
+        "political_history",
+        "evidence"
+      ],
+      "scope": [
+        "biography",
+        "education",
+        "military service",
+        "career",
+        "business ownership",
+        "prior political roles",
+        "public family summary"
+      ]
+    },
+    {
+      "agentKey": "election-term-agent",
+      "enabled": false,
+      "outputs": [
+        "election",
+        "office_term",
+        "occupancy_event",
+        "evidence"
+      ],
+      "scope": [
+        "candidate filings",
+        "opponents",
+        "election results",
+        "vote totals",
+        "margins",
+        "appointments",
+        "recounts",
+        "contests",
+        "prior terms"
+      ]
+    },
+    {
+      "agentKey": "committee-appointment-agent",
+      "enabled": false,
+      "outputs": [
+        "public_role",
+        "committee_membership",
+        "appointment",
+        "evidence"
+      ],
+      "scope": [
+        "committees",
+        "subcommittees",
+        "leadership",
+        "caucuses",
+        "boards",
+        "commissions",
+        "appointments"
+      ]
+    },
+    {
+      "agentKey": "promise-extraction-agent",
+      "enabled": false,
+      "outputs": [
+        "promise",
+        "claim",
+        "evidence"
+      ],
+      "scope": [
+        "campaign promises",
+        "governing commitments",
+        "pledges",
+        "explicit commitments",
+        "deadlines",
+        "quantitative targets",
+        "conditions and qualifiers"
+      ]
+    },
+    {
+      "agentKey": "statement-quote-agent",
+      "enabled": false,
+      "outputs": [
+        "statement",
+        "position_timeline",
+        "evidence"
+      ],
+      "scope": [
+        "speeches",
+        "debates",
+        "hearings",
+        "interviews",
+        "press conferences",
+        "newsletters",
+        "official social statements",
+        "clarifications",
+        "retractions"
+      ]
+    },
+    {
+      "agentKey": "legislative-action-agent",
+      "enabled": false,
+      "outputs": [
+        "government_action",
+        "vote",
+        "attendance_metric",
+        "evidence"
+      ],
+      "scope": [
+        "bills",
+        "sponsorships",
+        "cosponsorships",
+        "roll-call votes",
+        "committee votes",
+        "attendance",
+        "amendments",
+        "budgets",
+        "veto overrides"
+      ]
+    },
+    {
+      "agentKey": "executive-administrative-action-agent",
+      "enabled": false,
+      "outputs": [
+        "government_action",
+        "appointment",
+        "contract_action",
+        "evidence"
+      ],
+      "scope": [
+        "executive orders",
+        "vetoes",
+        "appointments",
+        "budgets",
+        "contracts",
+        "procurement",
+        "rulemaking",
+        "enforcement",
+        "agency directives"
+      ]
+    },
+    {
+      "agentKey": "campaign-finance-agent",
+      "enabled": false,
+      "outputs": [
+        "campaign_finance_summary",
+        "committee",
+        "contribution",
+        "expenditure",
+        "finance_violation",
+        "evidence"
+      ],
+      "scope": [
+        "committees",
+        "receipts",
+        "expenditures",
+        "cash",
+        "debt",
+        "loans",
+        "donors",
+        "industries",
+        "vendors",
+        "outside spending",
+        "violations"
+      ]
+    },
+    {
+      "agentKey": "financial-disclosure-agent",
+      "enabled": false,
+      "outputs": [
+        "financial_disclosure",
+        "ocr_asset",
+        "evidence",
+        "potential_conflict_candidate"
+      ],
+      "scope": [
+        "disclosure calendar",
+        "filings",
+        "assets",
+        "liabilities",
+        "income",
+        "business interests",
+        "property",
+        "gifts",
+        "travel",
+        "amendments"
+      ]
+    },
+    {
+      "agentKey": "integrity-legal-agent",
+      "enabled": false,
+      "outputs": [
+        "integrity_matter",
+        "audit_finding",
+        "official_response",
+        "evidence"
+      ],
+      "scope": [
+        "ethics complaints",
+        "investigations",
+        "findings",
+        "court records",
+        "audits",
+        "inspector-general reports",
+        "campaign and disclosure compliance",
+        "official responses"
+      ]
+    },
+    {
+      "agentKey": "relationship-conflict-agent",
+      "enabled": false,
+      "outputs": [
+        "relationship",
+        "conflict_candidate",
+        "evidence"
+      ],
+      "scope": [
+        "employers",
+        "business interests",
+        "boards",
+        "donors",
+        "endorsements",
+        "lobbyists",
+        "vendors",
+        "appointments",
+        "family interests where lawfully public"
+      ]
+    },
+    {
+      "agentKey": "tracker-analysis-agent",
+      "enabled": false,
+      "outputs": [
+        "issue_tracker",
+        "pillar_assessment"
+      ],
+      "scope": [
+        "MAHA",
+        "DOGE/government efficiency",
+        "border and immigration",
+        "energy",
+        "trade and tariffs",
+        "education and school choice",
+        "fraud and integrity",
+        "seat-specific trackers"
+      ]
+    },
+    {
+      "agentKey": "score-calculation-agent",
+      "enabled": false,
+      "outputs": [
+        "performance_metric",
+        "civic_score",
+        "calculation_record"
+      ],
+      "scope": [
+        "transparency",
+        "responsiveness",
+        "promise keeping",
+        "attendance",
+        "effectiveness",
+        "civic engagement",
+        "compliance"
+      ]
+    },
+    {
+      "agentKey": "evidence-archive-ocr-agent",
+      "enabled": false,
+      "outputs": [
+        "evidence",
+        "asset",
+        "ocr_text",
+        "transcript"
+      ],
+      "scope": [
+        "HTML snapshots",
+        "PDF download",
+        "screenshots",
+        "image metadata",
+        "OCR",
+        "audio/video transcript",
+        "content hashes",
+        "archive links",
+        "rights metadata"
+      ]
+    },
+    {
+      "agentKey": "news-activity-agent",
+      "enabled": false,
+      "outputs": [
+        "activity_event",
+        "media_record",
+        "alert_candidate",
+        "evidence"
+      ],
+      "scope": [
+        "official announcements",
+        "votes",
+        "filings",
+        "meetings",
+        "news",
+        "corrections",
+        "seat changes",
+        "material public activity"
+      ]
+    },
+    {
+      "agentKey": "quality-control-agent",
+      "enabled": true,
+      "outputs": [
+        "review_queue",
+        "validation_result",
+        "conflict_record",
+        "publication_decision"
+      ],
+      "scope": [
+        "seat/person/term matching",
+        "duplicate detection",
+        "source-count guards",
+        "staleness",
+        "conflicts",
+        "schema validation",
+        "publication gates"
+      ]
+    }
+  ],
+  "fieldCount": 661,
+  "implementedInSchemaCount": 85,
+  "declaredNotImplementedCount": 576,
+  "fields": [
+    {
+      "fieldKey": "not_applicable",
+      "section": "Master Elected-Official Profile Data Dictionary",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "unknown",
+      "section": "Master Elected-Official Profile Data Dictionary",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "official_id",
+      "section": "1. Canonical identity",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "implemented_in_schema"
+    },
+    {
+      "fieldKey": "canonical_person_id",
+      "section": "1. Canonical identity",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "implemented_in_schema"
+    },
+    {
+      "fieldKey": "slug",
+      "section": "1. Canonical identity",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "implemented_in_schema"
+    },
+    {
+      "fieldKey": "full_legal_name",
+      "section": "1. Canonical identity",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "implemented_in_schema"
+    },
+    {
+      "fieldKey": "display_name",
+      "section": "1. Canonical identity",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "implemented_in_schema"
+    },
+    {
+      "fieldKey": "first_name",
+      "section": "1. Canonical identity",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "implemented_in_schema"
+    },
+    {
+      "fieldKey": "middle_name",
+      "section": "1. Canonical identity",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "implemented_in_schema"
+    },
+    {
+      "fieldKey": "last_name",
+      "section": "1. Canonical identity",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "implemented_in_schema"
+    },
+    {
+      "fieldKey": "suffix",
+      "section": "1. Canonical identity",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "implemented_in_schema"
+    },
+    {
+      "fieldKey": "preferred_name",
+      "section": "1. Canonical identity",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "implemented_in_schema"
+    },
+    {
+      "fieldKey": "former_names",
+      "section": "1. Canonical identity",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "implemented_in_schema"
+    },
+    {
+      "fieldKey": "pronouns_publicly_stated",
+      "section": "1. Canonical identity",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "portrait_url",
+      "section": "1. Canonical identity",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "implemented_in_schema"
+    },
+    {
+      "fieldKey": "portrait_source_url",
+      "section": "1. Canonical identity",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "implemented_in_schema"
+    },
+    {
+      "fieldKey": "portrait_credit",
+      "section": "1. Canonical identity",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "implemented_in_schema"
+    },
+    {
+      "fieldKey": "portrait_license",
+      "section": "1. Canonical identity",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "identity_aliases",
+      "section": "1. Canonical identity",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "external_identifiers",
+      "section": "1. Canonical identity",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "implemented_in_schema"
+    },
+    {
+      "fieldKey": "duplicate_of_official_id",
+      "section": "1. Canonical identity",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "record_status",
+      "section": "1. Canonical identity",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "implemented_in_schema"
+    },
+    {
+      "fieldKey": "office_id",
+      "section": "2. Current office and term",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "implemented_in_schema"
+    },
+    {
+      "fieldKey": "office_title",
+      "section": "2. Current office and term",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "implemented_in_schema"
+    },
+    {
+      "fieldKey": "office_short_title",
+      "section": "2. Current office and term",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "office_type",
+      "section": "2. Current office and term",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "implemented_in_schema"
+    },
+    {
+      "fieldKey": "branch",
+      "section": "2. Current office and term",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "implemented_in_schema"
+    },
+    {
+      "fieldKey": "government_level",
+      "section": "2. Current office and term",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "implemented_in_schema"
+    },
+    {
+      "fieldKey": "elected_or_appointed",
+      "section": "2. Current office and term",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "implemented_in_schema"
+    },
+    {
+      "fieldKey": "current_office_status",
+      "section": "2. Current office and term",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "seat_name",
+      "section": "2. Current office and term",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "implemented_in_schema"
+    },
+    {
+      "fieldKey": "district_name",
+      "section": "2. Current office and term",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "implemented_in_schema"
+    },
+    {
+      "fieldKey": "district_number",
+      "section": "2. Current office and term",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "implemented_in_schema"
+    },
+    {
+      "fieldKey": "chamber",
+      "section": "2. Current office and term",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "implemented_in_schema"
+    },
+    {
+      "fieldKey": "leadership_title",
+      "section": "2. Current office and term",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "implemented_in_schema"
+    },
+    {
+      "fieldKey": "party_id",
+      "section": "2. Current office and term",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "implemented_in_schema"
+    },
+    {
+      "fieldKey": "party_name",
+      "section": "2. Current office and term",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "party_at_election",
+      "section": "2. Current office and term",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "implemented_in_schema"
+    },
+    {
+      "fieldKey": "caucus",
+      "section": "2. Current office and term",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "implemented_in_schema"
+    },
+    {
+      "fieldKey": "term_start",
+      "section": "2. Current office and term",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "term_end",
+      "section": "2. Current office and term",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "assumed_office_date",
+      "section": "2. Current office and term",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "implemented_in_schema"
+    },
+    {
+      "fieldKey": "sworn_in_date",
+      "section": "2. Current office and term",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "implemented_in_schema"
+    },
+    {
+      "fieldKey": "term_number",
+      "section": "2. Current office and term",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "implemented_in_schema"
+    },
+    {
+      "fieldKey": "term_limit_status",
+      "section": "2. Current office and term",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "implemented_in_schema"
+    },
+    {
+      "fieldKey": "term_limit_date",
+      "section": "2. Current office and term",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "predecessor_person_id",
+      "section": "2. Current office and term",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "successor_person_id",
+      "section": "2. Current office and term",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "vacancy_status",
+      "section": "2. Current office and term",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "office_authority_summary",
+      "section": "2. Current office and term",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "office_responsibilities",
+      "section": "2. Current office and term",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "jurisdiction_id",
+      "section": "3. Jurisdiction and geographic representation",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "implemented_in_schema"
+    },
+    {
+      "fieldKey": "jurisdiction_name",
+      "section": "3. Jurisdiction and geographic representation",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "implemented_in_schema"
+    },
+    {
+      "fieldKey": "jurisdiction_type",
+      "section": "3. Jurisdiction and geographic representation",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "state_code",
+      "section": "3. Jurisdiction and geographic representation",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "implemented_in_schema"
+    },
+    {
+      "fieldKey": "county_names",
+      "section": "3. Jurisdiction and geographic representation",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "implemented_in_schema"
+    },
+    {
+      "fieldKey": "municipality_names",
+      "section": "3. Jurisdiction and geographic representation",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "implemented_in_schema"
+    },
+    {
+      "fieldKey": "represented_zip_codes",
+      "section": "3. Jurisdiction and geographic representation",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "implemented_in_schema"
+    },
+    {
+      "fieldKey": "represented_precincts",
+      "section": "3. Jurisdiction and geographic representation",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "represented_wards",
+      "section": "3. Jurisdiction and geographic representation",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "represented_school_zones",
+      "section": "3. Jurisdiction and geographic representation",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "district_geometry_id",
+      "section": "3. Jurisdiction and geographic representation",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "district_boundary_version",
+      "section": "3. Jurisdiction and geographic representation",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "district_boundary_effective_date",
+      "section": "3. Jurisdiction and geographic representation",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "district_map_url",
+      "section": "3. Jurisdiction and geographic representation",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "population_represented",
+      "section": "3. Jurisdiction and geographic representation",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "implemented_in_schema"
+    },
+    {
+      "fieldKey": "registered_voters",
+      "section": "3. Jurisdiction and geographic representation",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "constituency_summary",
+      "section": "3. Jurisdiction and geographic representation",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "address_lookup_priority",
+      "section": "3. Jurisdiction and geographic representation",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "geographic_data_source",
+      "section": "3. Jurisdiction and geographic representation",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "official_email",
+      "section": "4. Contact and public access",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "office_email",
+      "section": "4. Contact and public access",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "campaign_email",
+      "section": "4. Contact and public access",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "public_phone",
+      "section": "4. Contact and public access",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "office_phone",
+      "section": "4. Contact and public access",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "district_phone",
+      "section": "4. Contact and public access",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "capitol_phone",
+      "section": "4. Contact and public access",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "text_phone",
+      "section": "4. Contact and public access",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "fax",
+      "section": "4. Contact and public access",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "mailing_address",
+      "section": "4. Contact and public access",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "district_office_addresses",
+      "section": "4. Contact and public access",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "capitol_office_address",
+      "section": "4. Contact and public access",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "office_hours",
+      "section": "4. Contact and public access",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "implemented_in_schema"
+    },
+    {
+      "fieldKey": "public_website_url",
+      "section": "4. Contact and public access",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "official_profile_url",
+      "section": "4. Contact and public access",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "campaign_website_url",
+      "section": "4. Contact and public access",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "contact_form_url",
+      "section": "4. Contact and public access",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "appointment_request_url",
+      "section": "4. Contact and public access",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "public_records_request_url",
+      "section": "4. Contact and public access",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "constituent_services_url",
+      "section": "4. Contact and public access",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "newsletter_signup_url",
+      "section": "4. Contact and public access",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "accessibility_contact",
+      "section": "4. Contact and public access",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "languages_supported",
+      "section": "4. Contact and public access",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "contact_verified_at",
+      "section": "4. Contact and public access",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "x_twitter_accounts",
+      "section": "5. Social, digital, and communications channels",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "facebook_accounts",
+      "section": "5. Social, digital, and communications channels",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "instagram_accounts",
+      "section": "5. Social, digital, and communications channels",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "youtube_accounts",
+      "section": "5. Social, digital, and communications channels",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "linkedin_accounts",
+      "section": "5. Social, digital, and communications channels",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "tiktok_accounts",
+      "section": "5. Social, digital, and communications channels",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "threads_accounts",
+      "section": "5. Social, digital, and communications channels",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "bluesky_accounts",
+      "section": "5. Social, digital, and communications channels",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "truth_social_accounts",
+      "section": "5. Social, digital, and communications channels",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "mastodon_accounts",
+      "section": "5. Social, digital, and communications channels",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "telegram_accounts",
+      "section": "5. Social, digital, and communications channels",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "other_social_accounts",
+      "section": "5. Social, digital, and communications channels",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "podcasts",
+      "section": "5. Social, digital, and communications channels",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "email_newsletters",
+      "section": "5. Social, digital, and communications channels",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "rss_feeds",
+      "section": "5. Social, digital, and communications channels",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "communications_staff_contacts",
+      "section": "5. Social, digital, and communications channels",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "biography_short",
+      "section": "6. Biography and personal background",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "biography_long",
+      "section": "6. Biography and personal background",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "birth_date",
+      "section": "6. Biography and personal background",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "implemented_in_schema"
+    },
+    {
+      "fieldKey": "birthplace",
+      "section": "6. Biography and personal background",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "implemented_in_schema"
+    },
+    {
+      "fieldKey": "age_derived",
+      "section": "6. Biography and personal background",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "hometown",
+      "section": "6. Biography and personal background",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "implemented_in_schema"
+    },
+    {
+      "fieldKey": "current_residence_general",
+      "section": "6. Biography and personal background",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "implemented_in_schema"
+    },
+    {
+      "fieldKey": "citizenship_public_record",
+      "section": "6. Biography and personal background",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "marital_status_publicly_disclosed",
+      "section": "6. Biography and personal background",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "spouse_or_partner_public_name",
+      "section": "6. Biography and personal background",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "children_count_publicly_disclosed",
+      "section": "6. Biography and personal background",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "parents_publicly_relevant",
+      "section": "6. Biography and personal background",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "family_background_summary",
+      "section": "6. Biography and personal background",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "languages_spoken",
+      "section": "6. Biography and personal background",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "implemented_in_schema"
+    },
+    {
+      "fieldKey": "religious_affiliation_self_disclosed",
+      "section": "6. Biography and personal background",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "community_identity_self_disclosed",
+      "section": "6. Biography and personal background",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "personal_interests_publicly_stated",
+      "section": "6. Biography and personal background",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "notable_life_events",
+      "section": "6. Biography and personal background",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "date_of_death",
+      "section": "6. Biography and personal background",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "burial_or_memorial_information",
+      "section": "6. Biography and personal background",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "secondary_schools",
+      "section": "7. Education, credentials, and training",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "undergraduate_degrees",
+      "section": "7. Education, credentials, and training",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "graduate_degrees",
+      "section": "7. Education, credentials, and training",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "professional_degrees",
+      "section": "7. Education, credentials, and training",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "honorary_degrees",
+      "section": "7. Education, credentials, and training",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "certifications",
+      "section": "7. Education, credentials, and training",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "licenses",
+      "section": "7. Education, credentials, and training",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "fellowships",
+      "section": "7. Education, credentials, and training",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "executive_education",
+      "section": "7. Education, credentials, and training",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "apprenticeships",
+      "section": "7. Education, credentials, and training",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "academic_honors",
+      "section": "7. Education, credentials, and training",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "student_leadership",
+      "section": "7. Education, credentials, and training",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "education_claim_verification",
+      "section": "7. Education, credentials, and training",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "credential_status",
+      "section": "7. Education, credentials, and training",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "military_service_status",
+      "section": "8. Military and public service",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "military_branch",
+      "section": "8. Military and public service",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "service_component",
+      "section": "8. Military and public service",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "rank",
+      "section": "8. Military and public service",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "implemented_in_schema"
+    },
+    {
+      "fieldKey": "service_start",
+      "section": "8. Military and public service",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "service_end",
+      "section": "8. Military and public service",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "units",
+      "section": "8. Military and public service",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "implemented_in_schema"
+    },
+    {
+      "fieldKey": "deployments",
+      "section": "8. Military and public service",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "implemented_in_schema"
+    },
+    {
+      "fieldKey": "occupational_specialty",
+      "section": "8. Military and public service",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "awards_and_decorations",
+      "section": "8. Military and public service",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "discharge_type_public_record",
+      "section": "8. Military and public service",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "veteran_status",
+      "section": "8. Military and public service",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "peace_corps_or_national_service",
+      "section": "8. Military and public service",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "other_public_service",
+      "section": "8. Military and public service",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "service_claim_verification",
+      "section": "8. Military and public service",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "career_summary",
+      "section": "9. Professional, business, and nonprofit career",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "employment_history",
+      "section": "9. Professional, business, and nonprofit career",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "employer_names",
+      "section": "9. Professional, business, and nonprofit career",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "job_titles",
+      "section": "9. Professional, business, and nonprofit career",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "employment_start_end_dates",
+      "section": "9. Professional, business, and nonprofit career",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "industry_sectors",
+      "section": "9. Professional, business, and nonprofit career",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "professional_practice_areas",
+      "section": "9. Professional, business, and nonprofit career",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "business_ownership_history",
+      "section": "9. Professional, business, and nonprofit career",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "business_entity_roles",
+      "section": "9. Professional, business, and nonprofit career",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "nonprofit_roles",
+      "section": "9. Professional, business, and nonprofit career",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "board_memberships",
+      "section": "9. Professional, business, and nonprofit career",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "academic_positions",
+      "section": "9. Professional, business, and nonprofit career",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "media_positions",
+      "section": "9. Professional, business, and nonprofit career",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "union_or_trade_roles_public_record",
+      "section": "9. Professional, business, and nonprofit career",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "professional_associations",
+      "section": "9. Professional, business, and nonprofit career",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "career_achievements",
+      "section": "9. Professional, business, and nonprofit career",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "career_claim_verification",
+      "section": "9. Professional, business, and nonprofit career",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "employment_conflict_flags",
+      "section": "9. Professional, business, and nonprofit career",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "political_career_summary",
+      "section": "10. Political history and offices held",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "prior_elected_offices",
+      "section": "10. Political history and offices held",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "prior_appointed_offices",
+      "section": "10. Political history and offices held",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "campaign_staff_roles",
+      "section": "10. Political history and offices held",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "party_organization_roles",
+      "section": "10. Political history and offices held",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "government_staff_roles",
+      "section": "10. Political history and offices held",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "transition_team_roles",
+      "section": "10. Political history and offices held",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "delegations",
+      "section": "10. Political history and offices held",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "leadership_positions",
+      "section": "10. Political history and offices held",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "caucus_memberships",
+      "section": "10. Political history and offices held",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "committee_history",
+      "section": "10. Political history and offices held",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "political_mentors_public_record",
+      "section": "10. Political history and offices held",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "endorsement_history",
+      "section": "10. Political history and offices held",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "party_switch_history",
+      "section": "10. Political history and offices held",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "resignations",
+      "section": "10. Political history and offices held",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "removals",
+      "section": "10. Political history and offices held",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "recall_history",
+      "section": "10. Political history and offices held",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "impeachment_history",
+      "section": "10. Political history and offices held",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "succession_events",
+      "section": "10. Political history and offices held",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "political_timeline",
+      "section": "10. Political history and offices held",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "current_committees",
+      "section": "11. Committees, boards, appointments, and staff",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "committee_roles",
+      "section": "11. Committees, boards, appointments, and staff",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "subcommittees",
+      "section": "11. Committees, boards, appointments, and staff",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "task_forces",
+      "section": "11. Committees, boards, appointments, and staff",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "boards_and_commissions",
+      "section": "11. Committees, boards, appointments, and staff",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "intergovernmental_bodies",
+      "section": "11. Committees, boards, appointments, and staff",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "appointment_authority",
+      "section": "11. Committees, boards, appointments, and staff",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "appointments_made",
+      "section": "11. Committees, boards, appointments, and staff",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "nominations_made",
+      "section": "11. Committees, boards, appointments, and staff",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "nominations_received",
+      "section": "11. Committees, boards, appointments, and staff",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "confirmed_or_rejected_status",
+      "section": "11. Committees, boards, appointments, and staff",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "cabinet_or_department_leads",
+      "section": "11. Committees, boards, appointments, and staff",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "chief_of_staff",
+      "section": "11. Committees, boards, appointments, and staff",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "senior_staff",
+      "section": "11. Committees, boards, appointments, and staff",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "district_staff",
+      "section": "11. Committees, boards, appointments, and staff",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "communications_staff",
+      "section": "11. Committees, boards, appointments, and staff",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "staff_turnover_events",
+      "section": "11. Committees, boards, appointments, and staff",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "staff_conflict_flags",
+      "section": "11. Committees, boards, appointments, and staff",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "candidate_status",
+      "section": "12. Elections and campaign history",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "next_election_date",
+      "section": "12. Elections and campaign history",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "implemented_in_schema"
+    },
+    {
+      "fieldKey": "filing_deadline",
+      "section": "12. Elections and campaign history",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "primary_date",
+      "section": "12. Elections and campaign history",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "general_election_date",
+      "section": "12. Elections and campaign history",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "election_type",
+      "section": "12. Elections and campaign history",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "ballot_status",
+      "section": "12. Elections and campaign history",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "incumbency_status",
+      "section": "12. Elections and campaign history",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "campaign_committee_name",
+      "section": "12. Elections and campaign history",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "campaign_committee_id",
+      "section": "12. Elections and campaign history",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "campaign_manager",
+      "section": "12. Elections and campaign history",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "campaign_treasurer",
+      "section": "12. Elections and campaign history",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "campaign_headquarters",
+      "section": "12. Elections and campaign history",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "campaign_slogan",
+      "section": "12. Elections and campaign history",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "campaign_platform_url",
+      "section": "12. Elections and campaign history",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "campaign_issues_url",
+      "section": "12. Elections and campaign history",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "archived_campaign_sites",
+      "section": "12. Elections and campaign history",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "endorsements_received",
+      "section": "12. Elections and campaign history",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "endorsements_given",
+      "section": "12. Elections and campaign history",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "debate_participation",
+      "section": "12. Elections and campaign history",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "candidate_questionnaires",
+      "section": "12. Elections and campaign history",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "voter_guides",
+      "section": "12. Elections and campaign history",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "election_results_history",
+      "section": "12. Elections and campaign history",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "vote_totals",
+      "section": "12. Elections and campaign history",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "vote_percentages",
+      "section": "12. Elections and campaign history",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "turnout",
+      "section": "12. Elections and campaign history",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "margin",
+      "section": "12. Elections and campaign history",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "implemented_in_schema"
+    },
+    {
+      "fieldKey": "opponents",
+      "section": "12. Elections and campaign history",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "implemented_in_schema"
+    },
+    {
+      "fieldKey": "recounts",
+      "section": "12. Elections and campaign history",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "election_challenges",
+      "section": "12. Elections and campaign history",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "total_raised_current_cycle",
+      "section": "13. Campaign finance and political money",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "total_spent_current_cycle",
+      "section": "13. Campaign finance and political money",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "cash_on_hand",
+      "section": "13. Campaign finance and political money",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "implemented_in_schema"
+    },
+    {
+      "fieldKey": "debts_and_obligations",
+      "section": "13. Campaign finance and political money",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "candidate_self_funding",
+      "section": "13. Campaign finance and political money",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "small_donor_total",
+      "section": "13. Campaign finance and political money",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "large_donor_total",
+      "section": "13. Campaign finance and political money",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "individual_contribution_total",
+      "section": "13. Campaign finance and political money",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "committee_contribution_total",
+      "section": "13. Campaign finance and political money",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "party_contribution_total",
+      "section": "13. Campaign finance and political money",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "pac_contribution_total",
+      "section": "13. Campaign finance and political money",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "super_pac_support",
+      "section": "13. Campaign finance and political money",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "outside_spending_support",
+      "section": "13. Campaign finance and political money",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "outside_spending_opposition",
+      "section": "13. Campaign finance and political money",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "independent_expenditures",
+      "section": "13. Campaign finance and political money",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "in_kind_contributions",
+      "section": "13. Campaign finance and political money",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "transfers",
+      "section": "13. Campaign finance and political money",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "refunds",
+      "section": "13. Campaign finance and political money",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "top_donors",
+      "section": "13. Campaign finance and political money",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "implemented_in_schema"
+    },
+    {
+      "fieldKey": "top_employer_sources",
+      "section": "13. Campaign finance and political money",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "top_industry_sources",
+      "section": "13. Campaign finance and political money",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "geographic_donor_distribution",
+      "section": "13. Campaign finance and political money",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "fundraising_events",
+      "section": "13. Campaign finance and political money",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "bundlers",
+      "section": "13. Campaign finance and political money",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "lobbyist_contributions",
+      "section": "13. Campaign finance and political money",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "contractor_contributions",
+      "section": "13. Campaign finance and political money",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "donor_conflict_flags",
+      "section": "13. Campaign finance and political money",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "late_or_amended_reports",
+      "section": "13. Campaign finance and political money",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "finance_violations",
+      "section": "13. Campaign finance and political money",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "finance_penalties",
+      "section": "13. Campaign finance and political money",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "campaign_spending_categories",
+      "section": "13. Campaign finance and political money",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "vendors",
+      "section": "13. Campaign finance and political money",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "related_committees",
+      "section": "13. Campaign finance and political money",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "finance_report_links",
+      "section": "13. Campaign finance and political money",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "finance_data_freshness",
+      "section": "13. Campaign finance and political money",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "promise_id",
+      "section": "14. Campaign promises and commitments",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "implemented_in_schema"
+    },
+    {
+      "fieldKey": "promise_title",
+      "section": "14. Campaign promises and commitments",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "promise_text_exact",
+      "section": "14. Campaign promises and commitments",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "promise_normalized_summary",
+      "section": "14. Campaign promises and commitments",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "promise_type",
+      "section": "14. Campaign promises and commitments",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "issue_tags",
+      "section": "14. Campaign promises and commitments",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "implemented_in_schema"
+    },
+    {
+      "fieldKey": "promise_date",
+      "section": "14. Campaign promises and commitments",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "promise_context",
+      "section": "14. Campaign promises and commitments",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "promise_source_id",
+      "section": "14. Campaign promises and commitments",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "promise_target_date",
+      "section": "14. Campaign promises and commitments",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "promise_scope",
+      "section": "14. Campaign promises and commitments",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "promise_measurability",
+      "section": "14. Campaign promises and commitments",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "promise_status",
+      "section": "14. Campaign promises and commitments",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "status_reason",
+      "section": "14. Campaign promises and commitments",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "implemented_in_schema"
+    },
+    {
+      "fieldKey": "progress_percentage",
+      "section": "14. Campaign promises and commitments",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "implemented_in_schema"
+    },
+    {
+      "fieldKey": "evidence_for_status",
+      "section": "14. Campaign promises and commitments",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "blocking_authority",
+      "section": "14. Campaign promises and commitments",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "implemented_in_schema"
+    },
+    {
+      "fieldKey": "official_response",
+      "section": "14. Campaign promises and commitments",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "implemented_in_schema"
+    },
+    {
+      "fieldKey": "last_evaluated_at",
+      "section": "14. Campaign promises and commitments",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "implemented_in_schema"
+    },
+    {
+      "fieldKey": "reviewer",
+      "section": "14. Campaign promises and commitments",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "promise_score_effect",
+      "section": "14. Campaign promises and commitments",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "promise_revision_history",
+      "section": "14. Campaign promises and commitments",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "bills_sponsored",
+      "section": "15. Legislation, votes, executive actions, and decisions",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "bills_cosponsored",
+      "section": "15. Legislation, votes, executive actions, and decisions",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "bills_authored",
+      "section": "15. Legislation, votes, executive actions, and decisions",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "bills_signed",
+      "section": "15. Legislation, votes, executive actions, and decisions",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "bills_vetoed",
+      "section": "15. Legislation, votes, executive actions, and decisions",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "line_item_vetoes",
+      "section": "15. Legislation, votes, executive actions, and decisions",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "executive_orders",
+      "section": "15. Legislation, votes, executive actions, and decisions",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "administrative_orders",
+      "section": "15. Legislation, votes, executive actions, and decisions",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "resolutions",
+      "section": "15. Legislation, votes, executive actions, and decisions",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "ordinances",
+      "section": "15. Legislation, votes, executive actions, and decisions",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "budget_proposals",
+      "section": "15. Legislation, votes, executive actions, and decisions",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "budget_votes",
+      "section": "15. Legislation, votes, executive actions, and decisions",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "appropriations_actions",
+      "section": "15. Legislation, votes, executive actions, and decisions",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "tax_actions",
+      "section": "15. Legislation, votes, executive actions, and decisions",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "contract_awards",
+      "section": "15. Legislation, votes, executive actions, and decisions",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "procurement_actions",
+      "section": "15. Legislation, votes, executive actions, and decisions",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "land_use_actions",
+      "section": "15. Legislation, votes, executive actions, and decisions",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "regulatory_actions",
+      "section": "15. Legislation, votes, executive actions, and decisions",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "appointments_and_confirmations",
+      "section": "15. Legislation, votes, executive actions, and decisions",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "pardons_or_clemency",
+      "section": "15. Legislation, votes, executive actions, and decisions",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "lawsuits_authorized",
+      "section": "15. Legislation, votes, executive actions, and decisions",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "official_votes",
+      "section": "15. Legislation, votes, executive actions, and decisions",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "missed_votes",
+      "section": "15. Legislation, votes, executive actions, and decisions",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "abstentions",
+      "section": "15. Legislation, votes, executive actions, and decisions",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "paired_or_present_votes",
+      "section": "15. Legislation, votes, executive actions, and decisions",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "vote_explanations",
+      "section": "15. Legislation, votes, executive actions, and decisions",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "party_line_variance",
+      "section": "15. Legislation, votes, executive actions, and decisions",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "bipartisan_actions",
+      "section": "15. Legislation, votes, executive actions, and decisions",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "legislative_outcomes",
+      "section": "15. Legislation, votes, executive actions, and decisions",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "implementation_status",
+      "section": "15. Legislation, votes, executive actions, and decisions",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "affected_jurisdictions",
+      "section": "15. Legislation, votes, executive actions, and decisions",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "fiscal_impact",
+      "section": "15. Legislation, votes, executive actions, and decisions",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "implemented_in_schema"
+    },
+    {
+      "fieldKey": "beneficiary_or_harmed_groups",
+      "section": "15. Legislation, votes, executive actions, and decisions",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "source_record_links",
+      "section": "15. Legislation, votes, executive actions, and decisions",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "statement_id",
+      "section": "16. Public statements and issue positions",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "implemented_in_schema"
+    },
+    {
+      "fieldKey": "statement_date",
+      "section": "16. Public statements and issue positions",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "implemented_in_schema"
+    },
+    {
+      "fieldKey": "statement_type",
+      "section": "16. Public statements and issue positions",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "statement_exact_quote",
+      "section": "16. Public statements and issue positions",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "statement_summary",
+      "section": "16. Public statements and issue positions",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "speaker_context",
+      "section": "16. Public statements and issue positions",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "venue_or_program",
+      "section": "16. Public statements and issue positions",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "issue_tags",
+      "section": "16. Public statements and issue positions",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "implemented_in_schema"
+    },
+    {
+      "fieldKey": "position_label",
+      "section": "16. Public statements and issue positions",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "implemented_in_schema"
+    },
+    {
+      "fieldKey": "position_strength",
+      "section": "16. Public statements and issue positions",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "position_start_date",
+      "section": "16. Public statements and issue positions",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "position_end_date",
+      "section": "16. Public statements and issue positions",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "position_current_status",
+      "section": "16. Public statements and issue positions",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "supporting_actions",
+      "section": "16. Public statements and issue positions",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "contradicting_actions",
+      "section": "16. Public statements and issue positions",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "position_changes",
+      "section": "16. Public statements and issue positions",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "contradiction_flags",
+      "section": "16. Public statements and issue positions",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "fact_check_links",
+      "section": "16. Public statements and issue positions",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "official_clarification",
+      "section": "16. Public statements and issue positions",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "source_id",
+      "section": "16. Public statements and issue positions",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "archived_media",
+      "section": "16. Public statements and issue positions",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "transcript_or_timestamp",
+      "section": "16. Public statements and issue positions",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "attendance_rate",
+      "section": "17. Governance, constituent service, and performance",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "vote_participation_rate",
+      "section": "17. Governance, constituent service, and performance",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "committee_attendance_rate",
+      "section": "17. Governance, constituent service, and performance",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "meeting_attendance_rate",
+      "section": "17. Governance, constituent service, and performance",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "legislative_effectiveness",
+      "section": "17. Governance, constituent service, and performance",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "bill_passage_rate",
+      "section": "17. Governance, constituent service, and performance",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "bipartisan_collaboration_rate",
+      "section": "17. Governance, constituent service, and performance",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "constituent_response_rate",
+      "section": "17. Governance, constituent service, and performance",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "median_response_time",
+      "section": "17. Governance, constituent service, and performance",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "casework_volume_public_record",
+      "section": "17. Governance, constituent service, and performance",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "casework_resolution_rate",
+      "section": "17. Governance, constituent service, and performance",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "public_records_response_performance",
+      "section": "17. Governance, constituent service, and performance",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "office_accessibility",
+      "section": "17. Governance, constituent service, and performance",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "town_hall_frequency",
+      "section": "17. Governance, constituent service, and performance",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "public_meeting_frequency",
+      "section": "17. Governance, constituent service, and performance",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "press_availability",
+      "section": "17. Governance, constituent service, and performance",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "calendar_transparency",
+      "section": "17. Governance, constituent service, and performance",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "schedule_publication_rate",
+      "section": "17. Governance, constituent service, and performance",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "financial_reporting_timeliness",
+      "section": "17. Governance, constituent service, and performance",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "disclosure_timeliness",
+      "section": "17. Governance, constituent service, and performance",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "data_completeness_score",
+      "section": "17. Governance, constituent service, and performance",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "data_freshness_score",
+      "section": "17. Governance, constituent service, and performance",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "transparency_score",
+      "section": "17. Governance, constituent service, and performance",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "responsiveness_score",
+      "section": "17. Governance, constituent service, and performance",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "promise_keeping_score",
+      "section": "17. Governance, constituent service, and performance",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "integrity_score",
+      "section": "17. Governance, constituent service, and performance",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "overall_civic_score",
+      "section": "17. Governance, constituent service, and performance",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "performance_metric_period",
+      "section": "17. Governance, constituent service, and performance",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "disclosure_filing_ids",
+      "section": "18. Financial disclosures, assets, property, and interests",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "disclosure_periods",
+      "section": "18. Financial disclosures, assets, property, and interests",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "income_sources",
+      "section": "18. Financial disclosures, assets, property, and interests",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "implemented_in_schema"
+    },
+    {
+      "fieldKey": "income_ranges",
+      "section": "18. Financial disclosures, assets, property, and interests",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "salary_public_office",
+      "section": "18. Financial disclosures, assets, property, and interests",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "outside_income",
+      "section": "18. Financial disclosures, assets, property, and interests",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "honoraria",
+      "section": "18. Financial disclosures, assets, property, and interests",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "gifts",
+      "section": "18. Financial disclosures, assets, property, and interests",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "travel_reimbursements",
+      "section": "18. Financial disclosures, assets, property, and interests",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "assets",
+      "section": "18. Financial disclosures, assets, property, and interests",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "liabilities",
+      "section": "18. Financial disclosures, assets, property, and interests",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "investment_accounts",
+      "section": "18. Financial disclosures, assets, property, and interests",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "stock_holdings",
+      "section": "18. Financial disclosures, assets, property, and interests",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "business_interests",
+      "section": "18. Financial disclosures, assets, property, and interests",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "partnership_interests",
+      "section": "18. Financial disclosures, assets, property, and interests",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "trusts",
+      "section": "18. Financial disclosures, assets, property, and interests",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "real_property_interests",
+      "section": "18. Financial disclosures, assets, property, and interests",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "property_locations_generalized",
+      "section": "18. Financial disclosures, assets, property, and interests",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "property_assessed_values",
+      "section": "18. Financial disclosures, assets, property, and interests",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "mortgages_public_record",
+      "section": "18. Financial disclosures, assets, property, and interests",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "spouse_financial_interests_public_record",
+      "section": "18. Financial disclosures, assets, property, and interests",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "dependent_interests_public_record",
+      "section": "18. Financial disclosures, assets, property, and interests",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "blind_trust_status",
+      "section": "18. Financial disclosures, assets, property, and interests",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "divestitures",
+      "section": "18. Financial disclosures, assets, property, and interests",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "recusal_commitments",
+      "section": "18. Financial disclosures, assets, property, and interests",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "disclosure_amendments",
+      "section": "18. Financial disclosures, assets, property, and interests",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "late_filings",
+      "section": "18. Financial disclosures, assets, property, and interests",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "unexplained_variance_flags",
+      "section": "18. Financial disclosures, assets, property, and interests",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "estimated_net_worth_range",
+      "section": "18. Financial disclosures, assets, property, and interests",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "net_worth_methodology",
+      "section": "18. Financial disclosures, assets, property, and interests",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "ethics_complaints",
+      "section": "19. Ethics, legal, regulatory, and integrity record",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "ethics_investigations",
+      "section": "19. Ethics, legal, regulatory, and integrity record",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "ethics_findings",
+      "section": "19. Ethics, legal, regulatory, and integrity record",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "ethics_advisory_opinions",
+      "section": "19. Ethics, legal, regulatory, and integrity record",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "conflicts_of_interest",
+      "section": "19. Ethics, legal, regulatory, and integrity record",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "recusals",
+      "section": "19. Ethics, legal, regulatory, and integrity record",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "gift_rule_issues",
+      "section": "19. Ethics, legal, regulatory, and integrity record",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "lobbying_rule_issues",
+      "section": "19. Ethics, legal, regulatory, and integrity record",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "campaign_finance_enforcement",
+      "section": "19. Ethics, legal, regulatory, and integrity record",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "election_law_cases",
+      "section": "19. Ethics, legal, regulatory, and integrity record",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "civil_cases",
+      "section": "19. Ethics, legal, regulatory, and integrity record",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "criminal_cases",
+      "section": "19. Ethics, legal, regulatory, and integrity record",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "administrative_cases",
+      "section": "19. Ethics, legal, regulatory, and integrity record",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "regulatory_actions",
+      "section": "19. Ethics, legal, regulatory, and integrity record",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "subpoenas",
+      "section": "19. Ethics, legal, regulatory, and integrity record",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "audits",
+      "section": "19. Ethics, legal, regulatory, and integrity record",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "inspector_general_reports",
+      "section": "19. Ethics, legal, regulatory, and integrity record",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "whistleblower_claims",
+      "section": "19. Ethics, legal, regulatory, and integrity record",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "settlements",
+      "section": "19. Ethics, legal, regulatory, and integrity record",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "judgments",
+      "section": "19. Ethics, legal, regulatory, and integrity record",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "fines_and_penalties",
+      "section": "19. Ethics, legal, regulatory, and integrity record",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "sanctions",
+      "section": "19. Ethics, legal, regulatory, and integrity record",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "censures",
+      "section": "19. Ethics, legal, regulatory, and integrity record",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "reprimands",
+      "section": "19. Ethics, legal, regulatory, and integrity record",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "expulsions_or_removals",
+      "section": "19. Ethics, legal, regulatory, and integrity record",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "impeachment_actions",
+      "section": "19. Ethics, legal, regulatory, and integrity record",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "recall_actions",
+      "section": "19. Ethics, legal, regulatory, and integrity record",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "fraud_or_integrity_flags",
+      "section": "19. Ethics, legal, regulatory, and integrity record",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "official_response_to_issue",
+      "section": "19. Ethics, legal, regulatory, and integrity record",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "case_status",
+      "section": "19. Ethics, legal, regulatory, and integrity record",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "appeal_status",
+      "section": "19. Ethics, legal, regulatory, and integrity record",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "final_disposition",
+      "section": "19. Ethics, legal, regulatory, and integrity record",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "implemented_in_schema"
+    },
+    {
+      "fieldKey": "integrity_review_status",
+      "section": "19. Ethics, legal, regulatory, and integrity record",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "organizational_memberships",
+      "section": "20. Organizations, networks, associates, and relationships",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "advocacy_group_relationships",
+      "section": "20. Organizations, networks, associates, and relationships",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "think_tank_relationships",
+      "section": "20. Organizations, networks, associates, and relationships",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "religious_organization_roles_public_record",
+      "section": "20. Organizations, networks, associates, and relationships",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "civic_organization_roles",
+      "section": "20. Organizations, networks, associates, and relationships",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "fraternal_organization_roles",
+      "section": "20. Organizations, networks, associates, and relationships",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "alumni_networks",
+      "section": "20. Organizations, networks, associates, and relationships",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "donor_networks",
+      "section": "20. Organizations, networks, associates, and relationships",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "consultant_networks",
+      "section": "20. Organizations, networks, associates, and relationships",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "lobbyist_relationships",
+      "section": "20. Organizations, networks, associates, and relationships",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "vendor_relationships",
+      "section": "20. Organizations, networks, associates, and relationships",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "business_partner_relationships",
+      "section": "20. Organizations, networks, associates, and relationships",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "political_allies",
+      "section": "20. Organizations, networks, associates, and relationships",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "family_members_in_public_roles",
+      "section": "20. Organizations, networks, associates, and relationships",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "staff_family_relationships",
+      "section": "20. Organizations, networks, associates, and relationships",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "nepotism_flags",
+      "section": "20. Organizations, networks, associates, and relationships",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "revolving_door_events",
+      "section": "20. Organizations, networks, associates, and relationships",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "relationship_evidence",
+      "section": "20. Organizations, networks, associates, and relationships",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "relationship_relevance_note",
+      "section": "20. Organizations, networks, associates, and relationships",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "news_mentions",
+      "section": "21. Media, news, public perception, and controversies",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "press_releases",
+      "section": "21. Media, news, public perception, and controversies",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "official_blog_posts",
+      "section": "21. Media, news, public perception, and controversies",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "interviews",
+      "section": "21. Media, news, public perception, and controversies",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "speeches",
+      "section": "21. Media, news, public perception, and controversies",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "debates",
+      "section": "21. Media, news, public perception, and controversies",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "podcast_appearances",
+      "section": "21. Media, news, public perception, and controversies",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "television_appearances",
+      "section": "21. Media, news, public perception, and controversies",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "op_eds",
+      "section": "21. Media, news, public perception, and controversies",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "advertisements",
+      "section": "21. Media, news, public perception, and controversies",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "fact_checks",
+      "section": "21. Media, news, public perception, and controversies",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "editorial_board_positions",
+      "section": "21. Media, news, public perception, and controversies",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "endorsement_editorials",
+      "section": "21. Media, news, public perception, and controversies",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "approval_polling",
+      "section": "21. Media, news, public perception, and controversies",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "favorability_polling",
+      "section": "21. Media, news, public perception, and controversies",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "issue_polling",
+      "section": "21. Media, news, public perception, and controversies",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "awards_and_recognition",
+      "section": "21. Media, news, public perception, and controversies",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "controversy_records",
+      "section": "21. Media, news, public perception, and controversies",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "misinformation_or_correction_records",
+      "section": "21. Media, news, public perception, and controversies",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "public_apologies",
+      "section": "21. Media, news, public perception, and controversies",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "retractions",
+      "section": "21. Media, news, public perception, and controversies",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "media_sentiment_derived",
+      "section": "21. Media, news, public perception, and controversies",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "public_attention_trends",
+      "section": "21. Media, news, public perception, and controversies",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "news_monitor_active",
+      "section": "21. Media, news, public perception, and controversies",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "last_news_scan_at",
+      "section": "21. Media, news, public perception, and controversies",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "active_petitions",
+      "section": "22. Civic action, meetings, alerts, and live activity",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "historical_petitions",
+      "section": "22. Civic action, meetings, alerts, and live activity",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "petition_targets",
+      "section": "22. Civic action, meetings, alerts, and live activity",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "petition_signature_counts",
+      "section": "22. Civic action, meetings, alerts, and live activity",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "petition_status",
+      "section": "22. Civic action, meetings, alerts, and live activity",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "constituent_message_topics",
+      "section": "22. Civic action, meetings, alerts, and live activity",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "public_comment_opportunities",
+      "section": "22. Civic action, meetings, alerts, and live activity",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "upcoming_meetings",
+      "section": "22. Civic action, meetings, alerts, and live activity",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "past_meetings",
+      "section": "22. Civic action, meetings, alerts, and live activity",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "meeting_agendas",
+      "section": "22. Civic action, meetings, alerts, and live activity",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "meeting_minutes",
+      "section": "22. Civic action, meetings, alerts, and live activity",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "public_notices",
+      "section": "22. Civic action, meetings, alerts, and live activity",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "town_halls",
+      "section": "22. Civic action, meetings, alerts, and live activity",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "office_events",
+      "section": "22. Civic action, meetings, alerts, and live activity",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "campaign_events",
+      "section": "22. Civic action, meetings, alerts, and live activity",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "live_activity_status",
+      "section": "22. Civic action, meetings, alerts, and live activity",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "recent_votes",
+      "section": "22. Civic action, meetings, alerts, and live activity",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "recent_social_activity",
+      "section": "22. Civic action, meetings, alerts, and live activity",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "recent_news_activity",
+      "section": "22. Civic action, meetings, alerts, and live activity",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "recent_official_actions",
+      "section": "22. Civic action, meetings, alerts, and live activity",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "alert_topics_available",
+      "section": "22. Civic action, meetings, alerts, and live activity",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "subscription_options",
+      "section": "22. Civic action, meetings, alerts, and live activity",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "last_activity_sync_at",
+      "section": "22. Civic action, meetings, alerts, and live activity",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "implemented_in_schema"
+    },
+    {
+      "fieldKey": "last_profile_updated_at",
+      "section": "22. Civic action, meetings, alerts, and live activity",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "profile_completeness_percentage",
+      "section": "22. Civic action, meetings, alerts, and live activity",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "monitoring_health",
+      "section": "22. Civic action, meetings, alerts, and live activity",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "evidence_id",
+      "section": "Shared evidence, verification, and audit layer",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "implemented_in_schema"
+    },
+    {
+      "fieldKey": "claim_id",
+      "section": "Shared evidence, verification, and audit layer",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "source_id",
+      "section": "Shared evidence, verification, and audit layer",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "source_type",
+      "section": "Shared evidence, verification, and audit layer",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "source_title",
+      "section": "Shared evidence, verification, and audit layer",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "publisher_or_agency",
+      "section": "Shared evidence, verification, and audit layer",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "author",
+      "section": "Shared evidence, verification, and audit layer",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "canonical_url",
+      "section": "Shared evidence, verification, and audit layer",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "archived_url",
+      "section": "Shared evidence, verification, and audit layer",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "document_identifier",
+      "section": "Shared evidence, verification, and audit layer",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "page_number",
+      "section": "Shared evidence, verification, and audit layer",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "section_name",
+      "section": "Shared evidence, verification, and audit layer",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "video_or_audio_timestamp",
+      "section": "Shared evidence, verification, and audit layer",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "publication_date",
+      "section": "Shared evidence, verification, and audit layer",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "event_date",
+      "section": "Shared evidence, verification, and audit layer",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "retrieved_at",
+      "section": "Shared evidence, verification, and audit layer",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "relevant_excerpt",
+      "section": "Shared evidence, verification, and audit layer",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "full_text_hash",
+      "section": "Shared evidence, verification, and audit layer",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "document_hash",
+      "section": "Shared evidence, verification, and audit layer",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "evidence_role",
+      "section": "Shared evidence, verification, and audit layer",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "source_tier",
+      "section": "Shared evidence, verification, and audit layer",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "evidence_strength",
+      "section": "Shared evidence, verification, and audit layer",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "verification_status",
+      "section": "Shared evidence, verification, and audit layer",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "verification_method",
+      "section": "Shared evidence, verification, and audit layer",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "verified_by",
+      "section": "Shared evidence, verification, and audit layer",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "verified_at",
+      "section": "Shared evidence, verification, and audit layer",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "implemented_in_schema"
+    },
+    {
+      "fieldKey": "confidence",
+      "section": "Shared evidence, verification, and audit layer",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "implemented_in_schema"
+    },
+    {
+      "fieldKey": "conflict_status",
+      "section": "Shared evidence, verification, and audit layer",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "copyright_or_usage_note",
+      "section": "Shared evidence, verification, and audit layer",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "ingestion_job_id",
+      "section": "Shared evidence, verification, and audit layer",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "parser_version",
+      "section": "Shared evidence, verification, and audit layer",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "model_name_and_version",
+      "section": "Shared evidence, verification, and audit layer",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "prompt_or_rule_version",
+      "section": "Shared evidence, verification, and audit layer",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "human_review_required",
+      "section": "Shared evidence, verification, and audit layer",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "publication_status",
+      "section": "Shared evidence, verification, and audit layer",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "created_at",
+      "section": "Shared evidence, verification, and audit layer",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "implemented_in_schema"
+    },
+    {
+      "fieldKey": "updated_at",
+      "section": "Shared evidence, verification, and audit layer",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "change_reason",
+      "section": "Shared evidence, verification, and audit layer",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "implemented_in_schema"
+    },
+    {
+      "fieldKey": "supersedes_record_id",
+      "section": "Shared evidence, verification, and audit layer",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "correction_request_id",
+      "section": "Shared evidence, verification, and audit layer",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "audit_event_ids",
+      "section": "Shared evidence, verification, and audit layer",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "verified",
+      "section": "Status vocabulary",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "implemented_in_schema"
+    },
+    {
+      "fieldKey": "partially_verified",
+      "section": "Status vocabulary",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "unverified",
+      "section": "Status vocabulary",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "conflicting",
+      "section": "Status vocabulary",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "stale",
+      "section": "Status vocabulary",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "unknown",
+      "section": "Status vocabulary",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "not_applicable",
+      "section": "Status vocabulary",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "draft",
+      "section": "Status vocabulary",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "review",
+      "section": "Status vocabulary",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "published",
+      "section": "Status vocabulary",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "disputed",
+      "section": "Status vocabulary",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "corrected",
+      "section": "Status vocabulary",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "superseded",
+      "section": "Status vocabulary",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "archived",
+      "section": "Status vocabulary",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "high",
+      "section": "Status vocabulary",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "medium",
+      "section": "Status vocabulary",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "low",
+      "section": "Status vocabulary",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "insufficient",
+      "section": "Status vocabulary",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "primary_official",
+      "section": "Status vocabulary",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "primary_record",
+      "section": "Status vocabulary",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "reputable_secondary",
+      "section": "Status vocabulary",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "specialist_database",
+      "section": "Status vocabulary",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "self_published",
+      "section": "Status vocabulary",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "user_submitted",
+      "section": "Status vocabulary",
+      "declaredFrom": [
+        "official_profile_data_dictionary"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "seat_and_occupancy",
+      "section": "profile_research_queue",
+      "declaredFrom": [
+        "florida-profile-research-queue.json"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "portrait_and_identity",
+      "section": "profile_research_queue",
+      "declaredFrom": [
+        "florida-profile-research-queue.json"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "contact_and_public_channels",
+      "section": "profile_research_queue",
+      "declaredFrom": [
+        "florida-profile-research-queue.json"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "biography_education_military_career",
+      "section": "profile_research_queue",
+      "declaredFrom": [
+        "florida-profile-research-queue.json"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "election_and_term_history",
+      "section": "profile_research_queue",
+      "declaredFrom": [
+        "florida-profile-research-queue.json"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "committees_leadership_appointments",
+      "section": "profile_research_queue",
+      "declaredFrom": [
+        "florida-profile-research-queue.json"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "campaign_promises",
+      "section": "profile_research_queue",
+      "declaredFrom": [
+        "florida-profile-research-queue.json"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "quotes_and_statements",
+      "section": "profile_research_queue",
+      "declaredFrom": [
+        "florida-profile-research-queue.json"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "actions_decisions_bills_votes",
+      "section": "profile_research_queue",
+      "declaredFrom": [
+        "florida-profile-research-queue.json"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "campaign_finance",
+      "section": "profile_research_queue",
+      "declaredFrom": [
+        "florida-profile-research-queue.json"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "civic_scores_and_performance",
+      "section": "profile_research_queue",
+      "declaredFrom": [
+        "florida-profile-research-queue.json"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "maha_tracker",
+      "section": "profile_research_queue",
+      "declaredFrom": [
+        "florida-profile-research-queue.json"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "doge_government_efficiency_tracker",
+      "section": "profile_research_queue",
+      "declaredFrom": [
+        "florida-profile-research-queue.json"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "border_immigration_tracker",
+      "section": "profile_research_queue",
+      "declaredFrom": [
+        "florida-profile-research-queue.json"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "energy_independence_tracker",
+      "section": "profile_research_queue",
+      "declaredFrom": [
+        "florida-profile-research-queue.json"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "trade_tariffs_tracker",
+      "section": "profile_research_queue",
+      "declaredFrom": [
+        "florida-profile-research-queue.json"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "education_school_choice_tracker",
+      "section": "profile_research_queue",
+      "declaredFrom": [
+        "florida-profile-research-queue.json"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "fraud_integrity_tracker",
+      "section": "profile_research_queue",
+      "declaredFrom": [
+        "florida-profile-research-queue.json"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "financial_disclosures",
+      "section": "profile_research_queue",
+      "declaredFrom": [
+        "florida-profile-research-queue.json"
+      ],
+      "implementationStatus": "implemented_in_schema"
+    },
+    {
+      "fieldKey": "ethics_integrity_legal",
+      "section": "profile_research_queue",
+      "declaredFrom": [
+        "florida-profile-research-queue.json"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "relationships_endorsements_conflicts",
+      "section": "profile_research_queue",
+      "declaredFrom": [
+        "florida-profile-research-queue.json"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "news_and_real_time_activity",
+      "section": "profile_research_queue",
+      "declaredFrom": [
+        "florida-profile-research-queue.json"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "sources_archives_methodology",
+      "section": "profile_research_queue",
+      "declaredFrom": [
+        "florida-profile-research-queue.json"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "seat",
+      "section": "enrichment-agent:seat-registry-agent",
+      "declaredFrom": [
+        "enrichment-agent-manifest.json"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "office_term",
+      "section": "enrichment-agent:seat-registry-agent",
+      "declaredFrom": [
+        "enrichment-agent-manifest.json"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "occupancy_event",
+      "section": "enrichment-agent:seat-registry-agent",
+      "declaredFrom": [
+        "enrichment-agent-manifest.json"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "person",
+      "section": "enrichment-agent:identity-portrait-agent",
+      "declaredFrom": [
+        "enrichment-agent-manifest.json"
+      ],
+      "implementationStatus": "implemented_in_schema"
+    },
+    {
+      "fieldKey": "portrait_candidate",
+      "section": "enrichment-agent:identity-portrait-agent",
+      "declaredFrom": [
+        "enrichment-agent-manifest.json"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "asset",
+      "section": "enrichment-agent:identity-portrait-agent",
+      "declaredFrom": [
+        "enrichment-agent-manifest.json"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "evidence",
+      "section": "enrichment-agent:identity-portrait-agent",
+      "declaredFrom": [
+        "enrichment-agent-manifest.json"
+      ],
+      "implementationStatus": "implemented_in_schema"
+    },
+    {
+      "fieldKey": "contact_point",
+      "section": "enrichment-agent:contact-social-agent",
+      "declaredFrom": [
+        "enrichment-agent-manifest.json"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "office_location",
+      "section": "enrichment-agent:contact-social-agent",
+      "declaredFrom": [
+        "enrichment-agent-manifest.json"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "website",
+      "section": "enrichment-agent:contact-social-agent",
+      "declaredFrom": [
+        "enrichment-agent-manifest.json"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "social_account",
+      "section": "enrichment-agent:contact-social-agent",
+      "declaredFrom": [
+        "enrichment-agent-manifest.json"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "biography",
+      "section": "enrichment-agent:biography-background-agent",
+      "declaredFrom": [
+        "enrichment-agent-manifest.json"
+      ],
+      "implementationStatus": "implemented_in_schema"
+    },
+    {
+      "fieldKey": "education",
+      "section": "enrichment-agent:biography-background-agent",
+      "declaredFrom": [
+        "enrichment-agent-manifest.json"
+      ],
+      "implementationStatus": "implemented_in_schema"
+    },
+    {
+      "fieldKey": "military_service",
+      "section": "enrichment-agent:biography-background-agent",
+      "declaredFrom": [
+        "enrichment-agent-manifest.json"
+      ],
+      "implementationStatus": "implemented_in_schema"
+    },
+    {
+      "fieldKey": "career_history",
+      "section": "enrichment-agent:biography-background-agent",
+      "declaredFrom": [
+        "enrichment-agent-manifest.json"
+      ],
+      "implementationStatus": "implemented_in_schema"
+    },
+    {
+      "fieldKey": "political_history",
+      "section": "enrichment-agent:biography-background-agent",
+      "declaredFrom": [
+        "enrichment-agent-manifest.json"
+      ],
+      "implementationStatus": "implemented_in_schema"
+    },
+    {
+      "fieldKey": "election",
+      "section": "enrichment-agent:election-term-agent",
+      "declaredFrom": [
+        "enrichment-agent-manifest.json"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "public_role",
+      "section": "enrichment-agent:committee-appointment-agent",
+      "declaredFrom": [
+        "enrichment-agent-manifest.json"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "committee_membership",
+      "section": "enrichment-agent:committee-appointment-agent",
+      "declaredFrom": [
+        "enrichment-agent-manifest.json"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "appointment",
+      "section": "enrichment-agent:committee-appointment-agent",
+      "declaredFrom": [
+        "enrichment-agent-manifest.json"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "promise",
+      "section": "enrichment-agent:promise-extraction-agent",
+      "declaredFrom": [
+        "enrichment-agent-manifest.json"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "claim",
+      "section": "enrichment-agent:promise-extraction-agent",
+      "declaredFrom": [
+        "enrichment-agent-manifest.json"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "statement",
+      "section": "enrichment-agent:statement-quote-agent",
+      "declaredFrom": [
+        "enrichment-agent-manifest.json"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "position_timeline",
+      "section": "enrichment-agent:statement-quote-agent",
+      "declaredFrom": [
+        "enrichment-agent-manifest.json"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "government_action",
+      "section": "enrichment-agent:legislative-action-agent",
+      "declaredFrom": [
+        "enrichment-agent-manifest.json"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "vote",
+      "section": "enrichment-agent:legislative-action-agent",
+      "declaredFrom": [
+        "enrichment-agent-manifest.json"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "attendance_metric",
+      "section": "enrichment-agent:legislative-action-agent",
+      "declaredFrom": [
+        "enrichment-agent-manifest.json"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "contract_action",
+      "section": "enrichment-agent:executive-administrative-action-agent",
+      "declaredFrom": [
+        "enrichment-agent-manifest.json"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "campaign_finance_summary",
+      "section": "enrichment-agent:campaign-finance-agent",
+      "declaredFrom": [
+        "enrichment-agent-manifest.json"
+      ],
+      "implementationStatus": "implemented_in_schema"
+    },
+    {
+      "fieldKey": "committee",
+      "section": "enrichment-agent:campaign-finance-agent",
+      "declaredFrom": [
+        "enrichment-agent-manifest.json"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "contribution",
+      "section": "enrichment-agent:campaign-finance-agent",
+      "declaredFrom": [
+        "enrichment-agent-manifest.json"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "expenditure",
+      "section": "enrichment-agent:campaign-finance-agent",
+      "declaredFrom": [
+        "enrichment-agent-manifest.json"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "finance_violation",
+      "section": "enrichment-agent:campaign-finance-agent",
+      "declaredFrom": [
+        "enrichment-agent-manifest.json"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "financial_disclosure",
+      "section": "enrichment-agent:financial-disclosure-agent",
+      "declaredFrom": [
+        "enrichment-agent-manifest.json"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "ocr_asset",
+      "section": "enrichment-agent:financial-disclosure-agent",
+      "declaredFrom": [
+        "enrichment-agent-manifest.json"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "potential_conflict_candidate",
+      "section": "enrichment-agent:financial-disclosure-agent",
+      "declaredFrom": [
+        "enrichment-agent-manifest.json"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "integrity_matter",
+      "section": "enrichment-agent:integrity-legal-agent",
+      "declaredFrom": [
+        "enrichment-agent-manifest.json"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "audit_finding",
+      "section": "enrichment-agent:integrity-legal-agent",
+      "declaredFrom": [
+        "enrichment-agent-manifest.json"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "relationship",
+      "section": "enrichment-agent:relationship-conflict-agent",
+      "declaredFrom": [
+        "enrichment-agent-manifest.json"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "conflict_candidate",
+      "section": "enrichment-agent:relationship-conflict-agent",
+      "declaredFrom": [
+        "enrichment-agent-manifest.json"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "issue_tracker",
+      "section": "enrichment-agent:tracker-analysis-agent",
+      "declaredFrom": [
+        "enrichment-agent-manifest.json"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "pillar_assessment",
+      "section": "enrichment-agent:tracker-analysis-agent",
+      "declaredFrom": [
+        "enrichment-agent-manifest.json"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "performance_metric",
+      "section": "enrichment-agent:score-calculation-agent",
+      "declaredFrom": [
+        "enrichment-agent-manifest.json"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "civic_score",
+      "section": "enrichment-agent:score-calculation-agent",
+      "declaredFrom": [
+        "enrichment-agent-manifest.json"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "calculation_record",
+      "section": "enrichment-agent:score-calculation-agent",
+      "declaredFrom": [
+        "enrichment-agent-manifest.json"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "ocr_text",
+      "section": "enrichment-agent:evidence-archive-ocr-agent",
+      "declaredFrom": [
+        "enrichment-agent-manifest.json"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "transcript",
+      "section": "enrichment-agent:evidence-archive-ocr-agent",
+      "declaredFrom": [
+        "enrichment-agent-manifest.json"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "activity_event",
+      "section": "enrichment-agent:news-activity-agent",
+      "declaredFrom": [
+        "enrichment-agent-manifest.json"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "media_record",
+      "section": "enrichment-agent:news-activity-agent",
+      "declaredFrom": [
+        "enrichment-agent-manifest.json"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "alert_candidate",
+      "section": "enrichment-agent:news-activity-agent",
+      "declaredFrom": [
+        "enrichment-agent-manifest.json"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "review_queue",
+      "section": "enrichment-agent:quality-control-agent",
+      "declaredFrom": [
+        "enrichment-agent-manifest.json"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "validation_result",
+      "section": "enrichment-agent:quality-control-agent",
+      "declaredFrom": [
+        "enrichment-agent-manifest.json"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "conflict_record",
+      "section": "enrichment-agent:quality-control-agent",
+      "declaredFrom": [
+        "enrichment-agent-manifest.json"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    },
+    {
+      "fieldKey": "publication_decision",
+      "section": "enrichment-agent:quality-control-agent",
+      "declaredFrom": [
+        "enrichment-agent-manifest.json"
+      ],
+      "implementationStatus": "DECLARED_NOT_IMPLEMENTED"
+    }
+  ]
+}

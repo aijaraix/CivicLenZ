@@ -1,0 +1,14 @@
+{
+  "schemaVersion": "1.0.0",
+  "coverageGapId": "ac6dd85c-94d2-55d0-b969-7617d63eda90",
+  "gapKey": "fl-palm-beach-county-special-district",
+  "jurisdictionName": "Palm Beach County",
+  "stateCode": "FL",
+  "governmentLevel": "special_district",
+  "officeFamily": "special_district",
+  "expectedCountStatus": "expected_count_unknown",
+  "expectedCount": null,
+  "reason": "Special-district elected seats counts for Palm Beach County are not declared as expected seats. County commission district counts vary; municipal, school, judicial, and special-district inventories are not invented.",
+  "coverageRegion": "palm_beach",
+  "ledgerStatus": "coverage_gap"
+}
