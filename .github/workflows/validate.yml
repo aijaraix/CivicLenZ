@@ -41,5 +41,8 @@ jobs:
       - name: Public officials list must not include staging
         run: npm run test:public-officials
 
+      - name: Collection runtime unit tests
+        run: npm run test:collection-runtime
+
       - name: Build
         run: npm run build

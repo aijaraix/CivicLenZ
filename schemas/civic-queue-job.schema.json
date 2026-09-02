@@ -1,0 +1,24 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://civiclenz.ai/schemas/civic-queue-job.schema.json",
+  "title": "CivicLenZ queue job message",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schemaVersion", "jobId", "dedupeKey", "route", "attempt", "scheduledFor", "dryRun"],
+  "properties": {
+    "schemaVersion": { "const": "1.0.0" },
+    "jobId": { "type": "string", "minLength": 8 },
+    "dedupeKey": { "type": "string", "minLength": 3 },
+    "route": { "enum": ["ingest", "validate", "monitor", "heavy"] },
+    "sourceKey": { "type": "string" },
+    "sourceUrl": { "type": "string" },
+    "entityType": { "type": "string" },
+    "entityId": { "type": "string" },
+    "retrievalId": { "type": "string" },
+    "claimId": { "type": "string" },
+    "attempt": { "type": "integer", "minimum": 0 },
+    "scheduledFor": { "type": "string", "format": "date-time" },
+    "dryRun": { "type": "boolean" },
+    "metadata": { "type": "object" }
+  }
+}

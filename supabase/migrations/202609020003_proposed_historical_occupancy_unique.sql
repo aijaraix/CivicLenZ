@@ -1,0 +1,20 @@
+-- PROPOSAL ONLY. Do not apply to live CivicLenZ (uazqyzmzydtmbypjuqjw).
+--
+-- Live currently enforces one current/acting occupancy per seat:
+--   UNIQUE (seat_id) WHERE occupancy_status IN ('current', 'acting')
+-- Live does NOT have UNIQUE (seat_id, person_id, start_date).
+--
+-- Adapters resolve historical terms by querying seat_id + person_id + start_date
+-- and then UPDATE occupancy_id or INSERT. They must not use that tuple as
+-- PostgREST on_conflict until this (or an equivalent) additive constraint exists.
+--
+-- If reviewed, this would make same-term collector re-runs idempotent at the
+-- database layer without blocking a later non-overlapping term for the same
+-- person in the same seat (different start_date).
+--
+-- NULL start_date rows: Postgres UNIQUE treats NULLs as distinct, so a
+-- query-then-update path is still required for unknown-term occupancies.
+
+-- CREATE UNIQUE INDEX IF NOT EXISTS seat_occupancies_term_identity
+--   ON public.seat_occupancies (seat_id, person_id, start_date)
+--   WHERE start_date IS NOT NULL;

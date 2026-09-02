@@ -1,0 +1,45 @@
+{
+  "name": "civiclenz-collector",
+  "main": "src/index.ts",
+  "compatibility_date": "2026-09-01",
+  "compatibility_flags": ["nodejs_compat"],
+  "observability": {
+    "enabled": true,
+    "head_sampling_rate": 1
+  },
+  "version_metadata": {
+    "binding": "CF_VERSION_METADATA"
+  },
+  "vars": {
+    "WORKER_KEY": "civiclenz-collector"
+  },
+  "r2_buckets": [
+    {
+      "binding": "EVIDENCE_BUCKET",
+      "bucket_name": "civiclenzevidence"
+    }
+  ],
+  "queues": {
+    "producers": [
+      { "binding": "VALIDATE_QUEUE", "queue": "civiclenz-validate" },
+      { "binding": "HEAVY_QUEUE", "queue": "civiclenz-heavy" },
+      { "binding": "DEAD_LETTER_QUEUE", "queue": "civiclenz-dead-letter" }
+    ],
+    "consumers": [
+      {
+        "queue": "civiclenz-ingest",
+        "max_batch_size": 5,
+        "max_batch_timeout": 15,
+        "max_retries": 4,
+        "dead_letter_queue": "civiclenz-dead-letter"
+      },
+      {
+        "queue": "civiclenz-monitor",
+        "max_batch_size": 5,
+        "max_batch_timeout": 15,
+        "max_retries": 4,
+        "dead_letter_queue": "civiclenz-dead-letter"
+      }
+    ]
+  }
+}

@@ -1,0 +1,21 @@
+-- PROPOSAL ONLY. Do not apply to live CivicLenZ (uazqyzmzydtmbypjuqjw).
+--
+-- Live persons have no UNIQUE(canonical_name). Identity must not merge on name.
+-- This table would store verified external identifiers with uniqueness on
+-- (namespace, external_key) so FEC/Bioguide/state IDs serialize person resolution
+-- without treating display names as identity.
+--
+-- Adapters do not write this table yet. Default: do not apply before first deploy.
+
+-- CREATE TABLE IF NOT EXISTS public.person_identity_keys (
+--   person_identity_key_id uuid PRIMARY KEY DEFAULT gen_random_uuid(),
+--   person_id uuid NOT NULL REFERENCES public.persons (person_id),
+--   namespace text NOT NULL,
+--   external_key text NOT NULL,
+--   source_id uuid REFERENCES public.sources (source_id),
+--   verified_at timestamptz,
+--   created_at timestamptz NOT NULL DEFAULT now(),
+--   UNIQUE (namespace, external_key)
+-- );
+--
+-- ALTER TABLE public.person_identity_keys ENABLE ROW LEVEL SECURITY;
