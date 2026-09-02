@@ -1,3 +1,4 @@
+import { inferCapabilityFromJob } from "./worker-registry.ts";
 import { CivicError, sanitizeErrorMessage } from "./errors.ts";
 import { createDeadLetterPayload, shouldDeadLetter } from "./dead-letter.ts";
 import type { CivicStore } from "./store.ts";
@@ -24,7 +25,15 @@ export async function withWorkerRun<T>(input: {
       recordsRead: 0,
       recordsWritten: 0,
       claimsVerified: 0,
-      metadata: { queueRoute: input.message?.route, sourceKey: input.message?.sourceKey },
+      metadata: {
+        queueRoute: input.message?.route,
+        sourceKey: input.message?.sourceKey,
+        capability: inferCapabilityFromJob({
+          route: input.message?.route,
+          sourceKey: input.message?.sourceKey,
+          purpose: typeof input.message?.metadata?.purpose === "string" ? input.message.metadata.purpose : undefined,
+        }),
+      },
     });
     if (input.message) {
       await input.store.leaseJob(input.message.jobId, input.worker.workerKey);
@@ -44,7 +53,16 @@ export async function withWorkerRun<T>(input: {
       recordsRead: finished.recordsRead,
       recordsWritten: finished.recordsWritten,
       claimsVerified: finished.claimsVerified,
-      metadata: { priorRunId: run.workerRunId },
+      metadata: {
+        priorRunId: run.workerRunId,
+        queueRoute: input.message?.route,
+        sourceKey: input.message?.sourceKey,
+        capability: inferCapabilityFromJob({
+          route: input.message?.route,
+          sourceKey: input.message?.sourceKey,
+          purpose: typeof input.message?.metadata?.purpose === "string" ? input.message.metadata.purpose : undefined,
+        }),
+      },
     });
     return finished.result;
   } catch (error) {

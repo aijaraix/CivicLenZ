@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
+import { CompletenessPanel } from '@/components/canonical-profile';
 import { getAllOfficials, getOfficialBySlug, humanize, initials } from '@/lib/officials';
 
 const standardTrackers = [
@@ -131,6 +132,9 @@ export default async function OfficialProfilePage({
       </section>
 
       <div className="shell profile-stack">
+        <CompletenessPanel
+          note="This reviewed directory page is not a completeness audit. Dimensional completeness is produced by the Seat research-contract engine. A single percentage is not treated as complete."
+        />
         <section className="card profile-card">
           <h2 className="card-title">Seat & Current Occupancy</h2>
           <p className="card-subtitle">CivicLenZ monitors the elected seat continuously and attaches each officeholder to a distinct term.</p>

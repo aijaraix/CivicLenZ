@@ -149,10 +149,11 @@ export const SOURCE_ADAPTERS: SourceAdapterConfig[] = [
     expectedContentType: "text/html",
     active: true,
     firstWaveActive: false,
+    operatorControlled: true,
     heavyRequired: false,
     schemaCertified: false,
-    coverage: "discovered",
-    notes: "Official homepage. Portrait host flgov.com is not .gov so portraits stay unverified.",
+    coverage: "parser",
+    notes: "Official homepage. Operator-controlled OFFICIAL_PROFILE; not cron first-wave. Portrait host flgov.com is not .gov so portraits stay unverified.",
   }),
   official({
     sourceKey: "florida-election-calendar",

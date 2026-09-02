@@ -1,4 +1,4 @@
-import { getAllOfficials, getOfficialBySlug } from '../lib/officials.ts';
+import { getAllOfficials, getOfficialBySlug, publicSeatKey } from '../lib/officials.ts';
 
 const LIVE_SITE_STAGING_LEAKS = [
   { name: 'Rick Scott', slug: 'rick-scott-united-states-senator' },
@@ -39,6 +39,16 @@ for (const leak of LIVE_SITE_STAGING_LEAKS) {
 
 if (!names.includes('Ron DeSantis')) {
   failures.push('Canonical reviewed profile Ron DeSantis is missing from the public list');
+}
+
+for (const official of officials) {
+  const seatKey = publicSeatKey(official);
+  if (!seatKey) {
+    failures.push(`${official.slug} has no public seat key for static export`);
+  }
+  if (seatKey === official.slug) {
+    failures.push(`${official.slug} used a person slug as a seat route`);
+  }
 }
 
 if (failures.length) {

@@ -120,7 +120,27 @@ export function parseWithParserFamily(input: {
       verificationState: "extracted",
     };
   }
-  if (family === "HTML_DETAIL" || family === "OFFICIAL_PROFILE" || family === "ELECTION_PORTAL") {
+  if (family === "OFFICIAL_PROFILE") {
+    const holders = parseOfficialProfile(text, input.config);
+    if (holders.length > 0) {
+      return {
+        family,
+        holders,
+        discoveredUrls: [input.sourceUrl, ...holders.map((item) => item.sourceMemberUrl ?? input.sourceUrl)],
+        verificationState: "extracted",
+      };
+    }
+    if (input.config.coverage === "parser") {
+      throw new ParserError(`OFFICIAL_PROFILE extracted 0 officeholders from ${input.config.sourceKey}`);
+    }
+    return {
+      family,
+      holders: [],
+      discoveredUrls: discoverOfficialHrefs(extractHtmlText(text), input.sourceUrl),
+      verificationState: "source_found",
+    };
+  }
+  if (family === "HTML_DETAIL" || family === "ELECTION_PORTAL") {
     return {
       family,
       holders: [],
@@ -515,6 +535,165 @@ export function parseUsHouseFloridaDirectory(html: string, config: SourceAdapter
     throw new ParserError(`extracted ${holders.length} Florida U.S. House seats; expected at least ${minimumRecords}`);
   }
   return holders;
+}
+
+const OFFICE_SCOPE_PROFILE: Record<
+  string,
+  {
+    officeKind: string;
+    officeTitle: string;
+    seatFamily: string;
+    branch: string;
+    governmentLevel: string;
+    seatKeySuffix: string;
+    namePatterns: RegExp[];
+  }
+> = {
+  governor: {
+    officeKind: "governor",
+    officeTitle: "Governor of Florida",
+    seatFamily: "statewide_executive",
+    branch: "executive",
+    governmentLevel: "state",
+    seatKeySuffix: "governor",
+    namePatterns: [
+      /(?:The\s+Honorable\s+)?Governor(?:\s+of\s+[A-Za-z]+)?[:\s|,-]+(.+)/i,
+      /^Governor\s+(.+)$/i,
+    ],
+  },
+  attorney_general: {
+    officeKind: "attorney_general",
+    officeTitle: "Attorney General of Florida",
+    seatFamily: "statewide_executive",
+    branch: "executive",
+    governmentLevel: "state",
+    seatKeySuffix: "attorney-general",
+    namePatterns: [/(?:Attorney General)[:\s|,-]+(.+)/i],
+  },
+  chief_financial_officer: {
+    officeKind: "chief_financial_officer",
+    officeTitle: "Chief Financial Officer of Florida",
+    seatFamily: "statewide_executive",
+    branch: "executive",
+    governmentLevel: "state",
+    seatKeySuffix: "chief-financial-officer",
+    namePatterns: [/(?:Chief Financial Officer|CFO)[:\s|,-]+(.+)/i],
+  },
+  agriculture_commissioner: {
+    officeKind: "agriculture_commissioner",
+    officeTitle: "Commissioner of Agriculture of Florida",
+    seatFamily: "statewide_executive",
+    branch: "executive",
+    governmentLevel: "state",
+    seatKeySuffix: "agriculture-commissioner",
+    namePatterns: [/(?:Commissioner of Agriculture|Agriculture Commissioner)[:\s|,-]+(.+)/i],
+  },
+  mayor: {
+    officeKind: "mayor",
+    officeTitle: "Mayor",
+    seatFamily: "mayor",
+    branch: "executive",
+    governmentLevel: "county",
+    seatKeySuffix: "mayor",
+    namePatterns: [/(?:Mayor)[:\s|,-]+(.+)/i],
+  },
+};
+
+function metaContent(html: string, property: string): string | undefined {
+  const quoted = html.match(
+    new RegExp(`<meta\\b[^>]*(?:property|name)\\s*=\\s*["']${property}["'][^>]*content\\s*=\\s*["']([^"]+)["']`, "i"),
+  );
+  if (quoted?.[1]) return collapseWhitespace(decodeHtmlEntities(quoted[1]));
+  const reverse = html.match(
+    new RegExp(`<meta\\b[^>]*content\\s*=\\s*["']([^"]+)["'][^>]*(?:property|name)\\s*=\\s*["']${property}["']`, "i"),
+  );
+  return reverse?.[1] ? collapseWhitespace(decodeHtmlEntities(reverse[1])) : undefined;
+}
+
+function firstHeading(html: string): string | undefined {
+  const match = html.match(/<h1\b[^>]*>([\s\S]*?)<\/h1>/i);
+  return match?.[1] ? visibleText(match[1]) : undefined;
+}
+
+function documentTitle(html: string): string | undefined {
+  const match = html.match(/<title\b[^>]*>([\s\S]*?)<\/title>/i);
+  return match?.[1] ? visibleText(match[1]) : undefined;
+}
+
+function looksLikePersonName(value: string): boolean {
+  const cleaned = collapseWhitespace(value).replace(/,+\s*$/, "");
+  if (!cleaned) return false;
+  if (/^(vacant|tbd|to be determined)$/i.test(cleaned)) return false;
+  const parts = cleaned.split(/\s+/);
+  if (parts.length < 2 || parts.length > 6) return false;
+  if (/welcome|official website|^home$|state of florida$/i.test(cleaned)) return false;
+  return parts.every((part) => /^[A-Z][A-Za-z.'’-]*$/.test(part) || /^(Jr\.?|Sr\.?|II|III|IV)$/i.test(part));
+}
+
+function extractOfficialDisplayName(html: string, officeScope: string): { displayName: string; vacant: boolean } | undefined {
+  const profile = OFFICE_SCOPE_PROFILE[officeScope];
+  const candidates = [
+    metaContent(html, "og:title"),
+    metaContent(html, "twitter:title"),
+    firstHeading(html),
+    documentTitle(html),
+  ].filter((item): item is string => Boolean(item));
+  for (const candidate of candidates) {
+    if (isVacantName(candidate) || /\bvacant\b/i.test(candidate)) {
+      return { displayName: "Vacant", vacant: true };
+    }
+    for (const pattern of profile?.namePatterns ?? []) {
+      const match = candidate.match(pattern);
+      const captured = collapseWhitespace(match?.[1] ?? "");
+      const beforePipe = captured.split("|")[0]?.trim() ?? "";
+      if (looksLikePersonName(beforePipe)) return { displayName: beforePipe, vacant: false };
+    }
+    const stripped = collapseWhitespace(candidate.replace(/\s*[|—-].*$/, ""));
+    if (looksLikePersonName(stripped)) return { displayName: stripped, vacant: false };
+  }
+  return undefined;
+}
+
+export function parseOfficialProfile(html: string, config: SourceAdapterConfig): ExtractedOfficeholder[] {
+  const extracted = extractOfficialDisplayName(html, config.officeScope);
+  if (!extracted) return [];
+  const profile = OFFICE_SCOPE_PROFILE[config.officeScope] ?? {
+    officeKind: config.officeScope,
+    officeTitle: config.sourceName,
+    seatFamily: config.officeScope,
+    branch: "executive",
+    governmentLevel: config.jurisdiction === "us-fl" ? "state" : "unknown",
+    seatKeySuffix: config.officeScope.replace(/_/g, "-"),
+    namePatterns: [],
+  };
+  const portraitUrl = metaContent(html, "og:image");
+  const mail = html.match(/mailto:([^"'>\s]+)/i)?.[1];
+  const tel = html.match(/tel:([^"'>\s]+)/i)?.[1];
+  return [
+    {
+      displayName: extracted.displayName,
+      vacant: extracted.vacant,
+      officeTitle: profile.officeTitle,
+      officeKind: profile.officeKind,
+      seatFamily: profile.seatFamily,
+      governmentLevel: profile.governmentLevel,
+      branch: profile.branch,
+      jurisdictionName: config.jurisdiction === "us-fl" ? "Florida" : config.jurisdiction,
+      jurisdictionKey: config.jurisdiction,
+      jurisdictionType: profile.governmentLevel === "state" ? "state" : profile.governmentLevel,
+      stateCode: "FL",
+      seatKey: `${config.jurisdiction}-${profile.seatKeySuffix}`,
+      sourceMemberUrl: config.baseUrl,
+      occupancyStatus: extracted.vacant ? undefined : "current",
+      electedOrAppointed: "elected",
+      portraitUrl: portraitUrl && !extracted.vacant ? portraitUrl : undefined,
+      email: mail && !extracted.vacant ? decodeHtmlEntities(mail) : undefined,
+      phone: tel && !extracted.vacant ? decodeHtmlEntities(tel) : undefined,
+      rawRowText: collapseWhitespace(
+        [extracted.displayName, profile.officeTitle, config.baseUrl].filter(Boolean).join(" | "),
+      ).slice(0, 500),
+    },
+  ];
 }
 
 export function discoverOfficialHrefs(text: string, baseUrl: string): string[] {

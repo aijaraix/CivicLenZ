@@ -55,6 +55,7 @@ export type OfficialProfile = {
     officeId?: string;
     title: string;
     shortTitle?: string | null;
+    officeType?: string | null;
     governmentLevel: string;
     branch?: string | null;
     chamber?: string | null;
@@ -516,6 +517,20 @@ export function getStagingRecordsForReview(): OfficialProfile[] {
 
 export function getOfficialBySlug(slug: string): OfficialProfile | undefined {
   return getAllOfficials().find((official) => official.slug === slug);
+}
+
+/** Permanent seat identity for public routes. Never a person slug. */
+export function publicSeatKey(official: OfficialProfile): string {
+  if (official.seat?.seatId) return official.seat.seatId;
+  const state = (official.jurisdiction.stateCode ?? 'unknown').toLowerCase();
+  const officeType = official.office.officeType?.trim() || official.office.shortTitle || official.office.title;
+  const officeSlug = slugify(officeType);
+  const district = official.office.districtNumber;
+  return district ? `us-${state}-${officeSlug}-district-${district}` : `us-${state}-${officeSlug}`;
+}
+
+export function getOfficialBySeatKey(seatKey: string): OfficialProfile | undefined {
+  return getAllOfficials().find((official) => publicSeatKey(official) === seatKey);
 }
 
 export function initials(name: string): string {
