@@ -1,3 +1,4 @@
+// Deployment trigger: operator enqueue hotfix on main; no runtime behavior change.
 import {
   OPERATOR_ENQUEUE_PATH,
   authorizeOperator,
