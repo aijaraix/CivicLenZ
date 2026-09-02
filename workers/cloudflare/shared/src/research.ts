@@ -1,6 +1,9 @@
+import { auditCompleteness, type CompletenessAudit, type FieldDimensionResult } from "./completeness.ts";
 import { valueHash } from "./hash.ts";
-import { capabilityState, type Capability } from "./capabilities.ts";
+import { jobPriorityForResearchPriority, officeClassForOfficeType, type OfficeClassContract } from "./office-classes.ts";
+import { persistOfficeClassContract } from "./research-contracts.ts";
 import { portraitSourceDecision } from "./portraits.ts";
+import { queueForCapability } from "./capabilities.ts";
 import type { CivicStore } from "./store.ts";
 import type { PersonRecord, SeatRecord } from "./types.ts";
 
@@ -43,81 +46,118 @@ export const ENRICHMENT_RESEARCH_FIELDS = [
   "news_activity",
 ] as const;
 
-const FIELD_CAPABILITY: Record<(typeof ENRICHMENT_RESEARCH_FIELDS)[number], Capability> = {
-  portrait: "portrait_discovery",
-  identity: "identity_resolution",
-  date_of_birth: "biography_research",
-  birthplace: "biography_research",
-  education: "education_research",
-  career: "career_research",
-  political_history: "prior_office_research",
-  prior_offices: "prior_office_research",
-  family_public_relationships: "relationship_conflict",
-  contact: "contact_discovery",
-  social: "social_account_discovery",
-  campaign_finance: "campaign_finance",
-  financial_disclosure: "financial_disclosure",
-  business_interests: "business_interest",
-  committees: "committee_membership",
-  legislative_actions: "legislative_activity",
-  executive_actions: "executive_action",
-  promises_statements: "promise_collection",
-  ethics_legal_public_records: "ethics_integrity",
-  news_activity: "statement_collection",
-};
+export function workDedupeKey(purpose: string, seatKey: string, fieldKey: string): string {
+  return `work:${purpose}:${seatKey}:${fieldKey}`;
+}
+
+export function planWorkFromAudit(audit: CompletenessAudit): FieldDimensionResult[] {
+  if (audit.completeAndFresh) return [];
+  return audit.fields.filter((field) => field.action !== "none");
+}
 
 export async function queueMissingProfileWork(
   store: CivicStore,
   input: { seat: SeatRecord; person: PersonRecord; officialWebsite?: string },
-): Promise<{ missingFields: string[]; queued: boolean }> {
-  const contract = await store.upsertResearchContract({
-    contractKey: `${input.seat.officeType}-baseline`,
-    name: `${input.seat.officeType} baseline research`,
-    officeClass: input.seat.officeType,
-    version: 1,
-    active: true,
-    description: `${input.seat.seatName} enrichment after seat + occupant`,
+): Promise<{ missingFields: string[]; queued: boolean; skippedComplete: boolean; audit: CompletenessAudit }> {
+  const persisted = await persistOfficeClassContract(store, officeClassForOfficeType(input.seat.officeType));
+  await store.upsertSeat({
+    ...input.seat,
+    researchContractKey: persisted.contract.contractKey,
   });
-  const missingFields: string[] = [];
-  for (const [index, fieldKey] of ENRICHMENT_RESEARCH_FIELDS.entries()) {
-    await store.upsertResearchContractField({
-      researchContractId: contract.researchContractId,
-      fieldKey,
-      category: "open",
-      requiredForBaseline: fieldKey === "portrait" || fieldKey === "identity" || fieldKey === "contact",
-      verificationRequirement: "official_source",
-      sortOrder: 100 + index,
-    });
-    const capability = FIELD_CAPABILITY[fieldKey];
-    const state = capabilityState(capability);
-    missingFields.push(fieldKey);
-    await store.recordClaim({
-      subjectType: "person",
-      subjectId: input.person.personId,
-      seatId: input.seat.seatId,
-      fieldKey,
-      normalizedValue: "",
-      displayValue: `${fieldKey} not collected (${state})`,
-      valueHash: await valueHash(fieldKey, `not_collected:${state}`),
-      verificationState: "not_collected",
-    });
+  const [audit] = await auditCompleteness(store, { seatId: input.seat.seatId, personId: input.person.personId });
+  const current =
+    audit ??
+    ({
+      completeAndFresh: false,
+      fields: [],
+      knownGaps: [],
+      monitoringEligible: false,
+      baselineIdentityComplete: false,
+      researchContractKey: persisted.contract.contractKey,
+      officeClass: persisted.contract.officeClass,
+    } as CompletenessAudit);
+  if (current.completeAndFresh) {
+    if (current.monitoringEligible) {
+      await activateSeatMonitoring(store, input.seat, persisted.contract);
+    }
+    return { missingFields: [], queued: false, skippedComplete: true, audit: current };
   }
-  await store.scheduleJob({
-    dedupeKey: `enrichment:${input.seat.seatKey}:baseline`,
-    route: "validate",
-    entityType: "seat",
-    entityId: input.seat.seatId,
-    seatId: input.seat.seatId,
-    payload: {
-      purpose: "completeness_audit_after_baseline",
-      missingFields,
-      capabilityStates: Object.fromEntries(
-        ENRICHMENT_RESEARCH_FIELDS.map((fieldKey) => [fieldKey, capabilityState(FIELD_CAPABILITY[fieldKey])]),
-      ),
-      officialWebsite: input.officialWebsite,
-    },
+  const work = planWorkFromAudit(current);
+  const missingFields: string[] = [];
+  let queued = false;
+  const claims = await store.listClaims();
+  for (const item of work) {
+    missingFields.push(item.fieldKey);
+    const spec = persisted.contract.fields.find((field) => field.fieldKey === item.fieldKey);
+    if (item.action === "close_not_implemented") {
+      const existing = claims.find(
+        (claim) =>
+          claim.subjectType === "person" &&
+          claim.subjectId === input.person.personId &&
+          claim.fieldKey === item.fieldKey,
+      );
+      if (!existing) {
+        await store.recordClaim({
+          subjectType: "person",
+          subjectId: input.person.personId,
+          seatId: input.seat.seatId,
+          fieldKey: item.fieldKey,
+          normalizedValue: "",
+          displayValue: `${item.fieldKey} checked_no_authoritative_result (NOT_IMPLEMENTED)`,
+          valueHash: await valueHash(item.fieldKey, `checked_no_authoritative_result:NOT_IMPLEMENTED`),
+          verificationState: "checked_no_authoritative_result",
+        });
+      }
+      continue;
+    }
+    const purpose =
+      item.action === "refresh"
+        ? "refresh"
+        : item.action === "contradiction"
+          ? "contradiction_check"
+          : item.action === "verify"
+            ? "verification"
+            : item.action === "dataset_unit"
+              ? "dataset_unit"
+              : "collect";
+    const capability = spec?.capability ?? "completeness_audit";
+    const scheduled = await store.scheduleJob({
+      dedupeKey: workDedupeKey(purpose, input.seat.seatKey, item.fieldKey),
+      route: queueForCapability(capability),
+      entityType: "seat",
+      entityId: input.seat.seatId,
+      seatId: input.seat.seatId,
+      priority: spec ? jobPriorityForResearchPriority(spec.priority) : 100,
+      payload: {
+        purpose,
+        fieldKey: item.fieldKey,
+        capability,
+        seatKey: input.seat.seatKey,
+        officialWebsite: input.officialWebsite,
+      },
+    });
+    if (scheduled.created) queued = true;
+  }
+  if (current.monitoringEligible) {
+    await activateSeatMonitoring(store, input.seat, persisted.contract);
+  }
+  return { missingFields, queued, skippedComplete: false, audit: current };
+}
+
+async function activateSeatMonitoring(store: CivicStore, seat: SeatRecord, contract: OfficeClassContract) {
+  await store.upsertSeat({
+    ...seat,
+    researchContractKey: contract.contractKey,
+    monitoringActive: true,
   });
-  return { missingFields, queued: true };
+  await store.upsertMonitoringState({
+    targetType: "seat",
+    targetId: seat.seatId,
+    seatId: seat.seatId,
+    active: true,
+    monitoringClass: "daily",
+    configuration: { seatKey: seat.seatKey, researchContractKey: contract.contractKey },
+  });
 }
 
 export async function upsertBaselineResearchContract(
@@ -134,6 +174,8 @@ export async function upsertBaselineResearchContract(
     portraitUrl?: string;
   },
 ) {
+  const officeClass = officeClassForOfficeType(input.officeType);
+  const persisted = await persistOfficeClassContract(store, officeClass);
   const jurisdiction = await store.upsertJurisdiction({
     jurisdictionKey: input.jurisdictionKey,
     name: input.jurisdictionName,
@@ -148,7 +190,7 @@ export async function upsertBaselineResearchContract(
     governmentLevel: input.governmentLevel,
     branch: "executive",
     occupancyStatus: "unknown",
-    researchContractKey: `${input.officeType}-baseline`,
+    researchContractKey: persisted.contract.contractKey,
     baselineStatus: "unknown",
     monitoringActive: true,
   });
@@ -186,27 +228,20 @@ export async function upsertBaselineResearchContract(
     valueHash: await valueHash("portrait", input.portraitUrl ?? ""),
     verificationState: "collected_unreviewed",
   });
-  const contract = await store.upsertResearchContract({
-    contractKey: `${input.officeType}-baseline`,
-    name: `${input.officeType} baseline research`,
-    officeClass: input.officeType,
-    version: 1,
-    active: true,
-    description: `${input.seatName} baseline research contract`,
-  });
-  const fields = [];
-  for (const [index, fieldKey] of BASELINE_RESEARCH_FIELDS.entries()) {
-    fields.push(
-      await store.upsertResearchContractField({
-        researchContractId: contract.researchContractId,
-        fieldKey,
-        category: OPEN_BASELINE_FIELDS.has(fieldKey) ? "open" : "core",
-        requiredForBaseline: true,
-        verificationRequirement: fieldKey === "evidence" || fieldKey === "portrait" ? "official_source" : "review",
-        sortOrder: index,
-      }),
-    );
-  }
+  const fields = persisted.fields.length
+    ? persisted.fields
+    : await Promise.all(
+        BASELINE_RESEARCH_FIELDS.map((fieldKey, index) =>
+          store.upsertResearchContractField({
+            researchContractId: persisted.contract.researchContractId,
+            fieldKey,
+            category: OPEN_BASELINE_FIELDS.has(fieldKey) ? "open" : "core",
+            requiredForBaseline: true,
+            verificationRequirement: fieldKey === "evidence" || fieldKey === "portrait" ? "official_source" : "review",
+            sortOrder: index,
+          }),
+        ),
+      );
   const monitoring = await store.upsertMonitoringState({
     targetType: "seat",
     targetId: seat.seatId,
@@ -223,7 +258,7 @@ export async function upsertBaselineResearchContract(
     occupancyClaim,
     portraitClaim,
     portraitDecision,
-    contract,
+    contract: persisted.contract,
     fields,
     monitoring,
   };

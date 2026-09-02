@@ -389,6 +389,9 @@ export type ExtractedOfficeholder = {
   serviceStartDateText?: string;
   serviceEndDateText?: string;
   electedOrAppointed?: string;
+  portraitUrl?: string;
+  email?: string;
+  phone?: string;
   rawRowText: string;
 };
 

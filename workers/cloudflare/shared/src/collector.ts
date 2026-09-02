@@ -6,6 +6,8 @@ import { electionMonitorDedupeKey, heavyDedupeKey, toQueueMessage, validateDedup
 import { miamiDadeSeatKey } from "./miami-dade.ts";
 import { dispatchSourceAdapter } from "./adapters.ts";
 import { httpUnchanged, isRetrievalDownstreamComplete, retrievalUnchanged } from "./change-detection.ts";
+import { officeClassForOfficeType } from "./office-classes.ts";
+import { persistOfficeClassContract } from "./research-contracts.ts";
 import { queueMissingProfileWork } from "./research.ts";
 import { sourceAdapter } from "./source-config.ts";
 import { evidenceObjectKey, objectKeyFromRawObjectUri, rawObjectUri } from "./r2-keys.ts";
@@ -298,6 +300,8 @@ async function persistExtractedHolders(
   for (const holder of input.holders) {
     const jurisdiction = await upsertHolderJurisdiction(store, holder);
     const seatKey = seatKeyFor(holder, input.sourceKey);
+    const officeClass = officeClassForOfficeType(holder.officeKind);
+    await persistOfficeClassContract(store, officeClass);
     const skipPerson = isVacantDisplayName(holder.displayName);
     const isCurrentOccupant =
       !skipPerson &&
@@ -313,9 +317,9 @@ async function persistExtractedHolders(
       chamber: holder.chamber,
       districtNumber: holder.districtNumber,
       occupancyStatus: seatOccupied ? "occupied" : "vacant",
-      researchContractKey: `${holder.officeKind}-baseline`,
+      researchContractKey: officeClass,
       baselineStatus: seatOccupied ? "officeholder_present" : "seat_only",
-      monitoringActive: true,
+      monitoringActive: false,
     });
     if (skipPerson) {
       if (occupiedSeatKeys.has(seatKey)) continue;
@@ -370,9 +374,9 @@ async function persistExtractedHolders(
         chamber: seat.chamber,
         districtNumber: seat.districtNumber,
         occupancyStatus: "occupied",
-        researchContractKey: seat.researchContractKey,
+        researchContractKey: officeClass,
         baselineStatus: "officeholder_present",
-        monitoringActive: true,
+        monitoringActive: false,
       });
     }
     const claim = await store.recordClaim({
@@ -388,18 +392,6 @@ async function persistExtractedHolders(
       ),
       verificationState: "collected_unreviewed",
     });
-    if (holder.partyName) {
-      await store.recordClaim({
-        subjectType: "person",
-        subjectId: person.personId,
-        seatId: seat.seatId,
-        fieldKey: "party",
-        normalizedValue: holder.partyName,
-        displayValue: holder.partyName,
-        valueHash: await valueHash("party", holder.partyName),
-        verificationState: "collected_unreviewed",
-      });
-    }
     const evidence = await store.recordEvidence({
       sourceId: input.sourceId,
       retrievalId: input.retrievalId,
@@ -411,6 +403,46 @@ async function persistExtractedHolders(
       verificationState: "collected_unreviewed",
     });
     await store.attachClaimEvidence(claim.claimId, evidence.evidenceId, "supports");
+    if (holder.partyName) {
+      const partyClaim = await store.recordClaim({
+        subjectType: "person",
+        subjectId: person.personId,
+        seatId: seat.seatId,
+        fieldKey: "party",
+        normalizedValue: holder.partyName,
+        displayValue: holder.partyName,
+        valueHash: await valueHash("party", holder.partyName),
+        verificationState: "collected_unreviewed",
+      });
+      await store.attachClaimEvidence(partyClaim.claimId, evidence.evidenceId, "supports");
+    }
+    if (holder.portraitUrl) {
+      const portraitClaim = await store.recordClaim({
+        subjectType: "person",
+        subjectId: person.personId,
+        seatId: seat.seatId,
+        fieldKey: "portrait",
+        normalizedValue: holder.portraitUrl,
+        displayValue: holder.portraitUrl,
+        valueHash: await valueHash("portrait", holder.portraitUrl),
+        verificationState: "collected_unreviewed",
+      });
+      await store.attachClaimEvidence(portraitClaim.claimId, evidence.evidenceId, "supports");
+    }
+    if (holder.email || holder.phone) {
+      const contactValue = [holder.email, holder.phone].filter(Boolean).join(" ");
+      const contactClaim = await store.recordClaim({
+        subjectType: "person",
+        subjectId: person.personId,
+        seatId: seat.seatId,
+        fieldKey: "contact",
+        normalizedValue: contactValue,
+        displayValue: contactValue,
+        valueHash: await valueHash("contact", contactValue),
+        verificationState: "collected_unreviewed",
+      });
+      await store.attachClaimEvidence(contactClaim.claimId, evidence.evidenceId, "supports");
+    }
     if (occupancyStatus === "current" || occupancyStatus === "acting") {
       await queueMissingProfileWork(store, {
         seat,

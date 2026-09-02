@@ -331,7 +331,7 @@ test("operator sourceKey refuses Miami-Dade recreation and bulk Florida sources"
   const sent: SentMessage[] = [];
   const miami = await enqueue(store, sent, { sourceKey: CONTROLLED_MIAMI_DADE_SOURCE_KEY });
   assert.equal(miami.status, 409);
-  const bulk = await enqueue(store, sent, { sourceKey: "florida-governor-official" });
+  const bulk = await enqueue(store, sent, { sourceKey: "florida-attorney-general" });
   assert.equal(bulk.status, 400);
   assert.equal(sent.length, 0);
 });

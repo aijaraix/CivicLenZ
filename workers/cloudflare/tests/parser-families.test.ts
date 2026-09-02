@@ -46,7 +46,7 @@ test("parser families are reusable and Senate/House are HTML_DIRECTORY", () => {
   assert.equal(firstWaveSourceAdapters().every((item) => item.sourceKey === "miami-dade-county-elected-officials"), true);
   assert.deepEqual(
     operatorControlledSources().map((item) => item.sourceKey).sort(),
-    ["florida-house-members", "florida-senate-members"],
+    ["florida-governor-official", "florida-house-members", "florida-senate-members"],
   );
 });
 

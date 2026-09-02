@@ -103,6 +103,51 @@ export function verifiedClaimsOnly<T extends { verification_state?: string; veri
   return rows.filter((row) => (row.verification_state ?? row.verificationState) === "verified");
 }
 
+export function publicationEligibleClaims<T extends {
+  claim_id?: string;
+  claimId?: string;
+  verification_state?: string;
+  verificationState?: string;
+  subject_type?: string;
+  subjectType?: string;
+  subject_id?: string;
+  subjectId?: string;
+}>(
+  rows: T[],
+  snapshot: {
+    evidence?: CivicPublicRow[];
+    claimEvidence?: CivicPublicRow[];
+    persons?: CivicPublicRow[];
+    seats?: CivicPublicRow[];
+    claims?: CivicPublicRow[];
+  },
+): T[] {
+  const contradictionStates = new Set(
+    (snapshot.claims ?? [])
+      .filter((row) => claimState(row) === "conflict")
+      .map((row) => asString(read(row, "claim_id", "claimId"))),
+  );
+  return rows.filter((row) => {
+    if ((row.verification_state ?? row.verificationState) !== "verified") return false;
+    const claimId = asString(read(row as CivicPublicRow, "claim_id", "claimId"));
+    if (!claimId || contradictionStates.has(claimId)) return false;
+    const evidenceIds = new Set(
+      (snapshot.claimEvidence ?? [])
+        .filter((link) => asString(read(link, "claim_id", "claimId")) === claimId)
+        .map((link) => asString(read(link, "evidence_id", "evidenceId")))
+        .filter((id): id is string => Boolean(id)),
+    );
+    if (evidenceIds.size === 0) return false;
+    const subjectType = asString(read(row as CivicPublicRow, "subject_type", "subjectType"));
+    const subjectId = asString(read(row as CivicPublicRow, "subject_id", "subjectId"));
+    const entityMatched =
+      (subjectType === "person" && (snapshot.persons ?? []).some((person) => asString(read(person, "person_id", "personId")) === subjectId)) ||
+      (subjectType === "seat" && (snapshot.seats ?? []).some((seat) => asString(read(seat, "seat_id", "seatId")) === subjectId)) ||
+      Boolean(subjectId);
+    return entityMatched;
+  });
+}
+
 export const PRESENCE_STATES = [
   "PRESENT",
   "MISSING",
@@ -168,6 +213,7 @@ function claimState(row: CivicPublicRow): string | undefined {
 export function presenceForClaim(row: CivicPublicRow | undefined): PresenceState {
   if (!row) return "MISSING";
   if (claimState(row) === "checked_no_authoritative_result") return "CHECKED_NO_AUTHORITATIVE_RESULT";
+  if (claimState(row) === "not_collected") return "MISSING";
   if (read(row, "normalized_value", "normalizedValue") || read(row, "display_value", "displayValue")) return "PRESENT";
   return "UNKNOWN";
 }
@@ -220,7 +266,7 @@ export function getOfficialForSeat(snapshot: CivicPublicSnapshot, seatIdOrKey: s
     seat,
     occupancy,
     person,
-    verifiedClaims: subjectId ? getVerifiedClaimsForSubject(snapshot, subjectType, subjectId) : [],
+    verifiedClaims: subjectId ? getPublicationEligibleClaimsForSubject(snapshot, subjectType, subjectId) : [],
   };
 }
 
@@ -245,13 +291,21 @@ export function getVerifiedClaimsForSubject(
   subjectType: string,
   subjectId: string,
 ): CivicPublicRow[] {
+  return getPublicationEligibleClaimsForSubject(snapshot, subjectType, subjectId);
+}
+
+export function getPublicationEligibleClaimsForSubject(
+  snapshot: CivicPublicSnapshot,
+  subjectType: string,
+  subjectId: string,
+): CivicPublicRow[] {
   assertPublicRead("claims");
   const rows = (snapshot.claims ?? []).filter(
     (row) =>
       asString(read(row, "subject_type", "subjectType")) === subjectType &&
       asString(read(row, "subject_id", "subjectId")) === subjectId,
   );
-  return verifiedClaimsOnly(rows).map((row) => filterPublicFields("claims", row));
+  return publicationEligibleClaims(rows, snapshot).map((row) => filterPublicFields("claims", row));
 }
 
 export function getEvidenceForClaim(snapshot: CivicPublicSnapshot, claimId: string): CivicPublicRow[] {
