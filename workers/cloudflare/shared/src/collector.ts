@@ -1,4 +1,4 @@
-import { CivicError } from "./errors.ts";
+import { CivicError, ParserError } from "./errors.ts";
 import { createDeadLetterPayload, shouldDeadLetter } from "./dead-letter.ts";
 import { sha256Hex, valueHash } from "./hash.ts";
 import { fetchDocument } from "./http.ts";
@@ -6,6 +6,7 @@ import { electionMonitorDedupeKey, heavyDedupeKey, toQueueMessage, validateDedup
 import { miamiDadeSeatKey } from "./miami-dade.ts";
 import { dispatchSourceAdapter } from "./adapters.ts";
 import { httpUnchanged, isRetrievalDownstreamComplete, retrievalUnchanged } from "./change-detection.ts";
+import { queueMissingProfileWork } from "./research.ts";
 import { sourceAdapter } from "./source-config.ts";
 import { evidenceObjectKey, objectKeyFromRawObjectUri, rawObjectUri } from "./r2-keys.ts";
 import { uuidFromName } from "./ids.ts";
@@ -70,10 +71,12 @@ export async function runCollectorJob(input: {
     const config = sourceAdapter(sourceKey);
     const priorRetrievals = await input.store.listRetrievals();
     const prior = priorRetrievals.find((item) => item.sourceUrl === sourceUrl);
+    const fetchHeaders = config?.fetchUserAgent ? { "User-Agent": config.fetchUserAgent } : undefined;
     const document = await fetchDocument(sourceUrl, {
       fetchImpl: input.fetchImpl,
       ifNoneMatch: prior?.etag,
       ifModifiedSince: prior?.lastModified,
+      headers: fetchHeaders,
     });
     const downstreamComplete = isRetrievalDownstreamComplete({
       retrieval: prior,
@@ -102,6 +105,7 @@ export async function runCollectorJob(input: {
         prior,
         sourceUrl,
         fetchImpl: input.fetchImpl,
+        headers: fetchHeaders,
       });
       bytes = resumed.bytes;
       sha256 = prior?.contentHash ?? (await sha256Hex(bytes));
@@ -181,6 +185,9 @@ export async function runCollectorJob(input: {
         sourceUrl,
       });
       holders = parsed.holders;
+      if (holders.length === 0 && parsed.verificationState === "extracted" && config?.coverage === "parser") {
+        throw new ParserError(`parser ${config.parserKey} extracted 0 officeholders from ${sourceKey}`);
+      }
       if (holders.length === 0 && parsed.verificationState === "source_found") {
         await input.store.recordClaim({
           subjectType: "source",
@@ -204,6 +211,8 @@ export async function runCollectorJob(input: {
     } catch (error) {
       if (!(error instanceof CivicError) || error.errorClass !== "parser_failure") throw error;
       if (error.routeHeavy) throw error;
+      const pdfFamily = config?.sourceType === "small_pdf" || config?.sourceType === "large_pdf";
+      if (!pdfFamily && config?.coverage === "parser") throw error;
       retrievalStatus = "parser_unavailable";
       await input.store.recordClaim({
         subjectType: "source",
@@ -257,6 +266,7 @@ async function resumeStoredBytes(input: {
   prior?: { rawObjectUri?: string; contentType?: string };
   sourceUrl: string;
   fetchImpl?: typeof fetch;
+  headers?: Record<string, string>;
 }): Promise<{ bytes: Uint8Array; fromStore: boolean; contentType?: string }> {
   const key = objectKeyFromRawObjectUri(input.prior?.rawObjectUri);
   if (key && input.bucket?.get) {
@@ -265,7 +275,7 @@ async function resumeStoredBytes(input: {
       return { bytes: stored, fromStore: true, contentType: input.prior?.contentType };
     }
   }
-  const fresh = await fetchDocument(input.sourceUrl, { fetchImpl: input.fetchImpl });
+  const fresh = await fetchDocument(input.sourceUrl, { fetchImpl: input.fetchImpl, headers: input.headers });
   return { bytes: fresh.bytes, fromStore: false, contentType: fresh.contentType };
 }
 
@@ -281,68 +291,175 @@ async function persistExtractedHolders(
     holders: ExtractedOfficeholder[];
   },
 ): Promise<void> {
-  const parent = await store.upsertJurisdiction({
-    jurisdictionKey: "us-fl",
-    name: "Florida",
-    jurisdictionType: "state",
-    stateCode: "FL",
-  });
-  const county = await store.upsertJurisdiction({
-    jurisdictionKey: "us-fl-miami-dade",
-    name: "Miami-Dade County",
-    jurisdictionType: "county",
-    stateCode: "FL",
-    countyName: "Miami-Dade",
-    parentJurisdictionId: parent.jurisdictionId,
-  });
+  const config = sourceAdapter(input.sourceKey);
+  const evidenceType =
+    config?.sourceType === "small_pdf" || config?.sourceType === "large_pdf" ? "pdf_excerpt" : "html_excerpt";
+  const occupiedSeatKeys = new Set<string>();
   for (const holder of input.holders) {
+    const jurisdiction = await upsertHolderJurisdiction(store, holder);
+    const seatKey = seatKeyFor(holder, input.sourceKey);
+    const skipPerson = isVacantDisplayName(holder.displayName);
+    const isCurrentOccupant =
+      !skipPerson &&
+      (!holder.vacant || holder.occupancyStatus === "current" || holder.occupancyStatus === "acting");
+    const seatOccupied = isCurrentOccupant || occupiedSeatKeys.has(seatKey);
     const seat = await store.upsertSeat({
-      seatKey: miamiDadeSeatKey(holder),
-      jurisdictionId: county.jurisdictionId,
+      seatKey,
+      jurisdictionId: jurisdiction.jurisdictionId,
       seatName: holder.officeTitle,
       officeType: holder.officeKind,
       governmentLevel: holder.governmentLevel,
       branch: holder.branch,
+      chamber: holder.chamber,
       districtNumber: holder.districtNumber,
-      occupancyStatus: "unknown",
-      baselineStatus: "unknown",
-      monitoringActive: false,
+      occupancyStatus: seatOccupied ? "occupied" : "vacant",
+      researchContractKey: `${holder.officeKind}-baseline`,
+      baselineStatus: seatOccupied ? "officeholder_present" : "seat_only",
+      monitoringActive: true,
     });
+    if (skipPerson) {
+      if (occupiedSeatKeys.has(seatKey)) continue;
+      const vacantClaim = await store.recordClaim({
+        subjectType: "seat",
+        subjectId: seat.seatId,
+        seatId: seat.seatId,
+        fieldKey: "current_occupant",
+        normalizedValue: "vacant",
+        displayValue: "Vacant",
+        valueHash: await valueHash("current_occupant", "vacant"),
+        verificationState: "collected_unreviewed",
+      });
+      const evidence = await store.recordEvidence({
+        sourceId: input.sourceId,
+        retrievalId: input.retrievalId,
+        evidenceType,
+        sourceUrl: holder.sourceMemberUrl ?? input.sourceUrl,
+        excerpt: holder.rawRowText,
+        assetUri: input.assetUri,
+        contentHash: input.contentHash,
+        verificationState: "collected_unreviewed",
+      });
+      await store.attachClaimEvidence(vacantClaim.claimId, evidence.evidenceId, "supports");
+      continue;
+    }
     const person = await store.upsertPerson({
       canonicalName: holder.displayName,
       seatId: seat.seatId,
-      jurisdictionId: county.jurisdictionId,
+      jurisdictionId: jurisdiction.jurisdictionId,
+      externalIdentifiers: holder.externalIdentifiers,
     });
+    const occupancyStatus = holder.occupancyStatus ?? (holder.vacant ? "former" : "current");
     await store.upsertOccupancy({
       seatId: seat.seatId,
       personId: person.personId,
-      occupancyStatus: "unknown",
+      startDate: holder.startDate,
+      endDate: occupancyStatus === "former" ? holder.endDate : undefined,
+      occupancyStatus,
       electedOrAppointed: holder.electedOrAppointed,
       evidenceState: "unreviewed",
     });
-    const normalized = holder.displayName;
+    if (occupancyStatus === "current" || occupancyStatus === "acting") {
+      occupiedSeatKeys.add(seatKey);
+      await store.upsertSeat({
+        seatKey: seat.seatKey,
+        jurisdictionId: seat.jurisdictionId,
+        seatName: seat.seatName,
+        officeType: seat.officeType,
+        governmentLevel: seat.governmentLevel,
+        branch: seat.branch,
+        chamber: seat.chamber,
+        districtNumber: seat.districtNumber,
+        occupancyStatus: "occupied",
+        researchContractKey: seat.researchContractKey,
+        baselineStatus: "officeholder_present",
+        monitoringActive: true,
+      });
+    }
     const claim = await store.recordClaim({
       subjectType: "seat",
       subjectId: seat.seatId,
       seatId: seat.seatId,
-      fieldKey: "current_occupant",
-      normalizedValue: normalized,
+      fieldKey: occupancyStatus === "current" || occupancyStatus === "acting" ? "current_occupant" : "former_occupant",
+      normalizedValue: holder.displayName,
       displayValue: holder.displayName,
-      valueHash: await valueHash("current_occupant", normalized),
+      valueHash: await valueHash(
+        occupancyStatus === "current" || occupancyStatus === "acting" ? "current_occupant" : "former_occupant",
+        holder.displayName,
+      ),
       verificationState: "collected_unreviewed",
     });
+    if (holder.partyName) {
+      await store.recordClaim({
+        subjectType: "person",
+        subjectId: person.personId,
+        seatId: seat.seatId,
+        fieldKey: "party",
+        normalizedValue: holder.partyName,
+        displayValue: holder.partyName,
+        valueHash: await valueHash("party", holder.partyName),
+        verificationState: "collected_unreviewed",
+      });
+    }
     const evidence = await store.recordEvidence({
       sourceId: input.sourceId,
       retrievalId: input.retrievalId,
-      evidenceType: "pdf_excerpt",
-      sourceUrl: input.sourceUrl,
+      evidenceType,
+      sourceUrl: holder.sourceMemberUrl ?? input.sourceUrl,
       excerpt: holder.rawRowText,
       assetUri: input.assetUri,
       contentHash: input.contentHash,
       verificationState: "collected_unreviewed",
     });
     await store.attachClaimEvidence(claim.claimId, evidence.evidenceId, "supports");
+    if (occupancyStatus === "current" || occupancyStatus === "acting") {
+      await queueMissingProfileWork(store, {
+        seat,
+        person,
+        officialWebsite: holder.sourceMemberUrl ?? input.sourceUrl,
+      });
+    }
   }
+}
+
+async function upsertHolderJurisdiction(
+  store: CivicStore,
+  holder: ExtractedOfficeholder,
+): Promise<{ jurisdictionId: string }> {
+  const parent = await store.upsertJurisdiction({
+    jurisdictionKey: holder.parentJurisdictionKey ?? "us-fl",
+    name: "Florida",
+    jurisdictionType: "state",
+    stateCode: "FL",
+  });
+  const key = jurisdictionKeyFor(holder);
+  if (key === "us-fl") return parent;
+  return store.upsertJurisdiction({
+    jurisdictionKey: key,
+    name: holder.jurisdictionName,
+    jurisdictionType: holder.jurisdictionType ?? holder.governmentLevel,
+    stateCode: holder.stateCode || "FL",
+    countyName: holder.countyName ?? (holder.governmentLevel === "county" ? holder.jurisdictionName.replace(/ County$/i, "") : undefined),
+    parentJurisdictionId: parent.jurisdictionId,
+  });
+}
+
+function jurisdictionKeyFor(holder: ExtractedOfficeholder): string {
+  if (holder.jurisdictionKey) return holder.jurisdictionKey;
+  if (holder.governmentLevel === "county" && /miami-dade/i.test(holder.jurisdictionName)) return "us-fl-miami-dade";
+  return "us-fl";
+}
+
+function seatKeyFor(holder: ExtractedOfficeholder, sourceKey: string): string {
+  if (holder.seatKey) return holder.seatKey;
+  if (sourceKey === "miami-dade-county-elected-officials" || holder.governmentLevel === "county") {
+    return miamiDadeSeatKey(holder);
+  }
+  const family = holder.seatFamily.replace(/_/g, "-");
+  return holder.districtNumber ? `us-fl-${family}-district-${holder.districtNumber}` : `us-fl-${family}`;
+}
+
+function isVacantDisplayName(value: string): boolean {
+  return value.trim().toLowerCase() === "vacant";
 }
 
 async function handleCollectorFailure(

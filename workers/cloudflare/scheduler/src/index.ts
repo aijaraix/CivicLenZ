@@ -2,6 +2,7 @@
 import {
   OPERATOR_ENQUEUE_PATH,
   authorizeOperator,
+  enqueueControlledSourceJob,
   enqueueExistingQueuedJob,
   responseContainsSecret,
 } from "../../shared/src/operator-enqueue.ts";
@@ -83,22 +84,32 @@ async function handleOperatorEnqueue(request: Request, env: Env, deps?: Schedule
     return jsonResponse({ error: "unauthorized" }, 401, secrets);
   }
   let jobId: unknown;
+  let sourceKey: unknown;
   try {
-    const parsed = (await request.json()) as { jobId?: unknown };
+    const parsed = (await request.json()) as { jobId?: unknown; sourceKey?: unknown };
     jobId = parsed?.jobId;
+    sourceKey = parsed?.sourceKey;
   } catch {
     return jsonResponse({ error: "invalid_json" }, 400, secrets);
   }
-  if (typeof jobId !== "string") {
+  if (typeof jobId !== "string" && typeof sourceKey !== "string") {
     return jsonResponse({ error: "invalid_job_id" }, 400, secrets);
   }
   try {
-    const result = await enqueueExistingQueuedJob({
-      store: store(env, deps),
-      queues: queues(env),
-      jobId,
-      now: deps?.now,
-    });
+    const result =
+      typeof jobId === "string"
+        ? await enqueueExistingQueuedJob({
+            store: store(env, deps),
+            queues: queues(env),
+            jobId,
+            now: deps?.now,
+          })
+        : await enqueueControlledSourceJob({
+            store: store(env, deps),
+            queues: queues(env),
+            sourceKey: sourceKey as string,
+            now: deps?.now,
+          });
     return jsonResponse(result.body, result.status, secrets);
   } catch (error) {
     const message = sanitizeErrorMessage(error instanceof Error ? error.message : "enqueue_failed", secrets);
