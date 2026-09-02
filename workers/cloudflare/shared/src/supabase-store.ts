@@ -48,6 +48,13 @@ import {
   workerRunRow,
   type Json,
 } from "./live-rows.ts";
+import {
+  LEASE_ATTEMPTS_EXHAUSTED_ERROR_CLASS,
+  LEASE_ATTEMPTS_EXHAUSTED_MESSAGE,
+  LEASE_EXPIRED_ERROR_CLASS,
+  LEASE_EXPIRED_QUEUED_MESSAGE,
+  expiredLeaseFilter,
+} from "./jobs.ts";
 import type { CivicStore, ScheduleJobInput } from "./store.ts";
 
 export type SupabaseConfig = {
@@ -480,6 +487,45 @@ export function createSupabaseStore(config: SupabaseConfig): CivicStore {
       if (!rows[0]) throw new StoreWriteError(`job ${jobId} not found`);
       return fromJob(rows[0]);
     },
+    async listExpiredLeasedJobs(now) {
+      const rows = await request<Json[]>(
+        `jobs?status=eq.leased&lease_expires_at=lt.${now.toISOString()}&select=*`,
+      );
+      return rows.map(fromJob);
+    },
+    async recoverExpiredLease(jobId, now) {
+      const filter = expiredLeaseFilter(jobId, now);
+      const current = await request<Json[]>(`jobs?${filter}&limit=1`);
+      if (!current[0]) return undefined;
+      const job = fromJob(current[0]);
+      const nowIso = now.toISOString();
+      const exhausted = job.attemptCount >= job.maxAttempts;
+      const rows = await patch(
+        "jobs",
+        filter,
+        exhausted
+          ? {
+              status: "dead_letter",
+              leased_by: null,
+              lease_expires_at: null,
+              completed_at: nowIso,
+              error_class: LEASE_ATTEMPTS_EXHAUSTED_ERROR_CLASS,
+              error_message: LEASE_ATTEMPTS_EXHAUSTED_MESSAGE,
+              updated_at: nowIso,
+            }
+          : {
+              status: "queued",
+              leased_by: null,
+              lease_expires_at: null,
+              completed_at: null,
+              error_class: LEASE_EXPIRED_ERROR_CLASS,
+              error_message: LEASE_EXPIRED_QUEUED_MESSAGE,
+              scheduled_for: nowIso,
+              updated_at: nowIso,
+            },
+      );
+      return rows[0] ? fromJob(rows[0]) : undefined;
+    },
     async recordWorkerRun(input) {
       const row = await insert(
         "worker_runs",
@@ -572,6 +618,9 @@ export function createSupabaseStore(config: SupabaseConfig): CivicStore {
     },
     async listWorkerRuns() {
       return (await request<Json[]>("worker_runs?select=*")).map(fromWorkerRun);
+    },
+    async listWorkerRunsForJob(jobId) {
+      return (await request<Json[]>(`worker_runs?job_id=eq.${jobId}&select=*`)).map(fromWorkerRun);
     },
     async listMonitoringState() {
       return (await request<Json[]>("monitoring_state?select=*")).map(fromMonitoring);

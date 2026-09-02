@@ -2,7 +2,15 @@ import { CivicError, DuplicateClaimError, StoreWriteError } from "./errors.ts";
 import { valueHash } from "./hash.ts";
 import { isUuid, newId, uuidFromName } from "./ids.ts";
 import { canTransitionClaim, transitionClaim } from "./claims.ts";
-import { hasActiveJob, jobDedupeKey } from "./jobs.ts";
+import {
+  LEASE_ATTEMPTS_EXHAUSTED_ERROR_CLASS,
+  LEASE_ATTEMPTS_EXHAUSTED_MESSAGE,
+  LEASE_EXPIRED_ERROR_CLASS,
+  LEASE_EXPIRED_QUEUED_MESSAGE,
+  hasActiveJob,
+  isExpiredLeasedJob,
+  jobDedupeKey,
+} from "./jobs.ts";
 import { demoteOccupancy, findOccupancy, occupanciesToDemote } from "./occupancy.ts";
 import {
   mergeExternalIdentifiers,
@@ -104,8 +112,11 @@ export type CivicStore = {
   completeJob(jobId: string, status?: Extract<JobStatus, "succeeded">): Promise<JobRecord>;
   failJob(jobId: string, errorClass: string, errorMessage: string, deadLettered?: boolean): Promise<JobRecord>;
   requeueJob(jobId: string): Promise<JobRecord>;
+  listExpiredLeasedJobs(now: Date): Promise<JobRecord[]>;
+  recoverExpiredLease(jobId: string, now: Date): Promise<JobRecord | undefined>;
   recordWorkerRun(input: Omit<WorkerRunRecord, "workerRunId"> & { workerRunId?: string }): Promise<WorkerRunRecord>;
   completeWorkerRun(workerRunId: string, input: CompleteWorkerRunInput): Promise<WorkerRunRecord>;
+  listWorkerRunsForJob(jobId: string): Promise<WorkerRunRecord[]>;
   getDueJobs(now: Date, limit?: number): Promise<JobRecord[]>;
   getJobByDedupe(dedupeKey: string): Promise<JobRecord | undefined>;
   getJob(jobId: string): Promise<JobRecord | undefined>;
@@ -559,6 +570,39 @@ export function createMemoryStore(): CivicStore & { tables: MemoryTables } {
       tables.jobs.set(jobId, requeued);
       return requeued;
     },
+    async listExpiredLeasedJobs(now) {
+      return [...tables.jobs.values()].filter((job) => isExpiredLeasedJob(job, now));
+    },
+    async recoverExpiredLease(jobId, now) {
+      return serializeLease(() => {
+        const job = tables.jobs.get(jobId);
+        if (!job || !isExpiredLeasedJob(job, now)) return undefined;
+        const nowIso = now.toISOString();
+        const recovered: JobRecord =
+          job.attemptCount >= job.maxAttempts
+            ? {
+                ...job,
+                status: "dead_letter",
+                leasedBy: undefined,
+                leaseExpiresAt: undefined,
+                completedAt: nowIso,
+                errorClass: LEASE_ATTEMPTS_EXHAUSTED_ERROR_CLASS,
+                errorMessage: LEASE_ATTEMPTS_EXHAUSTED_MESSAGE,
+              }
+            : {
+                ...job,
+                status: "queued",
+                leasedBy: undefined,
+                leaseExpiresAt: undefined,
+                completedAt: undefined,
+                errorClass: LEASE_EXPIRED_ERROR_CLASS,
+                errorMessage: LEASE_EXPIRED_QUEUED_MESSAGE,
+                scheduledFor: nowIso,
+              };
+        tables.jobs.set(jobId, recovered);
+        return recovered;
+      });
+    },
     async recordWorkerRun(input) {
       const record: WorkerRunRecord = {
         ...input,
@@ -634,6 +678,9 @@ export function createMemoryStore(): CivicStore & { tables: MemoryTables } {
     },
     async listWorkerRuns() {
       return tables.workerRuns;
+    },
+    async listWorkerRunsForJob(jobId) {
+      return tables.workerRuns.filter((run) => run.jobId === jobId);
     },
     async listMonitoringState() {
       return [...tables.monitoring.values()];
