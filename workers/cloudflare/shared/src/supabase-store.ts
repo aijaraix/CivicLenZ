@@ -1,6 +1,7 @@
 import { DuplicateClaimError, StoreWriteError, sanitizeErrorMessage } from "./errors.ts";
 import { valueHash } from "./hash.ts";
-import { isUuid, uuidFromName } from "./ids.ts";
+import { isUuid, newId, uuidFromName } from "./ids.ts";
+import { EXTERNAL_CALL_TIMEOUT_MS, isAbortError, timeoutSignal, withTimeout } from "./timeouts.ts";
 import { DEMOTED_OCCUPANCY_STATUS, isCurrentOrActing } from "./occupancy.ts";
 import {
   identityEntries,
@@ -53,6 +54,7 @@ export type SupabaseConfig = {
   url: string;
   serviceRoleKey: string;
   fetchImpl?: typeof fetch;
+  requestTimeoutMs?: number;
 };
 
 function requiredSecret(name: string, value: string | undefined): string {
@@ -64,6 +66,7 @@ export function createSupabaseStore(config: SupabaseConfig): CivicStore {
   const baseUrl = requiredSecret("SUPABASE_URL", config.url).replace(/\/$/, "");
   const key = requiredSecret("SUPABASE_SERVICE_ROLE_KEY", config.serviceRoleKey);
   const fetchImpl = config.fetchImpl ?? fetch;
+  const requestTimeoutMs = config.requestTimeoutMs ?? EXTERNAL_CALL_TIMEOUT_MS;
 
   const request = async <T>(path: string, init: RequestInit & { prefer?: string } = {}): Promise<T> => {
     const headers = new Headers(init.headers);
@@ -71,10 +74,19 @@ export function createSupabaseStore(config: SupabaseConfig): CivicStore {
     headers.set("Authorization", `Bearer ${key}`);
     headers.set("Content-Type", "application/json");
     if (init.prefer) headers.set("Prefer", init.prefer);
+    const signal = init.signal ?? timeoutSignal(requestTimeoutMs);
     let response: Response;
     try {
-      response = await fetchImpl(`${baseUrl}/rest/v1/${path}`, { ...init, headers });
+      response = await withTimeout(
+        fetchImpl(`${baseUrl}/rest/v1/${path}`, { ...init, headers, signal }),
+        requestTimeoutMs,
+        new StoreWriteError(`Supabase request timed out after ${requestTimeoutMs}ms`),
+      );
     } catch (error) {
+      if (error instanceof StoreWriteError) throw error;
+      if (isAbortError(error) || signal.aborted) {
+        throw new StoreWriteError(`Supabase request timed out after ${requestTimeoutMs}ms`);
+      }
       throw new StoreWriteError(`Supabase request failed: ${error instanceof Error ? error.message : "network error"}`);
     }
     const text = await response.text();
@@ -115,10 +127,19 @@ export function createSupabaseStore(config: SupabaseConfig): CivicStore {
     headers.set("Authorization", `Bearer ${key}`);
     headers.set("Content-Type", "application/json");
     headers.set("Prefer", "return=representation");
+    const signal = timeoutSignal(requestTimeoutMs);
     let response: Response;
     try {
-      response = await fetchImpl(`${baseUrl}/rest/v1/${table}`, { method: "POST", headers, body });
+      response = await withTimeout(
+        fetchImpl(`${baseUrl}/rest/v1/${table}`, { method: "POST", headers, body, signal }),
+        requestTimeoutMs,
+        new StoreWriteError(`Supabase request timed out after ${requestTimeoutMs}ms`),
+      );
     } catch (error) {
+      if (error instanceof StoreWriteError) throw error;
+      if (isAbortError(error) || signal.aborted) {
+        throw new StoreWriteError(`Supabase request timed out after ${requestTimeoutMs}ms`);
+      }
       throw new StoreWriteError(`Supabase request failed: ${error instanceof Error ? error.message : "network error"}`);
     }
     const text = await response.text();
@@ -425,6 +446,7 @@ export function createSupabaseStore(config: SupabaseConfig): CivicStore {
         status,
         completed_at: new Date().toISOString(),
         leased_by: null,
+        lease_expires_at: null,
         error_class: null,
         error_message: null,
         updated_at: new Date().toISOString(),
@@ -438,6 +460,8 @@ export function createSupabaseStore(config: SupabaseConfig): CivicStore {
         error_class: errorClass,
         error_message: sanitizeErrorMessage(errorMessage, [key]),
         completed_at: new Date().toISOString(),
+        leased_by: null,
+        lease_expires_at: null,
         updated_at: new Date().toISOString(),
       });
       if (!rows[0]) throw new StoreWriteError(`job ${jobId} not found`);
@@ -461,10 +485,29 @@ export function createSupabaseStore(config: SupabaseConfig): CivicStore {
         "worker_runs",
         workerRunRow({
           ...input,
+          workerRunId: input.workerRunId ?? newId(),
           errorMessage: input.errorMessage ? sanitizeErrorMessage(input.errorMessage, [key]) : undefined,
         }),
       );
       return fromWorkerRun(row);
+    },
+    async completeWorkerRun(workerRunId, input) {
+      const rows = await patch(
+        "worker_runs",
+        `worker_run_id=eq.${workerRunId}`,
+        {
+          status: input.status,
+          completed_at: input.completedAt ?? new Date().toISOString(),
+          records_read: input.recordsRead,
+          records_written: input.recordsWritten,
+          claims_verified: input.claimsVerified,
+          error_class: input.errorClass ?? null,
+          error_message: input.errorMessage ? sanitizeErrorMessage(input.errorMessage, [key]) : null,
+          metadata: input.metadata,
+        },
+      );
+      if (!rows[0]) throw new StoreWriteError(`worker_run ${workerRunId} not found`);
+      return fromWorkerRun(rows[0]);
     },
     async getDueJobs(now, limit = 50) {
       const rows = await request<Json[]>(

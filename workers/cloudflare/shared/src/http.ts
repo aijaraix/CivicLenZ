@@ -1,4 +1,5 @@
 import { HttpFetchError, ParserError } from "./errors.ts";
+import { EXTERNAL_CALL_TIMEOUT_MS, isAbortError, timeoutSignal, withTimeout } from "./timeouts.ts";
 import { SMALL_PAYLOAD_MAX_BYTES, USER_AGENT } from "./types.ts";
 
 export type FetchedDocument = {
@@ -22,15 +23,41 @@ export async function fetchDocument(
     headers?: Record<string, string>;
     ifNoneMatch?: string;
     ifModifiedSince?: string;
+    timeoutMs?: number;
+    signal?: AbortSignal;
   } = {},
+): Promise<FetchedDocument> {
+  const timeoutMs = options.timeoutMs ?? EXTERNAL_CALL_TIMEOUT_MS;
+  return withTimeout(
+    fetchDocumentInner(url, options),
+    timeoutMs,
+    new HttpFetchError(`source fetch timed out after ${timeoutMs}ms`),
+  );
+}
+
+async function fetchDocumentInner(
+  url: string,
+  options: {
+    fetchImpl?: FetchImpl;
+    maxBytes?: number;
+    retrievedAt?: string;
+    headers?: Record<string, string>;
+    ifNoneMatch?: string;
+    ifModifiedSince?: string;
+    timeoutMs?: number;
+    signal?: AbortSignal;
+  },
 ): Promise<FetchedDocument> {
   const fetchImpl = options.fetchImpl ?? fetch;
   const maxBytes = options.maxBytes ?? SMALL_PAYLOAD_MAX_BYTES;
+  const timeoutMs = options.timeoutMs ?? EXTERNAL_CALL_TIMEOUT_MS;
+  const signal = options.signal ?? timeoutSignal(timeoutMs);
   let response: Response;
   try {
     response = await fetchImpl(url, {
       method: "GET",
       redirect: "follow",
+      signal,
       headers: {
         "User-Agent": USER_AGENT,
         From: "research@civiclenz.ai",
@@ -43,6 +70,9 @@ export async function fetchDocument(
       },
     });
   } catch (error) {
+    if (isAbortError(error) || signal.aborted) {
+      throw new HttpFetchError(`source fetch timed out after ${timeoutMs}ms`);
+    }
     const message = error instanceof Error ? error.message : "network error";
     throw new HttpFetchError(`source fetch failed: ${message}`);
   }

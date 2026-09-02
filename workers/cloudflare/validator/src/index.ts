@@ -2,7 +2,7 @@ import { CivicError } from "../../shared/src/errors.ts";
 import { parseQueueJobMessage } from "../../shared/src/queue-messages.ts";
 import { createSupabaseStore } from "../../shared/src/supabase-store.ts";
 import { runValidatorJob } from "../../shared/src/validation.ts";
-import { deploymentIdFrom, withWorkerRun } from "../../shared/src/worker-lifecycle.ts";
+import { deploymentIdFrom, runQueueJobWithWorker } from "../../shared/src/worker-lifecycle.ts";
 
 function store(env: Env) {
   return createSupabaseStore({
@@ -35,12 +35,13 @@ export default {
     };
     for (const message of batch.messages) {
       const parsed = parseQueueJobMessage(message.body);
-      await withWorkerRun({
+      await runQueueJobWithWorker({
         store: civicStore,
         worker: identity,
         message: parsed,
         secrets: [env.SUPABASE_SERVICE_ROLE_KEY],
         queues: { heavy: env.HEAVY_QUEUE, deadLetter: env.DEAD_LETTER_QUEUE },
+        handle: message,
         run: async () => {
           const result = await runValidatorJob({ store: civicStore, message: parsed });
           return {
@@ -51,7 +52,6 @@ export default {
           };
         },
       });
-      message.ack();
     }
   },
 } satisfies ExportedHandler<Env>;
