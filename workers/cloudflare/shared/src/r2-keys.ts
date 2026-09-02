@@ -22,6 +22,12 @@ export function rawObjectUri(bucketName: string, objectKey: string): string {
   return `r2://${bucketName}/${objectKey}`;
 }
 
+export function objectKeyFromRawObjectUri(uri: string | undefined): string | undefined {
+  if (!uri) return undefined;
+  const match = /^r2:\/\/[^/]+\/(.+)$/.exec(uri);
+  return match?.[1];
+}
+
 export function evidenceObjectKey(input: {
   sourceKey: string;
   retrievedAt: Date | string;

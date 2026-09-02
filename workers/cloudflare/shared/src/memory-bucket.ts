@@ -19,5 +19,9 @@ export function createMemoryBucket(): EvidenceBucket & { objects: Map<string, St
         customMetadata: options.customMetadata,
       });
     },
+    async get(key) {
+      const stored = objects.get(key);
+      return stored ? stored.bytes : undefined;
+    },
   };
 }

@@ -381,6 +381,7 @@ export type EvidenceBucket = {
     value: Uint8Array,
     options: { contentType?: string; customMetadata?: Record<string, string> },
   ): Promise<void>;
+  get?(key: string): Promise<Uint8Array | undefined>;
 };
 
 export type QueueSender = {

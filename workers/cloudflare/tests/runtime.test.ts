@@ -7,7 +7,7 @@ import { fileURLToPath } from "node:url";
 import { canTransitionClaim, isPublicationEligible, transitionClaim } from "../shared/src/claims.ts";
 import { runCollectorJob } from "../shared/src/collector.ts";
 import { createDeadLetterPayload, shouldDeadLetter } from "../shared/src/dead-letter.ts";
-import { CivicError, HttpFetchError } from "../shared/src/errors.ts";
+import { CivicError, DuplicateClaimError, HttpFetchError } from "../shared/src/errors.ts";
 import { sha256Hex, isSha256Hex } from "../shared/src/hash.ts";
 import { classifyDocument, fetchDocument } from "../shared/src/http.ts";
 import {
@@ -25,10 +25,12 @@ import { extractOfficeholders, extractHtmlText } from "../shared/src/parsers.ts"
 import { extractTextOperators } from "../shared/src/pdf-text.ts";
 import { portraitSourceDecision } from "../shared/src/portraits.ts";
 import { createQueueJobMessage, parseQueueJobMessage } from "../shared/src/queue-messages.ts";
-import { evidenceObjectKey } from "../shared/src/r2-keys.ts";
+import { evidenceObjectKey, rawObjectUri } from "../shared/src/r2-keys.ts";
+import { withWorkerRun } from "../shared/src/worker-lifecycle.ts";
 import { upsertBaselineResearchContract } from "../shared/src/research.ts";
 import { planAndEnqueue } from "../shared/src/scheduler.ts";
 import { CONTROLLED_SLICE_SOURCES, firstWaveIngestSources } from "../shared/src/slice.ts";
+import { isRetrievalDownstreamComplete } from "../shared/src/change-detection.ts";
 import {
   GLOBAL_FORBIDDEN_WRITE_COLUMNS,
   LIVE_TABLE_COLUMNS,
@@ -884,15 +886,18 @@ test("name plus seat occupancy context reuses the occupant, not a namesake", asy
   assert.equal(resolved.personId, occupant.personId);
 });
 
-test("recordClaim query-then-write works when live claims have only claims_pkey", async () => {
-  const claims: Array<Record<string, unknown>> = [];
+function liveClaimsOnlyPrimaryKeyStore(seed: Array<Record<string, unknown>> = []) {
+  const claims = seed.map((row) => ({ ...row }));
   const urls: string[] = [];
+  const methods: string[] = [];
   const store = createSupabaseStore({
     url: "https://example.supabase.co",
     serviceRoleKey: "service-role-test-key",
     fetchImpl: async (input, init) => {
       const url = String(input);
       urls.push(url);
+      const method = (init?.method ?? "GET").toUpperCase();
+      methods.push(method);
       if (url.includes("on_conflict=")) {
         return new Response(
           JSON.stringify({
@@ -902,16 +907,19 @@ test("recordClaim query-then-write works when live claims have only claims_pkey"
           { status: 400 },
         );
       }
-      const method = (init?.method ?? "GET").toUpperCase();
       const parsedUrl = new URL(url);
+      const table = parsedUrl.pathname.split("/").pop();
       const filters: Record<string, string> = {};
       for (const [key, value] of parsedUrl.searchParams.entries()) {
         if (value.startsWith("eq.")) filters[key] = value.slice(3);
       }
       const matches = (row: Record<string, unknown>) =>
         Object.entries(filters).every(([key, value]) => String(row[key] ?? "") === value);
+      if (table === "contradictions" && method === "POST") {
+        return new Response("[]", { status: 201 });
+      }
       if (method === "GET") {
-        return new Response(JSON.stringify(claims.filter(matches).slice(0, 1)), { status: 200 });
+        return new Response(JSON.stringify(claims.filter(matches)), { status: 200 });
       }
       const body = init?.body ? (JSON.parse(String(init.body)) as Record<string, unknown>) : {};
       if (method === "PATCH") {
@@ -929,7 +937,12 @@ test("recordClaim query-then-write works when live claims have only claims_pkey"
       return new Response(JSON.stringify([]), { status: 200 });
     },
   });
-  const first = await store.recordClaim({
+  return { store, claims, urls, methods };
+}
+
+test("recordClaim works when live claims have only claims_pkey and never sends the 42P10 on_conflict", async () => {
+  const { store, claims, urls, methods } = liveClaimsOnlyPrimaryKeyStore();
+  const inserted = await store.recordClaim({
     subjectType: "source",
     subjectId: "55555555-5555-4555-8555-555555555555",
     fieldKey: "source_retrieval",
@@ -938,18 +951,9 @@ test("recordClaim query-then-write works when live claims have only claims_pkey"
     valueHash: "b".repeat(64),
     verificationState: "collected_unreviewed",
   });
-  const second = await store.recordClaim({
-    subjectType: "source",
-    subjectId: "55555555-5555-4555-8555-555555555555",
-    fieldKey: "source_retrieval",
-    normalizedValue: "eb86ff61-d2a5-44f7-a7b4-4ea8faafe0d3",
-    displayValue: "https://www.miamidade.gov/elections/library/reports/elected-officials.pdf",
-    valueHash: "b".repeat(64),
-    verificationState: "collected_unreviewed",
-  });
-  assert.equal(first.claimId, "88888888-8888-4888-8888-888888888888");
-  assert.equal(second.claimId, first.claimId);
+  assert.equal(inserted.claimId, "88888888-8888-4888-8888-888888888888");
   assert.equal(claims.length, 1);
+  assert.equal(methods.includes("POST"), true);
   assert.equal(
     urls.some((url) => url.includes("on_conflict=subject_type,subject_id,field_key,value_hash")),
     false,
@@ -965,10 +969,111 @@ test("recordClaim query-then-write works when live claims have only claims_pkey"
     ),
     true,
   );
+});
+
+test("recordClaim PATCHes the existing identical claim by claim_id", async () => {
+  const { store, claims, urls, methods } = liveClaimsOnlyPrimaryKeyStore([
+    {
+      claim_id: "88888888-8888-4888-8888-888888888888",
+      subject_type: "source",
+      subject_id: "55555555-5555-4555-8555-555555555555",
+      field_key: "source_retrieval",
+      value_hash: "b".repeat(64),
+      verification_state: "verification_pending",
+      supersedes_claim_id: "77777777-7777-4777-8777-777777777777",
+      valid_from: "2026-01-01T00:00:00.000Z",
+      volatility_class: "stable",
+      first_seen_at: "2026-09-01T00:00:00.000Z",
+    },
+  ]);
+  const updated = await store.recordClaim({
+    subjectType: "source",
+    subjectId: "55555555-5555-4555-8555-555555555555",
+    fieldKey: "source_retrieval",
+    normalizedValue: "eb86ff61-d2a5-44f7-a7b4-4ea8faafe0d3",
+    displayValue: "https://www.miamidade.gov/elections/library/reports/elected-officials.pdf",
+    valueHash: "b".repeat(64),
+    verificationState: "collected_unreviewed",
+  });
+  assert.equal(updated.claimId, "88888888-8888-4888-8888-888888888888");
+  assert.equal(updated.verificationState, "verification_pending");
+  assert.equal(updated.supersedesClaimId, "77777777-7777-4777-8777-777777777777");
+  assert.equal(updated.validFrom, "2026-01-01T00:00:00.000Z");
+  assert.equal(updated.volatilityClass, "stable");
+  assert.equal(claims.length, 1);
+  assert.equal(methods.includes("PATCH"), true);
+  assert.equal(methods.includes("POST"), false);
   assert.equal(
-    urls.some((url) => url.includes("claims?") && url.includes("claim_id=eq.")),
+    urls.some((url) => url.includes("claims?") && url.includes("claim_id=eq.88888888-8888-4888-8888-888888888888")),
     true,
   );
+  assert.equal(
+    urls.some((url) => url.includes("on_conflict=subject_type,subject_id,field_key,value_hash")),
+    false,
+  );
+});
+
+test("recordClaim fail-closes when more than one live row matches the claim identity", async () => {
+  const { store } = liveClaimsOnlyPrimaryKeyStore([
+    {
+      claim_id: "aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaaa",
+      subject_type: "source",
+      subject_id: "55555555-5555-4555-8555-555555555555",
+      field_key: "source_retrieval",
+      value_hash: "b".repeat(64),
+      verification_state: "collected_unreviewed",
+    },
+    {
+      claim_id: "bbbbbbbb-bbbb-4bbb-8bbb-bbbbbbbbbbbb",
+      subject_type: "source",
+      subject_id: "55555555-5555-4555-8555-555555555555",
+      field_key: "source_retrieval",
+      value_hash: "b".repeat(64),
+      verification_state: "collected_unreviewed",
+    },
+  ]);
+  await assert.rejects(
+    () =>
+      store.recordClaim({
+        subjectType: "source",
+        subjectId: "55555555-5555-4555-8555-555555555555",
+        fieldKey: "source_retrieval",
+        normalizedValue: "eb86ff61-d2a5-44f7-a7b4-4ea8faafe0d3",
+        valueHash: "b".repeat(64),
+        verificationState: "collected_unreviewed",
+      }),
+    (error: unknown) =>
+      error instanceof DuplicateClaimError &&
+      error.errorClass === "duplicate_claim_rows" &&
+      error.claimIds.length === 2,
+  );
+
+  const memory = createMemoryStore();
+  const left = await memory.recordClaim({
+    subjectType: "seat",
+    subjectId: "11111111-1111-4111-8111-111111111111",
+    fieldKey: "current_occupant",
+    normalizedValue: "Example Person",
+    valueHash: "c".repeat(64),
+    verificationState: "collected_unreviewed",
+  });
+  memory.tables.claims.set("cccccccc-cccc-4ccc-8ccc-cccccccccccc", {
+    ...left,
+    claimId: "cccccccc-cccc-4ccc-8ccc-cccccccccccc",
+  });
+  await assert.rejects(
+    () =>
+      memory.recordClaim({
+        subjectType: "seat",
+        subjectId: "11111111-1111-4111-8111-111111111111",
+        fieldKey: "current_occupant",
+        normalizedValue: "Example Person",
+        valueHash: "c".repeat(64),
+        verificationState: "collected_unreviewed",
+      }),
+    (error: unknown) => error instanceof DuplicateClaimError && error.errorClass === "duplicate_claim_rows",
+  );
+  assert.equal((await memory.listContradictions()).length, 1);
 });
 
 test("completeJob succeeded clears leftover error_class and error_message", async () => {
@@ -1031,6 +1136,146 @@ test("supabase completeJob succeeded patches error fields to null", async () => 
   assert.equal(done.status, "succeeded");
   assert.equal(done.errorClass, undefined);
   assert.equal(done.errorMessage, undefined);
+});
+
+test("stored retrieval with incomplete persist resumes downstream instead of short-circuiting", async () => {
+  const store = createMemoryStore();
+  const bytes = readFileSync(miamiFixture);
+  const digest = await sha256Hex(bytes);
+  const source = await store.recordSource({
+    sourceKey: "miami-dade-county-elected-officials",
+    name: "Miami-Dade County Elected Officials",
+    sourceUrl: ingestMessage().sourceUrl ?? "https://www.miamidade.gov/elections/library/reports/elected-officials.pdf",
+    active: true,
+    healthState: "ok",
+  });
+  const retrievedAt = "2026-09-02T00:00:00.000Z";
+  const r2Key = evidenceObjectKey({
+    sourceKey: "miami-dade-county-elected-officials",
+    retrievedAt,
+    sha256: digest,
+    contentType: "text/html",
+  });
+  const retrieval = await store.recordRawRetrieval({
+    sourceId: source.sourceId,
+    retrievedAt,
+    sourceUrl: ingestMessage().sourceUrl ?? "https://www.miamidade.gov/elections/library/reports/elected-officials.pdf",
+    httpStatus: 200,
+    contentType: "text/html",
+    etag: '"abc"',
+    contentHash: digest,
+    rawObjectUri: rawObjectUri("civiclenzevidence", r2Key),
+    byteLength: bytes.byteLength,
+    retrievalStatus: "stored",
+  });
+  const bucket = createMemoryBucket();
+  await bucket.put(r2Key, bytes, { contentType: "text/html" });
+  assert.equal(
+    isRetrievalDownstreamComplete({
+      retrieval,
+      evidence: await store.listEvidence(),
+      claims: await store.listClaims(),
+      jurisdictions: await store.listJurisdictions(),
+      seats: await store.listSeats(),
+    }),
+    false,
+  );
+
+  const hashMatch = await runCollectorJob({
+    store,
+    message: ingestMessage(),
+    bucket,
+    worker: worker(),
+    fetchImpl: async () =>
+      new Response(bytes, { status: 200, headers: { "content-type": "text/html", etag: '"abc"' } }),
+  });
+  assert.equal(hashMatch.status, "collected");
+  assert.notEqual(hashMatch.status, "unchanged");
+  assert.ok((hashMatch.claimsWritten ?? 0) >= 19);
+  assert.equal((await store.listRetrievals()).length, 1);
+  assert.equal((await store.listRetrievals())[0]?.retrievalId, retrieval.retrievalId);
+  assert.equal((await store.listRetrievals())[0]?.retrievalStatus, "parsed");
+  assert.ok((await store.listJurisdictions()).length > 0);
+  assert.ok((await store.listSeats()).length > 0);
+  assert.ok((await store.listClaims()).length > 0);
+  assert.ok((await store.listEvidence()).length > 0);
+});
+
+test("incomplete stored retrieval plus 304 resumes from R2 and does not succeed with zero downstream records", async () => {
+  const store = createMemoryStore();
+  const bytes = readFileSync(miamiFixture);
+  const digest = await sha256Hex(bytes);
+  const source = await store.recordSource({
+    sourceKey: "miami-dade-county-elected-officials",
+    name: "Miami-Dade County Elected Officials",
+    sourceUrl: ingestMessage().sourceUrl ?? "https://www.miamidade.gov/elections/library/reports/elected-officials.pdf",
+    active: true,
+    healthState: "ok",
+  });
+  const retrievedAt = "2026-09-02T00:00:00.000Z";
+  const r2Key = evidenceObjectKey({
+    sourceKey: "miami-dade-county-elected-officials",
+    retrievedAt,
+    sha256: digest,
+    contentType: "text/html",
+  });
+  await store.recordRawRetrieval({
+    retrievalId: "eb86ff61-d2a5-44f7-a7b4-4ea8faafe0d3",
+    sourceId: source.sourceId,
+    retrievedAt,
+    sourceUrl: ingestMessage().sourceUrl ?? "https://www.miamidade.gov/elections/library/reports/elected-officials.pdf",
+    httpStatus: 200,
+    contentType: "text/html",
+    etag: '"abc"',
+    contentHash: digest,
+    rawObjectUri: rawObjectUri("civiclenzevidence", r2Key),
+    byteLength: bytes.byteLength,
+    retrievalStatus: "stored",
+  });
+  const bucket = createMemoryBucket();
+  await bucket.put(r2Key, bytes, { contentType: "text/html" });
+  const { job } = await store.scheduleJob({
+    dedupeKey: ingestMessage().dedupeKey,
+    route: "ingest",
+    sourceKey: ingestMessage().sourceKey,
+  });
+  await store.failJob(job.jobId, "supabase_write_failed", "HTTP 400 Postgres 42P10");
+
+  const result = await withWorkerRun({
+    store,
+    worker: worker(),
+    message: ingestMessage({ jobId: job.jobId }),
+    run: async () => {
+      const collected = await runCollectorJob({
+        store,
+        message: ingestMessage({ jobId: job.jobId }),
+        bucket,
+        worker: worker(),
+        fetchImpl: async () => new Response(null, { status: 304, headers: { etag: '"abc"' } }),
+      });
+      if (collected.status === "failed" || collected.status === "dead_letter") {
+        throw new CivicError(collected.errorClass ?? "collector_failed", collected.errorMessage ?? "collector failed");
+      }
+      return {
+        result: collected,
+        recordsRead: 1,
+        recordsWritten: collected.claimsWritten + (collected.retrievalId ? 1 : 0),
+        claimsVerified: 0,
+      };
+    },
+  });
+
+  assert.equal(result.status, "collected");
+  assert.notEqual(result.status, "unchanged");
+  const completed = await store.getJob(job.jobId);
+  assert.equal(completed?.status, "succeeded");
+  assert.equal(completed?.errorClass, undefined);
+  assert.equal(completed?.errorMessage, undefined);
+  assert.ok((await store.listClaims()).length > 0);
+  assert.ok((await store.listJurisdictions()).length > 0);
+  assert.ok((await store.listSeats()).length > 0);
+  assert.ok((await store.listEvidence()).length > 0);
+  assert.equal((await store.listRetrievals())[0]?.retrievalStatus, "parsed");
 });
 
 test("supabase occupancy writes never use on_conflict seat_id,person_id,start_date", async () => {

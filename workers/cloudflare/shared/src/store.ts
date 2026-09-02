@@ -1,4 +1,4 @@
-import { CivicError, StoreWriteError } from "./errors.ts";
+import { CivicError, DuplicateClaimError, StoreWriteError } from "./errors.ts";
 import { valueHash } from "./hash.ts";
 import { isUuid, newId, uuidFromName } from "./ids.ts";
 import { canTransitionClaim, transitionClaim } from "./claims.ts";
@@ -343,22 +343,43 @@ export function createMemoryStore(): CivicStore & { tables: MemoryTables } {
     },
     async recordClaim(input) {
       const hash = input.valueHash ?? (await valueHash(input.fieldKey, input.normalizedValue ?? input.displayValue ?? ""));
-      const existing = [...tables.claims.values()].find(
+      const matches = [...tables.claims.values()].filter(
         (item) =>
           item.subjectType === input.subjectType &&
           item.subjectId === input.subjectId &&
           item.fieldKey === input.fieldKey &&
           item.valueHash === hash,
       );
+      if (matches.length > 1) {
+        const claimIds = matches.map((item) => item.claimId);
+        tables.contradictions.push({ claimIds, fieldKey: input.fieldKey, severity: "error" });
+        throw new DuplicateClaimError(claimIds, input.fieldKey);
+      }
+      const existing = matches[0];
       const now = new Date().toISOString();
-      const record: ClaimRecord = {
-        ...existing,
-        ...input,
-        claimId: existing?.claimId ?? input.claimId ?? (await uuidFromName(`claim:${input.subjectType}:${input.subjectId}:${input.fieldKey}:${hash}`)),
-        valueHash: hash,
-        firstSeenAt: existing?.firstSeenAt ?? input.firstSeenAt ?? now,
-        lastSeenAt: input.lastSeenAt ?? now,
-      };
+      const record: ClaimRecord = existing
+        ? {
+            ...existing,
+            ...input,
+            claimId: existing.claimId,
+            valueHash: hash,
+            firstSeenAt: existing.firstSeenAt,
+            lastSeenAt: input.lastSeenAt ?? now,
+            verificationState: existing.verificationState,
+            validFrom: input.validFrom ?? existing.validFrom,
+            validTo: input.validTo ?? existing.validTo,
+            lastVerifiedAt: input.lastVerifiedAt ?? existing.lastVerifiedAt,
+            volatilityClass: input.volatilityClass ?? existing.volatilityClass,
+            recheckAfter: input.recheckAfter ?? existing.recheckAfter,
+            supersedesClaimId: input.supersedesClaimId ?? existing.supersedesClaimId,
+          }
+        : {
+            ...input,
+            claimId: input.claimId ?? (await uuidFromName(`claim:${input.subjectType}:${input.subjectId}:${input.fieldKey}:${hash}`)),
+            valueHash: hash,
+            firstSeenAt: input.firstSeenAt ?? now,
+            lastSeenAt: input.lastSeenAt ?? now,
+          };
       tables.claims.set(record.claimId, record);
       return record;
     },

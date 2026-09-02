@@ -1,4 +1,4 @@
-import { StoreWriteError, sanitizeErrorMessage } from "./errors.ts";
+import { DuplicateClaimError, StoreWriteError, sanitizeErrorMessage } from "./errors.ts";
 import { valueHash } from "./hash.ts";
 import { isUuid, uuidFromName } from "./ids.ts";
 import { DEMOTED_OCCUPANCY_STATUS, isCurrentOrActing } from "./occupancy.ts";
@@ -261,23 +261,72 @@ export function createSupabaseStore(config: SupabaseConfig): CivicStore {
     async recordClaim(input) {
       const hash =
         input.valueHash ?? (await valueHash(input.fieldKey, input.normalizedValue ?? input.displayValue ?? ""));
-      const lookup = input.claimId
-        ? `claim_id=eq.${input.claimId}`
-        : `subject_type=eq.${encodeURIComponent(input.subjectType)}&subject_id=eq.${input.subjectId}&field_key=eq.${encodeURIComponent(input.fieldKey)}&value_hash=eq.${encodeURIComponent(hash)}`;
-      const existing = await request<Json[]>(`claims?${lookup}&limit=1`);
-      const claimId = input.claimId ?? (existing[0] ? String(existing[0].claim_id) : undefined);
-      const row = claimRow({
-        ...input,
-        claimId,
-        subjectType: input.subjectType,
-        subjectId: input.subjectId,
-        valueHash: hash,
-      });
+      const lookup = `subject_type=eq.${encodeURIComponent(input.subjectType)}&subject_id=eq.${input.subjectId}&field_key=eq.${encodeURIComponent(input.fieldKey)}&value_hash=eq.${encodeURIComponent(hash)}`;
+      const existing = await request<Json[]>(`claims?${lookup}`);
+      if (existing.length > 1) {
+        const claimIds = existing.map((row) => String(row.claim_id));
+        try {
+          await request("contradictions", {
+            method: "POST",
+            body: liveWriteBody(
+              "contradictions",
+              contradictionRow({
+                subjectType: input.subjectType,
+                subjectId: input.subjectId,
+                seatId: input.seatId,
+                fieldKey: input.fieldKey,
+                claimIds,
+                status: "open",
+                severity: "error",
+              }),
+            ),
+            prefer: "return=minimal",
+          });
+        } catch {
+          // Still fail closed even if the QA contradiction write does not land.
+        }
+        throw new DuplicateClaimError(claimIds, input.fieldKey);
+      }
       if (existing[0]) {
-        const rows = await patch("claims", `claim_id=eq.${String(existing[0].claim_id)}`, row);
+        const found = fromClaim(existing[0]);
+        const rows = await patch(
+          "claims",
+          `claim_id=eq.${found.claimId}`,
+          claimRow({
+            claimId: found.claimId,
+            subjectType: input.subjectType,
+            subjectId: input.subjectId,
+            seatId: input.seatId ?? found.seatId,
+            fieldKey: input.fieldKey,
+            normalizedValue: input.normalizedValue ?? found.normalizedValue,
+            displayValue: input.displayValue ?? found.displayValue,
+            valueHash: hash,
+            validFrom: input.validFrom ?? found.validFrom,
+            validTo: input.validTo ?? found.validTo,
+            firstSeenAt: found.firstSeenAt,
+            lastSeenAt: input.lastSeenAt ?? new Date().toISOString(),
+            lastVerifiedAt: input.lastVerifiedAt ?? found.lastVerifiedAt,
+            verificationState: found.verificationState,
+            confidence: input.confidence ?? found.confidence,
+            volatilityClass: input.volatilityClass ?? found.volatilityClass,
+            recheckAfter: input.recheckAfter ?? found.recheckAfter,
+            supersedesClaimId: input.supersedesClaimId ?? found.supersedesClaimId,
+          }),
+        );
         return fromClaim(rows[0] ?? existing[0]);
       }
-      return fromClaim(await insert("claims", row));
+      return fromClaim(
+        await insert(
+          "claims",
+          claimRow({
+            ...input,
+            claimId: input.claimId,
+            subjectType: input.subjectType,
+            subjectId: input.subjectId,
+            valueHash: hash,
+          }),
+        ),
+      );
     },
     async transitionClaim(claimId, to) {
       const rows = await patch("claims", `claim_id=eq.${claimId}`, { verification_state: to, updated_at: new Date().toISOString() });
