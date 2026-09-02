@@ -23,6 +23,12 @@ export const CONTROLLED_MIAMI_DADE_SOURCE_KEY = "miami-dade-county-elected-offic
 export const CONTROLLED_MIAMI_DADE_SOURCE_URL =
   "https://www.miamidade.gov/elections/library/reports/elected-officials.pdf";
 
+/** Live controlled Florida Governor ingest job. Tests use this as a fixture. Do not call production. */
+export const CONTROLLED_FLORIDA_GOVERNOR_INGEST_JOB_ID = "7a3b6912-1d01-569f-8b62-03b4c39a88da";
+export const CONTROLLED_FLORIDA_GOVERNOR_DEDUPE_KEY = "ingest:florida-governor-official:2026-09-02";
+export const CONTROLLED_FLORIDA_GOVERNOR_SOURCE_KEY = "florida-governor-official";
+export const CONTROLLED_FLORIDA_GOVERNOR_RETRIEVAL_ID = "c92dace8-94f4-46bd-bc51-23d85bd73f28";
+
 export const CONTROLLED_FLORIDA_SENATE_SOURCE_KEY = "florida-senate-members";
 export const CONTROLLED_FLORIDA_HOUSE_SOURCE_KEY = "florida-house-members";
 
@@ -117,6 +123,55 @@ export async function enqueueExistingQueuedJob(input: {
       enqueued: true,
     },
   };
+}
+
+const TERMINAL_REQUEUE_STATUSES = new Set(["dead_letter", "failed"]);
+
+/**
+ * Reset an existing dead_letter/failed jobs row to queued and send it to its queue.
+ * jobId only — never inserts a new jobs row and never accepts sourceKey.
+ */
+export async function requeueExistingTerminalJob(input: {
+  store: CivicStore;
+  queues: RuntimeQueues;
+  jobId: string;
+  now?: Date;
+}): Promise<{ status: number; body: OperatorEnqueueSuccess | { error: string } }> {
+  if (!isUuid(input.jobId)) {
+    return { status: 400, body: { error: "invalid_job_id" } };
+  }
+  if (input.jobId === CONTROLLED_MIAMI_DADE_INGEST_JOB_ID) {
+    return { status: 409, body: { error: "miami_dade_job_must_not_be_recreated" } };
+  }
+  const job = await input.store.getJob(input.jobId);
+  if (!job) {
+    return { status: 404, body: { error: "job_not_found" } };
+  }
+  if (!TERMINAL_REQUEUE_STATUSES.has(job.status)) {
+    return { status: 409, body: { error: "job_not_requeueable" } };
+  }
+  await input.store.requeueJob(input.jobId);
+  return enqueueExistingQueuedJob(input);
+}
+
+/** POST {jobId}: enqueue if queued; reset+enqueue if dead_letter/failed (except Miami-Dade). */
+export async function enqueueExistingJobById(input: {
+  store: CivicStore;
+  queues: RuntimeQueues;
+  jobId: string;
+  now?: Date;
+}): Promise<{ status: number; body: OperatorEnqueueSuccess | { error: string } }> {
+  if (!isUuid(input.jobId)) {
+    return { status: 400, body: { error: "invalid_job_id" } };
+  }
+  const job = await input.store.getJob(input.jobId);
+  if (!job) {
+    return { status: 404, body: { error: "job_not_found" } };
+  }
+  if (TERMINAL_REQUEUE_STATUSES.has(job.status)) {
+    return requeueExistingTerminalJob(input);
+  }
+  return enqueueExistingQueuedJob(input);
 }
 
 export function isOperatorControlledSource(sourceKey: string): boolean {

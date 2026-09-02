@@ -61,6 +61,6 @@ export async function applyWinnerOccupancy(store: CivicStore, input: {
     startDate: input.startDate,
     occupancyStatus: "current",
     electedOrAppointed: "elected",
-    evidenceState: "unreviewed",
+    evidenceState: "pending",
   });
 }

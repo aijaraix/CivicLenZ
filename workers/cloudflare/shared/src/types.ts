@@ -16,6 +16,14 @@ export const CLAIM_STATUSES = [
 
 export type ClaimStatus = (typeof CLAIM_STATUSES)[number];
 
+export const CLAIM_CONFIDENCE = ["high", "medium", "low", "insufficient"] as const;
+export type ClaimConfidence = (typeof CLAIM_CONFIDENCE)[number];
+
+export const EVIDENCE_VERIFICATION_STATES = ["pending", "verified", "conflict", "stale", "rejected"] as const;
+export type EvidenceVerificationState = (typeof EVIDENCE_VERIFICATION_STATES)[number];
+/** Newly collected evidence_objects.verification_state. `collected_unreviewed` is claims-only. */
+export const NEW_COLLECTED_EVIDENCE_VERIFICATION_STATE = "pending";
+
 export const JOB_TYPES = ["ingest", "validate", "monitor", "heavy"] as const;
 export type JobType = (typeof JOB_TYPES)[number];
 /** Application queue selection. Never a jobs table column. */
@@ -291,7 +299,7 @@ export type ClaimRecord = {
   lastSeenAt?: string;
   lastVerifiedAt?: string;
   verificationState: ClaimStatus;
-  confidence?: number;
+  confidence?: ClaimConfidence;
   volatilityClass?: string;
   recheckAfter?: string;
   supersedesClaimId?: string;

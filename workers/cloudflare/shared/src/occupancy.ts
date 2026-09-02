@@ -1,7 +1,49 @@
 import type { OccupancyRecord } from "./types.ts";
 
 export const CURRENT_ACTING_STATUSES = new Set(["current", "acting"]);
-export const DEMOTED_OCCUPANCY_STATUS = "former";
+/** Live seat_occupancies.occupancy_status for a demoted current/acting term. `former` is not live-legal. */
+export const DEMOTED_OCCUPANCY_STATUS = "completed";
+
+/** Live seat_occupancies.occupancy_status CHECK (queried 2026-09-02). */
+export const LIVE_SEAT_OCCUPANCY_STATUSES = [
+  "current",
+  "upcoming",
+  "completed",
+  "vacant",
+  "acting",
+  "disputed",
+] as const;
+export type LiveSeatOccupancyStatus = (typeof LIVE_SEAT_OCCUPANCY_STATUSES)[number];
+
+/** Newly collected occupancy is not yet validated. `unreviewed` is not live-legal. */
+export const NEW_OCCUPANCY_EVIDENCE_STATE = "pending";
+
+export function persistSeatBaselineStatus(occupied: boolean): "officeholder_pending" | "discovered" {
+  return occupied ? "officeholder_pending" : "discovered";
+}
+
+export function persistSeatTableOccupancyStatus(input: {
+  occupied: boolean;
+  acting?: boolean;
+}): "occupied" | "vacant" | "acting" {
+  if (input.acting) return "acting";
+  return input.occupied ? "occupied" : "vacant";
+}
+
+export function persistOccupancyRowStatus(holder: {
+  occupancyStatus?: string;
+  vacant?: boolean;
+}): LiveSeatOccupancyStatus {
+  const raw = holder.occupancyStatus;
+  if (raw === "former") return "completed";
+  if (raw === "occupied" || raw === "unknown") {
+    return holder.vacant ? "vacant" : "current";
+  }
+  if (raw && (LIVE_SEAT_OCCUPANCY_STATUSES as readonly string[]).includes(raw)) {
+    return raw as LiveSeatOccupancyStatus;
+  }
+  return holder.vacant ? "completed" : "current";
+}
 
 export function isCurrentOrActing(status: string | undefined): boolean {
   return Boolean(status && CURRENT_ACTING_STATUSES.has(status));

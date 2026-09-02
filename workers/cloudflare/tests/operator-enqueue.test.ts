@@ -11,6 +11,9 @@ import {
   CONTROLLED_MIAMI_DADE_INGEST_JOB_ID,
   CONTROLLED_MIAMI_DADE_SOURCE_KEY,
   CONTROLLED_MIAMI_DADE_SOURCE_URL,
+  CONTROLLED_FLORIDA_GOVERNOR_DEDUPE_KEY,
+  CONTROLLED_FLORIDA_GOVERNOR_INGEST_JOB_ID,
+  CONTROLLED_FLORIDA_GOVERNOR_SOURCE_KEY,
   CONTROLLED_FLORIDA_HOUSE_SOURCE_KEY,
   CONTROLLED_FLORIDA_SENATE_SOURCE_KEY,
   OPERATOR_ENQUEUE_PATH,
@@ -334,4 +337,87 @@ test("operator sourceKey refuses Miami-Dade recreation and bulk Florida sources"
   const bulk = await enqueue(store, sent, { sourceKey: "florida-attorney-general" });
   assert.equal(bulk.status, 400);
   assert.equal(sent.length, 0);
+});
+
+test("dead_letter Governor job is reset in place and sent to ingest; no second jobs row", async () => {
+  const store = createMemoryStore();
+  seedJob(store, {
+    jobId: CONTROLLED_FLORIDA_GOVERNOR_INGEST_JOB_ID,
+    status: "dead_letter",
+    dedupeKey: CONTROLLED_FLORIDA_GOVERNOR_DEDUPE_KEY,
+    errorClass: "supabase_write_failed",
+    errorMessage: "Postgres 23514 seats_baseline_status_check",
+    checkpoint: {
+      sourceKey: CONTROLLED_FLORIDA_GOVERNOR_SOURCE_KEY,
+      sourceUrl: "https://www.flgov.com/",
+    },
+    payload: {
+      sourceKey: CONTROLLED_FLORIDA_GOVERNOR_SOURCE_KEY,
+      sourceUrl: "https://www.flgov.com/",
+    },
+  });
+  const sent: SentMessage[] = [];
+  const response = await enqueue(store, sent, { jobId: CONTROLLED_FLORIDA_GOVERNOR_INGEST_JOB_ID });
+  assert.equal(response.status, 200);
+  const body = (await response.json()) as { jobId: string; dedupeKey: string; enqueued: boolean; queue: string };
+  assert.equal(body.jobId, CONTROLLED_FLORIDA_GOVERNOR_INGEST_JOB_ID);
+  assert.equal(body.dedupeKey, CONTROLLED_FLORIDA_GOVERNOR_DEDUPE_KEY);
+  assert.equal(body.enqueued, true);
+  assert.equal(body.queue, "civiclenz-ingest");
+  assert.equal((await store.listJobs()).length, 1);
+  const job = await store.getJob(CONTROLLED_FLORIDA_GOVERNOR_INGEST_JOB_ID);
+  assert.equal(job?.status, "queued");
+  assert.equal(job?.errorClass, undefined);
+  assert.equal(job?.errorMessage, undefined);
+  assert.equal(job?.dedupeKey, CONTROLLED_FLORIDA_GOVERNOR_DEDUPE_KEY);
+  assert.equal(job?.payload.sourceUrl, "https://www.flgov.com/");
+  assert.equal(sent.length, 1);
+  const message = parseQueueJobMessage(sent[0]?.message);
+  assert.equal(message.jobId, CONTROLLED_FLORIDA_GOVERNOR_INGEST_JOB_ID);
+  assert.equal(message.sourceKey, CONTROLLED_FLORIDA_GOVERNOR_SOURCE_KEY);
+  assert.equal(message.dryRun, false);
+});
+
+test("failed Governor job is requeued by jobId only; sourceKey does not insert a second row", async () => {
+  const store = createMemoryStore();
+  seedJob(store, {
+    jobId: CONTROLLED_FLORIDA_GOVERNOR_INGEST_JOB_ID,
+    status: "failed",
+    dedupeKey: CONTROLLED_FLORIDA_GOVERNOR_DEDUPE_KEY,
+    errorClass: "supabase_write_failed",
+    errorMessage: "Postgres 23514",
+    checkpoint: {
+      sourceKey: CONTROLLED_FLORIDA_GOVERNOR_SOURCE_KEY,
+      sourceUrl: "https://www.flgov.com/",
+    },
+    payload: {
+      sourceKey: CONTROLLED_FLORIDA_GOVERNOR_SOURCE_KEY,
+      sourceUrl: "https://www.flgov.com/",
+    },
+  });
+  const sent: SentMessage[] = [];
+  const viaSource = await enqueue(store, sent, { sourceKey: CONTROLLED_FLORIDA_GOVERNOR_SOURCE_KEY });
+  assert.equal(viaSource.status, 409);
+  assert.equal(((await viaSource.json()) as { error: string }).error, "job_not_enqueueable");
+  assert.equal((await store.listJobs()).length, 1);
+  assert.equal((await store.getJob(CONTROLLED_FLORIDA_GOVERNOR_INGEST_JOB_ID))?.status, "failed");
+  assert.equal(sent.length, 0);
+  const viaJobId = await enqueue(store, sent, { jobId: CONTROLLED_FLORIDA_GOVERNOR_INGEST_JOB_ID });
+  assert.equal(viaJobId.status, 200);
+  assert.equal((await store.listJobs()).length, 1);
+  assert.equal((await store.getJob(CONTROLLED_FLORIDA_GOVERNOR_INGEST_JOB_ID))?.status, "queued");
+  assert.equal(sent.length, 1);
+});
+
+test("dead_letter Miami-Dade job is refused and is not reset", async () => {
+  const store = createMemoryStore();
+  seedJob(store, { status: "dead_letter", errorClass: "parser_failure", errorMessage: "do not retry" });
+  const sent: SentMessage[] = [];
+  const response = await enqueue(store, sent, { jobId: CONTROLLED_MIAMI_DADE_INGEST_JOB_ID });
+  assert.equal(response.status, 409);
+  assert.equal(((await response.json()) as { error: string }).error, "miami_dade_job_must_not_be_recreated");
+  assert.equal(sent.length, 0);
+  const job = await store.getJob(CONTROLLED_MIAMI_DADE_INGEST_JOB_ID);
+  assert.equal(job?.status, "dead_letter");
+  assert.equal(job?.errorClass, "parser_failure");
 });

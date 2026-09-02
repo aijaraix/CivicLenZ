@@ -1,4 +1,4 @@
-import { EVIDENCE_BUCKET_NAME, type ClaimStatus, type JobStatus, type JobType } from "./types.ts";
+import { EVIDENCE_BUCKET_NAME, type ClaimConfidence, type ClaimStatus, type JobStatus, type JobType } from "./types.ts";
 
 export type Json = Record<string, unknown>;
 
@@ -712,7 +712,7 @@ export function claimRow(input: {
   lastSeenAt?: string;
   lastVerifiedAt?: string;
   verificationState: ClaimStatus;
-  confidence?: number;
+  confidence?: ClaimConfidence;
   volatilityClass?: string;
   recheckAfter?: string;
   supersedesClaimId?: string;
@@ -999,7 +999,7 @@ export function fromSeat(row: Json) {
     occupancyStatus: str(row.occupancy_status, "unknown"),
     nextElectionDate: opt(row.next_election_date),
     researchContractKey: opt(row.research_contract_key),
-    baselineStatus: str(row.baseline_status, "unknown"),
+    baselineStatus: str(row.baseline_status, "undiscovered"),
     monitoringActive: Boolean(row.monitoring_active),
   };
 }
@@ -1034,10 +1034,10 @@ export function fromOccupancy(row: Json) {
     endDate: opt(row.end_date),
     assumedOfficeDate: opt(row.assumed_office_date),
     swornInDate: opt(row.sworn_in_date),
-    occupancyStatus: str(row.occupancy_status, "unknown"),
+    occupancyStatus: str(row.occupancy_status),
     electedOrAppointed: opt(row.elected_or_appointed),
     electionId: opt(row.election_id),
-    evidenceState: str(row.evidence_state, "unreviewed"),
+    evidenceState: str(row.evidence_state, "pending"),
   };
 }
 
@@ -1134,7 +1134,7 @@ export function fromEvidence(row: Json) {
     excerpt: opt(row.excerpt),
     assetUri: opt(row.asset_uri),
     contentHash: str(row.content_hash),
-    verificationState: str(row.verification_state, "collected_unreviewed"),
+    verificationState: str(row.verification_state, "pending"),
     rightsMetadata: row.rights_metadata ? asRecord(row.rights_metadata) : undefined,
   };
 }
@@ -1155,7 +1155,7 @@ export function fromClaim(row: Json) {
     lastSeenAt: opt(row.last_seen_at),
     lastVerifiedAt: opt(row.last_verified_at),
     verificationState: str(row.verification_state, "not_collected") as ClaimStatus,
-    confidence: optNum(row.confidence),
+    confidence: opt(row.confidence) as ClaimConfidence | undefined,
     volatilityClass: opt(row.volatility_class),
     recheckAfter: opt(row.recheck_after),
     supersedesClaimId: opt(row.supersedes_claim_id),

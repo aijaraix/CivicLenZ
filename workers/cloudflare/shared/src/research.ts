@@ -191,7 +191,7 @@ export async function upsertBaselineResearchContract(
     branch: "executive",
     occupancyStatus: "unknown",
     researchContractKey: persisted.contract.contractKey,
-    baselineStatus: "unknown",
+    baselineStatus: "officeholder_pending",
     monitoringActive: true,
   });
   const person = await store.upsertPerson({
@@ -202,8 +202,8 @@ export async function upsertBaselineResearchContract(
   const occupancy = await store.upsertOccupancy({
     seatId: seat.seatId,
     personId: person.personId,
-    occupancyStatus: "unknown",
-    evidenceState: "unreviewed",
+    occupancyStatus: "current",
+    evidenceState: "pending",
   });
   const occupancyClaim = await store.recordClaim({
     subjectType: "seat",

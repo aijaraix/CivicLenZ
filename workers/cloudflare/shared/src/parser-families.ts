@@ -274,7 +274,7 @@ export function parseFloridaHouseDirectory(
       serviceEndDateText: parsed.end,
       startDate: parseUsShortDate(parsed.start),
       endDate: vacant ? parseUsShortDate(parsed.end) : undefined,
-      occupancyStatus: vacant ? "former" : "current",
+      occupancyStatus: vacant ? "completed" : "current",
       rawRowText: anchor.text,
       externalIdentifiers: vacant
         ? undefined
@@ -299,7 +299,7 @@ export function parseFloridaHouseDirectory(
     if (currentRows[0]) {
       holders.push(currentRows[0]);
       for (const former of rows.filter((row) => row.vacant)) {
-        holders.push({ ...former, vacant: true, occupancyStatus: "former" });
+        holders.push({ ...former, vacant: true, occupancyStatus: "completed" });
       }
       continue;
     }
@@ -308,7 +308,7 @@ export function parseFloridaHouseDirectory(
       holders.push({
         ...former,
         vacant: true,
-        occupancyStatus: "former",
+        occupancyStatus: "completed",
         electedOrAppointed: "elected",
       });
     }

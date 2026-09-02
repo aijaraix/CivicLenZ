@@ -194,7 +194,7 @@ test("candidate creation, withdrawal, winner occupancy, and election date change
     governmentLevel: "state",
     jurisdictionId: jurisdiction.jurisdictionId,
     occupancyStatus: "unknown",
-    baselineStatus: "unknown",
+    baselineStatus: "undiscovered",
     monitoringActive: false,
   });
   const election = await store.upsertElection({
@@ -209,7 +209,7 @@ test("candidate creation, withdrawal, winner occupancy, and election date change
     personId: incumbent.personId,
     startDate: "2019-01-08",
     occupancyStatus: "current",
-    evidenceState: "unreviewed",
+    evidenceState: "pending",
   });
   const filed = await recordCandidate(store, {
     person: { canonicalName: "Challenger Two", seatId: seat.seatId, jurisdictionId: jurisdiction.jurisdictionId },

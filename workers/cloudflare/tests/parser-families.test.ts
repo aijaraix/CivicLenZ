@@ -78,7 +78,7 @@ test("Florida House HTML_DIRECTORY skips resigned current occupancy and keeps th
   assert.equal(current[1]?.districtNumber, "2");
   assert.equal(former.length, 1);
   assert.equal(former[0]?.districtNumber, "3");
-  assert.equal(former[0]?.occupancyStatus, "former");
+  assert.equal(former[0]?.occupancyStatus, "completed");
   assert.equal(former[0]?.displayName, "Rudman, Dr. Joel");
 });
 
@@ -161,7 +161,7 @@ test("collector persists Florida House current occupancy and former resigned sea
   assert.equal(seats.find((seat) => seat.seatKey === "us-fl-state-house-district-116")?.occupancyStatus, "vacant");
   const occupancies = await store.listOccupancies();
   assert.equal(occupancies.filter((row) => row.occupancyStatus === "current").length, 115);
-  assert.equal(occupancies.filter((row) => row.occupancyStatus === "former").length, 1);
+  assert.equal(occupancies.filter((row) => row.occupancyStatus === "completed").length, 1);
 });
 
 test("House former occupant in a filled district does not vacate the current seat", async () => {
@@ -191,7 +191,7 @@ test("House former occupant in a filled district does not vacate the current sea
     return seat?.seatKey === "us-fl-state-house-district-1";
   });
   assert.equal(districtOne.filter((row) => row.occupancyStatus === "current").length, 1);
-  assert.equal(districtOne.filter((row) => row.occupancyStatus === "former").length, 1);
+  assert.equal(districtOne.filter((row) => row.occupancyStatus === "completed").length, 1);
 });
 
 function senateDirectoryHtml(currentCount: number, vacantDistrict: number): string {

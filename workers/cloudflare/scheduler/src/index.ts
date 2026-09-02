@@ -3,7 +3,7 @@ import {
   OPERATOR_ENQUEUE_PATH,
   authorizeOperator,
   enqueueControlledSourceJob,
-  enqueueExistingQueuedJob,
+  enqueueExistingJobById,
   responseContainsSecret,
 } from "../../shared/src/operator-enqueue.ts";
 import { parseQueueJobMessage } from "../../shared/src/queue-messages.ts";
@@ -98,7 +98,7 @@ async function handleOperatorEnqueue(request: Request, env: Env, deps?: Schedule
   try {
     const result =
       typeof jobId === "string"
-        ? await enqueueExistingQueuedJob({
+        ? await enqueueExistingJobById({
             store: store(env, deps),
             queues: queues(env),
             jobId,
