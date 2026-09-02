@@ -10,7 +10,7 @@ import { parseQueueJobMessage } from "../../shared/src/queue-messages.ts";
 import { planAndEnqueue } from "../../shared/src/scheduler.ts";
 import { createSupabaseStore } from "../../shared/src/supabase-store.ts";
 import type { CivicStore } from "../../shared/src/store.ts";
-import { sanitizeErrorMessage } from "../../shared/src/errors.ts";
+import { CivicError, sanitizeErrorMessage } from "../../shared/src/errors.ts";
 import { deploymentIdFrom, withWorkerRun } from "../../shared/src/worker-lifecycle.ts";
 
 export type SchedulerFetchDeps = {
@@ -53,7 +53,7 @@ function jsonResponse(body: unknown, status: number, secrets: Array<string | und
 
 async function runSchedule(env: Env, dryRun: boolean, deps?: SchedulerFetchDeps) {
   const civicStore = store(env, deps);
-  return withWorkerRun({
+  const outcome = await withWorkerRun({
     store: civicStore,
     worker: worker(env),
     secrets: [env.SUPABASE_SERVICE_ROLE_KEY, env.CIVICLENZ_OPERATOR_TRIGGER_SECRET],
@@ -72,6 +72,10 @@ async function runSchedule(env: Env, dryRun: boolean, deps?: SchedulerFetchDeps)
       };
     },
   });
+  if (outcome.skipped || !outcome.result) {
+    throw new CivicError("worker_failed", "scheduler run did not produce a plan");
+  }
+  return outcome.result;
 }
 
 async function handleOperatorEnqueue(request: Request, env: Env, deps?: SchedulerFetchDeps): Promise<Response> {

@@ -32,6 +32,17 @@ import type {
   WorkerRunRecord,
 } from "./types.ts";
 
+export type CompleteWorkerRunInput = {
+  status: Extract<WorkerRunRecord["status"], "succeeded" | "failed" | "degraded" | "cancelled">;
+  completedAt?: string;
+  recordsRead?: number;
+  recordsWritten?: number;
+  claimsVerified?: number;
+  errorClass?: string;
+  errorMessage?: string;
+  metadata?: Record<string, unknown>;
+};
+
 export type ScheduleJobInput = {
   dedupeKey: string;
   route: JobRoute;
@@ -94,6 +105,7 @@ export type CivicStore = {
   failJob(jobId: string, errorClass: string, errorMessage: string, deadLettered?: boolean): Promise<JobRecord>;
   requeueJob(jobId: string): Promise<JobRecord>;
   recordWorkerRun(input: Omit<WorkerRunRecord, "workerRunId"> & { workerRunId?: string }): Promise<WorkerRunRecord>;
+  completeWorkerRun(workerRunId: string, input: CompleteWorkerRunInput): Promise<WorkerRunRecord>;
   getDueJobs(now: Date, limit?: number): Promise<JobRecord[]>;
   getJobByDedupe(dedupeKey: string): Promise<JobRecord | undefined>;
   getJob(jobId: string): Promise<JobRecord | undefined>;
@@ -510,6 +522,7 @@ export function createMemoryStore(): CivicStore & { tables: MemoryTables } {
         status,
         completedAt: new Date().toISOString(),
         leasedBy: undefined,
+        leaseExpiresAt: undefined,
         errorClass: undefined,
         errorMessage: undefined,
       };
@@ -525,6 +538,8 @@ export function createMemoryStore(): CivicStore & { tables: MemoryTables } {
         errorClass,
         errorMessage,
         completedAt: new Date().toISOString(),
+        leasedBy: undefined,
+        leaseExpiresAt: undefined,
       };
       tables.jobs.set(jobId, failed);
       return failed;
@@ -551,6 +566,20 @@ export function createMemoryStore(): CivicStore & { tables: MemoryTables } {
         createdAt: input.createdAt ?? new Date().toISOString(),
       };
       tables.workerRuns.push(record);
+      return record;
+    },
+    async completeWorkerRun(workerRunId, input) {
+      const index = tables.workerRuns.findIndex((item) => item.workerRunId === workerRunId);
+      if (index < 0) throw new StoreWriteError(`worker_run ${workerRunId} not found`);
+      const current = tables.workerRuns[index]!;
+      const record: WorkerRunRecord = {
+        ...current,
+        ...input,
+        workerRunId,
+        completedAt: input.completedAt ?? new Date().toISOString(),
+        metadata: input.metadata ?? current.metadata,
+      };
+      tables.workerRuns[index] = record;
       return record;
     },
     async getDueJobs(now, limit = 50) {

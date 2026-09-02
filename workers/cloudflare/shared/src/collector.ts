@@ -2,6 +2,7 @@ import { CivicError, ParserError } from "./errors.ts";
 import { createDeadLetterPayload, shouldDeadLetter } from "./dead-letter.ts";
 import { sha256Hex, valueHash } from "./hash.ts";
 import { fetchDocument } from "./http.ts";
+import { EXTERNAL_CALL_TIMEOUT_MS, sendQueueWithTimeout, withTimeout } from "./timeouts.ts";
 import { electionMonitorDedupeKey, heavyDedupeKey, toQueueMessage, validateDedupeKey } from "./jobs.ts";
 import { miamiDadeSeatKey } from "./miami-dade.ts";
 import { dispatchSourceAdapter } from "./adapters.ts";
@@ -49,6 +50,7 @@ export async function runCollectorJob(input: {
   worker: WorkerIdentity;
   fetchImpl?: typeof fetch;
   parserVersion?: string;
+  callTimeoutMs?: number;
 }): Promise<CollectorResult> {
   const parserVersion = input.parserVersion ?? PARSER_VERSION;
   if (input.message.dryRun) {
@@ -81,11 +83,13 @@ export async function runCollectorJob(input: {
     const priorRetrievals = await input.store.listRetrievals();
     const prior = priorRetrievals.find((item) => item.sourceUrl === sourceUrl);
     const fetchHeaders = config?.fetchUserAgent ? { "User-Agent": config.fetchUserAgent } : undefined;
+    const callTimeoutMs = input.callTimeoutMs ?? EXTERNAL_CALL_TIMEOUT_MS;
     const document = await fetchDocument(sourceUrl, {
       fetchImpl: input.fetchImpl,
       ifNoneMatch: prior?.etag,
       ifModifiedSince: prior?.lastModified,
       headers: fetchHeaders,
+      timeoutMs: callTimeoutMs,
     });
     const downstreamComplete = isRetrievalDownstreamComplete({
       retrieval: prior,
@@ -115,6 +119,7 @@ export async function runCollectorJob(input: {
         sourceUrl,
         fetchImpl: input.fetchImpl,
         headers: fetchHeaders,
+        timeoutMs: callTimeoutMs,
       });
       bytes = resumed.bytes;
       sha256 = prior?.contentHash ?? (await sha256Hex(bytes));
@@ -127,7 +132,8 @@ export async function runCollectorJob(input: {
     }
     if (!sha256) sha256 = await sha256Hex(bytes);
 
-    const storedKey = objectKeyFromRawObjectUri(prior?.rawObjectUri);
+    const hashMatchesPrior = Boolean(prior?.contentHash && prior.contentHash === sha256);
+    const storedKey = hashMatchesPrior ? objectKeyFromRawObjectUri(prior?.rawObjectUri) : undefined;
     const r2Key =
       storedKey ??
       evidenceObjectKey({
@@ -139,19 +145,24 @@ export async function runCollectorJob(input: {
     if (!input.bucket) {
       throw new CivicError("r2_binding_missing", "EVIDENCE_BUCKET binding is required");
     }
-    if (!skipR2Put) {
+    if (!skipR2Put || !hashMatchesPrior) {
       try {
-        await input.bucket.put(r2Key, bytes, {
-          contentType,
-          customMetadata: {
-            sourceKey,
-            sourceUrl,
-            sha256,
-            retrievedAt,
-            parserVersion,
-          },
-        });
+        await withTimeout(
+          input.bucket.put(r2Key, bytes, {
+            contentType,
+            customMetadata: {
+              sourceKey,
+              sourceUrl,
+              sha256,
+              retrievedAt,
+              parserVersion,
+            },
+          }),
+          callTimeoutMs,
+          new CivicError("r2_write_timeout", `R2 put exceeded ${callTimeoutMs}ms`, { retryable: true }),
+        );
       } catch (error) {
+        if (error instanceof CivicError) throw error;
         throw new CivicError("r2_write_failed", error instanceof Error ? error.message : "R2 put failed");
       }
     }
@@ -245,7 +256,7 @@ export async function runCollectorJob(input: {
       payload: { retrievalId: retrieval.retrievalId, sourceUrl },
     });
     if (validate.created && input.queues?.validate) {
-      await input.queues.validate.send(toQueueMessage(validate.job, false));
+      await sendQueueWithTimeout(input.queues.validate, toQueueMessage(validate.job, false), callTimeoutMs);
     }
 
     await input.store.upsertMonitoringState({
@@ -276,15 +287,25 @@ async function resumeStoredBytes(input: {
   sourceUrl: string;
   fetchImpl?: typeof fetch;
   headers?: Record<string, string>;
+  timeoutMs?: number;
 }): Promise<{ bytes: Uint8Array; fromStore: boolean; contentType?: string }> {
+  const timeoutMs = input.timeoutMs ?? EXTERNAL_CALL_TIMEOUT_MS;
   const key = objectKeyFromRawObjectUri(input.prior?.rawObjectUri);
   if (key && input.bucket?.get) {
-    const stored = await input.bucket.get(key);
+    const stored = await withTimeout(
+      input.bucket.get(key),
+      timeoutMs,
+      new CivicError("r2_read_timeout", `R2 get exceeded ${timeoutMs}ms`, { retryable: true }),
+    );
     if (stored && stored.byteLength > 0) {
       return { bytes: stored, fromStore: true, contentType: input.prior?.contentType };
     }
   }
-  const fresh = await fetchDocument(input.sourceUrl, { fetchImpl: input.fetchImpl, headers: input.headers });
+  const fresh = await fetchDocument(input.sourceUrl, {
+    fetchImpl: input.fetchImpl,
+    headers: input.headers,
+    timeoutMs,
+  });
   return { bytes: fresh.bytes, fromStore: false, contentType: fresh.contentType };
 }
 
@@ -507,6 +528,7 @@ async function handleCollectorFailure(
     message: QueueJobMessage;
     queues?: RuntimeQueues;
     worker: WorkerIdentity;
+    callTimeoutMs?: number;
   },
   error: unknown,
 ): Promise<CollectorResult> {
@@ -519,7 +541,7 @@ async function handleCollectorFailure(
       payload: { sourceUrl: input.message.sourceUrl, reason: civic.errorClass },
     });
     if (heavy.created && input.queues?.heavy) {
-      await input.queues.heavy.send(toQueueMessage(heavy.job, false));
+      await sendQueueWithTimeout(input.queues.heavy, toQueueMessage(heavy.job, false), input.callTimeoutMs);
     }
     return {
       status: "routed_heavy",
@@ -531,7 +553,8 @@ async function handleCollectorFailure(
   }
   const dead = shouldDeadLetter(input.message.attempt + 1, civic.retryable);
   if (dead && input.queues?.deadLetter) {
-    await input.queues.deadLetter.send(
+    await sendQueueWithTimeout(
+      input.queues.deadLetter,
       createDeadLetterPayload({
         jobId: input.message.jobId,
         jobType: input.message.route,
@@ -544,6 +567,7 @@ async function handleCollectorFailure(
         attemptCount: input.message.attempt + 1,
         payload: input.message,
       }),
+      input.callTimeoutMs,
     );
   }
   return {

@@ -1369,8 +1369,9 @@ test("incomplete stored retrieval plus 304 resumes from R2 and does not succeed 
     sourceKey: ingestMessage().sourceKey,
   });
   await store.failJob(job.jobId, "supabase_write_failed", "HTTP 400 Postgres 42P10");
+  await store.requeueJob(job.jobId);
 
-  const result = await withWorkerRun({
+  const outcome = await withWorkerRun({
     store,
     worker: worker(),
     message: ingestMessage({ jobId: job.jobId }),
@@ -1393,9 +1394,11 @@ test("incomplete stored retrieval plus 304 resumes from R2 and does not succeed 
       };
     },
   });
+  assert.equal(outcome.skipped, false);
+  const result = outcome.skipped ? undefined : outcome.result;
 
-  assert.equal(result.status, "collected");
-  assert.notEqual(result.status, "unchanged");
+  assert.equal(result?.status, "collected");
+  assert.notEqual(result?.status, "unchanged");
   const completed = await store.getJob(job.jobId);
   assert.equal(completed?.status, "succeeded");
   assert.equal(completed?.errorClass, undefined);
