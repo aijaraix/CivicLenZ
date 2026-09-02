@@ -55,3 +55,5 @@ npx wrangler deploy --dry-run
 # production deploy is a later operator step; scheduler last
 npx wrangler deploy
 ```
+
+<!-- Cloudflare Git integration reconnect verification: 2026-09-02 -->
