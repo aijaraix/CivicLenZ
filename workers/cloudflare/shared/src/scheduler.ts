@@ -7,6 +7,7 @@ import type { JobRecord, QueueJobMessage, RuntimeQueues } from "./types.ts";
 export type SchedulerPlan = {
   scheduled: JobRecord[];
   skippedActive: string[];
+  recoveredLeases?: JobRecord[];
   enqueued: QueueJobMessage[];
   dryRun: boolean;
   dueSources: number;

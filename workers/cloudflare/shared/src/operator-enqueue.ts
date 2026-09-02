@@ -9,6 +9,7 @@ import {
   routeForJobType,
   toQueueMessage,
 } from "./jobs.ts";
+import { recoverExpiredLeaseForJob } from "./lease-recovery.ts";
 import { operatorControlledSources, sourceAdapter } from "./source-config.ts";
 import type { CivicStore } from "./store.ts";
 import type { JobRoute, RuntimeQueues } from "./types.ts";
@@ -154,7 +155,7 @@ export async function requeueExistingTerminalJob(input: {
   return enqueueExistingQueuedJob(input);
 }
 
-/** POST {jobId}: enqueue if queued; reset+enqueue if dead_letter/failed (except Miami-Dade). */
+/** POST {jobId}: enqueue if queued; recover expired lease then enqueue; reset+enqueue if dead_letter/failed (except Miami-Dade). */
 export async function enqueueExistingJobById(input: {
   store: CivicStore;
   queues: RuntimeQueues;
@@ -170,6 +171,17 @@ export async function enqueueExistingJobById(input: {
   }
   if (TERMINAL_REQUEUE_STATUSES.has(job.status)) {
     return requeueExistingTerminalJob(input);
+  }
+  if (job.status === "leased") {
+    const recovered = await recoverExpiredLeaseForJob({
+      store: input.store,
+      jobId: input.jobId,
+      now: input.now,
+    });
+    if (recovered?.status === "queued") {
+      return enqueueExistingQueuedJob(input);
+    }
+    return { status: 409, body: { error: "job_not_enqueueable" } };
   }
   return enqueueExistingQueuedJob(input);
 }

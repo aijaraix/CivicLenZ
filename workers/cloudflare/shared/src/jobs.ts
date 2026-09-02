@@ -97,6 +97,25 @@ export function queueSenderForRoute(route: JobRoute, queues: RuntimeQueues): Que
   return queues.heavy;
 }
 
+export const LEASE_EXPIRED_ERROR_CLASS = "lease_expired";
+export const LEASE_ATTEMPTS_EXHAUSTED_ERROR_CLASS = "lease_attempts_exhausted";
+export const LEASE_EXPIRED_QUEUED_MESSAGE =
+  "job lease expired without terminal worker_run; recovered to queued";
+export const LEASE_ATTEMPTS_EXHAUSTED_MESSAGE =
+  "job lease expired without terminal worker_run; attempt_count reached max_attempts; recovered to dead_letter";
+export const WORKER_RUN_LEASE_EXPIRED_MESSAGE = "job lease expired without terminal worker_run";
+
+export function isExpiredLeasedJob(job: Pick<JobRecord, "status" | "leaseExpiresAt">, now: Date): boolean {
+  if (job.status !== "leased") return false;
+  if (!job.leaseExpiresAt) return false;
+  const expiresAt = Date.parse(job.leaseExpiresAt);
+  return !Number.isNaN(expiresAt) && expiresAt < now.getTime();
+}
+
+export function expiredLeaseFilter(jobId: string, now: Date): string {
+  return `job_id=eq.${jobId}&status=eq.leased&lease_expires_at=lt.${now.toISOString()}`;
+}
+
 export function isJobDue(scheduledFor: string | null | undefined, now: Date): boolean {
   if (scheduledFor == null || scheduledFor === "") return true;
   const ts = Date.parse(scheduledFor);

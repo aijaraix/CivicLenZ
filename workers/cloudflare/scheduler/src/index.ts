@@ -7,6 +7,7 @@ import {
   responseContainsSecret,
 } from "../../shared/src/operator-enqueue.ts";
 import { parseQueueJobMessage } from "../../shared/src/queue-messages.ts";
+import { recoverExpiredLeases } from "../../shared/src/lease-recovery.ts";
 import { planAndEnqueue } from "../../shared/src/scheduler.ts";
 import { createSupabaseStore } from "../../shared/src/supabase-store.ts";
 import type { CivicStore } from "../../shared/src/store.ts";
@@ -51,23 +52,26 @@ function jsonResponse(body: unknown, status: number, secrets: Array<string | und
   return Response.json(body, { status });
 }
 
-async function runSchedule(env: Env, dryRun: boolean, deps?: SchedulerFetchDeps) {
+export async function runSchedule(env: Env, dryRun: boolean, deps?: SchedulerFetchDeps) {
   const civicStore = store(env, deps);
+  const now = deps?.now ?? new Date();
   const outcome = await withWorkerRun({
     store: civicStore,
     worker: worker(env),
     secrets: [env.SUPABASE_SERVICE_ROLE_KEY, env.CIVICLENZ_OPERATOR_TRIGGER_SECRET],
     queues: queues(env),
     run: async () => {
+      const recovery = await recoverExpiredLeases({ store: civicStore, now });
       const plan = await planAndEnqueue({
         store: civicStore,
         queues: queues(env),
+        now,
         dryRun,
       });
       return {
-        result: plan,
-        recordsRead: plan.skippedActive.length + plan.scheduled.length,
-        recordsWritten: plan.scheduled.length,
+        result: { ...plan, recoveredLeases: recovery.recovered },
+        recordsRead: plan.skippedActive.length + plan.scheduled.length + recovery.recovered.length,
+        recordsWritten: plan.scheduled.length + recovery.recovered.length,
         claimsVerified: 0,
       };
     },
@@ -145,6 +149,7 @@ export async function handleSchedulerFetch(request: Request, env: Env, deps?: Sc
       scheduledDedupeKeys: plan.scheduled.map((job) => job.dedupeKey),
       skippedActive: plan.skippedActive,
       enqueued: plan.enqueued.length,
+      recoveredJobIds: (plan.recoveredLeases ?? []).map((job) => job.jobId),
     });
   }
   return new Response("not found", { status: 404 });
