@@ -7,6 +7,12 @@ import { miamiDadeSeatKey } from "./miami-dade.ts";
 import { dispatchSourceAdapter } from "./adapters.ts";
 import { httpUnchanged, isRetrievalDownstreamComplete, retrievalUnchanged } from "./change-detection.ts";
 import { officeClassForOfficeType } from "./office-classes.ts";
+import {
+  NEW_OCCUPANCY_EVIDENCE_STATE,
+  persistOccupancyRowStatus,
+  persistSeatBaselineStatus,
+  persistSeatTableOccupancyStatus,
+} from "./occupancy.ts";
 import { persistOfficeClassContract } from "./research-contracts.ts";
 import { queueMissingProfileWork } from "./research.ts";
 import { sourceAdapter } from "./source-config.ts";
@@ -15,6 +21,7 @@ import { uuidFromName } from "./ids.ts";
 import type { CivicStore } from "./store.ts";
 import {
   EVIDENCE_BUCKET_NAME,
+  NEW_COLLECTED_EVIDENCE_VERIFICATION_STATE,
   PARSER_VERSION,
   type EvidenceBucket,
   type ExtractedOfficeholder,
@@ -281,7 +288,7 @@ async function resumeStoredBytes(input: {
   return { bytes: fresh.bytes, fromStore: false, contentType: fresh.contentType };
 }
 
-async function persistExtractedHolders(
+export async function persistExtractedHolders(
   store: CivicStore,
   input: {
     sourceKey: string;
@@ -303,9 +310,10 @@ async function persistExtractedHolders(
     const officeClass = officeClassForOfficeType(holder.officeKind);
     await persistOfficeClassContract(store, officeClass);
     const skipPerson = isVacantDisplayName(holder.displayName);
+    const occupancyStatus = persistOccupancyRowStatus(holder);
+    const isActingOccupant = occupancyStatus === "acting";
     const isCurrentOccupant =
-      !skipPerson &&
-      (!holder.vacant || holder.occupancyStatus === "current" || holder.occupancyStatus === "acting");
+      !skipPerson && (occupancyStatus === "current" || occupancyStatus === "acting");
     const seatOccupied = isCurrentOccupant || occupiedSeatKeys.has(seatKey);
     const seat = await store.upsertSeat({
       seatKey,
@@ -316,9 +324,9 @@ async function persistExtractedHolders(
       branch: holder.branch,
       chamber: holder.chamber,
       districtNumber: holder.districtNumber,
-      occupancyStatus: seatOccupied ? "occupied" : "vacant",
+      occupancyStatus: persistSeatTableOccupancyStatus({ occupied: seatOccupied, acting: isActingOccupant && seatOccupied }),
       researchContractKey: officeClass,
-      baselineStatus: seatOccupied ? "officeholder_present" : "seat_only",
+      baselineStatus: persistSeatBaselineStatus(seatOccupied),
       monitoringActive: false,
     });
     if (skipPerson) {
@@ -341,7 +349,7 @@ async function persistExtractedHolders(
         excerpt: holder.rawRowText,
         assetUri: input.assetUri,
         contentHash: input.contentHash,
-        verificationState: "collected_unreviewed",
+        verificationState: NEW_COLLECTED_EVIDENCE_VERIFICATION_STATE,
       });
       await store.attachClaimEvidence(vacantClaim.claimId, evidence.evidenceId, "supports");
       continue;
@@ -352,15 +360,14 @@ async function persistExtractedHolders(
       jurisdictionId: jurisdiction.jurisdictionId,
       externalIdentifiers: holder.externalIdentifiers,
     });
-    const occupancyStatus = holder.occupancyStatus ?? (holder.vacant ? "former" : "current");
     await store.upsertOccupancy({
       seatId: seat.seatId,
       personId: person.personId,
       startDate: holder.startDate,
-      endDate: occupancyStatus === "former" ? holder.endDate : undefined,
+      endDate: occupancyStatus === "completed" ? holder.endDate : undefined,
       occupancyStatus,
       electedOrAppointed: holder.electedOrAppointed,
-      evidenceState: "unreviewed",
+      evidenceState: NEW_OCCUPANCY_EVIDENCE_STATE,
     });
     if (occupancyStatus === "current" || occupancyStatus === "acting") {
       occupiedSeatKeys.add(seatKey);
@@ -373,9 +380,9 @@ async function persistExtractedHolders(
         branch: seat.branch,
         chamber: seat.chamber,
         districtNumber: seat.districtNumber,
-        occupancyStatus: "occupied",
+        occupancyStatus: persistSeatTableOccupancyStatus({ occupied: true, acting: occupancyStatus === "acting" }),
         researchContractKey: officeClass,
-        baselineStatus: "officeholder_present",
+        baselineStatus: persistSeatBaselineStatus(true),
         monitoringActive: false,
       });
     }
@@ -400,7 +407,7 @@ async function persistExtractedHolders(
       excerpt: holder.rawRowText,
       assetUri: input.assetUri,
       contentHash: input.contentHash,
-      verificationState: "collected_unreviewed",
+      verificationState: NEW_COLLECTED_EVIDENCE_VERIFICATION_STATE,
     });
     await store.attachClaimEvidence(claim.claimId, evidence.evidenceId, "supports");
     if (holder.partyName) {

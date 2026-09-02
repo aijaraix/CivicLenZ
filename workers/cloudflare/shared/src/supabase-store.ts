@@ -277,7 +277,7 @@ export function createSupabaseStore(config: SupabaseConfig): CivicStore {
                 fieldKey: input.fieldKey,
                 claimIds,
                 status: "open",
-                severity: "error",
+                severity: "critical",
               }),
             ),
             prefer: "return=minimal",
@@ -438,6 +438,19 @@ export function createSupabaseStore(config: SupabaseConfig): CivicStore {
         error_class: errorClass,
         error_message: sanitizeErrorMessage(errorMessage, [key]),
         completed_at: new Date().toISOString(),
+        updated_at: new Date().toISOString(),
+      });
+      if (!rows[0]) throw new StoreWriteError(`job ${jobId} not found`);
+      return fromJob(rows[0]);
+    },
+    async requeueJob(jobId) {
+      const rows = await patch("jobs", `job_id=eq.${jobId}`, {
+        status: "queued",
+        error_class: null,
+        error_message: null,
+        completed_at: null,
+        leased_by: null,
+        lease_expires_at: null,
         updated_at: new Date().toISOString(),
       });
       if (!rows[0]) throw new StoreWriteError(`job ${jobId} not found`);

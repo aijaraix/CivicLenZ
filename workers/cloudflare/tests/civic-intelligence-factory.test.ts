@@ -94,7 +94,7 @@ test("completeness engine exposes nine queryable dimensions", async () => {
     governmentLevel: "state",
     occupancyStatus: "occupied",
     researchContractKey: "STATE_GOVERNOR",
-    baselineStatus: "officeholder_present",
+    baselineStatus: "officeholder_pending",
     monitoringActive: false,
   });
   const person = await store.upsertPerson({
@@ -106,7 +106,7 @@ test("completeness engine exposes nine queryable dimensions", async () => {
     seatId: seat.seatId,
     personId: person.personId,
     occupancyStatus: "current",
-    evidenceState: "unreviewed",
+    evidenceState: "pending",
   });
   const [audit] = await auditCompleteness(store, { seatId: seat.seatId, personId: person.personId, category: "identity" });
   assert.ok(audit);
@@ -134,7 +134,7 @@ test("job generator skips when completeness audit is complete and fresh", async 
     governmentLevel: "state",
     occupancyStatus: "occupied",
     researchContractKey: "STATE_GOVERNOR",
-    baselineStatus: "officeholder_present",
+    baselineStatus: "officeholder_pending",
     monitoringActive: true,
   });
   const person = await store.upsertPerson({
@@ -146,7 +146,7 @@ test("job generator skips when completeness audit is complete and fresh", async 
     seatId: seat.seatId,
     personId: person.personId,
     occupancyStatus: "current",
-    evidenceState: "unreviewed",
+    evidenceState: "pending",
   });
   await store.upsertMonitoringState({
     targetType: "seat",
@@ -179,7 +179,7 @@ test("job generator skips when completeness audit is complete and fresh", async 
     evidenceType: "html_excerpt",
     sourceUrl: "https://www.flgov.com/",
     excerpt: person.canonicalName,
-    verificationState: "collected_unreviewed",
+    verificationState: "pending",
   });
   await store.attachClaimEvidence(occupant.claimId, evidence.evidenceId, "supports");
   await store.attachClaimEvidence(portrait.claimId, evidence.evidenceId, "supports");
@@ -249,12 +249,15 @@ test("collector persists governor seat/person/occupancy/contract from fixture HT
   assert.equal(seats[0]?.seatName, "Governor of Florida");
   assert.equal(seats[0]?.seatKey, "us-fl-governor");
   assert.equal(seats[0]?.researchContractKey, "STATE_GOVERNOR");
+  assert.equal(seats[0]?.baselineStatus, "officeholder_pending");
+  assert.equal(seats[0]?.occupancyStatus, "occupied");
   const people = await store.listPersons();
   assert.equal(people.length, 1);
   assert.equal(people[0]?.canonicalName, expected);
   assert.equal(people.some((person) => person.canonicalName.toLowerCase() === "vacant"), false);
   const occupancies = await store.listOccupancies();
   assert.equal(occupancies[0]?.occupancyStatus, "current");
+  assert.equal(occupancies[0]?.evidenceState, "pending");
   const contracts = await store.listResearchContracts();
   assert.ok(contracts.some((row) => row.contractKey === "STATE_GOVERNOR"));
   const claims = await store.listClaims();
@@ -314,7 +317,7 @@ test("publication eligibility requires evidence and does not auto-verify non-.go
         { claim_id: "cl-1", subject_type: "person", subject_id: "p-1", field_key: "portrait", display_value: "https://www.flgov.com/p.png", verification_state: "verified" },
         { claim_id: "cl-2", subject_type: "person", subject_id: "p-1", field_key: "biography", display_value: "unreviewed", verification_state: "collected_unreviewed" },
       ],
-      evidence: [{ evidence_id: "ev-1", verification_state: "collected_unreviewed" }],
+      evidence: [{ evidence_id: "ev-1", verification_state: "pending" }],
       claimEvidence: [],
     },
     "person",

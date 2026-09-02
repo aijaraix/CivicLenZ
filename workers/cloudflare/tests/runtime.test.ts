@@ -173,7 +173,7 @@ test("seat, person, and winning-candidate matching reuse the existing person", (
       officeType: "governor",
       governmentLevel: "state",
       occupancyStatus: "unknown",
-      baselineStatus: "unknown",
+      baselineStatus: "undiscovered",
       monitoringActive: false,
     },
   ];
@@ -387,7 +387,7 @@ test("Ron DeSantis is a baseline research test, not special-case worker code", a
   assert.equal(seeded.jurisdiction.jurisdictionKey, "us-fl");
   assert.equal(seeded.seat.seatKey, "us-fl-governor");
   assert.equal(seeded.person.canonicalName, "Ron DeSantis");
-  assert.equal(seeded.occupancy.occupancyStatus, "unknown");
+  assert.equal(seeded.occupancy.occupancyStatus, "current");
   assert.equal(seeded.occupancyClaim.verificationState, "collected_unreviewed");
   assert.equal(seeded.portraitDecision.allowedForVerified, false);
   assert.equal(seeded.portraitDecision.reason, "not_official_gov_host");
@@ -498,7 +498,7 @@ test("schema-contract builders refuse invented columns that live tables do not h
         jurisdictionId: "11111111-1111-4111-8111-111111111111",
         officeType: "governor",
         occupancyStatus: "unknown",
-        baselineStatus: "unknown",
+        baselineStatus: "undiscovered",
         monitoringActive: false,
       }),
     ],
@@ -508,8 +508,8 @@ test("schema-contract builders refuse invented columns that live tables do not h
       occupancyRow({
         seatId: "11111111-1111-4111-8111-111111111111",
         personId: "22222222-2222-4222-8222-222222222222",
-        occupancyStatus: "unknown",
-        evidenceState: "unreviewed",
+        occupancyStatus: "current",
+        evidenceState: "pending",
       }),
     ],
     [
@@ -600,8 +600,8 @@ test("supabase-store write bodies never include invented columns", async () => {
               person_id: "33333333-3333-4333-8333-333333333333",
               canonical_name: "Example",
               occupancy_id: "44444444-4444-4444-8444-444444444444",
-              occupancy_status: "unknown",
-              evidence_state: "unreviewed",
+              occupancy_status: "current",
+              evidence_state: "pending",
               source_id: "55555555-5555-4555-8555-555555555555",
               source_key: "x",
               source_url: "https://example.gov",
@@ -657,7 +657,7 @@ test("supabase-store write bodies never include invented columns", async () => {
     officeType: "governor",
     governmentLevel: "state",
     occupancyStatus: "unknown",
-    baselineStatus: "unknown",
+    baselineStatus: "undiscovered",
     monitoringActive: false,
   });
   await store.upsertPerson({ canonicalName: "Example" });
@@ -773,28 +773,28 @@ test("occupancy upsert queries then updates; current/acting is one per seat", as
     personId: firstPerson.personId,
     startDate: "2020-01-07",
     occupancyStatus: "current",
-    evidenceState: "unreviewed",
+    evidenceState: "pending",
   });
   const again = await store.upsertOccupancy({
     seatId,
     personId: firstPerson.personId,
     startDate: "2020-01-07",
     occupancyStatus: "current",
-    evidenceState: "reviewed",
+    evidenceState: "stale",
   });
   assert.equal(again.occupancyId, first.occupancyId);
-  assert.equal(again.evidenceState, "reviewed");
+  assert.equal(again.evidenceState, "stale");
 
   const successor = await store.upsertOccupancy({
     seatId,
     personId: secondPerson.personId,
     startDate: "2024-01-02",
     occupancyStatus: "current",
-    evidenceState: "unreviewed",
+    evidenceState: "pending",
   });
   const rows = await store.listOccupancies();
   assert.equal(rows.filter((row) => row.occupancyStatus === "current").length, 1);
-  assert.equal(rows.find((row) => row.occupancyId === first.occupancyId)?.occupancyStatus, "former");
+  assert.equal(rows.find((row) => row.occupancyId === first.occupancyId)?.occupancyStatus, "completed");
   assert.equal(successor.occupancyStatus, "current");
 });
 
@@ -807,15 +807,15 @@ test("same person can hold two non-overlapping terms in the same seat", async ()
     personId: person.personId,
     startDate: "2015-01-06",
     endDate: "2019-01-08",
-    occupancyStatus: "former",
-    evidenceState: "unreviewed",
+    occupancyStatus: "completed",
+    evidenceState: "pending",
   });
   const termTwo = await store.upsertOccupancy({
     seatId,
     personId: person.personId,
     startDate: "2023-01-03",
     occupancyStatus: "current",
-    evidenceState: "unreviewed",
+    evidenceState: "pending",
   });
   assert.notEqual(termOne.occupancyId, termTwo.occupancyId);
   const rows = (await store.listOccupancies()).filter((row) => row.personId === person.personId && row.seatId === seatId);
@@ -867,7 +867,7 @@ test("name plus seat occupancy context reuses the occupant, not a namesake", asy
     governmentLevel: "state",
     jurisdictionId: jurisdiction.jurisdictionId,
     occupancyStatus: "unknown",
-    baselineStatus: "unknown",
+    baselineStatus: "undiscovered",
     monitoringActive: false,
   });
   const occupant = await store.upsertPerson({ canonicalName: "Jane Doe" });
@@ -875,7 +875,7 @@ test("name plus seat occupancy context reuses the occupant, not a namesake", asy
     seatId: seat.seatId,
     personId: occupant.personId,
     occupancyStatus: "current",
-    evidenceState: "unreviewed",
+    evidenceState: "pending",
   });
   const namesake = await store.upsertPerson({ canonicalName: "Jane Doe" });
   assert.notEqual(namesake.personId, occupant.personId);
@@ -901,8 +901,8 @@ test("supabase occupancy writes never use on_conflict seat_id,person_id,start_da
     seatId: "11111111-1111-4111-8111-111111111111",
     personId: "22222222-2222-4222-8222-222222222222",
     startDate: "2024-01-02",
-    occupancyStatus: "unknown",
-    evidenceState: "unreviewed",
+    occupancyStatus: "current",
+    evidenceState: "pending",
   }).catch(() => undefined);
   assert.equal(
     urls.some((url) => url.includes("on_conflict=seat_id,person_id,start_date")),
@@ -1225,6 +1225,46 @@ test("supabase completeJob succeeded patches error fields to null", async () => 
   assert.equal(done.status, "succeeded");
   assert.equal(done.errorClass, undefined);
   assert.equal(done.errorMessage, undefined);
+});
+
+test("supabase requeueJob patches dead_letter row to queued and nulls error fields", async () => {
+  const bodies: Array<Record<string, unknown>> = [];
+  const store = createSupabaseStore({
+    url: "https://example.supabase.co",
+    serviceRoleKey: "service-role-test-key",
+    fetchImpl: async (input, init) => {
+      const parsed = init?.body ? (JSON.parse(String(init.body)) as Record<string, unknown>) : {};
+      if ((init?.method ?? "GET").toUpperCase() === "PATCH") bodies.push(parsed);
+      return new Response(
+        JSON.stringify([
+          {
+            job_id: "7a3b6912-1d01-569f-8b62-03b4c39a88da",
+            job_type: "ingest",
+            status: "queued",
+            attempt_count: 1,
+            max_attempts: 5,
+            priority: 100,
+            dedupe_key: "ingest:florida-governor-official:2026-09-02",
+            payload: { sourceKey: "florida-governor-official", sourceUrl: "https://www.flgov.com/" },
+            checkpoint: { sourceKey: "florida-governor-official", sourceUrl: "https://www.flgov.com/" },
+            scheduled_for: "2026-09-02T00:00:00.000Z",
+            error_class: parsed.error_class ?? null,
+            error_message: parsed.error_message ?? null,
+          },
+        ]),
+        { status: 200, headers: { "content-type": "application/json" } },
+      );
+    },
+  });
+  const done = await store.requeueJob("7a3b6912-1d01-569f-8b62-03b4c39a88da");
+  assert.equal(bodies.length, 1);
+  assert.equal(bodies[0]?.status, "queued");
+  assert.equal(bodies[0]?.error_class, null);
+  assert.equal(bodies[0]?.error_message, null);
+  assert.equal(bodies[0]?.completed_at, null);
+  assert.equal(done.status, "queued");
+  assert.equal(done.errorClass, undefined);
+  assert.equal(done.dedupeKey, "ingest:florida-governor-official:2026-09-02");
 });
 
 test("stored retrieval with incomplete persist resumes downstream instead of short-circuiting", async () => {

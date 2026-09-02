@@ -92,6 +92,7 @@ export type CivicStore = {
   leaseDueJob(owner: string, leaseMs?: number): Promise<JobRecord | undefined>;
   completeJob(jobId: string, status?: Extract<JobStatus, "succeeded">): Promise<JobRecord>;
   failJob(jobId: string, errorClass: string, errorMessage: string, deadLettered?: boolean): Promise<JobRecord>;
+  requeueJob(jobId: string): Promise<JobRecord>;
   recordWorkerRun(input: Omit<WorkerRunRecord, "workerRunId"> & { workerRunId?: string }): Promise<WorkerRunRecord>;
   getDueJobs(now: Date, limit?: number): Promise<JobRecord[]>;
   getJobByDedupe(dedupeKey: string): Promise<JobRecord | undefined>;
@@ -223,7 +224,7 @@ export function createMemoryStore(): CivicStore & { tables: MemoryTables } {
         ...input,
         seatId,
         occupancyStatus: input.occupancyStatus ?? existing?.occupancyStatus ?? "unknown",
-        baselineStatus: input.baselineStatus ?? existing?.baselineStatus ?? "unknown",
+        baselineStatus: input.baselineStatus ?? existing?.baselineStatus ?? "undiscovered",
         monitoringActive: input.monitoringActive ?? existing?.monitoringActive ?? false,
       };
       tables.seats.set(record.seatId, record);
@@ -352,7 +353,7 @@ export function createMemoryStore(): CivicStore & { tables: MemoryTables } {
       );
       if (matches.length > 1) {
         const claimIds = matches.map((item) => item.claimId);
-        tables.contradictions.push({ claimIds, fieldKey: input.fieldKey, severity: "error" });
+        tables.contradictions.push({ claimIds, fieldKey: input.fieldKey, severity: "critical" });
         throw new DuplicateClaimError(claimIds, input.fieldKey);
       }
       const existing = matches[0];
@@ -527,6 +528,21 @@ export function createMemoryStore(): CivicStore & { tables: MemoryTables } {
       };
       tables.jobs.set(jobId, failed);
       return failed;
+    },
+    async requeueJob(jobId) {
+      const job = tables.jobs.get(jobId);
+      if (!job) throw new StoreWriteError(`job ${jobId} not found`);
+      const requeued: JobRecord = {
+        ...job,
+        status: "queued",
+        errorClass: undefined,
+        errorMessage: undefined,
+        completedAt: undefined,
+        leasedBy: undefined,
+        leaseExpiresAt: undefined,
+      };
+      tables.jobs.set(jobId, requeued);
+      return requeued;
     },
     async recordWorkerRun(input) {
       const record: WorkerRunRecord = {
