@@ -41,6 +41,22 @@ export class StoreWriteError extends CivicError {
   }
 }
 
+export class DuplicateClaimError extends CivicError {
+  readonly claimIds: string[];
+  readonly fieldKey: string;
+
+  constructor(claimIds: string[], fieldKey: string) {
+    super(
+      "duplicate_claim_rows",
+      `multiple claims match subject_type+subject_id+field_key+value_hash for ${fieldKey}: ${claimIds.join(",")}`,
+      { retryable: false },
+    );
+    this.claimIds = claimIds;
+    this.fieldKey = fieldKey;
+    this.name = "DuplicateClaimError";
+  }
+}
+
 export function summarizePayload(value: unknown): Record<string, unknown> {
   if (!value || typeof value !== "object") return { kind: typeof value };
   const record = value as Record<string, unknown>;

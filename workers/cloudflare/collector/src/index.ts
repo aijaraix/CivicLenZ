@@ -20,6 +20,11 @@ function bucket(env: Env): EvidenceBucket {
         customMetadata: options.customMetadata,
       });
     },
+    async get(key) {
+      const object = await env.EVIDENCE_BUCKET.get(key);
+      if (!object) return undefined;
+      return new Uint8Array(await object.arrayBuffer());
+    },
   };
 }
 

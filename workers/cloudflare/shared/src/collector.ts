@@ -5,9 +5,9 @@ import { fetchDocument } from "./http.ts";
 import { electionMonitorDedupeKey, heavyDedupeKey, toQueueMessage, validateDedupeKey } from "./jobs.ts";
 import { miamiDadeSeatKey } from "./miami-dade.ts";
 import { dispatchSourceAdapter } from "./adapters.ts";
-import { httpUnchanged, retrievalUnchanged } from "./change-detection.ts";
+import { httpUnchanged, isRetrievalDownstreamComplete, retrievalUnchanged } from "./change-detection.ts";
 import { sourceAdapter } from "./source-config.ts";
-import { evidenceObjectKey, rawObjectUri } from "./r2-keys.ts";
+import { evidenceObjectKey, objectKeyFromRawObjectUri, rawObjectUri } from "./r2-keys.ts";
 import { uuidFromName } from "./ids.ts";
 import type { CivicStore } from "./store.ts";
 import {
@@ -75,35 +75,72 @@ export async function runCollectorJob(input: {
       ifNoneMatch: prior?.etag,
       ifModifiedSince: prior?.lastModified,
     });
-    if (httpUnchanged(document.status)) {
-      return { status: "unchanged", extractedCount: 0, claimsWritten: 0, sha256: prior?.contentHash };
-    }
-    const sha256 = await sha256Hex(document.bytes);
-    if (retrievalUnchanged({ contentHash: prior?.contentHash, etag: prior?.etag }, { contentHash: sha256, etag: document.etag })) {
-      return { status: "unchanged", extractedCount: 0, claimsWritten: 0, sha256 };
-    }
-    const r2Key = evidenceObjectKey({
-      sourceKey,
-      retrievedAt: document.retrievedAt,
-      sha256,
-      contentType: document.contentType,
+    const downstreamComplete = isRetrievalDownstreamComplete({
+      retrieval: prior,
+      evidence: await input.store.listEvidence(),
+      claims: await input.store.listClaims(),
+      jurisdictions: await input.store.listJurisdictions(),
+      seats: await input.store.listSeats(),
     });
+    let bytes = document.bytes;
+    let sha256 = document.status === 200 ? await sha256Hex(document.bytes) : prior?.contentHash;
+    let contentType = document.contentType ?? prior?.contentType;
+    let retrievedAt = document.retrievedAt;
+    let etag = document.etag ?? prior?.etag;
+    let lastModified = document.lastModified ?? prior?.lastModified;
+    let skipR2Put = false;
+
+    const bytesUnchanged =
+      httpUnchanged(document.status) ||
+      retrievalUnchanged({ contentHash: prior?.contentHash, etag: prior?.etag }, { contentHash: sha256, etag: document.etag });
+    if (bytesUnchanged && downstreamComplete) {
+      return { status: "unchanged", extractedCount: 0, claimsWritten: 0, sha256: sha256 ?? prior?.contentHash };
+    }
+    if (httpUnchanged(document.status) && !downstreamComplete) {
+      const resumed = await resumeStoredBytes({
+        bucket: input.bucket,
+        prior,
+        sourceUrl,
+        fetchImpl: input.fetchImpl,
+      });
+      bytes = resumed.bytes;
+      sha256 = prior?.contentHash ?? (await sha256Hex(bytes));
+      contentType = prior?.contentType ?? resumed.contentType ?? contentType;
+      retrievedAt = prior?.retrievedAt ?? retrievedAt;
+      skipR2Put = resumed.fromStore;
+    } else if (bytesUnchanged && !downstreamComplete) {
+      skipR2Put = Boolean(prior?.rawObjectUri);
+      sha256 = sha256 ?? (await sha256Hex(bytes));
+    }
+    if (!sha256) sha256 = await sha256Hex(bytes);
+
+    const storedKey = objectKeyFromRawObjectUri(prior?.rawObjectUri);
+    const r2Key =
+      storedKey ??
+      evidenceObjectKey({
+        sourceKey,
+        retrievedAt,
+        sha256,
+        contentType,
+      });
     if (!input.bucket) {
       throw new CivicError("r2_binding_missing", "EVIDENCE_BUCKET binding is required");
     }
-    try {
-      await input.bucket.put(r2Key, document.bytes, {
-        contentType: document.contentType,
-        customMetadata: {
-          sourceKey,
-          sourceUrl,
-          sha256,
-          retrievedAt: document.retrievedAt,
-          parserVersion,
-        },
-      });
-    } catch (error) {
-      throw new CivicError("r2_write_failed", error instanceof Error ? error.message : "R2 put failed");
+    if (!skipR2Put) {
+      try {
+        await input.bucket.put(r2Key, bytes, {
+          contentType,
+          customMetadata: {
+            sourceKey,
+            sourceUrl,
+            sha256,
+            retrievedAt,
+            parserVersion,
+          },
+        });
+      } catch (error) {
+        throw new CivicError("r2_write_failed", error instanceof Error ? error.message : "R2 put failed");
+      }
     }
 
     const source = await input.store.recordSource({
@@ -119,18 +156,19 @@ export async function runCollectorJob(input: {
     const retrieval = await input.store.recordRawRetrieval({
       sourceId: source.sourceId,
       jobId: input.message.jobId,
-      retrievedAt: document.retrievedAt,
+      retrievalId: prior?.contentHash === sha256 ? prior.retrievalId : undefined,
+      retrievedAt,
       sourceUrl,
       httpStatus: document.status,
-      contentType: document.contentType,
-      etag: document.etag,
-      lastModified: document.lastModified,
+      contentType,
+      etag,
+      lastModified,
       contentHash: sha256,
       rawObjectUri: rawObjectUri(EVIDENCE_BUCKET_NAME, r2Key),
-      byteLength: document.bytes.byteLength,
+      byteLength: bytes.byteLength,
       parserKey: config?.parserKey ?? "unknown",
       parserVersion,
-      retrievalStatus: "stored",
+      retrievalStatus: prior?.contentHash === sha256 ? prior.retrievalStatus : "stored",
     });
 
     let holders: ExtractedOfficeholder[] = [];
@@ -138,8 +176,8 @@ export async function runCollectorJob(input: {
     try {
       const parsed = await dispatchSourceAdapter({
         sourceKey,
-        bytes: document.bytes,
-        contentType: document.contentType,
+        bytes,
+        contentType,
         sourceUrl,
       });
       holders = parsed.holders;
@@ -177,12 +215,10 @@ export async function runCollectorJob(input: {
         verificationState: "collected_unreviewed",
       });
     }
-    if (retrievalStatus !== "parsed") {
-      await input.store.recordRawRetrieval({
-        ...retrieval,
-        retrievalStatus,
-      });
-    }
+    await input.store.recordRawRetrieval({
+      ...retrieval,
+      retrievalStatus,
+    });
 
     const validate = await input.store.scheduleJob({
       dedupeKey: validateDedupeKey(retrieval.retrievalId),
@@ -214,6 +250,23 @@ export async function runCollectorJob(input: {
   } catch (error) {
     return handleCollectorFailure(input, error);
   }
+}
+
+async function resumeStoredBytes(input: {
+  bucket?: EvidenceBucket;
+  prior?: { rawObjectUri?: string; contentType?: string };
+  sourceUrl: string;
+  fetchImpl?: typeof fetch;
+}): Promise<{ bytes: Uint8Array; fromStore: boolean; contentType?: string }> {
+  const key = objectKeyFromRawObjectUri(input.prior?.rawObjectUri);
+  if (key && input.bucket?.get) {
+    const stored = await input.bucket.get(key);
+    if (stored && stored.byteLength > 0) {
+      return { bytes: stored, fromStore: true, contentType: input.prior?.contentType };
+    }
+  }
+  const fresh = await fetchDocument(input.sourceUrl, { fetchImpl: input.fetchImpl });
+  return { bytes: fresh.bytes, fromStore: false, contentType: fresh.contentType };
 }
 
 async function persistExtractedHolders(
