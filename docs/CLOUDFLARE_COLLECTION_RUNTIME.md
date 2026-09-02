@@ -31,11 +31,11 @@ See `workers/cloudflare/*/wrangler.jsonc` and the per-Worker README files.
 - Raw bytes are stored as `content_hash` + `raw_object_uri` (`r2://civiclenzevidence/{key}`), not `content_sha256` / `r2_key`.
 - Occupancies: live unique is the partial index `UNIQUE (seat_id) WHERE occupancy_status IN ('current','acting')`. Adapters query `seat_id + person_id + start_date` then UPDATE/INSERT. They do **not** use `on_conflict=seat_id,person_id,start_date` (that constraint is not live).
 - Persons: no `UNIQUE(canonical_name)`. Resolve by `person_id`, then external identifiers, then name plus seat/jurisdiction occupancy context. Same display name can be two people.
-- `lease_due_job` is **not on live**. Additive file: `supabase/migrations/202609020002_atomic_job_leasing.sql`. After review, apply that file only. Do not apply `202609020001` to production.
+- `lease_due_job` additive file: `supabase/migrations/202609020002_atomic_job_leasing.sql`. **Already applied on live.** Do not re-apply. Do not apply `202609020001`, `202609020003`, or `202609020004` to production.
 
 Public SELECT matches live: jurisdictions, seats, persons, occupancies, elections, candidate_campaigns, verified claims, verified evidence, research contracts/fields. Internal tables have RLS on and no policies.
 
-Operator deployment steps (do not run from this agent) are in `docs/PRODUCTION_COLLECTION_DEPLOYMENT.md`. Apply `202609020002` only after review. Never apply `202609020001` to live.
+Operator deployment steps (do not run from this agent) are in `docs/PRODUCTION_COLLECTION_DEPLOYMENT.md`. Do not apply `202609020001`, `202609020003`, or `202609020004` to live. `202609020002` is already on live.
 
 ## First safe deploy order
 

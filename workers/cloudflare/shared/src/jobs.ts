@@ -1,5 +1,13 @@
-import { createQueueJobMessage } from "./queue-messages.ts";
-import type { JobRecord, JobRoute, QueueJobMessage } from "./types.ts";
+import { CAPABILITIES, queueForCapability, type Capability } from "./capabilities.ts";
+import { createQueueJobMessage, isJobRoute } from "./queue-messages.ts";
+import type { JobRecord, JobRoute, QueueJobMessage, QueueSender, RuntimeQueues } from "./types.ts";
+
+export const QUEUE_RESOURCE_NAMES: Record<JobRoute, string> = {
+  ingest: "civiclenz-ingest",
+  validate: "civiclenz-validate",
+  monitor: "civiclenz-monitor",
+  heavy: "civiclenz-heavy",
+};
 
 const ACTIVE_JOB_STATUSES = new Set(["queued", "leased", "running"]);
 
@@ -69,7 +77,43 @@ export function routeForSource(input: {
   return "ingest";
 }
 
-export function toQueueMessage(job: JobRecord, dryRun: boolean): QueueJobMessage {
+export function routeForJobType(jobType: string | undefined): JobRoute | undefined {
+  if (!jobType) return undefined;
+  if (isJobRoute(jobType)) return jobType;
+  if ((CAPABILITIES as readonly string[]).includes(jobType)) {
+    return queueForCapability(jobType as Capability);
+  }
+  return undefined;
+}
+
+export function queueNameForRoute(route: JobRoute): string {
+  return QUEUE_RESOURCE_NAMES[route];
+}
+
+export function queueSenderForRoute(route: JobRoute, queues: RuntimeQueues): QueueSender | undefined {
+  if (route === "ingest") return queues.ingest;
+  if (route === "validate") return queues.validate;
+  if (route === "monitor") return queues.monitor;
+  return queues.heavy;
+}
+
+export function isJobDue(scheduledFor: string | null | undefined, now: Date): boolean {
+  if (scheduledFor == null || scheduledFor === "") return true;
+  const ts = Date.parse(scheduledFor);
+  if (Number.isNaN(ts)) return false;
+  return ts <= now.getTime();
+}
+
+export function scheduledForForQueueMessage(scheduledFor: string | null | undefined, now: Date): string {
+  if (scheduledFor && !Number.isNaN(Date.parse(scheduledFor))) return scheduledFor;
+  return now.toISOString();
+}
+
+export function toQueueMessage(job: JobRecord, dryRun: boolean, now = new Date()): QueueJobMessage {
+  const route = routeForJobType(job.jobType);
+  if (!route) {
+    throw new Error("queue message route must be ingest, validate, monitor, or heavy");
+  }
   const sourceKey =
     typeof job.payload.sourceKey === "string"
       ? job.payload.sourceKey
@@ -85,7 +129,7 @@ export function toQueueMessage(job: JobRecord, dryRun: boolean): QueueJobMessage
   return createQueueJobMessage({
     jobId: job.jobId,
     dedupeKey: jobDedupeKey(job),
-    route: job.jobType,
+    route,
     sourceKey,
     sourceUrl,
     entityType: job.targetType,
@@ -103,7 +147,7 @@ export function toQueueMessage(job: JobRecord, dryRun: boolean): QueueJobMessage
           ? job.checkpoint.claimId
           : undefined,
     attempt: job.attemptCount,
-    scheduledFor: job.scheduledFor,
+    scheduledFor: scheduledForForQueueMessage(job.scheduledFor, now),
     dryRun,
     metadata: { ...job.checkpoint, ...job.payload },
   });
