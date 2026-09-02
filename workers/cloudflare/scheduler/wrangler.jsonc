@@ -20,6 +20,7 @@
     "DRY_RUN": "true",
     "WORKER_KEY": "civiclenz-scheduler"
   },
+  // CIVICLENZ_OPERATOR_TRIGGER_SECRET is a Cloudflare secret via `wrangler secret put`. Never a var.
   "queues": {
     "producers": [
       { "binding": "INGEST_QUEUE", "queue": "civiclenz-ingest" },

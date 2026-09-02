@@ -1,8 +1,8 @@
-import { electionMonitorDedupeKey, ingestDedupeKey, monitorDedupeKey, toQueueMessage } from "./jobs.ts";
+import { electionMonitorDedupeKey, ingestDedupeKey, monitorDedupeKey, queueSenderForRoute, toQueueMessage } from "./jobs.ts";
 import { isUuid, uuidFromName } from "./ids.ts";
 import { COUNTY_JURISDICTION_KEYS, SOUTH_FLORIDA_COUNTIES, firstWaveIngestSources } from "./slice.ts";
 import type { CivicStore } from "./store.ts";
-import type { JobRecord, JobRoute, QueueJobMessage, RuntimeQueues } from "./types.ts";
+import type { JobRecord, QueueJobMessage, RuntimeQueues } from "./types.ts";
 
 export type SchedulerPlan = {
   scheduled: JobRecord[];
@@ -115,7 +115,7 @@ export async function planAndEnqueue(input: {
   if (!input.dryRun && input.queues) {
     for (const job of due) {
       const message = toQueueMessage(job, false);
-      const queue = queueFor(job.jobType, input.queues);
+      const queue = queueSenderForRoute(message.route, input.queues);
       if (!queue) continue;
       await queue.send(message);
       enqueued.push(message);
@@ -140,13 +140,6 @@ export async function planAndEnqueue(input: {
     queueRoutes: due.map((job) => job.jobType),
     dedupeKeys: due.map((job) => job.dedupeKey),
   };
-}
-
-function queueFor(route: JobRoute, queues: RuntimeQueues) {
-  if (route === "ingest") return queues.ingest;
-  if (route === "validate") return queues.validate;
-  if (route === "monitor") return queues.monitor;
-  return queues.heavy;
 }
 
 export { isUuid };

@@ -6,6 +6,7 @@ interface Env {
   DEAD_LETTER_QUEUE: Queue;
   SUPABASE_URL: string;
   SUPABASE_SERVICE_ROLE_KEY: string;
+  CIVICLENZ_OPERATOR_TRIGGER_SECRET?: string;
   DRY_RUN: string;
   WORKER_KEY: string;
   CF_VERSION_METADATA?: { id?: string };

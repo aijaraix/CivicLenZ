@@ -10,6 +10,7 @@ Cloudflare Worker that plans due CivicLenZ work and enqueues it. It does not fet
   - `0 */6 * * *` — due ingest/monitor sweep
   - `15 7 * * *` — daily election/monitor sweep
 - `DRY_RUN` var defaults to `"true"`. First deploy will record worker_runs and plan jobs but will not send queue messages until `DRY_RUN=false`.
+- Operator enqueue (`POST /operator/enqueue-job`) is independent of cron `DRY_RUN`. It sends one existing queued job to its queue while `DRY_RUN` stays `"true"`. It does not create job rows.
 
 ## Bindings
 
@@ -27,9 +28,23 @@ Cloudflare Worker that plans due CivicLenZ work and enqueues it. It does not fet
 cd workers/cloudflare/scheduler
 npx wrangler secret put SUPABASE_URL
 npx wrangler secret put SUPABASE_SERVICE_ROLE_KEY
+npx wrangler secret put CIVICLENZ_OPERATOR_TRIGGER_SECRET
 ```
 
-Do not put these in `vars`, git, `.dev.vars` committed to the repo, or Next.js `NEXT_PUBLIC_*`.
+Do not put these in `vars`, git, `.dev.vars` committed to the repo, or Next.js `NEXT_PUBLIC_*`. Do not generate or store `CIVICLENZ_OPERATOR_TRIGGER_SECRET` in this repository.
+
+## Operator enqueue (do not run from this agent)
+
+After the secret is set and `civiclenz-scheduler` is redeployed, enqueue the existing queued Miami-Dade job — do not create a second job row:
+
+```bash
+curl -sS -X POST "https://<scheduler-worker>/operator/enqueue-job" \
+  -H "Authorization: Bearer ${CIVICLENZ_OPERATOR_TRIGGER_SECRET}" \
+  -H "Content-Type: application/json" \
+  -d '{"jobId":"7d93a416-1483-4550-b203-e8c424c289b7"}'
+```
+
+Expected JSON: `{ "jobId", "dedupeKey", "route": "ingest", "queue": "civiclenz-ingest", "enqueued": true }`. HTTP 200 is not VERIFIED.
 
 ## Manual commands (do not run from repo root)
 
