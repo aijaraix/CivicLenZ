@@ -30,6 +30,7 @@ See `workers/cloudflare/*/wrangler.jsonc` and the per-Worker README files.
 - Claims use lowercase `verification_state`. Jobs use `queued|leased|running|succeeded|failed|dead_letter|cancelled`.
 - Raw bytes are stored as `content_hash` + `raw_object_uri` (`r2://civiclenzevidence/{key}`), not `content_sha256` / `r2_key`.
 - Occupancies: live unique is the partial index `UNIQUE (seat_id) WHERE occupancy_status IN ('current','acting')`. Adapters query `seat_id + person_id + start_date` then UPDATE/INSERT. They do **not** use `on_conflict=seat_id,person_id,start_date` (that constraint is not live).
+- Claims: live unique is `PRIMARY KEY (claim_id)` only. `claims_subject_field_idx` and `claims_seat_idx` are not unique and do not include `value_hash`. Adapters query `subject_type + subject_id + field_key + value_hash` (or `claim_id`) then UPDATE/INSERT. They do **not** use `on_conflict=subject_type,subject_id,field_key,value_hash` (that constraint is not live).
 - Persons: no `UNIQUE(canonical_name)`. Resolve by `person_id`, then external identifiers, then name plus seat/jurisdiction occupancy context. Same display name can be two people.
 - `lease_due_job` additive file: `supabase/migrations/202609020002_atomic_job_leasing.sql`. **Already applied on live.** Do not re-apply. Do not apply `202609020001`, `202609020003`, or `202609020004` to production.
 

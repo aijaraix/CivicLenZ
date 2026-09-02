@@ -1,4 +1,5 @@
 import { StoreWriteError, sanitizeErrorMessage } from "./errors.ts";
+import { valueHash } from "./hash.ts";
 import { isUuid, uuidFromName } from "./ids.ts";
 import { DEMOTED_OCCUPANCY_STATUS, isCurrentOrActing } from "./occupancy.ts";
 import {
@@ -258,13 +259,25 @@ export function createSupabaseStore(config: SupabaseConfig): CivicStore {
       return fromEvidence(await insert("evidence_objects", evidenceRow(input)));
     },
     async recordClaim(input) {
-      return fromClaim(
-        await upsert(
-          "claims",
-          claimRow({ ...input, subjectType: input.subjectType, subjectId: input.subjectId }),
-          "subject_type,subject_id,field_key,value_hash",
-        ),
-      );
+      const hash =
+        input.valueHash ?? (await valueHash(input.fieldKey, input.normalizedValue ?? input.displayValue ?? ""));
+      const lookup = input.claimId
+        ? `claim_id=eq.${input.claimId}`
+        : `subject_type=eq.${encodeURIComponent(input.subjectType)}&subject_id=eq.${input.subjectId}&field_key=eq.${encodeURIComponent(input.fieldKey)}&value_hash=eq.${encodeURIComponent(hash)}`;
+      const existing = await request<Json[]>(`claims?${lookup}&limit=1`);
+      const claimId = input.claimId ?? (existing[0] ? String(existing[0].claim_id) : undefined);
+      const row = claimRow({
+        ...input,
+        claimId,
+        subjectType: input.subjectType,
+        subjectId: input.subjectId,
+        valueHash: hash,
+      });
+      if (existing[0]) {
+        const rows = await patch("claims", `claim_id=eq.${String(existing[0].claim_id)}`, row);
+        return fromClaim(rows[0] ?? existing[0]);
+      }
+      return fromClaim(await insert("claims", row));
     },
     async transitionClaim(claimId, to) {
       const rows = await patch("claims", `claim_id=eq.${claimId}`, { verification_state: to, updated_at: new Date().toISOString() });
@@ -363,6 +376,8 @@ export function createSupabaseStore(config: SupabaseConfig): CivicStore {
         status,
         completed_at: new Date().toISOString(),
         leased_by: null,
+        error_class: null,
+        error_message: null,
         updated_at: new Date().toISOString(),
       });
       if (!rows[0]) throw new StoreWriteError(`job ${jobId} not found`);

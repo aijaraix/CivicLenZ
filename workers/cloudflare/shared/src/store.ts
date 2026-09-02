@@ -483,7 +483,14 @@ export function createMemoryStore(): CivicStore & { tables: MemoryTables } {
     async completeJob(jobId, status = "succeeded") {
       const job = tables.jobs.get(jobId);
       if (!job) throw new StoreWriteError(`job ${jobId} not found`);
-      const completed = { ...job, status, completedAt: new Date().toISOString(), leasedBy: undefined };
+      const completed = {
+        ...job,
+        status,
+        completedAt: new Date().toISOString(),
+        leasedBy: undefined,
+        errorClass: undefined,
+        errorMessage: undefined,
+      };
       tables.jobs.set(jobId, completed);
       return completed;
     },

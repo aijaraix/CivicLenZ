@@ -739,6 +739,7 @@ test("workers and supabase adapter do not reference invented live columns", () =
       assert.equal(/\broute:/.test(src), false, "supabase-store must not write jobs.route");
       assert.equal(src.includes("on_conflict=seat_id,person_id,start_date"), false);
       assert.equal(src.includes("seat_id,person_id,start_date"), false);
+      assert.equal(src.includes("on_conflict=subject_type,subject_id,field_key,value_hash"), false);
       assert.ok(src.includes("rpc/lease_due_job"));
       assert.ok(src.includes("job_id="));
       assert.ok(src.includes("claim_id="));
@@ -881,6 +882,155 @@ test("name plus seat occupancy context reuses the occupant, not a namesake", asy
     jurisdictionId: jurisdiction.jurisdictionId,
   });
   assert.equal(resolved.personId, occupant.personId);
+});
+
+test("recordClaim query-then-write works when live claims have only claims_pkey", async () => {
+  const claims: Array<Record<string, unknown>> = [];
+  const urls: string[] = [];
+  const store = createSupabaseStore({
+    url: "https://example.supabase.co",
+    serviceRoleKey: "service-role-test-key",
+    fetchImpl: async (input, init) => {
+      const url = String(input);
+      urls.push(url);
+      if (url.includes("on_conflict=")) {
+        return new Response(
+          JSON.stringify({
+            code: "42P10",
+            message: "there is no unique or exclusion constraint matching the ON CONFLICT specification",
+          }),
+          { status: 400 },
+        );
+      }
+      const method = (init?.method ?? "GET").toUpperCase();
+      const parsedUrl = new URL(url);
+      const filters: Record<string, string> = {};
+      for (const [key, value] of parsedUrl.searchParams.entries()) {
+        if (value.startsWith("eq.")) filters[key] = value.slice(3);
+      }
+      const matches = (row: Record<string, unknown>) =>
+        Object.entries(filters).every(([key, value]) => String(row[key] ?? "") === value);
+      if (method === "GET") {
+        return new Response(JSON.stringify(claims.filter(matches).slice(0, 1)), { status: 200 });
+      }
+      const body = init?.body ? (JSON.parse(String(init.body)) as Record<string, unknown>) : {};
+      if (method === "PATCH") {
+        const updated = claims.filter(matches).map((row) => Object.assign(row, body));
+        return new Response(JSON.stringify(updated), { status: 200 });
+      }
+      if (method === "POST") {
+        const row = {
+          ...body,
+          claim_id: body.claim_id ?? "88888888-8888-4888-8888-888888888888",
+        };
+        claims.push(row);
+        return new Response(JSON.stringify([row]), { status: 201 });
+      }
+      return new Response(JSON.stringify([]), { status: 200 });
+    },
+  });
+  const first = await store.recordClaim({
+    subjectType: "source",
+    subjectId: "55555555-5555-4555-8555-555555555555",
+    fieldKey: "source_retrieval",
+    normalizedValue: "eb86ff61-d2a5-44f7-a7b4-4ea8faafe0d3",
+    displayValue: "https://www.miamidade.gov/elections/library/reports/elected-officials.pdf",
+    valueHash: "b".repeat(64),
+    verificationState: "collected_unreviewed",
+  });
+  const second = await store.recordClaim({
+    subjectType: "source",
+    subjectId: "55555555-5555-4555-8555-555555555555",
+    fieldKey: "source_retrieval",
+    normalizedValue: "eb86ff61-d2a5-44f7-a7b4-4ea8faafe0d3",
+    displayValue: "https://www.miamidade.gov/elections/library/reports/elected-officials.pdf",
+    valueHash: "b".repeat(64),
+    verificationState: "collected_unreviewed",
+  });
+  assert.equal(first.claimId, "88888888-8888-4888-8888-888888888888");
+  assert.equal(second.claimId, first.claimId);
+  assert.equal(claims.length, 1);
+  assert.equal(
+    urls.some((url) => url.includes("on_conflict=subject_type,subject_id,field_key,value_hash")),
+    false,
+  );
+  assert.equal(
+    urls.some(
+      (url) =>
+        url.includes("claims?") &&
+        url.includes("subject_type=eq.") &&
+        url.includes("subject_id=eq.") &&
+        url.includes("field_key=eq.") &&
+        url.includes("value_hash=eq."),
+    ),
+    true,
+  );
+  assert.equal(
+    urls.some((url) => url.includes("claims?") && url.includes("claim_id=eq.")),
+    true,
+  );
+});
+
+test("completeJob succeeded clears leftover error_class and error_message", async () => {
+  const store = createMemoryStore();
+  const { job } = await store.scheduleJob({
+    dedupeKey: "ingest:miami-dade-county-elected-officials:2026-09-02",
+    route: "ingest",
+    sourceKey: "miami-dade-county-elected-officials",
+  });
+  await store.failJob(job.jobId, "supabase_write_failed", "HTTP 400 Postgres 42P10");
+  const failed = await store.getJob(job.jobId);
+  assert.equal(failed?.status, "failed");
+  assert.equal(failed?.errorClass, "supabase_write_failed");
+  assert.ok(failed?.errorMessage);
+
+  const done = await store.completeJob(job.jobId);
+  assert.equal(done.status, "succeeded");
+  assert.equal(done.errorClass, undefined);
+  assert.equal(done.errorMessage, undefined);
+  const stored = await store.getJob(job.jobId);
+  assert.equal(stored?.status, "succeeded");
+  assert.equal(stored?.errorClass, undefined);
+  assert.equal(stored?.errorMessage, undefined);
+});
+
+test("supabase completeJob succeeded patches error fields to null", async () => {
+  const bodies: Array<Record<string, unknown>> = [];
+  const store = createSupabaseStore({
+    url: "https://example.supabase.co",
+    serviceRoleKey: "service-role-test-key",
+    fetchImpl: async (input, init) => {
+      const parsed = init?.body ? (JSON.parse(String(init.body)) as Record<string, unknown>) : {};
+      if ((init?.method ?? "GET").toUpperCase() === "PATCH") bodies.push(parsed);
+      return new Response(
+        JSON.stringify([
+          {
+            job_id: "7d93a416-1483-4550-b203-e8c424c289b7",
+            job_type: "ingest",
+            status: "succeeded",
+            attempt_count: 2,
+            max_attempts: 5,
+            priority: 100,
+            dedupe_key: "ingest:miami-dade-county-elected-officials:2026-09-02",
+            payload: {},
+            checkpoint: {},
+            scheduled_for: "2026-09-02T00:00:00.000Z",
+            error_class: parsed.error_class ?? null,
+            error_message: parsed.error_message ?? null,
+          },
+        ]),
+        { status: 200 },
+      );
+    },
+  });
+  const done = await store.completeJob("7d93a416-1483-4550-b203-e8c424c289b7");
+  assert.equal(bodies.length, 1);
+  assert.equal(bodies[0]?.status, "succeeded");
+  assert.equal(bodies[0]?.error_class, null);
+  assert.equal(bodies[0]?.error_message, null);
+  assert.equal(done.status, "succeeded");
+  assert.equal(done.errorClass, undefined);
+  assert.equal(done.errorMessage, undefined);
 });
 
 test("supabase occupancy writes never use on_conflict seat_id,person_id,start_date", async () => {
