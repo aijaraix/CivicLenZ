@@ -1,6 +1,8 @@
 import { valueHash } from "./hash.ts";
+import { capabilityState, type Capability } from "./capabilities.ts";
 import { portraitSourceDecision } from "./portraits.ts";
 import type { CivicStore } from "./store.ts";
+import type { PersonRecord, SeatRecord } from "./types.ts";
 
 export const BASELINE_RESEARCH_FIELDS = [
   "jurisdiction",
@@ -17,6 +19,106 @@ export const BASELINE_RESEARCH_FIELDS = [
 ] as const;
 
 const OPEN_BASELINE_FIELDS = new Set(["contact", "biography", "election_history", "evidence"]);
+
+export const ENRICHMENT_RESEARCH_FIELDS = [
+  "portrait",
+  "identity",
+  "date_of_birth",
+  "birthplace",
+  "education",
+  "career",
+  "political_history",
+  "prior_offices",
+  "family_public_relationships",
+  "contact",
+  "social",
+  "campaign_finance",
+  "financial_disclosure",
+  "business_interests",
+  "committees",
+  "legislative_actions",
+  "executive_actions",
+  "promises_statements",
+  "ethics_legal_public_records",
+  "news_activity",
+] as const;
+
+const FIELD_CAPABILITY: Record<(typeof ENRICHMENT_RESEARCH_FIELDS)[number], Capability> = {
+  portrait: "portrait_discovery",
+  identity: "identity_resolution",
+  date_of_birth: "biography_research",
+  birthplace: "biography_research",
+  education: "education_research",
+  career: "career_research",
+  political_history: "prior_office_research",
+  prior_offices: "prior_office_research",
+  family_public_relationships: "relationship_conflict",
+  contact: "contact_discovery",
+  social: "social_account_discovery",
+  campaign_finance: "campaign_finance",
+  financial_disclosure: "financial_disclosure",
+  business_interests: "business_interest",
+  committees: "committee_membership",
+  legislative_actions: "legislative_activity",
+  executive_actions: "executive_action",
+  promises_statements: "promise_collection",
+  ethics_legal_public_records: "ethics_integrity",
+  news_activity: "statement_collection",
+};
+
+export async function queueMissingProfileWork(
+  store: CivicStore,
+  input: { seat: SeatRecord; person: PersonRecord; officialWebsite?: string },
+): Promise<{ missingFields: string[]; queued: boolean }> {
+  const contract = await store.upsertResearchContract({
+    contractKey: `${input.seat.officeType}-baseline`,
+    name: `${input.seat.officeType} baseline research`,
+    officeClass: input.seat.officeType,
+    version: 1,
+    active: true,
+    description: `${input.seat.seatName} enrichment after seat + occupant`,
+  });
+  const missingFields: string[] = [];
+  for (const [index, fieldKey] of ENRICHMENT_RESEARCH_FIELDS.entries()) {
+    await store.upsertResearchContractField({
+      researchContractId: contract.researchContractId,
+      fieldKey,
+      category: "open",
+      requiredForBaseline: fieldKey === "portrait" || fieldKey === "identity" || fieldKey === "contact",
+      verificationRequirement: "official_source",
+      sortOrder: 100 + index,
+    });
+    const capability = FIELD_CAPABILITY[fieldKey];
+    const state = capabilityState(capability);
+    missingFields.push(fieldKey);
+    await store.recordClaim({
+      subjectType: "person",
+      subjectId: input.person.personId,
+      seatId: input.seat.seatId,
+      fieldKey,
+      normalizedValue: "",
+      displayValue: `${fieldKey} not collected (${state})`,
+      valueHash: await valueHash(fieldKey, `not_collected:${state}`),
+      verificationState: "not_collected",
+    });
+  }
+  await store.scheduleJob({
+    dedupeKey: `enrichment:${input.seat.seatKey}:baseline`,
+    route: "validate",
+    entityType: "seat",
+    entityId: input.seat.seatId,
+    seatId: input.seat.seatId,
+    payload: {
+      purpose: "completeness_audit_after_baseline",
+      missingFields,
+      capabilityStates: Object.fromEntries(
+        ENRICHMENT_RESEARCH_FIELDS.map((fieldKey) => [fieldKey, capabilityState(FIELD_CAPABILITY[fieldKey])]),
+      ),
+      officialWebsite: input.officialWebsite,
+    },
+  });
+  return { missingFields, queued: true };
+}
 
 export async function upsertBaselineResearchContract(
   store: CivicStore,

@@ -70,11 +70,11 @@ test("lease hardening rejects non-positive lease seconds and pins search_path", 
   assert.match(local, /SET search_path = pg_catalog, public/);
 });
 
-test("source adapter dispatch uses registered Florida parsers and fail-closes unknown keys", async () => {
-  const html = "<html><body>Senator Jane Roe District 12</body></html>";
+test("source adapter dispatch uses registered Florida HTML_DIRECTORY parsers and fail-closes unknown keys", async () => {
   const senate = sourceAdapter("florida-senate-members");
   assert.ok(senate);
-  assert.equal(parseFloridaDirectoryHtml(html, senate).length, 1);
+  const html = readFileSync(path.join(repoRoot, "tests/fixtures/florida_senate_directory.html"), "utf8");
+  assert.equal(parseFloridaDirectoryHtml(html, senate).filter((item) => !item.vacant).length, 2);
   await assert.rejects(
     () => dispatchSourceAdapter({ sourceKey: "no-such-source", bytes: new Uint8Array(), sourceUrl: "https://example.gov" }),
     (error: unknown) => error instanceof CivicError && error.errorClass === "parser_failure",

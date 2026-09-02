@@ -5,6 +5,7 @@ import test from "node:test";
 import { fileURLToPath } from "node:url";
 
 import { canTransitionClaim, isPublicationEligible, transitionClaim } from "../shared/src/claims.ts";
+import { isRetrievalDownstreamComplete } from "../shared/src/change-detection.ts";
 import { runCollectorJob } from "../shared/src/collector.ts";
 import { createDeadLetterPayload, shouldDeadLetter } from "../shared/src/dead-letter.ts";
 import { CivicError, DuplicateClaimError, HttpFetchError } from "../shared/src/errors.ts";
@@ -26,11 +27,9 @@ import { extractTextOperators } from "../shared/src/pdf-text.ts";
 import { portraitSourceDecision } from "../shared/src/portraits.ts";
 import { createQueueJobMessage, parseQueueJobMessage } from "../shared/src/queue-messages.ts";
 import { evidenceObjectKey, rawObjectUri } from "../shared/src/r2-keys.ts";
-import { withWorkerRun } from "../shared/src/worker-lifecycle.ts";
 import { upsertBaselineResearchContract } from "../shared/src/research.ts";
 import { planAndEnqueue } from "../shared/src/scheduler.ts";
 import { CONTROLLED_SLICE_SOURCES, firstWaveIngestSources } from "../shared/src/slice.ts";
-import { isRetrievalDownstreamComplete } from "../shared/src/change-detection.ts";
 import {
   GLOBAL_FORBIDDEN_WRITE_COLUMNS,
   LIVE_TABLE_COLUMNS,
@@ -50,6 +49,7 @@ import { createMemoryStore, isWorkerActive } from "../shared/src/store.ts";
 import { createSupabaseStore } from "../shared/src/supabase-store.ts";
 import type { PersonRecord, QueueJobMessage, SeatRecord } from "../shared/src/types.ts";
 import { planClaimTransition, runValidatorJob, validateClaim } from "../shared/src/validation.ts";
+import { withWorkerRun } from "../shared/src/worker-lifecycle.ts";
 
 const here = path.dirname(fileURLToPath(import.meta.url));
 const repoRoot = path.resolve(here, "../../..");
@@ -347,9 +347,10 @@ test("collector fetch stores R2 object, raw retrieval, and unreviewed claims; HT
   assert.equal(retrievals[0]?.contentHash, result.sha256);
   assert.ok(retrievals[0]?.rawObjectUri?.startsWith("r2://civiclenzevidence/"));
   const claims = await store.listClaims();
-  assert.ok(claims.length >= 19);
-  assert.ok(claims.every((claim) => claim.verificationState === "collected_unreviewed"));
-  assert.ok(claims.every((claim) => claim.fieldKey === "current_occupant"));
+  const occupantClaims = claims.filter((claim) => claim.fieldKey === "current_occupant");
+  assert.ok(occupantClaims.length >= 19);
+  assert.ok(occupantClaims.every((claim) => claim.verificationState === "collected_unreviewed"));
+  assert.equal(claims.some((claim) => claim.verificationState === "verified"), false);
   const validated = await runValidatorJob({
     store,
     message: createQueueJobMessage({
@@ -886,6 +887,94 @@ test("name plus seat occupancy context reuses the occupant, not a namesake", asy
   assert.equal(resolved.personId, occupant.personId);
 });
 
+test("supabase occupancy writes never use on_conflict seat_id,person_id,start_date", async () => {
+  const urls: string[] = [];
+  const store = createSupabaseStore({
+    url: "https://example.supabase.co",
+    serviceRoleKey: "service-role-test-key",
+    fetchImpl: async (input) => {
+      urls.push(String(input));
+      return new Response(JSON.stringify([]), { status: 200 });
+    },
+  });
+  await store.upsertOccupancy({
+    seatId: "11111111-1111-4111-8111-111111111111",
+    personId: "22222222-2222-4222-8222-222222222222",
+    startDate: "2024-01-02",
+    occupancyStatus: "unknown",
+    evidenceState: "unreviewed",
+  }).catch(() => undefined);
+  assert.equal(
+    urls.some((url) => url.includes("on_conflict=seat_id,person_id,start_date")),
+    false,
+  );
+  assert.equal(
+    urls.some((url) => url.includes("seat_occupancies?") && url.includes("seat_id=eq.") && url.includes("person_id=eq.")),
+    true,
+  );
+});
+
+test("lease_due_job additive migration uses live job columns and SKIP LOCKED", () => {
+  const additive = readFileSync(
+    path.join(repoRoot, "supabase/migrations/202609020002_atomic_job_leasing.sql"),
+    "utf8",
+  );
+  assert.match(additive, /CREATE OR REPLACE FUNCTION public\.lease_due_job/);
+  assert.match(additive, /p_leased_by text/);
+  assert.match(additive, /p_job_id uuid/);
+  assert.match(additive, /FOR UPDATE SKIP LOCKED/);
+  assert.match(additive, /LIMIT 1/);
+  assert.match(additive, /j\.status = 'queued'/);
+  assert.match(additive, /j\.status = 'leased' AND j\.lease_expires_at < now\(\)/);
+  assert.match(additive, /leased_by = p_leased_by/);
+  assert.match(additive, /attempt_count = attempt_count \+ 1/);
+  assert.match(additive, /started_at = COALESCE\(started_at, now\(\)\)/);
+  assert.match(additive, /RETURNS SETOF public\.jobs/);
+  assert.match(additive, /SET search_path = pg_catalog, public/);
+  assert.match(additive, /p_lease_seconds must be greater than zero/);
+  assert.match(additive, /REVOKE ALL ON FUNCTION public\.lease_due_job/);
+  assert.match(additive, /GRANT EXECUTE ON FUNCTION public\.lease_due_job\(text, integer, uuid\) TO service_role/);
+  assert.doesNotMatch(additive, /DROP TABLE/);
+  assert.doesNotMatch(additive, /DROP COLUMN/);
+  assert.doesNotMatch(additive, /TRUNCATE/);
+  assert.doesNotMatch(additive, /\broute\b/);
+  for (const status of ["queued", "leased", "running", "succeeded", "failed", "dead_letter", "cancelled"]) {
+    assert.match(
+      readFileSync(path.join(repoRoot, "supabase/migrations/202609020001_civic_collection_runtime.sql"), "utf8"),
+      new RegExp(status),
+    );
+  }
+  assert.equal(
+    readFileSync(path.join(repoRoot, "supabase/migrations/202609020003_proposed_historical_occupancy_unique.sql"), "utf8").includes(
+      "PROPOSAL ONLY",
+    ),
+    true,
+  );
+});
+
+test("expired lease is reclaimable; two racers still produce one winner", async () => {
+  const store = createMemoryStore();
+  const { job } = await store.scheduleJob({
+    dedupeKey: "ingest:expired:2026-09-01",
+    route: "ingest",
+    sourceKey: "miami-dade-county-elected-officials",
+    scheduledFor: "2026-09-01T00:00:00.000Z",
+  });
+  const firstLease = await store.leaseDueJob("worker-a");
+  assert.equal(firstLease?.jobId, job.jobId);
+  const current = store.tables.jobs.get(job.jobId);
+  assert.ok(current);
+  current.leaseExpiresAt = "2020-01-01T00:00:00.000Z";
+  store.tables.jobs.set(job.jobId, current);
+  const [winner, loser] = await Promise.all([store.leaseDueJob("worker-b"), store.leaseDueJob("worker-c")]);
+  const claimed = [winner, loser].filter(Boolean);
+  assert.equal(claimed.length, 1);
+  assert.equal(claimed[0]?.jobId, job.jobId);
+  assert.equal(claimed[0]?.leasedBy === "worker-b" || claimed[0]?.leasedBy === "worker-c", true);
+  assert.equal(claimed[0]?.attemptCount, 2);
+  assert.equal(claimed[0]?.status, "leased");
+});
+
 function liveClaimsOnlyPrimaryKeyStore(seed: Array<Record<string, unknown>> = []) {
   const claims = seed.map((row) => ({ ...row }));
   const urls: string[] = [];
@@ -1276,92 +1365,4 @@ test("incomplete stored retrieval plus 304 resumes from R2 and does not succeed 
   assert.ok((await store.listSeats()).length > 0);
   assert.ok((await store.listEvidence()).length > 0);
   assert.equal((await store.listRetrievals())[0]?.retrievalStatus, "parsed");
-});
-
-test("supabase occupancy writes never use on_conflict seat_id,person_id,start_date", async () => {
-  const urls: string[] = [];
-  const store = createSupabaseStore({
-    url: "https://example.supabase.co",
-    serviceRoleKey: "service-role-test-key",
-    fetchImpl: async (input) => {
-      urls.push(String(input));
-      return new Response(JSON.stringify([]), { status: 200 });
-    },
-  });
-  await store.upsertOccupancy({
-    seatId: "11111111-1111-4111-8111-111111111111",
-    personId: "22222222-2222-4222-8222-222222222222",
-    startDate: "2024-01-02",
-    occupancyStatus: "unknown",
-    evidenceState: "unreviewed",
-  }).catch(() => undefined);
-  assert.equal(
-    urls.some((url) => url.includes("on_conflict=seat_id,person_id,start_date")),
-    false,
-  );
-  assert.equal(
-    urls.some((url) => url.includes("seat_occupancies?") && url.includes("seat_id=eq.") && url.includes("person_id=eq.")),
-    true,
-  );
-});
-
-test("lease_due_job additive migration uses live job columns and SKIP LOCKED", () => {
-  const additive = readFileSync(
-    path.join(repoRoot, "supabase/migrations/202609020002_atomic_job_leasing.sql"),
-    "utf8",
-  );
-  assert.match(additive, /CREATE OR REPLACE FUNCTION public\.lease_due_job/);
-  assert.match(additive, /p_leased_by text/);
-  assert.match(additive, /p_job_id uuid/);
-  assert.match(additive, /FOR UPDATE SKIP LOCKED/);
-  assert.match(additive, /LIMIT 1/);
-  assert.match(additive, /j\.status = 'queued'/);
-  assert.match(additive, /j\.status = 'leased' AND j\.lease_expires_at < now\(\)/);
-  assert.match(additive, /leased_by = p_leased_by/);
-  assert.match(additive, /attempt_count = attempt_count \+ 1/);
-  assert.match(additive, /started_at = COALESCE\(started_at, now\(\)\)/);
-  assert.match(additive, /RETURNS SETOF public\.jobs/);
-  assert.match(additive, /SET search_path = pg_catalog, public/);
-  assert.match(additive, /p_lease_seconds must be greater than zero/);
-  assert.match(additive, /REVOKE ALL ON FUNCTION public\.lease_due_job/);
-  assert.match(additive, /GRANT EXECUTE ON FUNCTION public\.lease_due_job\(text, integer, uuid\) TO service_role/);
-  assert.doesNotMatch(additive, /DROP TABLE/);
-  assert.doesNotMatch(additive, /DROP COLUMN/);
-  assert.doesNotMatch(additive, /TRUNCATE/);
-  assert.doesNotMatch(additive, /\broute\b/);
-  for (const status of ["queued", "leased", "running", "succeeded", "failed", "dead_letter", "cancelled"]) {
-    assert.match(
-      readFileSync(path.join(repoRoot, "supabase/migrations/202609020001_civic_collection_runtime.sql"), "utf8"),
-      new RegExp(status),
-    );
-  }
-  assert.equal(
-    readFileSync(path.join(repoRoot, "supabase/migrations/202609020003_proposed_historical_occupancy_unique.sql"), "utf8").includes(
-      "PROPOSAL ONLY",
-    ),
-    true,
-  );
-});
-
-test("expired lease is reclaimable; two racers still produce one winner", async () => {
-  const store = createMemoryStore();
-  const { job } = await store.scheduleJob({
-    dedupeKey: "ingest:expired:2026-09-01",
-    route: "ingest",
-    sourceKey: "miami-dade-county-elected-officials",
-    scheduledFor: "2026-09-01T00:00:00.000Z",
-  });
-  const firstLease = await store.leaseDueJob("worker-a");
-  assert.equal(firstLease?.jobId, job.jobId);
-  const current = store.tables.jobs.get(job.jobId);
-  assert.ok(current);
-  current.leaseExpiresAt = "2020-01-01T00:00:00.000Z";
-  store.tables.jobs.set(job.jobId, current);
-  const [winner, loser] = await Promise.all([store.leaseDueJob("worker-b"), store.leaseDueJob("worker-c")]);
-  const claimed = [winner, loser].filter(Boolean);
-  assert.equal(claimed.length, 1);
-  assert.equal(claimed[0]?.jobId, job.jobId);
-  assert.equal(claimed[0]?.leasedBy === "worker-b" || claimed[0]?.leasedBy === "worker-c", true);
-  assert.equal(claimed[0]?.attemptCount, 2);
-  assert.equal(claimed[0]?.status, "leased");
 });

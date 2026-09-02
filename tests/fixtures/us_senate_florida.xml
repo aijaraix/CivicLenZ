@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<contact_information>
+  <member>
+    <member_full>Rubio, Marco</member_full>
+    <first_name>Marco</first_name>
+    <last_name>Rubio</last_name>
+    <state>FL</state>
+    <party>R</party>
+    <class>3</class>
+    <bioguide_id>R000595</bioguide_id>
+    <website>https://www.rubio.senate.gov</website>
+  </member>
+  <member>
+    <member_full>Example, Other</member_full>
+    <state>CA</state>
+    <party>D</party>
+    <class>1</class>
+  </member>
+  <member>
+    <member_full>Scott, Rick</member_full>
+    <first_name>Rick</first_name>
+    <last_name>Scott</last_name>
+    <state>FL</state>
+    <party>R</party>
+    <class>1</class>
+    <bioguide_id>S001217</bioguide_id>
+    <website>https://www.rickscott.senate.gov</website>
+  </member>
+</contact_information>

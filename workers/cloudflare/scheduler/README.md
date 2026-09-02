@@ -10,7 +10,7 @@ Cloudflare Worker that plans due CivicLenZ work and enqueues it. It does not fet
   - `0 */6 * * *` — due ingest/monitor sweep
   - `15 7 * * *` — daily election/monitor sweep
 - `DRY_RUN` var defaults to `"true"`. First deploy will record worker_runs and plan jobs but will not send queue messages until `DRY_RUN=false`.
-- Operator enqueue (`POST /operator/enqueue-job`) is independent of cron `DRY_RUN`. It sends one existing queued job to its queue while `DRY_RUN` stays `"true"`. It does not create job rows.
+- Operator enqueue (`POST /operator/enqueue-job`) is independent of cron `DRY_RUN`. `{ "jobId" }` sends one existing queued job. `{ "sourceKey": "florida-senate-members" | "florida-house-members" }` may create a queued ingest job for those two controlled sources only, then send it, while `DRY_RUN` stays `"true"`. It must not recreate Miami-Dade job `7d93a416-1483-4550-b203-e8c424c289b7`.
 
 ## Bindings
 

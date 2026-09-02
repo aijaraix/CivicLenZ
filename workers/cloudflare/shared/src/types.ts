@@ -51,6 +51,8 @@ export const PARSER_VERSION = "civiclenz-cf-collector/1.0.0";
 export const VALIDATOR_VERSION = "civiclenz-cf-validator/1.0.0";
 export const SCHEDULER_VERSION = "civiclenz-cf-scheduler/1.0.0";
 export const USER_AGENT = "CivicLenZCollector/1.0 (+https://civiclenz.ai; research@civiclenz.ai)";
+export const BROWSER_DIRECTORY_USER_AGENT =
+  "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36";
 export const EVIDENCE_BUCKET_NAME = "civiclenzevidence";
 
 export const SMALL_PAYLOAD_MAX_BYTES = 8 * 1024 * 1024;
@@ -364,12 +366,27 @@ export type ExtractedOfficeholder = {
   seatFamily: string;
   governmentLevel: string;
   branch?: string;
+  chamber?: string;
   districtNumber?: string;
   jurisdictionName: string;
+  jurisdictionKey?: string;
+  jurisdictionType?: string;
+  countyName?: string;
+  parentJurisdictionKey?: string;
   stateCode: string;
+  seatKey?: string;
+  vacant?: boolean;
+  partyName?: string;
+  countyDescription?: string;
+  sourceMemberUrl?: string;
+  externalIdentifiers?: Record<string, string>;
+  occupancyStatus?: string;
+  startDate?: string;
+  endDate?: string;
   termLabel?: string;
   termLengthText?: string;
   yearOnBallotText?: string;
+  serviceStartDateText?: string;
   serviceEndDateText?: string;
   electedOrAppointed?: string;
   rawRowText: string;

@@ -11,6 +11,8 @@ import {
   CONTROLLED_MIAMI_DADE_INGEST_JOB_ID,
   CONTROLLED_MIAMI_DADE_SOURCE_KEY,
   CONTROLLED_MIAMI_DADE_SOURCE_URL,
+  CONTROLLED_FLORIDA_HOUSE_SOURCE_KEY,
+  CONTROLLED_FLORIDA_SENATE_SOURCE_KEY,
   OPERATOR_ENQUEUE_PATH,
   OPERATOR_SECRET_NAME,
 } from "../shared/src/operator-enqueue.ts";
@@ -306,4 +308,30 @@ test("toQueueMessage for the controlled job stays ingest/false and does not inve
   assert.equal(message.route, "ingest");
   assert.equal(message.dryRun, false);
   assert.equal(message.jobId, CONTROLLED_MIAMI_DADE_INGEST_JOB_ID);
+});
+
+test("operator can create and enqueue Senate/House ingest jobs without flipping DRY_RUN", async () => {
+  const store = createMemoryStore();
+  const sent: SentMessage[] = [];
+  const senate = await enqueue(store, sent, { sourceKey: CONTROLLED_FLORIDA_SENATE_SOURCE_KEY });
+  assert.equal(senate.status, 200);
+  const senateBody = (await senate.json()) as { sourceKey?: string; route: string; enqueued: boolean; jobId: string };
+  assert.equal(senateBody.route, "ingest");
+  assert.equal(senateBody.enqueued, true);
+  assert.equal(parseQueueJobMessage(sent[0]?.message).sourceKey, CONTROLLED_FLORIDA_SENATE_SOURCE_KEY);
+  assert.equal(parseQueueJobMessage(sent[0]?.message).dryRun, false);
+  const house = await enqueue(store, sent, { sourceKey: CONTROLLED_FLORIDA_HOUSE_SOURCE_KEY });
+  assert.equal(house.status, 200);
+  assert.equal(sent.length, 2);
+  assert.equal((await store.listJobs()).length, 2);
+});
+
+test("operator sourceKey refuses Miami-Dade recreation and bulk Florida sources", async () => {
+  const store = createMemoryStore();
+  const sent: SentMessage[] = [];
+  const miami = await enqueue(store, sent, { sourceKey: CONTROLLED_MIAMI_DADE_SOURCE_KEY });
+  assert.equal(miami.status, 409);
+  const bulk = await enqueue(store, sent, { sourceKey: "florida-governor-official" });
+  assert.equal(bulk.status, 400);
+  assert.equal(sent.length, 0);
 });

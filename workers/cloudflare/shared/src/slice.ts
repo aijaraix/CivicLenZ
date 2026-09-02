@@ -46,7 +46,7 @@ export const CONTROLLED_SLICE_SOURCES: SliceSource[] = [
     collectionMode: "scrape",
     enabledInRegistry: true,
     firstWaveActive: false,
-    reason: "Statewide seats already represented. Do not ingest all Florida on first CF deploy.",
+    reason: "Controlled HTML_DIRECTORY source. Operator-enqueueable; not cron first-wave.",
   },
   {
     sourceKey: "florida-house-members",
@@ -56,7 +56,7 @@ export const CONTROLLED_SLICE_SOURCES: SliceSource[] = [
     collectionMode: "scrape",
     enabledInRegistry: true,
     firstWaveActive: false,
-    reason: "Statewide seats already represented. Do not ingest all Florida on first CF deploy.",
+    reason: "Controlled HTML_DIRECTORY source. Operator-enqueueable; not cron first-wave.",
   },
   {
     sourceKey: "us-senate-members",
