@@ -1,0 +1,55 @@
+{
+  "manifestVersion": "1.0",
+  "jobId": "fl-house-batch-1-2-source-discovery-2026-07-16",
+  "identity": {
+    "jurisdictionId": "us-fl",
+    "jurisdictionName": "Florida",
+    "effectiveDate": "2026-07-16",
+    "phase": "source_discovery",
+    "target": {
+      "kind": "bounded_batch",
+      "batchId": "fl-house-001-002",
+      "memberSeatKeys": [
+        "us-fl-house-001",
+        "us-fl-house-002"
+      ]
+    }
+  },
+  "source": {
+    "sourceId": "florida-house-members-directory",
+    "canonicalUrl": "https://www.flhouse.gov/Representatives",
+    "host": "www.flhouse.gov",
+    "tier": "primary_official",
+    "termsUrl": "https://www.flhouse.gov/TermsOfUse",
+    "ratePolicy": {
+      "requestsPerMinute": 6,
+      "maxConcurrentRequests": 1,
+      "minDelayMs": 5000,
+      "maxRetries": 2,
+      "backoffSeconds": 30,
+      "robotsPolicy": "honor"
+    }
+  },
+  "owner": {
+    "workstreamId": "fl-state-federal-existing-parallel",
+    "workerId": "fl-house-source-discovery-batch-01"
+  },
+  "executionLimits": {
+    "maxRecords": 2,
+    "maxRequests": 40,
+    "maxRuntimeSeconds": 600,
+    "mode": "staging_only"
+  },
+  "output": {
+    "namespace": "data/research-staging/florida/state/seat-source-discovery/fl-house-batch-1-2-source-discovery-2026-07-16",
+    "writeMode": "idempotent_upsert",
+    "visibility": "review_only"
+  },
+  "review": {
+    "publicationAllowed": false,
+    "reviewStatus": "unreviewed",
+    "promotionRequired": true,
+    "humanReviewRequired": true
+  },
+  "dedupeKey": "clzj1-68ed89742e1b015d849a6df89a6e0005e8b5f9703ca2650540aa8de3e4efa4f0"
+}

@@ -1,0 +1,50 @@
+{
+  "manifestVersion": "1.0",
+  "jobId": "fl-house-district-2-public-boundary-2026-07-16",
+  "identity": {
+    "jurisdictionId": "us-fl",
+    "jurisdictionName": "Florida",
+    "effectiveDate": "2026-07-16",
+    "phase": "source_discovery",
+    "target": {
+      "kind": "permanent_seat",
+      "seatKey": "us-fl-house-002"
+    }
+  },
+  "source": {
+    "sourceId": "florida-house-members-directory",
+    "canonicalUrl": "https://www.flhouse.gov/Representatives",
+    "host": "www.flhouse.gov",
+    "tier": "primary_official",
+    "ratePolicy": {
+      "requestsPerMinute": 6,
+      "maxConcurrentRequests": 1,
+      "minDelayMs": 5000,
+      "maxRetries": 2,
+      "backoffSeconds": 30,
+      "robotsPolicy": "honor"
+    }
+  },
+  "owner": {
+    "workstreamId": "fl-state-federal-existing-parallel",
+    "workerId": "fl-house-source-discovery-02"
+  },
+  "executionLimits": {
+    "maxRecords": 1,
+    "maxRequests": 20,
+    "maxRuntimeSeconds": 300,
+    "mode": "staging_only"
+  },
+  "output": {
+    "namespace": "data/research-staging/florida/state/seat-source-discovery/fl-house-district-2-public-boundary-2026-07-16",
+    "writeMode": "idempotent_upsert",
+    "visibility": "review_only"
+  },
+  "review": {
+    "publicationAllowed": true,
+    "reviewStatus": "reviewed",
+    "promotionRequired": false,
+    "humanReviewRequired": false
+  },
+  "dedupeKey": "clzj1-0000000000000000000000000000000000000000000000000000000000000000"
+}
