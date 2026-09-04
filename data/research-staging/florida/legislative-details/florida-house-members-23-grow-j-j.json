@@ -7,14 +7,14 @@
   "officeTitle": "Florida State Representative, District 23",
   "districtNumber": "23",
   "sourceUrl": "https://www.flhouse.gov/Sections/Representatives/details.aspx?MemberId=4909&LegislativeTermId=91",
-  "fetchedAt": "2026-07-16T05:26:22Z",
+  "fetchedAt": "2026-09-04T14:59:11Z",
   "collectionStatus": "success",
   "reviewStatus": "unreviewed",
   "publicationAllowed": false,
   "errors": [],
   "httpStatus": 200,
   "finalUrl": "https://www.flhouse.gov/Sections/Representatives/custom/details.aspx?MemberId=4909&LegislativeTermId=91",
-  "sourceSnapshotSha256": "83635d165fe102fc6bc1933b7cdbb90861d818687ce1bcd3b2d340f054ca3518",
+  "sourceSnapshotSha256": "aaa8de81c0c3b9236d69bc0b621c9ce62665f72b1fc9b8e1c89502409535c4cf",
   "partyAndDistrictText": "District: 23 -- Republican",
   "staffCandidates": [
     {
@@ -114,7 +114,7 @@
       "identityReviewStatus": "unreviewed"
     },
     {
-      "url": "https://www.flhouse.gov/FileStores/Web/Imaging/PhotoAlbums/HousePhotoSized8176.JPG",
+      "url": "https://www.flhouse.gov/FileStores/Web/Imaging/PhotoAlbums/HousePhotoSized8175.JPG",
       "method": "img",
       "score": 30,
       "altText": "Representative Grow Photo",
@@ -123,7 +123,7 @@
       "identityReviewStatus": "unreviewed"
     },
     {
-      "url": "https://www.flhouse.gov/Images/bronze-seal-250.png?cb=4.6.654349",
+      "url": "https://www.flhouse.gov/Images/bronze-seal-250.png?cb=4.6.654350",
       "method": "og:image",
       "score": 14,
       "altText": null,
@@ -141,7 +141,7 @@
       "identityReviewStatus": "unreviewed"
     },
     {
-      "url": "https://www.flhouse.gov/FileStores/Web/Imaging/PhotoAlbums/HousePhotoSized8175.JPG",
+      "url": "https://www.flhouse.gov/FileStores/Web/Imaging/PhotoAlbums/HousePhotoSized8176.JPG",
       "method": "img",
       "score": 9,
       "altText": null,

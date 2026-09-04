@@ -7,14 +7,14 @@
   "officeTitle": "Florida State Representative, District 67",
   "districtNumber": "67",
   "sourceUrl": "https://www.flhouse.gov/Sections/Representatives/details.aspx?MemberId=4745&LegislativeTermId=91",
-  "fetchedAt": "2026-07-16T05:26:27Z",
+  "fetchedAt": "2026-09-04T14:59:15Z",
   "collectionStatus": "success",
   "reviewStatus": "unreviewed",
   "publicationAllowed": false,
   "errors": [],
   "httpStatus": 200,
   "finalUrl": "https://www.flhouse.gov/Sections/Representatives/custom/details.aspx?MemberId=4745&LegislativeTermId=91",
-  "sourceSnapshotSha256": "16d7e64b029c39f5b3812a291f1d134402eea1c183c0918432f9a097e4a38f5c",
+  "sourceSnapshotSha256": "a495cf5f153093bb702994098d3406eaedfcf708b531868c898573d52c8826f3",
   "partyAndDistrictText": "District: 67 -- Democrat",
   "staffCandidates": [
     {
@@ -105,7 +105,7 @@
       "identityReviewStatus": "unreviewed"
     },
     {
-      "url": "https://www.flhouse.gov/FileStores/Web/Imaging/PhotoAlbums/HousePhotoSized7393.jpg",
+      "url": "https://www.flhouse.gov/FileStores/Web/Imaging/PhotoAlbums/HousePhotoSized7629.jpg",
       "method": "img",
       "score": 30,
       "altText": "Representative Driskell Photo",
@@ -114,7 +114,7 @@
       "identityReviewStatus": "unreviewed"
     },
     {
-      "url": "https://www.flhouse.gov/Images/bronze-seal-250.png?cb=4.6.654349",
+      "url": "https://www.flhouse.gov/Images/bronze-seal-250.png?cb=4.6.654350",
       "method": "og:image",
       "score": 14,
       "altText": null,

@@ -7,22 +7,16 @@
   "officeTitle": "Florida State Senator, District 21",
   "districtNumber": "21",
   "sourceUrl": "https://www.flsenate.gov/Senators/2024-2026/S21",
-  "fetchedAt": "2026-07-16T05:26:36Z",
+  "fetchedAt": "2026-09-04T14:59:23Z",
   "collectionStatus": "success",
   "reviewStatus": "unreviewed",
   "publicationAllowed": false,
   "errors": [],
   "httpStatus": 200,
   "finalUrl": "https://www.flsenate.gov/Senators/S21",
-  "sourceSnapshotSha256": "b470dfec35d7d291e06593223d13e2f73663d7ee56b8565b2107866d4c63eb9d",
+  "sourceSnapshotSha256": "8860b73d9b9b9307dff0de666ac243479e251e87abe954b4c44620d1901f04cf",
   "partyAndDistrictText": "Party: Republican",
-  "staffCandidates": [
-    {
-      "role": "Legislative Aide",
-      "name": "Track this Senator's Media",
-      "reviewStatus": "unreviewed"
-    }
-  ],
+  "staffCandidates": [],
   "biographyCandidates": {
     "occupation": "Retired Firefighter; Consus Group, LLC, Partner",
     "spouse": "Lee Hooper of Queens, NY",
@@ -376,18 +370,6 @@
       "url": "https://www.flsenate.gov/Senators/S21?Tab=Bills#Bills"
     },
     {
-      "label": "S 62",
-      "url": "https://www.flsenate.gov/Session/Bill/2026/62"
-    },
-    {
-      "label": "S 1062",
-      "url": "https://www.flsenate.gov/Session/Bill/2026/1062"
-    },
-    {
-      "label": "S 1574",
-      "url": "https://www.flsenate.gov/Session/Bill/2026/1574"
-    },
-    {
       "label": "Bill Search Tips",
       "url": "https://www.flsenate.gov/search/billsearchtips"
     },
@@ -447,7 +429,7 @@
     }
   ],
   "candidateCounts": {
-    "staffCandidates": 1,
+    "staffCandidates": 0,
     "educationCandidates": 0,
     "committeeCandidates": 10,
     "publicServiceCandidates": 1,

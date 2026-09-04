@@ -7,16 +7,22 @@
   "officeTitle": "Florida State Senator, District 6",
   "districtNumber": "6",
   "sourceUrl": "https://www.flsenate.gov/Senators/2024-2026/S6",
-  "fetchedAt": "2026-07-16T05:26:34Z",
+  "fetchedAt": "2026-09-04T14:59:20Z",
   "collectionStatus": "success",
   "reviewStatus": "unreviewed",
   "publicationAllowed": false,
   "errors": [],
   "httpStatus": 200,
   "finalUrl": "https://www.flsenate.gov/Senators/S6",
-  "sourceSnapshotSha256": "4a815e456b047809aa1bd465261229be2f2d7150588922e58b99f1ace15221bd",
+  "sourceSnapshotSha256": "18e42412a421807927f5a5b950b5cc7939a3e0d45f345af97f221c324b14a775",
   "partyAndDistrictText": "Party: Republican",
-  "staffCandidates": [],
+  "staffCandidates": [
+    {
+      "role": "Legislative Aide",
+      "name": "Track this Senator's Media",
+      "reviewStatus": "unreviewed"
+    }
+  ],
   "biographyCandidates": {
     "occupation": "Attorney",
     "spouse": "Rob Bradley of Green Cove Springs, FL",
@@ -404,112 +410,8 @@
       "url": "https://www.flsenate.gov/Senators/S6?Tab=Bills#Bills"
     },
     {
-      "label": "S 200",
-      "url": "https://www.flsenate.gov/Session/Bill/2026/200"
-    },
-    {
-      "label": "S 202",
-      "url": "https://www.flsenate.gov/Session/Bill/2026/202"
-    },
-    {
-      "label": "S 204",
-      "url": "https://www.flsenate.gov/Session/Bill/2026/204"
-    },
-    {
-      "label": "S 330",
-      "url": "https://www.flsenate.gov/Session/Bill/2026/330"
-    },
-    {
-      "label": "S 332",
-      "url": "https://www.flsenate.gov/Session/Bill/2026/332"
-    },
-    {
-      "label": "S 590",
-      "url": "https://www.flsenate.gov/Session/Bill/2026/590"
-    },
-    {
-      "label": "S 648",
-      "url": "https://www.flsenate.gov/Session/Bill/2026/648"
-    },
-    {
-      "label": "S 656",
-      "url": "https://www.flsenate.gov/Session/Bill/2026/656"
-    },
-    {
-      "label": "S 758",
-      "url": "https://www.flsenate.gov/Session/Bill/2026/758"
-    },
-    {
-      "label": "S 796",
-      "url": "https://www.flsenate.gov/Session/Bill/2026/796"
-    },
-    {
-      "label": "S 816",
-      "url": "https://www.flsenate.gov/Session/Bill/2026/816"
-    },
-    {
-      "label": "S 820",
-      "url": "https://www.flsenate.gov/Session/Bill/2026/820"
-    },
-    {
-      "label": "S 860",
-      "url": "https://www.flsenate.gov/Session/Bill/2026/860"
-    },
-    {
-      "label": "S 956",
-      "url": "https://www.flsenate.gov/Session/Bill/2026/956"
-    },
-    {
-      "label": "S 958",
-      "url": "https://www.flsenate.gov/Session/Bill/2026/958"
-    },
-    {
-      "label": "S 960",
-      "url": "https://www.flsenate.gov/Session/Bill/2026/960"
-    },
-    {
-      "label": "S 962",
-      "url": "https://www.flsenate.gov/Session/Bill/2026/962"
-    },
-    {
-      "label": "S 1016",
-      "url": "https://www.flsenate.gov/Session/Bill/2026/1016"
-    },
-    {
-      "label": "S 1064",
-      "url": "https://www.flsenate.gov/Session/Bill/2026/1064"
-    },
-    {
-      "label": "S 1294",
-      "url": "https://www.flsenate.gov/Session/Bill/2026/1294"
-    },
-    {
-      "label": "S 1498",
-      "url": "https://www.flsenate.gov/Session/Bill/2026/1498"
-    },
-    {
-      "label": "S 1500",
-      "url": "https://www.flsenate.gov/Session/Bill/2026/1500"
-    },
-    {
-      "label": "S 126",
-      "url": "https://www.flsenate.gov/Session/Bill/2026/126"
-    },
-    {
-      "label": "S 240",
-      "url": "https://www.flsenate.gov/Session/Bill/2026/240"
-    },
-    {
-      "label": "S 250",
-      "url": "https://www.flsenate.gov/Session/Bill/2026/250"
-    },
-    {
-      "label": "S 1062",
-      "url": "https://www.flsenate.gov/Session/Bill/2026/1062"
-    },
-    {
-      "label": "S 1574",
-      "url": "https://www.flsenate.gov/Session/Bill/2026/1574"
+      "label": "S 16",
+      "url": "https://www.flsenate.gov/Session/Bill/2027/16"
     },
     {
       "label": "Bill Search Tips",
@@ -571,7 +473,7 @@
     }
   ],
   "candidateCounts": {
-    "staffCandidates": 0,
+    "staffCandidates": 1,
     "educationCandidates": 0,
     "committeeCandidates": 12,
     "publicServiceCandidates": 0,

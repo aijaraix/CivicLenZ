@@ -7,14 +7,14 @@
   "officeTitle": "Florida State Representative, District 3",
   "districtNumber": "3",
   "sourceUrl": "https://www.flhouse.gov/Sections/Representatives/details.aspx?MemberId=5063&LegislativeTermId=91",
-  "fetchedAt": "2026-07-16T05:26:20Z",
+  "fetchedAt": "2026-09-04T14:59:09Z",
   "collectionStatus": "success",
   "reviewStatus": "unreviewed",
   "publicationAllowed": false,
   "errors": [],
   "httpStatus": 200,
   "finalUrl": "https://www.flhouse.gov/Sections/Representatives/custom/details.aspx?MemberId=5063&LegislativeTermId=91",
-  "sourceSnapshotSha256": "4f51f6093d3e05172c8a298c3bc8a97d3e2b26ee995cfeeb3a352a2bd2228c2f",
+  "sourceSnapshotSha256": "c7beabb1aa30d60ca64bc4db1aea2ce7c108d1f3b0eda18f52a644de6a65434f",
   "partyAndDistrictText": "District: 3 -- Republican",
   "staffCandidates": [
     {
@@ -24,7 +24,7 @@
     },
     {
       "role": "District Aide",
-      "name": "Lea Funchess",
+      "name": "Ashley Jeffrey",
       "reviewStatus": "unreviewed"
     }
   ],
@@ -131,7 +131,7 @@
       "identityReviewStatus": "unreviewed"
     },
     {
-      "url": "https://www.flhouse.gov/Images/bronze-seal-250.png?cb=4.6.654349",
+      "url": "https://www.flhouse.gov/Images/bronze-seal-250.png?cb=4.6.654350",
       "method": "og:image",
       "score": 14,
       "altText": null,

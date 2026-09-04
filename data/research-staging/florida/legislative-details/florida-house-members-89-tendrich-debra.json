@@ -7,14 +7,14 @@
   "officeTitle": "Florida State Representative, District 89",
   "districtNumber": "89",
   "sourceUrl": "https://www.flhouse.gov/Sections/Representatives/details.aspx?MemberId=4924&LegislativeTermId=91",
-  "fetchedAt": "2026-07-16T05:26:30Z",
+  "fetchedAt": "2026-09-04T14:59:17Z",
   "collectionStatus": "success",
   "reviewStatus": "unreviewed",
   "publicationAllowed": false,
   "errors": [],
   "httpStatus": 200,
   "finalUrl": "https://www.flhouse.gov/Sections/Representatives/custom/details.aspx?MemberId=4924&LegislativeTermId=91",
-  "sourceSnapshotSha256": "a7e3f5e542c9ad061c433d145d35af2069b019c2f650368e55e08529ea97ba1c",
+  "sourceSnapshotSha256": "8cf25dc4e372329762910e414171d6d30283f241b4e9489b6c1068445cbf8aba",
   "partyAndDistrictText": "District: 89 -- Democrat",
   "staffCandidates": [
     {
@@ -101,14 +101,7 @@
   "socialCandidates": [
     {
       "platform": "Instagram",
-      "url": "https://www.instagram.com/debratendrich/?hl=en?utm_source=ig_embed&utm_campaign=loading",
-      "label": "Debra Tendrich",
-      "sourcePageUrl": "https://www.flhouse.gov/Sections/Representatives/custom/details.aspx?MemberId=4924&LegislativeTermId=91",
-      "reviewStatus": "unreviewed"
-    },
-    {
-      "platform": "Facebook",
-      "url": "https://www.facebook.com/dtendrich/",
+      "url": "https://www.instagram.com/repdebratendrich?utm_source=qr?utm_source=ig_embed&utm_campaign=loading",
       "label": "Debra Tendrich",
       "sourcePageUrl": "https://www.flhouse.gov/Sections/Representatives/custom/details.aspx?MemberId=4924&LegislativeTermId=91",
       "reviewStatus": "unreviewed"
@@ -148,7 +141,7 @@
       "identityReviewStatus": "unreviewed"
     },
     {
-      "url": "https://www.flhouse.gov/Images/bronze-seal-250.png?cb=4.6.654349",
+      "url": "https://www.flhouse.gov/Images/bronze-seal-250.png?cb=4.6.654350",
       "method": "og:image",
       "score": 14,
       "altText": null,
@@ -218,7 +211,7 @@
     "awardCandidates": 0,
     "officeLocationCandidates": 0,
     "contactCandidates": 2,
-    "socialCandidates": 2,
+    "socialCandidates": 1,
     "websiteCandidates": 2,
     "portraitCandidates": 6
   }

@@ -7,14 +7,14 @@
   "officeTitle": "Florida State Representative, District 109",
   "districtNumber": "109",
   "sourceUrl": "https://www.flhouse.gov/Sections/Representatives/details.aspx?MemberId=4897&LegislativeTermId=91",
-  "fetchedAt": "2026-07-16T05:26:32Z",
+  "fetchedAt": "2026-09-04T14:59:18Z",
   "collectionStatus": "success",
   "reviewStatus": "unreviewed",
   "publicationAllowed": false,
   "errors": [],
   "httpStatus": 200,
   "finalUrl": "https://www.flhouse.gov/Sections/Representatives/custom/details.aspx?MemberId=4897&LegislativeTermId=91",
-  "sourceSnapshotSha256": "feb2cbb85a4b24baf627543afcb6b6191fe42c327f7869a82567c27746847539",
+  "sourceSnapshotSha256": "4e29efa5227c0fe5b065e73ca41e5c3d92443fe64945eb5b5913ad31e5b912f1",
   "partyAndDistrictText": "District: 109 -- Democrat",
   "staffCandidates": [
     {
@@ -58,11 +58,6 @@
       "name": "Careers & Workforce Subcommittee",
       "roleType": "member",
       "reviewStatus": "unreviewed"
-    },
-    {
-      "name": "Ashley Viola Gantt (@ Ashley Viola Gantt ) • Instagram photos and videos",
-      "roleType": "member",
-      "reviewStatus": "unreviewed"
     }
   ],
   "publicServiceCandidates": [],
@@ -83,22 +78,7 @@
       "sourcePageUrl": "https://www.flhouse.gov/Sections/Representatives/custom/details.aspx?MemberId=4897&LegislativeTermId=91"
     }
   ],
-  "socialCandidates": [
-    {
-      "platform": "Facebook",
-      "url": "https://facebook.com/ganttforflorida",
-      "label": "Ashley Viola Gantt",
-      "sourcePageUrl": "https://www.flhouse.gov/Sections/Representatives/custom/details.aspx?MemberId=4897&LegislativeTermId=91",
-      "reviewStatus": "unreviewed"
-    },
-    {
-      "platform": "Instagram",
-      "url": "https://www.instagram.com/ganttforflorida?utm_source=ig_embed&utm_campaign=loading",
-      "label": "Ashley Viola Gantt",
-      "sourcePageUrl": "https://www.flhouse.gov/Sections/Representatives/custom/details.aspx?MemberId=4897&LegislativeTermId=91",
-      "reviewStatus": "unreviewed"
-    }
-  ],
+  "socialCandidates": [],
   "websiteCandidates": [
     {
       "url": "https://www.flhouse.gov/Sections/Representatives/custom/contactmember.aspx?MemberId=4897&LegislativeTermId=91",
@@ -124,7 +104,7 @@
       "identityReviewStatus": "unreviewed"
     },
     {
-      "url": "https://www.flhouse.gov/FileStores/Web/Imaging/PhotoAlbums/HousePhotoSized7871.JPG",
+      "url": "https://www.flhouse.gov/FileStores/Web/Imaging/PhotoAlbums/HousePhotoSized7690.jpg",
       "method": "img",
       "score": 30,
       "altText": "Representative Gantt Photo",
@@ -133,7 +113,7 @@
       "identityReviewStatus": "unreviewed"
     },
     {
-      "url": "https://www.flhouse.gov/Images/bronze-seal-250.png?cb=4.6.654349",
+      "url": "https://www.flhouse.gov/Images/bronze-seal-250.png?cb=4.6.654350",
       "method": "og:image",
       "score": 14,
       "altText": null,
@@ -197,13 +177,13 @@
   "candidateCounts": {
     "staffCandidates": 2,
     "educationCandidates": 0,
-    "committeeCandidates": 5,
+    "committeeCandidates": 4,
     "publicServiceCandidates": 0,
     "affiliationCandidates": 0,
     "awardCandidates": 0,
     "officeLocationCandidates": 0,
     "contactCandidates": 2,
-    "socialCandidates": 2,
+    "socialCandidates": 0,
     "websiteCandidates": 2,
     "portraitCandidates": 6
   }

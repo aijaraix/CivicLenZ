@@ -7,19 +7,19 @@
   "officeTitle": "Florida State Representative, District 112",
   "districtNumber": "112",
   "sourceUrl": "https://www.flhouse.gov/Sections/Representatives/details.aspx?MemberId=4796&LegislativeTermId=91",
-  "fetchedAt": "2026-07-16T05:26:33Z",
+  "fetchedAt": "2026-09-04T14:59:19Z",
   "collectionStatus": "success",
   "reviewStatus": "unreviewed",
   "publicationAllowed": false,
   "errors": [],
   "httpStatus": 200,
   "finalUrl": "https://www.flhouse.gov/Sections/Representatives/custom/details.aspx?MemberId=4796&LegislativeTermId=91",
-  "sourceSnapshotSha256": "ed6d8f74758221be02d64d826b3946b17a81bf8b7e3bb7966d447080d8ddbddd",
+  "sourceSnapshotSha256": "92ed08650152ac49457eefa303cccb68541e8f2ec88655bd76ac3e55673cdb74",
   "partyAndDistrictText": "District: 112 -- Republican",
   "staffCandidates": [
     {
       "role": "Legislative Aide",
-      "name": "Evan Gonzalez",
+      "name": "None",
       "reviewStatus": "unreviewed"
     },
     {
@@ -84,11 +84,6 @@
       "name": "PreK-12 Budget Subcommittee",
       "roleType": "member",
       "reviewStatus": "unreviewed"
-    },
-    {
-      "name": "Alex Rizo (@ Alex Rizo ) • Instagram photos and videos",
-      "roleType": "member",
-      "reviewStatus": "unreviewed"
     }
   ],
   "publicServiceCandidates": [],
@@ -109,15 +104,7 @@
       "sourcePageUrl": "https://www.flhouse.gov/Sections/Representatives/custom/details.aspx?MemberId=4796&LegislativeTermId=91"
     }
   ],
-  "socialCandidates": [
-    {
-      "platform": "Instagram",
-      "url": "https://www.instagram.com/teamalexrizo?utm_source=ig_embed&utm_campaign=loading",
-      "label": "Alex Rizo",
-      "sourcePageUrl": "https://www.flhouse.gov/Sections/Representatives/custom/details.aspx?MemberId=4796&LegislativeTermId=91",
-      "reviewStatus": "unreviewed"
-    }
-  ],
+  "socialCandidates": [],
   "websiteCandidates": [
     {
       "url": "https://www.flhouse.gov/Sections/Representatives/custom/contactmember.aspx?MemberId=4796&LegislativeTermId=91",
@@ -143,7 +130,7 @@
       "identityReviewStatus": "unreviewed"
     },
     {
-      "url": "https://www.flhouse.gov/FileStores/Web/Imaging/PhotoAlbums/HousePhotoSized8188.JPG",
+      "url": "https://www.flhouse.gov/FileStores/Web/Imaging/PhotoAlbums/HousePhotoSized7985.JPG",
       "method": "img",
       "score": 30,
       "altText": "Representative Rizo Photo",
@@ -152,7 +139,7 @@
       "identityReviewStatus": "unreviewed"
     },
     {
-      "url": "https://www.flhouse.gov/Images/bronze-seal-250.png?cb=4.6.654349",
+      "url": "https://www.flhouse.gov/Images/bronze-seal-250.png?cb=4.6.654350",
       "method": "og:image",
       "score": 14,
       "altText": null,
@@ -216,13 +203,13 @@
   "candidateCounts": {
     "staffCandidates": 2,
     "educationCandidates": 5,
-    "committeeCandidates": 6,
+    "committeeCandidates": 5,
     "publicServiceCandidates": 0,
     "affiliationCandidates": 0,
     "awardCandidates": 0,
     "officeLocationCandidates": 0,
     "contactCandidates": 2,
-    "socialCandidates": 1,
+    "socialCandidates": 0,
     "websiteCandidates": 2,
     "portraitCandidates": 6
   }

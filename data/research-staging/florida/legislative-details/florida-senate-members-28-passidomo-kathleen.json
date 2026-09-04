@@ -7,14 +7,14 @@
   "officeTitle": "Florida State Senator, District 28",
   "districtNumber": "28",
   "sourceUrl": "https://www.flsenate.gov/Senators/2024-2026/S28",
-  "fetchedAt": "2026-07-16T05:26:38Z",
+  "fetchedAt": "2026-09-04T14:59:24Z",
   "collectionStatus": "success",
   "reviewStatus": "unreviewed",
   "publicationAllowed": false,
   "errors": [],
   "httpStatus": 200,
   "finalUrl": "https://www.flsenate.gov/Senators/S28",
-  "sourceSnapshotSha256": "b952ac9c79f4f665007d724e083156ece8c8e9f004fb3cbe9ee944d67a47d8ff",
+  "sourceSnapshotSha256": "a17f3164b94b7f1223991728b3c8471440b90d8e7e65735baab69fbcd2fdeb2d",
   "partyAndDistrictText": "Party: Republican",
   "staffCandidates": [
     {
@@ -592,38 +592,6 @@
     {
       "label": "Bills Introduced",
       "url": "https://www.flsenate.gov/Senators/S28?Tab=Bills#Bills"
-    },
-    {
-      "label": "S 100",
-      "url": "https://www.flsenate.gov/Session/Bill/2026/100"
-    },
-    {
-      "label": "S 102",
-      "url": "https://www.flsenate.gov/Session/Bill/2026/102"
-    },
-    {
-      "label": "S 104",
-      "url": "https://www.flsenate.gov/Session/Bill/2026/104"
-    },
-    {
-      "label": "S 1466",
-      "url": "https://www.flsenate.gov/Session/Bill/2026/1466"
-    },
-    {
-      "label": "S 1770",
-      "url": "https://www.flsenate.gov/Session/Bill/2026/1770"
-    },
-    {
-      "label": "S 1814",
-      "url": "https://www.flsenate.gov/Session/Bill/2026/1814"
-    },
-    {
-      "label": "S 1062",
-      "url": "https://www.flsenate.gov/Session/Bill/2026/1062"
-    },
-    {
-      "label": "S 1574",
-      "url": "https://www.flsenate.gov/Session/Bill/2026/1574"
     },
     {
       "label": "Bill Search Tips",

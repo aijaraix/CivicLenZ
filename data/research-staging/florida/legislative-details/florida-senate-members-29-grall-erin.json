@@ -7,14 +7,14 @@
   "officeTitle": "Florida State Senator, District 29",
   "districtNumber": "29",
   "sourceUrl": "https://www.flsenate.gov/Senators/2024-2026/S29",
-  "fetchedAt": "2026-07-16T05:26:38Z",
+  "fetchedAt": "2026-09-04T14:59:24Z",
   "collectionStatus": "success",
   "reviewStatus": "unreviewed",
   "publicationAllowed": false,
   "errors": [],
   "httpStatus": 200,
   "finalUrl": "https://www.flsenate.gov/Senators/S29",
-  "sourceSnapshotSha256": "3ea4448b100e1c7f161762ec91d3ca109311f534166b84ffe1e277535ae4499c",
+  "sourceSnapshotSha256": "09e3777fd29cd42be4dc8d8f406ee547b0df973311f16db02d6c447652d05b80",
   "partyAndDistrictText": "Party: Republican",
   "staffCandidates": [
     {
@@ -391,148 +391,12 @@
       "url": "https://www.flsenate.gov/Senators/S29?Tab=Bills#Bills"
     },
     {
-      "label": "S 164",
-      "url": "https://www.flsenate.gov/Session/Bill/2026/164"
-    },
-    {
-      "label": "S 166",
-      "url": "https://www.flsenate.gov/Session/Bill/2026/166"
-    },
-    {
-      "label": "S 344",
-      "url": "https://www.flsenate.gov/Session/Bill/2026/344"
-    },
-    {
-      "label": "S 350",
-      "url": "https://www.flsenate.gov/Session/Bill/2026/350"
-    },
-    {
-      "label": "S 408",
-      "url": "https://www.flsenate.gov/Session/Bill/2026/408"
-    },
-    {
-      "label": "S 444",
-      "url": "https://www.flsenate.gov/Session/Bill/2026/444"
-    },
-    {
-      "label": "S 522",
-      "url": "https://www.flsenate.gov/Session/Bill/2026/522"
-    },
-    {
-      "label": "S 526",
-      "url": "https://www.flsenate.gov/Session/Bill/2026/526"
-    },
-    {
-      "label": "S 644",
-      "url": "https://www.flsenate.gov/Session/Bill/2026/644"
-    },
-    {
-      "label": "S 1000",
-      "url": "https://www.flsenate.gov/Session/Bill/2026/1000"
-    },
-    {
-      "label": "S 1044",
-      "url": "https://www.flsenate.gov/Session/Bill/2026/1044"
-    },
-    {
-      "label": "S 1052",
-      "url": "https://www.flsenate.gov/Session/Bill/2026/1052"
-    },
-    {
-      "label": "S 1078",
-      "url": "https://www.flsenate.gov/Session/Bill/2026/1078"
-    },
-    {
-      "label": "S 1082",
-      "url": "https://www.flsenate.gov/Session/Bill/2026/1082"
-    },
-    {
-      "label": "S 1090",
-      "url": "https://www.flsenate.gov/Session/Bill/2026/1090"
-    },
-    {
-      "label": "S 1114",
-      "url": "https://www.flsenate.gov/Session/Bill/2026/1114"
-    },
-    {
-      "label": "S 1128",
-      "url": "https://www.flsenate.gov/Session/Bill/2026/1128"
-    },
-    {
-      "label": "S 1140",
-      "url": "https://www.flsenate.gov/Session/Bill/2026/1140"
-    },
-    {
-      "label": "S 1152",
-      "url": "https://www.flsenate.gov/Session/Bill/2026/1152"
-    },
-    {
-      "label": "S 1158",
-      "url": "https://www.flsenate.gov/Session/Bill/2026/1158"
-    },
-    {
-      "label": "S 1168",
-      "url": "https://www.flsenate.gov/Session/Bill/2026/1168"
-    },
-    {
-      "label": "S 1172",
-      "url": "https://www.flsenate.gov/Session/Bill/2026/1172"
-    },
-    {
-      "label": "S 1178",
-      "url": "https://www.flsenate.gov/Session/Bill/2026/1178"
-    },
-    {
-      "label": "S 1188",
-      "url": "https://www.flsenate.gov/Session/Bill/2026/1188"
-    },
-    {
-      "label": "S 1256",
-      "url": "https://www.flsenate.gov/Session/Bill/2026/1256"
-    },
-    {
-      "label": "S 1334",
-      "url": "https://www.flsenate.gov/Session/Bill/2026/1334"
-    },
-    {
-      "label": "S 1630",
-      "url": "https://www.flsenate.gov/Session/Bill/2026/1630"
-    },
-    {
-      "label": "S 1632",
-      "url": "https://www.flsenate.gov/Session/Bill/2026/1632"
-    },
-    {
-      "label": "S 1634",
-      "url": "https://www.flsenate.gov/Session/Bill/2026/1634"
-    },
-    {
-      "label": "S 1680",
-      "url": "https://www.flsenate.gov/Session/Bill/2026/1680"
-    },
-    {
-      "label": "S 1700",
-      "url": "https://www.flsenate.gov/Session/Bill/2026/1700"
+      "label": "S 38",
+      "url": "https://www.flsenate.gov/Session/Bill/2027/38"
     },
     {
       "label": "S 42",
-      "url": "https://www.flsenate.gov/Session/Bill/2026/42"
-    },
-    {
-      "label": "S 856",
-      "url": "https://www.flsenate.gov/Session/Bill/2026/856"
-    },
-    {
-      "label": "S 1010",
-      "url": "https://www.flsenate.gov/Session/Bill/2026/1010"
-    },
-    {
-      "label": "S 1062",
-      "url": "https://www.flsenate.gov/Session/Bill/2026/1062"
-    },
-    {
-      "label": "S 1574",
-      "url": "https://www.flsenate.gov/Session/Bill/2026/1574"
+      "url": "https://www.flsenate.gov/Session/Bill/2027/42"
     },
     {
       "label": "Senator Erin Grall and Representative Berny Jacques File Legislation to Establish Online Hub of Pregnancy and Parenting Resources",

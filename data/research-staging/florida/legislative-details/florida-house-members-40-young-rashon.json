@@ -7,14 +7,14 @@
   "officeTitle": "Florida State Representative, District 40",
   "districtNumber": "40",
   "sourceUrl": "https://www.flhouse.gov/Sections/Representatives/details.aspx?MemberId=5065&LegislativeTermId=91",
-  "fetchedAt": "2026-07-16T05:26:24Z",
+  "fetchedAt": "2026-09-04T14:59:12Z",
   "collectionStatus": "success",
   "reviewStatus": "unreviewed",
   "publicationAllowed": false,
   "errors": [],
   "httpStatus": 200,
   "finalUrl": "https://www.flhouse.gov/Sections/Representatives/custom/details.aspx?MemberId=5065&LegislativeTermId=91",
-  "sourceSnapshotSha256": "ea89b528071aad71d48746836686457256a2e2b6ab168df85fe197c4a8b02284",
+  "sourceSnapshotSha256": "6c354fd4024614b20c63d0f34254f640bf0f30068d721ec6b2b5469f88c14f4b",
   "partyAndDistrictText": "District: 40 -- Democrat",
   "staffCandidates": [
     {
@@ -68,11 +68,6 @@
       "name": "Higher Education Budget Subcommittee",
       "roleType": "member",
       "reviewStatus": "unreviewed"
-    },
-    {
-      "name": "RaShon Young (@ RaShon Young ) • Instagram photos and videos",
-      "roleType": "member",
-      "reviewStatus": "unreviewed"
     }
   ],
   "publicServiceCandidates": [],
@@ -93,22 +88,7 @@
       "sourcePageUrl": "https://www.flhouse.gov/Sections/Representatives/custom/details.aspx?MemberId=5065&LegislativeTermId=91"
     }
   ],
-  "socialCandidates": [
-    {
-      "platform": "Instagram",
-      "url": "https://www.instagram.com/rashonforfl/?hl=en?utm_source=ig_embed&utm_campaign=loading",
-      "label": "RaShon Young",
-      "sourcePageUrl": "https://www.flhouse.gov/Sections/Representatives/custom/details.aspx?MemberId=5065&LegislativeTermId=91",
-      "reviewStatus": "unreviewed"
-    },
-    {
-      "platform": "Facebook",
-      "url": "https://www.facebook.com/people/Representative-RaShon-Young/61575376304871/",
-      "label": "RaShon Young",
-      "sourcePageUrl": "https://www.flhouse.gov/Sections/Representatives/custom/details.aspx?MemberId=5065&LegislativeTermId=91",
-      "reviewStatus": "unreviewed"
-    }
-  ],
+  "socialCandidates": [],
   "websiteCandidates": [
     {
       "url": "https://www.flhouse.gov/Sections/Representatives/custom/contactmember.aspx?MemberId=5065&LegislativeTermId=91",
@@ -143,7 +123,7 @@
       "identityReviewStatus": "unreviewed"
     },
     {
-      "url": "https://www.flhouse.gov/Images/bronze-seal-250.png?cb=4.6.654349",
+      "url": "https://www.flhouse.gov/Images/bronze-seal-250.png?cb=4.6.654350",
       "method": "og:image",
       "score": 14,
       "altText": null,
@@ -198,13 +178,13 @@
   "candidateCounts": {
     "staffCandidates": 2,
     "educationCandidates": 1,
-    "committeeCandidates": 6,
+    "committeeCandidates": 5,
     "publicServiceCandidates": 0,
     "affiliationCandidates": 0,
     "awardCandidates": 0,
     "officeLocationCandidates": 0,
     "contactCandidates": 2,
-    "socialCandidates": 2,
+    "socialCandidates": 0,
     "websiteCandidates": 2,
     "portraitCandidates": 5
   }

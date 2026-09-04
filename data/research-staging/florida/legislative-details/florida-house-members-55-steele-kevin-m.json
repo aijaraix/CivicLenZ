@@ -7,24 +7,24 @@
   "officeTitle": "Florida State Representative, District 55",
   "districtNumber": "55",
   "sourceUrl": "https://www.flhouse.gov/Sections/Representatives/details.aspx?MemberId=4881&LegislativeTermId=91",
-  "fetchedAt": "2026-07-16T05:26:26Z",
+  "fetchedAt": "2026-09-04T14:59:14Z",
   "collectionStatus": "success",
   "reviewStatus": "unreviewed",
   "publicationAllowed": false,
   "errors": [],
   "httpStatus": 200,
   "finalUrl": "https://www.flhouse.gov/Sections/Representatives/details.aspx?MemberId=4881&LegislativeTermId=91",
-  "sourceSnapshotSha256": "8ba31b035074416b843a8c4b92480d29642cc1cf0e37c97a2885040faa5e924c",
+  "sourceSnapshotSha256": "4655ac9860901dc7ab581645287af30b5f2a6d41d90d27d6ee747eb8517a1873",
   "partyAndDistrictText": "District: 55 -- Republican",
   "staffCandidates": [
     {
       "role": "Legislative Aide",
-      "name": "None",
+      "name": null,
       "reviewStatus": "unreviewed"
     },
     {
       "role": "District Aide",
-      "name": "Becky Zizzo",
+      "name": null,
       "reviewStatus": "unreviewed"
     }
   ],
@@ -43,28 +43,7 @@
       "reviewStatus": "unreviewed"
     }
   ],
-  "committeeCandidates": [
-    {
-      "name": "Information Technology Budget & Policy Subcommittee Vice Chair",
-      "roleType": "member",
-      "reviewStatus": "unreviewed"
-    },
-    {
-      "name": "Judiciary Committee",
-      "roleType": "member",
-      "reviewStatus": "unreviewed"
-    },
-    {
-      "name": "Criminal Justice Subcommittee",
-      "roleType": "member",
-      "reviewStatus": "unreviewed"
-    },
-    {
-      "name": "Select Committee on Property Taxes",
-      "roleType": "member",
-      "reviewStatus": "unreviewed"
-    }
-  ],
+  "committeeCandidates": [],
   "publicServiceCandidates": [],
   "affiliationCandidates": [],
   "awardCandidates": [],
@@ -87,12 +66,6 @@
       "reviewStatus": "unreviewed"
     },
     {
-      "url": "https://www.flhouse.gov/Sections/Representatives/contactmember.aspx?MemberId=4881&SessionId=113",
-      "label": "Contact Member",
-      "sourcePageUrl": "https://www.flhouse.gov/Sections/Representatives/details.aspx?MemberId=4881&LegislativeTermId=91",
-      "reviewStatus": "unreviewed"
-    },
-    {
       "url": "https://www.flhouse.gov/contentViewer.aspx?Category=website&File=contact us.htm",
       "label": "Contact Us",
       "sourcePageUrl": "https://www.flhouse.gov/Sections/Representatives/details.aspx?MemberId=4881&LegislativeTermId=91",
@@ -110,7 +83,7 @@
       "identityReviewStatus": "unreviewed"
     },
     {
-      "url": "https://www.flhouse.gov/Images/bronze-seal-250.png?cb=4.6.654349",
+      "url": "https://www.flhouse.gov/Images/bronze-seal-250.png?cb=4.6.654350",
       "method": "og:image",
       "score": 14,
       "altText": null,
@@ -155,16 +128,7 @@
       "identityReviewStatus": "unreviewed"
     }
   ],
-  "mapLinks": [
-    {
-      "label": "Detailed District 55 Map",
-      "url": "https://www.flhouse.gov/FileStores/Web/District/DistrictMaps/small/HD_55.pdf"
-    },
-    {
-      "label": "Large Format District 55 Map",
-      "url": "https://www.flhouse.gov/FileStores/Web/District/DistrictMaps/large/HD_55_Large.pdf"
-    }
-  ],
+  "mapLinks": [],
   "billLinks": [
     {
       "label": "Bills",
@@ -177,10 +141,6 @@
   ],
   "mediaLinks": [
     {
-      "label": "Communications",
-      "url": "https://www.flhouse.gov/Sections/Representatives/communications.aspx?MemberId=4881&LegislativeTermId=91"
-    },
-    {
       "label": "Full Gallery",
       "url": "https://www.flhouse.gov/Sections/PhotoAlbums/photoAlbum.aspx?MemberId=4881"
     },
@@ -192,14 +152,14 @@
   "candidateCounts": {
     "staffCandidates": 2,
     "educationCandidates": 1,
-    "committeeCandidates": 4,
+    "committeeCandidates": 0,
     "publicServiceCandidates": 0,
     "affiliationCandidates": 0,
     "awardCandidates": 0,
     "officeLocationCandidates": 0,
     "contactCandidates": 0,
     "socialCandidates": 1,
-    "websiteCandidates": 3,
+    "websiteCandidates": 2,
     "portraitCandidates": 6
   }
 }

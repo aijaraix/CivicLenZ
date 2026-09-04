@@ -7,14 +7,14 @@
   "officeTitle": "Florida State Representative, District 115",
   "districtNumber": "115",
   "sourceUrl": "https://www.flhouse.gov/Sections/Representatives/details.aspx?MemberId=4929&LegislativeTermId=91",
-  "fetchedAt": "2026-07-16T05:26:33Z",
+  "fetchedAt": "2026-09-04T14:59:19Z",
   "collectionStatus": "success",
   "reviewStatus": "unreviewed",
   "publicationAllowed": false,
   "errors": [],
   "httpStatus": 200,
   "finalUrl": "https://www.flhouse.gov/Sections/Representatives/custom/details.aspx?MemberId=4929&LegislativeTermId=91",
-  "sourceSnapshotSha256": "57f637fb10f0d40cbe4acb863c9ea2d6e729693adf1bb99791e9a2a05fe80604",
+  "sourceSnapshotSha256": "dac7dc7da0d6a9b07a1006fc4c3e132babb51693da031e1480986ac99a6b6bc6",
   "partyAndDistrictText": "District: 115 -- Republican",
   "staffCandidates": [
     {
@@ -131,7 +131,7 @@
       "identityReviewStatus": "unreviewed"
     },
     {
-      "url": "https://www.flhouse.gov/Images/bronze-seal-250.png?cb=4.6.654349",
+      "url": "https://www.flhouse.gov/Images/bronze-seal-250.png?cb=4.6.654350",
       "method": "og:image",
       "score": 14,
       "altText": null,

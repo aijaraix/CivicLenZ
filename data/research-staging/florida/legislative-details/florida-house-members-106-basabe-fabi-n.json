@@ -7,14 +7,14 @@
   "officeTitle": "Florida State Representative, District 106",
   "districtNumber": "106",
   "sourceUrl": "https://www.flhouse.gov/Sections/Representatives/details.aspx?MemberId=4900&LegislativeTermId=91",
-  "fetchedAt": "2026-07-16T05:26:32Z",
+  "fetchedAt": "2026-09-04T14:59:18Z",
   "collectionStatus": "success",
   "reviewStatus": "unreviewed",
   "publicationAllowed": false,
   "errors": [],
   "httpStatus": 200,
   "finalUrl": "https://www.flhouse.gov/Sections/Representatives/custom/details.aspx?MemberId=4900&LegislativeTermId=91",
-  "sourceSnapshotSha256": "1e7695d93186a0e93a24ee329e556e24ee1ac3ad3daf1e5af33b615f84f00554",
+  "sourceSnapshotSha256": "f004bbb08fbf2a17fb72d87cfa4b36c4aee0e6017961a3b69d01b012ac21cf99",
   "partyAndDistrictText": "District: 106 -- Republican",
   "staffCandidates": [
     {
@@ -118,7 +118,7 @@
       "identityReviewStatus": "unreviewed"
     },
     {
-      "url": "https://www.flhouse.gov/FileStores/Web/Imaging/PhotoAlbums/HousePhotoSized8325.JPG",
+      "url": "https://www.flhouse.gov/FileStores/Web/Imaging/PhotoAlbums/HousePhotoSized7482.jpg",
       "method": "img",
       "score": 30,
       "altText": "Representative Basabe Photo",
@@ -127,7 +127,7 @@
       "identityReviewStatus": "unreviewed"
     },
     {
-      "url": "https://www.flhouse.gov/Images/bronze-seal-250.png?cb=4.6.654349",
+      "url": "https://www.flhouse.gov/Images/bronze-seal-250.png?cb=4.6.654350",
       "method": "og:image",
       "score": 14,
       "altText": null,
@@ -154,10 +154,10 @@
       "identityReviewStatus": "unreviewed"
     },
     {
-      "url": "https://www.flhouse.gov/FileStores/Web/Imaging/member-page-banners/3.jpg",
+      "url": "https://www.flhouse.gov/FileStores/Web/Imaging/PhotoAlbums/HousePhotoSized8325.JPG",
       "method": "img",
-      "score": -17,
-      "altText": "The Old Florida Capitol",
+      "score": 9,
+      "altText": null,
       "sourcePageUrl": "https://www.flhouse.gov/Sections/Representatives/custom/details.aspx?MemberId=4900&LegislativeTermId=91",
       "rightsStatus": "review_required",
       "identityReviewStatus": "unreviewed"

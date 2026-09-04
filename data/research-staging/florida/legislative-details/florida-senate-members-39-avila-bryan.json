@@ -7,130 +7,30 @@
   "officeTitle": "Florida State Senator, District 39",
   "districtNumber": "39",
   "sourceUrl": "https://www.flsenate.gov/Senators/2024-2026/S39",
-  "fetchedAt": "2026-07-16T05:26:40Z",
+  "fetchedAt": "2026-09-04T14:59:26Z",
   "collectionStatus": "success",
   "reviewStatus": "unreviewed",
   "publicationAllowed": false,
   "errors": [],
   "httpStatus": 200,
   "finalUrl": "https://www.flsenate.gov/Senators/S39",
-  "sourceSnapshotSha256": "67a5d6720c5208188bcf42bd280b5a20421d219a569587dc8bf3313a6bdbcfeb",
-  "partyAndDistrictText": "Party: Republican",
+  "sourceSnapshotSha256": "7cea883d5b59284741dfba2db5cbd2eb9b276d7705a9f8f9ab29dce68a900d0e",
+  "partyAndDistrictText": null,
   "staffCandidates": [],
   "biographyCandidates": {
-    "occupation": "Academic Dean",
-    "spouse": "Cindy Gil of Bogota, Colombia",
-    "children": "Olivia Rose, Brandon",
-    "bornRaw": "in Hialeah, Florida",
-    "religiousAffiliation": "Roman Catholic",
-    "recreation": "Spending time with family, playing sports, exercising, traveling, reading"
+    "occupation": null,
+    "spouse": null,
+    "children": null,
+    "bornRaw": null,
+    "religiousAffiliation": null,
+    "recreation": null
   },
   "educationCandidates": [],
-  "committeeCandidates": [
-    {
-      "name": "Finance and Tax , Chair",
-      "roleType": "member",
-      "reviewStatus": "unreviewed"
-    },
-    {
-      "name": "Transportation , Vice Chair",
-      "roleType": "member",
-      "reviewStatus": "unreviewed"
-    },
-    {
-      "name": "Appropriations Committee on Transportation, Tourism, and Economic Development",
-      "roleType": "member",
-      "reviewStatus": "unreviewed"
-    },
-    {
-      "name": "Environment and Natural Resources",
-      "roleType": "member",
-      "reviewStatus": "unreviewed"
-    },
-    {
-      "name": "Ethics and Elections",
-      "roleType": "member",
-      "reviewStatus": "unreviewed"
-    },
-    {
-      "name": "Fiscal Policy",
-      "roleType": "member",
-      "reviewStatus": "unreviewed"
-    },
-    {
-      "name": "Rules",
-      "roleType": "member",
-      "reviewStatus": "unreviewed"
-    },
-    {
-      "name": "District 39",
-      "roleType": "member",
-      "reviewStatus": "unreviewed"
-    },
-    {
-      "name": "Bills Introduced",
-      "roleType": "member",
-      "reviewStatus": "unreviewed"
-    },
-    {
-      "name": "Media",
-      "roleType": "member",
-      "reviewStatus": "unreviewed"
-    },
-    {
-      "name": "Personal & Career",
-      "roleType": "member",
-      "reviewStatus": "unreviewed"
-    }
-  ],
-  "publicServiceCandidates": [
-    {
-      "rawText": "City of Hialeah Scholarship Board, 2012-2014",
-      "reviewStatus": "unreviewed"
-    },
-    {
-      "rawText": "City of Hialeah Planning and Zoning Board, 2011-2014",
-      "reviewStatus": "unreviewed"
-    }
-  ],
-  "affiliationCandidates": [
-    {
-      "name": "Enterprise Florida, Board Member, 2019-2023",
-      "reviewStatus": "unreviewed"
-    },
-    {
-      "name": "Public Health Trust, Board of Trustees, 2016-2019",
-      "reviewStatus": "unreviewed"
-    },
-    {
-      "name": "Miami-Dade County Republican Executive Committee, 2009-present Vice Chairman, 2013-2014",
-      "reviewStatus": "unreviewed"
-    },
-    {
-      "name": "Vice Chairman, 2013-2014",
-      "reviewStatus": "unreviewed"
-    }
-  ],
-  "awardCandidates": [
-    {
-      "rawText": "MG Ronald O. Harrison Distinguished Service Award",
-      "reviewStatus": "unreviewed"
-    },
-    {
-      "rawText": "South Florida Hispanic Chamber of Commerce Chairman's Distinguished Community Service Award",
-      "reviewStatus": "unreviewed"
-    }
-  ],
-  "legislativeServiceCandidates": [
-    {
-      "rawText": "2024-2026",
-      "reviewStatus": "unreviewed"
-    },
-    {
-      "rawText": "2022-2024",
-      "reviewStatus": "unreviewed"
-    }
-  ],
+  "committeeCandidates": [],
+  "publicServiceCandidates": [],
+  "affiliationCandidates": [],
+  "awardCandidates": [],
+  "legislativeServiceCandidates": [],
   "officeLocationCandidates": [
     {
       "label": "District Office",
@@ -139,17 +39,15 @@
     },
     {
       "label": "Tallahassee Office",
-      "rawLines": [
-        "Track this Senator's Media"
-      ],
+      "rawLines": [],
       "reviewStatus": "unreviewed"
     }
   ],
   "contactCandidates": [
     {
       "type": "email",
-      "value": "avila.bryan.web@flsenate.gov",
-      "label": "avila.bryan.web@flsenate.gov",
+      "value": "SenateDistrict39.web@flsenate.gov",
+      "label": "SenateDistrict39.web@flsenate.gov",
       "sourcePageUrl": "https://www.flsenate.gov/Senators/S39"
     },
     {
@@ -236,6 +134,12 @@
       "reviewStatus": "unreviewed"
     },
     {
+      "url": "https://www.flsenate.gov/Senators/S39",
+      "label": "Email this Office",
+      "sourcePageUrl": "https://www.flsenate.gov/Senators/S39",
+      "reviewStatus": "unreviewed"
+    },
+    {
       "url": "https://www.flsenate.gov/Session/ExecutiveAppointments/",
       "label": "Executive Appointments",
       "sourcePageUrl": "https://www.flsenate.gov/Senators/S39",
@@ -250,10 +154,10 @@
   ],
   "portraitCandidates": [
     {
-      "url": "https://www.flsenate.gov/PublishedContent/Senators/2024-2026/Photos/s39_5459.jpg",
+      "url": "https://www.flsenate.gov/PublishedContent/Senators/2024-2026/Photos/nophoto.jpg",
       "method": "img",
-      "score": 30,
-      "altText": "Senator Avila",
+      "score": 18,
+      "altText": "Vacant District",
       "sourcePageUrl": "https://www.flsenate.gov/Senators/S39",
       "rightsStatus": "review_required",
       "identityReviewStatus": "unreviewed"
@@ -324,70 +228,6 @@
       "url": "https://www.flsenate.gov/Session/Bills"
     },
     {
-      "label": "Bills Introduced",
-      "url": "https://www.flsenate.gov/Senators/S39?Tab=Bills#Bills"
-    },
-    {
-      "label": "S 416",
-      "url": "https://www.flsenate.gov/Session/Bill/2026/416"
-    },
-    {
-      "label": "S 464",
-      "url": "https://www.flsenate.gov/Session/Bill/2026/464"
-    },
-    {
-      "label": "S 484",
-      "url": "https://www.flsenate.gov/Session/Bill/2026/484"
-    },
-    {
-      "label": "S 500",
-      "url": "https://www.flsenate.gov/Session/Bill/2026/500"
-    },
-    {
-      "label": "S 584",
-      "url": "https://www.flsenate.gov/Session/Bill/2026/584"
-    },
-    {
-      "label": "S 604",
-      "url": "https://www.flsenate.gov/Session/Bill/2026/604"
-    },
-    {
-      "label": "S 832",
-      "url": "https://www.flsenate.gov/Session/Bill/2026/832"
-    },
-    {
-      "label": "S 1118",
-      "url": "https://www.flsenate.gov/Session/Bill/2026/1118"
-    },
-    {
-      "label": "S 1628",
-      "url": "https://www.flsenate.gov/Session/Bill/2026/1628"
-    },
-    {
-      "label": "S 1694",
-      "url": "https://www.flsenate.gov/Session/Bill/2026/1694"
-    },
-    {
-      "label": "S 302",
-      "url": "https://www.flsenate.gov/Session/Bill/2026/302"
-    },
-    {
-      "label": "S 706",
-      "url": "https://www.flsenate.gov/Session/Bill/2026/706"
-    },
-    {
-      "label": "S 856",
-      "url": "https://www.flsenate.gov/Session/Bill/2026/856"
-    },
-    {
-      "label": "S 878",
-      "url": "https://www.flsenate.gov/Session/Bill/2026/878"
-    },
-    {
-      "label": "S 1178",
-      "url": "https://www.flsenate.gov/Session/Bill/2026/1178"
-    },
-    {
       "label": "Bill Search Tips",
       "url": "https://www.flsenate.gov/search/billsearchtips"
     },
@@ -430,18 +270,6 @@
       "url": "https://www.flsenate.gov/Reference/Publications/SenateHandbooks"
     },
     {
-      "label": "Senate Chamber Seating Chart",
-      "url": "https://www.flsenate.gov/PublishedContent/AdministrativePublications/seatingchart.pdf"
-    },
-    {
-      "label": "Track this Senator's Media",
-      "url": "https://www.flsenate.gov/Tracker/Track?key=3_39"
-    },
-    {
-      "label": "Media",
-      "url": "https://www.flsenate.gov/Senators/S39?Tab=Media#Media"
-    },
-    {
       "label": "Press Releases",
       "url": "https://www.flsenate.gov/Media/PressReleases"
     }
@@ -449,15 +277,15 @@
   "candidateCounts": {
     "staffCandidates": 0,
     "educationCandidates": 0,
-    "committeeCandidates": 11,
-    "publicServiceCandidates": 2,
-    "affiliationCandidates": 4,
-    "awardCandidates": 2,
-    "legislativeServiceCandidates": 2,
+    "committeeCandidates": 0,
+    "publicServiceCandidates": 0,
+    "affiliationCandidates": 0,
+    "awardCandidates": 0,
+    "legislativeServiceCandidates": 0,
     "officeLocationCandidates": 2,
     "contactCandidates": 4,
     "socialCandidates": 1,
-    "websiteCandidates": 11,
+    "websiteCandidates": 12,
     "portraitCandidates": 6
   }
 }

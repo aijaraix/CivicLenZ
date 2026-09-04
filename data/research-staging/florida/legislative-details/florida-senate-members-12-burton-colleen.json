@@ -7,16 +7,22 @@
   "officeTitle": "Florida State Senator, District 12",
   "districtNumber": "12",
   "sourceUrl": "https://www.flsenate.gov/Senators/2024-2026/S12",
-  "fetchedAt": "2026-07-16T05:26:35Z",
+  "fetchedAt": "2026-09-04T14:59:21Z",
   "collectionStatus": "success",
   "reviewStatus": "unreviewed",
   "publicationAllowed": false,
   "errors": [],
   "httpStatus": 200,
   "finalUrl": "https://www.flsenate.gov/Senators/S12",
-  "sourceSnapshotSha256": "0ba1bfb430b8dde2cc794dd07c04a7ccaea974e50247ad1768ef63fa8c4b73b8",
+  "sourceSnapshotSha256": "d8f68ad755110529fc62a1bc1df5510eca94baba4e6155992d87db968aeb1fc3",
   "partyAndDistrictText": "Party: Republican",
-  "staffCandidates": [],
+  "staffCandidates": [
+    {
+      "role": "Legislative Aide",
+      "name": "Track this Senator's Media",
+      "reviewStatus": "unreviewed"
+    }
+  ],
   "biographyCandidates": {
     "occupation": "Former Nonprofit Executive Director, Polk Vision, Imperial Symphony Orchestra",
     "spouse": "Brad Burton of Berkeley Heights, NJ",
@@ -298,62 +304,6 @@
       "url": "https://www.flsenate.gov/Senators/S12?Tab=Bills#Bills"
     },
     {
-      "label": "S 266",
-      "url": "https://www.flsenate.gov/Session/Bill/2026/266"
-    },
-    {
-      "label": "S 314",
-      "url": "https://www.flsenate.gov/Session/Bill/2026/314"
-    },
-    {
-      "label": "S 594",
-      "url": "https://www.flsenate.gov/Session/Bill/2026/594"
-    },
-    {
-      "label": "S 1338",
-      "url": "https://www.flsenate.gov/Session/Bill/2026/1338"
-    },
-    {
-      "label": "S 1344",
-      "url": "https://www.flsenate.gov/Session/Bill/2026/1344"
-    },
-    {
-      "label": "S 1346",
-      "url": "https://www.flsenate.gov/Session/Bill/2026/1346"
-    },
-    {
-      "label": "S 1396",
-      "url": "https://www.flsenate.gov/Session/Bill/2026/1396"
-    },
-    {
-      "label": "S 1404",
-      "url": "https://www.flsenate.gov/Session/Bill/2026/1404"
-    },
-    {
-      "label": "S 1480",
-      "url": "https://www.flsenate.gov/Session/Bill/2026/1480"
-    },
-    {
-      "label": "S 1668",
-      "url": "https://www.flsenate.gov/Session/Bill/2026/1668"
-    },
-    {
-      "label": "S 1806",
-      "url": "https://www.flsenate.gov/Session/Bill/2026/1806"
-    },
-    {
-      "label": "S 902",
-      "url": "https://www.flsenate.gov/Session/Bill/2026/902"
-    },
-    {
-      "label": "S 1062",
-      "url": "https://www.flsenate.gov/Session/Bill/2026/1062"
-    },
-    {
-      "label": "S 1574",
-      "url": "https://www.flsenate.gov/Session/Bill/2026/1574"
-    },
-    {
       "label": "Bill Search Tips",
       "url": "https://www.flsenate.gov/search/billsearchtips"
     },
@@ -413,7 +363,7 @@
     }
   ],
   "candidateCounts": {
-    "staffCandidates": 0,
+    "staffCandidates": 1,
     "educationCandidates": 0,
     "committeeCandidates": 11,
     "publicServiceCandidates": 0,

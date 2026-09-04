@@ -7,19 +7,19 @@
   "officeTitle": "Florida State Representative, District 45",
   "districtNumber": "45",
   "sourceUrl": "https://www.flhouse.gov/Sections/Representatives/details.aspx?MemberId=4915&LegislativeTermId=91",
-  "fetchedAt": "2026-07-16T05:26:25Z",
+  "fetchedAt": "2026-09-04T14:59:13Z",
   "collectionStatus": "success",
   "reviewStatus": "unreviewed",
   "publicationAllowed": false,
   "errors": [],
   "httpStatus": 200,
   "finalUrl": "https://www.flhouse.gov/Sections/Representatives/custom/details.aspx?MemberId=4915&LegislativeTermId=91",
-  "sourceSnapshotSha256": "8ccdce8155fdbc9e6e26c58051f1b3f2dfa2d8fdb1138f593c0d625f507999dc",
+  "sourceSnapshotSha256": "7f5a799a72257acf466aa7cd394efc139cda41a80a619e704562b655f4338892",
   "partyAndDistrictText": "District: 45 -- Democrat",
   "staffCandidates": [
     {
       "role": "Legislative Aide",
-      "name": "None",
+      "name": "Anika Hamilton",
       "reviewStatus": "unreviewed"
     },
     {
@@ -73,11 +73,6 @@
       "name": "Transportation & Economic Development Budget Subcommittee",
       "roleType": "member",
       "reviewStatus": "unreviewed"
-    },
-    {
-      "name": "Leonard Spencer (@ Leonard Spencer ) • Instagram photos and videos",
-      "roleType": "member",
-      "reviewStatus": "unreviewed"
     }
   ],
   "publicServiceCandidates": [],
@@ -98,22 +93,7 @@
       "sourcePageUrl": "https://www.flhouse.gov/Sections/Representatives/custom/details.aspx?MemberId=4915&LegislativeTermId=91"
     }
   ],
-  "socialCandidates": [
-    {
-      "platform": "Facebook",
-      "url": "https://www.facebook.com/Spencer4Florida/",
-      "label": "Leonard Spencer",
-      "sourcePageUrl": "https://www.flhouse.gov/Sections/Representatives/custom/details.aspx?MemberId=4915&LegislativeTermId=91",
-      "reviewStatus": "unreviewed"
-    },
-    {
-      "platform": "Instagram",
-      "url": "https://www.instagram.com/spencer4florida?utm_source=ig_embed&utm_campaign=loading",
-      "label": "Leonard Spencer",
-      "sourcePageUrl": "https://www.flhouse.gov/Sections/Representatives/custom/details.aspx?MemberId=4915&LegislativeTermId=91",
-      "reviewStatus": "unreviewed"
-    }
-  ],
+  "socialCandidates": [],
   "websiteCandidates": [
     {
       "url": "https://www.flhouse.gov/Sections/Representatives/custom/contactmember.aspx?MemberId=4915&LegislativeTermId=91",
@@ -139,7 +119,7 @@
       "identityReviewStatus": "unreviewed"
     },
     {
-      "url": "https://www.flhouse.gov/FileStores/Web/Imaging/PhotoAlbums/HousePhotoSized8259.JPG",
+      "url": "https://www.flhouse.gov/FileStores/Web/Imaging/PhotoAlbums/HousePhotoSized8260.JPG",
       "method": "img",
       "score": 30,
       "altText": "Representative Spencer Photo",
@@ -148,7 +128,7 @@
       "identityReviewStatus": "unreviewed"
     },
     {
-      "url": "https://www.flhouse.gov/Images/bronze-seal-250.png?cb=4.6.654349",
+      "url": "https://www.flhouse.gov/Images/bronze-seal-250.png?cb=4.6.654350",
       "method": "og:image",
       "score": 14,
       "altText": null,
@@ -166,7 +146,7 @@
       "identityReviewStatus": "unreviewed"
     },
     {
-      "url": "https://www.flhouse.gov/FileStores/Web/Imaging/PhotoAlbums/HousePhotoSized8260.JPG",
+      "url": "https://www.flhouse.gov/FileStores/Web/Imaging/PhotoAlbums/HousePhotoSized8259.JPG",
       "method": "img",
       "score": 9,
       "altText": null,
@@ -212,13 +192,13 @@
   "candidateCounts": {
     "staffCandidates": 2,
     "educationCandidates": 0,
-    "committeeCandidates": 8,
+    "committeeCandidates": 7,
     "publicServiceCandidates": 0,
     "affiliationCandidates": 0,
     "awardCandidates": 0,
     "officeLocationCandidates": 0,
     "contactCandidates": 2,
-    "socialCandidates": 2,
+    "socialCandidates": 0,
     "websiteCandidates": 2,
     "portraitCandidates": 6
   }

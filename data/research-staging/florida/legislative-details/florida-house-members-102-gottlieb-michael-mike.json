@@ -7,14 +7,14 @@
   "officeTitle": "Florida State Representative, District 102",
   "districtNumber": "102",
   "sourceUrl": "https://www.flhouse.gov/Sections/Representatives/details.aspx?MemberId=4724&LegislativeTermId=91",
-  "fetchedAt": "2026-07-16T05:26:32Z",
+  "fetchedAt": "2026-09-04T14:59:18Z",
   "collectionStatus": "success",
   "reviewStatus": "unreviewed",
   "publicationAllowed": false,
   "errors": [],
   "httpStatus": 200,
   "finalUrl": "https://www.flhouse.gov/Sections/Representatives/details.aspx?MemberId=4724&LegislativeTermId=91",
-  "sourceSnapshotSha256": "f3245c1085a93669d88243750e5b7ee95fb430bb79b2acb738e9dca8c1bc5483",
+  "sourceSnapshotSha256": "42b1adcbf4198d87c2fa8aa23fa0ef027ee32ed8680f3e07259b904a1d183c62",
   "partyAndDistrictText": "District: 102 -- Democrat",
   "staffCandidates": [
     {
@@ -129,7 +129,7 @@
       "identityReviewStatus": "unreviewed"
     },
     {
-      "url": "https://www.flhouse.gov/Images/bronze-seal-250.png?cb=4.6.654349",
+      "url": "https://www.flhouse.gov/Images/bronze-seal-250.png?cb=4.6.654350",
       "method": "og:image",
       "score": 14,
       "altText": null,
@@ -138,7 +138,7 @@
       "identityReviewStatus": "unreviewed"
     },
     {
-      "url": "https://www.flhouse.gov/FileStores/Web/Imaging/PhotoAlbums/HousePhotoSized7879.JPG",
+      "url": "https://www.flhouse.gov/FileStores/Web/Imaging/PhotoAlbums/HousePhotoSized7523.jpg",
       "method": "img",
       "score": 9,
       "altText": null,
@@ -147,7 +147,7 @@
       "identityReviewStatus": "unreviewed"
     },
     {
-      "url": "https://www.flhouse.gov/FileStores/Web/Imaging/PhotoAlbums/HousePhotoSized7882.JPG",
+      "url": "https://www.flhouse.gov/FileStores/Web/Imaging/PhotoAlbums/HousePhotoSized7658.jpg",
       "method": "img",
       "score": 9,
       "altText": null,

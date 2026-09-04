@@ -7,14 +7,14 @@
   "officeTitle": "Florida State Representative, District 74",
   "districtNumber": "74",
   "sourceUrl": "https://www.flhouse.gov/Sections/Representatives/details.aspx?MemberId=4731&LegislativeTermId=91",
-  "fetchedAt": "2026-07-16T05:26:29Z",
+  "fetchedAt": "2026-09-04T14:59:16Z",
   "collectionStatus": "success",
   "reviewStatus": "unreviewed",
   "publicationAllowed": false,
   "errors": [],
   "httpStatus": 200,
   "finalUrl": "https://www.flhouse.gov/Sections/Representatives/custom/details.aspx?MemberId=4731&LegislativeTermId=91",
-  "sourceSnapshotSha256": "e5bd862a440edfcae0274dc30211a4bdee019acd02b19c79c22706b6ead1fa2e",
+  "sourceSnapshotSha256": "498fe119d121fa7a9ea75f83e3109dbb37efefbef6f9c534040a8053e997c342",
   "partyAndDistrictText": "District: 74 -- Republican",
   "staffCandidates": [
     {
@@ -77,15 +77,7 @@
       "sourcePageUrl": "https://www.flhouse.gov/Sections/Representatives/custom/details.aspx?MemberId=4731&LegislativeTermId=91"
     }
   ],
-  "socialCandidates": [
-    {
-      "platform": "Facebook",
-      "url": "https://www.facebook.com/RepBuchanan/",
-      "label": "James Buchanan",
-      "sourcePageUrl": "https://www.flhouse.gov/Sections/Representatives/custom/details.aspx?MemberId=4731&LegislativeTermId=91",
-      "reviewStatus": "unreviewed"
-    }
-  ],
+  "socialCandidates": [],
   "websiteCandidates": [
     {
       "url": "https://www.flhouse.gov/Sections/Representatives/custom/contactmember.aspx?MemberId=4731&LegislativeTermId=91",
@@ -126,7 +118,7 @@
       "identityReviewStatus": "unreviewed"
     },
     {
-      "url": "https://www.flhouse.gov/Images/bronze-seal-250.png?cb=4.6.654349",
+      "url": "https://www.flhouse.gov/Images/bronze-seal-250.png?cb=4.6.654350",
       "method": "og:image",
       "score": 14,
       "altText": null,
@@ -196,7 +188,7 @@
     "awardCandidates": 0,
     "officeLocationCandidates": 0,
     "contactCandidates": 2,
-    "socialCandidates": 1,
+    "socialCandidates": 0,
     "websiteCandidates": 3,
     "portraitCandidates": 6
   }

@@ -7,14 +7,14 @@
   "officeTitle": "Florida State Representative, District 1",
   "districtNumber": "1",
   "sourceUrl": "https://www.flhouse.gov/Sections/Representatives/details.aspx?MemberId=4763&LegislativeTermId=91",
-  "fetchedAt": "2026-07-16T05:26:20Z",
+  "fetchedAt": "2026-09-04T14:59:09Z",
   "collectionStatus": "success",
   "reviewStatus": "unreviewed",
   "publicationAllowed": false,
   "errors": [],
   "httpStatus": 200,
   "finalUrl": "https://www.flhouse.gov/Sections/Representatives/custom/details.aspx?MemberId=4763&LegislativeTermId=91",
-  "sourceSnapshotSha256": "5283f614eb27398a45062d5dda1453d9f9ea50841183db9e30deb0e27cc487b3",
+  "sourceSnapshotSha256": "270cc1b0c87343930deb7f94d7c3f6cb72b4b2970614736c7c9134e0835d1fb6",
   "partyAndDistrictText": "District: 1 -- Republican",
   "staffCandidates": [
     {
@@ -123,7 +123,7 @@
       "identityReviewStatus": "unreviewed"
     },
     {
-      "url": "https://www.flhouse.gov/FileStores/Web/Imaging/PhotoAlbums/HousePhotoSized8252.JPG",
+      "url": "https://www.flhouse.gov/FileStores/Web/Imaging/PhotoAlbums/HousePhotoSized8231.JPG",
       "method": "img",
       "score": 30,
       "altText": "Representative Salzman Photo",
@@ -132,7 +132,7 @@
       "identityReviewStatus": "unreviewed"
     },
     {
-      "url": "https://www.flhouse.gov/Images/bronze-seal-250.png?cb=4.6.654349",
+      "url": "https://www.flhouse.gov/Images/bronze-seal-250.png?cb=4.6.654350",
       "method": "og:image",
       "score": 14,
       "altText": null,
@@ -150,7 +150,7 @@
       "identityReviewStatus": "unreviewed"
     },
     {
-      "url": "https://www.flhouse.gov/FileStores/Web/Imaging/PhotoAlbums/HousePhotoSized8356.JPG",
+      "url": "https://www.flhouse.gov/FileStores/Web/Imaging/PhotoAlbums/HousePhotoSized8252.JPG",
       "method": "img",
       "score": 9,
       "altText": null,
@@ -159,10 +159,10 @@
       "identityReviewStatus": "unreviewed"
     },
     {
-      "url": "https://www.flhouse.gov/FileStores/Web/Imaging/member-page-banners/3.jpg",
+      "url": "https://www.flhouse.gov/FileStores/Web/Imaging/PhotoAlbums/HousePhotoSized8356.JPG",
       "method": "img",
-      "score": -17,
-      "altText": "The Old Florida Capitol",
+      "score": 9,
+      "altText": null,
       "sourcePageUrl": "https://www.flhouse.gov/Sections/Representatives/custom/details.aspx?MemberId=4763&LegislativeTermId=91",
       "rightsStatus": "review_required",
       "identityReviewStatus": "unreviewed"

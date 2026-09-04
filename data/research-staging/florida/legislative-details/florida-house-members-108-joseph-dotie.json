@@ -7,14 +7,14 @@
   "officeTitle": "Florida State Representative, District 108",
   "districtNumber": "108",
   "sourceUrl": "https://www.flhouse.gov/Sections/Representatives/details.aspx?MemberId=4716&LegislativeTermId=91",
-  "fetchedAt": "2026-07-16T05:26:32Z",
+  "fetchedAt": "2026-09-04T14:59:18Z",
   "collectionStatus": "success",
   "reviewStatus": "unreviewed",
   "publicationAllowed": false,
   "errors": [],
   "httpStatus": 200,
   "finalUrl": "https://www.flhouse.gov/Sections/Representatives/custom/details.aspx?MemberId=4716&LegislativeTermId=91",
-  "sourceSnapshotSha256": "def71b6c9a6373288eacb3f3057646a89695970d7c5beca12f1e3fae608c8990",
+  "sourceSnapshotSha256": "8da25819a6d8f2fe34d658e4c124cb30ce5315306779df24f2b799cb5832cc35",
   "partyAndDistrictText": "District: 108 -- Democrat",
   "staffCandidates": [
     {
@@ -108,7 +108,7 @@
       "identityReviewStatus": "unreviewed"
     },
     {
-      "url": "https://www.flhouse.gov/FileStores/Web/Imaging/PhotoAlbums/HousePhotoSized7788.jpg",
+      "url": "https://www.flhouse.gov/FileStores/Web/Imaging/PhotoAlbums/HousePhotoSized7787.jpg",
       "method": "img",
       "score": 30,
       "altText": "Representative Joseph Photo",
@@ -117,9 +117,18 @@
       "identityReviewStatus": "unreviewed"
     },
     {
-      "url": "https://www.flhouse.gov/Images/bronze-seal-250.png?cb=4.6.654349",
+      "url": "https://www.flhouse.gov/Images/bronze-seal-250.png?cb=4.6.654350",
       "method": "og:image",
       "score": 14,
+      "altText": null,
+      "sourcePageUrl": "https://www.flhouse.gov/Sections/Representatives/custom/details.aspx?MemberId=4716&LegislativeTermId=91",
+      "rightsStatus": "review_required",
+      "identityReviewStatus": "unreviewed"
+    },
+    {
+      "url": "https://www.flhouse.gov/FileStores/Web/Imaging/PhotoAlbums/HousePhotoSized7788.jpg",
+      "method": "img",
+      "score": 9,
       "altText": null,
       "sourcePageUrl": "https://www.flhouse.gov/Sections/Representatives/custom/details.aspx?MemberId=4716&LegislativeTermId=91",
       "rightsStatus": "review_required",
@@ -139,15 +148,6 @@
       "method": "img",
       "score": 9,
       "altText": null,
-      "sourcePageUrl": "https://www.flhouse.gov/Sections/Representatives/custom/details.aspx?MemberId=4716&LegislativeTermId=91",
-      "rightsStatus": "review_required",
-      "identityReviewStatus": "unreviewed"
-    },
-    {
-      "url": "https://www.flhouse.gov/FileStores/Web/Imaging/member-page-banners/1.jpg",
-      "method": "img",
-      "score": -17,
-      "altText": "The House Chamber",
       "sourcePageUrl": "https://www.flhouse.gov/Sections/Representatives/custom/details.aspx?MemberId=4716&LegislativeTermId=91",
       "rightsStatus": "review_required",
       "identityReviewStatus": "unreviewed"

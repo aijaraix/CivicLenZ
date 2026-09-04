@@ -7,14 +7,14 @@
   "officeTitle": "Florida State Representative, District 10",
   "districtNumber": "10",
   "sourceUrl": "https://www.flhouse.gov/Sections/Representatives/details.aspx?MemberId=4708&LegislativeTermId=91",
-  "fetchedAt": "2026-07-16T05:26:21Z",
+  "fetchedAt": "2026-09-04T14:59:10Z",
   "collectionStatus": "success",
   "reviewStatus": "unreviewed",
   "publicationAllowed": false,
   "errors": [],
   "httpStatus": 200,
   "finalUrl": "https://www.flhouse.gov/Sections/Representatives/details.aspx?MemberId=4708&LegislativeTermId=91",
-  "sourceSnapshotSha256": "7904dccdd3574f5cc90bb1f95beb455f9659fb186de5dcb855ea226de7299918",
+  "sourceSnapshotSha256": "e3cc11a1920b2ea4fa6eb531543713cfec1d8372083a22620902e01c2f815a73",
   "partyAndDistrictText": "District: 10 -- Republican",
   "staffCandidates": [
     {
@@ -114,7 +114,7 @@
       "identityReviewStatus": "unreviewed"
     },
     {
-      "url": "https://www.flhouse.gov/Images/bronze-seal-250.png?cb=4.6.654349",
+      "url": "https://www.flhouse.gov/Images/bronze-seal-250.png?cb=4.6.654350",
       "method": "og:image",
       "score": 14,
       "altText": null,

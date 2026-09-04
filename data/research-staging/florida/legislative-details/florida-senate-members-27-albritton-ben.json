@@ -7,14 +7,14 @@
   "officeTitle": "Florida State Senator, District 27",
   "districtNumber": "27",
   "sourceUrl": "https://www.flsenate.gov/Senators/2024-2026/S27",
-  "fetchedAt": "2026-07-16T05:26:38Z",
+  "fetchedAt": "2026-09-04T14:59:24Z",
   "collectionStatus": "success",
   "reviewStatus": "unreviewed",
   "publicationAllowed": false,
   "errors": [],
   "httpStatus": 200,
   "finalUrl": "https://www.flsenate.gov/Senators/S27",
-  "sourceSnapshotSha256": "f79bd259ec22202be690977a10a5d5a8f4c61ac73ffca1a6eea152745dcd5e5c",
+  "sourceSnapshotSha256": "606c12a9efda94fbe39a83090dcd2312cdc90719ef2d7a81be7e2d910886579c",
   "partyAndDistrictText": "Party: Republican",
   "staffCandidates": [],
   "biographyCandidates": {
@@ -235,6 +235,12 @@
       "reviewStatus": "unreviewed"
     },
     {
+      "url": "https://www.flsenate.gov/PublishedContent/Offices/President/2026-2027_Interim_Committee_Meeting_Schedule_.pdf",
+      "label": "2026-2027 Interim Committee Meeting Schedule",
+      "sourcePageUrl": "https://www.flsenate.gov/Senators/S27",
+      "reviewStatus": "unreviewed"
+    },
+    {
       "url": "https://www.flsenate.gov/PublishedContent/Offices/President/6_2_26_Senate_Passes_Historic_Property_Tax_Cut_for_Florida_Homeowners.pdf",
       "label": "Senate Passes Historic Property Tax Cut for Florida Homeowners",
       "sourcePageUrl": "https://www.flsenate.gov/Senators/S27",
@@ -249,12 +255,6 @@
     {
       "url": "https://www.flsenate.gov/PublishedContent/Offices/President/5_26_Make_Citrus_Great_Again.pdf",
       "label": "State Budget Includes Historic Funding to Make Citrus Great Again",
-      "sourcePageUrl": "https://www.flsenate.gov/Senators/S27",
-      "reviewStatus": "unreviewed"
-    },
-    {
-      "url": "https://www.flsenate.gov/PublishedContent/Offices/President/5_26_Farmers_Feeding_Florida.pdf",
-      "label": "State Budget Includes $38 Million for Farmers Feeding Florida",
       "sourcePageUrl": "https://www.flsenate.gov/Senators/S27",
       "reviewStatus": "unreviewed"
     },
@@ -282,7 +282,7 @@
       "identityReviewStatus": "unreviewed"
     },
     {
-      "url": "https://www.flsenate.gov/PublishedContent/Offices/President/5_26_Farmers_Feeding_Florida.jpg",
+      "url": "https://www.flsenate.gov/PublishedContent/Offices/President/2026-2027_Interim_Committee_Meeting_Schedule_.jpg",
       "method": "img",
       "score": 9,
       "altText": null,
@@ -349,14 +349,6 @@
     {
       "label": "Bills Introduced",
       "url": "https://www.flsenate.gov/Senators/S27?Tab=Bills#Bills"
-    },
-    {
-      "label": "S 1062",
-      "url": "https://www.flsenate.gov/Session/Bill/2026/1062"
-    },
-    {
-      "label": "S 1574",
-      "url": "https://www.flsenate.gov/Session/Bill/2026/1574"
     },
     {
       "label": "Bill Search Tips",

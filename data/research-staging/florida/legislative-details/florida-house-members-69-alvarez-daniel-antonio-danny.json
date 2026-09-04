@@ -7,14 +7,14 @@
   "officeTitle": "Florida State Representative, District 69",
   "districtNumber": "69",
   "sourceUrl": "https://www.flhouse.gov/Sections/Representatives/details.aspx?MemberId=4889&LegislativeTermId=91",
-  "fetchedAt": "2026-07-16T05:26:28Z",
+  "fetchedAt": "2026-09-04T14:59:15Z",
   "collectionStatus": "success",
   "reviewStatus": "unreviewed",
   "publicationAllowed": false,
   "errors": [],
   "httpStatus": 200,
   "finalUrl": "https://www.flhouse.gov/Sections/Representatives/custom/details.aspx?MemberId=4889&LegislativeTermId=91",
-  "sourceSnapshotSha256": "7050c57042e77bacaf38e6b4dc26b9a2d9f0d0c7025a943d00b8aff4a25dfb38",
+  "sourceSnapshotSha256": "36cc2b653b08a16b524a66e81436594d8b84b10640fc42038787d9736fbd32bb",
   "partyAndDistrictText": "District: 69 -- Republican",
   "staffCandidates": [
     {
@@ -131,7 +131,7 @@
       "identityReviewStatus": "unreviewed"
     },
     {
-      "url": "https://www.flhouse.gov/FileStores/Web/Imaging/PhotoAlbums/HousePhotoSized7757.JPG",
+      "url": "https://www.flhouse.gov/FileStores/Web/Imaging/PhotoAlbums/HousePhotoSized8227.JPG",
       "method": "img",
       "score": 30,
       "altText": "Representative Alvarez Photo",
@@ -140,7 +140,7 @@
       "identityReviewStatus": "unreviewed"
     },
     {
-      "url": "https://www.flhouse.gov/Images/bronze-seal-250.png?cb=4.6.654349",
+      "url": "https://www.flhouse.gov/Images/bronze-seal-250.png?cb=4.6.654350",
       "method": "og:image",
       "score": 14,
       "altText": null,
@@ -167,10 +167,10 @@
       "identityReviewStatus": "unreviewed"
     },
     {
-      "url": "https://www.flhouse.gov/FileStores/Web/Imaging/PhotoAlbums/HousePhotoSized8227.JPG",
+      "url": "https://www.flhouse.gov/FileStores/Web/Imaging/member-page-banners/1.jpg",
       "method": "img",
-      "score": 9,
-      "altText": null,
+      "score": -17,
+      "altText": "The House Chamber",
       "sourcePageUrl": "https://www.flhouse.gov/Sections/Representatives/custom/details.aspx?MemberId=4889&LegislativeTermId=91",
       "rightsStatus": "review_required",
       "identityReviewStatus": "unreviewed"

@@ -7,19 +7,19 @@
   "officeTitle": "Florida State Representative, District 119",
   "districtNumber": "119",
   "sourceUrl": "https://www.flhouse.gov/Sections/Representatives/details.aspx?MemberId=4898&LegislativeTermId=91",
-  "fetchedAt": "2026-07-16T05:26:33Z",
+  "fetchedAt": "2026-09-04T14:59:19Z",
   "collectionStatus": "success",
   "reviewStatus": "unreviewed",
   "publicationAllowed": false,
   "errors": [],
   "httpStatus": 200,
   "finalUrl": "https://www.flhouse.gov/Sections/Representatives/details.aspx?MemberId=4898&LegislativeTermId=91",
-  "sourceSnapshotSha256": "75c168b9feaa1063a7f92b3cb6942e39d9434fb7c09d7a17d5d62eddad0f06ac",
+  "sourceSnapshotSha256": "d380370d3252c3f3e913edf0b2e4aa881dec4f5f89770704f29f18093e62e42f",
   "partyAndDistrictText": "District: 119 -- Republican",
   "staffCandidates": [
     {
       "role": "Legislative Aide",
-      "name": "Daniel Miller",
+      "name": "None",
       "reviewStatus": "unreviewed"
     },
     {
@@ -125,7 +125,7 @@
       "identityReviewStatus": "unreviewed"
     },
     {
-      "url": "https://www.flhouse.gov/Images/bronze-seal-250.png?cb=4.6.654349",
+      "url": "https://www.flhouse.gov/Images/bronze-seal-250.png?cb=4.6.654350",
       "method": "og:image",
       "score": 14,
       "altText": null,

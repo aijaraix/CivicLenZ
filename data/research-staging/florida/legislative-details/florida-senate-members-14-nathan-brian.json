@@ -7,14 +7,14 @@
   "officeTitle": "Florida State Senator, District 14",
   "districtNumber": "14",
   "sourceUrl": "https://www.flsenate.gov/Senators/2024-2026/S14",
-  "fetchedAt": "2026-07-16T05:26:35Z",
+  "fetchedAt": "2026-09-04T14:59:21Z",
   "collectionStatus": "success",
   "reviewStatus": "unreviewed",
   "publicationAllowed": false,
   "errors": [],
   "httpStatus": 200,
   "finalUrl": "https://www.flsenate.gov/Senators/S14",
-  "sourceSnapshotSha256": "c8b455c9532e6bd47f5de5e81b6aecd136bf41b3cbc937756846426ae73f6f90",
+  "sourceSnapshotSha256": "1c496d0f87f0142080af724f33816d0c859352d5953855144dce298551b24606",
   "partyAndDistrictText": "Party: Democrat",
   "staffCandidates": [],
   "biographyCandidates": {
@@ -150,6 +150,18 @@
       "reviewStatus": "unreviewed"
     },
     {
+      "url": "https://www.flsenate.gov/PublishedContent/Offices/Senator/aug_newsletter.pdf",
+      "label": "August Newsletter",
+      "sourcePageUrl": "https://www.flsenate.gov/Senators/S14",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "url": "https://www.flsenate.gov/PublishedContent/Offices/Senator/JUNE_NEWSLETTER.pdf",
+      "label": "Meet Your State Senator: June Newsletter",
+      "sourcePageUrl": "https://www.flsenate.gov/Senators/S14",
+      "reviewStatus": "unreviewed"
+    },
+    {
       "url": "https://www.flsenate.gov/Session/ExecutiveAppointments/",
       "label": "Executive Appointments",
       "sourcePageUrl": "https://www.flsenate.gov/Senators/S14",
@@ -168,6 +180,24 @@
       "method": "img",
       "score": 30,
       "altText": "Senator Nathan",
+      "sourcePageUrl": "https://www.flsenate.gov/Senators/S14",
+      "rightsStatus": "review_required",
+      "identityReviewStatus": "unreviewed"
+    },
+    {
+      "url": "https://www.flsenate.gov/PublishedContent/Offices/Senator/JUNE_NEWSLETTER.jpg",
+      "method": "img",
+      "score": 18,
+      "altText": null,
+      "sourcePageUrl": "https://www.flsenate.gov/Senators/S14",
+      "rightsStatus": "review_required",
+      "identityReviewStatus": "unreviewed"
+    },
+    {
+      "url": "https://www.flsenate.gov/PublishedContent/Offices/Senator/aug_newsletter.jpg",
+      "method": "img",
+      "score": 18,
+      "altText": null,
       "sourcePageUrl": "https://www.flsenate.gov/Senators/S14",
       "rightsStatus": "review_required",
       "identityReviewStatus": "unreviewed"
@@ -195,24 +225,6 @@
       "method": "img",
       "score": 9,
       "altText": "Example of Site Search available on every page of flsenate.gov",
-      "sourcePageUrl": "https://www.flsenate.gov/Senators/S14",
-      "rightsStatus": "review_required",
-      "identityReviewStatus": "unreviewed"
-    },
-    {
-      "url": "https://www.flsenate.gov/UserContent/img/help/2013statutesearch.png",
-      "method": "img",
-      "score": 9,
-      "altText": "Example of Go To Bill feature available on every page of flsenate.gov",
-      "sourcePageUrl": "https://www.flsenate.gov/Senators/S14",
-      "rightsStatus": "review_required",
-      "identityReviewStatus": "unreviewed"
-    },
-    {
-      "url": "https://www.flsenate.gov/UserContent/img/help/printerIcon.png",
-      "method": "img",
-      "score": -26,
-      "altText": "Acrobat print icon",
       "sourcePageUrl": "https://www.flsenate.gov/Senators/S14",
       "rightsStatus": "review_required",
       "identityReviewStatus": "unreviewed"
@@ -296,6 +308,10 @@
       "url": "https://www.flsenate.gov/Senators/S14?Tab=Media#Media"
     },
     {
+      "label": "View All Publications",
+      "url": "https://www.flsenate.gov/Media/Publications/Author/14"
+    },
+    {
       "label": "Press Releases",
       "url": "https://www.flsenate.gov/Media/PressReleases"
     }
@@ -311,7 +327,7 @@
     "officeLocationCandidates": 2,
     "contactCandidates": 4,
     "socialCandidates": 1,
-    "websiteCandidates": 11,
+    "websiteCandidates": 13,
     "portraitCandidates": 6
   }
 }

@@ -7,14 +7,14 @@
   "officeTitle": "Florida State Senator, District 10",
   "districtNumber": "10",
   "sourceUrl": "https://www.flsenate.gov/Senators/2024-2026/S10",
-  "fetchedAt": "2026-07-16T05:26:35Z",
+  "fetchedAt": "2026-09-04T14:59:21Z",
   "collectionStatus": "success",
   "reviewStatus": "unreviewed",
   "publicationAllowed": false,
   "errors": [],
   "httpStatus": 200,
   "finalUrl": "https://www.flsenate.gov/Senators/S10",
-  "sourceSnapshotSha256": "deb13d4163ba8b46bc09235a55eeb7decd27dc62134d4603cca0978fb9239c15",
+  "sourceSnapshotSha256": "a248ac07b3e7a926852f729417ff52f724714c64cdf3f6772010a5b383beb31c",
   "partyAndDistrictText": "Party: Republican",
   "staffCandidates": [
     {
@@ -416,8 +416,14 @@
       "reviewStatus": "unreviewed"
     },
     {
-      "url": "https://www.flsenate.gov/PublishedContent/Senators/2020-2022/5077/Documents/Draft_Newsletter_(copy)_for_FLSenate.pdf",
-      "label": "Brodeur Blog: April, 9th, 2021",
+      "url": "https://www.flsenate.gov/PublishedContent/Offices/Senator/Senator_Jason_Brodeur_to_File_Legislation_Banning_Current_Flock_Camera_Programs_Due.pdf",
+      "label": "Senator Jason Brodeur to File Legislation Banning Current Flock Camera Programs Due to Privacy and Due Process Concerns",
+      "sourcePageUrl": "https://www.flsenate.gov/Senators/S10",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "url": "https://www.flsenate.gov/PublishedContent/Offices/Senator/SSC_FDI_Press_Release_Changes_DenotedFINAL12.pdf",
+      "label": "MEDIA ADVISORY: Senator Jason Brodeur to Highlight Key Funding for Florida Debate Initiative and Seminole State College",
       "sourcePageUrl": "https://www.flsenate.gov/Senators/S10",
       "reviewStatus": "unreviewed"
     },
@@ -436,6 +442,15 @@
   ],
   "portraitCandidates": [
     {
+      "url": "https://www.flsenate.gov/PublishedContent/Offices/Senator/Senator_Jason_Brodeur_to_File_Legislation_Banning_Current_Flock_Camera_Programs_Due.jpg",
+      "method": "img",
+      "score": 42,
+      "altText": null,
+      "sourcePageUrl": "https://www.flsenate.gov/Senators/S10",
+      "rightsStatus": "review_required",
+      "identityReviewStatus": "unreviewed"
+    },
+    {
       "url": "https://www.flsenate.gov/PublishedContent/Senators/2024-2026/Photos/s10_5077.jpg",
       "method": "img",
       "score": 30,
@@ -445,7 +460,7 @@
       "identityReviewStatus": "unreviewed"
     },
     {
-      "url": "https://www.flsenate.gov/PublishedContent/Senators/2020-2022/5077/Documents/Draft_Newsletter_(copy)_for_FLSenate.jpg",
+      "url": "https://www.flsenate.gov/PublishedContent/Offices/Senator/SSC_FDI_Press_Release_Changes_DenotedFINAL12.jpg",
       "method": "img",
       "score": 18,
       "altText": null,
@@ -479,15 +494,6 @@
       "sourcePageUrl": "https://www.flsenate.gov/Senators/S10",
       "rightsStatus": "review_required",
       "identityReviewStatus": "unreviewed"
-    },
-    {
-      "url": "https://www.flsenate.gov/UserContent/img/help/2013statutesearch.png",
-      "method": "img",
-      "score": 9,
-      "altText": "Example of Go To Bill feature available on every page of flsenate.gov",
-      "sourcePageUrl": "https://www.flsenate.gov/Senators/S10",
-      "rightsStatus": "review_required",
-      "identityReviewStatus": "unreviewed"
     }
   ],
   "mapLinks": [
@@ -512,50 +518,6 @@
     {
       "label": "Bills Introduced",
       "url": "https://www.flsenate.gov/Senators/S10?Tab=Bills#Bills"
-    },
-    {
-      "label": "S 1062",
-      "url": "https://www.flsenate.gov/Session/Bill/2026/1062"
-    },
-    {
-      "label": "S 1066",
-      "url": "https://www.flsenate.gov/Session/Bill/2026/1066"
-    },
-    {
-      "label": "S 1120",
-      "url": "https://www.flsenate.gov/Session/Bill/2026/1120"
-    },
-    {
-      "label": "S 1214",
-      "url": "https://www.flsenate.gov/Session/Bill/2026/1214"
-    },
-    {
-      "label": "S 1366",
-      "url": "https://www.flsenate.gov/Session/Bill/2026/1366"
-    },
-    {
-      "label": "S 1442",
-      "url": "https://www.flsenate.gov/Session/Bill/2026/1442"
-    },
-    {
-      "label": "S 1760",
-      "url": "https://www.flsenate.gov/Session/Bill/2026/1760"
-    },
-    {
-      "label": "S 1784",
-      "url": "https://www.flsenate.gov/Session/Bill/2026/1784"
-    },
-    {
-      "label": "S 1800",
-      "url": "https://www.flsenate.gov/Session/Bill/2026/1800"
-    },
-    {
-      "label": "S 1574",
-      "url": "https://www.flsenate.gov/Session/Bill/2026/1574"
-    },
-    {
-      "label": "S 1758",
-      "url": "https://www.flsenate.gov/Session/Bill/2026/1758"
     },
     {
       "label": "Bill Search Tips",
@@ -616,6 +578,10 @@
       "url": "https://www.flsenate.gov/Media/Publications/Author/10"
     },
     {
+      "label": "MEDIA ADVISORY: Senator Jason Brodeur to Highlight Key Funding for Florida Debate Initiative and Seminole State College",
+      "url": "https://www.flsenate.gov/PublishedContent/Offices/Senator/SSC_FDI_Press_Release_Changes_DenotedFINAL12.pdf"
+    },
+    {
       "label": "Press Releases",
       "url": "https://www.flsenate.gov/Media/PressReleases"
     }
@@ -631,7 +597,7 @@
     "officeLocationCandidates": 2,
     "contactCandidates": 4,
     "socialCandidates": 1,
-    "websiteCandidates": 12,
+    "websiteCandidates": 13,
     "portraitCandidates": 6
   }
 }

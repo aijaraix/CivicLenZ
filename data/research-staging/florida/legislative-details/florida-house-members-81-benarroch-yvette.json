@@ -7,19 +7,19 @@
   "officeTitle": "Florida State Representative, District 81",
   "districtNumber": "81",
   "sourceUrl": "https://www.flhouse.gov/Sections/Representatives/details.aspx?MemberId=4923&LegislativeTermId=91",
-  "fetchedAt": "2026-07-16T05:26:29Z",
+  "fetchedAt": "2026-09-04T14:59:16Z",
   "collectionStatus": "success",
   "reviewStatus": "unreviewed",
   "publicationAllowed": false,
   "errors": [],
   "httpStatus": 200,
   "finalUrl": "https://www.flhouse.gov/Sections/Representatives/custom/details.aspx?MemberId=4923&LegislativeTermId=91",
-  "sourceSnapshotSha256": "c612ab07a69bdb29ce47963775be6296500dc06f0eaf60475356373ebe091892",
+  "sourceSnapshotSha256": "a608aad60a3e8fadf750bd6eff83ad0b6b80148b119d382492c0b874729001f8",
   "partyAndDistrictText": "District: 81 -- Republican",
   "staffCandidates": [
     {
       "role": "Legislative Aide",
-      "name": "None",
+      "name": "Mateo Carrasco",
       "reviewStatus": "unreviewed"
     },
     {
@@ -123,7 +123,7 @@
       "identityReviewStatus": "unreviewed"
     },
     {
-      "url": "https://www.flhouse.gov/Images/bronze-seal-250.png?cb=4.6.654349",
+      "url": "https://www.flhouse.gov/Images/bronze-seal-250.png?cb=4.6.654350",
       "method": "og:image",
       "score": 14,
       "altText": null,

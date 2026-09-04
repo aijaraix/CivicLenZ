@@ -7,14 +7,14 @@
   "officeTitle": "Florida State Representative, District 7",
   "districtNumber": "7",
   "sourceUrl": "https://www.flhouse.gov/Sections/Representatives/details.aspx?MemberId=4756&LegislativeTermId=91",
-  "fetchedAt": "2026-07-16T05:26:20Z",
+  "fetchedAt": "2026-09-04T14:59:09Z",
   "collectionStatus": "success",
   "reviewStatus": "unreviewed",
   "publicationAllowed": false,
   "errors": [],
   "httpStatus": 200,
   "finalUrl": "https://www.flhouse.gov/Sections/Representatives/custom/details.aspx?MemberId=4756&LegislativeTermId=91",
-  "sourceSnapshotSha256": "ce1d7c6099f2aa64e2ac5102067083766326c40aee9c422c1b35ba6eb184ea4e",
+  "sourceSnapshotSha256": "e6c3471392e70bcc9027827928769c7d63f8795153bf30c3853d7d8591321ed5",
   "partyAndDistrictText": "District: 7 -- Republican",
   "staffCandidates": [
     {
@@ -133,7 +133,7 @@
       "identityReviewStatus": "unreviewed"
     },
     {
-      "url": "https://www.flhouse.gov/FileStores/Web/Imaging/PhotoAlbums/HousePhotoSized8354.JPG",
+      "url": "https://www.flhouse.gov/FileStores/Web/Imaging/PhotoAlbums/HousePhotoSized8061.JPG",
       "method": "img",
       "score": 30,
       "altText": "Representative Shoaf Photo",
@@ -142,7 +142,7 @@
       "identityReviewStatus": "unreviewed"
     },
     {
-      "url": "https://www.flhouse.gov/Images/bronze-seal-250.png?cb=4.6.654349",
+      "url": "https://www.flhouse.gov/Images/bronze-seal-250.png?cb=4.6.654350",
       "method": "og:image",
       "score": 14,
       "altText": null,
@@ -160,7 +160,7 @@
       "identityReviewStatus": "unreviewed"
     },
     {
-      "url": "https://www.flhouse.gov/FileStores/Web/Imaging/PhotoAlbums/HousePhotoSized8402.JPG",
+      "url": "https://www.flhouse.gov/FileStores/Web/Imaging/PhotoAlbums/HousePhotoSized8354.JPG",
       "method": "img",
       "score": 9,
       "altText": null,
@@ -169,10 +169,10 @@
       "identityReviewStatus": "unreviewed"
     },
     {
-      "url": "https://www.flhouse.gov/FileStores/Web/Imaging/member-page-banners/3.jpg",
+      "url": "https://www.flhouse.gov/FileStores/Web/Imaging/PhotoAlbums/HousePhotoSized8402.JPG",
       "method": "img",
-      "score": -17,
-      "altText": "The Old Florida Capitol",
+      "score": 9,
+      "altText": null,
       "sourcePageUrl": "https://www.flhouse.gov/Sections/Representatives/custom/details.aspx?MemberId=4756&LegislativeTermId=91",
       "rightsStatus": "review_required",
       "identityReviewStatus": "unreviewed"

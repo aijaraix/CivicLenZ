@@ -7,14 +7,14 @@
   "officeTitle": "Florida State Representative, District 44",
   "districtNumber": "44",
   "sourceUrl": "https://www.flhouse.gov/Sections/Representatives/details.aspx?MemberId=4877&LegislativeTermId=91",
-  "fetchedAt": "2026-07-16T05:26:25Z",
+  "fetchedAt": "2026-09-04T14:59:13Z",
   "collectionStatus": "success",
   "reviewStatus": "unreviewed",
   "publicationAllowed": false,
   "errors": [],
   "httpStatus": 200,
   "finalUrl": "https://www.flhouse.gov/Sections/Representatives/custom/details.aspx?MemberId=4877&LegislativeTermId=91",
-  "sourceSnapshotSha256": "a71a95e5de3c0012173dc2abe2b037dfb8a7cb4cd47f8e2968e18c62fc8ce8de",
+  "sourceSnapshotSha256": "13776f952e5e7a2f5e71ee01fe2429631fcf9fec1b4ad267b35022da7247ef2c",
   "partyAndDistrictText": "District: 44 -- Democrat",
   "staffCandidates": [
     {
@@ -96,15 +96,7 @@
       "sourcePageUrl": "https://www.flhouse.gov/Sections/Representatives/custom/details.aspx?MemberId=4877&LegislativeTermId=91"
     }
   ],
-  "socialCandidates": [
-    {
-      "platform": "Facebook",
-      "url": "https://www.facebook.com/RitaForFL",
-      "label": "Jennifer \"Rita\" Harris",
-      "sourcePageUrl": "https://www.flhouse.gov/Sections/Representatives/custom/details.aspx?MemberId=4877&LegislativeTermId=91",
-      "reviewStatus": "unreviewed"
-    }
-  ],
+  "socialCandidates": [],
   "websiteCandidates": [
     {
       "url": "https://www.flhouse.gov/Sections/Representatives/custom/contactmember.aspx?MemberId=4877&LegislativeTermId=91",
@@ -130,7 +122,7 @@
       "identityReviewStatus": "unreviewed"
     },
     {
-      "url": "https://www.flhouse.gov/FileStores/Web/Imaging/PhotoAlbums/HousePhotoSized7462.jpg",
+      "url": "https://www.flhouse.gov/FileStores/Web/Imaging/PhotoAlbums/HousePhotoSized7593.jpg",
       "method": "img",
       "score": 30,
       "altText": "Representative Harris Photo",
@@ -139,7 +131,7 @@
       "identityReviewStatus": "unreviewed"
     },
     {
-      "url": "https://www.flhouse.gov/Images/bronze-seal-250.png?cb=4.6.654349",
+      "url": "https://www.flhouse.gov/Images/bronze-seal-250.png?cb=4.6.654350",
       "method": "og:image",
       "score": 14,
       "altText": null,
@@ -209,7 +201,7 @@
     "awardCandidates": 0,
     "officeLocationCandidates": 0,
     "contactCandidates": 2,
-    "socialCandidates": 1,
+    "socialCandidates": 0,
     "websiteCandidates": 2,
     "portraitCandidates": 6
   }
