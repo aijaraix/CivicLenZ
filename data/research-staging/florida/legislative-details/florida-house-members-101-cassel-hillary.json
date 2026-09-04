@@ -7,14 +7,14 @@
   "officeTitle": "Florida State Representative, District 101",
   "districtNumber": "101",
   "sourceUrl": "https://www.flhouse.gov/Sections/Representatives/details.aspx?MemberId=4895&LegislativeTermId=91",
-  "fetchedAt": "2026-07-16T05:26:31Z",
+  "fetchedAt": "2026-09-04T14:59:18Z",
   "collectionStatus": "success",
   "reviewStatus": "unreviewed",
   "publicationAllowed": false,
   "errors": [],
   "httpStatus": 200,
   "finalUrl": "https://www.flhouse.gov/Sections/Representatives/custom/details.aspx?MemberId=4895&LegislativeTermId=91",
-  "sourceSnapshotSha256": "f088e46814418b6650d96f361551f773a0e91fbef14f78e43bf7db09b1a440fc",
+  "sourceSnapshotSha256": "c50737592f55d708b0f5d5fabcc61b51a264b3f17cf58ed3cfd94c4d2768798f",
   "partyAndDistrictText": "District: 101 -- Republican",
   "staffCandidates": [
     {
@@ -119,7 +119,7 @@
       "identityReviewStatus": "unreviewed"
     },
     {
-      "url": "https://www.flhouse.gov/FileStores/Web/Imaging/PhotoAlbums/HousePhotoSized8082.JPG",
+      "url": "https://www.flhouse.gov/FileStores/Web/Imaging/PhotoAlbums/HousePhotoSized7772.JPG",
       "method": "img",
       "score": 30,
       "altText": "Representative Cassel Photo",
@@ -128,7 +128,7 @@
       "identityReviewStatus": "unreviewed"
     },
     {
-      "url": "https://www.flhouse.gov/Images/bronze-seal-250.png?cb=4.6.654349",
+      "url": "https://www.flhouse.gov/Images/bronze-seal-250.png?cb=4.6.654350",
       "method": "og:image",
       "score": 14,
       "altText": null,

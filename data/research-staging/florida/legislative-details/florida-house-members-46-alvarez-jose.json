@@ -7,19 +7,19 @@
   "officeTitle": "Florida State Representative, District 46",
   "districtNumber": "46",
   "sourceUrl": "https://www.flhouse.gov/Sections/Representatives/details.aspx?MemberId=4916&LegislativeTermId=91",
-  "fetchedAt": "2026-07-16T05:26:26Z",
+  "fetchedAt": "2026-09-04T14:59:13Z",
   "collectionStatus": "success",
   "reviewStatus": "unreviewed",
   "publicationAllowed": false,
   "errors": [],
   "httpStatus": 200,
   "finalUrl": "https://www.flhouse.gov/Sections/Representatives/details.aspx?MemberId=4916&LegislativeTermId=91",
-  "sourceSnapshotSha256": "e39e710c6a6d83b5b4d4ac63c20e8bf272f17d6becae05abe50620eaf59aceee",
+  "sourceSnapshotSha256": "ceb7099cca7addc8356f2c1c4cccc597f39ae650fb1a2c89dd1c7b09e0641d7b",
   "partyAndDistrictText": "District: 46 -- Democrat",
   "staffCandidates": [
     {
       "role": "Legislative Aide",
-      "name": "Trevor Manuel",
+      "name": "DeAsia McMillan",
       "reviewStatus": "unreviewed"
     },
     {
@@ -115,7 +115,7 @@
       "identityReviewStatus": "unreviewed"
     },
     {
-      "url": "https://www.flhouse.gov/Images/bronze-seal-250.png?cb=4.6.654349",
+      "url": "https://www.flhouse.gov/Images/bronze-seal-250.png?cb=4.6.654350",
       "method": "og:image",
       "score": 14,
       "altText": null,

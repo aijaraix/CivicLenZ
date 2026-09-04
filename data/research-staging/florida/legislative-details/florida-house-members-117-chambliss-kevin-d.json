@@ -7,14 +7,14 @@
   "officeTitle": "Florida State Representative, District 117",
   "districtNumber": "117",
   "sourceUrl": "https://www.flhouse.gov/Sections/Representatives/details.aspx?MemberId=4798&LegislativeTermId=91",
-  "fetchedAt": "2026-07-16T05:26:33Z",
+  "fetchedAt": "2026-09-04T14:59:19Z",
   "collectionStatus": "success",
   "reviewStatus": "unreviewed",
   "publicationAllowed": false,
   "errors": [],
   "httpStatus": 200,
   "finalUrl": "https://www.flhouse.gov/Sections/Representatives/custom/details.aspx?MemberId=4798&LegislativeTermId=91",
-  "sourceSnapshotSha256": "a53f9b6f39659f66521e45f4377e7ad2c96a46b32e63856a829e77b4c85faf6f",
+  "sourceSnapshotSha256": "8d45ca2704e568cf445cbabb3ca47f52beb175fab3c731d38681e0faf9fd4467",
   "partyAndDistrictText": "District: 117 -- Democrat",
   "staffCandidates": [
     {
@@ -119,7 +119,7 @@
       "identityReviewStatus": "unreviewed"
     },
     {
-      "url": "https://www.flhouse.gov/FileStores/Web/Imaging/PhotoAlbums/HousePhotoSized8071.JPG",
+      "url": "https://www.flhouse.gov/FileStores/Web/Imaging/PhotoAlbums/HousePhotoSized8072.JPG",
       "method": "img",
       "score": 30,
       "altText": "Representative Chambliss Photo",
@@ -128,7 +128,7 @@
       "identityReviewStatus": "unreviewed"
     },
     {
-      "url": "https://www.flhouse.gov/Images/bronze-seal-250.png?cb=4.6.654349",
+      "url": "https://www.flhouse.gov/Images/bronze-seal-250.png?cb=4.6.654350",
       "method": "og:image",
       "score": 14,
       "altText": null,

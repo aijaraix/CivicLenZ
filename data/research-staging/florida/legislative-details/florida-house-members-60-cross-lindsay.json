@@ -7,14 +7,14 @@
   "officeTitle": "Florida State Representative, District 60",
   "districtNumber": "60",
   "sourceUrl": "https://www.flhouse.gov/Sections/Representatives/details.aspx?MemberId=4887&LegislativeTermId=91",
-  "fetchedAt": "2026-07-16T05:26:27Z",
+  "fetchedAt": "2026-09-04T14:59:14Z",
   "collectionStatus": "success",
   "reviewStatus": "unreviewed",
   "publicationAllowed": false,
   "errors": [],
   "httpStatus": 200,
   "finalUrl": "https://www.flhouse.gov/Sections/Representatives/custom/details.aspx?MemberId=4887&LegislativeTermId=91",
-  "sourceSnapshotSha256": "0576dde48202b0f637dd8d1669144c6d1bd8fdcee47906e5a812b60c502afbe2",
+  "sourceSnapshotSha256": "63010c6043d30e72d51296fac724b4f8409a3a3f94af1bb3a3da6ab415f46993",
   "partyAndDistrictText": "District: 60 -- Democrat",
   "staffCandidates": [
     {
@@ -138,7 +138,7 @@
       "identityReviewStatus": "unreviewed"
     },
     {
-      "url": "https://www.flhouse.gov/FileStores/Web/Imaging/PhotoAlbums/HousePhotoSized7546.jpg",
+      "url": "https://www.flhouse.gov/FileStores/Web/Imaging/PhotoAlbums/HousePhotoSized7955.JPG",
       "method": "img",
       "score": 30,
       "altText": "Representative Cross Photo",
@@ -147,7 +147,7 @@
       "identityReviewStatus": "unreviewed"
     },
     {
-      "url": "https://www.flhouse.gov/Images/bronze-seal-250.png?cb=4.6.654349",
+      "url": "https://www.flhouse.gov/Images/bronze-seal-250.png?cb=4.6.654350",
       "method": "og:image",
       "score": 14,
       "altText": null,
@@ -174,10 +174,10 @@
       "identityReviewStatus": "unreviewed"
     },
     {
-      "url": "https://www.flhouse.gov/FileStores/Web/Imaging/PhotoAlbums/HousePhotoSized7955.JPG",
+      "url": "https://www.flhouse.gov/FileStores/Web/Imaging/member-page-banners/1.jpg",
       "method": "img",
-      "score": 9,
-      "altText": null,
+      "score": -17,
+      "altText": "The House Chamber",
       "sourcePageUrl": "https://www.flhouse.gov/Sections/Representatives/custom/details.aspx?MemberId=4887&LegislativeTermId=91",
       "rightsStatus": "review_required",
       "identityReviewStatus": "unreviewed"

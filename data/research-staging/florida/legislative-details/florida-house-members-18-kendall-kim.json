@@ -7,14 +7,14 @@
   "officeTitle": "Florida State Representative, District 18",
   "districtNumber": "18",
   "sourceUrl": "https://www.flhouse.gov/Sections/Representatives/details.aspx?MemberId=4905&LegislativeTermId=91",
-  "fetchedAt": "2026-07-16T05:26:22Z",
+  "fetchedAt": "2026-09-04T14:59:10Z",
   "collectionStatus": "success",
   "reviewStatus": "unreviewed",
   "publicationAllowed": false,
   "errors": [],
   "httpStatus": 200,
   "finalUrl": "https://www.flhouse.gov/Sections/Representatives/custom/details.aspx?MemberId=4905&LegislativeTermId=91",
-  "sourceSnapshotSha256": "8c7be70f26689940f8dc1b93a8475b3f5086713a8653d30ee1ad2aa6c00fbe61",
+  "sourceSnapshotSha256": "6153aa18b73bc7e4327e4f6e62b48cc93c51bf2bd8bb5a4cffd9b1cb8449c682",
   "partyAndDistrictText": "District: 18 -- Republican",
   "staffCandidates": [
     {
@@ -127,7 +127,7 @@
       "identityReviewStatus": "unreviewed"
     },
     {
-      "url": "https://www.flhouse.gov/FileStores/Web/Imaging/PhotoAlbums/HousePhotoSized8243.JPG",
+      "url": "https://www.flhouse.gov/FileStores/Web/Imaging/PhotoAlbums/HousePhotoSized8242.JPG",
       "method": "img",
       "score": 30,
       "altText": "Representative Kendall Photo",
@@ -136,7 +136,7 @@
       "identityReviewStatus": "unreviewed"
     },
     {
-      "url": "https://www.flhouse.gov/Images/bronze-seal-250.png?cb=4.6.654349",
+      "url": "https://www.flhouse.gov/Images/bronze-seal-250.png?cb=4.6.654350",
       "method": "og:image",
       "score": 14,
       "altText": null,

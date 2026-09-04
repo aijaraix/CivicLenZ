@@ -7,14 +7,14 @@
   "officeTitle": "Florida State Representative, District 88",
   "districtNumber": "88",
   "sourceUrl": "https://www.flhouse.gov/Sections/Representatives/details.aspx?MemberId=4842&LegislativeTermId=91",
-  "fetchedAt": "2026-07-16T05:26:30Z",
+  "fetchedAt": "2026-09-04T14:59:17Z",
   "collectionStatus": "success",
   "reviewStatus": "unreviewed",
   "publicationAllowed": false,
   "errors": [],
   "httpStatus": 200,
   "finalUrl": "https://www.flhouse.gov/Sections/Representatives/details.aspx?MemberId=4842&LegislativeTermId=91",
-  "sourceSnapshotSha256": "231a21e986a37bc5234058a483b2607cf57b8f4858e06c97f11761dafba5434d",
+  "sourceSnapshotSha256": "f0a1f84c31bd6314b92235b7b27356e48826b40b40dbefadee2be10abd843983",
   "partyAndDistrictText": "District: 88 -- Democrat",
   "staffCandidates": [
     {
@@ -128,7 +128,7 @@
       "identityReviewStatus": "unreviewed"
     },
     {
-      "url": "https://www.flhouse.gov/Images/bronze-seal-250.png?cb=4.6.654349",
+      "url": "https://www.flhouse.gov/Images/bronze-seal-250.png?cb=4.6.654350",
       "method": "og:image",
       "score": 14,
       "altText": null,

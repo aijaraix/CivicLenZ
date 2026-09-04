@@ -7,14 +7,14 @@
   "officeTitle": "Florida State Representative, District 91",
   "districtNumber": "91",
   "sourceUrl": "https://www.flhouse.gov/Sections/Representatives/details.aspx?MemberId=4891&LegislativeTermId=91",
-  "fetchedAt": "2026-07-16T05:26:30Z",
+  "fetchedAt": "2026-09-04T14:59:17Z",
   "collectionStatus": "success",
   "reviewStatus": "unreviewed",
   "publicationAllowed": false,
   "errors": [],
   "httpStatus": 200,
   "finalUrl": "https://www.flhouse.gov/Sections/Representatives/custom/details.aspx?MemberId=4891&LegislativeTermId=91",
-  "sourceSnapshotSha256": "43314f90c9cf863d8e96021c5f0a6edba4e08bb6fc7edc1669e1d078ec14fc32",
+  "sourceSnapshotSha256": "2e15cc54be5fa023cabb2cb0d24355d5b327cfb94dc83435ebb9f6d4c5e34bec",
   "partyAndDistrictText": "District: 91 -- Republican",
   "staffCandidates": [
     {
@@ -73,11 +73,6 @@
       "name": "Intergovernmental Affairs Subcommittee",
       "roleType": "member",
       "reviewStatus": "unreviewed"
-    },
-    {
-      "name": "Peggy Gossett-Seidman (@ Peggy Gossett-Seidman ) • Instagram photos and videos",
-      "roleType": "member",
-      "reviewStatus": "unreviewed"
     }
   ],
   "publicServiceCandidates": [],
@@ -98,22 +93,7 @@
       "sourcePageUrl": "https://www.flhouse.gov/Sections/Representatives/custom/details.aspx?MemberId=4891&LegislativeTermId=91"
     }
   ],
-  "socialCandidates": [
-    {
-      "platform": "Instagram",
-      "url": "https://www.instagram.com/peggygossettseidman/?utm_source=ig_embed&utm_campaign=loading",
-      "label": "Peggy Gossett-Seidman",
-      "sourcePageUrl": "https://www.flhouse.gov/Sections/Representatives/custom/details.aspx?MemberId=4891&LegislativeTermId=91",
-      "reviewStatus": "unreviewed"
-    },
-    {
-      "platform": "Facebook",
-      "url": "https://www.facebook.com/share/18q7mLuBNV/?mibextid=wwXIfr",
-      "label": "Peggy Gossett-Seidman",
-      "sourcePageUrl": "https://www.flhouse.gov/Sections/Representatives/custom/details.aspx?MemberId=4891&LegislativeTermId=91",
-      "reviewStatus": "unreviewed"
-    }
-  ],
+  "socialCandidates": [],
   "websiteCandidates": [
     {
       "url": "https://www.flhouse.gov/Sections/Representatives/custom/contactmember.aspx?MemberId=4891&LegislativeTermId=91",
@@ -139,7 +119,7 @@
       "identityReviewStatus": "unreviewed"
     },
     {
-      "url": "https://www.flhouse.gov/FileStores/Web/Imaging/PhotoAlbums/HousePhotoSized8219.JPG",
+      "url": "https://www.flhouse.gov/FileStores/Web/Imaging/PhotoAlbums/HousePhotoSized7833.JPG",
       "method": "img",
       "score": 42,
       "altText": "Representative Gossett-Seidman Photo",
@@ -148,7 +128,7 @@
       "identityReviewStatus": "unreviewed"
     },
     {
-      "url": "https://www.flhouse.gov/Images/bronze-seal-250.png?cb=4.6.654349",
+      "url": "https://www.flhouse.gov/Images/bronze-seal-250.png?cb=4.6.654350",
       "method": "og:image",
       "score": 14,
       "altText": null,
@@ -166,7 +146,7 @@
       "identityReviewStatus": "unreviewed"
     },
     {
-      "url": "https://www.flhouse.gov/FileStores/Web/Imaging/PhotoAlbums/HousePhotoSized8220.JPG",
+      "url": "https://www.flhouse.gov/FileStores/Web/Imaging/PhotoAlbums/HousePhotoSized8219.JPG",
       "method": "img",
       "score": 9,
       "altText": null,
@@ -175,10 +155,10 @@
       "identityReviewStatus": "unreviewed"
     },
     {
-      "url": "https://www.flhouse.gov/FileStores/Web/Imaging/member-page-banners/3.jpg",
+      "url": "https://www.flhouse.gov/FileStores/Web/Imaging/PhotoAlbums/HousePhotoSized8220.JPG",
       "method": "img",
-      "score": -17,
-      "altText": "The Old Florida Capitol",
+      "score": 9,
+      "altText": null,
       "sourcePageUrl": "https://www.flhouse.gov/Sections/Representatives/custom/details.aspx?MemberId=4891&LegislativeTermId=91",
       "rightsStatus": "review_required",
       "identityReviewStatus": "unreviewed"
@@ -212,13 +192,13 @@
   "candidateCounts": {
     "staffCandidates": 2,
     "educationCandidates": 1,
-    "committeeCandidates": 7,
+    "committeeCandidates": 6,
     "publicServiceCandidates": 0,
     "affiliationCandidates": 0,
     "awardCandidates": 0,
     "officeLocationCandidates": 0,
     "contactCandidates": 2,
-    "socialCandidates": 2,
+    "socialCandidates": 0,
     "websiteCandidates": 2,
     "portraitCandidates": 6
   }

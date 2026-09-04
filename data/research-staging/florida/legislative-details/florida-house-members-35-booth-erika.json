@@ -7,14 +7,14 @@
   "officeTitle": "Florida State Representative, District 35",
   "districtNumber": "35",
   "sourceUrl": "https://www.flhouse.gov/Sections/Representatives/details.aspx?MemberId=4914&LegislativeTermId=91",
-  "fetchedAt": "2026-07-16T05:26:24Z",
+  "fetchedAt": "2026-09-04T14:59:12Z",
   "collectionStatus": "success",
   "reviewStatus": "unreviewed",
   "publicationAllowed": false,
   "errors": [],
   "httpStatus": 200,
   "finalUrl": "https://www.flhouse.gov/Sections/Representatives/custom/details.aspx?MemberId=4914&LegislativeTermId=91",
-  "sourceSnapshotSha256": "b72c774a0a2b7848badb0d686ba89139151121a7d0e318d9b51ba00315ba4af4",
+  "sourceSnapshotSha256": "d57dab289525f9bc094033aebf5fe93ebe676fcb9c8cf6bf9411155ae1151808",
   "partyAndDistrictText": "District: 35 -- Republican",
   "staffCandidates": [
     {
@@ -115,7 +115,7 @@
       "identityReviewStatus": "unreviewed"
     },
     {
-      "url": "https://www.flhouse.gov/FileStores/Web/Imaging/PhotoAlbums/HousePhotoSized7960.JPG",
+      "url": "https://www.flhouse.gov/FileStores/Web/Imaging/PhotoAlbums/HousePhotoSized8401.JPG",
       "method": "img",
       "score": 30,
       "altText": "Representative Booth Photo",
@@ -124,7 +124,7 @@
       "identityReviewStatus": "unreviewed"
     },
     {
-      "url": "https://www.flhouse.gov/Images/bronze-seal-250.png?cb=4.6.654349",
+      "url": "https://www.flhouse.gov/Images/bronze-seal-250.png?cb=4.6.654350",
       "method": "og:image",
       "score": 14,
       "altText": null,

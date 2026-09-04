@@ -7,14 +7,14 @@
   "officeTitle": "Florida State Representative, District 107",
   "districtNumber": "107",
   "sourceUrl": "https://www.flhouse.gov/Sections/Representatives/details.aspx?MemberId=4928&LegislativeTermId=91",
-  "fetchedAt": "2026-07-16T05:26:32Z",
+  "fetchedAt": "2026-09-04T14:59:18Z",
   "collectionStatus": "success",
   "reviewStatus": "unreviewed",
   "publicationAllowed": false,
   "errors": [],
   "httpStatus": 200,
   "finalUrl": "https://www.flhouse.gov/Sections/Representatives/custom/details.aspx?MemberId=4928&LegislativeTermId=91",
-  "sourceSnapshotSha256": "8a65accda41604da5b95e03d3de49e790ae00c07e7cb48c155823040b9d43009",
+  "sourceSnapshotSha256": "18244698b28c2156be02417406cf7dc8137899d81f3c49190e1ffada4a370191",
   "partyAndDistrictText": "District: 107 -- Democrat",
   "staffCandidates": [
     {
@@ -136,7 +136,7 @@
       "identityReviewStatus": "unreviewed"
     },
     {
-      "url": "https://www.flhouse.gov/FileStores/Web/Imaging/PhotoAlbums/HousePhotoSized8058.JPG",
+      "url": "https://www.flhouse.gov/FileStores/Web/Imaging/PhotoAlbums/HousePhotoSized7929.jpg",
       "method": "img",
       "score": 30,
       "altText": "Representative Aristide Photo",
@@ -145,7 +145,7 @@
       "identityReviewStatus": "unreviewed"
     },
     {
-      "url": "https://www.flhouse.gov/Images/bronze-seal-250.png?cb=4.6.654349",
+      "url": "https://www.flhouse.gov/Images/bronze-seal-250.png?cb=4.6.654350",
       "method": "og:image",
       "score": 14,
       "altText": null,

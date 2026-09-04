@@ -7,22 +7,16 @@
   "officeTitle": "Florida State Senator, District 13",
   "districtNumber": "13",
   "sourceUrl": "https://www.flsenate.gov/Senators/2024-2026/S13",
-  "fetchedAt": "2026-07-16T05:26:35Z",
+  "fetchedAt": "2026-09-04T14:59:21Z",
   "collectionStatus": "success",
   "reviewStatus": "unreviewed",
   "publicationAllowed": false,
   "errors": [],
   "httpStatus": 200,
   "finalUrl": "https://www.flsenate.gov/Senators/S13",
-  "sourceSnapshotSha256": "b265c5840c19be124329abe3f3a4574f511ac28caf8f2a1e1cb40c28771b2bd0",
+  "sourceSnapshotSha256": "dd750123cfbcfdd1f33b4448939bd2df30f30474d47347507686981f78c3bd7f",
   "partyAndDistrictText": "Party: Republican",
-  "staffCandidates": [
-    {
-      "role": "Legislative Aide",
-      "name": "Track this Senator's Media",
-      "reviewStatus": "unreviewed"
-    }
-  ],
+  "staffCandidates": [],
   "biographyCandidates": {
     "occupation": "Agribusiness",
     "spouse": "Dodi of Eustis, FL",
@@ -309,178 +303,6 @@
       "url": "https://www.flsenate.gov/Senators/S13?Tab=Bills#Bills"
     },
     {
-      "label": "S 118",
-      "url": "https://www.flsenate.gov/Session/Bill/2026/118"
-    },
-    {
-      "label": "S 122",
-      "url": "https://www.flsenate.gov/Session/Bill/2026/122"
-    },
-    {
-      "label": "S 138",
-      "url": "https://www.flsenate.gov/Session/Bill/2026/138"
-    },
-    {
-      "label": "S 168",
-      "url": "https://www.flsenate.gov/Session/Bill/2026/168"
-    },
-    {
-      "label": "S 290",
-      "url": "https://www.flsenate.gov/Session/Bill/2026/290"
-    },
-    {
-      "label": "S 378",
-      "url": "https://www.flsenate.gov/Session/Bill/2026/378"
-    },
-    {
-      "label": "S 382",
-      "url": "https://www.flsenate.gov/Session/Bill/2026/382"
-    },
-    {
-      "label": "S 384",
-      "url": "https://www.flsenate.gov/Session/Bill/2026/384"
-    },
-    {
-      "label": "S 410",
-      "url": "https://www.flsenate.gov/Session/Bill/2026/410"
-    },
-    {
-      "label": "S 508",
-      "url": "https://www.flsenate.gov/Session/Bill/2026/508"
-    },
-    {
-      "label": "S 518",
-      "url": "https://www.flsenate.gov/Session/Bill/2026/518"
-    },
-    {
-      "label": "S 528",
-      "url": "https://www.flsenate.gov/Session/Bill/2026/528"
-    },
-    {
-      "label": "S 544",
-      "url": "https://www.flsenate.gov/Session/Bill/2026/544"
-    },
-    {
-      "label": "S 598",
-      "url": "https://www.flsenate.gov/Session/Bill/2026/598"
-    },
-    {
-      "label": "S 600",
-      "url": "https://www.flsenate.gov/Session/Bill/2026/600"
-    },
-    {
-      "label": "S 618",
-      "url": "https://www.flsenate.gov/Session/Bill/2026/618"
-    },
-    {
-      "label": "S 668",
-      "url": "https://www.flsenate.gov/Session/Bill/2026/668"
-    },
-    {
-      "label": "S 804",
-      "url": "https://www.flsenate.gov/Session/Bill/2026/804"
-    },
-    {
-      "label": "S 806",
-      "url": "https://www.flsenate.gov/Session/Bill/2026/806"
-    },
-    {
-      "label": "S 818",
-      "url": "https://www.flsenate.gov/Session/Bill/2026/818"
-    },
-    {
-      "label": "S 824",
-      "url": "https://www.flsenate.gov/Session/Bill/2026/824"
-    },
-    {
-      "label": "S 848",
-      "url": "https://www.flsenate.gov/Session/Bill/2026/848"
-    },
-    {
-      "label": "S 950",
-      "url": "https://www.flsenate.gov/Session/Bill/2026/950"
-    },
-    {
-      "label": "S 974",
-      "url": "https://www.flsenate.gov/Session/Bill/2026/974"
-    },
-    {
-      "label": "S 1008",
-      "url": "https://www.flsenate.gov/Session/Bill/2026/1008"
-    },
-    {
-      "label": "S 1018",
-      "url": "https://www.flsenate.gov/Session/Bill/2026/1018"
-    },
-    {
-      "label": "S 1020",
-      "url": "https://www.flsenate.gov/Session/Bill/2026/1020"
-    },
-    {
-      "label": "S 1108",
-      "url": "https://www.flsenate.gov/Session/Bill/2026/1108"
-    },
-    {
-      "label": "S 1110",
-      "url": "https://www.flsenate.gov/Session/Bill/2026/1110"
-    },
-    {
-      "label": "S 1202",
-      "url": "https://www.flsenate.gov/Session/Bill/2026/1202"
-    },
-    {
-      "label": "S 1306",
-      "url": "https://www.flsenate.gov/Session/Bill/2026/1306"
-    },
-    {
-      "label": "S 1452",
-      "url": "https://www.flsenate.gov/Session/Bill/2026/1452"
-    },
-    {
-      "label": "S 1502",
-      "url": "https://www.flsenate.gov/Session/Bill/2026/1502"
-    },
-    {
-      "label": "S 1658",
-      "url": "https://www.flsenate.gov/Session/Bill/2026/1658"
-    },
-    {
-      "label": "S 1678",
-      "url": "https://www.flsenate.gov/Session/Bill/2026/1678"
-    },
-    {
-      "label": "S 1740",
-      "url": "https://www.flsenate.gov/Session/Bill/2026/1740"
-    },
-    {
-      "label": "S 694",
-      "url": "https://www.flsenate.gov/Session/Bill/2026/694"
-    },
-    {
-      "label": "S 1062",
-      "url": "https://www.flsenate.gov/Session/Bill/2026/1062"
-    },
-    {
-      "label": "S 1230",
-      "url": "https://www.flsenate.gov/Session/Bill/2026/1230"
-    },
-    {
-      "label": "S 1288",
-      "url": "https://www.flsenate.gov/Session/Bill/2026/1288"
-    },
-    {
-      "label": "S 1574",
-      "url": "https://www.flsenate.gov/Session/Bill/2026/1574"
-    },
-    {
-      "label": "S 1714",
-      "url": "https://www.flsenate.gov/Session/Bill/2026/1714"
-    },
-    {
-      "label": "S 1734",
-      "url": "https://www.flsenate.gov/Session/Bill/2026/1734"
-    },
-    {
       "label": "Bill Search Tips",
       "url": "https://www.flsenate.gov/search/billsearchtips"
     },
@@ -540,7 +362,7 @@
     }
   ],
   "candidateCounts": {
-    "staffCandidates": 1,
+    "staffCandidates": 0,
     "educationCandidates": 0,
     "committeeCandidates": 12,
     "publicServiceCandidates": 0,

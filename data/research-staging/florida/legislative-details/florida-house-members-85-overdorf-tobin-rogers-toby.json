@@ -7,14 +7,14 @@
   "officeTitle": "Florida State Representative, District 85",
   "districtNumber": "85",
   "sourceUrl": "https://www.flhouse.gov/Sections/Representatives/details.aspx?MemberId=4728&LegislativeTermId=91",
-  "fetchedAt": "2026-07-16T05:26:29Z",
+  "fetchedAt": "2026-09-04T14:59:16Z",
   "collectionStatus": "success",
   "reviewStatus": "unreviewed",
   "publicationAllowed": false,
   "errors": [],
   "httpStatus": 200,
   "finalUrl": "https://www.flhouse.gov/Sections/Representatives/custom/details.aspx?MemberId=4728&LegislativeTermId=91",
-  "sourceSnapshotSha256": "9fbcf61cedd165823d5deccf780acb0a9f23d65726bc1e83ba8c2089bcad26dc",
+  "sourceSnapshotSha256": "72b9d21a3d7b6d2757d9a0c0a7e6cf70cae1a86a411d9d97ad1c2cff1dadaba7",
   "partyAndDistrictText": "District: 85 -- Republican",
   "staffCandidates": [
     {
@@ -91,11 +91,6 @@
       "name": "Insurance & Banking Subcommittee",
       "roleType": "member",
       "reviewStatus": "unreviewed"
-    },
-    {
-      "name": "Tobin Rogers \"Toby\" Overdorf (@ Tobin Rogers \"Toby\" Overdorf ) • Instagram photos and videos",
-      "roleType": "member",
-      "reviewStatus": "unreviewed"
     }
   ],
   "publicServiceCandidates": [],
@@ -116,22 +111,7 @@
       "sourcePageUrl": "https://www.flhouse.gov/Sections/Representatives/custom/details.aspx?MemberId=4728&LegislativeTermId=91"
     }
   ],
-  "socialCandidates": [
-    {
-      "platform": "Facebook",
-      "url": "https://www.facebook.com/FLRepTobyOverdorf/",
-      "label": "Tobin Rogers \"Toby\" Overdorf",
-      "sourcePageUrl": "https://www.flhouse.gov/Sections/Representatives/custom/details.aspx?MemberId=4728&LegislativeTermId=91",
-      "reviewStatus": "unreviewed"
-    },
-    {
-      "platform": "Instagram",
-      "url": "https://www.instagram.com/reptobyoverdorf/?utm_source=ig_embed&utm_campaign=loading",
-      "label": "Tobin Rogers \"Toby\" Overdorf",
-      "sourcePageUrl": "https://www.flhouse.gov/Sections/Representatives/custom/details.aspx?MemberId=4728&LegislativeTermId=91",
-      "reviewStatus": "unreviewed"
-    }
-  ],
+  "socialCandidates": [],
   "websiteCandidates": [
     {
       "url": "https://www.flhouse.gov/Sections/Representatives/custom/contactmember.aspx?MemberId=4728&LegislativeTermId=91",
@@ -157,7 +137,7 @@
       "identityReviewStatus": "unreviewed"
     },
     {
-      "url": "https://www.flhouse.gov/FileStores/Web/Imaging/PhotoAlbums/HousePhotoSized7565.jpg",
+      "url": "https://www.flhouse.gov/FileStores/Web/Imaging/PhotoAlbums/HousePhotoSized8186.JPG",
       "method": "img",
       "score": 30,
       "altText": "Representative Overdorf Photo",
@@ -166,7 +146,7 @@
       "identityReviewStatus": "unreviewed"
     },
     {
-      "url": "https://www.flhouse.gov/Images/bronze-seal-250.png?cb=4.6.654349",
+      "url": "https://www.flhouse.gov/Images/bronze-seal-250.png?cb=4.6.654350",
       "method": "og:image",
       "score": 14,
       "altText": null,
@@ -230,13 +210,13 @@
   "candidateCounts": {
     "staffCandidates": 2,
     "educationCandidates": 3,
-    "committeeCandidates": 9,
+    "committeeCandidates": 8,
     "publicServiceCandidates": 0,
     "affiliationCandidates": 0,
     "awardCandidates": 0,
     "officeLocationCandidates": 0,
     "contactCandidates": 2,
-    "socialCandidates": 2,
+    "socialCandidates": 0,
     "websiteCandidates": 2,
     "portraitCandidates": 6
   }

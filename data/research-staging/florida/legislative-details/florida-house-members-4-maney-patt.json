@@ -7,19 +7,19 @@
   "officeTitle": "Florida State Representative, District 4",
   "districtNumber": "4",
   "sourceUrl": "https://www.flhouse.gov/Sections/Representatives/details.aspx?MemberId=4764&LegislativeTermId=91",
-  "fetchedAt": "2026-07-16T05:26:20Z",
+  "fetchedAt": "2026-09-04T14:59:09Z",
   "collectionStatus": "success",
   "reviewStatus": "unreviewed",
   "publicationAllowed": false,
   "errors": [],
   "httpStatus": 200,
   "finalUrl": "https://www.flhouse.gov/Sections/Representatives/custom/details.aspx?MemberId=4764&LegislativeTermId=91",
-  "sourceSnapshotSha256": "19b24dd85a332f1ff866b0a38d1f6b1b167c4dcb1bd1e71ae4c4e5a8df4b8d39",
+  "sourceSnapshotSha256": "f65e04e67b60a350ee2e64e2e2508e01b2b07a56713a2081aff0af32e307cf7e",
   "partyAndDistrictText": "District: 4 -- Republican",
   "staffCandidates": [
     {
       "role": "Legislative Aide",
-      "name": "Ian Thomson",
+      "name": "None",
       "reviewStatus": "unreviewed"
     },
     {
@@ -129,7 +129,7 @@
       "identityReviewStatus": "unreviewed"
     },
     {
-      "url": "https://www.flhouse.gov/Images/bronze-seal-250.png?cb=4.6.654349",
+      "url": "https://www.flhouse.gov/Images/bronze-seal-250.png?cb=4.6.654350",
       "method": "og:image",
       "score": 14,
       "altText": null,

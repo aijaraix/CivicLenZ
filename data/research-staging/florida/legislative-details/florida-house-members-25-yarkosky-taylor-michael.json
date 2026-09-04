@@ -7,14 +7,14 @@
   "officeTitle": "Florida State Representative, District 25",
   "districtNumber": "25",
   "sourceUrl": "https://www.flhouse.gov/Sections/Representatives/details.aspx?MemberId=4868&LegislativeTermId=91",
-  "fetchedAt": "2026-07-16T05:26:23Z",
+  "fetchedAt": "2026-09-04T14:59:11Z",
   "collectionStatus": "success",
   "reviewStatus": "unreviewed",
   "publicationAllowed": false,
   "errors": [],
   "httpStatus": 200,
   "finalUrl": "https://www.flhouse.gov/Sections/Representatives/custom/details.aspx?MemberId=4868&LegislativeTermId=91",
-  "sourceSnapshotSha256": "97fb0ec0e6d21a0e3bf4cc1782877534ef48b67239c87b469b8a38b714c7d041",
+  "sourceSnapshotSha256": "45981c9720341dc6391d64c163331a97c9070db4120f452383f477ceffeb727a",
   "partyAndDistrictText": "District: 25 -- Republican",
   "staffCandidates": [
     {
@@ -124,7 +124,7 @@
       "identityReviewStatus": "unreviewed"
     },
     {
-      "url": "https://www.flhouse.gov/FileStores/Web/Imaging/PhotoAlbums/HousePhotoSized8385.JPG",
+      "url": "https://www.flhouse.gov/FileStores/Web/Imaging/PhotoAlbums/HousePhotoSized7460.jpg",
       "method": "img",
       "score": 30,
       "altText": "Representative Yarkosky Photo",
@@ -133,7 +133,7 @@
       "identityReviewStatus": "unreviewed"
     },
     {
-      "url": "https://www.flhouse.gov/Images/bronze-seal-250.png?cb=4.6.654349",
+      "url": "https://www.flhouse.gov/Images/bronze-seal-250.png?cb=4.6.654350",
       "method": "og:image",
       "score": 14,
       "altText": null,

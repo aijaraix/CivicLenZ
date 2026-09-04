@@ -7,14 +7,14 @@
   "officeTitle": "Florida State Representative, District 111",
   "districtNumber": "111",
   "sourceUrl": "https://www.flhouse.gov/Sections/Representatives/details.aspx?MemberId=4794&LegislativeTermId=91",
-  "fetchedAt": "2026-07-16T05:26:32Z",
+  "fetchedAt": "2026-09-04T14:59:19Z",
   "collectionStatus": "success",
   "reviewStatus": "unreviewed",
   "publicationAllowed": false,
   "errors": [],
   "httpStatus": 200,
   "finalUrl": "https://www.flhouse.gov/Sections/Representatives/details.aspx?MemberId=4794&LegislativeTermId=91",
-  "sourceSnapshotSha256": "8ea6dae5b79cc363266210d5333ff800d4a6770c102ff06668ce760b1658996d",
+  "sourceSnapshotSha256": "95a0baf9cf761bad516f13f1cc58f56bf84f6464c4129459cb75d1b7654fcbd5",
   "partyAndDistrictText": "District: 111 -- Republican",
   "staffCandidates": [
     {
@@ -24,7 +24,7 @@
     },
     {
       "role": "District Aide",
-      "name": "None",
+      "name": "Patrick Villalonga",
       "reviewStatus": "unreviewed"
     }
   ],
@@ -133,7 +133,7 @@
       "identityReviewStatus": "unreviewed"
     },
     {
-      "url": "https://www.flhouse.gov/Images/bronze-seal-250.png?cb=4.6.654349",
+      "url": "https://www.flhouse.gov/Images/bronze-seal-250.png?cb=4.6.654350",
       "method": "og:image",
       "score": 14,
       "altText": null,

@@ -7,14 +7,14 @@
   "officeTitle": "Florida State Representative, District 43",
   "districtNumber": "43",
   "sourceUrl": "https://www.flhouse.gov/Sections/Representatives/details.aspx?MemberId=4875&LegislativeTermId=91",
-  "fetchedAt": "2026-07-16T05:26:25Z",
+  "fetchedAt": "2026-09-04T14:59:13Z",
   "collectionStatus": "success",
   "reviewStatus": "unreviewed",
   "publicationAllowed": false,
   "errors": [],
   "httpStatus": 200,
   "finalUrl": "https://www.flhouse.gov/Sections/Representatives/custom/details.aspx?MemberId=4875&LegislativeTermId=91",
-  "sourceSnapshotSha256": "db5ad241dc3a088a9de6b87dd32012f689d7c8bc72408d5576f57ab62ce1bfe1",
+  "sourceSnapshotSha256": "d1290f314ecd659b4ecb7acbabc835b03458d97d18072130f4a41640d79c16dc",
   "partyAndDistrictText": "District: 43 -- Democrat",
   "staffCandidates": [
     {
@@ -85,11 +85,6 @@
       "name": "Student Academic Success Subcommittee",
       "roleType": "member",
       "reviewStatus": "unreviewed"
-    },
-    {
-      "name": "Johanna López (@ Johanna López ) • Instagram photos and videos",
-      "roleType": "member",
-      "reviewStatus": "unreviewed"
     }
   ],
   "publicServiceCandidates": [],
@@ -110,22 +105,7 @@
       "sourcePageUrl": "https://www.flhouse.gov/Sections/Representatives/custom/details.aspx?MemberId=4875&LegislativeTermId=91"
     }
   ],
-  "socialCandidates": [
-    {
-      "platform": "Instagram",
-      "url": "https://www.instagram.com/johannaforfl/?utm_source=ig_embed&utm_campaign=loading",
-      "label": "Johanna López",
-      "sourcePageUrl": "https://www.flhouse.gov/Sections/Representatives/custom/details.aspx?MemberId=4875&LegislativeTermId=91",
-      "reviewStatus": "unreviewed"
-    },
-    {
-      "platform": "Facebook",
-      "url": "https://www.facebook.com/JohannaLopezFL",
-      "label": "Johanna López",
-      "sourcePageUrl": "https://www.flhouse.gov/Sections/Representatives/custom/details.aspx?MemberId=4875&LegislativeTermId=91",
-      "reviewStatus": "unreviewed"
-    }
-  ],
+  "socialCandidates": [],
   "websiteCandidates": [
     {
       "url": "https://www.flhouse.gov/Sections/Representatives/custom/contactmember.aspx?MemberId=4875&LegislativeTermId=91",
@@ -160,7 +140,7 @@
       "identityReviewStatus": "unreviewed"
     },
     {
-      "url": "https://www.flhouse.gov/Images/bronze-seal-250.png?cb=4.6.654349",
+      "url": "https://www.flhouse.gov/Images/bronze-seal-250.png?cb=4.6.654350",
       "method": "og:image",
       "score": 14,
       "altText": null,
@@ -224,13 +204,13 @@
   "candidateCounts": {
     "staffCandidates": 2,
     "educationCandidates": 4,
-    "committeeCandidates": 7,
+    "committeeCandidates": 6,
     "publicServiceCandidates": 0,
     "affiliationCandidates": 0,
     "awardCandidates": 0,
     "officeLocationCandidates": 0,
     "contactCandidates": 2,
-    "socialCandidates": 2,
+    "socialCandidates": 0,
     "websiteCandidates": 2,
     "portraitCandidates": 6
   }

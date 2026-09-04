@@ -7,14 +7,14 @@
   "officeTitle": "Florida State Representative, District 58",
   "districtNumber": "58",
   "sourceUrl": "https://www.flhouse.gov/Sections/Representatives/details.aspx?MemberId=4210&LegislativeTermId=91",
-  "fetchedAt": "2026-07-16T05:26:27Z",
+  "fetchedAt": "2026-09-04T14:59:14Z",
   "collectionStatus": "success",
   "reviewStatus": "unreviewed",
   "publicationAllowed": false,
   "errors": [],
   "httpStatus": 200,
   "finalUrl": "https://www.flhouse.gov/Sections/Representatives/custom/details.aspx?MemberId=4210&LegislativeTermId=91",
-  "sourceSnapshotSha256": "e321954b7237caa9c3915949c6f960f2ffee787c9045dbd2f95873aa477aa2db",
+  "sourceSnapshotSha256": "7d113f9cfbcb0d0bfaaef0e76652df878971cbba6bb5a9d544f2c471e747d163",
   "partyAndDistrictText": "District: 58 -- Republican",
   "staffCandidates": [
     {
@@ -123,7 +123,7 @@
       "identityReviewStatus": "unreviewed"
     },
     {
-      "url": "https://www.flhouse.gov/FileStores/Web/Imaging/PhotoAlbums/HousePhotoSized7512.jpg",
+      "url": "https://www.flhouse.gov/FileStores/Web/Imaging/PhotoAlbums/HousePhotoSized1521.jpg",
       "method": "img",
       "score": 30,
       "altText": "Representative Berfield Photo",
@@ -132,7 +132,7 @@
       "identityReviewStatus": "unreviewed"
     },
     {
-      "url": "https://www.flhouse.gov/Images/bronze-seal-250.png?cb=4.6.654349",
+      "url": "https://www.flhouse.gov/Images/bronze-seal-250.png?cb=4.6.654350",
       "method": "og:image",
       "score": 14,
       "altText": null,
@@ -159,7 +159,7 @@
       "identityReviewStatus": "unreviewed"
     },
     {
-      "url": "https://www.flhouse.gov/FileStores/Web/Imaging/PhotoAlbums/HousePhotoSized8355.JPG",
+      "url": "https://www.flhouse.gov/FileStores/Web/Imaging/PhotoAlbums/HousePhotoSized7512.jpg",
       "method": "img",
       "score": 9,
       "altText": null,

@@ -7,14 +7,14 @@
   "officeTitle": "Florida State Representative, District 110",
   "districtNumber": "110",
   "sourceUrl": "https://www.flhouse.gov/Sections/Representatives/details.aspx?MemberId=4792&LegislativeTermId=91",
-  "fetchedAt": "2026-07-16T05:26:32Z",
+  "fetchedAt": "2026-09-04T14:59:19Z",
   "collectionStatus": "success",
   "reviewStatus": "unreviewed",
   "publicationAllowed": false,
   "errors": [],
   "httpStatus": 200,
   "finalUrl": "https://www.flhouse.gov/Sections/Representatives/custom/details.aspx?MemberId=4792&LegislativeTermId=91",
-  "sourceSnapshotSha256": "f6086f9fd01fe65c47d5850cdb0349f86b709530f98521fcc41fd15f0f28c63d",
+  "sourceSnapshotSha256": "787dfb8ba03f337e64e9119f215bc5e315cd23a06ce42c38b026616d9be8f08c",
   "partyAndDistrictText": "District: 110 -- Republican",
   "staffCandidates": [
     {
@@ -133,7 +133,7 @@
       "identityReviewStatus": "unreviewed"
     },
     {
-      "url": "https://www.flhouse.gov/FileStores/Web/Imaging/PhotoAlbums/HousePhotoSized7261.jpg",
+      "url": "https://www.flhouse.gov/FileStores/Web/Imaging/PhotoAlbums/HousePhotoSized7391.jpg",
       "method": "img",
       "score": 30,
       "altText": "Representative Fabricio Photo",
@@ -142,7 +142,7 @@
       "identityReviewStatus": "unreviewed"
     },
     {
-      "url": "https://www.flhouse.gov/Images/bronze-seal-250.png?cb=4.6.654349",
+      "url": "https://www.flhouse.gov/Images/bronze-seal-250.png?cb=4.6.654350",
       "method": "og:image",
       "score": 14,
       "altText": null,

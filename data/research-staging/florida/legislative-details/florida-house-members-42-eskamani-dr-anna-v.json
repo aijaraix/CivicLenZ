@@ -7,24 +7,24 @@
   "officeTitle": "Florida State Representative, District 42",
   "districtNumber": "42",
   "sourceUrl": "https://www.flhouse.gov/Sections/Representatives/details.aspx?MemberId=4746&LegislativeTermId=91",
-  "fetchedAt": "2026-07-16T05:26:24Z",
+  "fetchedAt": "2026-09-04T14:59:13Z",
   "collectionStatus": "success",
   "reviewStatus": "unreviewed",
   "publicationAllowed": false,
   "errors": [],
   "httpStatus": 200,
   "finalUrl": "https://www.flhouse.gov/Sections/Representatives/details.aspx?MemberId=4746&LegislativeTermId=91",
-  "sourceSnapshotSha256": "c77a602548b28d75538620011ea55f88d35ceee4721ed7759232cbd6ff789762",
+  "sourceSnapshotSha256": "a21612f56a22ed4d4353eb939e5f5285314190ecd0f23c08803e204a61735995",
   "partyAndDistrictText": "District: 42 -- Democrat",
   "staffCandidates": [
     {
       "role": "Legislative Aide",
-      "name": "Jasmine Barnaby",
+      "name": "Madison Clearman",
       "reviewStatus": "unreviewed"
     },
     {
       "role": "District Aide",
-      "name": "Madison Clearman",
+      "name": "Suhan Rosario",
       "reviewStatus": "unreviewed"
     }
   ],
@@ -137,7 +137,7 @@
       "identityReviewStatus": "unreviewed"
     },
     {
-      "url": "https://www.flhouse.gov/Images/bronze-seal-250.png?cb=4.6.654349",
+      "url": "https://www.flhouse.gov/Images/bronze-seal-250.png?cb=4.6.654350",
       "method": "og:image",
       "score": 14,
       "altText": null,

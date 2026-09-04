@@ -7,14 +7,14 @@
   "officeTitle": "Florida State Representative, District 24",
   "districtNumber": "24",
   "sourceUrl": "https://www.flhouse.gov/Sections/Representatives/details.aspx?MemberId=4901&LegislativeTermId=91",
-  "fetchedAt": "2026-07-16T05:26:22Z",
+  "fetchedAt": "2026-09-04T14:59:11Z",
   "collectionStatus": "success",
   "reviewStatus": "unreviewed",
   "publicationAllowed": false,
   "errors": [],
   "httpStatus": 200,
   "finalUrl": "https://www.flhouse.gov/Sections/Representatives/custom/details.aspx?MemberId=4901&LegislativeTermId=91",
-  "sourceSnapshotSha256": "ec08988e82e1efe254a3000686ff5b6673ae79ec765c699293c575fee802ac8f",
+  "sourceSnapshotSha256": "7e762d9d9c002b1bca5e3c471345e8c37da7e8590c6c705221f1b59b60f979ed",
   "partyAndDistrictText": "District: 24 -- Republican",
   "staffCandidates": [
     {
@@ -163,6 +163,15 @@
       "identityReviewStatus": "unreviewed"
     },
     {
+      "url": "https://www.flhouse.gov/FileStores/Web/Imaging/PhotoAlbums/HousePhotoSized8135.JPG",
+      "method": "img",
+      "score": 30,
+      "altText": "Representative Chamberlin Photo",
+      "sourcePageUrl": "https://www.flhouse.gov/Sections/Representatives/custom/details.aspx?MemberId=4901&LegislativeTermId=91",
+      "rightsStatus": "review_required",
+      "identityReviewStatus": "unreviewed"
+    },
+    {
       "url": "https://www.flhouse.gov/FileStores/Web/Imaging/PhotoAlbums/HousePhotoSized8263.JPG",
       "method": "img",
       "score": 21,
@@ -172,19 +181,10 @@
       "identityReviewStatus": "unreviewed"
     },
     {
-      "url": "https://www.flhouse.gov/Images/bronze-seal-250.png?cb=4.6.654349",
+      "url": "https://www.flhouse.gov/Images/bronze-seal-250.png?cb=4.6.654350",
       "method": "og:image",
       "score": 14,
       "altText": null,
-      "sourcePageUrl": "https://www.flhouse.gov/Sections/Representatives/custom/details.aspx?MemberId=4901&LegislativeTermId=91",
-      "rightsStatus": "review_required",
-      "identityReviewStatus": "unreviewed"
-    },
-    {
-      "url": "https://www.flhouse.gov/FileStores/Web/Imaging/member-page-banners/2.jpg",
-      "method": "img",
-      "score": -17,
-      "altText": "The Chamber Member Desks",
       "sourcePageUrl": "https://www.flhouse.gov/Sections/Representatives/custom/details.aspx?MemberId=4901&LegislativeTermId=91",
       "rightsStatus": "review_required",
       "identityReviewStatus": "unreviewed"

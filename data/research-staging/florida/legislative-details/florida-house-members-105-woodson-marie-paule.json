@@ -7,19 +7,19 @@
   "officeTitle": "Florida State Representative, District 105",
   "districtNumber": "105",
   "sourceUrl": "https://www.flhouse.gov/Sections/Representatives/details.aspx?MemberId=4789&LegislativeTermId=91",
-  "fetchedAt": "2026-07-16T05:26:32Z",
+  "fetchedAt": "2026-09-04T14:59:18Z",
   "collectionStatus": "success",
   "reviewStatus": "unreviewed",
   "publicationAllowed": false,
   "errors": [],
   "httpStatus": 200,
   "finalUrl": "https://www.flhouse.gov/Sections/Representatives/details.aspx?MemberId=4789&LegislativeTermId=91",
-  "sourceSnapshotSha256": "ad5bce95b5d254caef47a434c00fa24d21b80e39eb3552db521bba1e7b921eb9",
+  "sourceSnapshotSha256": "58aa5cfdb86cb5ae009f50aa270fe76097cc96631e1b379f132061b86c686e63",
   "partyAndDistrictText": "District: 105 -- Democrat",
   "staffCandidates": [
     {
       "role": "Legislative Aide",
-      "name": "Nedgine Saint-Louis",
+      "name": "None",
       "reviewStatus": "unreviewed"
     },
     {
@@ -138,7 +138,7 @@
       "identityReviewStatus": "unreviewed"
     },
     {
-      "url": "https://www.flhouse.gov/Images/bronze-seal-250.png?cb=4.6.654349",
+      "url": "https://www.flhouse.gov/Images/bronze-seal-250.png?cb=4.6.654350",
       "method": "og:image",
       "score": 14,
       "altText": null,

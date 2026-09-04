@@ -7,14 +7,14 @@
   "officeTitle": "Florida State Senator, District 20",
   "districtNumber": "20",
   "sourceUrl": "https://www.flsenate.gov/Senators/2024-2026/S20",
-  "fetchedAt": "2026-07-16T05:26:36Z",
+  "fetchedAt": "2026-09-04T14:59:23Z",
   "collectionStatus": "success",
   "reviewStatus": "unreviewed",
   "publicationAllowed": false,
   "errors": [],
   "httpStatus": 200,
   "finalUrl": "https://www.flsenate.gov/Senators/S20",
-  "sourceSnapshotSha256": "18589bdda40951163743882151471ab17e9ee730fde87af6b1685a15d7608f9e",
+  "sourceSnapshotSha256": "c4bfb1c50f665bc4920f2f1e4603fc10aecfa2513b2084ced3f923f213aef89f",
   "partyAndDistrictText": "Party: Republican",
   "staffCandidates": [],
   "biographyCandidates": {
@@ -312,34 +312,6 @@
     {
       "label": "Bills Introduced",
       "url": "https://www.flsenate.gov/Senators/S20?Tab=Bills#Bills"
-    },
-    {
-      "label": "S 1774",
-      "url": "https://www.flsenate.gov/Session/Bill/2026/1774"
-    },
-    {
-      "label": "S 364",
-      "url": "https://www.flsenate.gov/Session/Bill/2026/364"
-    },
-    {
-      "label": "S 532",
-      "url": "https://www.flsenate.gov/Session/Bill/2026/532"
-    },
-    {
-      "label": "S 1062",
-      "url": "https://www.flsenate.gov/Session/Bill/2026/1062"
-    },
-    {
-      "label": "S 1322",
-      "url": "https://www.flsenate.gov/Session/Bill/2026/1322"
-    },
-    {
-      "label": "S 1498",
-      "url": "https://www.flsenate.gov/Session/Bill/2026/1498"
-    },
-    {
-      "label": "S 1574",
-      "url": "https://www.flsenate.gov/Session/Bill/2026/1574"
     },
     {
       "label": "Bill Search Tips",

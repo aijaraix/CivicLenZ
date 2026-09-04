@@ -7,24 +7,24 @@
   "officeTitle": "Florida State Representative, District 116",
   "districtNumber": "116",
   "sourceUrl": "https://www.flhouse.gov/Sections/Representatives/details.aspx?MemberId=4690&LegislativeTermId=91",
-  "fetchedAt": "2026-07-16T05:26:33Z",
+  "fetchedAt": "2026-09-04T14:59:19Z",
   "collectionStatus": "success",
   "reviewStatus": "unreviewed",
   "publicationAllowed": false,
   "errors": [],
   "httpStatus": 200,
-  "finalUrl": "https://www.flhouse.gov/Sections/Representatives/custom/details.aspx?MemberId=4690&LegislativeTermId=91",
-  "sourceSnapshotSha256": "615ab65e02b549f073a24cdeeeda145d8e6dd00d17a18281ac041509a3abd11b",
+  "finalUrl": "https://www.flhouse.gov/Sections/Representatives/details.aspx?MemberId=4690&LegislativeTermId=91",
+  "sourceSnapshotSha256": "329c6976d0be5c1c9294ac3d004f53c1a63aea955f39c403638f2f06e2f6acef",
   "partyAndDistrictText": "District: 116 -- Republican",
   "staffCandidates": [
     {
       "role": "Legislative Aide",
-      "name": "None",
+      "name": null,
       "reviewStatus": "unreviewed"
     },
     {
       "role": "District Aide",
-      "name": "Elizabeth CasasRodriguez",
+      "name": null,
       "reviewStatus": "unreviewed"
     }
   ],
@@ -33,7 +33,7 @@
     "occupation": "Attorney",
     "spouse": "Stephanie Perez",
     "educationRaw": "Florida State University, BA, 2009; Loyola University New Orleans College of Law, JD, 2012",
-    "bornRaw": "June 22 New York City NY",
+    "bornRaw": "June 22, New York City, NY",
     "movedToFlorida": null,
     "recreationalInterests": null
   },
@@ -52,51 +52,73 @@
   "affiliationCandidates": [],
   "awardCandidates": [],
   "officeLocationCandidates": [],
-  "contactCandidates": [
+  "contactCandidates": [],
+  "socialCandidates": [
     {
-      "type": "phone",
-      "value": "(850) 717-5000",
-      "label": null,
-      "sourcePageUrl": "https://www.flhouse.gov/Sections/Representatives/custom/details.aspx?MemberId=4690&LegislativeTermId=91"
-    },
-    {
-      "type": "phone",
-      "value": "1 (305) 463-1230",
-      "label": null,
-      "sourcePageUrl": "https://www.flhouse.gov/Sections/Representatives/custom/details.aspx?MemberId=4690&LegislativeTermId=91"
+      "platform": "YouTube",
+      "url": "https://www.youtube.com/channel/UCGiMELcyYCuDPP3N0Tg5sTg",
+      "label": "Subscribe",
+      "sourcePageUrl": "https://www.flhouse.gov/Sections/Representatives/details.aspx?MemberId=4690&LegislativeTermId=91",
+      "reviewStatus": "unreviewed"
     }
   ],
-  "socialCandidates": [],
   "websiteCandidates": [
     {
-      "url": "https://www.flhouse.gov/Sections/Representatives/custom/contactmember.aspx?MemberId=4690&LegislativeTermId=91",
-      "label": "Contact Member",
-      "sourcePageUrl": "https://www.flhouse.gov/Sections/Representatives/custom/details.aspx?MemberId=4690&LegislativeTermId=91",
+      "url": "https://www.flhouse.gov/Sections/HouseSchedule/houseschedule.aspx",
+      "label": "House Schedule",
+      "sourcePageUrl": "https://www.flhouse.gov/Sections/Representatives/details.aspx?MemberId=4690&LegislativeTermId=91",
       "reviewStatus": "unreviewed"
     },
     {
-      "url": "https://www.flhouse.gov/Sections/Representatives/custom/maps-and-offices.aspx?MemberId=4690&LegislativeTermId=91",
-      "label": "Maps & Offices",
-      "sourcePageUrl": "https://www.flhouse.gov/Sections/Representatives/custom/details.aspx?MemberId=4690&LegislativeTermId=91",
+      "url": "https://www.flhouse.gov/contentViewer.aspx?Category=website&File=contact us.htm",
+      "label": "Contact Us",
+      "sourcePageUrl": "https://www.flhouse.gov/Sections/Representatives/details.aspx?MemberId=4690&LegislativeTermId=91",
       "reviewStatus": "unreviewed"
     }
   ],
   "portraitCandidates": [
     {
-      "url": "https://www.flhouse.gov/FileStores/Web/Imaging/Member/cutout%2f4690.png",
+      "url": "https://www.flhouse.gov/FileStores/Web/Imaging/Member/4690.jpg",
       "method": "img",
       "score": 39,
       "altText": "Representative Perez Photo",
-      "sourcePageUrl": "https://www.flhouse.gov/Sections/Representatives/custom/details.aspx?MemberId=4690&LegislativeTermId=91",
+      "sourcePageUrl": "https://www.flhouse.gov/Sections/Representatives/details.aspx?MemberId=4690&LegislativeTermId=91",
       "rightsStatus": "review_required",
       "identityReviewStatus": "unreviewed"
     },
     {
-      "url": "https://www.flhouse.gov/Images/bronze-seal-250.png?cb=4.6.654349",
+      "url": "https://www.flhouse.gov/Images/bronze-seal-250.png?cb=4.6.654350",
       "method": "og:image",
       "score": 14,
       "altText": null,
-      "sourcePageUrl": "https://www.flhouse.gov/Sections/Representatives/custom/details.aspx?MemberId=4690&LegislativeTermId=91",
+      "sourcePageUrl": "https://www.flhouse.gov/Sections/Representatives/details.aspx?MemberId=4690&LegislativeTermId=91",
+      "rightsStatus": "review_required",
+      "identityReviewStatus": "unreviewed"
+    },
+    {
+      "url": "https://www.flhouse.gov/FileStores/Web/Imaging/PhotoAlbums/HousePhotoSized8449.JPG",
+      "method": "img",
+      "score": 9,
+      "altText": null,
+      "sourcePageUrl": "https://www.flhouse.gov/Sections/Representatives/details.aspx?MemberId=4690&LegislativeTermId=91",
+      "rightsStatus": "review_required",
+      "identityReviewStatus": "unreviewed"
+    },
+    {
+      "url": "https://www.flhouse.gov/FileStores/Web/Imaging/PhotoAlbums/HousePhotoSized8451.JPG",
+      "method": "img",
+      "score": 9,
+      "altText": null,
+      "sourcePageUrl": "https://www.flhouse.gov/Sections/Representatives/details.aspx?MemberId=4690&LegislativeTermId=91",
+      "rightsStatus": "review_required",
+      "identityReviewStatus": "unreviewed"
+    },
+    {
+      "url": "https://www.flhouse.gov/FileStores/Web/Imaging/PhotoAlbums/HousePhotoSized8452.JPG",
+      "method": "img",
+      "score": 9,
+      "altText": null,
+      "sourcePageUrl": "https://www.flhouse.gov/Sections/Representatives/details.aspx?MemberId=4690&LegislativeTermId=91",
       "rightsStatus": "review_required",
       "identityReviewStatus": "unreviewed"
     },
@@ -105,34 +127,7 @@
       "method": "img",
       "score": 9,
       "altText": null,
-      "sourcePageUrl": "https://www.flhouse.gov/Sections/Representatives/custom/details.aspx?MemberId=4690&LegislativeTermId=91",
-      "rightsStatus": "review_required",
-      "identityReviewStatus": "unreviewed"
-    },
-    {
-      "url": "https://www.flhouse.gov/FileStores/Web/Imaging/PhotoAlbums/HousePhotoSized8455.JPG",
-      "method": "img",
-      "score": 9,
-      "altText": null,
-      "sourcePageUrl": "https://www.flhouse.gov/Sections/Representatives/custom/details.aspx?MemberId=4690&LegislativeTermId=91",
-      "rightsStatus": "review_required",
-      "identityReviewStatus": "unreviewed"
-    },
-    {
-      "url": "https://www.flhouse.gov/FileStores/Web/Imaging/PhotoAlbums/HousePhotoSized8456.JPG",
-      "method": "img",
-      "score": 9,
-      "altText": null,
-      "sourcePageUrl": "https://www.flhouse.gov/Sections/Representatives/custom/details.aspx?MemberId=4690&LegislativeTermId=91",
-      "rightsStatus": "review_required",
-      "identityReviewStatus": "unreviewed"
-    },
-    {
-      "url": "https://www.flhouse.gov/FileStores/Web/Imaging/member-page-banners/1.jpg",
-      "method": "img",
-      "score": -17,
-      "altText": "The House Chamber",
-      "sourcePageUrl": "https://www.flhouse.gov/Sections/Representatives/custom/details.aspx?MemberId=4690&LegislativeTermId=91",
+      "sourcePageUrl": "https://www.flhouse.gov/Sections/Representatives/details.aspx?MemberId=4690&LegislativeTermId=91",
       "rightsStatus": "review_required",
       "identityReviewStatus": "unreviewed"
     }
@@ -140,22 +135,22 @@
   "mapLinks": [],
   "billLinks": [
     {
+      "label": "Bills",
+      "url": "https://www.flhouse.gov/Sections/Bills/bills.aspx"
+    },
+    {
       "label": "Sponsored Bills",
-      "url": "https://www.flhouse.gov/Sections/Representatives/custom/sponsoredbills.aspx?MemberId=4690&LegislativeTermId=91"
+      "url": "https://www.flhouse.gov/Sections/Representatives/sponsoredbills.aspx?MemberId=4690&SessionId=113"
     }
   ],
   "mediaLinks": [
     {
-      "label": "Social Media",
-      "url": "https://www.flhouse.gov/Sections/Representatives/custom/social-media.aspx?MemberId=4690&LegislativeTermId=91"
+      "label": "Full Gallery",
+      "url": "https://www.flhouse.gov/Sections/PhotoAlbums/photoAlbum.aspx?MemberId=4690"
     },
     {
-      "label": "Communications",
-      "url": "https://www.flhouse.gov/Sections/Representatives/custom/communications.aspx?MemberId=4690&LegislativeTermId=91"
-    },
-    {
-      "label": "Official House Gallery",
-      "url": "https://www.flhouse.gov/Sections/PhotoAlbums/custom/photoAlbum.aspx?MemberId=4690"
+      "label": "Subscribe to the Florida House YouTube Channel:",
+      "url": "https://www.youtube.com/channel/UCGiMELcyYCuDPP3N0Tg5sTg"
     }
   ],
   "candidateCounts": {
@@ -166,8 +161,8 @@
     "affiliationCandidates": 0,
     "awardCandidates": 0,
     "officeLocationCandidates": 0,
-    "contactCandidates": 2,
-    "socialCandidates": 0,
+    "contactCandidates": 0,
+    "socialCandidates": 1,
     "websiteCandidates": 2,
     "portraitCandidates": 6
   }

@@ -7,14 +7,14 @@
   "officeTitle": "Florida State Representative, District 80",
   "districtNumber": "80",
   "sourceUrl": "https://www.flhouse.gov/Sections/Representatives/details.aspx?MemberId=4782&LegislativeTermId=91",
-  "fetchedAt": "2026-07-16T05:26:29Z",
+  "fetchedAt": "2026-09-04T14:59:16Z",
   "collectionStatus": "success",
   "reviewStatus": "unreviewed",
   "publicationAllowed": false,
   "errors": [],
   "httpStatus": 200,
   "finalUrl": "https://www.flhouse.gov/Sections/Representatives/custom/details.aspx?MemberId=4782&LegislativeTermId=91",
-  "sourceSnapshotSha256": "d6e3b7e255b3248b050ae057b707ebee29332a0f7db8713ef5200d79ea5d769f",
+  "sourceSnapshotSha256": "0b75fff5056d5db0859cc92947561cd7ae72a72b5f75956af72aaa4ae25ea2a0",
   "partyAndDistrictText": "District: 80 -- Republican",
   "staffCandidates": [
     {
@@ -114,7 +114,7 @@
       "identityReviewStatus": "unreviewed"
     },
     {
-      "url": "https://www.flhouse.gov/FileStores/Web/Imaging/PhotoAlbums/HousePhotoSized7477.jpg",
+      "url": "https://www.flhouse.gov/FileStores/Web/Imaging/PhotoAlbums/HousePhotoSized7476.jpg",
       "method": "img",
       "score": 30,
       "altText": "Representative Botana Photo",
@@ -123,7 +123,7 @@
       "identityReviewStatus": "unreviewed"
     },
     {
-      "url": "https://www.flhouse.gov/Images/bronze-seal-250.png?cb=4.6.654349",
+      "url": "https://www.flhouse.gov/Images/bronze-seal-250.png?cb=4.6.654350",
       "method": "og:image",
       "score": 14,
       "altText": null,

@@ -7,14 +7,14 @@
   "officeTitle": "Florida State Representative, District 87",
   "districtNumber": "87",
   "sourceUrl": "https://www.flhouse.gov/Sections/Representatives/details.aspx?MemberId=5069&LegislativeTermId=91",
-  "fetchedAt": "2026-07-16T05:26:30Z",
+  "fetchedAt": "2026-09-04T14:59:16Z",
   "collectionStatus": "success",
   "reviewStatus": "unreviewed",
   "publicationAllowed": false,
   "errors": [],
   "httpStatus": 200,
   "finalUrl": "https://www.flhouse.gov/Sections/Representatives/details.aspx?MemberId=5069&LegislativeTermId=91",
-  "sourceSnapshotSha256": "3efb5eb42e78c6d65d88e29432f331eb88de98895458d843eb723e762d54c5aa",
+  "sourceSnapshotSha256": "2173d42d3d8e6cef4019988f42e582aeefa00ce375f8eb5e355974cc782da2b4",
   "partyAndDistrictText": "District: 87 -- Democrat",
   "staffCandidates": [
     {
@@ -108,7 +108,7 @@
       "identityReviewStatus": "unreviewed"
     },
     {
-      "url": "https://www.flhouse.gov/Images/bronze-seal-250.png?cb=4.6.654349",
+      "url": "https://www.flhouse.gov/Images/bronze-seal-250.png?cb=4.6.654350",
       "method": "og:image",
       "score": 14,
       "altText": null,

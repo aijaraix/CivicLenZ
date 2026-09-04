@@ -7,19 +7,19 @@
   "officeTitle": "Florida State Representative, District 15",
   "districtNumber": "15",
   "sourceUrl": "https://www.flhouse.gov/Sections/Representatives/details.aspx?MemberId=4865&LegislativeTermId=91",
-  "fetchedAt": "2026-07-16T05:26:21Z",
+  "fetchedAt": "2026-09-04T14:59:10Z",
   "collectionStatus": "success",
   "reviewStatus": "unreviewed",
   "publicationAllowed": false,
   "errors": [],
   "httpStatus": 200,
   "finalUrl": "https://www.flhouse.gov/Sections/Representatives/custom/details.aspx?MemberId=4865&LegislativeTermId=91",
-  "sourceSnapshotSha256": "6698d83dec5850a057d19f587c2332526c7dac71866055543b70e72ea80eefd2",
+  "sourceSnapshotSha256": "55eb697f8ff3a7f94359d1b54cad53c1eb8988205e5907db3903e887cad048c5",
   "partyAndDistrictText": "District: 15 -- Republican",
   "staffCandidates": [
     {
       "role": "Legislative Aide",
-      "name": "Elena Lopez",
+      "name": "None",
       "reviewStatus": "unreviewed"
     },
     {
@@ -104,15 +104,7 @@
       "sourcePageUrl": "https://www.flhouse.gov/Sections/Representatives/custom/details.aspx?MemberId=4865&LegislativeTermId=91"
     }
   ],
-  "socialCandidates": [
-    {
-      "platform": "Facebook",
-      "url": "https://www.facebook.com/deanblackfl/",
-      "label": "Dean Black",
-      "sourcePageUrl": "https://www.flhouse.gov/Sections/Representatives/custom/details.aspx?MemberId=4865&LegislativeTermId=91",
-      "reviewStatus": "unreviewed"
-    }
-  ],
+  "socialCandidates": [],
   "websiteCandidates": [
     {
       "url": "https://www.flhouse.gov/Sections/Representatives/custom/contactmember.aspx?MemberId=4865&LegislativeTermId=91",
@@ -138,7 +130,7 @@
       "identityReviewStatus": "unreviewed"
     },
     {
-      "url": "https://www.flhouse.gov/FileStores/Web/Imaging/PhotoAlbums/HousePhotoSized7913.JPG",
+      "url": "https://www.flhouse.gov/FileStores/Web/Imaging/PhotoAlbums/HousePhotoSized8230.JPG",
       "method": "img",
       "score": 30,
       "altText": "Representative Black Photo",
@@ -147,18 +139,9 @@
       "identityReviewStatus": "unreviewed"
     },
     {
-      "url": "https://www.flhouse.gov/Images/bronze-seal-250.png?cb=4.6.654349",
+      "url": "https://www.flhouse.gov/Images/bronze-seal-250.png?cb=4.6.654350",
       "method": "og:image",
       "score": 14,
-      "altText": null,
-      "sourcePageUrl": "https://www.flhouse.gov/Sections/Representatives/custom/details.aspx?MemberId=4865&LegislativeTermId=91",
-      "rightsStatus": "review_required",
-      "identityReviewStatus": "unreviewed"
-    },
-    {
-      "url": "https://www.flhouse.gov/FileStores/Web/Imaging/PhotoAlbums/HousePhotoSized8230.JPG",
-      "method": "img",
-      "score": 9,
       "altText": null,
       "sourcePageUrl": "https://www.flhouse.gov/Sections/Representatives/custom/details.aspx?MemberId=4865&LegislativeTermId=91",
       "rightsStatus": "review_required",
@@ -178,6 +161,15 @@
       "method": "img",
       "score": 9,
       "altText": null,
+      "sourcePageUrl": "https://www.flhouse.gov/Sections/Representatives/custom/details.aspx?MemberId=4865&LegislativeTermId=91",
+      "rightsStatus": "review_required",
+      "identityReviewStatus": "unreviewed"
+    },
+    {
+      "url": "https://www.flhouse.gov/FileStores/Web/Imaging/member-page-banners/3.jpg",
+      "method": "img",
+      "score": -17,
+      "altText": "The Old Florida Capitol",
       "sourcePageUrl": "https://www.flhouse.gov/Sections/Representatives/custom/details.aspx?MemberId=4865&LegislativeTermId=91",
       "rightsStatus": "review_required",
       "identityReviewStatus": "unreviewed"
@@ -217,7 +209,7 @@
     "awardCandidates": 0,
     "officeLocationCandidates": 0,
     "contactCandidates": 3,
-    "socialCandidates": 1,
+    "socialCandidates": 0,
     "websiteCandidates": 2,
     "portraitCandidates": 6
   }

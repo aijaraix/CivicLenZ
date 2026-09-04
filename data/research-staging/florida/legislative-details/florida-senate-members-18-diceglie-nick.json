@@ -7,14 +7,14 @@
   "officeTitle": "Florida State Senator, District 18",
   "districtNumber": "18",
   "sourceUrl": "https://www.flsenate.gov/Senators/2024-2026/S18",
-  "fetchedAt": "2026-07-16T05:26:36Z",
+  "fetchedAt": "2026-09-04T14:59:22Z",
   "collectionStatus": "success",
   "reviewStatus": "unreviewed",
   "publicationAllowed": false,
   "errors": [],
   "httpStatus": 200,
   "finalUrl": "https://www.flsenate.gov/Senators/S18",
-  "sourceSnapshotSha256": "4e7f2b758b66589c3ea7d507d416d4d11a08268a6e2395a45e2ef22d348562da",
+  "sourceSnapshotSha256": "b3dbdf083f1c4f2b1845627a96ff3d5b021287515ad6581ab717793c05df1690",
   "partyAndDistrictText": "Party: Republican",
   "staffCandidates": [
     {
@@ -347,152 +347,16 @@
       "url": "https://www.flsenate.gov/Senators/S18?Tab=Bills#Bills"
     },
     {
-      "label": "S 12",
-      "url": "https://www.flsenate.gov/Session/Bill/2026/12"
+      "label": "S 28",
+      "url": "https://www.flsenate.gov/Session/Bill/2027/28"
     },
     {
-      "label": "S 632",
-      "url": "https://www.flsenate.gov/Session/Bill/2026/632"
+      "label": "S 30",
+      "url": "https://www.flsenate.gov/Session/Bill/2027/30"
     },
     {
-      "label": "S 634",
-      "url": "https://www.flsenate.gov/Session/Bill/2026/634"
-    },
-    {
-      "label": "S 654",
-      "url": "https://www.flsenate.gov/Session/Bill/2026/654"
-    },
-    {
-      "label": "S 750",
-      "url": "https://www.flsenate.gov/Session/Bill/2026/750"
-    },
-    {
-      "label": "S 752",
-      "url": "https://www.flsenate.gov/Session/Bill/2026/752"
-    },
-    {
-      "label": "S 754",
-      "url": "https://www.flsenate.gov/Session/Bill/2026/754"
-    },
-    {
-      "label": "S 836",
-      "url": "https://www.flsenate.gov/Session/Bill/2026/836"
-    },
-    {
-      "label": "S 840",
-      "url": "https://www.flsenate.gov/Session/Bill/2026/840"
-    },
-    {
-      "label": "S 854",
-      "url": "https://www.flsenate.gov/Session/Bill/2026/854"
-    },
-    {
-      "label": "S 856",
-      "url": "https://www.flsenate.gov/Session/Bill/2026/856"
-    },
-    {
-      "label": "S 984",
-      "url": "https://www.flsenate.gov/Session/Bill/2026/984"
-    },
-    {
-      "label": "S 1080",
-      "url": "https://www.flsenate.gov/Session/Bill/2026/1080"
-    },
-    {
-      "label": "S 1084",
-      "url": "https://www.flsenate.gov/Session/Bill/2026/1084"
-    },
-    {
-      "label": "S 1228",
-      "url": "https://www.flsenate.gov/Session/Bill/2026/1228"
-    },
-    {
-      "label": "S 1234",
-      "url": "https://www.flsenate.gov/Session/Bill/2026/1234"
-    },
-    {
-      "label": "S 1260",
-      "url": "https://www.flsenate.gov/Session/Bill/2026/1260"
-    },
-    {
-      "label": "S 1262",
-      "url": "https://www.flsenate.gov/Session/Bill/2026/1262"
-    },
-    {
-      "label": "S 1274",
-      "url": "https://www.flsenate.gov/Session/Bill/2026/1274"
-    },
-    {
-      "label": "S 1420",
-      "url": "https://www.flsenate.gov/Session/Bill/2026/1420"
-    },
-    {
-      "label": "S 1448",
-      "url": "https://www.flsenate.gov/Session/Bill/2026/1448"
-    },
-    {
-      "label": "S 1454",
-      "url": "https://www.flsenate.gov/Session/Bill/2026/1454"
-    },
-    {
-      "label": "S 1564",
-      "url": "https://www.flsenate.gov/Session/Bill/2026/1564"
-    },
-    {
-      "label": "S 1566",
-      "url": "https://www.flsenate.gov/Session/Bill/2026/1566"
-    },
-    {
-      "label": "S 1568",
-      "url": "https://www.flsenate.gov/Session/Bill/2026/1568"
-    },
-    {
-      "label": "S 1572",
-      "url": "https://www.flsenate.gov/Session/Bill/2026/1572"
-    },
-    {
-      "label": "S 1586",
-      "url": "https://www.flsenate.gov/Session/Bill/2026/1586"
-    },
-    {
-      "label": "S 1612",
-      "url": "https://www.flsenate.gov/Session/Bill/2026/1612"
-    },
-    {
-      "label": "S 1752",
-      "url": "https://www.flsenate.gov/Session/Bill/2026/1752"
-    },
-    {
-      "label": "S 1754",
-      "url": "https://www.flsenate.gov/Session/Bill/2026/1754"
-    },
-    {
-      "label": "S 390",
-      "url": "https://www.flsenate.gov/Session/Bill/2026/390"
-    },
-    {
-      "label": "S 532",
-      "url": "https://www.flsenate.gov/Session/Bill/2026/532"
-    },
-    {
-      "label": "S 694",
-      "url": "https://www.flsenate.gov/Session/Bill/2026/694"
-    },
-    {
-      "label": "S 774",
-      "url": "https://www.flsenate.gov/Session/Bill/2026/774"
-    },
-    {
-      "label": "S 948",
-      "url": "https://www.flsenate.gov/Session/Bill/2026/948"
-    },
-    {
-      "label": "S 1062",
-      "url": "https://www.flsenate.gov/Session/Bill/2026/1062"
-    },
-    {
-      "label": "S 1574",
-      "url": "https://www.flsenate.gov/Session/Bill/2026/1574"
+      "label": "S 32",
+      "url": "https://www.flsenate.gov/Session/Bill/2027/32"
     },
     {
       "label": "Comprehensive Transportation Bill by Senator DiCeglie Passes Florida House Unanimously",

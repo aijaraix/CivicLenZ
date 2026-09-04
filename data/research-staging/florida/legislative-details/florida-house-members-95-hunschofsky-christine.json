@@ -7,14 +7,14 @@
   "officeTitle": "Florida State Representative, District 95",
   "districtNumber": "95",
   "sourceUrl": "https://www.flhouse.gov/Sections/Representatives/details.aspx?MemberId=4799&LegislativeTermId=91",
-  "fetchedAt": "2026-07-16T05:26:31Z",
+  "fetchedAt": "2026-09-04T14:59:17Z",
   "collectionStatus": "success",
   "reviewStatus": "unreviewed",
   "publicationAllowed": false,
   "errors": [],
   "httpStatus": 200,
   "finalUrl": "https://www.flhouse.gov/Sections/Representatives/custom/details.aspx?MemberId=4799&LegislativeTermId=91",
-  "sourceSnapshotSha256": "fcdb96e51334db280a67f6b6c18ce46c8075cfd4135440f89ab0f21707235ffd",
+  "sourceSnapshotSha256": "6d688675eba2a955dd00798f1605b704dde03681f36e28aace38f70d19cc6452",
   "partyAndDistrictText": "District: 95 -- Democrat",
   "staffCandidates": [
     {
@@ -131,7 +131,7 @@
       "identityReviewStatus": "unreviewed"
     },
     {
-      "url": "https://www.flhouse.gov/FileStores/Web/Imaging/PhotoAlbums/HousePhotoSized8397.JPG",
+      "url": "https://www.flhouse.gov/FileStores/Web/Imaging/PhotoAlbums/HousePhotoSized8399.JPG",
       "method": "img",
       "score": 30,
       "altText": "Representative Hunschofsky Photo",
@@ -140,7 +140,7 @@
       "identityReviewStatus": "unreviewed"
     },
     {
-      "url": "https://www.flhouse.gov/Images/bronze-seal-250.png?cb=4.6.654349",
+      "url": "https://www.flhouse.gov/Images/bronze-seal-250.png?cb=4.6.654350",
       "method": "og:image",
       "score": 14,
       "altText": null,
@@ -158,7 +158,7 @@
       "identityReviewStatus": "unreviewed"
     },
     {
-      "url": "https://www.flhouse.gov/FileStores/Web/Imaging/PhotoAlbums/HousePhotoSized8399.JPG",
+      "url": "https://www.flhouse.gov/FileStores/Web/Imaging/PhotoAlbums/HousePhotoSized8397.JPG",
       "method": "img",
       "score": 9,
       "altText": null,

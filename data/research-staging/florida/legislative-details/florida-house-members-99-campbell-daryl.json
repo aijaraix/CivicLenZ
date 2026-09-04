@@ -7,19 +7,19 @@
   "officeTitle": "Florida State Representative, District 99",
   "districtNumber": "99",
   "sourceUrl": "https://www.flhouse.gov/Sections/Representatives/details.aspx?MemberId=4843&LegislativeTermId=91",
-  "fetchedAt": "2026-07-16T05:26:31Z",
+  "fetchedAt": "2026-09-04T14:59:18Z",
   "collectionStatus": "success",
   "reviewStatus": "unreviewed",
   "publicationAllowed": false,
   "errors": [],
   "httpStatus": 200,
   "finalUrl": "https://www.flhouse.gov/Sections/Representatives/custom/details.aspx?MemberId=4843&LegislativeTermId=91",
-  "sourceSnapshotSha256": "2dafed373409e6508cc296630e65fe9d0141e84f63247480f24b2fd98b358540",
+  "sourceSnapshotSha256": "563320bf71dc380fb0afad233f7922ad6a6f2d0d65bfeb31a9dc79617d8117d1",
   "partyAndDistrictText": "District: 99 -- Democrat",
   "staffCandidates": [
     {
       "role": "Legislative Aide",
-      "name": "Charles Horowitz",
+      "name": "Juliet Bonsu",
       "reviewStatus": "unreviewed"
     },
     {
@@ -72,13 +72,13 @@
   "contactCandidates": [
     {
       "type": "email",
-      "value": "anjal.mckenzie@flhouse.gov",
+      "value": "juliet.bonsu@flhouse.gov",
       "label": null,
       "sourcePageUrl": "https://www.flhouse.gov/Sections/Representatives/custom/details.aspx?MemberId=4843&LegislativeTermId=91"
     },
     {
       "type": "email",
-      "value": "charles.horowitz@flhouse.gov",
+      "value": "yvette.evans@flhouse.gov",
       "label": null,
       "sourcePageUrl": "https://www.flhouse.gov/Sections/Representatives/custom/details.aspx?MemberId=4843&LegislativeTermId=91"
     },
@@ -121,7 +121,7 @@
       "identityReviewStatus": "unreviewed"
     },
     {
-      "url": "https://www.flhouse.gov/FileStores/Web/Imaging/PhotoAlbums/HousePhotoSized7979.JPG",
+      "url": "https://www.flhouse.gov/FileStores/Web/Imaging/PhotoAlbums/HousePhotoSized7562.jpg",
       "method": "img",
       "score": 30,
       "altText": "Representative Campbell Photo",
@@ -130,7 +130,7 @@
       "identityReviewStatus": "unreviewed"
     },
     {
-      "url": "https://www.flhouse.gov/Images/bronze-seal-250.png?cb=4.6.654349",
+      "url": "https://www.flhouse.gov/Images/bronze-seal-250.png?cb=4.6.654350",
       "method": "og:image",
       "score": 14,
       "altText": null,
@@ -139,9 +139,9 @@
       "identityReviewStatus": "unreviewed"
     },
     {
-      "url": "https://www.flhouse.gov/api/Member/get-member-uploaded-photo/4843/MemberPhotoSized8067.jpg/image",
+      "url": "https://www.flhouse.gov/FileStores/Web/Imaging/PhotoAlbums/HousePhotoSized7979.JPG",
       "method": "img",
-      "score": 14,
+      "score": 9,
       "altText": null,
       "sourcePageUrl": "https://www.flhouse.gov/Sections/Representatives/custom/details.aspx?MemberId=4843&LegislativeTermId=91",
       "rightsStatus": "review_required",

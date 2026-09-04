@@ -7,14 +7,14 @@
   "officeTitle": "Florida State Representative, District 118",
   "districtNumber": "118",
   "sourceUrl": "https://www.flhouse.gov/Sections/Representatives/details.aspx?MemberId=4902&LegislativeTermId=91",
-  "fetchedAt": "2026-07-16T05:26:33Z",
+  "fetchedAt": "2026-09-04T14:59:19Z",
   "collectionStatus": "success",
   "reviewStatus": "unreviewed",
   "publicationAllowed": false,
   "errors": [],
   "httpStatus": 200,
   "finalUrl": "https://www.flhouse.gov/Sections/Representatives/custom/details.aspx?MemberId=4902&LegislativeTermId=91",
-  "sourceSnapshotSha256": "c550d66e203d20e9db325ded7d1d8b9e09f1fc50345a038ad178e34d02c22e62",
+  "sourceSnapshotSha256": "3ba7eb0390f39ff90a825c9beac23adee5837b66044f8d7f131e8ac207aedb72",
   "partyAndDistrictText": "District: 118 -- Republican",
   "staffCandidates": [
     {
@@ -132,7 +132,7 @@
       "identityReviewStatus": "unreviewed"
     },
     {
-      "url": "https://www.flhouse.gov/Images/bronze-seal-250.png?cb=4.6.654349",
+      "url": "https://www.flhouse.gov/Images/bronze-seal-250.png?cb=4.6.654350",
       "method": "og:image",
       "score": 14,
       "altText": null,

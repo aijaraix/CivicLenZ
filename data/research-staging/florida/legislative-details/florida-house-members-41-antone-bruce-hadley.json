@@ -7,14 +7,14 @@
   "officeTitle": "Florida State Representative, District 41",
   "districtNumber": "41",
   "sourceUrl": "https://www.flhouse.gov/Sections/Representatives/details.aspx?MemberId=4269&LegislativeTermId=91",
-  "fetchedAt": "2026-07-16T05:26:24Z",
+  "fetchedAt": "2026-09-04T14:59:13Z",
   "collectionStatus": "success",
   "reviewStatus": "unreviewed",
   "publicationAllowed": false,
   "errors": [],
   "httpStatus": 200,
   "finalUrl": "https://www.flhouse.gov/Sections/Representatives/details.aspx?MemberId=4269&LegislativeTermId=91",
-  "sourceSnapshotSha256": "d6dde3c8998f4488232a92267cb4bb825ebcf902397166966648203a7df9816e",
+  "sourceSnapshotSha256": "444b3bea1efc016076abe08e6f95cc0246eb099483c37ec5d5ec112121f63dbd",
   "partyAndDistrictText": "District: 41 -- Democrat",
   "staffCandidates": [
     {
@@ -128,7 +128,7 @@
       "identityReviewStatus": "unreviewed"
     },
     {
-      "url": "https://www.flhouse.gov/Images/bronze-seal-250.png?cb=4.6.654349",
+      "url": "https://www.flhouse.gov/Images/bronze-seal-250.png?cb=4.6.654350",
       "method": "og:image",
       "score": 14,
       "altText": null,
