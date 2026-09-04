@@ -6,7 +6,7 @@
   "displayName": "James Vernon \"Jim\" Mooney Jr.",
   "officeTitle": "Florida State Representative, District 120",
   "sourceUrl": "https://www.flhouse.gov/Sections/Representatives/details.aspx?MemberId=4797&LegislativeTermId=91",
-  "fetchedAt": "2026-07-16T05:20:08Z",
+  "fetchedAt": "2026-09-04T13:40:49Z",
   "collectionStatus": "success",
   "reviewStatus": "unreviewed",
   "publicationAllowed": false,
@@ -42,7 +42,7 @@
       "downloadStatus": "captured_for_hash"
     },
     {
-      "url": "https://www.flhouse.gov/Images/bronze-seal-250.png?cb=4.6.654349",
+      "url": "https://www.flhouse.gov/Images/bronze-seal-250.png?cb=4.6.654350",
       "method": "og:image",
       "score": 14,
       "altText": null,
@@ -50,7 +50,7 @@
       "rightsStatus": "review_required",
       "identityReviewStatus": "unreviewed",
       "httpStatus": 200,
-      "finalUrl": "https://www.flhouse.gov/Images/bronze-seal-250.png?cb=4.6.654349",
+      "finalUrl": "https://www.flhouse.gov/Images/bronze-seal-250.png?cb=4.6.654350",
       "contentType": "image/png",
       "byteSize": 150275,
       "imageSha256": "36f7c4317f0cc62c44ff5bbfc0a0e5eebf014be23c9c8826141f11a70d9e7ff8",
@@ -148,7 +148,7 @@
   "errors": [],
   "httpStatus": 200,
   "finalUrl": "https://www.flhouse.gov/Sections/Representatives/custom/details.aspx?MemberId=4797&LegislativeTermId=91",
-  "sourceSnapshotSha256": "44ec879ab11147e06c94b6344ec98f34e35fafbfd6d11025ffbab31f040ba35f",
+  "sourceSnapshotSha256": "c0b7cf89807ebf7afea38bcf90686b473d400a2678277961642641cf8e51e783",
   "contentType": "text/html",
   "pageTitle": "James Vernon \"Jim\" Mooney, Jr.  - 2024 - 2026 ( Speaker Perez ) | Florida House of Representatives",
   "candidateSummary": {

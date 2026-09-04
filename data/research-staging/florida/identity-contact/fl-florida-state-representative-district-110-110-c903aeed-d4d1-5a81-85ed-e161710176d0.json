@@ -6,7 +6,7 @@
   "displayName": "Tom Fabricio",
   "officeTitle": "Florida State Representative, District 110",
   "sourceUrl": "https://www.flhouse.gov/Sections/Representatives/details.aspx?MemberId=4792&LegislativeTermId=91",
-  "fetchedAt": "2026-07-16T05:20:05Z",
+  "fetchedAt": "2026-09-04T13:40:46Z",
   "collectionStatus": "success",
   "reviewStatus": "unreviewed",
   "publicationAllowed": false,
@@ -27,10 +27,40 @@
       "downloadStatus": "captured_for_hash"
     },
     {
-      "url": "https://www.flhouse.gov/FileStores/Web/Imaging/PhotoAlbums/HousePhotoSized7398.jpg",
+      "url": "https://www.flhouse.gov/FileStores/Web/Imaging/PhotoAlbums/HousePhotoSized7391.jpg",
       "method": "img",
       "score": 30,
       "altText": "Representative Fabricio Photo",
+      "sourcePageUrl": "https://www.flhouse.gov/Sections/Representatives/custom/details.aspx?MemberId=4792&LegislativeTermId=91",
+      "rightsStatus": "review_required",
+      "identityReviewStatus": "unreviewed",
+      "httpStatus": 200,
+      "finalUrl": "https://www.flhouse.gov/FileStores/Web/Imaging/PhotoAlbums/HousePhotoSized7391.jpg",
+      "contentType": "image/jpeg",
+      "byteSize": 18377,
+      "imageSha256": "935fb38ac4ac136977d911481321edb660b06dcf17ca97ac81d76c1a31078e04",
+      "downloadStatus": "captured_for_hash"
+    },
+    {
+      "url": "https://www.flhouse.gov/Images/bronze-seal-250.png?cb=4.6.654350",
+      "method": "og:image",
+      "score": 14,
+      "altText": null,
+      "sourcePageUrl": "https://www.flhouse.gov/Sections/Representatives/custom/details.aspx?MemberId=4792&LegislativeTermId=91",
+      "rightsStatus": "review_required",
+      "identityReviewStatus": "unreviewed",
+      "httpStatus": 200,
+      "finalUrl": "https://www.flhouse.gov/Images/bronze-seal-250.png?cb=4.6.654350",
+      "contentType": "image/png",
+      "byteSize": 150275,
+      "imageSha256": "36f7c4317f0cc62c44ff5bbfc0a0e5eebf014be23c9c8826141f11a70d9e7ff8",
+      "downloadStatus": "captured_for_hash"
+    },
+    {
+      "url": "https://www.flhouse.gov/FileStores/Web/Imaging/PhotoAlbums/HousePhotoSized7398.jpg",
+      "method": "img",
+      "score": 9,
+      "altText": null,
       "sourcePageUrl": "https://www.flhouse.gov/Sections/Representatives/custom/details.aspx?MemberId=4792&LegislativeTermId=91",
       "rightsStatus": "review_required",
       "identityReviewStatus": "unreviewed",
@@ -39,21 +69,6 @@
       "contentType": "image/jpeg",
       "byteSize": 19666,
       "imageSha256": "1b8edb3be51810c3ec19b23a45321bd205edefd97a592dde7cdc53c4c8bae8f4",
-      "downloadStatus": "captured_for_hash"
-    },
-    {
-      "url": "https://www.flhouse.gov/Images/bronze-seal-250.png?cb=4.6.654349",
-      "method": "og:image",
-      "score": 14,
-      "altText": null,
-      "sourcePageUrl": "https://www.flhouse.gov/Sections/Representatives/custom/details.aspx?MemberId=4792&LegislativeTermId=91",
-      "rightsStatus": "review_required",
-      "identityReviewStatus": "unreviewed",
-      "httpStatus": 200,
-      "finalUrl": "https://www.flhouse.gov/Images/bronze-seal-250.png?cb=4.6.654349",
-      "contentType": "image/png",
-      "byteSize": 150275,
-      "imageSha256": "36f7c4317f0cc62c44ff5bbfc0a0e5eebf014be23c9c8826141f11a70d9e7ff8",
       "downloadStatus": "captured_for_hash"
     },
     {
@@ -84,21 +99,6 @@
       "contentType": "image/jpeg",
       "byteSize": 17758,
       "imageSha256": "3c54b5dccc0817b92da41734df1cb89c19b64305e8e211def44f5fed92701f11",
-      "downloadStatus": "captured_for_hash"
-    },
-    {
-      "url": "https://www.flhouse.gov/FileStores/Web/Imaging/member-page-banners/1.jpg",
-      "method": "img",
-      "score": -17,
-      "altText": "The House Chamber",
-      "sourcePageUrl": "https://www.flhouse.gov/Sections/Representatives/custom/details.aspx?MemberId=4792&LegislativeTermId=91",
-      "rightsStatus": "review_required",
-      "identityReviewStatus": "unreviewed",
-      "httpStatus": 200,
-      "finalUrl": "https://www.flhouse.gov/FileStores/Web/Imaging/member-page-banners/1.jpg",
-      "contentType": "image/jpeg",
-      "byteSize": 106842,
-      "imageSha256": "9b11c3a35cea6e0f4dea3566a1298efa0e265354a2340e1754fba45bdbaf3fb9",
       "downloadStatus": "captured_for_hash"
     }
   ],
@@ -134,7 +134,7 @@
   "errors": [],
   "httpStatus": 200,
   "finalUrl": "https://www.flhouse.gov/Sections/Representatives/custom/details.aspx?MemberId=4792&LegislativeTermId=91",
-  "sourceSnapshotSha256": "7498d5f65cc8633925f78855f9b3fdb389e1bb7a87ad2e6e5a05f3054e876ea0",
+  "sourceSnapshotSha256": "7dd897562e6571b90d3b284f7e5a18d1f6611f7751e89e19c072a66512d2b231",
   "contentType": "text/html",
   "pageTitle": "Tom Fabricio  - 2024 - 2026 ( Speaker Perez ) | Florida House of Representatives",
   "candidateSummary": {

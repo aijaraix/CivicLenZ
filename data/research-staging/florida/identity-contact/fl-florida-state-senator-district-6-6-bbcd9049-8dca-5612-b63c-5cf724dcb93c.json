@@ -6,7 +6,7 @@
   "displayName": "Jennifer Bradley",
   "officeTitle": "Florida State Senator, District 6",
   "sourceUrl": "https://www.flsenate.gov/Senators/2024-2026/S6",
-  "fetchedAt": "2026-07-16T05:20:47Z",
+  "fetchedAt": "2026-09-04T13:41:44Z",
   "collectionStatus": "success",
   "reviewStatus": "unreviewed",
   "publicationAllowed": false,
@@ -206,7 +206,7 @@
   "errors": [],
   "httpStatus": 200,
   "finalUrl": "https://www.flsenate.gov/Senators/S6",
-  "sourceSnapshotSha256": "acc1037e58e702b7ca1db0ac421001932a7003195deb7f2c8d61727646acd71c",
+  "sourceSnapshotSha256": "5955b68f2a52aac5be13f4e3b21fe7f3d547bd6491c9fc648f4897b756ce4596",
   "contentType": "text/html",
   "pageTitle": "Senator Bradley - The Florida Senate",
   "candidateSummary": {

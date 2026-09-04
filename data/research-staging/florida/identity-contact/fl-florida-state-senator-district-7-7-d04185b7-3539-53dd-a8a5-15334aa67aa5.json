@@ -6,7 +6,7 @@
   "displayName": "Thomas J. \"Tom\" Leek",
   "officeTitle": "Florida State Senator, District 7",
   "sourceUrl": "https://www.flsenate.gov/Senators/2024-2026/S7",
-  "fetchedAt": "2026-07-16T05:20:47Z",
+  "fetchedAt": "2026-09-04T13:41:44Z",
   "collectionStatus": "success",
   "reviewStatus": "unreviewed",
   "publicationAllowed": false,
@@ -232,7 +232,7 @@
   "errors": [],
   "httpStatus": 200,
   "finalUrl": "https://www.flsenate.gov/Senators/S7",
-  "sourceSnapshotSha256": "7ef345dc85f34bbaa4bea9d909d623f7f8a919ef5db784cb9aeca257429fa279",
+  "sourceSnapshotSha256": "1eab3cdddeac982e20a256bf7d2577a966d76c44d77bc98355d7836ee7de5041",
   "contentType": "text/html",
   "pageTitle": "Senator Leek - The Florida Senate",
   "candidateSummary": {

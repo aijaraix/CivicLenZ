@@ -6,7 +6,7 @@
   "displayName": "Jimmy Patronis",
   "officeTitle": "United States Representative",
   "sourceUrl": "https://patronis.house.gov/",
-  "fetchedAt": "2026-07-16T05:19:59Z",
+  "fetchedAt": "2026-09-04T13:40:37Z",
   "collectionStatus": "success",
   "reviewStatus": "unreviewed",
   "publicationAllowed": false,
@@ -24,21 +24,6 @@
       "contentType": "image/png",
       "byteSize": 225630,
       "imageSha256": "97f154eb8428c9c1c38c05112b6cdd943fea63ecdd486d084c167e10e0dec628",
-      "downloadStatus": "captured_for_hash"
-    },
-    {
-      "url": "https://patronis.house.gov/sites/evo-subsites/patronis.house.gov/files/styles/evo_image_full_width_1920_focal_point/public/evo-media-image/the_workmans_alex_workman_jimmy_patronis_july_2025_0001.jpg?h=5c87dc81&itok=DaFQ50hk",
-      "method": "img",
-      "score": 33,
-      "altText": "Jimmy Patronis Desk",
-      "sourcePageUrl": "https://patronis.house.gov/",
-      "rightsStatus": "review_required",
-      "identityReviewStatus": "unreviewed",
-      "httpStatus": 200,
-      "finalUrl": "https://patronis.house.gov/sites/evo-subsites/patronis.house.gov/files/styles/evo_image_full_width_1920_focal_point/public/evo-media-image/the_workmans_alex_workman_jimmy_patronis_july_2025_0001.jpg?h=5c87dc81&itok=DaFQ50hk",
-      "contentType": "image/jpeg",
-      "byteSize": 192825,
-      "imageSha256": "c458b5a148d11b6546c6fb33502464c0a84f95d923149c7aee41c0ece9381541",
       "downloadStatus": "captured_for_hash"
     },
     {
@@ -72,33 +57,48 @@
       "downloadStatus": "captured_for_hash"
     },
     {
-      "url": "https://patronis.house.gov/sites/evo-subsites/patronis.house.gov/files/styles/evo_image_thumbnail_90_focal_point/public/evo-media-image/help-with-a-federal-agency.jpg?h=6eb229a4&itok=NOGcyevv",
+      "url": "https://patronis.house.gov/sites/evo-subsites/patronis.house.gov/files/inline-images/patronis-twitterx.jpg",
       "method": "img",
       "score": 21,
-      "altText": "Help with a Federal Agency",
+      "altText": null,
       "sourcePageUrl": "https://patronis.house.gov/",
       "rightsStatus": "review_required",
       "identityReviewStatus": "unreviewed",
       "httpStatus": 200,
-      "finalUrl": "https://patronis.house.gov/sites/evo-subsites/patronis.house.gov/files/styles/evo_image_thumbnail_90_focal_point/public/evo-media-image/help-with-a-federal-agency.jpg?h=6eb229a4&itok=NOGcyevv",
+      "finalUrl": "https://patronis.house.gov/sites/evo-subsites/patronis.house.gov/files/inline-images/patronis-twitterx.jpg",
       "contentType": "image/jpeg",
-      "byteSize": 4279,
-      "imageSha256": "e6db8f3f4241e891fc951e5b592cae00860ae2cb4619d5287192d2842e98a9e4",
+      "byteSize": 21671,
+      "imageSha256": "e95bf2910dc35f4dfa549d0b2408cd081c0ef48b6beac4ea9034cb792872612c",
       "downloadStatus": "captured_for_hash"
     },
     {
-      "url": "https://patronis.house.gov/sites/evo-subsites/patronis.house.gov/files/styles/evo_image_thumbnail_90_focal_point/public/evo-media-image/services-flags.jpg?h=6eb229a4&itok=NMTNKHeq",
+      "url": "https://patronis.house.gov/sites/evo-subsites/patronis.house.gov/files/styles/evo_image_full_width_1920_focal_point/public/evo-media-image/img_3442.jpg?h=70b80241&itok=mVStaMLl",
       "method": "img",
       "score": 21,
-      "altText": "Flags",
+      "altText": "k",
       "sourcePageUrl": "https://patronis.house.gov/",
       "rightsStatus": "review_required",
       "identityReviewStatus": "unreviewed",
       "httpStatus": 200,
-      "finalUrl": "https://patronis.house.gov/sites/evo-subsites/patronis.house.gov/files/styles/evo_image_thumbnail_90_focal_point/public/evo-media-image/services-flags.jpg?h=6eb229a4&itok=NMTNKHeq",
+      "finalUrl": "https://patronis.house.gov/sites/evo-subsites/patronis.house.gov/files/styles/evo_image_full_width_1920_focal_point/public/evo-media-image/img_3442.jpg?h=70b80241&itok=mVStaMLl",
       "contentType": "image/jpeg",
-      "byteSize": 5444,
-      "imageSha256": "0b7f6fc932861536ffd0540bec010183b3392f6d0e3b3b1c4ba50e6e2620c7bf",
+      "byteSize": 492267,
+      "imageSha256": "2d158a8ca28bc0acbba76996cc5d9463950d2ff030a3a4cc5a6ecde83ea093ca",
+      "downloadStatus": "captured_for_hash"
+    },
+    {
+      "url": "https://patronis.house.gov/sites/evo-subsites/patronis.house.gov/files/patronistransparentlogo-resized_0.png",
+      "method": "img",
+      "score": 7,
+      "altText": "Representative Jimmy Patronis logo",
+      "sourcePageUrl": "https://patronis.house.gov/",
+      "rightsStatus": "review_required",
+      "identityReviewStatus": "unreviewed",
+      "httpStatus": 200,
+      "finalUrl": "https://patronis.house.gov/sites/evo-subsites/patronis.house.gov/files/patronistransparentlogo-resized_0.png",
+      "contentType": "image/png",
+      "byteSize": 199442,
+      "imageSha256": "e95e33788ac98561f7d09e7a1632a0b44ab14df983c032d86ff1cd34cb7e71e5",
       "downloadStatus": "captured_for_hash"
     }
   ],
@@ -106,7 +106,7 @@
     {
       "type": "phone",
       "value": "(202) 225-4136",
-      "label": "(202) 225-4136",
+      "label": null,
       "sourcePageUrl": "https://patronis.house.gov/"
     },
     {
@@ -139,8 +139,8 @@
     },
     {
       "platform": "X",
-      "url": "https://twitter.com/patronisfl",
-      "label": "Posts by Rep. Patronis",
+      "url": "https://x.com/PatronisFL",
+      "label": "Go to Profile",
       "sourcePageUrl": "https://patronis.house.gov/",
       "reviewStatus": "unreviewed"
     }
@@ -148,7 +148,7 @@
   "websiteCandidates": [
     {
       "url": "https://patronis.house.gov/contact",
-      "label": null,
+      "label": "Contact my Office",
       "sourcePageUrl": "https://patronis.house.gov/",
       "reviewStatus": "unreviewed"
     },
@@ -178,13 +178,19 @@
     },
     {
       "url": "https://patronis.house.gov/contact/newsletter-subscribe",
-      "label": "Subscribe",
+      "label": "Newsletter Subscribe",
       "sourcePageUrl": "https://patronis.house.gov/",
       "reviewStatus": "unreviewed"
     },
     {
       "url": "https://patronis.house.gov/contact/offices/washington-dc-office",
       "label": "Washington DC Office",
+      "sourcePageUrl": "https://patronis.house.gov/",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "url": "https://patronis.house.gov/contact/offices/santa-rosa-county-office",
+      "label": "Santa Rosa County Office",
       "sourcePageUrl": "https://patronis.house.gov/",
       "reviewStatus": "unreviewed"
     },
@@ -199,18 +205,12 @@
       "label": "Crestview District Office",
       "sourcePageUrl": "https://patronis.house.gov/",
       "reviewStatus": "unreviewed"
-    },
-    {
-      "url": "https://patronis.house.gov/contact/newsletter-unsubscribe",
-      "label": "cancel or unsubscribe",
-      "sourcePageUrl": "https://patronis.house.gov/",
-      "reviewStatus": "unreviewed"
     }
   ],
   "errors": [],
   "httpStatus": 200,
   "finalUrl": "https://patronis.house.gov/",
-  "sourceSnapshotSha256": "9e1d427a511a7596088dde9086ff1f7950cfa49eadb94b5f3202bf28ad9009c4",
+  "sourceSnapshotSha256": "7a4942e5fa0d261cd394983b684f5e5afb50c25c808a3028ed73916e07dea78a",
   "contentType": "text/html",
   "pageTitle": "Representative Jimmy Patronis | Representing Florida's 1st District",
   "candidateSummary": {

@@ -6,7 +6,7 @@
   "displayName": "Chase Tramont",
   "officeTitle": "Florida State Representative, District 30",
   "sourceUrl": "https://www.flhouse.gov/Sections/Representatives/details.aspx?MemberId=4867&LegislativeTermId=91",
-  "fetchedAt": "2026-07-16T05:20:14Z",
+  "fetchedAt": "2026-09-04T13:40:58Z",
   "collectionStatus": "success",
   "reviewStatus": "unreviewed",
   "publicationAllowed": false,
@@ -27,7 +27,7 @@
       "downloadStatus": "captured_for_hash"
     },
     {
-      "url": "https://www.flhouse.gov/Images/bronze-seal-250.png?cb=4.6.654349",
+      "url": "https://www.flhouse.gov/Images/bronze-seal-250.png?cb=4.6.654350",
       "method": "og:image",
       "score": 14,
       "altText": null,
@@ -35,7 +35,7 @@
       "rightsStatus": "review_required",
       "identityReviewStatus": "unreviewed",
       "httpStatus": 200,
-      "finalUrl": "https://www.flhouse.gov/Images/bronze-seal-250.png?cb=4.6.654349",
+      "finalUrl": "https://www.flhouse.gov/Images/bronze-seal-250.png?cb=4.6.654350",
       "contentType": "image/png",
       "byteSize": 150275,
       "imageSha256": "36f7c4317f0cc62c44ff5bbfc0a0e5eebf014be23c9c8826141f11a70d9e7ff8",
@@ -135,7 +135,7 @@
   "errors": [],
   "httpStatus": 200,
   "finalUrl": "https://www.flhouse.gov/Sections/Representatives/details.aspx?MemberId=4867&LegislativeTermId=91",
-  "sourceSnapshotSha256": "ca151b4df28770535c76c2395ea52aaef3d808b3df504091ef2561aa89f9cb0c",
+  "sourceSnapshotSha256": "0594162d1d32f6d6af5ca4f61d2f11d610fc8da87b523852dd33e761533b364e",
   "contentType": "text/html",
   "pageTitle": "Chase Tramont  - 2024 - 2026 ( Speaker Perez ) | Florida House of Representatives",
   "candidateSummary": {

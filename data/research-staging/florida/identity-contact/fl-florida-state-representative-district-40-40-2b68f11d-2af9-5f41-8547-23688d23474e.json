@@ -6,7 +6,7 @@
   "displayName": "RaShon Young",
   "officeTitle": "Florida State Representative, District 40",
   "sourceUrl": "https://www.flhouse.gov/Sections/Representatives/details.aspx?MemberId=5065&LegislativeTermId=91",
-  "fetchedAt": "2026-07-16T05:20:18Z",
+  "fetchedAt": "2026-09-04T13:41:02Z",
   "collectionStatus": "success",
   "reviewStatus": "unreviewed",
   "publicationAllowed": false,
@@ -42,7 +42,7 @@
       "downloadStatus": "captured_for_hash"
     },
     {
-      "url": "https://www.flhouse.gov/Images/bronze-seal-250.png?cb=4.6.654349",
+      "url": "https://www.flhouse.gov/Images/bronze-seal-250.png?cb=4.6.654350",
       "method": "og:image",
       "score": 14,
       "altText": null,
@@ -50,7 +50,7 @@
       "rightsStatus": "review_required",
       "identityReviewStatus": "unreviewed",
       "httpStatus": 200,
-      "finalUrl": "https://www.flhouse.gov/Images/bronze-seal-250.png?cb=4.6.654349",
+      "finalUrl": "https://www.flhouse.gov/Images/bronze-seal-250.png?cb=4.6.654350",
       "contentType": "image/png",
       "byteSize": 150275,
       "imageSha256": "36f7c4317f0cc62c44ff5bbfc0a0e5eebf014be23c9c8826141f11a70d9e7ff8",
@@ -101,22 +101,7 @@
       "sourcePageUrl": "https://www.flhouse.gov/Sections/Representatives/custom/details.aspx?MemberId=5065&LegislativeTermId=91"
     }
   ],
-  "socialCandidates": [
-    {
-      "platform": "Instagram",
-      "url": "https://www.instagram.com/rashonforfl/?hl=en?utm_source=ig_embed&utm_campaign=loading",
-      "label": "RaShon Young",
-      "sourcePageUrl": "https://www.flhouse.gov/Sections/Representatives/custom/details.aspx?MemberId=5065&LegislativeTermId=91",
-      "reviewStatus": "unreviewed"
-    },
-    {
-      "platform": "Facebook",
-      "url": "https://www.facebook.com/people/Representative-RaShon-Young/61575376304871/",
-      "label": "RaShon Young",
-      "sourcePageUrl": "https://www.flhouse.gov/Sections/Representatives/custom/details.aspx?MemberId=5065&LegislativeTermId=91",
-      "reviewStatus": "unreviewed"
-    }
-  ],
+  "socialCandidates": [],
   "websiteCandidates": [
     {
       "url": "https://www.flhouse.gov/Sections/Representatives/custom/contactmember.aspx?MemberId=5065&LegislativeTermId=91",
@@ -134,13 +119,13 @@
   "errors": [],
   "httpStatus": 200,
   "finalUrl": "https://www.flhouse.gov/Sections/Representatives/custom/details.aspx?MemberId=5065&LegislativeTermId=91",
-  "sourceSnapshotSha256": "33277a4065dd8cb82a578c974382d0f600ae127d4f86708dbc0df9ac4f5623ab",
+  "sourceSnapshotSha256": "387d8b0224278de658334eedb35caafa7d454a8745088857d0b5707ecabf98ef",
   "contentType": "text/html",
   "pageTitle": "RaShon Young  - 2024 - 2026 ( Speaker Perez ) | Florida House of Representatives",
   "candidateSummary": {
     "portraits": 5,
     "contacts": 2,
-    "socials": 2,
+    "socials": 0,
     "websites": 2
   }
 }

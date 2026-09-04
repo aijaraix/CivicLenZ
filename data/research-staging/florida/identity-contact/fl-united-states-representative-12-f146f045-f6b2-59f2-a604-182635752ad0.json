@@ -6,7 +6,7 @@
   "displayName": "Gus Bilirakis",
   "officeTitle": "United States Representative",
   "sourceUrl": "https://bilirakis.house.gov/",
-  "fetchedAt": "2026-07-16T05:19:58Z",
+  "fetchedAt": "2026-09-04T13:40:37Z",
   "collectionStatus": "success",
   "reviewStatus": "unreviewed",
   "publicationAllowed": false,
@@ -160,12 +160,6 @@
       "reviewStatus": "unreviewed"
     },
     {
-      "url": "https://bilirakis.house.gov/contact/offices",
-      "label": "Offices",
-      "sourcePageUrl": "https://bilirakis.house.gov/",
-      "reviewStatus": "unreviewed"
-    },
-    {
       "url": "https://bilirakis.house.gov/contact/request-meeting-washington",
       "label": "Request a Meeting in Washington",
       "sourcePageUrl": "https://bilirakis.house.gov/",
@@ -211,13 +205,13 @@
   "errors": [],
   "httpStatus": 200,
   "finalUrl": "https://bilirakis.house.gov/",
-  "sourceSnapshotSha256": "1f9680b13535dc8348c2bdd3b2db0c94a7ebdcb35cd86f132b9a22d09d084e09",
+  "sourceSnapshotSha256": "44b677ba9a182e6c791ce5422a973935fa0b749f2a5114b10fdcb10135f78a8d",
   "contentType": "text/html",
   "pageTitle": "Congressman Gus Bilirakis |",
   "candidateSummary": {
     "portraits": 4,
     "contacts": 5,
     "socials": 4,
-    "websites": 12
+    "websites": 11
   }
 }

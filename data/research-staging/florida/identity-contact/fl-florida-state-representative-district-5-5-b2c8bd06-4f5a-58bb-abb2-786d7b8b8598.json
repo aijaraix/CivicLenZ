@@ -6,7 +6,7 @@
   "displayName": "Shane G. Abbott",
   "officeTitle": "Florida State Representative, District 5",
   "sourceUrl": "https://www.flhouse.gov/Sections/Representatives/details.aspx?MemberId=4864&LegislativeTermId=91",
-  "fetchedAt": "2026-07-16T05:20:20Z",
+  "fetchedAt": "2026-09-04T13:41:07Z",
   "collectionStatus": "success",
   "reviewStatus": "unreviewed",
   "publicationAllowed": false,
@@ -27,7 +27,7 @@
       "downloadStatus": "captured_for_hash"
     },
     {
-      "url": "https://www.flhouse.gov/Images/bronze-seal-250.png?cb=4.6.654349",
+      "url": "https://www.flhouse.gov/Images/bronze-seal-250.png?cb=4.6.654350",
       "method": "og:image",
       "score": 14,
       "altText": null,
@@ -35,7 +35,7 @@
       "rightsStatus": "review_required",
       "identityReviewStatus": "unreviewed",
       "httpStatus": 200,
-      "finalUrl": "https://www.flhouse.gov/Images/bronze-seal-250.png?cb=4.6.654349",
+      "finalUrl": "https://www.flhouse.gov/Images/bronze-seal-250.png?cb=4.6.654350",
       "contentType": "image/png",
       "byteSize": 150275,
       "imageSha256": "36f7c4317f0cc62c44ff5bbfc0a0e5eebf014be23c9c8826141f11a70d9e7ff8",
@@ -135,7 +135,7 @@
   "errors": [],
   "httpStatus": 200,
   "finalUrl": "https://www.flhouse.gov/Sections/Representatives/details.aspx?MemberId=4864&LegislativeTermId=91",
-  "sourceSnapshotSha256": "88d1432358c6505d353a92fd8a5f6f604f1bef7b9da907daa9abff0d18e7b396",
+  "sourceSnapshotSha256": "69b28ad41db66123fedfcb6657e6bd94331e763c0d4d136f5c72f31fbf141bc7",
   "contentType": "text/html",
   "pageTitle": "Shane G. Abbott  - 2024 - 2026 ( Speaker Perez ) | Florida House of Representatives",
   "candidateSummary": {

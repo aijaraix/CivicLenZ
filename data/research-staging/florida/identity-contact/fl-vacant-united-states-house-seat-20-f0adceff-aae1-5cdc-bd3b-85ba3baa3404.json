@@ -6,7 +6,7 @@
   "displayName": "Vacant — Florida 20th",
   "officeTitle": "Vacant United States House seat",
   "sourceUrl": "https://clerk.house.gov/members/FL20/vacancy",
-  "fetchedAt": "2026-07-16T05:20:00Z",
+  "fetchedAt": "2026-09-04T13:40:40Z",
   "collectionStatus": "success",
   "reviewStatus": "unreviewed",
   "publicationAllowed": false,
@@ -84,6 +84,12 @@
       "value": "1 (954) 733-2800",
       "label": null,
       "sourcePageUrl": "https://clerk.house.gov/members/FL20/vacancy"
+    },
+    {
+      "type": "phone",
+      "value": "954-733-2800",
+      "label": null,
+      "sourcePageUrl": "https://clerk.house.gov/members/FL20/vacancy"
     }
   ],
   "socialCandidates": [],
@@ -134,12 +140,12 @@
   "errors": [],
   "httpStatus": 200,
   "finalUrl": "https://clerk.house.gov/members/FL20/vacancy",
-  "sourceSnapshotSha256": "76ff41c02af205c2352519bdd5d954f87af241982a0e2d4e30438c2b7ffa51c7",
+  "sourceSnapshotSha256": "fb12c0b200ddc31d4320fec6e0f64d4730ed1ff3284a1d595da772184f6b9a54",
   "contentType": "text/html",
   "pageTitle": "Office of the Clerk, U.S. House of Representatives",
   "candidateSummary": {
     "portraits": 2,
-    "contacts": 7,
+    "contacts": 8,
     "socials": 0,
     "websites": 7
   }

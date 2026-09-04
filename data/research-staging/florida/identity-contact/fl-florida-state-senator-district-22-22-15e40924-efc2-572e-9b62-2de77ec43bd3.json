@@ -6,7 +6,7 @@
   "displayName": "Joe Gruters",
   "officeTitle": "Florida State Senator, District 22",
   "sourceUrl": "https://www.flsenate.gov/Senators/2024-2026/S22",
-  "fetchedAt": "2026-07-16T05:20:41Z",
+  "fetchedAt": "2026-09-04T13:41:34Z",
   "collectionStatus": "success",
   "reviewStatus": "unreviewed",
   "publicationAllowed": false,
@@ -208,7 +208,7 @@
   "errors": [],
   "httpStatus": 200,
   "finalUrl": "https://www.flsenate.gov/Senators/S22",
-  "sourceSnapshotSha256": "1f9d2f9b369ca0dcd5fe7332db096226db167d3e4c6a5a7ab075b819586f47af",
+  "sourceSnapshotSha256": "a286a21030e87dfc9c460435cd2c9783a91f8ed4318c9f3402b8a3f4710e040b",
   "contentType": "text/html",
   "pageTitle": "Senator Gruters - The Florida Senate",
   "candidateSummary": {

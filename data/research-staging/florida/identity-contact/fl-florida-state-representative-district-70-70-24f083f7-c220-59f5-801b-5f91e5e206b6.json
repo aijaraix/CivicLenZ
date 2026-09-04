@@ -6,7 +6,7 @@
   "displayName": "Michael Owen",
   "officeTitle": "Florida State Representative, District 70",
   "sourceUrl": "https://www.flhouse.gov/Sections/Representatives/details.aspx?MemberId=4919&LegislativeTermId=91",
-  "fetchedAt": "2026-07-16T05:20:27Z",
+  "fetchedAt": "2026-09-04T13:41:15Z",
   "collectionStatus": "success",
   "reviewStatus": "unreviewed",
   "publicationAllowed": false,
@@ -27,40 +27,10 @@
       "downloadStatus": "captured_for_hash"
     },
     {
-      "url": "https://www.flhouse.gov/FileStores/Web/Imaging/PhotoAlbums/HousePhotoSized8228.JPG",
+      "url": "https://www.flhouse.gov/FileStores/Web/Imaging/PhotoAlbums/HousePhotoSized7927.jpg",
       "method": "img",
       "score": 30,
       "altText": "Representative Owen Photo",
-      "sourcePageUrl": "https://www.flhouse.gov/Sections/Representatives/custom/details.aspx?MemberId=4919&LegislativeTermId=91",
-      "rightsStatus": "review_required",
-      "identityReviewStatus": "unreviewed",
-      "httpStatus": 200,
-      "finalUrl": "https://www.flhouse.gov/FileStores/Web/Imaging/PhotoAlbums/HousePhotoSized8228.JPG",
-      "contentType": "image/jpeg",
-      "byteSize": 19384,
-      "imageSha256": "68ada5c6991244342029c6d6ef92f7a4afdf12e8b3ae651a685af874982a1b5e",
-      "downloadStatus": "captured_for_hash"
-    },
-    {
-      "url": "https://www.flhouse.gov/Images/bronze-seal-250.png?cb=4.6.654349",
-      "method": "og:image",
-      "score": 14,
-      "altText": null,
-      "sourcePageUrl": "https://www.flhouse.gov/Sections/Representatives/custom/details.aspx?MemberId=4919&LegislativeTermId=91",
-      "rightsStatus": "review_required",
-      "identityReviewStatus": "unreviewed",
-      "httpStatus": 200,
-      "finalUrl": "https://www.flhouse.gov/Images/bronze-seal-250.png?cb=4.6.654349",
-      "contentType": "image/png",
-      "byteSize": 150275,
-      "imageSha256": "36f7c4317f0cc62c44ff5bbfc0a0e5eebf014be23c9c8826141f11a70d9e7ff8",
-      "downloadStatus": "captured_for_hash"
-    },
-    {
-      "url": "https://www.flhouse.gov/FileStores/Web/Imaging/PhotoAlbums/HousePhotoSized7927.jpg",
-      "method": "img",
-      "score": 9,
-      "altText": null,
       "sourcePageUrl": "https://www.flhouse.gov/Sections/Representatives/custom/details.aspx?MemberId=4919&LegislativeTermId=91",
       "rightsStatus": "review_required",
       "identityReviewStatus": "unreviewed",
@@ -69,6 +39,21 @@
       "contentType": "image/jpeg",
       "byteSize": 28328,
       "imageSha256": "abd12ee283e19d68c1108b47d2975df5a150c282efaa09b594cf857bd3abaf30",
+      "downloadStatus": "captured_for_hash"
+    },
+    {
+      "url": "https://www.flhouse.gov/Images/bronze-seal-250.png?cb=4.6.654350",
+      "method": "og:image",
+      "score": 14,
+      "altText": null,
+      "sourcePageUrl": "https://www.flhouse.gov/Sections/Representatives/custom/details.aspx?MemberId=4919&LegislativeTermId=91",
+      "rightsStatus": "review_required",
+      "identityReviewStatus": "unreviewed",
+      "httpStatus": 200,
+      "finalUrl": "https://www.flhouse.gov/Images/bronze-seal-250.png?cb=4.6.654350",
+      "contentType": "image/png",
+      "byteSize": 150275,
+      "imageSha256": "36f7c4317f0cc62c44ff5bbfc0a0e5eebf014be23c9c8826141f11a70d9e7ff8",
       "downloadStatus": "captured_for_hash"
     },
     {
@@ -84,6 +69,21 @@
       "contentType": "image/jpeg",
       "byteSize": 15332,
       "imageSha256": "1bc94169c55dcee90e136653eba3c361830b6b0a683b8c65924644e579d0dfd1",
+      "downloadStatus": "captured_for_hash"
+    },
+    {
+      "url": "https://www.flhouse.gov/FileStores/Web/Imaging/PhotoAlbums/HousePhotoSized8228.JPG",
+      "method": "img",
+      "score": 9,
+      "altText": null,
+      "sourcePageUrl": "https://www.flhouse.gov/Sections/Representatives/custom/details.aspx?MemberId=4919&LegislativeTermId=91",
+      "rightsStatus": "review_required",
+      "identityReviewStatus": "unreviewed",
+      "httpStatus": 200,
+      "finalUrl": "https://www.flhouse.gov/FileStores/Web/Imaging/PhotoAlbums/HousePhotoSized8228.JPG",
+      "contentType": "image/jpeg",
+      "byteSize": 19384,
+      "imageSha256": "68ada5c6991244342029c6d6ef92f7a4afdf12e8b3ae651a685af874982a1b5e",
       "downloadStatus": "captured_for_hash"
     },
     {
@@ -134,7 +134,7 @@
   "errors": [],
   "httpStatus": 200,
   "finalUrl": "https://www.flhouse.gov/Sections/Representatives/custom/details.aspx?MemberId=4919&LegislativeTermId=91",
-  "sourceSnapshotSha256": "931374d347a6ea18d2e1874c92c468e8a99a038ccebdc543226f70eea1a66896",
+  "sourceSnapshotSha256": "c0134a6da451034abedf1f9b18deb2ad3d5c61b40b938df6fd4dfc5e0bea58ec",
   "contentType": "text/html",
   "pageTitle": "Michael Owen  - 2024 - 2026 ( Speaker Perez ) | Florida House of Representatives",
   "candidateSummary": {

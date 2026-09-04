@@ -6,7 +6,7 @@
   "displayName": "Byron Donalds",
   "officeTitle": "United States Representative",
   "sourceUrl": "https://donalds.house.gov",
-  "fetchedAt": "2026-07-16T05:19:58Z",
+  "fetchedAt": "2026-09-04T13:40:36Z",
   "collectionStatus": "success",
   "reviewStatus": "unreviewed",
   "publicationAllowed": false,
@@ -198,7 +198,7 @@
   "errors": [],
   "httpStatus": 200,
   "finalUrl": "https://donalds.house.gov/",
-  "sourceSnapshotSha256": "4299733184823847d276341a116ff495643355383fcea429e0168e4cdc4bb89e",
+  "sourceSnapshotSha256": "03279c5108b97920837a9f6d7abb6fc4c4f2abccb1c35e560c49a83ddeed4d55",
   "contentType": "text/html",
   "pageTitle": "U.S. Congressman Byron Donalds",
   "candidateSummary": {

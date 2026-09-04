@@ -6,7 +6,7 @@
   "displayName": "Colleen Burton",
   "officeTitle": "Florida State Senator, District 12",
   "sourceUrl": "https://www.flsenate.gov/Senators/2024-2026/S12",
-  "fetchedAt": "2026-07-16T05:20:37Z",
+  "fetchedAt": "2026-09-04T13:41:29Z",
   "collectionStatus": "success",
   "reviewStatus": "unreviewed",
   "publicationAllowed": false,
@@ -208,7 +208,7 @@
   "errors": [],
   "httpStatus": 200,
   "finalUrl": "https://www.flsenate.gov/Senators/S12",
-  "sourceSnapshotSha256": "05fabebc459f7ed5d3c7507085f9917d3984e2bd6e4d618703e997a3aadc0e8b",
+  "sourceSnapshotSha256": "99e4aa35f06bf8fd4fc27dc13bdcce8b5584b67b0a8e8e447f18a1c7e0f4390f",
   "contentType": "text/html",
   "pageTitle": "Senator Burton - The Florida Senate",
   "candidateSummary": {

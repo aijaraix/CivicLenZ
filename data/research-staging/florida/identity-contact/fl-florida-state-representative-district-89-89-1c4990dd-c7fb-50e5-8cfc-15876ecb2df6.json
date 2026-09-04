@@ -6,7 +6,7 @@
   "displayName": "Debra Tendrich",
   "officeTitle": "Florida State Representative, District 89",
   "sourceUrl": "https://www.flhouse.gov/Sections/Representatives/details.aspx?MemberId=4924&LegislativeTermId=91",
-  "fetchedAt": "2026-07-16T05:20:33Z",
+  "fetchedAt": "2026-09-04T13:41:24Z",
   "collectionStatus": "success",
   "reviewStatus": "unreviewed",
   "publicationAllowed": false,
@@ -27,7 +27,7 @@
       "downloadStatus": "captured_for_hash"
     },
     {
-      "url": "https://www.flhouse.gov/FileStores/Web/Imaging/PhotoAlbums/HousePhotoSized7928.jpg",
+      "url": "https://www.flhouse.gov/FileStores/Web/Imaging/PhotoAlbums/HousePhotoSized8258.JPG",
       "method": "img",
       "score": 30,
       "altText": "Representative Tendrich Photo",
@@ -35,14 +35,14 @@
       "rightsStatus": "review_required",
       "identityReviewStatus": "unreviewed",
       "httpStatus": 200,
-      "finalUrl": "https://www.flhouse.gov/FileStores/Web/Imaging/PhotoAlbums/HousePhotoSized7928.jpg",
+      "finalUrl": "https://www.flhouse.gov/FileStores/Web/Imaging/PhotoAlbums/HousePhotoSized8258.JPG",
       "contentType": "image/jpeg",
-      "byteSize": 28816,
-      "imageSha256": "0652315013883f2eda8223fbd82cad90fcb0fd9fabf75d3609ab0a4c82c33c0f",
+      "byteSize": 11989,
+      "imageSha256": "acb5316eb04fd5425f269f0f8ca48d60fa21296af223f27ce506e4645dd3ffbc",
       "downloadStatus": "captured_for_hash"
     },
     {
-      "url": "https://www.flhouse.gov/Images/bronze-seal-250.png?cb=4.6.654349",
+      "url": "https://www.flhouse.gov/Images/bronze-seal-250.png?cb=4.6.654350",
       "method": "og:image",
       "score": 14,
       "altText": null,
@@ -50,7 +50,7 @@
       "rightsStatus": "review_required",
       "identityReviewStatus": "unreviewed",
       "httpStatus": 200,
-      "finalUrl": "https://www.flhouse.gov/Images/bronze-seal-250.png?cb=4.6.654349",
+      "finalUrl": "https://www.flhouse.gov/Images/bronze-seal-250.png?cb=4.6.654350",
       "contentType": "image/png",
       "byteSize": 150275,
       "imageSha256": "36f7c4317f0cc62c44ff5bbfc0a0e5eebf014be23c9c8826141f11a70d9e7ff8",
@@ -119,14 +119,7 @@
   "socialCandidates": [
     {
       "platform": "Instagram",
-      "url": "https://www.instagram.com/debratendrich/?hl=en?utm_source=ig_embed&utm_campaign=loading",
-      "label": "Debra Tendrich",
-      "sourcePageUrl": "https://www.flhouse.gov/Sections/Representatives/custom/details.aspx?MemberId=4924&LegislativeTermId=91",
-      "reviewStatus": "unreviewed"
-    },
-    {
-      "platform": "Facebook",
-      "url": "https://www.facebook.com/dtendrich/",
+      "url": "https://www.instagram.com/repdebratendrich?utm_source=qr?utm_source=ig_embed&utm_campaign=loading",
       "label": "Debra Tendrich",
       "sourcePageUrl": "https://www.flhouse.gov/Sections/Representatives/custom/details.aspx?MemberId=4924&LegislativeTermId=91",
       "reviewStatus": "unreviewed"
@@ -149,13 +142,13 @@
   "errors": [],
   "httpStatus": 200,
   "finalUrl": "https://www.flhouse.gov/Sections/Representatives/custom/details.aspx?MemberId=4924&LegislativeTermId=91",
-  "sourceSnapshotSha256": "01623a55029f2f9e52bc95c7d83be31b217433039f85b8afb0b9267dbdcae9bd",
+  "sourceSnapshotSha256": "8839fa6601541c7ca3b33471366dd468f8854c3b032e753ae235ab3cf037494c",
   "contentType": "text/html",
   "pageTitle": "Debra Tendrich  - 2024 - 2026 ( Speaker Perez ) | Florida House of Representatives",
   "candidateSummary": {
     "portraits": 6,
     "contacts": 2,
-    "socials": 2,
+    "socials": 1,
     "websites": 2
   }
 }

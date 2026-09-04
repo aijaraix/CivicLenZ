@@ -6,7 +6,7 @@
   "displayName": "Rosalind Osgood",
   "officeTitle": "Florida State Senator, District 32",
   "sourceUrl": "https://www.flsenate.gov/Senators/2024-2026/S32",
-  "fetchedAt": "2026-07-16T05:20:44Z",
+  "fetchedAt": "2026-09-04T13:41:39Z",
   "collectionStatus": "success",
   "reviewStatus": "unreviewed",
   "publicationAllowed": false,
@@ -245,7 +245,7 @@
   "errors": [],
   "httpStatus": 200,
   "finalUrl": "https://www.flsenate.gov/Senators/S32",
-  "sourceSnapshotSha256": "66ae75306ec1e94e337ee7428e6ebcbc05b9711c2c8a96a337de8df5235031f7",
+  "sourceSnapshotSha256": "60d4b247cf2bf548d3ccccee5f67955da569d9b0f2337fb861619463d4db9a37",
   "contentType": "text/html",
   "pageTitle": "Senator Osgood - The Florida Senate",
   "candidateSummary": {

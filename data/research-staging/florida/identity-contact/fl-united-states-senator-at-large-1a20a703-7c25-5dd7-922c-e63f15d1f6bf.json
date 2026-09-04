@@ -6,7 +6,7 @@
   "displayName": "Rick Scott",
   "officeTitle": "United States Senator",
   "sourceUrl": "https://www.rickscott.senate.gov/",
-  "fetchedAt": "2026-07-16T05:20:00Z",
+  "fetchedAt": "2026-09-04T13:40:40Z",
   "collectionStatus": "success",
   "reviewStatus": "unreviewed",
   "publicationAllowed": false,
@@ -255,7 +255,7 @@
   "errors": [],
   "httpStatus": 200,
   "finalUrl": "https://www.rickscott.senate.gov/",
-  "sourceSnapshotSha256": "6cf363e9f977a0ba15d706d70f25290a945ec536664d20700f6b11b265d71903",
+  "sourceSnapshotSha256": "fd89b3f8195048a900cad5ff678255b9c06884e3a951c35cd8860ae7e7df4239",
   "contentType": "text/html",
   "pageTitle": "U.S. Senator Rick Scott",
   "candidateSummary": {

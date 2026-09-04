@@ -6,7 +6,7 @@
   "displayName": "Jared Moskowitz",
   "officeTitle": "United States Representative",
   "sourceUrl": "https://moskowitz.house.gov",
-  "fetchedAt": "2026-07-16T05:19:59Z",
+  "fetchedAt": "2026-09-04T13:40:37Z",
   "collectionStatus": "success",
   "reviewStatus": "unreviewed",
   "publicationAllowed": false,
@@ -181,7 +181,7 @@
   "errors": [],
   "httpStatus": 200,
   "finalUrl": "https://moskowitz.house.gov/",
-  "sourceSnapshotSha256": "ae3cf209e96211cc4db75a96d5b79def9dbeef733840ea9ea29c437279cd8cb6",
+  "sourceSnapshotSha256": "e14b0c9331c343ae295e9eaa6ec1d727b7768e0f9bb5a5575b5eff21f80d7b9d",
   "contentType": "text/html",
   "pageTitle": "Home",
   "candidateSummary": {

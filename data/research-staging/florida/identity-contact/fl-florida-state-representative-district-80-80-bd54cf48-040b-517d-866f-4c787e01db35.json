@@ -6,7 +6,7 @@
   "displayName": "Adam Botana",
   "officeTitle": "Florida State Representative, District 80",
   "sourceUrl": "https://www.flhouse.gov/Sections/Representatives/details.aspx?MemberId=4782&LegislativeTermId=91",
-  "fetchedAt": "2026-07-16T05:20:30Z",
+  "fetchedAt": "2026-09-04T13:41:20Z",
   "collectionStatus": "success",
   "reviewStatus": "unreviewed",
   "publicationAllowed": false,
@@ -27,10 +27,40 @@
       "downloadStatus": "captured_for_hash"
     },
     {
-      "url": "https://www.flhouse.gov/FileStores/Web/Imaging/PhotoAlbums/HousePhotoSized7570.jpg",
+      "url": "https://www.flhouse.gov/FileStores/Web/Imaging/PhotoAlbums/HousePhotoSized7766.JPG",
       "method": "img",
       "score": 30,
       "altText": "Representative Botana Photo",
+      "sourcePageUrl": "https://www.flhouse.gov/Sections/Representatives/custom/details.aspx?MemberId=4782&LegislativeTermId=91",
+      "rightsStatus": "review_required",
+      "identityReviewStatus": "unreviewed",
+      "httpStatus": 200,
+      "finalUrl": "https://www.flhouse.gov/FileStores/Web/Imaging/PhotoAlbums/HousePhotoSized7766.JPG",
+      "contentType": "image/jpeg",
+      "byteSize": 20957,
+      "imageSha256": "ea15b9120fa35e2ca0f0a7cf94e08dd5f7261ded71ddfc80a16ad94aae1bd636",
+      "downloadStatus": "captured_for_hash"
+    },
+    {
+      "url": "https://www.flhouse.gov/Images/bronze-seal-250.png?cb=4.6.654350",
+      "method": "og:image",
+      "score": 14,
+      "altText": null,
+      "sourcePageUrl": "https://www.flhouse.gov/Sections/Representatives/custom/details.aspx?MemberId=4782&LegislativeTermId=91",
+      "rightsStatus": "review_required",
+      "identityReviewStatus": "unreviewed",
+      "httpStatus": 200,
+      "finalUrl": "https://www.flhouse.gov/Images/bronze-seal-250.png?cb=4.6.654350",
+      "contentType": "image/png",
+      "byteSize": 150275,
+      "imageSha256": "36f7c4317f0cc62c44ff5bbfc0a0e5eebf014be23c9c8826141f11a70d9e7ff8",
+      "downloadStatus": "captured_for_hash"
+    },
+    {
+      "url": "https://www.flhouse.gov/FileStores/Web/Imaging/PhotoAlbums/HousePhotoSized7570.jpg",
+      "method": "img",
+      "score": 9,
+      "altText": null,
       "sourcePageUrl": "https://www.flhouse.gov/Sections/Representatives/custom/details.aspx?MemberId=4782&LegislativeTermId=91",
       "rightsStatus": "review_required",
       "identityReviewStatus": "unreviewed",
@@ -39,21 +69,6 @@
       "contentType": "image/jpeg",
       "byteSize": 12740,
       "imageSha256": "30cd94b1d67d0e919c9a25ac868e49db30b1cc7444bd7e43b67b25827700996e",
-      "downloadStatus": "captured_for_hash"
-    },
-    {
-      "url": "https://www.flhouse.gov/Images/bronze-seal-250.png?cb=4.6.654349",
-      "method": "og:image",
-      "score": 14,
-      "altText": null,
-      "sourcePageUrl": "https://www.flhouse.gov/Sections/Representatives/custom/details.aspx?MemberId=4782&LegislativeTermId=91",
-      "rightsStatus": "review_required",
-      "identityReviewStatus": "unreviewed",
-      "httpStatus": 200,
-      "finalUrl": "https://www.flhouse.gov/Images/bronze-seal-250.png?cb=4.6.654349",
-      "contentType": "image/png",
-      "byteSize": 150275,
-      "imageSha256": "36f7c4317f0cc62c44ff5bbfc0a0e5eebf014be23c9c8826141f11a70d9e7ff8",
       "downloadStatus": "captured_for_hash"
     },
     {
@@ -69,21 +84,6 @@
       "contentType": "image/jpeg",
       "byteSize": 14324,
       "imageSha256": "719794e41520ec8926755f919991d55d7b7147e9b4e98afe9cd4004e82a5671c",
-      "downloadStatus": "captured_for_hash"
-    },
-    {
-      "url": "https://www.flhouse.gov/FileStores/Web/Imaging/PhotoAlbums/HousePhotoSized7766.JPG",
-      "method": "img",
-      "score": 9,
-      "altText": null,
-      "sourcePageUrl": "https://www.flhouse.gov/Sections/Representatives/custom/details.aspx?MemberId=4782&LegislativeTermId=91",
-      "rightsStatus": "review_required",
-      "identityReviewStatus": "unreviewed",
-      "httpStatus": 200,
-      "finalUrl": "https://www.flhouse.gov/FileStores/Web/Imaging/PhotoAlbums/HousePhotoSized7766.JPG",
-      "contentType": "image/jpeg",
-      "byteSize": 20957,
-      "imageSha256": "ea15b9120fa35e2ca0f0a7cf94e08dd5f7261ded71ddfc80a16ad94aae1bd636",
       "downloadStatus": "captured_for_hash"
     },
     {
@@ -134,7 +134,7 @@
   "errors": [],
   "httpStatus": 200,
   "finalUrl": "https://www.flhouse.gov/Sections/Representatives/custom/details.aspx?MemberId=4782&LegislativeTermId=91",
-  "sourceSnapshotSha256": "88e1dd214db34471c48b47c39df60b2d27fa3d47677f98b39e3af6ea18577417",
+  "sourceSnapshotSha256": "07fbdee52828fdba1af9af81265aa34ee58a8d27860ff77d47603579bceb7589",
   "contentType": "text/html",
   "pageTitle": "Adam Botana  - 2024 - 2026 ( Speaker Perez ) | Florida House of Representatives",
   "candidateSummary": {

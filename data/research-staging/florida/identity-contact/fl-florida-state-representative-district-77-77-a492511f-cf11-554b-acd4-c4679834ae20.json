@@ -6,7 +6,7 @@
   "displayName": "Tiffany Esposito",
   "officeTitle": "Florida State Representative, District 77",
   "sourceUrl": "https://www.flhouse.gov/Sections/Representatives/details.aspx?MemberId=4892&LegislativeTermId=91",
-  "fetchedAt": "2026-07-16T05:20:29Z",
+  "fetchedAt": "2026-09-04T13:41:18Z",
   "collectionStatus": "success",
   "reviewStatus": "unreviewed",
   "publicationAllowed": false,
@@ -27,7 +27,7 @@
       "downloadStatus": "captured_for_hash"
     },
     {
-      "url": "https://www.flhouse.gov/Images/bronze-seal-250.png?cb=4.6.654349",
+      "url": "https://www.flhouse.gov/Images/bronze-seal-250.png?cb=4.6.654350",
       "method": "og:image",
       "score": 14,
       "altText": null,
@@ -35,7 +35,7 @@
       "rightsStatus": "review_required",
       "identityReviewStatus": "unreviewed",
       "httpStatus": 200,
-      "finalUrl": "https://www.flhouse.gov/Images/bronze-seal-250.png?cb=4.6.654349",
+      "finalUrl": "https://www.flhouse.gov/Images/bronze-seal-250.png?cb=4.6.654350",
       "contentType": "image/png",
       "byteSize": 150275,
       "imageSha256": "36f7c4317f0cc62c44ff5bbfc0a0e5eebf014be23c9c8826141f11a70d9e7ff8",
@@ -135,7 +135,7 @@
   "errors": [],
   "httpStatus": 200,
   "finalUrl": "https://www.flhouse.gov/Sections/Representatives/details.aspx?MemberId=4892&LegislativeTermId=91",
-  "sourceSnapshotSha256": "85208b631115f07490add10810e55925a7d1ee7abc8b46d21fa27190dc216d45",
+  "sourceSnapshotSha256": "6ddd53b36f54e049c97a133a410bbc9111f4f22a142405632d2e57b711c63084",
   "contentType": "text/html",
   "pageTitle": "Tiffany Esposito  - 2024 - 2026 ( Speaker Perez ) | Florida House of Representatives",
   "candidateSummary": {

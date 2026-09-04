@@ -6,7 +6,7 @@
   "displayName": "Darryl Ervin Rouson",
   "officeTitle": "Florida State Senator, District 16",
   "sourceUrl": "https://www.flsenate.gov/Senators/2024-2026/S16",
-  "fetchedAt": "2026-07-16T05:20:39Z",
+  "fetchedAt": "2026-09-04T13:41:31Z",
   "collectionStatus": "success",
   "reviewStatus": "unreviewed",
   "publicationAllowed": false,
@@ -214,7 +214,7 @@
   "errors": [],
   "httpStatus": 200,
   "finalUrl": "https://www.flsenate.gov/Senators/S16",
-  "sourceSnapshotSha256": "04ed130b95e2e418baaf258537085ba07c858f28cde2ba8422c738ac1bee6e9e",
+  "sourceSnapshotSha256": "003da39191bf553a8410472907d408b4d4a17d20dfcc1447699be9b7b4efd91f",
   "contentType": "text/html",
   "pageTitle": "Senator Rouson - The Florida Senate",
   "candidateSummary": {

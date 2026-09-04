@@ -6,7 +6,7 @@
   "displayName": "Jay Trumbull",
   "officeTitle": "Florida State Senator, District 2",
   "sourceUrl": "https://www.flsenate.gov/Senators/2024-2026/S2",
-  "fetchedAt": "2026-07-16T05:20:40Z",
+  "fetchedAt": "2026-09-04T13:41:33Z",
   "collectionStatus": "success",
   "reviewStatus": "unreviewed",
   "publicationAllowed": false,
@@ -229,7 +229,7 @@
   "errors": [],
   "httpStatus": 200,
   "finalUrl": "https://www.flsenate.gov/Senators/S2",
-  "sourceSnapshotSha256": "48c87647042e026ab7f397634ab865e23f86aeb1321c1c1f259f28d7cfc04568",
+  "sourceSnapshotSha256": "d0f020e98605c3e2e74d15d9aa1832c2084f3c698c59abaa8a3ede8b2698bbc0",
   "contentType": "text/html",
   "pageTitle": "Senator Trumbull - The Florida Senate",
   "candidateSummary": {

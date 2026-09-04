@@ -6,7 +6,7 @@
   "displayName": "John Rutherford",
   "officeTitle": "United States Representative",
   "sourceUrl": "https://rutherford.house.gov",
-  "fetchedAt": "2026-07-16T05:19:59Z",
+  "fetchedAt": "2026-09-04T13:40:38Z",
   "collectionStatus": "success",
   "reviewStatus": "unreviewed",
   "publicationAllowed": false,
@@ -220,7 +220,7 @@
   "errors": [],
   "httpStatus": 200,
   "finalUrl": "https://rutherford.house.gov/",
-  "sourceSnapshotSha256": "fb5e30c95e6f55a0d45d0351c457b041c620afb2e45bbc21d96da20223c8002a",
+  "sourceSnapshotSha256": "4cd2280eb70b541e11c1397d695121a816d8244ce2fd039bb99c6c0a93622138",
   "contentType": "text/html",
   "pageTitle": "Congressman John Rutherford |",
   "candidateSummary": {

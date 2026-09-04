@@ -6,7 +6,7 @@
   "displayName": "Daryl Campbell",
   "officeTitle": "Florida State Representative, District 99",
   "sourceUrl": "https://www.flhouse.gov/Sections/Representatives/details.aspx?MemberId=4843&LegislativeTermId=91",
-  "fetchedAt": "2026-07-16T05:20:37Z",
+  "fetchedAt": "2026-09-04T13:41:28Z",
   "collectionStatus": "success",
   "reviewStatus": "unreviewed",
   "publicationAllowed": false,
@@ -27,7 +27,7 @@
       "downloadStatus": "captured_for_hash"
     },
     {
-      "url": "https://www.flhouse.gov/FileStores/Web/Imaging/PhotoAlbums/HousePhotoSized7613.jpg",
+      "url": "https://www.flhouse.gov/FileStores/Web/Imaging/PhotoAlbums/HousePhotoSized7979.JPG",
       "method": "img",
       "score": 30,
       "altText": "Representative Campbell Photo",
@@ -35,14 +35,14 @@
       "rightsStatus": "review_required",
       "identityReviewStatus": "unreviewed",
       "httpStatus": 200,
-      "finalUrl": "https://www.flhouse.gov/FileStores/Web/Imaging/PhotoAlbums/HousePhotoSized7613.jpg",
+      "finalUrl": "https://www.flhouse.gov/FileStores/Web/Imaging/PhotoAlbums/HousePhotoSized7979.JPG",
       "contentType": "image/jpeg",
-      "byteSize": 15093,
-      "imageSha256": "c96cd5ff2c52b69ac9e6d8c42087915dddc7a1ca29bd764c34881e1d1f1956fe",
+      "byteSize": 16350,
+      "imageSha256": "0c50af1280420a13def85874bf4e929d772104fbf806b30b52784b0dd2559b18",
       "downloadStatus": "captured_for_hash"
     },
     {
-      "url": "https://www.flhouse.gov/Images/bronze-seal-250.png?cb=4.6.654349",
+      "url": "https://www.flhouse.gov/Images/bronze-seal-250.png?cb=4.6.654350",
       "method": "og:image",
       "score": 14,
       "altText": null,
@@ -50,25 +50,10 @@
       "rightsStatus": "review_required",
       "identityReviewStatus": "unreviewed",
       "httpStatus": 200,
-      "finalUrl": "https://www.flhouse.gov/Images/bronze-seal-250.png?cb=4.6.654349",
+      "finalUrl": "https://www.flhouse.gov/Images/bronze-seal-250.png?cb=4.6.654350",
       "contentType": "image/png",
       "byteSize": 150275,
       "imageSha256": "36f7c4317f0cc62c44ff5bbfc0a0e5eebf014be23c9c8826141f11a70d9e7ff8",
-      "downloadStatus": "captured_for_hash"
-    },
-    {
-      "url": "https://www.flhouse.gov/api/Member/get-member-uploaded-photo/4843/MemberPhotoSized8067.jpg/image",
-      "method": "img",
-      "score": 14,
-      "altText": null,
-      "sourcePageUrl": "https://www.flhouse.gov/Sections/Representatives/custom/details.aspx?MemberId=4843&LegislativeTermId=91",
-      "rightsStatus": "review_required",
-      "identityReviewStatus": "unreviewed",
-      "httpStatus": 200,
-      "finalUrl": "https://www.flhouse.gov/api/Member/get-member-uploaded-photo/4843/MemberPhotoSized8067.jpg/image",
-      "contentType": "image/jpeg",
-      "byteSize": 256284,
-      "imageSha256": "7eb92468e1ca1f1064ce9a72bb3086b51ba3ceaee1f16d1094a8ebcb78d7298b",
       "downloadStatus": "captured_for_hash"
     },
     {
@@ -100,18 +85,33 @@
       "byteSize": 18285,
       "imageSha256": "7474145eb8b73d3efcde3564918ac497b2d52f8c80070506af421d9c88816188",
       "downloadStatus": "captured_for_hash"
+    },
+    {
+      "url": "https://www.flhouse.gov/FileStores/Web/Imaging/PhotoAlbums/HousePhotoSized8398.JPG",
+      "method": "img",
+      "score": 9,
+      "altText": null,
+      "sourcePageUrl": "https://www.flhouse.gov/Sections/Representatives/custom/details.aspx?MemberId=4843&LegislativeTermId=91",
+      "rightsStatus": "review_required",
+      "identityReviewStatus": "unreviewed",
+      "httpStatus": 200,
+      "finalUrl": "https://www.flhouse.gov/FileStores/Web/Imaging/PhotoAlbums/HousePhotoSized8398.JPG",
+      "contentType": "image/jpeg",
+      "byteSize": 18597,
+      "imageSha256": "6fc5d8aecfcddc216c29c89ecac18981e464a111e977af577916773d22fa048c",
+      "downloadStatus": "captured_for_hash"
     }
   ],
   "contactCandidates": [
     {
       "type": "email",
-      "value": "anjal.mckenzie@flhouse.gov",
+      "value": "juliet.bonsu@flhouse.gov",
       "label": null,
       "sourcePageUrl": "https://www.flhouse.gov/Sections/Representatives/custom/details.aspx?MemberId=4843&LegislativeTermId=91"
     },
     {
       "type": "email",
-      "value": "charles.horowitz@flhouse.gov",
+      "value": "yvette.evans@flhouse.gov",
       "label": null,
       "sourcePageUrl": "https://www.flhouse.gov/Sections/Representatives/custom/details.aspx?MemberId=4843&LegislativeTermId=91"
     },
@@ -146,7 +146,7 @@
   "errors": [],
   "httpStatus": 200,
   "finalUrl": "https://www.flhouse.gov/Sections/Representatives/custom/details.aspx?MemberId=4843&LegislativeTermId=91",
-  "sourceSnapshotSha256": "d3b6882da54b08c5cb8c47528d629f893b503be7d0e0c2b248c1d97175f17bbf",
+  "sourceSnapshotSha256": "2e9d5da5933e0dda72bd9c015aeaeaea77c7347a02c2d181937abb29f9ac6e79",
   "contentType": "text/html",
   "pageTitle": "Daryl Campbell  - 2024 - 2026 ( Speaker Perez ) | Florida House of Representatives",
   "candidateSummary": {

@@ -6,7 +6,7 @@
   "displayName": "Jon Albert",
   "officeTitle": "Florida State Representative, District 48",
   "sourceUrl": "https://www.flhouse.gov/Sections/Representatives/details.aspx?MemberId=4917&LegislativeTermId=91",
-  "fetchedAt": "2026-07-16T05:20:20Z",
+  "fetchedAt": "2026-09-04T13:41:05Z",
   "collectionStatus": "success",
   "reviewStatus": "unreviewed",
   "publicationAllowed": false,
@@ -27,10 +27,40 @@
       "downloadStatus": "captured_for_hash"
     },
     {
-      "url": "https://www.flhouse.gov/FileStores/Web/Imaging/PhotoAlbums/HousePhotoSized8286.JPG",
+      "url": "https://www.flhouse.gov/FileStores/Web/Imaging/PhotoAlbums/HousePhotoSized8264.JPG",
       "method": "img",
       "score": 30,
       "altText": "Representative Albert Photo",
+      "sourcePageUrl": "https://www.flhouse.gov/Sections/Representatives/custom/details.aspx?MemberId=4917&LegislativeTermId=91",
+      "rightsStatus": "review_required",
+      "identityReviewStatus": "unreviewed",
+      "httpStatus": 200,
+      "finalUrl": "https://www.flhouse.gov/FileStores/Web/Imaging/PhotoAlbums/HousePhotoSized8264.JPG",
+      "contentType": "image/jpeg",
+      "byteSize": 14070,
+      "imageSha256": "d79e93321a58a0c98c0c1951f176389d2c79259ab79e7e1ed3dfc469793e5ed8",
+      "downloadStatus": "captured_for_hash"
+    },
+    {
+      "url": "https://www.flhouse.gov/Images/bronze-seal-250.png?cb=4.6.654350",
+      "method": "og:image",
+      "score": 14,
+      "altText": null,
+      "sourcePageUrl": "https://www.flhouse.gov/Sections/Representatives/custom/details.aspx?MemberId=4917&LegislativeTermId=91",
+      "rightsStatus": "review_required",
+      "identityReviewStatus": "unreviewed",
+      "httpStatus": 200,
+      "finalUrl": "https://www.flhouse.gov/Images/bronze-seal-250.png?cb=4.6.654350",
+      "contentType": "image/png",
+      "byteSize": 150275,
+      "imageSha256": "36f7c4317f0cc62c44ff5bbfc0a0e5eebf014be23c9c8826141f11a70d9e7ff8",
+      "downloadStatus": "captured_for_hash"
+    },
+    {
+      "url": "https://www.flhouse.gov/FileStores/Web/Imaging/PhotoAlbums/HousePhotoSized8286.JPG",
+      "method": "img",
+      "score": 9,
+      "altText": null,
       "sourcePageUrl": "https://www.flhouse.gov/Sections/Representatives/custom/details.aspx?MemberId=4917&LegislativeTermId=91",
       "rightsStatus": "review_required",
       "identityReviewStatus": "unreviewed",
@@ -39,21 +69,6 @@
       "contentType": "image/jpeg",
       "byteSize": 13193,
       "imageSha256": "cbcc977b4ecd59e524fd9ecd35ddda30a9db189051efed8453daf50f8045c372",
-      "downloadStatus": "captured_for_hash"
-    },
-    {
-      "url": "https://www.flhouse.gov/Images/bronze-seal-250.png?cb=4.6.654349",
-      "method": "og:image",
-      "score": 14,
-      "altText": null,
-      "sourcePageUrl": "https://www.flhouse.gov/Sections/Representatives/custom/details.aspx?MemberId=4917&LegislativeTermId=91",
-      "rightsStatus": "review_required",
-      "identityReviewStatus": "unreviewed",
-      "httpStatus": 200,
-      "finalUrl": "https://www.flhouse.gov/Images/bronze-seal-250.png?cb=4.6.654349",
-      "contentType": "image/png",
-      "byteSize": 150275,
-      "imageSha256": "36f7c4317f0cc62c44ff5bbfc0a0e5eebf014be23c9c8826141f11a70d9e7ff8",
       "downloadStatus": "captured_for_hash"
     },
     {
@@ -84,21 +99,6 @@
       "contentType": "image/jpeg",
       "byteSize": 25039,
       "imageSha256": "b73a71aa8439607694f3baf838ca439430d611e171d81877758a75e0e7e98121",
-      "downloadStatus": "captured_for_hash"
-    },
-    {
-      "url": "https://www.flhouse.gov/FileStores/Web/Imaging/member-page-banners/1.jpg",
-      "method": "img",
-      "score": -17,
-      "altText": "The House Chamber",
-      "sourcePageUrl": "https://www.flhouse.gov/Sections/Representatives/custom/details.aspx?MemberId=4917&LegislativeTermId=91",
-      "rightsStatus": "review_required",
-      "identityReviewStatus": "unreviewed",
-      "httpStatus": 200,
-      "finalUrl": "https://www.flhouse.gov/FileStores/Web/Imaging/member-page-banners/1.jpg",
-      "contentType": "image/jpeg",
-      "byteSize": 106842,
-      "imageSha256": "9b11c3a35cea6e0f4dea3566a1298efa0e265354a2340e1754fba45bdbaf3fb9",
       "downloadStatus": "captured_for_hash"
     }
   ],
@@ -134,7 +134,7 @@
   "errors": [],
   "httpStatus": 200,
   "finalUrl": "https://www.flhouse.gov/Sections/Representatives/custom/details.aspx?MemberId=4917&LegislativeTermId=91",
-  "sourceSnapshotSha256": "203bb98b0b96e8ff737a84827e54e0fee8df58fb51c4c7c996b2431591574be5",
+  "sourceSnapshotSha256": "29803d25231b0010011bdb7792122a2e5d65538bef0afd659f6e75ba30bda66f",
   "contentType": "text/html",
   "pageTitle": "Jon Albert  - 2024 - 2026 ( Speaker Perez ) | Florida House of Representatives",
   "candidateSummary": {

@@ -6,7 +6,7 @@
   "displayName": "Kelly Skidmore",
   "officeTitle": "Florida State Representative, District 92",
   "sourceUrl": "https://www.flhouse.gov/Sections/Representatives/details.aspx?MemberId=4786&LegislativeTermId=91",
-  "fetchedAt": "2026-07-16T05:20:34Z",
+  "fetchedAt": "2026-09-04T13:41:25Z",
   "collectionStatus": "success",
   "reviewStatus": "unreviewed",
   "publicationAllowed": false,
@@ -27,7 +27,7 @@
       "downloadStatus": "captured_for_hash"
     },
     {
-      "url": "https://www.flhouse.gov/FileStores/Web/Imaging/PhotoAlbums/HousePhotoSized7175.jpg",
+      "url": "https://www.flhouse.gov/FileStores/Web/Imaging/PhotoAlbums/HousePhotoSized7602.jpg",
       "method": "img",
       "score": 30,
       "altText": "Representative Skidmore Photo",
@@ -35,14 +35,14 @@
       "rightsStatus": "review_required",
       "identityReviewStatus": "unreviewed",
       "httpStatus": 200,
-      "finalUrl": "https://www.flhouse.gov/FileStores/Web/Imaging/PhotoAlbums/HousePhotoSized7175.jpg",
+      "finalUrl": "https://www.flhouse.gov/FileStores/Web/Imaging/PhotoAlbums/HousePhotoSized7602.jpg",
       "contentType": "image/jpeg",
-      "byteSize": 13726,
-      "imageSha256": "995dcbaeda5d591416b675a138038f28243991d64033e5808a14adf4c7f81ac6",
+      "byteSize": 12682,
+      "imageSha256": "0a3d06e7fdac99d75a9747a029c70fdf22299ca977db344102ea92dc4ef230aa",
       "downloadStatus": "captured_for_hash"
     },
     {
-      "url": "https://www.flhouse.gov/Images/bronze-seal-250.png?cb=4.6.654349",
+      "url": "https://www.flhouse.gov/Images/bronze-seal-250.png?cb=4.6.654350",
       "method": "og:image",
       "score": 14,
       "altText": null,
@@ -50,7 +50,7 @@
       "rightsStatus": "review_required",
       "identityReviewStatus": "unreviewed",
       "httpStatus": 200,
-      "finalUrl": "https://www.flhouse.gov/Images/bronze-seal-250.png?cb=4.6.654349",
+      "finalUrl": "https://www.flhouse.gov/Images/bronze-seal-250.png?cb=4.6.654350",
       "contentType": "image/png",
       "byteSize": 150275,
       "imageSha256": "36f7c4317f0cc62c44ff5bbfc0a0e5eebf014be23c9c8826141f11a70d9e7ff8",
@@ -72,6 +72,21 @@
       "downloadStatus": "captured_for_hash"
     },
     {
+      "url": "https://www.flhouse.gov/FileStores/Web/Imaging/PhotoAlbums/HousePhotoSized7297.jpg",
+      "method": "img",
+      "score": 9,
+      "altText": null,
+      "sourcePageUrl": "https://www.flhouse.gov/Sections/Representatives/custom/details.aspx?MemberId=4786&LegislativeTermId=91",
+      "rightsStatus": "review_required",
+      "identityReviewStatus": "unreviewed",
+      "httpStatus": 200,
+      "finalUrl": "https://www.flhouse.gov/FileStores/Web/Imaging/PhotoAlbums/HousePhotoSized7297.jpg",
+      "contentType": "image/jpeg",
+      "byteSize": 22846,
+      "imageSha256": "61cc1c1ba85db0a3e326786195b9f0b0f5b859e1cc6d17e9845cc26f07a3ab33",
+      "downloadStatus": "captured_for_hash"
+    },
+    {
       "url": "https://www.flhouse.gov/FileStores/Web/Imaging/PhotoAlbums/HousePhotoSized7573.jpg",
       "method": "img",
       "score": 9,
@@ -84,21 +99,6 @@
       "contentType": "image/jpeg",
       "byteSize": 15929,
       "imageSha256": "c327666433eaa7297a75d2d5ccbd84faf6dfddb006e448a12ce4433a4335143c",
-      "downloadStatus": "captured_for_hash"
-    },
-    {
-      "url": "https://www.flhouse.gov/FileStores/Web/Imaging/PhotoAlbums/HousePhotoSized7580.jpg",
-      "method": "img",
-      "score": 9,
-      "altText": null,
-      "sourcePageUrl": "https://www.flhouse.gov/Sections/Representatives/custom/details.aspx?MemberId=4786&LegislativeTermId=91",
-      "rightsStatus": "review_required",
-      "identityReviewStatus": "unreviewed",
-      "httpStatus": 200,
-      "finalUrl": "https://www.flhouse.gov/FileStores/Web/Imaging/PhotoAlbums/HousePhotoSized7580.jpg",
-      "contentType": "image/jpeg",
-      "byteSize": 14249,
-      "imageSha256": "4c37941abb583cb3ca5919e999671b28d79c686600dc4b3de5a35cb5c649c1fc",
       "downloadStatus": "captured_for_hash"
     }
   ],
@@ -134,7 +134,7 @@
   "errors": [],
   "httpStatus": 200,
   "finalUrl": "https://www.flhouse.gov/Sections/Representatives/custom/details.aspx?MemberId=4786&LegislativeTermId=91",
-  "sourceSnapshotSha256": "00bf9a74a1f54f659577d05dfb180f2c86ee018745569429d3feb8251ef7909a",
+  "sourceSnapshotSha256": "bda1c6753249ee26f1d29deb8be3f1f12664cb52b10747bb70d9e6f6bbe7bd0c",
   "contentType": "text/html",
   "pageTitle": "Kelly Skidmore  - 2024 - 2026 ( Speaker Perez ) | Florida House of Representatives",
   "candidateSummary": {

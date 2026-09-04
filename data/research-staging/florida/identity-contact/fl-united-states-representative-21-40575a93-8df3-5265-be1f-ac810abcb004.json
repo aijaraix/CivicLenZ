@@ -6,7 +6,7 @@
   "displayName": "Brian Mast",
   "officeTitle": "United States Representative",
   "sourceUrl": "https://mast.house.gov",
-  "fetchedAt": "2026-07-16T05:19:58Z",
+  "fetchedAt": "2026-09-04T13:40:36Z",
   "collectionStatus": "success",
   "reviewStatus": "unreviewed",
   "publicationAllowed": false,
@@ -155,7 +155,7 @@
   "errors": [],
   "httpStatus": 200,
   "finalUrl": "https://mast.house.gov/",
-  "sourceSnapshotSha256": "a5a7aa26dbd6d4fd4f6af1948473c36122a1d6e998bbe31a1a66064ada146f2e",
+  "sourceSnapshotSha256": "901bbd5205d5c1360bed2bcbf5f92dd07529e8e32342bfbd00c0a4ac07d88263",
   "contentType": "text/html",
   "pageTitle": "Congressman Brian Mast",
   "candidateSummary": {

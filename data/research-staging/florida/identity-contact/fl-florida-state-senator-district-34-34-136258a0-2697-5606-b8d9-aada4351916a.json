@@ -6,7 +6,7 @@
   "displayName": "Shevrin D. \"Shev\" Jones",
   "officeTitle": "Florida State Senator, District 34",
   "sourceUrl": "https://www.flsenate.gov/Senators/2024-2026/S34",
-  "fetchedAt": "2026-07-16T05:20:45Z",
+  "fetchedAt": "2026-09-04T13:41:40Z",
   "collectionStatus": "success",
   "reviewStatus": "unreviewed",
   "publicationAllowed": false,
@@ -235,7 +235,7 @@
   "errors": [],
   "httpStatus": 200,
   "finalUrl": "https://www.flsenate.gov/Senators/S34",
-  "sourceSnapshotSha256": "1ddc6fd92800e51a0054ccbc6f772f14483148c24d7ec53220e0c5c25b9309c8",
+  "sourceSnapshotSha256": "a417ac31238ef6cac1b4d77edbcc7f0c6f09a995b8e510b8caf0d7b1c8883a04",
   "contentType": "text/html",
   "pageTitle": "Senator Jones - The Florida Senate",
   "candidateSummary": {

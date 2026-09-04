@@ -6,7 +6,7 @@
   "displayName": "Darren Soto",
   "officeTitle": "United States Representative",
   "sourceUrl": "https://soto.house.gov",
-  "fetchedAt": "2026-07-16T05:19:58Z",
+  "fetchedAt": "2026-09-04T13:40:36Z",
   "collectionStatus": "success",
   "reviewStatus": "unreviewed",
   "publicationAllowed": false,
@@ -24,6 +24,21 @@
       "contentType": "image/png",
       "byteSize": 2105540,
       "imageSha256": "adf36310dbd1e28a17b7afc4a9951d01f6d36c6b4b449a953e3b6e01dc5efcab",
+      "downloadStatus": "captured_for_hash"
+    },
+    {
+      "url": "https://soto.house.gov/sites/evo-subsites/soto-evo.house.gov/files/styles/medium/public/featured_image/Screen%20Shot%202021-07-15%20at%2010.44.29%20AM.png?itok=Vzre4D4C",
+      "method": "img",
+      "score": 33,
+      "altText": "Darren Soto stands in front of the U.S. Capitol",
+      "sourcePageUrl": "https://soto.house.gov/",
+      "rightsStatus": "review_required",
+      "identityReviewStatus": "unreviewed",
+      "httpStatus": 200,
+      "finalUrl": "https://soto.house.gov/sites/evo-subsites/soto-evo.house.gov/files/styles/medium/public/featured_image/Screen%20Shot%202021-07-15%20at%2010.44.29%20AM.png?itok=Vzre4D4C",
+      "contentType": "image/png",
+      "byteSize": 75021,
+      "imageSha256": "6e63c5977b76f990c3d26c69a985d75309ea5d2ae9d860090fd7e6bc2e209052",
       "downloadStatus": "captured_for_hash"
     },
     {
@@ -84,21 +99,6 @@
       "contentType": "image/png",
       "byteSize": 1335504,
       "imageSha256": "eee9b25961057c081dd7f27b9add75c0e3fe1b93cfe61bfc2e9aa32bf0309dc0",
-      "downloadStatus": "captured_for_hash"
-    },
-    {
-      "url": "https://soto.house.gov/sites/evo-subsites/soto-evo.house.gov/files/styles/evo_image_full_width/public/evo-media-image/screenshot-2025-05-08-at-2.52.31-pm.png?h=eb8b11ee&itok=Cxt-J8e1",
-      "method": "img",
-      "score": 21,
-      "altText": "Soto in Meeting",
-      "sourcePageUrl": "https://soto.house.gov/",
-      "rightsStatus": "review_required",
-      "identityReviewStatus": "unreviewed",
-      "httpStatus": 200,
-      "finalUrl": "https://soto.house.gov/sites/evo-subsites/soto-evo.house.gov/files/styles/evo_image_full_width/public/evo-media-image/screenshot-2025-05-08-at-2.52.31-pm.png?h=eb8b11ee&itok=Cxt-J8e1",
-      "contentType": "image/png",
-      "byteSize": 2098657,
-      "imageSha256": "831c6a1292703a34a071c62ecb751f63bca5095d8b4e9a9504e5b7d140859945",
       "downloadStatus": "captured_for_hash"
     }
   ],
@@ -194,7 +194,7 @@
   "errors": [],
   "httpStatus": 200,
   "finalUrl": "https://soto.house.gov/",
-  "sourceSnapshotSha256": "3ef59990ea2fb09d349d3b49cbfcc43626373581ee02fb200850098065e9d11c",
+  "sourceSnapshotSha256": "026ad0da5ca54a0e1da9cf4384d127e6161a1d1313e9f3cc2a153dc9d5eb609f",
   "contentType": "text/html",
   "pageTitle": "Congressman Darren Soto |Representing the 9th District of Florida",
   "candidateSummary": {

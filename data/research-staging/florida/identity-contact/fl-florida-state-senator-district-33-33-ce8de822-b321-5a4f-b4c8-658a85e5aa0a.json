@@ -6,7 +6,7 @@
   "displayName": "Jonathan Martin",
   "officeTitle": "Florida State Senator, District 33",
   "sourceUrl": "https://www.flsenate.gov/Senators/2024-2026/S33",
-  "fetchedAt": "2026-07-16T05:20:44Z",
+  "fetchedAt": "2026-09-04T13:41:40Z",
   "collectionStatus": "success",
   "reviewStatus": "unreviewed",
   "publicationAllowed": false,
@@ -64,12 +64,11 @@
       "sourcePageUrl": "https://www.flsenate.gov/Senators/S33",
       "rightsStatus": "review_required",
       "identityReviewStatus": "unreviewed",
-      "httpStatus": 200,
+      "httpStatus": 429,
       "finalUrl": "https://www.flsenate.gov/PublishedContent/Offices/Senator/Bill_signing_of_SB_1296_PERC.jpg",
-      "contentType": "image/jpeg",
-      "byteSize": 4169,
-      "imageSha256": "ef4ba855fe851f8211cf47db0b3adbec88be111de3852980711aa14a287fe9c2",
-      "downloadStatus": "captured_for_hash"
+      "contentType": "text/plain",
+      "byteSize": 17,
+      "downloadStatus": "not_an_image_or_http_error"
     },
     {
       "url": "https://www.flsenate.gov/PublishedContent/Offices/Senator/Session_Week_Eight_Recap_2026.jpg",
@@ -244,7 +243,7 @@
   "errors": [],
   "httpStatus": 200,
   "finalUrl": "https://www.flsenate.gov/Senators/S33",
-  "sourceSnapshotSha256": "10f757d5788211cdc9c81e7a6e0a4e5fed387b5a9ff1a06e81d424db7a5e3135",
+  "sourceSnapshotSha256": "0fc93e0a4026844cecdf8da0d9f62030fe23ccdab408e2025e46495f728c6725",
   "contentType": "text/html",
   "pageTitle": "Senator Martin - The Florida Senate",
   "candidateSummary": {

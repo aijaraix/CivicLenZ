@@ -6,7 +6,7 @@
   "displayName": "Paula A. Stark",
   "officeTitle": "Florida State Representative, District 47",
   "sourceUrl": "https://www.flhouse.gov/Sections/Representatives/details.aspx?MemberId=4878&LegislativeTermId=91",
-  "fetchedAt": "2026-07-16T05:20:19Z",
+  "fetchedAt": "2026-09-04T13:41:05Z",
   "collectionStatus": "success",
   "reviewStatus": "unreviewed",
   "publicationAllowed": false,
@@ -27,10 +27,40 @@
       "downloadStatus": "captured_for_hash"
     },
     {
-      "url": "https://www.flhouse.gov/FileStores/Web/Imaging/PhotoAlbums/HousePhotoSized7479.jpg",
+      "url": "https://www.flhouse.gov/FileStores/Web/Imaging/PhotoAlbums/HousePhotoSized7462.jpg",
       "method": "img",
       "score": 30,
       "altText": "Representative Stark Photo",
+      "sourcePageUrl": "https://www.flhouse.gov/Sections/Representatives/custom/details.aspx?MemberId=4878&LegislativeTermId=91",
+      "rightsStatus": "review_required",
+      "identityReviewStatus": "unreviewed",
+      "httpStatus": 200,
+      "finalUrl": "https://www.flhouse.gov/FileStores/Web/Imaging/PhotoAlbums/HousePhotoSized7462.jpg",
+      "contentType": "image/jpeg",
+      "byteSize": 28298,
+      "imageSha256": "7808545678c75c7316eec972b3c22d2a59bc22ae38b8e531e05279e55e6e9dc4",
+      "downloadStatus": "captured_for_hash"
+    },
+    {
+      "url": "https://www.flhouse.gov/Images/bronze-seal-250.png?cb=4.6.654350",
+      "method": "og:image",
+      "score": 14,
+      "altText": null,
+      "sourcePageUrl": "https://www.flhouse.gov/Sections/Representatives/custom/details.aspx?MemberId=4878&LegislativeTermId=91",
+      "rightsStatus": "review_required",
+      "identityReviewStatus": "unreviewed",
+      "httpStatus": 200,
+      "finalUrl": "https://www.flhouse.gov/Images/bronze-seal-250.png?cb=4.6.654350",
+      "contentType": "image/png",
+      "byteSize": 150275,
+      "imageSha256": "36f7c4317f0cc62c44ff5bbfc0a0e5eebf014be23c9c8826141f11a70d9e7ff8",
+      "downloadStatus": "captured_for_hash"
+    },
+    {
+      "url": "https://www.flhouse.gov/FileStores/Web/Imaging/PhotoAlbums/HousePhotoSized7479.jpg",
+      "method": "img",
+      "score": 9,
+      "altText": null,
       "sourcePageUrl": "https://www.flhouse.gov/Sections/Representatives/custom/details.aspx?MemberId=4878&LegislativeTermId=91",
       "rightsStatus": "review_required",
       "identityReviewStatus": "unreviewed",
@@ -39,21 +69,6 @@
       "contentType": "image/jpeg",
       "byteSize": 15697,
       "imageSha256": "c501bef3f6748e5d41670b4313315a473711fb91f80c811e3b41483ec02bf49a",
-      "downloadStatus": "captured_for_hash"
-    },
-    {
-      "url": "https://www.flhouse.gov/Images/bronze-seal-250.png?cb=4.6.654349",
-      "method": "og:image",
-      "score": 14,
-      "altText": null,
-      "sourcePageUrl": "https://www.flhouse.gov/Sections/Representatives/custom/details.aspx?MemberId=4878&LegislativeTermId=91",
-      "rightsStatus": "review_required",
-      "identityReviewStatus": "unreviewed",
-      "httpStatus": 200,
-      "finalUrl": "https://www.flhouse.gov/Images/bronze-seal-250.png?cb=4.6.654349",
-      "contentType": "image/png",
-      "byteSize": 150275,
-      "imageSha256": "36f7c4317f0cc62c44ff5bbfc0a0e5eebf014be23c9c8826141f11a70d9e7ff8",
       "downloadStatus": "captured_for_hash"
     },
     {
@@ -84,21 +99,6 @@
       "contentType": "image/jpeg",
       "byteSize": 15070,
       "imageSha256": "c48c1570c2ebaf9728a748fb92ec4681988727b4fe14998c00581ac6acd64ddb",
-      "downloadStatus": "captured_for_hash"
-    },
-    {
-      "url": "https://www.flhouse.gov/FileStores/Web/Imaging/member-page-banners/3.jpg",
-      "method": "img",
-      "score": -17,
-      "altText": "The Old Florida Capitol",
-      "sourcePageUrl": "https://www.flhouse.gov/Sections/Representatives/custom/details.aspx?MemberId=4878&LegislativeTermId=91",
-      "rightsStatus": "review_required",
-      "identityReviewStatus": "unreviewed",
-      "httpStatus": 200,
-      "finalUrl": "https://www.flhouse.gov/FileStores/Web/Imaging/member-page-banners/3.jpg",
-      "contentType": "image/jpeg",
-      "byteSize": 146745,
-      "imageSha256": "aab4b10fbf85ee46b11a7c5abf8105554cfac4b5a3b85de583e91fa6e5b5b506",
       "downloadStatus": "captured_for_hash"
     }
   ],
@@ -142,7 +142,7 @@
   "errors": [],
   "httpStatus": 200,
   "finalUrl": "https://www.flhouse.gov/Sections/Representatives/custom/details.aspx?MemberId=4878&LegislativeTermId=91",
-  "sourceSnapshotSha256": "4d5ce2e17de467baa9a2522b40ca87f1615ac5acee6c277a1a147fc391bc0c10",
+  "sourceSnapshotSha256": "4bcc88f5b31b57c6702c22c37fe5e62d15386e02052383ab2e1d342b5ff4ddbd",
   "contentType": "text/html",
   "pageTitle": "Paula A. Stark  - 2024 - 2026 ( Speaker Perez ) | Florida House of Representatives",
   "candidateSummary": {

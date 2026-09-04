@@ -6,7 +6,7 @@
   "displayName": "Mike Redondo",
   "officeTitle": "Florida State Representative, District 118",
   "sourceUrl": "https://www.flhouse.gov/Sections/Representatives/details.aspx?MemberId=4902&LegislativeTermId=91",
-  "fetchedAt": "2026-07-16T05:20:07Z",
+  "fetchedAt": "2026-09-04T13:40:49Z",
   "collectionStatus": "success",
   "reviewStatus": "unreviewed",
   "publicationAllowed": false,
@@ -27,7 +27,7 @@
       "downloadStatus": "captured_for_hash"
     },
     {
-      "url": "https://www.flhouse.gov/FileStores/Web/Imaging/PhotoAlbums/HousePhotoSized8321.JPG",
+      "url": "https://www.flhouse.gov/FileStores/Web/Imaging/PhotoAlbums/HousePhotoSized8394.JPG",
       "method": "img",
       "score": 30,
       "altText": "Representative Redondo Photo",
@@ -35,14 +35,14 @@
       "rightsStatus": "review_required",
       "identityReviewStatus": "unreviewed",
       "httpStatus": 200,
-      "finalUrl": "https://www.flhouse.gov/FileStores/Web/Imaging/PhotoAlbums/HousePhotoSized8321.JPG",
+      "finalUrl": "https://www.flhouse.gov/FileStores/Web/Imaging/PhotoAlbums/HousePhotoSized8394.JPG",
       "contentType": "image/jpeg",
-      "byteSize": 16703,
-      "imageSha256": "842d62c9ceda8a8563627c7e0b5b5a319e8a9a2c3ad77168be5360de1115ccad",
+      "byteSize": 16551,
+      "imageSha256": "be13721121bf6dbcb0cde8d9577bdc4b522c1fcca52fecce0bf85bd673c9e3c2",
       "downloadStatus": "captured_for_hash"
     },
     {
-      "url": "https://www.flhouse.gov/Images/bronze-seal-250.png?cb=4.6.654349",
+      "url": "https://www.flhouse.gov/Images/bronze-seal-250.png?cb=4.6.654350",
       "method": "og:image",
       "score": 14,
       "altText": null,
@@ -50,7 +50,7 @@
       "rightsStatus": "review_required",
       "identityReviewStatus": "unreviewed",
       "httpStatus": 200,
-      "finalUrl": "https://www.flhouse.gov/Images/bronze-seal-250.png?cb=4.6.654349",
+      "finalUrl": "https://www.flhouse.gov/Images/bronze-seal-250.png?cb=4.6.654350",
       "contentType": "image/png",
       "byteSize": 150275,
       "imageSha256": "36f7c4317f0cc62c44ff5bbfc0a0e5eebf014be23c9c8826141f11a70d9e7ff8",
@@ -72,7 +72,7 @@
       "downloadStatus": "captured_for_hash"
     },
     {
-      "url": "https://www.flhouse.gov/FileStores/Web/Imaging/PhotoAlbums/HousePhotoSized8394.JPG",
+      "url": "https://www.flhouse.gov/FileStores/Web/Imaging/PhotoAlbums/HousePhotoSized8321.JPG",
       "method": "img",
       "score": 9,
       "altText": null,
@@ -80,10 +80,10 @@
       "rightsStatus": "review_required",
       "identityReviewStatus": "unreviewed",
       "httpStatus": 200,
-      "finalUrl": "https://www.flhouse.gov/FileStores/Web/Imaging/PhotoAlbums/HousePhotoSized8394.JPG",
+      "finalUrl": "https://www.flhouse.gov/FileStores/Web/Imaging/PhotoAlbums/HousePhotoSized8321.JPG",
       "contentType": "image/jpeg",
-      "byteSize": 16551,
-      "imageSha256": "be13721121bf6dbcb0cde8d9577bdc4b522c1fcca52fecce0bf85bd673c9e3c2",
+      "byteSize": 16703,
+      "imageSha256": "842d62c9ceda8a8563627c7e0b5b5a319e8a9a2c3ad77168be5360de1115ccad",
       "downloadStatus": "captured_for_hash"
     },
     {
@@ -134,7 +134,7 @@
   "errors": [],
   "httpStatus": 200,
   "finalUrl": "https://www.flhouse.gov/Sections/Representatives/custom/details.aspx?MemberId=4902&LegislativeTermId=91",
-  "sourceSnapshotSha256": "d1f4d584a48c789fddb288233761bbf0f4d467e61d43ed8156a01a027c7a21d4",
+  "sourceSnapshotSha256": "f9eba1df53d719f3798c40ed4af30d40ad3c95f399979835cf783f63db3b63e6",
   "contentType": "text/html",
   "pageTitle": "Mike Redondo  - 2024 - 2026 ( Speaker Perez ) | Florida House of Representatives",
   "candidateSummary": {

@@ -6,7 +6,7 @@
   "displayName": "Debbie Wasserman Schultz",
   "officeTitle": "United States Representative",
   "sourceUrl": "https://wassermanschultz.house.gov/",
-  "fetchedAt": "2026-07-16T05:19:58Z",
+  "fetchedAt": "2026-09-04T13:40:36Z",
   "collectionStatus": "success",
   "reviewStatus": "unreviewed",
   "publicationAllowed": false,
@@ -220,6 +220,12 @@
       "reviewStatus": "unreviewed"
     },
     {
+      "url": "https://wassermanschultz.house.gov/news/documentsingle.aspx?DocumentID=3534",
+      "label": "Wasserman Schultz Joins Constituent Released from ICE Facility",
+      "sourcePageUrl": "https://wassermanschultz.house.gov/",
+      "reviewStatus": "unreviewed"
+    },
+    {
       "url": "https://wassermanschultz.house.gov/news/documentsingle.aspx?DocumentID=3517",
       "label": "EL PAIS: Immigrants say they are being held for days in a Miami ICE office under ‘horrific’ conditions",
       "sourcePageUrl": "https://wassermanschultz.house.gov/",
@@ -241,13 +247,13 @@
   "errors": [],
   "httpStatus": 200,
   "finalUrl": "https://wassermanschultz.house.gov/",
-  "sourceSnapshotSha256": "a78b96710c6450cbce9390c3066d9a550b2d8f4446aa7c702fa7ecb455143e14",
+  "sourceSnapshotSha256": "38d31ff76929a5ac895cb417d6b953edea497ef7a5cf41d1bf9ca14ad06c271d",
   "contentType": "text/html",
   "pageTitle": "Congresswoman Debbie Wasserman Schultz",
   "candidateSummary": {
     "portraits": 2,
     "contacts": 8,
     "socials": 4,
-    "websites": 19
+    "websites": 20
   }
 }

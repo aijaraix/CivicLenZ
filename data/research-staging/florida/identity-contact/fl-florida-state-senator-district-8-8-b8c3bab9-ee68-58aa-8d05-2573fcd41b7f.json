@@ -6,7 +6,7 @@
   "displayName": "Tom A. Wright",
   "officeTitle": "Florida State Senator, District 8",
   "sourceUrl": "https://www.flsenate.gov/Senators/2024-2026/S8",
-  "fetchedAt": "2026-07-16T05:20:47Z",
+  "fetchedAt": "2026-09-04T13:41:45Z",
   "collectionStatus": "success",
   "reviewStatus": "unreviewed",
   "publicationAllowed": false,
@@ -211,7 +211,7 @@
   "errors": [],
   "httpStatus": 200,
   "finalUrl": "https://www.flsenate.gov/Senators/S8",
-  "sourceSnapshotSha256": "7d9e969098a18cd590a5ce13d6f92653a70aed3b3673b038d72ff1f1c3f6a2f4",
+  "sourceSnapshotSha256": "9081294ebe41e5140cd853de33abdf89caa0b2f638fd77559e043138e04f3d5a",
   "contentType": "text/html",
   "pageTitle": "Senator Wright - The Florida Senate",
   "candidateSummary": {

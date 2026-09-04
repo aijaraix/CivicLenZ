@@ -6,7 +6,7 @@
   "displayName": "Emily Gregory",
   "officeTitle": "Florida State Representative, District 87",
   "sourceUrl": "https://www.flhouse.gov/Sections/Representatives/details.aspx?MemberId=5069&LegislativeTermId=91",
-  "fetchedAt": "2026-07-16T05:20:32Z",
+  "fetchedAt": "2026-09-04T13:41:23Z",
   "collectionStatus": "success",
   "reviewStatus": "unreviewed",
   "publicationAllowed": false,
@@ -27,7 +27,7 @@
       "downloadStatus": "captured_for_hash"
     },
     {
-      "url": "https://www.flhouse.gov/Images/bronze-seal-250.png?cb=4.6.654349",
+      "url": "https://www.flhouse.gov/Images/bronze-seal-250.png?cb=4.6.654350",
       "method": "og:image",
       "score": 14,
       "altText": null,
@@ -35,7 +35,7 @@
       "rightsStatus": "review_required",
       "identityReviewStatus": "unreviewed",
       "httpStatus": 200,
-      "finalUrl": "https://www.flhouse.gov/Images/bronze-seal-250.png?cb=4.6.654349",
+      "finalUrl": "https://www.flhouse.gov/Images/bronze-seal-250.png?cb=4.6.654350",
       "contentType": "image/png",
       "byteSize": 150275,
       "imageSha256": "36f7c4317f0cc62c44ff5bbfc0a0e5eebf014be23c9c8826141f11a70d9e7ff8",
@@ -96,7 +96,7 @@
   "errors": [],
   "httpStatus": 200,
   "finalUrl": "https://www.flhouse.gov/Sections/Representatives/details.aspx?MemberId=5069&LegislativeTermId=91",
-  "sourceSnapshotSha256": "17a3c8adf2449dc9a76f3870da663b20fb32f9dcee76dc981b08a4dbf455aed2",
+  "sourceSnapshotSha256": "bd250cd964719a7e10af013c64bb8063078d97b0d90069a5de12a63dea8cecd6",
   "contentType": "text/html",
   "pageTitle": "Emily Gregory  - 2024 - 2026 ( Speaker Perez ) | Florida House of Representatives",
   "candidateSummary": {

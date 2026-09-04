@@ -6,7 +6,7 @@
   "displayName": "Ryan Chamberlin",
   "officeTitle": "Florida State Representative, District 24",
   "sourceUrl": "https://www.flhouse.gov/Sections/Representatives/details.aspx?MemberId=4901&LegislativeTermId=91",
-  "fetchedAt": "2026-07-16T05:20:12Z",
+  "fetchedAt": "2026-09-04T13:40:55Z",
   "collectionStatus": "success",
   "reviewStatus": "unreviewed",
   "publicationAllowed": false,
@@ -57,6 +57,21 @@
       "downloadStatus": "captured_for_hash"
     },
     {
+      "url": "https://www.flhouse.gov/FileStores/Web/Imaging/PhotoAlbums/HousePhotoSized8135.JPG",
+      "method": "img",
+      "score": 30,
+      "altText": "Representative Chamberlin Photo",
+      "sourcePageUrl": "https://www.flhouse.gov/Sections/Representatives/custom/details.aspx?MemberId=4901&LegislativeTermId=91",
+      "rightsStatus": "review_required",
+      "identityReviewStatus": "unreviewed",
+      "httpStatus": 200,
+      "finalUrl": "https://www.flhouse.gov/FileStores/Web/Imaging/PhotoAlbums/HousePhotoSized8135.JPG",
+      "contentType": "image/jpeg",
+      "byteSize": 19255,
+      "imageSha256": "6f0e576bd3574fe382320ed6b4462ae9955b0cfec73bd4d1e51f0cd8e33ef12f",
+      "downloadStatus": "captured_for_hash"
+    },
+    {
       "url": "https://www.flhouse.gov/FileStores/Web/Imaging/PhotoAlbums/HousePhotoSized8263.JPG",
       "method": "img",
       "score": 21,
@@ -72,7 +87,7 @@
       "downloadStatus": "captured_for_hash"
     },
     {
-      "url": "https://www.flhouse.gov/Images/bronze-seal-250.png?cb=4.6.654349",
+      "url": "https://www.flhouse.gov/Images/bronze-seal-250.png?cb=4.6.654350",
       "method": "og:image",
       "score": 14,
       "altText": null,
@@ -80,25 +95,10 @@
       "rightsStatus": "review_required",
       "identityReviewStatus": "unreviewed",
       "httpStatus": 200,
-      "finalUrl": "https://www.flhouse.gov/Images/bronze-seal-250.png?cb=4.6.654349",
+      "finalUrl": "https://www.flhouse.gov/Images/bronze-seal-250.png?cb=4.6.654350",
       "contentType": "image/png",
       "byteSize": 150275,
       "imageSha256": "36f7c4317f0cc62c44ff5bbfc0a0e5eebf014be23c9c8826141f11a70d9e7ff8",
-      "downloadStatus": "captured_for_hash"
-    },
-    {
-      "url": "https://www.flhouse.gov/FileStores/Web/Imaging/member-page-banners/2.jpg",
-      "method": "img",
-      "score": -17,
-      "altText": "The Chamber Member Desks",
-      "sourcePageUrl": "https://www.flhouse.gov/Sections/Representatives/custom/details.aspx?MemberId=4901&LegislativeTermId=91",
-      "rightsStatus": "review_required",
-      "identityReviewStatus": "unreviewed",
-      "httpStatus": 200,
-      "finalUrl": "https://www.flhouse.gov/FileStores/Web/Imaging/member-page-banners/2.jpg",
-      "contentType": "image/jpeg",
-      "byteSize": 73409,
-      "imageSha256": "fc4b246b5eba1873138f1b4910aaae4f18acc3e63a025102fbbd3b85c9ff4422",
       "downloadStatus": "captured_for_hash"
     }
   ],
@@ -156,7 +156,7 @@
   "errors": [],
   "httpStatus": 200,
   "finalUrl": "https://www.flhouse.gov/Sections/Representatives/custom/details.aspx?MemberId=4901&LegislativeTermId=91",
-  "sourceSnapshotSha256": "951ec72cffc5e8ba93e8ce6ce4fcd15b80bf59e23cdb2d4f781260db911fd0cf",
+  "sourceSnapshotSha256": "f121fc2eb9c1e9b762c5b12aadbd8747e43ed85ae765b2f67c7205f7495f1882",
   "contentType": "text/html",
   "pageTitle": "Ryan Chamberlin  - 2024 - 2026 ( Speaker Perez ) | Florida House of Representatives",
   "candidateSummary": {

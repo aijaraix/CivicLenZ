@@ -6,7 +6,7 @@
   "displayName": "Lois Frankel",
   "officeTitle": "United States Representative",
   "sourceUrl": "https://frankel.house.gov",
-  "fetchedAt": "2026-07-16T05:19:59Z",
+  "fetchedAt": "2026-09-04T13:40:38Z",
   "collectionStatus": "success",
   "reviewStatus": "unreviewed",
   "publicationAllowed": false,
@@ -245,7 +245,7 @@
   "errors": [],
   "httpStatus": 200,
   "finalUrl": "https://frankel.house.gov/",
-  "sourceSnapshotSha256": "d0ac004874e3e7668265109fcef883fab5984e14ca97d4b76943ff73268ca55e",
+  "sourceSnapshotSha256": "11bd15fd72d051e38d3011f5f126c72549059379054304494e0378243a9f0c90",
   "contentType": "text/html",
   "pageTitle": "U.S. Representative Lois Frankel",
   "candidateSummary": {

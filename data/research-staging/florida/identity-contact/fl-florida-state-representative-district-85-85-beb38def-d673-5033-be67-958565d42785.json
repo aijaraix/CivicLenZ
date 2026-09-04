@@ -6,7 +6,7 @@
   "displayName": "Tobin Rogers \"Toby\" Overdorf",
   "officeTitle": "Florida State Representative, District 85",
   "sourceUrl": "https://www.flhouse.gov/Sections/Representatives/details.aspx?MemberId=4728&LegislativeTermId=91",
-  "fetchedAt": "2026-07-16T05:20:31Z",
+  "fetchedAt": "2026-09-04T13:41:21Z",
   "collectionStatus": "success",
   "reviewStatus": "unreviewed",
   "publicationAllowed": false,
@@ -27,7 +27,7 @@
       "downloadStatus": "captured_for_hash"
     },
     {
-      "url": "https://www.flhouse.gov/FileStores/Web/Imaging/PhotoAlbums/HousePhotoSized7289.jpg",
+      "url": "https://www.flhouse.gov/FileStores/Web/Imaging/PhotoAlbums/HousePhotoSized7308.jpg",
       "method": "img",
       "score": 30,
       "altText": "Representative Overdorf Photo",
@@ -35,14 +35,14 @@
       "rightsStatus": "review_required",
       "identityReviewStatus": "unreviewed",
       "httpStatus": 200,
-      "finalUrl": "https://www.flhouse.gov/FileStores/Web/Imaging/PhotoAlbums/HousePhotoSized7289.jpg",
+      "finalUrl": "https://www.flhouse.gov/FileStores/Web/Imaging/PhotoAlbums/HousePhotoSized7308.jpg",
       "contentType": "image/jpeg",
-      "byteSize": 22156,
-      "imageSha256": "b4004bc33fc0a4290a1e7e08bac6409d9647c43f9c4b3774d0c685f95d6b81b5",
+      "byteSize": 22138,
+      "imageSha256": "25f7d070f7c8e06e994c3d437ee03b5731806c3a0b3d436d66d04d0662882ea5",
       "downloadStatus": "captured_for_hash"
     },
     {
-      "url": "https://www.flhouse.gov/Images/bronze-seal-250.png?cb=4.6.654349",
+      "url": "https://www.flhouse.gov/Images/bronze-seal-250.png?cb=4.6.654350",
       "method": "og:image",
       "score": 14,
       "altText": null,
@@ -50,7 +50,7 @@
       "rightsStatus": "review_required",
       "identityReviewStatus": "unreviewed",
       "httpStatus": 200,
-      "finalUrl": "https://www.flhouse.gov/Images/bronze-seal-250.png?cb=4.6.654349",
+      "finalUrl": "https://www.flhouse.gov/Images/bronze-seal-250.png?cb=4.6.654350",
       "contentType": "image/png",
       "byteSize": 150275,
       "imageSha256": "36f7c4317f0cc62c44ff5bbfc0a0e5eebf014be23c9c8826141f11a70d9e7ff8",
@@ -116,22 +116,7 @@
       "sourcePageUrl": "https://www.flhouse.gov/Sections/Representatives/custom/details.aspx?MemberId=4728&LegislativeTermId=91"
     }
   ],
-  "socialCandidates": [
-    {
-      "platform": "Facebook",
-      "url": "https://www.facebook.com/FLRepTobyOverdorf/",
-      "label": "Tobin Rogers \"Toby\" Overdorf",
-      "sourcePageUrl": "https://www.flhouse.gov/Sections/Representatives/custom/details.aspx?MemberId=4728&LegislativeTermId=91",
-      "reviewStatus": "unreviewed"
-    },
-    {
-      "platform": "Instagram",
-      "url": "https://www.instagram.com/reptobyoverdorf/?utm_source=ig_embed&utm_campaign=loading",
-      "label": "Tobin Rogers \"Toby\" Overdorf",
-      "sourcePageUrl": "https://www.flhouse.gov/Sections/Representatives/custom/details.aspx?MemberId=4728&LegislativeTermId=91",
-      "reviewStatus": "unreviewed"
-    }
-  ],
+  "socialCandidates": [],
   "websiteCandidates": [
     {
       "url": "https://www.flhouse.gov/Sections/Representatives/custom/contactmember.aspx?MemberId=4728&LegislativeTermId=91",
@@ -149,13 +134,13 @@
   "errors": [],
   "httpStatus": 200,
   "finalUrl": "https://www.flhouse.gov/Sections/Representatives/custom/details.aspx?MemberId=4728&LegislativeTermId=91",
-  "sourceSnapshotSha256": "0d4416ebfa0c45a85fceedb1f977d5cc76779597effabf0d52bd157c477f8180",
+  "sourceSnapshotSha256": "7205ceeaf3523dd28d7c4809380b31aa41f878119b1544d8c28c9c2bd6491a65",
   "contentType": "text/html",
   "pageTitle": "Tobin Rogers \"Toby\" Overdorf  - 2024 - 2026 ( Speaker Perez ) | Florida House of Representatives",
   "candidateSummary": {
     "portraits": 6,
     "contacts": 2,
-    "socials": 2,
+    "socials": 0,
     "websites": 2
   }
 }

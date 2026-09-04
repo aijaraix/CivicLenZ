@@ -6,7 +6,7 @@
   "displayName": "Chip LaMarca",
   "officeTitle": "Florida State Representative, District 100",
   "sourceUrl": "https://www.flhouse.gov/Sections/Representatives/details.aspx?MemberId=4722&LegislativeTermId=91",
-  "fetchedAt": "2026-07-16T05:20:01Z",
+  "fetchedAt": "2026-09-04T13:40:41Z",
   "collectionStatus": "success",
   "reviewStatus": "unreviewed",
   "publicationAllowed": false,
@@ -27,7 +27,7 @@
       "downloadStatus": "captured_for_hash"
     },
     {
-      "url": "https://www.flhouse.gov/Images/bronze-seal-250.png?cb=4.6.654349",
+      "url": "https://www.flhouse.gov/Images/bronze-seal-250.png?cb=4.6.654350",
       "method": "og:image",
       "score": 14,
       "altText": null,
@@ -35,7 +35,7 @@
       "rightsStatus": "review_required",
       "identityReviewStatus": "unreviewed",
       "httpStatus": 200,
-      "finalUrl": "https://www.flhouse.gov/Images/bronze-seal-250.png?cb=4.6.654349",
+      "finalUrl": "https://www.flhouse.gov/Images/bronze-seal-250.png?cb=4.6.654350",
       "contentType": "image/png",
       "byteSize": 150275,
       "imageSha256": "36f7c4317f0cc62c44ff5bbfc0a0e5eebf014be23c9c8826141f11a70d9e7ff8",
@@ -57,21 +57,6 @@
       "downloadStatus": "captured_for_hash"
     },
     {
-      "url": "https://www.flhouse.gov/FileStores/Web/Imaging/PhotoAlbums/HousePhotoSized7053.jpg",
-      "method": "img",
-      "score": 9,
-      "altText": null,
-      "sourcePageUrl": "https://www.flhouse.gov/Sections/Representatives/details.aspx?MemberId=4722&LegislativeTermId=91",
-      "rightsStatus": "review_required",
-      "identityReviewStatus": "unreviewed",
-      "httpStatus": 200,
-      "finalUrl": "https://www.flhouse.gov/FileStores/Web/Imaging/PhotoAlbums/HousePhotoSized7053.jpg",
-      "contentType": "image/jpeg",
-      "byteSize": 18372,
-      "imageSha256": "63c81398e54d8718fe8af6a7b010acb0ee2904f4711792445d5e3e61c85ecfa1",
-      "downloadStatus": "captured_for_hash"
-    },
-    {
       "url": "https://www.flhouse.gov/FileStores/Web/Imaging/PhotoAlbums/HousePhotoSized7071.jpg",
       "method": "img",
       "score": 9,
@@ -87,7 +72,7 @@
       "downloadStatus": "captured_for_hash"
     },
     {
-      "url": "https://www.flhouse.gov/FileStores/Web/Imaging/PhotoAlbums/HousePhotoSized7217.jpg",
+      "url": "https://www.flhouse.gov/FileStores/Web/Imaging/PhotoAlbums/HousePhotoSized7373.jpg",
       "method": "img",
       "score": 9,
       "altText": null,
@@ -95,10 +80,25 @@
       "rightsStatus": "review_required",
       "identityReviewStatus": "unreviewed",
       "httpStatus": 200,
-      "finalUrl": "https://www.flhouse.gov/FileStores/Web/Imaging/PhotoAlbums/HousePhotoSized7217.jpg",
+      "finalUrl": "https://www.flhouse.gov/FileStores/Web/Imaging/PhotoAlbums/HousePhotoSized7373.jpg",
       "contentType": "image/jpeg",
-      "byteSize": 26908,
-      "imageSha256": "507db201719d915b37bbb0dafeeeaf24101c66a6073b855365f3ae2edd5625ca",
+      "byteSize": 24618,
+      "imageSha256": "af3abb53a19b41551ce6a5380931451dca29ed2ab7a6467c89a944fd56a7e5c6",
+      "downloadStatus": "captured_for_hash"
+    },
+    {
+      "url": "https://www.flhouse.gov/Images/svg/house_seal.svg",
+      "method": "img",
+      "score": -30,
+      "altText": "Seal Of Florida",
+      "sourcePageUrl": "https://www.flhouse.gov/Sections/Representatives/details.aspx?MemberId=4722&LegislativeTermId=91",
+      "rightsStatus": "review_required",
+      "identityReviewStatus": "unreviewed",
+      "httpStatus": 200,
+      "finalUrl": "https://www.flhouse.gov/Images/svg/house_seal.svg",
+      "contentType": "image/svg+xml",
+      "byteSize": 118860,
+      "imageSha256": "add8c468b7596a316c90f5cb2bb2b6173ea54d9540f57d750d64d9fb61a4829e",
       "downloadStatus": "captured_for_hash"
     }
   ],
@@ -135,7 +135,7 @@
   "errors": [],
   "httpStatus": 200,
   "finalUrl": "https://www.flhouse.gov/Sections/Representatives/details.aspx?MemberId=4722&LegislativeTermId=91",
-  "sourceSnapshotSha256": "9871945b4e5ea368c6a1bb30051a2584dfee0e88eaf227f40d06554756fa0cb8",
+  "sourceSnapshotSha256": "6e1a1cb744c4cedb3274897c701aa0aa45900abde4eeb83e45e8befae75c37ed",
   "contentType": "text/html",
   "pageTitle": "Chip LaMarca  - 2024 - 2026 ( Speaker Perez ) | Florida House of Representatives",
   "candidateSummary": {

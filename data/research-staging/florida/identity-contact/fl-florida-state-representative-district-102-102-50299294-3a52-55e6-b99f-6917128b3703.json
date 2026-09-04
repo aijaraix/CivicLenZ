@@ -6,7 +6,7 @@
   "displayName": "Michael \"Mike\" Gottlieb",
   "officeTitle": "Florida State Representative, District 102",
   "sourceUrl": "https://www.flhouse.gov/Sections/Representatives/details.aspx?MemberId=4724&LegislativeTermId=91",
-  "fetchedAt": "2026-07-16T05:20:01Z",
+  "fetchedAt": "2026-09-04T13:40:41Z",
   "collectionStatus": "success",
   "reviewStatus": "unreviewed",
   "publicationAllowed": false,
@@ -27,7 +27,7 @@
       "downloadStatus": "captured_for_hash"
     },
     {
-      "url": "https://www.flhouse.gov/Images/bronze-seal-250.png?cb=4.6.654349",
+      "url": "https://www.flhouse.gov/Images/bronze-seal-250.png?cb=4.6.654350",
       "method": "og:image",
       "score": 14,
       "altText": null,
@@ -35,14 +35,14 @@
       "rightsStatus": "review_required",
       "identityReviewStatus": "unreviewed",
       "httpStatus": 200,
-      "finalUrl": "https://www.flhouse.gov/Images/bronze-seal-250.png?cb=4.6.654349",
+      "finalUrl": "https://www.flhouse.gov/Images/bronze-seal-250.png?cb=4.6.654350",
       "contentType": "image/png",
       "byteSize": 150275,
       "imageSha256": "36f7c4317f0cc62c44ff5bbfc0a0e5eebf014be23c9c8826141f11a70d9e7ff8",
       "downloadStatus": "captured_for_hash"
     },
     {
-      "url": "https://www.flhouse.gov/FileStores/Web/Imaging/PhotoAlbums/HousePhotoSized7879.JPG",
+      "url": "https://www.flhouse.gov/FileStores/Web/Imaging/PhotoAlbums/HousePhotoSized7523.jpg",
       "method": "img",
       "score": 9,
       "altText": null,
@@ -50,14 +50,14 @@
       "rightsStatus": "review_required",
       "identityReviewStatus": "unreviewed",
       "httpStatus": 200,
-      "finalUrl": "https://www.flhouse.gov/FileStores/Web/Imaging/PhotoAlbums/HousePhotoSized7879.JPG",
+      "finalUrl": "https://www.flhouse.gov/FileStores/Web/Imaging/PhotoAlbums/HousePhotoSized7523.jpg",
       "contentType": "image/jpeg",
-      "byteSize": 20218,
-      "imageSha256": "3a5e7893b51640ecc92b31b2162258df2c25b01d2486005547c219d2a0d13699",
+      "byteSize": 15815,
+      "imageSha256": "46182677f4c8b8390dc56ac80dfabdbc43f666ac221137f04dc77f3788e7f25f",
       "downloadStatus": "captured_for_hash"
     },
     {
-      "url": "https://www.flhouse.gov/FileStores/Web/Imaging/PhotoAlbums/HousePhotoSized7882.JPG",
+      "url": "https://www.flhouse.gov/FileStores/Web/Imaging/PhotoAlbums/HousePhotoSized7658.jpg",
       "method": "img",
       "score": 9,
       "altText": null,
@@ -65,10 +65,10 @@
       "rightsStatus": "review_required",
       "identityReviewStatus": "unreviewed",
       "httpStatus": 200,
-      "finalUrl": "https://www.flhouse.gov/FileStores/Web/Imaging/PhotoAlbums/HousePhotoSized7882.JPG",
+      "finalUrl": "https://www.flhouse.gov/FileStores/Web/Imaging/PhotoAlbums/HousePhotoSized7658.jpg",
       "contentType": "image/jpeg",
-      "byteSize": 19867,
-      "imageSha256": "c962a0b499ae5d9dee38eea6a23e7047df8d5eb8d6c01ba9d21d8e0ee5e5895c",
+      "byteSize": 16358,
+      "imageSha256": "33527649e1eff558edb10246f92599f162926294f77cb1d46ee32a3dfd617ef1",
       "downloadStatus": "captured_for_hash"
     },
     {
@@ -135,7 +135,7 @@
   "errors": [],
   "httpStatus": 200,
   "finalUrl": "https://www.flhouse.gov/Sections/Representatives/details.aspx?MemberId=4724&LegislativeTermId=91",
-  "sourceSnapshotSha256": "1957e0d9800597e2123eaa6357b09bfdc14e949bae31e829ca0553b24c5cf4fe",
+  "sourceSnapshotSha256": "ee9a76742f3640b9aca7840e6a8866052af8ce5f394de59723f4716287270cde",
   "contentType": "text/html",
   "pageTitle": "Michael \"Mike\" Gottlieb  - 2024 - 2026 ( Speaker Perez ) | Florida House of Representatives",
   "candidateSummary": {

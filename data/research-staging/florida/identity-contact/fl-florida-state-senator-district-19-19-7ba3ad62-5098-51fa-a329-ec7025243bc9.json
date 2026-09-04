@@ -6,7 +6,7 @@
   "displayName": "Debbie Mayfield",
   "officeTitle": "Florida State Senator, District 19",
   "sourceUrl": "https://www.flsenate.gov/Senators/2024-2026/S19",
-  "fetchedAt": "2026-07-16T05:20:39Z",
+  "fetchedAt": "2026-09-04T13:41:33Z",
   "collectionStatus": "success",
   "reviewStatus": "unreviewed",
   "publicationAllowed": false,
@@ -208,7 +208,7 @@
   "errors": [],
   "httpStatus": 200,
   "finalUrl": "https://www.flsenate.gov/Senators/S19",
-  "sourceSnapshotSha256": "f765e299dcf2540af87fe2ac75ee15660a8fc8e70d13a07a7449865517f16734",
+  "sourceSnapshotSha256": "74b4c834c67a5eb6eee332797597073c5b1c14d0841bdd5caaf9cee2efb96d1a",
   "contentType": "text/html",
   "pageTitle": "Senator Mayfield - The Florida Senate",
   "candidateSummary": {

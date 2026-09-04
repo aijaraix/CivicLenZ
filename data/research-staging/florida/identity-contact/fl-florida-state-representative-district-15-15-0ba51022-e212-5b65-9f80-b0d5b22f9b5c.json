@@ -6,7 +6,7 @@
   "displayName": "Dean Black",
   "officeTitle": "Florida State Representative, District 15",
   "sourceUrl": "https://www.flhouse.gov/Sections/Representatives/details.aspx?MemberId=4865&LegislativeTermId=91",
-  "fetchedAt": "2026-07-16T05:20:09Z",
+  "fetchedAt": "2026-09-04T13:40:52Z",
   "collectionStatus": "success",
   "reviewStatus": "unreviewed",
   "publicationAllowed": false,
@@ -27,7 +27,7 @@
       "downloadStatus": "captured_for_hash"
     },
     {
-      "url": "https://www.flhouse.gov/FileStores/Web/Imaging/PhotoAlbums/HousePhotoSized7913.JPG",
+      "url": "https://www.flhouse.gov/FileStores/Web/Imaging/PhotoAlbums/HousePhotoSized7906.JPG",
       "method": "img",
       "score": 30,
       "altText": "Representative Black Photo",
@@ -35,14 +35,14 @@
       "rightsStatus": "review_required",
       "identityReviewStatus": "unreviewed",
       "httpStatus": 200,
-      "finalUrl": "https://www.flhouse.gov/FileStores/Web/Imaging/PhotoAlbums/HousePhotoSized7913.JPG",
+      "finalUrl": "https://www.flhouse.gov/FileStores/Web/Imaging/PhotoAlbums/HousePhotoSized7906.JPG",
       "contentType": "image/jpeg",
-      "byteSize": 17386,
-      "imageSha256": "224d92555a70187e60ebfcf7a2f6a784fe8c0666218ba1d4f98ed6c71ecb300e",
+      "byteSize": 19295,
+      "imageSha256": "94e9467822242ecee9a23625c536d02e789a2460235d5e6f9c93d611b67dff42",
       "downloadStatus": "captured_for_hash"
     },
     {
-      "url": "https://www.flhouse.gov/Images/bronze-seal-250.png?cb=4.6.654349",
+      "url": "https://www.flhouse.gov/Images/bronze-seal-250.png?cb=4.6.654350",
       "method": "og:image",
       "score": 14,
       "altText": null,
@@ -50,7 +50,7 @@
       "rightsStatus": "review_required",
       "identityReviewStatus": "unreviewed",
       "httpStatus": 200,
-      "finalUrl": "https://www.flhouse.gov/Images/bronze-seal-250.png?cb=4.6.654349",
+      "finalUrl": "https://www.flhouse.gov/Images/bronze-seal-250.png?cb=4.6.654350",
       "contentType": "image/png",
       "byteSize": 150275,
       "imageSha256": "36f7c4317f0cc62c44ff5bbfc0a0e5eebf014be23c9c8826141f11a70d9e7ff8",
@@ -122,15 +122,7 @@
       "sourcePageUrl": "https://www.flhouse.gov/Sections/Representatives/custom/details.aspx?MemberId=4865&LegislativeTermId=91"
     }
   ],
-  "socialCandidates": [
-    {
-      "platform": "Facebook",
-      "url": "https://www.facebook.com/deanblackfl/",
-      "label": "Dean Black",
-      "sourcePageUrl": "https://www.flhouse.gov/Sections/Representatives/custom/details.aspx?MemberId=4865&LegislativeTermId=91",
-      "reviewStatus": "unreviewed"
-    }
-  ],
+  "socialCandidates": [],
   "websiteCandidates": [
     {
       "url": "https://www.flhouse.gov/Sections/Representatives/custom/contactmember.aspx?MemberId=4865&LegislativeTermId=91",
@@ -148,13 +140,13 @@
   "errors": [],
   "httpStatus": 200,
   "finalUrl": "https://www.flhouse.gov/Sections/Representatives/custom/details.aspx?MemberId=4865&LegislativeTermId=91",
-  "sourceSnapshotSha256": "46fd711ebdcdc41f9ab8d9cc5c30365b7fb9d593570c16e89817165e4ed094e3",
+  "sourceSnapshotSha256": "6afa098892d8dcab049e25b63d43e78f31a3c9a7f0e75d6e8b78cda25a593081",
   "contentType": "text/html",
   "pageTitle": "Dean Black  - 2024 - 2026 ( Speaker Perez ) | Florida House of Representatives",
   "candidateSummary": {
     "portraits": 6,
     "contacts": 3,
-    "socials": 1,
+    "socials": 0,
     "websites": 2
   }
 }

@@ -6,7 +6,7 @@
   "displayName": "Douglas Michael \"Doug\" Bankson",
   "officeTitle": "Florida State Representative, District 39",
   "sourceUrl": "https://www.flhouse.gov/Sections/Representatives/details.aspx?MemberId=4873&LegislativeTermId=91",
-  "fetchedAt": "2026-07-16T05:20:17Z",
+  "fetchedAt": "2026-09-04T13:41:01Z",
   "collectionStatus": "success",
   "reviewStatus": "unreviewed",
   "publicationAllowed": false,
@@ -27,7 +27,7 @@
       "downloadStatus": "captured_for_hash"
     },
     {
-      "url": "https://www.flhouse.gov/Images/bronze-seal-250.png?cb=4.6.654349",
+      "url": "https://www.flhouse.gov/Images/bronze-seal-250.png?cb=4.6.654350",
       "method": "og:image",
       "score": 14,
       "altText": null,
@@ -35,7 +35,7 @@
       "rightsStatus": "review_required",
       "identityReviewStatus": "unreviewed",
       "httpStatus": 200,
-      "finalUrl": "https://www.flhouse.gov/Images/bronze-seal-250.png?cb=4.6.654349",
+      "finalUrl": "https://www.flhouse.gov/Images/bronze-seal-250.png?cb=4.6.654350",
       "contentType": "image/png",
       "byteSize": 150275,
       "imageSha256": "36f7c4317f0cc62c44ff5bbfc0a0e5eebf014be23c9c8826141f11a70d9e7ff8",
@@ -135,7 +135,7 @@
   "errors": [],
   "httpStatus": 200,
   "finalUrl": "https://www.flhouse.gov/Sections/Representatives/details.aspx?MemberId=4873&LegislativeTermId=91",
-  "sourceSnapshotSha256": "98835e0767a59f5eb3e2f50b6b81c10fc7958135838b35242800ad9d65017c1c",
+  "sourceSnapshotSha256": "dbfa517cf52eb7137207fa4c9e1fbe64e20c5250131936e90dc3ea85bc98fa74",
   "contentType": "text/html",
   "pageTitle": "Douglas Michael \"Doug\" Bankson  - 2024 - 2026 ( Speaker Perez ) | Florida House of Representatives",
   "candidateSummary": {

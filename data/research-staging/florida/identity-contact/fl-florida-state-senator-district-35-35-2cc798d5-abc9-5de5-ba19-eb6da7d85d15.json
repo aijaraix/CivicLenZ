@@ -6,7 +6,7 @@
   "displayName": "Barbara Sharief",
   "officeTitle": "Florida State Senator, District 35",
   "sourceUrl": "https://www.flsenate.gov/Senators/2024-2026/S35",
-  "fetchedAt": "2026-07-16T05:20:45Z",
+  "fetchedAt": "2026-09-04T13:41:41Z",
   "collectionStatus": "success",
   "reviewStatus": "unreviewed",
   "publicationAllowed": false,
@@ -27,19 +27,18 @@
       "downloadStatus": "captured_for_hash"
     },
     {
-      "url": "https://www.flsenate.gov/PublishedContent/Offices/Senator/CS_CS_HB_47_Signed_Into_Law_Press_Release.jpg",
+      "url": "https://www.flsenate.gov/PublishedContent/Offices/Senator/August_2026_Edition__1_.jpg",
       "method": "img",
       "score": 18,
       "altText": null,
       "sourcePageUrl": "https://www.flsenate.gov/Senators/S35",
       "rightsStatus": "review_required",
       "identityReviewStatus": "unreviewed",
-      "httpStatus": 200,
-      "finalUrl": "https://www.flsenate.gov/PublishedContent/Offices/Senator/CS_CS_HB_47_Signed_Into_Law_Press_Release.jpg",
-      "contentType": "image/jpeg",
-      "byteSize": 4386,
-      "imageSha256": "0c4fbf50da0d1cc1a38a943563de15bd6029304d63b57acd1481311606d5bf29",
-      "downloadStatus": "captured_for_hash"
+      "httpStatus": 429,
+      "finalUrl": "https://www.flsenate.gov/PublishedContent/Offices/Senator/August_2026_Edition__1_.jpg",
+      "contentType": "text/plain",
+      "byteSize": 17,
+      "downloadStatus": "not_an_image_or_http_error"
     },
     {
       "url": "https://www.flsenate.gov/PublishedContent/Offices/Senator/CS_HB_253_Signed_Into_Law_Press_Release.jpg",
@@ -49,23 +48,8 @@
       "sourcePageUrl": "https://www.flsenate.gov/Senators/S35",
       "rightsStatus": "review_required",
       "identityReviewStatus": "unreviewed",
-      "httpStatus": 200,
-      "finalUrl": "https://www.flsenate.gov/PublishedContent/Offices/Senator/CS_HB_253_Signed_Into_Law_Press_Release.jpg",
-      "contentType": "image/jpeg",
-      "byteSize": 3859,
-      "imageSha256": "0eb841e3f7b812a48ec04dafe749f6523d13932d47f34ec01657649663585a43",
-      "downloadStatus": "captured_for_hash"
-    },
-    {
-      "url": "https://www.flsenate.gov/PublishedContent/Offices/Senator/HB_1515_Press_Release.jpg",
-      "method": "img",
-      "score": 18,
-      "altText": null,
-      "sourcePageUrl": "https://www.flsenate.gov/Senators/S35",
-      "rightsStatus": "review_required",
-      "identityReviewStatus": "unreviewed",
       "httpStatus": 429,
-      "finalUrl": "https://www.flsenate.gov/PublishedContent/Offices/Senator/HB_1515_Press_Release.jpg",
+      "finalUrl": "https://www.flsenate.gov/PublishedContent/Offices/Senator/CS_HB_253_Signed_Into_Law_Press_Release.jpg",
       "contentType": "text/plain",
       "byteSize": 17,
       "downloadStatus": "not_an_image_or_http_error"
@@ -80,6 +64,20 @@
       "identityReviewStatus": "unreviewed",
       "httpStatus": 429,
       "finalUrl": "https://www.flsenate.gov/PublishedContent/Offices/Senator/July_2026_Edition__8_.jpg",
+      "contentType": "text/plain",
+      "byteSize": 17,
+      "downloadStatus": "not_an_image_or_http_error"
+    },
+    {
+      "url": "https://www.flsenate.gov/PublishedContent/Offices/Senator/September_2026_Edition__3_.jpg",
+      "method": "img",
+      "score": 18,
+      "altText": null,
+      "sourcePageUrl": "https://www.flsenate.gov/Senators/S35",
+      "rightsStatus": "review_required",
+      "identityReviewStatus": "unreviewed",
+      "httpStatus": 429,
+      "finalUrl": "https://www.flsenate.gov/PublishedContent/Offices/Senator/September_2026_Edition__3_.jpg",
       "contentType": "text/plain",
       "byteSize": 17,
       "downloadStatus": "not_an_image_or_http_error"
@@ -211,6 +209,18 @@
       "reviewStatus": "unreviewed"
     },
     {
+      "url": "https://www.flsenate.gov/PublishedContent/Offices/Senator/September_2026_Edition__3_.pdf",
+      "label": "\"Delivering for District 35\" September 2026 Edition",
+      "sourcePageUrl": "https://www.flsenate.gov/Senators/S35",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "url": "https://www.flsenate.gov/PublishedContent/Offices/Senator/August_2026_Edition__1_.pdf",
+      "label": "\"Delivery for District 35\" August 2026 Edition",
+      "sourcePageUrl": "https://www.flsenate.gov/Senators/S35",
+      "reviewStatus": "unreviewed"
+    },
+    {
       "url": "https://www.flsenate.gov/PublishedContent/Offices/Senator/July_2026_Edition__8_.pdf",
       "label": "\"Delivering for District 35\"July 2026 Edition",
       "sourcePageUrl": "https://www.flsenate.gov/Senators/S35",
@@ -219,18 +229,6 @@
     {
       "url": "https://www.flsenate.gov/PublishedContent/Offices/Senator/CS_HB_253_Signed_Into_Law_Press_Release.pdf",
       "label": "CS/HB 253 Signed Into Law - Press Release",
-      "sourcePageUrl": "https://www.flsenate.gov/Senators/S35",
-      "reviewStatus": "unreviewed"
-    },
-    {
-      "url": "https://www.flsenate.gov/PublishedContent/Offices/Senator/CS_CS_HB_47_Signed_Into_Law_Press_Release.pdf",
-      "label": "CS/CS/HB 47 Signed Into Law - Press Release",
-      "sourcePageUrl": "https://www.flsenate.gov/Senators/S35",
-      "reviewStatus": "unreviewed"
-    },
-    {
-      "url": "https://www.flsenate.gov/PublishedContent/Offices/Senator/HB_1515_Press_Release.pdf",
-      "label": "HB 1515 Signed Into Law - Press Release",
       "sourcePageUrl": "https://www.flsenate.gov/Senators/S35",
       "reviewStatus": "unreviewed"
     },
@@ -250,7 +248,7 @@
   "errors": [],
   "httpStatus": 200,
   "finalUrl": "https://www.flsenate.gov/Senators/S35",
-  "sourceSnapshotSha256": "2ddbf8a8de1ce73f5df06e563a37a9a298098dc6d47bd375d14b469d0195e381",
+  "sourceSnapshotSha256": "ddd6676ab52b1f35c965a6bd6ce6cc2e86ea084b6370a66b5ee0169b45fa378c",
   "contentType": "text/html",
   "pageTitle": "Senator Sharief - The Florida Senate",
   "candidateSummary": {

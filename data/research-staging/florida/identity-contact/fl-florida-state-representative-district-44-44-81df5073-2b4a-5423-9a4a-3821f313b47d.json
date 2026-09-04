@@ -6,7 +6,7 @@
   "displayName": "Jennifer \"Rita\" Harris",
   "officeTitle": "Florida State Representative, District 44",
   "sourceUrl": "https://www.flhouse.gov/Sections/Representatives/details.aspx?MemberId=4877&LegislativeTermId=91",
-  "fetchedAt": "2026-07-16T05:20:19Z",
+  "fetchedAt": "2026-09-04T13:41:04Z",
   "collectionStatus": "success",
   "reviewStatus": "unreviewed",
   "publicationAllowed": false,
@@ -27,10 +27,40 @@
       "downloadStatus": "captured_for_hash"
     },
     {
-      "url": "https://www.flhouse.gov/FileStores/Web/Imaging/PhotoAlbums/HousePhotoSized7615.jpg",
+      "url": "https://www.flhouse.gov/FileStores/Web/Imaging/PhotoAlbums/HousePhotoSized7462.jpg",
       "method": "img",
       "score": 30,
       "altText": "Representative Harris Photo",
+      "sourcePageUrl": "https://www.flhouse.gov/Sections/Representatives/custom/details.aspx?MemberId=4877&LegislativeTermId=91",
+      "rightsStatus": "review_required",
+      "identityReviewStatus": "unreviewed",
+      "httpStatus": 200,
+      "finalUrl": "https://www.flhouse.gov/FileStores/Web/Imaging/PhotoAlbums/HousePhotoSized7462.jpg",
+      "contentType": "image/jpeg",
+      "byteSize": 28298,
+      "imageSha256": "7808545678c75c7316eec972b3c22d2a59bc22ae38b8e531e05279e55e6e9dc4",
+      "downloadStatus": "captured_for_hash"
+    },
+    {
+      "url": "https://www.flhouse.gov/Images/bronze-seal-250.png?cb=4.6.654350",
+      "method": "og:image",
+      "score": 14,
+      "altText": null,
+      "sourcePageUrl": "https://www.flhouse.gov/Sections/Representatives/custom/details.aspx?MemberId=4877&LegislativeTermId=91",
+      "rightsStatus": "review_required",
+      "identityReviewStatus": "unreviewed",
+      "httpStatus": 200,
+      "finalUrl": "https://www.flhouse.gov/Images/bronze-seal-250.png?cb=4.6.654350",
+      "contentType": "image/png",
+      "byteSize": 150275,
+      "imageSha256": "36f7c4317f0cc62c44ff5bbfc0a0e5eebf014be23c9c8826141f11a70d9e7ff8",
+      "downloadStatus": "captured_for_hash"
+    },
+    {
+      "url": "https://www.flhouse.gov/FileStores/Web/Imaging/PhotoAlbums/HousePhotoSized7615.jpg",
+      "method": "img",
+      "score": 9,
+      "altText": null,
       "sourcePageUrl": "https://www.flhouse.gov/Sections/Representatives/custom/details.aspx?MemberId=4877&LegislativeTermId=91",
       "rightsStatus": "review_required",
       "identityReviewStatus": "unreviewed",
@@ -39,21 +69,6 @@
       "contentType": "image/jpeg",
       "byteSize": 18482,
       "imageSha256": "fc4998e656f17d85ad30d9a0724998fec828a48f0670b18cd1ca8b6f14bffe45",
-      "downloadStatus": "captured_for_hash"
-    },
-    {
-      "url": "https://www.flhouse.gov/Images/bronze-seal-250.png?cb=4.6.654349",
-      "method": "og:image",
-      "score": 14,
-      "altText": null,
-      "sourcePageUrl": "https://www.flhouse.gov/Sections/Representatives/custom/details.aspx?MemberId=4877&LegislativeTermId=91",
-      "rightsStatus": "review_required",
-      "identityReviewStatus": "unreviewed",
-      "httpStatus": 200,
-      "finalUrl": "https://www.flhouse.gov/Images/bronze-seal-250.png?cb=4.6.654349",
-      "contentType": "image/png",
-      "byteSize": 150275,
-      "imageSha256": "36f7c4317f0cc62c44ff5bbfc0a0e5eebf014be23c9c8826141f11a70d9e7ff8",
       "downloadStatus": "captured_for_hash"
     },
     {
@@ -85,21 +100,6 @@
       "byteSize": 20918,
       "imageSha256": "bd2e6b8b9612ad8b838396c22911a3b2b8e8f3bd9757245701046374ec67b6fc",
       "downloadStatus": "captured_for_hash"
-    },
-    {
-      "url": "https://www.flhouse.gov/FileStores/Web/Imaging/member-page-banners/2.jpg",
-      "method": "img",
-      "score": -17,
-      "altText": "The Chamber Member Desks",
-      "sourcePageUrl": "https://www.flhouse.gov/Sections/Representatives/custom/details.aspx?MemberId=4877&LegislativeTermId=91",
-      "rightsStatus": "review_required",
-      "identityReviewStatus": "unreviewed",
-      "httpStatus": 200,
-      "finalUrl": "https://www.flhouse.gov/FileStores/Web/Imaging/member-page-banners/2.jpg",
-      "contentType": "image/jpeg",
-      "byteSize": 73409,
-      "imageSha256": "fc4b246b5eba1873138f1b4910aaae4f18acc3e63a025102fbbd3b85c9ff4422",
-      "downloadStatus": "captured_for_hash"
     }
   ],
   "contactCandidates": [
@@ -116,15 +116,7 @@
       "sourcePageUrl": "https://www.flhouse.gov/Sections/Representatives/custom/details.aspx?MemberId=4877&LegislativeTermId=91"
     }
   ],
-  "socialCandidates": [
-    {
-      "platform": "Facebook",
-      "url": "https://www.facebook.com/RitaForFL",
-      "label": "Jennifer \"Rita\" Harris",
-      "sourcePageUrl": "https://www.flhouse.gov/Sections/Representatives/custom/details.aspx?MemberId=4877&LegislativeTermId=91",
-      "reviewStatus": "unreviewed"
-    }
-  ],
+  "socialCandidates": [],
   "websiteCandidates": [
     {
       "url": "https://www.flhouse.gov/Sections/Representatives/custom/contactmember.aspx?MemberId=4877&LegislativeTermId=91",
@@ -142,13 +134,13 @@
   "errors": [],
   "httpStatus": 200,
   "finalUrl": "https://www.flhouse.gov/Sections/Representatives/custom/details.aspx?MemberId=4877&LegislativeTermId=91",
-  "sourceSnapshotSha256": "3027db920319d1214cf99bf6d8abf7d0b5c0193a30051f2a96759ba5a197bd1c",
+  "sourceSnapshotSha256": "a5e5ed8bc633ad480700865d482bd9dfab4995467847eb28ea39056aec457e6f",
   "contentType": "text/html",
   "pageTitle": "Jennifer \"Rita\" Harris  - 2024 - 2026 ( Speaker Perez ) | Florida House of Representatives",
   "candidateSummary": {
     "portraits": 6,
     "contacts": 2,
-    "socials": 1,
+    "socials": 0,
     "websites": 2
   }
 }

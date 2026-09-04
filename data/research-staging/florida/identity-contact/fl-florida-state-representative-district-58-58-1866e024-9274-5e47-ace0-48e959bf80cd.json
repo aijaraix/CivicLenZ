@@ -6,7 +6,7 @@
   "displayName": "Kimberly Berfield",
   "officeTitle": "Florida State Representative, District 58",
   "sourceUrl": "https://www.flhouse.gov/Sections/Representatives/details.aspx?MemberId=4210&LegislativeTermId=91",
-  "fetchedAt": "2026-07-16T05:20:23Z",
+  "fetchedAt": "2026-09-04T13:41:10Z",
   "collectionStatus": "success",
   "reviewStatus": "unreviewed",
   "publicationAllowed": false,
@@ -27,7 +27,7 @@
       "downloadStatus": "captured_for_hash"
     },
     {
-      "url": "https://www.flhouse.gov/FileStores/Web/Imaging/PhotoAlbums/HousePhotoSized8355.JPG",
+      "url": "https://www.flhouse.gov/FileStores/Web/Imaging/PhotoAlbums/HousePhotoSized7512.jpg",
       "method": "img",
       "score": 30,
       "altText": "Representative Berfield Photo",
@@ -35,14 +35,14 @@
       "rightsStatus": "review_required",
       "identityReviewStatus": "unreviewed",
       "httpStatus": 200,
-      "finalUrl": "https://www.flhouse.gov/FileStores/Web/Imaging/PhotoAlbums/HousePhotoSized8355.JPG",
+      "finalUrl": "https://www.flhouse.gov/FileStores/Web/Imaging/PhotoAlbums/HousePhotoSized7512.jpg",
       "contentType": "image/jpeg",
-      "byteSize": 17629,
-      "imageSha256": "d626136fb8a0d571281cfca0940db042b0e903845135244aee357142a55e1330",
+      "byteSize": 13276,
+      "imageSha256": "2f9f3925da8a16aac54691caab55826035ea36fe677cea77234fcb855b2c8fa7",
       "downloadStatus": "captured_for_hash"
     },
     {
-      "url": "https://www.flhouse.gov/Images/bronze-seal-250.png?cb=4.6.654349",
+      "url": "https://www.flhouse.gov/Images/bronze-seal-250.png?cb=4.6.654350",
       "method": "og:image",
       "score": 14,
       "altText": null,
@@ -50,7 +50,7 @@
       "rightsStatus": "review_required",
       "identityReviewStatus": "unreviewed",
       "httpStatus": 200,
-      "finalUrl": "https://www.flhouse.gov/Images/bronze-seal-250.png?cb=4.6.654349",
+      "finalUrl": "https://www.flhouse.gov/Images/bronze-seal-250.png?cb=4.6.654350",
       "contentType": "image/png",
       "byteSize": 150275,
       "imageSha256": "36f7c4317f0cc62c44ff5bbfc0a0e5eebf014be23c9c8826141f11a70d9e7ff8",
@@ -87,7 +87,7 @@
       "downloadStatus": "captured_for_hash"
     },
     {
-      "url": "https://www.flhouse.gov/FileStores/Web/Imaging/PhotoAlbums/HousePhotoSized7512.jpg",
+      "url": "https://www.flhouse.gov/FileStores/Web/Imaging/PhotoAlbums/HousePhotoSized8355.JPG",
       "method": "img",
       "score": 9,
       "altText": null,
@@ -95,10 +95,10 @@
       "rightsStatus": "review_required",
       "identityReviewStatus": "unreviewed",
       "httpStatus": 200,
-      "finalUrl": "https://www.flhouse.gov/FileStores/Web/Imaging/PhotoAlbums/HousePhotoSized7512.jpg",
+      "finalUrl": "https://www.flhouse.gov/FileStores/Web/Imaging/PhotoAlbums/HousePhotoSized8355.JPG",
       "contentType": "image/jpeg",
-      "byteSize": 13276,
-      "imageSha256": "2f9f3925da8a16aac54691caab55826035ea36fe677cea77234fcb855b2c8fa7",
+      "byteSize": 17629,
+      "imageSha256": "d626136fb8a0d571281cfca0940db042b0e903845135244aee357142a55e1330",
       "downloadStatus": "captured_for_hash"
     }
   ],
@@ -134,7 +134,7 @@
   "errors": [],
   "httpStatus": 200,
   "finalUrl": "https://www.flhouse.gov/Sections/Representatives/custom/details.aspx?MemberId=4210&LegislativeTermId=91",
-  "sourceSnapshotSha256": "4077e09e12b3894f6a8be2dbb441ca4eba4eb89bc0ea703bc500fff44a5eee75",
+  "sourceSnapshotSha256": "1ed7d15911987798da8f422b62d9a7b96c3eb9d85e36ced9239e0a93fb3baeb6",
   "contentType": "text/html",
   "pageTitle": "Kimberly Berfield  - 2024 - 2026 ( Speaker Perez ) | Florida House of Representatives",
   "candidateSummary": {

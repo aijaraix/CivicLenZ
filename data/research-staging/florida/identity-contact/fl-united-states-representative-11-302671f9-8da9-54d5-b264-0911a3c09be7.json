@@ -6,7 +6,7 @@
   "displayName": "Daniel Webster",
   "officeTitle": "United States Representative",
   "sourceUrl": "https://webster.house.gov/",
-  "fetchedAt": "2026-07-16T05:19:58Z",
+  "fetchedAt": "2026-09-04T13:40:36Z",
   "collectionStatus": "success",
   "reviewStatus": "unreviewed",
   "publicationAllowed": false,
@@ -140,7 +140,7 @@
   "errors": [],
   "httpStatus": 200,
   "finalUrl": "https://webster.house.gov/",
-  "sourceSnapshotSha256": "dbde95361829565f2e4eec6875ae2012071eccb2ea65f5ed159e5a520d8bd0a0",
+  "sourceSnapshotSha256": "8ece199f2bea850161bfbdb72d82d6676549d0e46506b5e6b8bc2f6bda4d5036",
   "contentType": "text/html",
   "pageTitle": "United States Congressman Daniel Webster",
   "candidateSummary": {

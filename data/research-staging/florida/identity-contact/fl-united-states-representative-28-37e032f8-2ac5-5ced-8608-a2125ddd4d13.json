@@ -6,7 +6,7 @@
   "displayName": "Carlos Gimenez",
   "officeTitle": "United States Representative",
   "sourceUrl": "https://gimenez.house.gov",
-  "fetchedAt": "2026-07-16T05:19:58Z",
+  "fetchedAt": "2026-09-04T13:40:36Z",
   "collectionStatus": "success",
   "reviewStatus": "unreviewed",
   "publicationAllowed": false,
@@ -45,7 +45,7 @@
       "url": "https://gimenez.house.gov/vendor/_accounts/carlosgimenez/_skins/hathaway/images/trans-4by3.png",
       "method": "img",
       "score": 33,
-      "altText": "Read More - U.S. HOUSE UNANIMOUSLY PASSES REP. GIMENEZ’S ONE-STOP PILOT PROGRAM EXTENSION ACT",
+      "altText": "Read More - CONGRESSMAN CARLOS A. GIMENEZ JOINS SURVIVORS OF SOCIALISM ROUNDTABLE",
       "sourcePageUrl": "https://gimenez.house.gov/",
       "rightsStatus": "review_required",
       "identityReviewStatus": "unreviewed",
@@ -72,7 +72,7 @@
       "downloadStatus": "captured_for_hash"
     },
     {
-      "url": "https://gimenez.house.gov/?a=Files.Serve&File_id=B6A52677-A400-493F-A2F8-A252AB27A878&ImageSize=carousel-image",
+      "url": "https://gimenez.house.gov/?a=Files.Serve&File_id=3E84C47A-7CE1-458F-AB5D-0D441938360E&ImageSize=carousel-image",
       "method": "img",
       "score": 17,
       "altText": "Carousel Image",
@@ -80,14 +80,14 @@
       "rightsStatus": "review_required",
       "identityReviewStatus": "unreviewed",
       "httpStatus": 200,
-      "finalUrl": "https://gimenez.house.gov/_cache/files/b/6/b6a52677-a400-493f-a2f8-a252ab27a878/3B88D61D760F8AF099DF40ECB086C2E9AC4CEA359DCF5FEF4E95700E36F2928F.6.26.2026-varney-carousel-image.png",
+      "finalUrl": "https://gimenez.house.gov/_cache/files/3/e/3e84c47a-7ce1-458f-ab5d-0d441938360e/1A315F3031A988AE8A90D61CB6C2191D940B000861682894B4808BB344DE1A11.chatgpt-image-jul-14-2026-12-17-44-pm-carousel-image.png",
       "contentType": "image/png",
-      "byteSize": 2098453,
-      "imageSha256": "3d9395e0c6fda0580603424ae6b8ac4cfab100f2f5d4e274455f25427da8a01e",
+      "byteSize": 2176816,
+      "imageSha256": "a268c05fa24dba788d0bc9eee6bb15208b101c1f2b02c909c5dd4d37090ac0c4",
       "downloadStatus": "captured_for_hash"
     },
     {
-      "url": "https://gimenez.house.gov/?a=Files.Serve&File_id=B7E1BAC0-5910-4847-A805-98EC0A83715E&ImageSize=carousel-image",
+      "url": "https://gimenez.house.gov/?a=Files.Serve&File_id=4808526E-BCDC-4F48-A610-C0659588F882&ImageSize=carousel-image",
       "method": "img",
       "score": 17,
       "altText": "Carousel Image",
@@ -95,10 +95,10 @@
       "rightsStatus": "review_required",
       "identityReviewStatus": "unreviewed",
       "httpStatus": 200,
-      "finalUrl": "https://gimenez.house.gov/_cache/files/b/7/b7e1bac0-5910-4847-a805-98ec0a83715e/DB7217E775AF4432EF0C7D5A54E469F482754C7B8E95E72D1AC0B00C16033A61.hniqnohwiaagjuj-carousel-image.jpg",
+      "finalUrl": "https://gimenez.house.gov/_cache/files/4/8/4808526e-bcdc-4f48-a610-c0659588f882/5F12870088580527538A7D4A4DA2A3A2826BCF9D8E4D0411834D6C3EFF97964A.hnxgp7qxaaap1ir-carousel-image.jpg",
       "contentType": "image/jpeg",
-      "byteSize": 119409,
-      "imageSha256": "41e86fa86727aeb9dc567c71554c4af36ef33fb884387bba34735fc807f704fe",
+      "byteSize": 132945,
+      "imageSha256": "403d2ded28e2574f1f1dd435f571ecbd89f58f094d52819d64fb51b42fb4d6dc",
       "downloadStatus": "captured_for_hash"
     }
   ],
@@ -186,7 +186,7 @@
   "errors": [],
   "httpStatus": 200,
   "finalUrl": "https://gimenez.house.gov/",
-  "sourceSnapshotSha256": "86c9f41b406369daf69e0b374974b29a77e2a3408f69a08d52087d3e7faa698c",
+  "sourceSnapshotSha256": "a9e52709b628a71651b8d77c3e6345f0d5b7d8f799aa833dc257a0734c3ceb90",
   "contentType": "text/html",
   "pageTitle": "Congressman Carlos Gimenez",
   "candidateSummary": {

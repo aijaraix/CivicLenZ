@@ -6,7 +6,7 @@
   "displayName": "Kathy Castor",
   "officeTitle": "United States Representative",
   "sourceUrl": "https://castor.house.gov/",
-  "fetchedAt": "2026-07-16T05:19:59Z",
+  "fetchedAt": "2026-09-04T13:40:38Z",
   "collectionStatus": "success",
   "reviewStatus": "unreviewed",
   "publicationAllowed": false,
@@ -233,7 +233,7 @@
       "reviewStatus": "unreviewed"
     },
     {
-      "url": "https://castor.house.gov/ConstituentServices/TourRequest.htm",
+      "url": "https://castor.house.gov/constituentservices/TourRequest.htm",
       "label": "Visit D.C.",
       "sourcePageUrl": "https://castor.house.gov/",
       "reviewStatus": "unreviewed"
@@ -302,7 +302,7 @@
   "errors": [],
   "httpStatus": 200,
   "finalUrl": "https://castor.house.gov/",
-  "sourceSnapshotSha256": "72279da77aa6f6c03700c828ff693ef275b7f207d53e66de5d9aa3e966ce0ecf",
+  "sourceSnapshotSha256": "bea82f36d8c9fe542a6d9c2df5f71077580805f4501f2fe07d6025389045ca93",
   "contentType": "text/html",
   "pageTitle": "U.S. Representative Kathy Castor",
   "candidateSummary": {

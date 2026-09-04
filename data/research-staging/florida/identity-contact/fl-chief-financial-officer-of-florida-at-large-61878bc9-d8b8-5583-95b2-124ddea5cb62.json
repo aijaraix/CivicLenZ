@@ -6,11 +6,26 @@
   "displayName": "Blaise Ingoglia",
   "officeTitle": "Chief Financial Officer of Florida",
   "sourceUrl": "https://www.myfloridacfo.com/",
-  "fetchedAt": "2026-07-16T05:20:01Z",
+  "fetchedAt": "2026-09-04T13:40:40Z",
   "collectionStatus": "success",
   "reviewStatus": "unreviewed",
   "publicationAllowed": false,
   "portraitCandidates": [
+    {
+      "url": "https://www.myfloridacfo.com/sitefinity-images/consumer-services-libraries/consumerservices-images/disaster-preparedness/white-hurricaneready-final-web.png",
+      "method": "img",
+      "score": -26,
+      "altText": "Hurricane Ready Logo in White",
+      "sourcePageUrl": "https://www.myfloridacfo.com/",
+      "rightsStatus": "review_required",
+      "identityReviewStatus": "unreviewed",
+      "httpStatus": 200,
+      "finalUrl": "https://www.myfloridacfo.com/sitefinity-images/consumer-services-libraries/consumerservices-images/disaster-preparedness/white-hurricaneready-final-web.png",
+      "contentType": "image/png",
+      "byteSize": 27851,
+      "imageSha256": "a75eb0b47e82fd1eee96caf4c2463c26224eedabc70fcc4007e8a3060100004f",
+      "downloadStatus": "captured_for_hash"
+    },
     {
       "url": "https://www.myfloridacfo.com/sitefinity-images/default-source/assets/home-page-assets/old-buttons/bbb-scamtracker052206eb6511-b697-4c08-901c-3a2ea14cf4a2.webp",
       "method": "img",
@@ -85,21 +100,6 @@
       "byteSize": 8322,
       "imageSha256": "af43a464d04f1eab28661dffbb4c953929cbaf0036ade1c9792337853f8c2602",
       "downloadStatus": "captured_for_hash"
-    },
-    {
-      "url": "https://www.myfloridacfo.com/sitefinity-images/default-source/assets/home-page-assets/old-buttons/insurance-help05228aa87993-6511-4660-952a-3841d283f30b.webp",
-      "method": "img",
-      "score": -26,
-      "altText": "Insurance Help Button",
-      "sourcePageUrl": "https://www.myfloridacfo.com/",
-      "rightsStatus": "review_required",
-      "identityReviewStatus": "unreviewed",
-      "httpStatus": 200,
-      "finalUrl": "https://www.myfloridacfo.com/sitefinity-images/default-source/assets/home-page-assets/old-buttons/insurance-help05228aa87993-6511-4660-952a-3841d283f30b.webp",
-      "contentType": "image/webp",
-      "byteSize": 12762,
-      "imageSha256": "c0062930430e08f159fc5b7461496d5f4d319b2f7d4575a9ef8ba7b3cb9a8c10",
-      "downloadStatus": "captured_for_hash"
     }
   ],
   "contactCandidates": [],
@@ -154,9 +154,9 @@
   "errors": [],
   "httpStatus": 200,
   "finalUrl": "https://www.myfloridacfo.com/",
-  "sourceSnapshotSha256": "ecaa5d440a913e92745358304ac152ce19e29aebb22bf28c9d69a0bd90c5a524",
+  "sourceSnapshotSha256": "2002d25146791cc49da9a32c5d3b75c536d1616f718d6a7a4cf336248a0bbabd",
   "contentType": "text/html",
-  "pageTitle": "Home",
+  "pageTitle": "The Florida Department of Financial Services | MyFloridaCFO.com",
   "candidateSummary": {
     "portraits": 6,
     "contacts": 0,

@@ -6,7 +6,7 @@
   "displayName": "James Uthmeier",
   "officeTitle": "Attorney General of Florida",
   "sourceUrl": "https://www.myfloridalegal.com/",
-  "fetchedAt": "2026-07-16T05:20:00Z",
+  "fetchedAt": "2026-09-04T13:40:40Z",
   "collectionStatus": "success",
   "reviewStatus": "unreviewed",
   "publicationAllowed": false,
@@ -61,22 +61,22 @@
   "socialCandidates": [
     {
       "platform": "X",
-      "url": "https://x.com/AGJamesUthmeier/status/2077475714429751790",
-      "label": "July 15, 2026 3:29 pm",
+      "url": "https://x.com/AGJamesUthmeier/status/2095192378323640352",
+      "label": "September 2, 2026 12:49 pm",
       "sourcePageUrl": "https://www.myfloridalegal.com/",
       "reviewStatus": "unreviewed"
     },
     {
       "platform": "X",
-      "url": "https://x.com/AGJamesUthmeier/status/2077415810188927482",
-      "label": "July 15, 2026 11:31 am",
+      "url": "https://x.com/AGJamesUthmeier/status/2095172877246951680",
+      "label": "September 2, 2026 11:31 am",
       "sourcePageUrl": "https://www.myfloridalegal.com/",
       "reviewStatus": "unreviewed"
     },
     {
       "platform": "X",
-      "url": "https://x.com/AGJamesUthmeier/status/2076758575246975066",
-      "label": "July 13, 2026 4:00 pm",
+      "url": "https://x.com/AGJamesUthmeier/status/2095154757757460797",
+      "label": "September 2, 2026 10:19 am",
       "sourcePageUrl": "https://www.myfloridalegal.com/",
       "reviewStatus": "unreviewed"
     }
@@ -134,7 +134,7 @@
   "errors": [],
   "httpStatus": 200,
   "finalUrl": "https://www.myfloridalegal.com/",
-  "sourceSnapshotSha256": "3df6ec72f065aeaad2644da5649a4466eeb0ed818651b90d0e4086d257b167de",
+  "sourceSnapshotSha256": "fc35b61bbb364e93d3b0466bdd291598e8cba9a7b7027dd61d8aad8d962e310b",
   "contentType": "text/html",
   "pageTitle": "Home | My Florida Legal",
   "candidateSummary": {

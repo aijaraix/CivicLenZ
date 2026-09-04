@@ -6,7 +6,7 @@
   "displayName": "Jim Boyd",
   "officeTitle": "Florida State Senator, District 20",
   "sourceUrl": "https://www.flsenate.gov/Senators/2024-2026/S20",
-  "fetchedAt": "2026-07-16T05:20:40Z",
+  "fetchedAt": "2026-09-04T13:41:34Z",
   "collectionStatus": "success",
   "reviewStatus": "unreviewed",
   "publicationAllowed": false,
@@ -226,7 +226,7 @@
   "errors": [],
   "httpStatus": 200,
   "finalUrl": "https://www.flsenate.gov/Senators/S20",
-  "sourceSnapshotSha256": "7f0310687b2025457fee0eac0451ab24b904472dd1806ebd52b852693ecc2d66",
+  "sourceSnapshotSha256": "d3700b052d9919f7e5e03a58df4ecc7f378fe151fd3d42333d50d8e8b7731fcb",
   "contentType": "text/html",
   "pageTitle": "Senator Boyd - The Florida Senate",
   "candidateSummary": {

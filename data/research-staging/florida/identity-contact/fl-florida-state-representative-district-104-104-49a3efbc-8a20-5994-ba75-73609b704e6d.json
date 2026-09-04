@@ -6,7 +6,7 @@
   "displayName": "Felicia Simone Robinson",
   "officeTitle": "Florida State Representative, District 104",
   "sourceUrl": "https://www.flhouse.gov/Sections/Representatives/details.aspx?MemberId=4791&LegislativeTermId=91",
-  "fetchedAt": "2026-07-16T05:20:02Z",
+  "fetchedAt": "2026-09-04T13:40:41Z",
   "collectionStatus": "success",
   "reviewStatus": "unreviewed",
   "publicationAllowed": false,
@@ -42,7 +42,7 @@
       "downloadStatus": "captured_for_hash"
     },
     {
-      "url": "https://www.flhouse.gov/Images/bronze-seal-250.png?cb=4.6.654349",
+      "url": "https://www.flhouse.gov/Images/bronze-seal-250.png?cb=4.6.654350",
       "method": "og:image",
       "score": 14,
       "altText": null,
@@ -50,7 +50,7 @@
       "rightsStatus": "review_required",
       "identityReviewStatus": "unreviewed",
       "httpStatus": 200,
-      "finalUrl": "https://www.flhouse.gov/Images/bronze-seal-250.png?cb=4.6.654349",
+      "finalUrl": "https://www.flhouse.gov/Images/bronze-seal-250.png?cb=4.6.654350",
       "contentType": "image/png",
       "byteSize": 150275,
       "imageSha256": "36f7c4317f0cc62c44ff5bbfc0a0e5eebf014be23c9c8826141f11a70d9e7ff8",
@@ -149,7 +149,7 @@
   "errors": [],
   "httpStatus": 200,
   "finalUrl": "https://www.flhouse.gov/Sections/Representatives/custom/details.aspx?MemberId=4791&LegislativeTermId=91",
-  "sourceSnapshotSha256": "ba9af21d0deade343ba4c83bb2b89f3ea1bfb0295752fc6fb758735fbd8ad56d",
+  "sourceSnapshotSha256": "6eccfe502f33b59a5a39599b999c0a317d4061d4200c1e0290a735d3842b7505",
   "contentType": "text/html",
   "pageTitle": "Felicia Simone Robinson  - 2024 - 2026 ( Speaker Perez ) | Florida House of Representatives",
   "candidateSummary": {
