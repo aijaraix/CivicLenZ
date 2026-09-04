@@ -6,7 +6,7 @@
   "displayName": "Don Gaetz",
   "officeTitle": "Florida State Senator, District 1",
   "sourceUrl": "https://www.flsenate.gov/Senators/2024-2026/S1",
-  "fetchedAt": "2026-07-16T05:20:37Z",
+  "fetchedAt": "2026-09-04T13:41:28Z",
   "collectionStatus": "success",
   "reviewStatus": "unreviewed",
   "publicationAllowed": false,
@@ -227,7 +227,7 @@
   "errors": [],
   "httpStatus": 200,
   "finalUrl": "https://www.flsenate.gov/Senators/S1",
-  "sourceSnapshotSha256": "4e22559ede4c1d3f1dcce125878321c4205a3d2d17176bbd06ede65d0d3b9aec",
+  "sourceSnapshotSha256": "16d6f751cd985c2ca75c9e84d7a8bd253fbb6e881f4855eafdce78a81287fd85",
   "contentType": "text/html",
   "pageTitle": "Senator Gaetz - The Florida Senate",
   "candidateSummary": {

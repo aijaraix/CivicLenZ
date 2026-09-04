@@ -1,26 +1,26 @@
 {
   "enrichmentRecordVersion": "1.0.0",
-  "enrichmentRecordId": "eaead6d0-ff81-5c8d-bcf6-769c259b1e7d",
-  "taskId": "8ef41ffa-2180-52f2-8a2f-a301f3be581a",
+  "enrichmentRecordId": "65a20e40-726c-5c7e-b36f-8f0f96031b29",
+  "taskId": "8ed83f76-fe4a-566c-8774-113e04bfdc9c",
   "seatKey": "fl-florida-state-senator-district-39-39",
-  "displayName": "Bryan Avila",
+  "displayName": "Vacant",
   "officeTitle": "Florida State Senator, District 39",
   "sourceUrl": "https://www.flsenate.gov/Senators/2024-2026/S39",
-  "fetchedAt": "2026-07-16T05:20:46Z",
+  "fetchedAt": "2026-09-04T13:41:43Z",
   "collectionStatus": "success",
   "reviewStatus": "unreviewed",
   "publicationAllowed": false,
   "portraitCandidates": [
     {
-      "url": "https://www.flsenate.gov/PublishedContent/Senators/2024-2026/Photos/s39_5459.jpg",
+      "url": "https://www.flsenate.gov/PublishedContent/Senators/2024-2026/Photos/nophoto.jpg",
       "method": "img",
       "score": 30,
-      "altText": "Senator Avila",
+      "altText": "Vacant District",
       "sourcePageUrl": "https://www.flsenate.gov/Senators/S39",
       "rightsStatus": "review_required",
       "identityReviewStatus": "unreviewed",
       "httpStatus": 429,
-      "finalUrl": "https://www.flsenate.gov/PublishedContent/Senators/2024-2026/Photos/s39_5459.jpg",
+      "finalUrl": "https://www.flsenate.gov/PublishedContent/Senators/2024-2026/Photos/nophoto.jpg",
       "contentType": "text/plain",
       "byteSize": 17,
       "downloadStatus": "not_an_image_or_http_error"
@@ -103,8 +103,8 @@
   "contactCandidates": [
     {
       "type": "email",
-      "value": "avila.bryan.web@flsenate.gov",
-      "label": "avila.bryan.web@flsenate.gov",
+      "value": "SenateDistrict39.web@flsenate.gov",
+      "label": "SenateDistrict39.web@flsenate.gov",
       "sourcePageUrl": "https://www.flsenate.gov/Senators/S39"
     },
     {
@@ -191,6 +191,12 @@
       "reviewStatus": "unreviewed"
     },
     {
+      "url": "https://www.flsenate.gov/Senators/S39",
+      "label": "Email this Office",
+      "sourcePageUrl": "https://www.flsenate.gov/Senators/S39",
+      "reviewStatus": "unreviewed"
+    },
+    {
       "url": "https://www.flsenate.gov/Session/ExecutiveAppointments/",
       "label": "Executive Appointments",
       "sourcePageUrl": "https://www.flsenate.gov/Senators/S39",
@@ -206,13 +212,13 @@
   "errors": [],
   "httpStatus": 200,
   "finalUrl": "https://www.flsenate.gov/Senators/S39",
-  "sourceSnapshotSha256": "54cc01f66ea7390ea5af567a009f48b04cc3d915cd00603d75a8965719e62cbc",
+  "sourceSnapshotSha256": "44351ef8200efcce1a07b2a2a94f8f3497d603f33c4a6ba9bc4a3696e5a0c4f8",
   "contentType": "text/html",
-  "pageTitle": "Senator Avila - The Florida Senate",
+  "pageTitle": "Vacant  - The Florida Senate",
   "candidateSummary": {
     "portraits": 6,
     "contacts": 4,
     "socials": 1,
-    "websites": 11
+    "websites": 12
   }
 }

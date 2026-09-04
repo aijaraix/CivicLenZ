@@ -6,7 +6,7 @@
   "displayName": "Maxwell Frost",
   "officeTitle": "United States Representative",
   "sourceUrl": "https://frost.house.gov",
-  "fetchedAt": "2026-07-16T05:19:59Z",
+  "fetchedAt": "2026-09-04T13:40:38Z",
   "collectionStatus": "success",
   "reviewStatus": "unreviewed",
   "publicationAllowed": false,
@@ -171,18 +171,24 @@
       "label": "Sign Up",
       "sourcePageUrl": "https://frost.house.gov/",
       "reviewStatus": "unreviewed"
+    },
+    {
+      "url": "https://frost.house.gov/media/press-releases/for-immediate-releaseaugust-26-2026contactariana-ornearianaornemailhousegovfrost-nadler-demand-antitrust-investigation-into-syscos-291-billion-acquisition-of-restaurant-depot-over-threats-of-higher-costs-for-restaurants",
+      "label": "Frost, Nadler Demand Antitrust Investigation Into Sysco’s $29.1 Billion Acquisition of Restaurant De...",
+      "sourcePageUrl": "https://frost.house.gov/",
+      "reviewStatus": "unreviewed"
     }
   ],
   "errors": [],
   "httpStatus": 200,
   "finalUrl": "https://frost.house.gov/",
-  "sourceSnapshotSha256": "2b0182bd60430900729185e88543d91829a689e4165a29228d5b640bc6310d34",
+  "sourceSnapshotSha256": "657c5c8b7d9dd9f987d7b3ba73d6b6bc067ec4246c844c3ae14b63e37e218a9c",
   "contentType": "text/html",
   "pageTitle": "Home | Congressman Maxwell Frost of Florida's 10th District",
   "candidateSummary": {
     "portraits": 6,
     "contacts": 2,
     "socials": 5,
-    "websites": 3
+    "websites": 4
   }
 }

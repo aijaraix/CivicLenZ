@@ -6,11 +6,26 @@
   "displayName": "Jason Brodeur",
   "officeTitle": "Florida State Senator, District 10",
   "sourceUrl": "https://www.flsenate.gov/Senators/2024-2026/S10",
-  "fetchedAt": "2026-07-16T05:20:37Z",
+  "fetchedAt": "2026-09-04T13:41:28Z",
   "collectionStatus": "success",
   "reviewStatus": "unreviewed",
   "publicationAllowed": false,
   "portraitCandidates": [
+    {
+      "url": "https://www.flsenate.gov/PublishedContent/Offices/Senator/Senator_Jason_Brodeur_to_File_Legislation_Banning_Current_Flock_Camera_Programs_Due.jpg",
+      "method": "img",
+      "score": 42,
+      "altText": null,
+      "sourcePageUrl": "https://www.flsenate.gov/Senators/S10",
+      "rightsStatus": "review_required",
+      "identityReviewStatus": "unreviewed",
+      "httpStatus": 200,
+      "finalUrl": "https://www.flsenate.gov/PublishedContent/Offices/Senator/Senator_Jason_Brodeur_to_File_Legislation_Banning_Current_Flock_Camera_Programs_Due.jpg",
+      "contentType": "image/jpeg",
+      "byteSize": 3878,
+      "imageSha256": "ea697de147bc56eac4ea8cc5131d819be09bc4371ff76de6b99457c4c90b6440",
+      "downloadStatus": "captured_for_hash"
+    },
     {
       "url": "https://www.flsenate.gov/PublishedContent/Senators/2024-2026/Photos/s10_5077.jpg",
       "method": "img",
@@ -27,7 +42,7 @@
       "downloadStatus": "captured_for_hash"
     },
     {
-      "url": "https://www.flsenate.gov/PublishedContent/Senators/2020-2022/5077/Documents/Draft_Newsletter_(copy)_for_FLSenate.jpg",
+      "url": "https://www.flsenate.gov/PublishedContent/Offices/Senator/SSC_FDI_Press_Release_Changes_DenotedFINAL12.jpg",
       "method": "img",
       "score": 18,
       "altText": null,
@@ -35,10 +50,10 @@
       "rightsStatus": "review_required",
       "identityReviewStatus": "unreviewed",
       "httpStatus": 200,
-      "finalUrl": "https://www.flsenate.gov/PublishedContent/Senators/2020-2022/5077/Documents/Draft_Newsletter_(copy)_for_FLSenate.jpg",
+      "finalUrl": "https://www.flsenate.gov/PublishedContent/Offices/Senator/SSC_FDI_Press_Release_Changes_DenotedFINAL12.jpg",
       "contentType": "image/jpeg",
-      "byteSize": 8054,
-      "imageSha256": "cc5805a7f07c78160870c96169d53d5a181d63d0ca6261aad6be6ca479d44c06",
+      "byteSize": 5014,
+      "imageSha256": "ac4436cd88969252d14e033b1bfb2f9d992dcc8e8067fd3c1d4bd558ed6260ba",
       "downloadStatus": "captured_for_hash"
     },
     {
@@ -84,21 +99,6 @@
       "contentType": "image/png",
       "byteSize": 4284,
       "imageSha256": "a856ffdf809fbc2f0993fab57b3436909b092ef1d682a977310fc6edd2380dac",
-      "downloadStatus": "captured_for_hash"
-    },
-    {
-      "url": "https://www.flsenate.gov/UserContent/img/help/2013statutesearch.png",
-      "method": "img",
-      "score": 9,
-      "altText": "Example of Go To Bill feature available on every page of flsenate.gov",
-      "sourcePageUrl": "https://www.flsenate.gov/Senators/S10",
-      "rightsStatus": "review_required",
-      "identityReviewStatus": "unreviewed",
-      "httpStatus": 200,
-      "finalUrl": "https://www.flsenate.gov/UserContent/img/help/2013statutesearch.png",
-      "contentType": "image/png",
-      "byteSize": 5911,
-      "imageSha256": "34b5496e6e024221ffe3fae722107c6c23f4bf07f70c6607c863ef6def60bd3b",
       "downloadStatus": "captured_for_hash"
     }
   ],
@@ -193,8 +193,14 @@
       "reviewStatus": "unreviewed"
     },
     {
-      "url": "https://www.flsenate.gov/PublishedContent/Senators/2020-2022/5077/Documents/Draft_Newsletter_(copy)_for_FLSenate.pdf",
-      "label": "Brodeur Blog: April, 9th, 2021",
+      "url": "https://www.flsenate.gov/PublishedContent/Offices/Senator/Senator_Jason_Brodeur_to_File_Legislation_Banning_Current_Flock_Camera_Programs_Due.pdf",
+      "label": "Senator Jason Brodeur to File Legislation Banning Current Flock Camera Programs Due to Privacy and Due Process Concerns",
+      "sourcePageUrl": "https://www.flsenate.gov/Senators/S10",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "url": "https://www.flsenate.gov/PublishedContent/Offices/Senator/SSC_FDI_Press_Release_Changes_DenotedFINAL12.pdf",
+      "label": "MEDIA ADVISORY: Senator Jason Brodeur to Highlight Key Funding for Florida Debate Initiative and Seminole State College",
       "sourcePageUrl": "https://www.flsenate.gov/Senators/S10",
       "reviewStatus": "unreviewed"
     },
@@ -214,13 +220,13 @@
   "errors": [],
   "httpStatus": 200,
   "finalUrl": "https://www.flsenate.gov/Senators/S10",
-  "sourceSnapshotSha256": "37bc4bc8f3c724333d8a17a5849f8eb41f20f4852027498ea7f9f2bd2bc02e9e",
+  "sourceSnapshotSha256": "4cfc7ddd94c691382f240fc90a7b351245ab1d1e321b56780dff23e6dd8cd6ff",
   "contentType": "text/html",
   "pageTitle": "Senator Brodeur - The Florida Senate",
   "candidateSummary": {
     "portraits": 6,
     "contacts": 4,
     "socials": 1,
-    "websites": 12
+    "websites": 13
   }
 }

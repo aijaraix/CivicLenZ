@@ -6,7 +6,7 @@
   "displayName": "Chad Johnson",
   "officeTitle": "Florida State Representative, District 22",
   "sourceUrl": "https://www.flhouse.gov/Sections/Representatives/details.aspx?MemberId=4908&LegislativeTermId=91",
-  "fetchedAt": "2026-07-16T05:20:11Z",
+  "fetchedAt": "2026-09-04T13:40:55Z",
   "collectionStatus": "success",
   "reviewStatus": "unreviewed",
   "publicationAllowed": false,
@@ -27,7 +27,7 @@
       "downloadStatus": "captured_for_hash"
     },
     {
-      "url": "https://www.flhouse.gov/FileStores/Web/Imaging/PhotoAlbums/HousePhotoSized8256.JPG",
+      "url": "https://www.flhouse.gov/FileStores/Web/Imaging/PhotoAlbums/HousePhotoSized8273.JPG",
       "method": "img",
       "score": 30,
       "altText": "Representative Johnson Photo",
@@ -35,14 +35,14 @@
       "rightsStatus": "review_required",
       "identityReviewStatus": "unreviewed",
       "httpStatus": 200,
-      "finalUrl": "https://www.flhouse.gov/FileStores/Web/Imaging/PhotoAlbums/HousePhotoSized8256.JPG",
+      "finalUrl": "https://www.flhouse.gov/FileStores/Web/Imaging/PhotoAlbums/HousePhotoSized8273.JPG",
       "contentType": "image/jpeg",
-      "byteSize": 11672,
-      "imageSha256": "fa1940b1b127d9bd47cb8c62f945329f1f677828315d5632f2a35b786b8aa7b8",
+      "byteSize": 16642,
+      "imageSha256": "719275319287a12675d792366fcda5069c8cbfc6b77b0e90a333c226dab4c1ec",
       "downloadStatus": "captured_for_hash"
     },
     {
-      "url": "https://www.flhouse.gov/Images/bronze-seal-250.png?cb=4.6.654349",
+      "url": "https://www.flhouse.gov/Images/bronze-seal-250.png?cb=4.6.654350",
       "method": "og:image",
       "score": 14,
       "altText": null,
@@ -50,7 +50,7 @@
       "rightsStatus": "review_required",
       "identityReviewStatus": "unreviewed",
       "httpStatus": 200,
-      "finalUrl": "https://www.flhouse.gov/Images/bronze-seal-250.png?cb=4.6.654349",
+      "finalUrl": "https://www.flhouse.gov/Images/bronze-seal-250.png?cb=4.6.654350",
       "contentType": "image/png",
       "byteSize": 150275,
       "imageSha256": "36f7c4317f0cc62c44ff5bbfc0a0e5eebf014be23c9c8826141f11a70d9e7ff8",
@@ -72,7 +72,7 @@
       "downloadStatus": "captured_for_hash"
     },
     {
-      "url": "https://www.flhouse.gov/FileStores/Web/Imaging/PhotoAlbums/HousePhotoSized8273.JPG",
+      "url": "https://www.flhouse.gov/FileStores/Web/Imaging/PhotoAlbums/HousePhotoSized8256.JPG",
       "method": "img",
       "score": 9,
       "altText": null,
@@ -80,10 +80,10 @@
       "rightsStatus": "review_required",
       "identityReviewStatus": "unreviewed",
       "httpStatus": 200,
-      "finalUrl": "https://www.flhouse.gov/FileStores/Web/Imaging/PhotoAlbums/HousePhotoSized8273.JPG",
+      "finalUrl": "https://www.flhouse.gov/FileStores/Web/Imaging/PhotoAlbums/HousePhotoSized8256.JPG",
       "contentType": "image/jpeg",
-      "byteSize": 16642,
-      "imageSha256": "719275319287a12675d792366fcda5069c8cbfc6b77b0e90a333c226dab4c1ec",
+      "byteSize": 11672,
+      "imageSha256": "fa1940b1b127d9bd47cb8c62f945329f1f677828315d5632f2a35b786b8aa7b8",
       "downloadStatus": "captured_for_hash"
     },
     {
@@ -134,7 +134,7 @@
   "errors": [],
   "httpStatus": 200,
   "finalUrl": "https://www.flhouse.gov/Sections/Representatives/custom/details.aspx?MemberId=4908&LegislativeTermId=91",
-  "sourceSnapshotSha256": "5a5f8f29aae401c784e05ed20e116a8de4c61fa7f539e0b608749a1d006f5916",
+  "sourceSnapshotSha256": "a757d768e98a1636bd290c840ba6504657318321be3e249d2cef9432d5f20929",
   "contentType": "text/html",
   "pageTitle": "Chad Johnson  - 2024 - 2026 ( Speaker Perez ) | Florida House of Representatives",
   "candidateSummary": {

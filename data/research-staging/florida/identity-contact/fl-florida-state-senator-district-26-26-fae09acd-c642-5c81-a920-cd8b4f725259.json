@@ -6,7 +6,7 @@
   "displayName": "Lori Berman",
   "officeTitle": "Florida State Senator, District 26",
   "sourceUrl": "https://www.flsenate.gov/Senators/2024-2026/S26",
-  "fetchedAt": "2026-07-16T05:20:42Z",
+  "fetchedAt": "2026-09-04T13:41:36Z",
   "collectionStatus": "success",
   "reviewStatus": "unreviewed",
   "publicationAllowed": false,
@@ -228,7 +228,7 @@
   "errors": [],
   "httpStatus": 200,
   "finalUrl": "https://www.flsenate.gov/Senators/S26",
-  "sourceSnapshotSha256": "2d67128f31b3954869604fbc4e2a6e00670478351f04dc15fb1115c642e302c2",
+  "sourceSnapshotSha256": "ea8db8c09bf8607caf130f3974d5002dea81675e414dbdffd3c8aa24ff515bfa",
   "contentType": "text/html",
   "pageTitle": "Senator Berman - The Florida Senate",
   "candidateSummary": {

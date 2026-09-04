@@ -6,7 +6,7 @@
   "displayName": "Leonard Spencer",
   "officeTitle": "Florida State Representative, District 45",
   "sourceUrl": "https://www.flhouse.gov/Sections/Representatives/details.aspx?MemberId=4915&LegislativeTermId=91",
-  "fetchedAt": "2026-07-16T05:20:19Z",
+  "fetchedAt": "2026-09-04T13:41:05Z",
   "collectionStatus": "success",
   "reviewStatus": "unreviewed",
   "publicationAllowed": false,
@@ -27,7 +27,7 @@
       "downloadStatus": "captured_for_hash"
     },
     {
-      "url": "https://www.flhouse.gov/FileStores/Web/Imaging/PhotoAlbums/HousePhotoSized8260.JPG",
+      "url": "https://www.flhouse.gov/FileStores/Web/Imaging/PhotoAlbums/HousePhotoSized8259.JPG",
       "method": "img",
       "score": 30,
       "altText": "Representative Spencer Photo",
@@ -35,14 +35,14 @@
       "rightsStatus": "review_required",
       "identityReviewStatus": "unreviewed",
       "httpStatus": 200,
-      "finalUrl": "https://www.flhouse.gov/FileStores/Web/Imaging/PhotoAlbums/HousePhotoSized8260.JPG",
+      "finalUrl": "https://www.flhouse.gov/FileStores/Web/Imaging/PhotoAlbums/HousePhotoSized8259.JPG",
       "contentType": "image/jpeg",
-      "byteSize": 18918,
-      "imageSha256": "226c9a3e1adc1468ea6f441d6c2ee8cddc489f56e9317bd2a192c581927147e5",
+      "byteSize": 15001,
+      "imageSha256": "4567fc9749fe953b9ad977ea5cd422b7dcadb95f8e2715015ab702cb51e8bb82",
       "downloadStatus": "captured_for_hash"
     },
     {
-      "url": "https://www.flhouse.gov/Images/bronze-seal-250.png?cb=4.6.654349",
+      "url": "https://www.flhouse.gov/Images/bronze-seal-250.png?cb=4.6.654350",
       "method": "og:image",
       "score": 14,
       "altText": null,
@@ -50,7 +50,7 @@
       "rightsStatus": "review_required",
       "identityReviewStatus": "unreviewed",
       "httpStatus": 200,
-      "finalUrl": "https://www.flhouse.gov/Images/bronze-seal-250.png?cb=4.6.654349",
+      "finalUrl": "https://www.flhouse.gov/Images/bronze-seal-250.png?cb=4.6.654350",
       "contentType": "image/png",
       "byteSize": 150275,
       "imageSha256": "36f7c4317f0cc62c44ff5bbfc0a0e5eebf014be23c9c8826141f11a70d9e7ff8",
@@ -72,7 +72,7 @@
       "downloadStatus": "captured_for_hash"
     },
     {
-      "url": "https://www.flhouse.gov/FileStores/Web/Imaging/PhotoAlbums/HousePhotoSized8259.JPG",
+      "url": "https://www.flhouse.gov/FileStores/Web/Imaging/PhotoAlbums/HousePhotoSized8260.JPG",
       "method": "img",
       "score": 9,
       "altText": null,
@@ -80,10 +80,10 @@
       "rightsStatus": "review_required",
       "identityReviewStatus": "unreviewed",
       "httpStatus": 200,
-      "finalUrl": "https://www.flhouse.gov/FileStores/Web/Imaging/PhotoAlbums/HousePhotoSized8259.JPG",
+      "finalUrl": "https://www.flhouse.gov/FileStores/Web/Imaging/PhotoAlbums/HousePhotoSized8260.JPG",
       "contentType": "image/jpeg",
-      "byteSize": 15001,
-      "imageSha256": "4567fc9749fe953b9ad977ea5cd422b7dcadb95f8e2715015ab702cb51e8bb82",
+      "byteSize": 18918,
+      "imageSha256": "226c9a3e1adc1468ea6f441d6c2ee8cddc489f56e9317bd2a192c581927147e5",
       "downloadStatus": "captured_for_hash"
     },
     {
@@ -116,22 +116,7 @@
       "sourcePageUrl": "https://www.flhouse.gov/Sections/Representatives/custom/details.aspx?MemberId=4915&LegislativeTermId=91"
     }
   ],
-  "socialCandidates": [
-    {
-      "platform": "Facebook",
-      "url": "https://www.facebook.com/Spencer4Florida/",
-      "label": "Leonard Spencer",
-      "sourcePageUrl": "https://www.flhouse.gov/Sections/Representatives/custom/details.aspx?MemberId=4915&LegislativeTermId=91",
-      "reviewStatus": "unreviewed"
-    },
-    {
-      "platform": "Instagram",
-      "url": "https://www.instagram.com/spencer4florida?utm_source=ig_embed&utm_campaign=loading",
-      "label": "Leonard Spencer",
-      "sourcePageUrl": "https://www.flhouse.gov/Sections/Representatives/custom/details.aspx?MemberId=4915&LegislativeTermId=91",
-      "reviewStatus": "unreviewed"
-    }
-  ],
+  "socialCandidates": [],
   "websiteCandidates": [
     {
       "url": "https://www.flhouse.gov/Sections/Representatives/custom/contactmember.aspx?MemberId=4915&LegislativeTermId=91",
@@ -149,13 +134,13 @@
   "errors": [],
   "httpStatus": 200,
   "finalUrl": "https://www.flhouse.gov/Sections/Representatives/custom/details.aspx?MemberId=4915&LegislativeTermId=91",
-  "sourceSnapshotSha256": "cc7a3d44e556fbc6db4a8f449c5ef59f127568715e1e2511deb62545c00639f0",
+  "sourceSnapshotSha256": "49f15b1e0b8352835d699aa81b360ee89d0502f886a329fce7c43a0c496762d9",
   "contentType": "text/html",
   "pageTitle": "Leonard Spencer  - 2024 - 2026 ( Speaker Perez ) | Florida House of Representatives",
   "candidateSummary": {
     "portraits": 6,
     "contacts": 2,
-    "socials": 2,
+    "socials": 0,
     "websites": 2
   }
 }

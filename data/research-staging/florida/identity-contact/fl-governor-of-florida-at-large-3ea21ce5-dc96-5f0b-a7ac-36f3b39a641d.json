@@ -6,7 +6,7 @@
   "displayName": "Ron DeSantis",
   "officeTitle": "Governor of Florida",
   "sourceUrl": "https://www.flgov.com/",
-  "fetchedAt": "2026-07-16T05:20:48Z",
+  "fetchedAt": "2026-09-04T13:41:46Z",
   "collectionStatus": "success",
   "reviewStatus": "unreviewed",
   "publicationAllowed": false,
@@ -160,7 +160,7 @@
   "errors": [],
   "httpStatus": 200,
   "finalUrl": "https://www.flgov.com/eog/",
-  "sourceSnapshotSha256": "0a8a68cb318d2d11439b71178ff5442e6b3f87ca806ed4484c170e4ee3c0f0a4",
+  "sourceSnapshotSha256": "caf013edc4957a9b2ae44056564b266124ba149791e7b026386fa05184632d9e",
   "contentType": "text/html",
   "pageTitle": "Governor Ron DeSantis | Executive Office of the Governor",
   "candidateSummary": {

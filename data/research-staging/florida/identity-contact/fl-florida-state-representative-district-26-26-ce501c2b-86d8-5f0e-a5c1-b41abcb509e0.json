@@ -6,7 +6,7 @@
   "displayName": "Nan Cobb",
   "officeTitle": "Florida State Representative, District 26",
   "sourceUrl": "https://www.flhouse.gov/Sections/Representatives/details.aspx?MemberId=4910&LegislativeTermId=91",
-  "fetchedAt": "2026-07-16T05:20:13Z",
+  "fetchedAt": "2026-09-04T13:40:55Z",
   "collectionStatus": "success",
   "reviewStatus": "unreviewed",
   "publicationAllowed": false,
@@ -27,7 +27,7 @@
       "downloadStatus": "captured_for_hash"
     },
     {
-      "url": "https://www.flhouse.gov/Images/bronze-seal-250.png?cb=4.6.654349",
+      "url": "https://www.flhouse.gov/Images/bronze-seal-250.png?cb=4.6.654350",
       "method": "og:image",
       "score": 14,
       "altText": null,
@@ -35,7 +35,7 @@
       "rightsStatus": "review_required",
       "identityReviewStatus": "unreviewed",
       "httpStatus": 200,
-      "finalUrl": "https://www.flhouse.gov/Images/bronze-seal-250.png?cb=4.6.654349",
+      "finalUrl": "https://www.flhouse.gov/Images/bronze-seal-250.png?cb=4.6.654350",
       "contentType": "image/png",
       "byteSize": 150275,
       "imageSha256": "36f7c4317f0cc62c44ff5bbfc0a0e5eebf014be23c9c8826141f11a70d9e7ff8",
@@ -135,7 +135,7 @@
   "errors": [],
   "httpStatus": 200,
   "finalUrl": "https://www.flhouse.gov/Sections/Representatives/details.aspx?MemberId=4910&LegislativeTermId=91",
-  "sourceSnapshotSha256": "863286e08aefd258b5083b0e38763e8366055bd414f6f1c1df4b43ce7615eecd",
+  "sourceSnapshotSha256": "39afba412ddfd924eeb5568e1d593e7f9f404b8ad41090d77cfa3ee2557265a3",
   "contentType": "text/html",
   "pageTitle": "Nan Cobb  - 2024 - 2026 ( Speaker Perez ) | Florida House of Representatives",
   "candidateSummary": {

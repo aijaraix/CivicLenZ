@@ -6,7 +6,7 @@
   "displayName": "Stan McClain",
   "officeTitle": "Florida State Senator, District 9",
   "sourceUrl": "https://www.flsenate.gov/Senators/2024-2026/S9",
-  "fetchedAt": "2026-07-16T05:20:48Z",
+  "fetchedAt": "2026-09-04T13:41:45Z",
   "collectionStatus": "success",
   "reviewStatus": "unreviewed",
   "publicationAllowed": false,
@@ -212,7 +212,7 @@
   "errors": [],
   "httpStatus": 200,
   "finalUrl": "https://www.flsenate.gov/Senators/S9",
-  "sourceSnapshotSha256": "abd3c56e9e6530b2263bf4d521a9a8e244cc728e10a64dd1bb3ff804fcbeaaf3",
+  "sourceSnapshotSha256": "8c267ac733a7be4b36f88f3e1b434e2eb4bdc0ae44fa7106f526627a74f89283",
   "contentType": "text/html",
   "pageTitle": "Senator McClain - The Florida Senate",
   "candidateSummary": {

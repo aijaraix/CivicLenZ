@@ -6,7 +6,7 @@
   "displayName": "Lauren Melo",
   "officeTitle": "Florida State Representative, District 82",
   "sourceUrl": "https://www.flhouse.gov/Sections/Representatives/details.aspx?MemberId=4784&LegislativeTermId=91",
-  "fetchedAt": "2026-07-16T05:20:30Z",
+  "fetchedAt": "2026-09-04T13:41:21Z",
   "collectionStatus": "success",
   "reviewStatus": "unreviewed",
   "publicationAllowed": false,
@@ -72,7 +72,7 @@
       "downloadStatus": "captured_for_hash"
     },
     {
-      "url": "https://www.flhouse.gov/Images/bronze-seal-250.png?cb=4.6.654349",
+      "url": "https://www.flhouse.gov/Images/bronze-seal-250.png?cb=4.6.654350",
       "method": "og:image",
       "score": 14,
       "altText": null,
@@ -80,7 +80,7 @@
       "rightsStatus": "review_required",
       "identityReviewStatus": "unreviewed",
       "httpStatus": 200,
-      "finalUrl": "https://www.flhouse.gov/Images/bronze-seal-250.png?cb=4.6.654349",
+      "finalUrl": "https://www.flhouse.gov/Images/bronze-seal-250.png?cb=4.6.654350",
       "contentType": "image/png",
       "byteSize": 150275,
       "imageSha256": "36f7c4317f0cc62c44ff5bbfc0a0e5eebf014be23c9c8826141f11a70d9e7ff8",
@@ -146,7 +146,7 @@
   "errors": [],
   "httpStatus": 200,
   "finalUrl": "https://www.flhouse.gov/Sections/Representatives/custom/details.aspx?MemberId=4784&LegislativeTermId=91",
-  "sourceSnapshotSha256": "86c5f3dee632ff48a50e5223eda331581c12c9fc96271e96de21d14abff34d2a",
+  "sourceSnapshotSha256": "55e0ffae06f976ad48c3b0c3659a9cd8f26845aa3d8e9156e5dd913bd5ae81ee",
   "contentType": "text/html",
   "pageTitle": "Lauren Melo  - 2024 - 2026 ( Speaker Perez ) | Florida House of Representatives",
   "candidateSummary": {

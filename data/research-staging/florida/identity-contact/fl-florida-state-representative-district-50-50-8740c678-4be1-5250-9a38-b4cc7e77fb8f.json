@@ -6,7 +6,7 @@
   "displayName": "Jennifer Canady",
   "officeTitle": "Florida State Representative, District 50",
   "sourceUrl": "https://www.flhouse.gov/Sections/Representatives/details.aspx?MemberId=4879&LegislativeTermId=91",
-  "fetchedAt": "2026-07-16T05:20:21Z",
+  "fetchedAt": "2026-09-04T13:41:07Z",
   "collectionStatus": "success",
   "reviewStatus": "unreviewed",
   "publicationAllowed": false,
@@ -27,7 +27,7 @@
       "downloadStatus": "captured_for_hash"
     },
     {
-      "url": "https://www.flhouse.gov/Images/bronze-seal-250.png?cb=4.6.654349",
+      "url": "https://www.flhouse.gov/Images/bronze-seal-250.png?cb=4.6.654350",
       "method": "og:image",
       "score": 14,
       "altText": null,
@@ -35,7 +35,7 @@
       "rightsStatus": "review_required",
       "identityReviewStatus": "unreviewed",
       "httpStatus": 200,
-      "finalUrl": "https://www.flhouse.gov/Images/bronze-seal-250.png?cb=4.6.654349",
+      "finalUrl": "https://www.flhouse.gov/Images/bronze-seal-250.png?cb=4.6.654350",
       "contentType": "image/png",
       "byteSize": 150275,
       "imageSha256": "36f7c4317f0cc62c44ff5bbfc0a0e5eebf014be23c9c8826141f11a70d9e7ff8",
@@ -135,7 +135,7 @@
   "errors": [],
   "httpStatus": 200,
   "finalUrl": "https://www.flhouse.gov/Sections/Representatives/details.aspx?MemberId=4879&LegislativeTermId=91",
-  "sourceSnapshotSha256": "151c1533bc60b0502ec678f0ffec733a7978e63809c6f203cb53dce6a09a76c6",
+  "sourceSnapshotSha256": "30a7dfd8c3df69d0d7b2c4cbac1d955ede38828e1b145a31ab41601750287a70",
   "contentType": "text/html",
   "pageTitle": "Jennifer Canady  - 2024 - 2026 ( Speaker Perez ) | Florida House of Representatives",
   "candidateSummary": {

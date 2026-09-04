@@ -6,7 +6,7 @@
   "displayName": "Ashley Moody",
   "officeTitle": "United States Senator",
   "sourceUrl": "https://www.moody.senate.gov",
-  "fetchedAt": "2026-07-16T05:20:00Z",
+  "fetchedAt": "2026-09-04T13:40:39Z",
   "collectionStatus": "success",
   "reviewStatus": "unreviewed",
   "publicationAllowed": false,
@@ -24,6 +24,21 @@
       "contentType": "image/jpeg",
       "byteSize": 70874,
       "imageSha256": "4c76d3c2d1ee5d53dc633554ae34e4f15396ebd2fbd308689c23f0643d0edeb3",
+      "downloadStatus": "captured_for_hash"
+    },
+    {
+      "url": "https://www.moody.senate.gov/wp-content/uploads/2026/08/Democracy-Award-Graphic.png",
+      "method": "img",
+      "score": 21,
+      "altText": null,
+      "sourcePageUrl": "https://www.moody.senate.gov/",
+      "rightsStatus": "review_required",
+      "identityReviewStatus": "unreviewed",
+      "httpStatus": 200,
+      "finalUrl": "https://www.moody.senate.gov/wp-content/uploads/2026/08/Democracy-Award-Graphic.png",
+      "contentType": "image/png",
+      "byteSize": 77716,
+      "imageSha256": "c4985cfb3411504579d71b102d8e8820d0dc96913bbc09faaef24f1296b82d36",
       "downloadStatus": "captured_for_hash"
     },
     {
@@ -164,18 +179,24 @@
       "label": "Contact",
       "sourcePageUrl": "https://www.moody.senate.gov/",
       "reviewStatus": "unreviewed"
+    },
+    {
+      "url": "https://www.moody.senate.gov/press-releases/video-after-just-one-year-in-office-senator-ashley-moody-recognized-for-best-constituent-services-in-the-senate/",
+      "label": "Recognized as Best Constituent Services in 2026!",
+      "sourcePageUrl": "https://www.moody.senate.gov/",
+      "reviewStatus": "unreviewed"
     }
   ],
   "errors": [],
   "httpStatus": 200,
   "finalUrl": "https://www.moody.senate.gov/",
-  "sourceSnapshotSha256": "ac52a8c7a7a47177e8ecd482344692e55c279150149e26ba3f3727e7fdff2cb3",
+  "sourceSnapshotSha256": "bb625322c357087c9323cc980b71f7ed0407f518c4f6dbfa74a3ca9c248e609c",
   "contentType": "text/html",
   "pageTitle": "Homepage - Senator Moody",
   "candidateSummary": {
-    "portraits": 4,
+    "portraits": 5,
     "contacts": 9,
     "socials": 4,
-    "websites": 1
+    "websites": 2
   }
 }

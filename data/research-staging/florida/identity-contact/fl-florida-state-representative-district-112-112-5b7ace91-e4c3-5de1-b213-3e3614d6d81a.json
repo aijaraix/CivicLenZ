@@ -6,7 +6,7 @@
   "displayName": "Alex Rizo",
   "officeTitle": "Florida State Representative, District 112",
   "sourceUrl": "https://www.flhouse.gov/Sections/Representatives/details.aspx?MemberId=4796&LegislativeTermId=91",
-  "fetchedAt": "2026-07-16T05:20:06Z",
+  "fetchedAt": "2026-09-04T13:40:48Z",
   "collectionStatus": "success",
   "reviewStatus": "unreviewed",
   "publicationAllowed": false,
@@ -42,7 +42,7 @@
       "downloadStatus": "captured_for_hash"
     },
     {
-      "url": "https://www.flhouse.gov/Images/bronze-seal-250.png?cb=4.6.654349",
+      "url": "https://www.flhouse.gov/Images/bronze-seal-250.png?cb=4.6.654350",
       "method": "og:image",
       "score": 14,
       "altText": null,
@@ -50,7 +50,7 @@
       "rightsStatus": "review_required",
       "identityReviewStatus": "unreviewed",
       "httpStatus": 200,
-      "finalUrl": "https://www.flhouse.gov/Images/bronze-seal-250.png?cb=4.6.654349",
+      "finalUrl": "https://www.flhouse.gov/Images/bronze-seal-250.png?cb=4.6.654350",
       "contentType": "image/png",
       "byteSize": 150275,
       "imageSha256": "36f7c4317f0cc62c44ff5bbfc0a0e5eebf014be23c9c8826141f11a70d9e7ff8",
@@ -116,15 +116,7 @@
       "sourcePageUrl": "https://www.flhouse.gov/Sections/Representatives/custom/details.aspx?MemberId=4796&LegislativeTermId=91"
     }
   ],
-  "socialCandidates": [
-    {
-      "platform": "Instagram",
-      "url": "https://www.instagram.com/teamalexrizo?utm_source=ig_embed&utm_campaign=loading",
-      "label": "Alex Rizo",
-      "sourcePageUrl": "https://www.flhouse.gov/Sections/Representatives/custom/details.aspx?MemberId=4796&LegislativeTermId=91",
-      "reviewStatus": "unreviewed"
-    }
-  ],
+  "socialCandidates": [],
   "websiteCandidates": [
     {
       "url": "https://www.flhouse.gov/Sections/Representatives/custom/contactmember.aspx?MemberId=4796&LegislativeTermId=91",
@@ -142,13 +134,13 @@
   "errors": [],
   "httpStatus": 200,
   "finalUrl": "https://www.flhouse.gov/Sections/Representatives/custom/details.aspx?MemberId=4796&LegislativeTermId=91",
-  "sourceSnapshotSha256": "ba1ef5bfef6c4242c67dd1d09d2be261d833a607e9169bad7e45a4338c0c1cc1",
+  "sourceSnapshotSha256": "13ad4d2f9cc78b0ff2a85e62fb168aff40388e204e5fdd5fbe2272eac84fdfbc",
   "contentType": "text/html",
   "pageTitle": "Alex Rizo  - 2024 - 2026 ( Speaker Perez ) | Florida House of Representatives",
   "candidateSummary": {
     "portraits": 6,
     "contacts": 2,
-    "socials": 1,
+    "socials": 0,
     "websites": 2
   }
 }

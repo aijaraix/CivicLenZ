@@ -6,7 +6,7 @@
   "displayName": "Cory Mills",
   "officeTitle": "United States Representative",
   "sourceUrl": "https://mills.house.gov",
-  "fetchedAt": "2026-07-16T05:19:58Z",
+  "fetchedAt": "2026-09-04T13:40:36Z",
   "collectionStatus": "success",
   "reviewStatus": "unreviewed",
   "publicationAllowed": false,
@@ -189,7 +189,7 @@
   "errors": [],
   "httpStatus": 200,
   "finalUrl": "https://mills.house.gov/",
-  "sourceSnapshotSha256": "38e887cf05ef55c46d87e00893a5c29e4d52ed7b492521356380cae892cda6c1",
+  "sourceSnapshotSha256": "8ad719ecd38ce239f585e6b0a406e25eb3d45fb1614217cf37b516556d58f548",
   "contentType": "text/html",
   "pageTitle": "Representative Mills |",
   "candidateSummary": {

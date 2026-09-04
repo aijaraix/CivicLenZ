@@ -6,7 +6,7 @@
   "displayName": "Jason W. B. Pizzo",
   "officeTitle": "Florida State Senator, District 37",
   "sourceUrl": "https://www.flsenate.gov/Senators/2024-2026/S37",
-  "fetchedAt": "2026-07-16T05:20:45Z",
+  "fetchedAt": "2026-09-04T13:41:42Z",
   "collectionStatus": "success",
   "reviewStatus": "unreviewed",
   "publicationAllowed": false,
@@ -230,7 +230,7 @@
   "errors": [],
   "httpStatus": 200,
   "finalUrl": "https://www.flsenate.gov/Senators/S37",
-  "sourceSnapshotSha256": "a01522eec1ac6fa78674b37b88470cdf964e5a07ebe161a59adba4c4e3c4630e",
+  "sourceSnapshotSha256": "edb0de08efcb3e0a05921168999a9779abeef71781d081985d69cc7dedf11b2b",
   "contentType": "text/html",
   "pageTitle": "Senator Pizzo - The Florida Senate",
   "candidateSummary": {

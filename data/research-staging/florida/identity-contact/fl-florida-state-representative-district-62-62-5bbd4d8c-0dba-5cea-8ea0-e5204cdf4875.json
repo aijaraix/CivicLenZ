@@ -6,7 +6,7 @@
   "displayName": "Michele K. Rayner",
   "officeTitle": "Florida State Representative, District 62",
   "sourceUrl": "https://www.flhouse.gov/Sections/Representatives/details.aspx?MemberId=4781&LegislativeTermId=91",
-  "fetchedAt": "2026-07-16T05:20:25Z",
+  "fetchedAt": "2026-09-04T13:41:12Z",
   "collectionStatus": "success",
   "reviewStatus": "unreviewed",
   "publicationAllowed": false,
@@ -27,7 +27,7 @@
       "downloadStatus": "captured_for_hash"
     },
     {
-      "url": "https://www.flhouse.gov/FileStores/Web/Imaging/PhotoAlbums/HousePhotoSized7290.jpg",
+      "url": "https://www.flhouse.gov/FileStores/Web/Imaging/PhotoAlbums/HousePhotoSized7900.JPG",
       "method": "img",
       "score": 30,
       "altText": "Representative Rayner Photo",
@@ -35,14 +35,14 @@
       "rightsStatus": "review_required",
       "identityReviewStatus": "unreviewed",
       "httpStatus": 200,
-      "finalUrl": "https://www.flhouse.gov/FileStores/Web/Imaging/PhotoAlbums/HousePhotoSized7290.jpg",
+      "finalUrl": "https://www.flhouse.gov/FileStores/Web/Imaging/PhotoAlbums/HousePhotoSized7900.JPG",
       "contentType": "image/jpeg",
-      "byteSize": 18623,
-      "imageSha256": "7901a6958dc5eaf3b044d79009fb820d8058e27c9ac1c6e592d6e3a9e7a471d3",
+      "byteSize": 17735,
+      "imageSha256": "cc1dfa3ac3da465c40357de179119f3a7a33e190b3b564a8b4d9f274f05f4370",
       "downloadStatus": "captured_for_hash"
     },
     {
-      "url": "https://www.flhouse.gov/Images/bronze-seal-250.png?cb=4.6.654349",
+      "url": "https://www.flhouse.gov/Images/bronze-seal-250.png?cb=4.6.654350",
       "method": "og:image",
       "score": 14,
       "altText": null,
@@ -50,10 +50,25 @@
       "rightsStatus": "review_required",
       "identityReviewStatus": "unreviewed",
       "httpStatus": 200,
-      "finalUrl": "https://www.flhouse.gov/Images/bronze-seal-250.png?cb=4.6.654349",
+      "finalUrl": "https://www.flhouse.gov/Images/bronze-seal-250.png?cb=4.6.654350",
       "contentType": "image/png",
       "byteSize": 150275,
       "imageSha256": "36f7c4317f0cc62c44ff5bbfc0a0e5eebf014be23c9c8826141f11a70d9e7ff8",
+      "downloadStatus": "captured_for_hash"
+    },
+    {
+      "url": "https://www.flhouse.gov/FileStores/Web/Imaging/PhotoAlbums/HousePhotoSized7889.JPG",
+      "method": "img",
+      "score": 9,
+      "altText": null,
+      "sourcePageUrl": "https://www.flhouse.gov/Sections/Representatives/custom/details.aspx?MemberId=4781&LegislativeTermId=91",
+      "rightsStatus": "review_required",
+      "identityReviewStatus": "unreviewed",
+      "httpStatus": 200,
+      "finalUrl": "https://www.flhouse.gov/FileStores/Web/Imaging/PhotoAlbums/HousePhotoSized7889.JPG",
+      "contentType": "image/jpeg",
+      "byteSize": 21401,
+      "imageSha256": "f1a6980fc38056a83736ab5d75232d8be81cbc8a210b647ece76760058ca4d14",
       "downloadStatus": "captured_for_hash"
     },
     {
@@ -69,21 +84,6 @@
       "contentType": "image/jpeg",
       "byteSize": 17295,
       "imageSha256": "7df2aeb278339067b1e3371ff24f3e0f570e98189da6b03a6927833cc77c2613",
-      "downloadStatus": "captured_for_hash"
-    },
-    {
-      "url": "https://www.flhouse.gov/FileStores/Web/Imaging/PhotoAlbums/HousePhotoSized7900.JPG",
-      "method": "img",
-      "score": 9,
-      "altText": null,
-      "sourcePageUrl": "https://www.flhouse.gov/Sections/Representatives/custom/details.aspx?MemberId=4781&LegislativeTermId=91",
-      "rightsStatus": "review_required",
-      "identityReviewStatus": "unreviewed",
-      "httpStatus": 200,
-      "finalUrl": "https://www.flhouse.gov/FileStores/Web/Imaging/PhotoAlbums/HousePhotoSized7900.JPG",
-      "contentType": "image/jpeg",
-      "byteSize": 17735,
-      "imageSha256": "cc1dfa3ac3da465c40357de179119f3a7a33e190b3b564a8b4d9f274f05f4370",
       "downloadStatus": "captured_for_hash"
     },
     {
@@ -116,22 +116,7 @@
       "sourcePageUrl": "https://www.flhouse.gov/Sections/Representatives/custom/details.aspx?MemberId=4781&LegislativeTermId=91"
     }
   ],
-  "socialCandidates": [
-    {
-      "platform": "Facebook",
-      "url": "https://facebook.com/micheleforfl",
-      "label": "Michele K. Rayner",
-      "sourcePageUrl": "https://www.flhouse.gov/Sections/Representatives/custom/details.aspx?MemberId=4781&LegislativeTermId=91",
-      "reviewStatus": "unreviewed"
-    },
-    {
-      "platform": "Instagram",
-      "url": "https://instagram.com/micheleforfl?utm_source=ig_embed&utm_campaign=loading",
-      "label": "Michele K. Rayner",
-      "sourcePageUrl": "https://www.flhouse.gov/Sections/Representatives/custom/details.aspx?MemberId=4781&LegislativeTermId=91",
-      "reviewStatus": "unreviewed"
-    }
-  ],
+  "socialCandidates": [],
   "websiteCandidates": [
     {
       "url": "https://www.flhouse.gov/Sections/Representatives/custom/contactmember.aspx?MemberId=4781&LegislativeTermId=91",
@@ -149,13 +134,13 @@
   "errors": [],
   "httpStatus": 200,
   "finalUrl": "https://www.flhouse.gov/Sections/Representatives/custom/details.aspx?MemberId=4781&LegislativeTermId=91",
-  "sourceSnapshotSha256": "13aad34c784c7b060bb563954a5ac14fe6d83f70b7b4690813c839efc4048931",
+  "sourceSnapshotSha256": "78ab51bba48b151958df321d4fd8de41d6f3b5d66b4bb07ee8f416b45f6f2646",
   "contentType": "text/html",
   "pageTitle": "Michele K. Rayner  - 2024 - 2026 ( Speaker Perez ) | Florida House of Representatives",
   "candidateSummary": {
     "portraits": 6,
     "contacts": 2,
-    "socials": 2,
+    "socials": 0,
     "websites": 2
   }
 }

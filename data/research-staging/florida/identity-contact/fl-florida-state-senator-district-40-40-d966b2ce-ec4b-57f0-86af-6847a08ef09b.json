@@ -6,7 +6,7 @@
   "displayName": "Ana Maria Rodriguez",
   "officeTitle": "Florida State Senator, District 40",
   "sourceUrl": "https://www.flsenate.gov/Senators/2024-2026/S40",
-  "fetchedAt": "2026-07-16T05:20:47Z",
+  "fetchedAt": "2026-09-04T13:41:44Z",
   "collectionStatus": "success",
   "reviewStatus": "unreviewed",
   "publicationAllowed": false,
@@ -226,7 +226,7 @@
   "errors": [],
   "httpStatus": 200,
   "finalUrl": "https://www.flsenate.gov/Senators/S40",
-  "sourceSnapshotSha256": "986932452aa7ecc78f0ea4784e93ece0fad77b03eecfdd8a5b1ba9de73f11c91",
+  "sourceSnapshotSha256": "3e5cd2dedf7fb0e098ee8d41bd0d9b3551a9ad92f27b2dda8d03f94dbb1b62c6",
   "contentType": "text/html",
   "pageTitle": "Senator Rodriguez - The Florida Senate",
   "candidateSummary": {

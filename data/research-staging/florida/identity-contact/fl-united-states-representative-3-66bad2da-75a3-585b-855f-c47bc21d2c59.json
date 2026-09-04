@@ -6,7 +6,7 @@
   "displayName": "Kat Cammack",
   "officeTitle": "United States Representative",
   "sourceUrl": "https://cammack.house.gov",
-  "fetchedAt": "2026-07-16T05:19:59Z",
+  "fetchedAt": "2026-09-04T13:40:38Z",
   "collectionStatus": "success",
   "reviewStatus": "unreviewed",
   "publicationAllowed": false,
@@ -195,7 +195,7 @@
   "errors": [],
   "httpStatus": 200,
   "finalUrl": "https://cammack.house.gov/",
-  "sourceSnapshotSha256": "e17faa7ffd7c873a8ec33771e9590c2b73c5b7d67caaf95404eeff3f0d442c78",
+  "sourceSnapshotSha256": "1e99f8a8b362773765e8244bc44395827baee5cc913e7ec983baf44e6ecb263d",
   "contentType": "text/html",
   "pageTitle": "Representative Kat Cammack |",
   "candidateSummary": {

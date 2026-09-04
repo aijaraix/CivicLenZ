@@ -6,7 +6,7 @@
   "displayName": "Alexis Calatayud",
   "officeTitle": "Florida State Senator, District 38",
   "sourceUrl": "https://www.flsenate.gov/Senators/2024-2026/S38",
-  "fetchedAt": "2026-07-16T05:20:46Z",
+  "fetchedAt": "2026-09-04T13:41:42Z",
   "collectionStatus": "success",
   "reviewStatus": "unreviewed",
   "publicationAllowed": false,
@@ -40,6 +40,20 @@
       "downloadStatus": "not_an_image_or_http_error"
     },
     {
+      "url": "https://www.flsenate.gov/PublishedContent/Offices/Senator/Cafecitos_with_a_Cop___Senator__7_.jpg",
+      "method": "img",
+      "score": 18,
+      "altText": null,
+      "sourcePageUrl": "https://www.flsenate.gov/Senators/S38",
+      "rightsStatus": "review_required",
+      "identityReviewStatus": "unreviewed",
+      "httpStatus": 429,
+      "finalUrl": "https://www.flsenate.gov/PublishedContent/Offices/Senator/Cafecitos_with_a_Cop___Senator__7_.jpg",
+      "contentType": "text/plain",
+      "byteSize": 17,
+      "downloadStatus": "not_an_image_or_http_error"
+    },
+    {
       "url": "https://www.flsenate.gov/PublishedContent/Offices/Senator/Community_Connection_5_13_26.jpg",
       "method": "img",
       "score": 18,
@@ -49,20 +63,6 @@
       "identityReviewStatus": "unreviewed",
       "httpStatus": 429,
       "finalUrl": "https://www.flsenate.gov/PublishedContent/Offices/Senator/Community_Connection_5_13_26.jpg",
-      "contentType": "text/plain",
-      "byteSize": 17,
-      "downloadStatus": "not_an_image_or_http_error"
-    },
-    {
-      "url": "https://www.flsenate.gov/PublishedContent/Offices/Senator/Jewish_Community.jpg",
-      "method": "img",
-      "score": 18,
-      "altText": null,
-      "sourcePageUrl": "https://www.flsenate.gov/Senators/S38",
-      "rightsStatus": "review_required",
-      "identityReviewStatus": "unreviewed",
-      "httpStatus": 429,
-      "finalUrl": "https://www.flsenate.gov/PublishedContent/Offices/Senator/Jewish_Community.jpg",
       "contentType": "text/plain",
       "byteSize": 17,
       "downloadStatus": "not_an_image_or_http_error"
@@ -208,6 +208,12 @@
       "reviewStatus": "unreviewed"
     },
     {
+      "url": "https://www.flsenate.gov/PublishedContent/Offices/Senator/Cafecitos_with_a_Cop___Senator__7_.pdf",
+      "label": "Cafecitos with the Sheriffs & Senator Calatayud",
+      "sourcePageUrl": "https://www.flsenate.gov/Senators/S38",
+      "reviewStatus": "unreviewed"
+    },
+    {
       "url": "https://www.flsenate.gov/PublishedContent/Offices/Senator/Kidcare_Rountable-_Location_Updated.pdf",
       "label": "Kidcare Rountable- Location Updated",
       "sourcePageUrl": "https://www.flsenate.gov/Senators/S38",
@@ -222,12 +228,6 @@
     {
       "url": "https://www.flsenate.gov/PublishedContent/Offices/Senator/Community_Connection_5_13_26.pdf",
       "label": "Senator Calatayud's Community Connections May Newsletter",
-      "sourcePageUrl": "https://www.flsenate.gov/Senators/S38",
-      "reviewStatus": "unreviewed"
-    },
-    {
-      "url": "https://www.flsenate.gov/PublishedContent/Offices/Senator/Jewish_Community.pdf",
-      "label": "Standing with the Jewish Community in Florida and Israel",
       "sourcePageUrl": "https://www.flsenate.gov/Senators/S38",
       "reviewStatus": "unreviewed"
     },
@@ -247,7 +247,7 @@
   "errors": [],
   "httpStatus": 200,
   "finalUrl": "https://www.flsenate.gov/Senators/S38",
-  "sourceSnapshotSha256": "fd232fd5647da24885b53b78f829d2c7d60c9efab2747195c2d532fd6015d231",
+  "sourceSnapshotSha256": "01cf6838d5b433dce748cbf58c21576d3c5dfe44531ceaf40b30220e1670fbff",
   "contentType": "text/html",
   "pageTitle": "Senator Calatayud - The Florida Senate",
   "candidateSummary": {

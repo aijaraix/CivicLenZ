@@ -6,7 +6,7 @@
   "displayName": "Kiyan Michael",
   "officeTitle": "Florida State Representative, District 16",
   "sourceUrl": "https://www.flhouse.gov/Sections/Representatives/details.aspx?MemberId=4869&LegislativeTermId=91",
-  "fetchedAt": "2026-07-16T05:20:09Z",
+  "fetchedAt": "2026-09-04T13:40:52Z",
   "collectionStatus": "success",
   "reviewStatus": "unreviewed",
   "publicationAllowed": false,
@@ -27,7 +27,7 @@
       "downloadStatus": "captured_for_hash"
     },
     {
-      "url": "https://www.flhouse.gov/Images/bronze-seal-250.png?cb=4.6.654349",
+      "url": "https://www.flhouse.gov/Images/bronze-seal-250.png?cb=4.6.654350",
       "method": "og:image",
       "score": 14,
       "altText": null,
@@ -35,7 +35,7 @@
       "rightsStatus": "review_required",
       "identityReviewStatus": "unreviewed",
       "httpStatus": 200,
-      "finalUrl": "https://www.flhouse.gov/Images/bronze-seal-250.png?cb=4.6.654349",
+      "finalUrl": "https://www.flhouse.gov/Images/bronze-seal-250.png?cb=4.6.654350",
       "contentType": "image/png",
       "byteSize": 150275,
       "imageSha256": "36f7c4317f0cc62c44ff5bbfc0a0e5eebf014be23c9c8826141f11a70d9e7ff8",
@@ -135,7 +135,7 @@
   "errors": [],
   "httpStatus": 200,
   "finalUrl": "https://www.flhouse.gov/Sections/Representatives/details.aspx?MemberId=4869&LegislativeTermId=91",
-  "sourceSnapshotSha256": "57d1579649b118287ddd64c4a306c653e5e3d7849f785ac8949a95f8bb8c0311",
+  "sourceSnapshotSha256": "5f655db4c493daf4b89bc162aa9fd0019e92053ffb788e69b07d13965f2f4f08",
   "contentType": "text/html",
   "pageTitle": "Kiyan Michael  - 2024 - 2026 ( Speaker Perez ) | Florida House of Representatives",
   "candidateSummary": {

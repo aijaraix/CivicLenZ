@@ -6,7 +6,7 @@
   "displayName": "Vanessa Oliver",
   "officeTitle": "Florida State Representative, District 76",
   "sourceUrl": "https://www.flhouse.gov/Sections/Representatives/details.aspx?MemberId=4922&LegislativeTermId=91",
-  "fetchedAt": "2026-07-16T05:20:29Z",
+  "fetchedAt": "2026-09-04T13:41:18Z",
   "collectionStatus": "success",
   "reviewStatus": "unreviewed",
   "publicationAllowed": false,
@@ -27,7 +27,7 @@
       "downloadStatus": "captured_for_hash"
     },
     {
-      "url": "https://www.flhouse.gov/Images/bronze-seal-250.png?cb=4.6.654349",
+      "url": "https://www.flhouse.gov/Images/bronze-seal-250.png?cb=4.6.654350",
       "method": "og:image",
       "score": 14,
       "altText": null,
@@ -35,7 +35,7 @@
       "rightsStatus": "review_required",
       "identityReviewStatus": "unreviewed",
       "httpStatus": 200,
-      "finalUrl": "https://www.flhouse.gov/Images/bronze-seal-250.png?cb=4.6.654349",
+      "finalUrl": "https://www.flhouse.gov/Images/bronze-seal-250.png?cb=4.6.654350",
       "contentType": "image/png",
       "byteSize": 150275,
       "imageSha256": "36f7c4317f0cc62c44ff5bbfc0a0e5eebf014be23c9c8826141f11a70d9e7ff8",
@@ -135,7 +135,7 @@
   "errors": [],
   "httpStatus": 200,
   "finalUrl": "https://www.flhouse.gov/Sections/Representatives/details.aspx?MemberId=4922&LegislativeTermId=91",
-  "sourceSnapshotSha256": "4f7e883d0dbc6ff3bc60e285e643471945c7dc173fe1fe411db52092af9594c6",
+  "sourceSnapshotSha256": "57aa1f372a0edc6cfe885b4240b665f47c8425d1875d95f902cb09b73c1cf203",
   "contentType": "text/html",
   "pageTitle": "Vanessa Oliver  - 2024 - 2026 ( Speaker Perez ) | Florida House of Representatives",
   "candidateSummary": {

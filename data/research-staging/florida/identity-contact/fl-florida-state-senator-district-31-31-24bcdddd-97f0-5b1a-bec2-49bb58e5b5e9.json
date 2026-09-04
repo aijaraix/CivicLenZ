@@ -6,7 +6,7 @@
   "displayName": "Gayle Harrell",
   "officeTitle": "Florida State Senator, District 31",
   "sourceUrl": "https://www.flsenate.gov/Senators/2024-2026/S31",
-  "fetchedAt": "2026-07-16T05:20:44Z",
+  "fetchedAt": "2026-09-04T13:41:39Z",
   "collectionStatus": "success",
   "reviewStatus": "unreviewed",
   "publicationAllowed": false,
@@ -214,7 +214,7 @@
   "errors": [],
   "httpStatus": 200,
   "finalUrl": "https://www.flsenate.gov/Senators/S31",
-  "sourceSnapshotSha256": "918f619c9254fe25d0f557d1ead024d25ae26bd3b99f0594bd4bfbc8e4e2b79b",
+  "sourceSnapshotSha256": "140354143b6566a59d08ceea8af13ae490361424471a829597cf195ac3527757",
   "contentType": "text/html",
   "pageTitle": "Senator Harrell - The Florida Senate",
   "candidateSummary": {

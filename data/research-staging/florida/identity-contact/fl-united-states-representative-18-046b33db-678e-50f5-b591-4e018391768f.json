@@ -6,7 +6,7 @@
   "displayName": "Scott Franklin",
   "officeTitle": "United States Representative",
   "sourceUrl": "https://franklin.house.gov",
-  "fetchedAt": "2026-07-16T05:20:00Z",
+  "fetchedAt": "2026-09-04T13:40:39Z",
   "collectionStatus": "success",
   "reviewStatus": "unreviewed",
   "publicationAllowed": false,
@@ -209,24 +209,18 @@
       "label": "Email Me",
       "sourcePageUrl": "https://franklin.house.gov/",
       "reviewStatus": "unreviewed"
-    },
-    {
-      "url": "https://franklin.house.gov/news/documentsingle.aspx?DocumentID=1912",
-      "label": "Franklin Announces 2026 U.S. Service Academy Appointments",
-      "sourcePageUrl": "https://franklin.house.gov/",
-      "reviewStatus": "unreviewed"
     }
   ],
   "errors": [],
   "httpStatus": 200,
   "finalUrl": "https://franklin.house.gov/",
-  "sourceSnapshotSha256": "843461326211ef864207946139f8d65a0c9b09403b5448778ce7c0700f098aaa",
+  "sourceSnapshotSha256": "01c440dd241a15d5424e6d61cc640a7ed4105bb12388cd86d249047ab4cb99df",
   "contentType": "text/html",
   "pageTitle": "U.S. Representative Scott Franklin",
   "candidateSummary": {
     "portraits": 6,
     "contacts": 5,
     "socials": 7,
-    "websites": 5
+    "websites": 4
   }
 }

@@ -6,7 +6,7 @@
   "displayName": "Tracie Davis",
   "officeTitle": "Florida State Senator, District 5",
   "sourceUrl": "https://www.flsenate.gov/Senators/2024-2026/S5",
-  "fetchedAt": "2026-07-16T05:20:47Z",
+  "fetchedAt": "2026-09-04T13:41:44Z",
   "collectionStatus": "success",
   "reviewStatus": "unreviewed",
   "publicationAllowed": false,
@@ -208,7 +208,7 @@
   "errors": [],
   "httpStatus": 200,
   "finalUrl": "https://www.flsenate.gov/Senators/S5",
-  "sourceSnapshotSha256": "718562db3166035849c3c70741432496e29fb817cb201c29488e71b2329296aa",
+  "sourceSnapshotSha256": "a7228ded0cfab42709268d4d1ff4784067facc8fbdc1388b3a649561e806291f",
   "contentType": "text/html",
   "pageTitle": "Senator Davis - The Florida Senate",
   "candidateSummary": {

@@ -6,7 +6,7 @@
   "displayName": "Neal Dunn",
   "officeTitle": "United States Representative",
   "sourceUrl": "https://dunn.house.gov",
-  "fetchedAt": "2026-07-16T05:19:59Z",
+  "fetchedAt": "2026-09-04T13:40:39Z",
   "collectionStatus": "success",
   "reviewStatus": "unreviewed",
   "publicationAllowed": false,
@@ -192,7 +192,7 @@
   "errors": [],
   "httpStatus": 200,
   "finalUrl": "https://dunn.house.gov/",
-  "sourceSnapshotSha256": "32a64b795fb3ef9a65ccdf9d9136d86b284f5f12d762165fec70c594037683f4",
+  "sourceSnapshotSha256": "c47baf3ebcb729f3de5e625518e5479bf48e71576d9814fca2b69a2e5981d71d",
   "contentType": "text/html",
   "pageTitle": "U.S. Representative Neal Dunn",
   "candidateSummary": {

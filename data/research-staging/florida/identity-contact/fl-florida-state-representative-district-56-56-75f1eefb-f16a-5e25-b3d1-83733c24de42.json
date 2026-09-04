@@ -6,7 +6,7 @@
   "displayName": "Bradford Troy \"Brad\" Yeager",
   "officeTitle": "Florida State Representative, District 56",
   "sourceUrl": "https://www.flhouse.gov/Sections/Representatives/details.aspx?MemberId=4882&LegislativeTermId=91",
-  "fetchedAt": "2026-07-16T05:20:22Z",
+  "fetchedAt": "2026-09-04T13:41:09Z",
   "collectionStatus": "success",
   "reviewStatus": "unreviewed",
   "publicationAllowed": false,
@@ -27,7 +27,7 @@
       "downloadStatus": "captured_for_hash"
     },
     {
-      "url": "https://www.flhouse.gov/Images/bronze-seal-250.png?cb=4.6.654349",
+      "url": "https://www.flhouse.gov/Images/bronze-seal-250.png?cb=4.6.654350",
       "method": "og:image",
       "score": 14,
       "altText": null,
@@ -35,7 +35,7 @@
       "rightsStatus": "review_required",
       "identityReviewStatus": "unreviewed",
       "httpStatus": 200,
-      "finalUrl": "https://www.flhouse.gov/Images/bronze-seal-250.png?cb=4.6.654349",
+      "finalUrl": "https://www.flhouse.gov/Images/bronze-seal-250.png?cb=4.6.654350",
       "contentType": "image/png",
       "byteSize": 150275,
       "imageSha256": "36f7c4317f0cc62c44ff5bbfc0a0e5eebf014be23c9c8826141f11a70d9e7ff8",
@@ -135,7 +135,7 @@
   "errors": [],
   "httpStatus": 200,
   "finalUrl": "https://www.flhouse.gov/Sections/Representatives/details.aspx?MemberId=4882&LegislativeTermId=91",
-  "sourceSnapshotSha256": "fab1f9b1f4f150bfe519b9db87a3542546bb72b1753d51fd86a77da33f455387",
+  "sourceSnapshotSha256": "56df545ad7add06860cfbabe1e7ec28cb0f90d816ec537c76c1981a31b4f5768",
   "contentType": "text/html",
   "pageTitle": "Bradford Troy \"Brad\" Yeager  - 2024 - 2026 ( Speaker Perez ) | Florida House of Representatives",
   "candidateSummary": {

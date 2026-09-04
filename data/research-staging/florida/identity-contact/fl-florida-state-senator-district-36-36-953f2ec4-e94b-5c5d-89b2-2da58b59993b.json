@@ -6,7 +6,7 @@
   "displayName": "Ileana Garcia",
   "officeTitle": "Florida State Senator, District 36",
   "sourceUrl": "https://www.flsenate.gov/Senators/2024-2026/S36",
-  "fetchedAt": "2026-07-16T05:20:45Z",
+  "fetchedAt": "2026-09-04T13:41:41Z",
   "collectionStatus": "success",
   "reviewStatus": "unreviewed",
   "publicationAllowed": false,
@@ -227,7 +227,7 @@
   "errors": [],
   "httpStatus": 200,
   "finalUrl": "https://www.flsenate.gov/Senators/S36",
-  "sourceSnapshotSha256": "7c6ba6584f697824d85589ac816d1c774c6c8b321b56dd79b418f25927579bef",
+  "sourceSnapshotSha256": "98dd81e0f3d3e5c5d74d65e3a965b6effacef33516f96c7d3be2d735a110f934",
   "contentType": "text/html",
   "pageTitle": "Senator Garcia - The Florida Senate",
   "candidateSummary": {

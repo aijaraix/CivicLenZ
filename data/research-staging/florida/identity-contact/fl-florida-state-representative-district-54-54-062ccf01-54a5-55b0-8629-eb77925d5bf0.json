@@ -6,7 +6,7 @@
   "displayName": "Randall Scott \"Randy\" Maggard",
   "officeTitle": "Florida State Representative, District 54",
   "sourceUrl": "https://www.flhouse.gov/Sections/Representatives/details.aspx?MemberId=4758&LegislativeTermId=91",
-  "fetchedAt": "2026-07-16T05:20:22Z",
+  "fetchedAt": "2026-09-04T13:41:08Z",
   "collectionStatus": "success",
   "reviewStatus": "unreviewed",
   "publicationAllowed": false,
@@ -27,7 +27,7 @@
       "downloadStatus": "captured_for_hash"
     },
     {
-      "url": "https://www.flhouse.gov/Images/bronze-seal-250.png?cb=4.6.654349",
+      "url": "https://www.flhouse.gov/Images/bronze-seal-250.png?cb=4.6.654350",
       "method": "og:image",
       "score": 14,
       "altText": null,
@@ -35,7 +35,7 @@
       "rightsStatus": "review_required",
       "identityReviewStatus": "unreviewed",
       "httpStatus": 200,
-      "finalUrl": "https://www.flhouse.gov/Images/bronze-seal-250.png?cb=4.6.654349",
+      "finalUrl": "https://www.flhouse.gov/Images/bronze-seal-250.png?cb=4.6.654350",
       "contentType": "image/png",
       "byteSize": 150275,
       "imageSha256": "36f7c4317f0cc62c44ff5bbfc0a0e5eebf014be23c9c8826141f11a70d9e7ff8",
@@ -135,7 +135,7 @@
   "errors": [],
   "httpStatus": 200,
   "finalUrl": "https://www.flhouse.gov/Sections/Representatives/details.aspx?MemberId=4758&LegislativeTermId=91",
-  "sourceSnapshotSha256": "9cf3793005aae8099dcba40bbe5f30e8feaf862e6e52da944f95e645df1b1a73",
+  "sourceSnapshotSha256": "705d09e1afa240132f5d5d6d904c3d540efe4fc44b4c19247aa93e634800734f",
   "contentType": "text/html",
   "pageTitle": "Randall Scott \"Randy\" Maggard  - 2024 - 2026 ( Speaker Perez ) | Florida House of Representatives",
   "candidateSummary": {

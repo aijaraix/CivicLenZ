@@ -6,7 +6,7 @@
   "displayName": "J.J. Grow",
   "officeTitle": "Florida State Representative, District 23",
   "sourceUrl": "https://www.flhouse.gov/Sections/Representatives/details.aspx?MemberId=4909&LegislativeTermId=91",
-  "fetchedAt": "2026-07-16T05:20:12Z",
+  "fetchedAt": "2026-09-04T13:40:55Z",
   "collectionStatus": "success",
   "reviewStatus": "unreviewed",
   "publicationAllowed": false,
@@ -27,7 +27,7 @@
       "downloadStatus": "captured_for_hash"
     },
     {
-      "url": "https://www.flhouse.gov/FileStores/Web/Imaging/PhotoAlbums/HousePhotoSized8175.JPG",
+      "url": "https://www.flhouse.gov/FileStores/Web/Imaging/PhotoAlbums/HousePhotoSized8176.JPG",
       "method": "img",
       "score": 30,
       "altText": "Representative Grow Photo",
@@ -35,14 +35,14 @@
       "rightsStatus": "review_required",
       "identityReviewStatus": "unreviewed",
       "httpStatus": 200,
-      "finalUrl": "https://www.flhouse.gov/FileStores/Web/Imaging/PhotoAlbums/HousePhotoSized8175.JPG",
+      "finalUrl": "https://www.flhouse.gov/FileStores/Web/Imaging/PhotoAlbums/HousePhotoSized8176.JPG",
       "contentType": "image/jpeg",
-      "byteSize": 12721,
-      "imageSha256": "8bf65371fd37b848722b3d8995e57e932ae48803e68c0db48d7806b23a3fc25d",
+      "byteSize": 19277,
+      "imageSha256": "3f30853854d9619cf929d2bd4be3b1186bf427e86392d205b277b0136e893a4d",
       "downloadStatus": "captured_for_hash"
     },
     {
-      "url": "https://www.flhouse.gov/Images/bronze-seal-250.png?cb=4.6.654349",
+      "url": "https://www.flhouse.gov/Images/bronze-seal-250.png?cb=4.6.654350",
       "method": "og:image",
       "score": 14,
       "altText": null,
@@ -50,7 +50,7 @@
       "rightsStatus": "review_required",
       "identityReviewStatus": "unreviewed",
       "httpStatus": 200,
-      "finalUrl": "https://www.flhouse.gov/Images/bronze-seal-250.png?cb=4.6.654349",
+      "finalUrl": "https://www.flhouse.gov/Images/bronze-seal-250.png?cb=4.6.654350",
       "contentType": "image/png",
       "byteSize": 150275,
       "imageSha256": "36f7c4317f0cc62c44ff5bbfc0a0e5eebf014be23c9c8826141f11a70d9e7ff8",
@@ -72,7 +72,7 @@
       "downloadStatus": "captured_for_hash"
     },
     {
-      "url": "https://www.flhouse.gov/FileStores/Web/Imaging/PhotoAlbums/HousePhotoSized8176.JPG",
+      "url": "https://www.flhouse.gov/FileStores/Web/Imaging/PhotoAlbums/HousePhotoSized8175.JPG",
       "method": "img",
       "score": 9,
       "altText": null,
@@ -80,10 +80,10 @@
       "rightsStatus": "review_required",
       "identityReviewStatus": "unreviewed",
       "httpStatus": 200,
-      "finalUrl": "https://www.flhouse.gov/FileStores/Web/Imaging/PhotoAlbums/HousePhotoSized8176.JPG",
+      "finalUrl": "https://www.flhouse.gov/FileStores/Web/Imaging/PhotoAlbums/HousePhotoSized8175.JPG",
       "contentType": "image/jpeg",
-      "byteSize": 19277,
-      "imageSha256": "3f30853854d9619cf929d2bd4be3b1186bf427e86392d205b277b0136e893a4d",
+      "byteSize": 12721,
+      "imageSha256": "8bf65371fd37b848722b3d8995e57e932ae48803e68c0db48d7806b23a3fc25d",
       "downloadStatus": "captured_for_hash"
     },
     {
@@ -134,7 +134,7 @@
   "errors": [],
   "httpStatus": 200,
   "finalUrl": "https://www.flhouse.gov/Sections/Representatives/custom/details.aspx?MemberId=4909&LegislativeTermId=91",
-  "sourceSnapshotSha256": "c4aaea2619060a74978b4bc7655cd70a827915cd2665d23a37aecbd0ee0f0f20",
+  "sourceSnapshotSha256": "397a59fc5c4af3289877a3d3407f38dd10f663351ce0fb048b67d72ab7c4d63c",
   "contentType": "text/html",
   "pageTitle": "J.J. Grow  - 2024 - 2026 ( Speaker Perez ) | Florida House of Representatives",
   "candidateSummary": {

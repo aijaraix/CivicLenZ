@@ -6,7 +6,7 @@
   "displayName": "Juan Carlos Porras",
   "officeTitle": "Florida State Representative, District 119",
   "sourceUrl": "https://www.flhouse.gov/Sections/Representatives/details.aspx?MemberId=4898&LegislativeTermId=91",
-  "fetchedAt": "2026-07-16T05:20:07Z",
+  "fetchedAt": "2026-09-04T13:40:49Z",
   "collectionStatus": "success",
   "reviewStatus": "unreviewed",
   "publicationAllowed": false,
@@ -27,7 +27,7 @@
       "downloadStatus": "captured_for_hash"
     },
     {
-      "url": "https://www.flhouse.gov/Images/bronze-seal-250.png?cb=4.6.654349",
+      "url": "https://www.flhouse.gov/Images/bronze-seal-250.png?cb=4.6.654350",
       "method": "og:image",
       "score": 14,
       "altText": null,
@@ -35,7 +35,7 @@
       "rightsStatus": "review_required",
       "identityReviewStatus": "unreviewed",
       "httpStatus": 200,
-      "finalUrl": "https://www.flhouse.gov/Images/bronze-seal-250.png?cb=4.6.654349",
+      "finalUrl": "https://www.flhouse.gov/Images/bronze-seal-250.png?cb=4.6.654350",
       "contentType": "image/png",
       "byteSize": 150275,
       "imageSha256": "36f7c4317f0cc62c44ff5bbfc0a0e5eebf014be23c9c8826141f11a70d9e7ff8",
@@ -135,7 +135,7 @@
   "errors": [],
   "httpStatus": 200,
   "finalUrl": "https://www.flhouse.gov/Sections/Representatives/details.aspx?MemberId=4898&LegislativeTermId=91",
-  "sourceSnapshotSha256": "dfedbdbbef8716cb568e9f4f8b1b9710fc3124d6730ee7633bbf0d4a3f1a5d1a",
+  "sourceSnapshotSha256": "b02e565c8a3b737d17941bfa24fad8f77a2c9f4735f1c73657dcf52692fb285c",
   "contentType": "text/html",
   "pageTitle": "Juan Carlos Porras  - 2024 - 2026 ( Speaker Perez ) | Florida House of Representatives",
   "candidateSummary": {

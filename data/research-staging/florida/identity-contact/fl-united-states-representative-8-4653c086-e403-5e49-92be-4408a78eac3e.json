@@ -6,7 +6,7 @@
   "displayName": "Mike Haridopolos",
   "officeTitle": "United States Representative",
   "sourceUrl": "https://haridopolos.house.gov/",
-  "fetchedAt": "2026-07-16T05:19:59Z",
+  "fetchedAt": "2026-09-04T13:40:39Z",
   "collectionStatus": "success",
   "reviewStatus": "unreviewed",
   "publicationAllowed": false,
@@ -210,7 +210,7 @@
   "errors": [],
   "httpStatus": 200,
   "finalUrl": "https://haridopolos.house.gov/",
-  "sourceSnapshotSha256": "3758f8b8c7b23908410179b9e8f6868be0e7f09146acdc6d2173aae5b3eaab7c",
+  "sourceSnapshotSha256": "4f8222c8ce402f0bbceda0cbf154a6a346770752de3ad8d14843899e169a0f65",
   "contentType": "text/html",
   "pageTitle": "Congressman Mike Haridopolos | Representing Florida's 8th District",
   "candidateSummary": {

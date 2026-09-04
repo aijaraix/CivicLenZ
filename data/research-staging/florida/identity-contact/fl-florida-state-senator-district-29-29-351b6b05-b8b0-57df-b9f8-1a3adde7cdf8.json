@@ -6,7 +6,7 @@
   "displayName": "Erin Grall",
   "officeTitle": "Florida State Senator, District 29",
   "sourceUrl": "https://www.flsenate.gov/Senators/2024-2026/S29",
-  "fetchedAt": "2026-07-16T05:20:43Z",
+  "fetchedAt": "2026-09-04T13:41:38Z",
   "collectionStatus": "success",
   "reviewStatus": "unreviewed",
   "publicationAllowed": false,
@@ -214,7 +214,7 @@
   "errors": [],
   "httpStatus": 200,
   "finalUrl": "https://www.flsenate.gov/Senators/S29",
-  "sourceSnapshotSha256": "c6ff543d7c955b38457533f02aaa700911d2d5b1b56d017169d9967a6c0c2e9c",
+  "sourceSnapshotSha256": "0d3c846a2930ce762f4969c24564a225687714976c13934702234d8247d14a1e",
   "contentType": "text/html",
   "pageTitle": "Senator Grall - The Florida Senate",
   "candidateSummary": {

@@ -6,7 +6,7 @@
   "displayName": "Keith L. Truenow",
   "officeTitle": "Florida State Senator, District 13",
   "sourceUrl": "https://www.flsenate.gov/Senators/2024-2026/S13",
-  "fetchedAt": "2026-07-16T05:20:38Z",
+  "fetchedAt": "2026-09-04T13:41:30Z",
   "collectionStatus": "success",
   "reviewStatus": "unreviewed",
   "publicationAllowed": false,
@@ -208,7 +208,7 @@
   "errors": [],
   "httpStatus": 200,
   "finalUrl": "https://www.flsenate.gov/Senators/S13",
-  "sourceSnapshotSha256": "8fa7a49e2e7881a244842c3e8d11e4aa207962316769fe551c058d49f1f14e76",
+  "sourceSnapshotSha256": "d85531e17191a5a80cada757065f1c2758cb1692c1149365a0ff5c75f914390e",
   "contentType": "text/html",
   "pageTitle": "Senator Truenow - The Florida Senate",
   "candidateSummary": {

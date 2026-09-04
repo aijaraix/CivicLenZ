@@ -6,7 +6,7 @@
   "displayName": "Ben Albritton",
   "officeTitle": "Florida State Senator, District 27",
   "sourceUrl": "https://www.flsenate.gov/Senators/2024-2026/S27",
-  "fetchedAt": "2026-07-16T05:20:42Z",
+  "fetchedAt": "2026-09-04T13:41:36Z",
   "collectionStatus": "success",
   "reviewStatus": "unreviewed",
   "publicationAllowed": false,
@@ -27,7 +27,7 @@
       "downloadStatus": "captured_for_hash"
     },
     {
-      "url": "https://www.flsenate.gov/PublishedContent/Offices/President/5_26_Farmers_Feeding_Florida.jpg",
+      "url": "https://www.flsenate.gov/PublishedContent/Offices/President/2026-2027_Interim_Committee_Meeting_Schedule_.jpg",
       "method": "img",
       "score": 9,
       "altText": null,
@@ -35,10 +35,10 @@
       "rightsStatus": "review_required",
       "identityReviewStatus": "unreviewed",
       "httpStatus": 200,
-      "finalUrl": "https://www.flsenate.gov/PublishedContent/Offices/President/5_26_Farmers_Feeding_Florida.jpg",
+      "finalUrl": "https://www.flsenate.gov/PublishedContent/Offices/President/2026-2027_Interim_Committee_Meeting_Schedule_.jpg",
       "contentType": "image/jpeg",
-      "byteSize": 4742,
-      "imageSha256": "60bb062f3951c20a56cc6632620c0bd0c69292571a8db12eb1eec1d965c3b088",
+      "byteSize": 4002,
+      "imageSha256": "82450d18c59925dd0526f42480966d0e1de09dda0ec97b5ab25b9a16824f5fa8",
       "downloadStatus": "captured_for_hash"
     },
     {
@@ -199,6 +199,12 @@
       "reviewStatus": "unreviewed"
     },
     {
+      "url": "https://www.flsenate.gov/PublishedContent/Offices/President/2026-2027_Interim_Committee_Meeting_Schedule_.pdf",
+      "label": "2026-2027 Interim Committee Meeting Schedule",
+      "sourcePageUrl": "https://www.flsenate.gov/Senators/S27",
+      "reviewStatus": "unreviewed"
+    },
+    {
       "url": "https://www.flsenate.gov/PublishedContent/Offices/President/6_2_26_Senate_Passes_Historic_Property_Tax_Cut_for_Florida_Homeowners.pdf",
       "label": "Senate Passes Historic Property Tax Cut for Florida Homeowners",
       "sourcePageUrl": "https://www.flsenate.gov/Senators/S27",
@@ -213,12 +219,6 @@
     {
       "url": "https://www.flsenate.gov/PublishedContent/Offices/President/5_26_Make_Citrus_Great_Again.pdf",
       "label": "State Budget Includes Historic Funding to Make Citrus Great Again",
-      "sourcePageUrl": "https://www.flsenate.gov/Senators/S27",
-      "reviewStatus": "unreviewed"
-    },
-    {
-      "url": "https://www.flsenate.gov/PublishedContent/Offices/President/5_26_Farmers_Feeding_Florida.pdf",
-      "label": "State Budget Includes $38 Million for Farmers Feeding Florida",
       "sourcePageUrl": "https://www.flsenate.gov/Senators/S27",
       "reviewStatus": "unreviewed"
     },
@@ -238,7 +238,7 @@
   "errors": [],
   "httpStatus": 200,
   "finalUrl": "https://www.flsenate.gov/Senators/S27",
-  "sourceSnapshotSha256": "d1e7a7bf208e4d20e4e548e2a648ee556809664f6c9b83a299c1f2f991f0f6fc",
+  "sourceSnapshotSha256": "91bfd9a335a28bdb4493813ed47a908da962751c6d11928c2632472614de8613",
   "contentType": "text/html",
   "pageTitle": "Senator Albritton - The Florida Senate",
   "candidateSummary": {

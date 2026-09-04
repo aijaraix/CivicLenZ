@@ -6,7 +6,7 @@
   "displayName": "Vern Buchanan",
   "officeTitle": "United States Representative",
   "sourceUrl": "https://buchanan.house.gov/",
-  "fetchedAt": "2026-07-16T05:20:00Z",
+  "fetchedAt": "2026-09-04T13:40:39Z",
   "collectionStatus": "success",
   "reviewStatus": "unreviewed",
   "publicationAllowed": false,
@@ -56,21 +56,6 @@
       "downloadStatus": "skipped_too_large"
     },
     {
-      "url": "https://buchanan.house.gov/wp-content/uploads/2026/06/6.26.26-House-Floor.png",
-      "method": "img",
-      "score": 21,
-      "altText": null,
-      "sourcePageUrl": "https://buchanan.house.gov/",
-      "rightsStatus": "review_required",
-      "identityReviewStatus": "unreviewed",
-      "httpStatus": 200,
-      "finalUrl": "https://buchanan.house.gov/wp-content/uploads/2026/06/6.26.26-House-Floor.png",
-      "contentType": "image/png",
-      "byteSize": 919483,
-      "imageSha256": "aaf99e87951014d17701cb31d03ab53da3935a3d0e6431959e7f2e7c947dda75",
-      "downloadStatus": "captured_for_hash"
-    },
-    {
       "url": "https://buchanan.house.gov/wp-content/uploads/2025/12/map-florida-16th-district-blue.svg",
       "method": "img",
       "score": 17,
@@ -98,6 +83,21 @@
       "contentType": "image/png",
       "byteSize": 13235,
       "imageSha256": "f1a41e4fbb9e3fade310f4543fbe3d163a082ce1a328a2e6c64e3ac6a76ec76c",
+      "downloadStatus": "captured_for_hash"
+    },
+    {
+      "url": "https://buchanan.house.gov/wp-content/uploads/2025/07/icon-federal-agency.png",
+      "method": "img",
+      "score": -14,
+      "altText": null,
+      "sourcePageUrl": "https://buchanan.house.gov/",
+      "rightsStatus": "review_required",
+      "identityReviewStatus": "unreviewed",
+      "httpStatus": 200,
+      "finalUrl": "https://buchanan.house.gov/wp-content/uploads/2025/07/icon-federal-agency.png",
+      "contentType": "image/png",
+      "byteSize": 6883,
+      "imageSha256": "897fc95a85f84d4a6aa744edc679a1966d822598fbc12e39398f322f620c75d8",
       "downloadStatus": "captured_for_hash"
     }
   ],
@@ -224,7 +224,7 @@
   "errors": [],
   "httpStatus": 200,
   "finalUrl": "https://buchanan.house.gov/",
-  "sourceSnapshotSha256": "0d1772919aa6883265ae0e9ae7c09ce2af7b3a159e518a2d352b6e24d9f15a24",
+  "sourceSnapshotSha256": "9002dde42027d278cd5f2e5933bcfb05e60713b363d699fce118e5e93be82f85",
   "contentType": "text/html",
   "pageTitle": "US Congressman Vern Buchanan | Representing Florida's 16th District",
   "candidateSummary": {
