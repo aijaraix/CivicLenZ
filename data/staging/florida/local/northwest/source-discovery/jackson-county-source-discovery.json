@@ -5,34 +5,34 @@
   "stateCode": "FL",
   "region": "northwest_florida_panhandle",
   "rootSeedUrl": "https://jacksoncountyfl.gov/",
-  "finalRootUrl": "https://jacksoncountyfl.gov/",
+  "finalRootUrl": "https://www.jacksoncountyfl.gov/",
   "rootSeedStatus": "reachable_official_site",
   "sitePlatformHint": "wordpress_or_custom",
-  "fetchedAt": "2026-07-16T07:22:33Z",
+  "fetchedAt": "2026-09-05T13:33:18Z",
   "collectionStatus": "success",
   "publicationAllowed": false,
   "reviewStatus": "unreviewed",
   "visitedPages": [
     {
-      "url": "https://jacksoncountyfl.gov/",
+      "url": "https://www.jacksoncountyfl.gov/",
       "httpStatus": 200,
       "contentType": "text/html; charset=UTF-8",
       "pageTitle": "Jackson County Florida Board of County Commissioners",
-      "sha256": "74b0013ce413e12e9e3125f484dcd9e2921aaa6cfa5379cf407c3bcbf0e78061"
+      "sha256": "8dd9c1de441138279c76465e05ae107612b5515aaebea9aca1dbc6f49c43d9aa"
     },
     {
-      "url": "https://jacksoncountyfl.gov/government/jackson-county-commissioners/",
+      "url": "https://www.jacksoncountyfl.gov/government/jackson-county-commissioners/",
       "httpStatus": 200,
       "contentType": "text/html; charset=UTF-8",
       "pageTitle": "Jackson County Commissioners - Jackson County, Florida",
-      "sha256": "9c50d5b4d8ff6b4586cba6acdb1b6b3398eeabf94df0a70b96ddb38e40ac110b"
+      "sha256": "c322daf7ebf91fe742a1a5701dec63fb654091effd25e8e55de1ca29c42bee5a"
     },
     {
-      "url": "https://jacksoncountyfl.gov/government/jackson-county-commissioners/",
+      "url": "https://www.jacksoncountyfl.gov/government/jackson-county-commissioners/",
       "httpStatus": 200,
       "contentType": "text/html; charset=UTF-8",
       "pageTitle": "Jackson County Commissioners - Jackson County, Florida",
-      "sha256": "24e97d4795f2b6194a45d1a56e43aa2837c95fe17d93ee9e31516138cd42033c"
+      "sha256": "c5836f858c8c17399ae7875b8381294cf1ad1b7932c4e86bfc9665494559884d"
     }
   ],
   "sourceCandidates": {
@@ -40,15 +40,15 @@
       {
         "url": "https://jacksoncountyfl.gov/jackson-county-commissioners/",
         "label": "Meet Your Commissioners Board of County Commissioners",
-        "discoveredOn": "https://jacksoncountyfl.gov/",
+        "discoveredOn": "https://www.jacksoncountyfl.gov/",
         "score": 31,
         "sameHost": true,
         "reviewStatus": "unreviewed"
       },
       {
-        "url": "https://jacksoncountyfl.gov/government/jackson-county-commissioners/",
+        "url": "https://www.jacksoncountyfl.gov/government/jackson-county-commissioners/",
         "label": "Jackson County Commissioners",
-        "discoveredOn": "https://jacksoncountyfl.gov/",
+        "discoveredOn": "https://www.jacksoncountyfl.gov/",
         "score": 28,
         "sameHost": true,
         "reviewStatus": "unreviewed"
@@ -56,7 +56,7 @@
       {
         "url": "https://jacksoncofl.civicclerk.com/web/home.aspx",
         "label": "BOCC Meetings",
-        "discoveredOn": "https://jacksoncountyfl.gov/",
+        "discoveredOn": "https://www.jacksoncountyfl.gov/",
         "score": 13,
         "sameHost": false,
         "reviewStatus": "unreviewed"

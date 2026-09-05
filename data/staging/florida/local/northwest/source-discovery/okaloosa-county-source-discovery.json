@@ -8,7 +8,7 @@
   "finalRootUrl": "https://myokaloosa.com/",
   "rootSeedStatus": "reachable_official_site",
   "sitePlatformHint": "drupal_or_custom",
-  "fetchedAt": "2026-07-16T07:22:36Z",
+  "fetchedAt": "2026-09-05T13:33:19Z",
   "collectionStatus": "success",
   "publicationAllowed": false,
   "reviewStatus": "unreviewed",
@@ -18,42 +18,28 @@
       "httpStatus": 200,
       "contentType": "text/html; charset=UTF-8",
       "pageTitle": "Home | Okaloosa County",
-      "sha256": "d03cf8d65cd62e9d6ac35de5e8e6d81e66763424acaec6e1c703f1d84ceb31e9"
+      "sha256": "7b20292f70c6add7013c051b802a40a1e9a134bdd8bf2fecc58a11f4380e135b"
     },
     {
       "url": "https://myokaloosa.com/board-county-commissioners",
       "httpStatus": 200,
       "contentType": "text/html; charset=UTF-8",
       "pageTitle": "Board of County Commissioners | Okaloosa County",
-      "sha256": "311d6d2c4bbf4ab714df87410fbec2db776d3fa817c71f089c1f932768a23507"
+      "sha256": "b943c7871b333ac2bc827bd0930a6b28b97062673921fc706e3e399a1e2cd3a3"
     },
     {
       "url": "https://myokaloosa.com/towns-municipalities",
       "httpStatus": 200,
       "contentType": "text/html; charset=UTF-8",
       "pageTitle": "Towns & Municipalities | Okaloosa County",
-      "sha256": "c499157af41049db5efb1d5fc707e33b5c35a10737d0fd871de892959f8ad283"
+      "sha256": "623760c432dada217471b6ae20553ceb06b31f55bab04164abe17064f4a92776"
     },
     {
       "url": "https://myokaloosa.com/statutory-responsibility",
       "httpStatus": 200,
       "contentType": "text/html; charset=UTF-8",
       "pageTitle": "Statutory Responsibility | Okaloosa County",
-      "sha256": "c4a5e2a19e30f065441dfe866ccb039d5f2e54e6a45445ce9d7975fa6ec26308"
-    },
-    {
-      "url": "https://myokaloosa.com/index.php/board-county-commissioners",
-      "httpStatus": 200,
-      "contentType": "text/html; charset=UTF-8",
-      "pageTitle": "Board of County Commissioners | Okaloosa County",
-      "sha256": "9a6fecb1100dc9c36da08701bdee018d4b82c7f3c5c3aded489cdc5eef671591"
-    },
-    {
-      "url": "https://myokaloosa.com/index.php/towns-municipalities",
-      "httpStatus": 200,
-      "contentType": "text/html; charset=UTF-8",
-      "pageTitle": "Towns & Municipalities | Okaloosa County",
-      "sha256": "e446b0e26514b40d7af9bc85402c5c461990914a86d34b2f656c9497c4b9d3dc"
+      "sha256": "d7c42adb5bb8d546931a1b1327e1a3f5b3636511fa0714f4a15a5be3b2f41d50"
     }
   ],
   "sourceCandidates": {
@@ -62,14 +48,6 @@
         "url": "https://myokaloosa.com/board-county-commissioners",
         "label": "Board of County Commissioners",
         "discoveredOn": "https://myokaloosa.com/",
-        "score": 32,
-        "sameHost": true,
-        "reviewStatus": "unreviewed"
-      },
-      {
-        "url": "https://myokaloosa.com/index.php/board-county-commissioners",
-        "label": "Board of County Commissioners",
-        "discoveredOn": "https://myokaloosa.com/towns-municipalities",
         "score": 32,
         "sameHost": true,
         "reviewStatus": "unreviewed"
@@ -161,14 +139,6 @@
     ],
     "school_superintendent_status_and_directory": [],
     "municipality_registry": [
-      {
-        "url": "https://myokaloosa.com/index.php/towns-municipalities",
-        "label": "Towns & Municipalities",
-        "discoveredOn": "https://myokaloosa.com/towns-municipalities",
-        "score": 19,
-        "sameHost": true,
-        "reviewStatus": "unreviewed"
-      },
       {
         "url": "https://myokaloosa.com/towns-municipalities",
         "label": "Towns & Municipalities",
