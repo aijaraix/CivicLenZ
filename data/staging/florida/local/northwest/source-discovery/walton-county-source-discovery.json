@@ -8,7 +8,7 @@
   "finalRootUrl": "https://www.mywaltonfl.gov/",
   "rootSeedStatus": "reachable_official_site",
   "sitePlatformHint": "civicplus",
-  "fetchedAt": "2026-07-16T07:22:37Z",
+  "fetchedAt": "2026-09-05T13:33:19Z",
   "collectionStatus": "success",
   "publicationAllowed": false,
   "reviewStatus": "unreviewed",
@@ -18,113 +18,23 @@
       "httpStatus": 200,
       "contentType": "text/html; charset=utf-8",
       "pageTitle": "Walton County, FL - Home Page | Official Website",
-      "sha256": "4875ee74b5036ee4f92e9a7844099c70448cf19efc7b670060919f6d41ac4b85"
+      "sha256": "4256462c9d02560bd87078789f53f0c0fcdbe380939647cd00e23abedc51e902"
     },
     {
-      "url": "https://www.mywaltonfl.gov/m/newsflash/home/detail/3487",
+      "url": "https://www.mywaltonfl.gov/m/newsflash/home/detail/3533",
       "httpStatus": 200,
       "contentType": "text/html; charset=utf-8",
-      "pageTitle": "Walton County Commission Meeting Summary • Walton County",
-      "sha256": "155903db7134e3579d768cfe493229b7551eec4d5ef8cddad33a2f526829b39b"
-    },
-    {
-      "url": "https://www.mywaltonfl.gov/m/newsflash/home/detail/3483",
-      "httpStatus": 200,
-      "contentType": "text/html; charset=utf-8",
-      "pageTitle": "Walton County Commission Recognizes Community Supporters • Walton County",
-      "sha256": "91b036ea0ee5baf9ba3a57a6ee3c6eba73bcd74c226316f185dbe07f12c7d87d"
-    },
-    {
-      "url": "https://www.mywaltonfl.gov/m/newsflash/home/detail/3482",
-      "httpStatus": 200,
-      "contentType": "text/html; charset=utf-8",
-      "pageTitle": "Walton County Commission celebrates three area restaurants • Walton County",
-      "sha256": "873013d8fb73570873cd0d5b81a161bf1fcef7cfba0345c5c826092225cf72f7"
-    },
-    {
-      "url": "https://www.mywaltonfl.gov/m/newsflash/home/detail/3481",
-      "httpStatus": 200,
-      "contentType": "text/html; charset=utf-8",
-      "pageTitle": "Walton County Commission Sets Budget Workshop Schedule • Walton County",
-      "sha256": "76ede2614510b3c29a8f2e009e0fef998440682e6f9fd669a2849cbdda9f14c7"
-    },
-    {
-      "url": "https://www.mywaltonfl.gov/m/newsflash/Home/Detail/3483",
-      "httpStatus": 200,
-      "contentType": "text/html; charset=utf-8",
-      "pageTitle": "Walton County Commission Recognizes Community Supporters • Walton County",
-      "sha256": "91b036ea0ee5baf9ba3a57a6ee3c6eba73bcd74c226316f185dbe07f12c7d87d"
-    },
-    {
-      "url": "https://www.mywaltonfl.gov/m/newsflash/Home/Detail/3482",
-      "httpStatus": 200,
-      "contentType": "text/html; charset=utf-8",
-      "pageTitle": "Walton County Commission celebrates three area restaurants • Walton County",
-      "sha256": "873013d8fb73570873cd0d5b81a161bf1fcef7cfba0345c5c826092225cf72f7"
-    },
-    {
-      "url": "https://www.mywaltonfl.gov/m/newsflash/Home/Detail/3487",
-      "httpStatus": 200,
-      "contentType": "text/html; charset=utf-8",
-      "pageTitle": "Walton County Commission Meeting Summary • Walton County",
-      "sha256": "155903db7134e3579d768cfe493229b7551eec4d5ef8cddad33a2f526829b39b"
+      "pageTitle": "Walton County Commissioners Recognized Three Superlative Employees at recent meeting • Walton County",
+      "sha256": "d083547cd81894180f4a37baa3aab9ae6fed614859dfd476804790d8ec2d6be3"
     }
   ],
   "sourceCandidates": {
     "county_commission_directory": [
       {
-        "url": "https://www.mywaltonfl.gov/CivicAlerts.aspx?AID=3481",
-        "label": "Walton County Commission Sets Budget Workshop Schedule",
+        "url": "https://www.mywaltonfl.gov/CivicAlerts.aspx?AID=3533",
+        "label": "Walton County Commissioners Recognized Three Superlative Employees at recent meeting",
         "discoveredOn": "https://www.mywaltonfl.gov/",
-        "score": 22,
-        "sameHost": true,
-        "reviewStatus": "unreviewed"
-      },
-      {
-        "url": "https://www.mywaltonfl.gov/CivicAlerts.aspx?AID=3482",
-        "label": "Walton County Commission celebrates three area restaurants",
-        "discoveredOn": "https://www.mywaltonfl.gov/",
-        "score": 22,
-        "sameHost": true,
-        "reviewStatus": "unreviewed"
-      },
-      {
-        "url": "https://www.mywaltonfl.gov/CivicAlerts.aspx?AID=3483",
-        "label": "Walton County Commission Recognizes Community Supporters",
-        "discoveredOn": "https://www.mywaltonfl.gov/",
-        "score": 22,
-        "sameHost": true,
-        "reviewStatus": "unreviewed"
-      },
-      {
-        "url": "https://www.mywaltonfl.gov/CivicAlerts.aspx?AID=3487",
-        "label": "Walton County Commission Meeting Summary",
-        "discoveredOn": "https://www.mywaltonfl.gov/",
-        "score": 22,
-        "sameHost": true,
-        "reviewStatus": "unreviewed"
-      },
-      {
-        "url": "https://www.mywaltonfl.gov/m/newsflash/Home/Detail/3482",
-        "label": "Walton County Commission celebrates three area restaurants",
-        "discoveredOn": "https://www.mywaltonfl.gov/m/newsflash/home/detail/3487",
-        "score": 22,
-        "sameHost": true,
-        "reviewStatus": "unreviewed"
-      },
-      {
-        "url": "https://www.mywaltonfl.gov/m/newsflash/Home/Detail/3483",
-        "label": "Walton County Commission Recognizes Community Supporters",
-        "discoveredOn": "https://www.mywaltonfl.gov/m/newsflash/home/detail/3487",
-        "score": 22,
-        "sameHost": true,
-        "reviewStatus": "unreviewed"
-      },
-      {
-        "url": "https://www.mywaltonfl.gov/m/newsflash/Home/Detail/3487",
-        "label": "Walton County Commission Meeting Summary",
-        "discoveredOn": "https://www.mywaltonfl.gov/m/newsflash/home/detail/3483",
-        "score": 22,
+        "score": 28,
         "sameHost": true,
         "reviewStatus": "unreviewed"
       }

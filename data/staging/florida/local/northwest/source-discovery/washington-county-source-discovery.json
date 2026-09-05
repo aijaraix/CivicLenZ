@@ -8,7 +8,7 @@
   "finalRootUrl": "https://www.washingtonfl.com/",
   "rootSeedStatus": "reachable_official_site",
   "sitePlatformHint": "wordpress_or_custom",
-  "fetchedAt": "2026-07-16T07:22:38Z",
+  "fetchedAt": "2026-09-05T13:33:19Z",
   "collectionStatus": "success",
   "publicationAllowed": false,
   "reviewStatus": "unreviewed",
@@ -18,98 +18,98 @@
       "httpStatus": 200,
       "contentType": "text/html; charset=utf-8",
       "pageTitle": "Washington County Florida County Commission",
-      "sha256": "06960117a851eb3708a3c51c06f7c534ddb68cae2bf05413a8fc861cb499a5a6"
+      "sha256": "e08349c791c207083541f1b3d36edc54409dc45e6a7e552bc40480cbdc600414"
     },
     {
       "url": "https://www.washingtonfl.com/news/1460/",
       "httpStatus": 200,
       "contentType": "text/html; charset=utf-8",
       "pageTitle": "",
-      "sha256": "236fa0d5474e0d60e4e7c8017abe2b13f89443b5ecf9c7b77d8c69292d3326c9"
+      "sha256": "4d5d4bd66bd1f1c615b7ed3f1298238f50d506ddda967c795a40f2af210753f5"
     },
     {
       "url": "https://www.washingtonfl.com/departments/commission/about/",
       "httpStatus": 200,
       "contentType": "text/html; charset=utf-8",
       "pageTitle": "Washington County Board of County Commissioners",
-      "sha256": "18b37c4ca0a978cf1751cd31fca6285fedb8b5e12fc84c345bd2af67b63811de"
+      "sha256": "1ab7b0f662b365764327e1105be48873a0dbd9b6778e49399a6cf8039b1670a8"
     },
     {
       "url": "https://www.washingtonfl.com/departments/washington-county-florida-sheriffs-department/washington-county-sheriffs-department/",
       "httpStatus": 200,
       "contentType": "text/html; charset=utf-8",
       "pageTitle": "Washington County Florida Sheriff",
-      "sha256": "37301818b6fdcdcd2b8262fb912ab3922c420f0daa38343275374c5d3bc8d5a4"
+      "sha256": "7e4af1d6ddf96ba2d504dd8319e3eebc5bfcdeeab04d1c32fe86ed0eb8cc8e88"
     },
     {
       "url": "https://www.washingtonfl.com/departments/commission/about/",
       "httpStatus": 200,
       "contentType": "text/html; charset=utf-8",
       "pageTitle": "Washington County Board of County Commissioners",
-      "sha256": "18b37c4ca0a978cf1751cd31fca6285fedb8b5e12fc84c345bd2af67b63811de"
+      "sha256": "1ab7b0f662b365764327e1105be48873a0dbd9b6778e49399a6cf8039b1670a8"
     },
     {
       "url": "https://www.washingtonfl.com/news/bocc/press-release-washington-county-bocc-shares-resources-for-sunny-hills-water-customers-2/",
       "httpStatus": 200,
       "contentType": "text/html; charset=utf-8",
       "pageTitle": "",
-      "sha256": "456ecaaeb9538240a5935e7e697ae2dee12ec251d3949e1ebbee715421d0b7f5"
+      "sha256": "0f5532cad3d5c4ebb5d9b5a779f98d425c53ef05fa46537d9ba5b3415ec64946"
+    },
+    {
+      "url": "https://www.washingtonfl.com/news/bocc/press-release-uf-ifas-extension-to-host-meet-and-connect-with-extension-community-open-house/",
+      "httpStatus": 200,
+      "contentType": "text/html; charset=utf-8",
+      "pageTitle": "",
+      "sha256": "cb60491ab857bd6f6ba394dab2c2715ea350915165fe04ad048ad6bd6467847a"
+    },
+    {
+      "url": "https://www.washingtonfl.com/news/bocc/press-release-uf-ifas-extension-to-host-free-cool-season-wildlife-food-plot-workshop/",
+      "httpStatus": 200,
+      "contentType": "text/html; charset=utf-8",
+      "pageTitle": "",
+      "sha256": "02f1a6034145692e1667382155735381752cc8ee456331d776e57286ea039b5a"
+    },
+    {
+      "url": "https://www.washingtonfl.com/news/bocc/press-release-washington-county-seeking-volunteer-for-value-adjustment-board/",
+      "httpStatus": 200,
+      "contentType": "text/html; charset=utf-8",
+      "pageTitle": "",
+      "sha256": "2900e1b254527de46c469dc6eab1811b876ca1d81b768175901f865cdec67294"
+    },
+    {
+      "url": "https://www.washingtonfl.com/news/bocc/press-release-commissioner-david-pettis-jr-achieves-advanced-county-commissioner-level-1-designation-program/",
+      "httpStatus": 200,
+      "contentType": "text/html; charset=utf-8",
+      "pageTitle": "",
+      "sha256": "b4331ff5fc8d1d8c344a1760f22a1badc06fcfbc835aee29f458d366bee3298a"
+    },
+    {
+      "url": "https://www.washingtonfl.com/news/bocc/press-release-commissioner-ashlynn-marquez-pursues-local-government-education/",
+      "httpStatus": 200,
+      "contentType": "text/html; charset=utf-8",
+      "pageTitle": "",
+      "sha256": "2310211414d6907aa61506484be3b495a5f01c3f754f467ff4cb6716daf3f33b"
+    },
+    {
+      "url": "https://www.washingtonfl.com/news/bocc/special-magistrate-hearing-will-be-held-june-30-2026/",
+      "httpStatus": 200,
+      "contentType": "text/html; charset=utf-8",
+      "pageTitle": "",
+      "sha256": "fb184ae01024701a9c7c9548bdce0680ce6bb03ce57ba14731a20c5b41d40e6c"
     },
     {
       "url": "https://www.washingtonfl.com/news/bocc/washington-county-announces-extended-independence-day-holiday/",
       "httpStatus": 200,
       "contentType": "text/html; charset=utf-8",
       "pageTitle": "",
-      "sha256": "c3e61be726e0cb5cea33c3f84dc9d193cc6a4649222790ab94f9683c55195619"
+      "sha256": "7a54b88e614bf70ed23631a6515b1471f0eb0a63b3680683564fe5be5cfc4c49"
     },
     {
       "url": "https://www.washingtonfl.com/news/bocc/special-magistrate-hearing-06.30.26/",
       "httpStatus": 200,
       "contentType": "text/html; charset=utf-8",
       "pageTitle": "",
-      "sha256": "1e1f3d74f50a52950e8c1087732867b30ce6e6fb427975e7e8135b027967b6f9"
-    },
-    {
-      "url": "https://www.washingtonfl.com/news/bocc/washington-county-board-of-county-commissioners-to-host-sunny-hills-community-meeting/",
-      "httpStatus": 200,
-      "contentType": "text/html; charset=utf-8",
-      "pageTitle": "",
-      "sha256": "360d501b8dcb1d401502d9baba8f7f76b1995bb0ca11e53666e9a3ba771350ab"
-    },
-    {
-      "url": "https://www.washingtonfl.com/news/bocc/press-release-melons-and-music-and-comin-in-hot-for-the-70th-annual-panhandle-watermelon-festival/",
-      "httpStatus": 200,
-      "contentType": "text/html; charset=utf-8",
-      "pageTitle": "",
-      "sha256": "23ce4a0c6cd8f8992b9f33f971e265e781cc6bb4171d2400c00486c502bcfdab"
-    },
-    {
-      "url": "https://www.washingtonfl.com/news/bocc/press-release-washington-county-introduces-new-business-to-community-commissioners-approve-tax-incentive-on-major-expansion-in/",
-      "httpStatus": 200,
-      "contentType": "text/html; charset=utf-8",
-      "pageTitle": "",
-      "sha256": "0abade6d9d663efd3e0d4bacec21b63d93c77f21ae3bcf1bd8985563f3d4f9cf"
-    },
-    {
-      "url": "https://www.washingtonfl.com/news/bocc/press-release-washington-county-tdc-to-launch-a-revolution-road-driving-tour-for-america-250/",
-      "httpStatus": 200,
-      "contentType": "text/html; charset=utf-8",
-      "pageTitle": "",
-      "sha256": "a81996b8ba205dbdc2fc200a09218c30c58b0abbe3d9bec96f2d89ad972738ce"
-    },
-    {
-      "url": "https://www.washingtonfl.com/news/bocc/notice-of-postponement-hunter-park-splash-pad-grand-opening/",
-      "httpStatus": 200,
-      "contentType": "text/html; charset=utf-8",
-      "pageTitle": "",
-      "sha256": "a976835034af98bd900297e738dac055d042d4102c9a4d3e1814149c69e3d1e6"
-    },
-    {
-      "url": "https://www.washingtonfl.com/news/bocc/press-release-washington-county-celebrates-national-public-works-week-honors-dedicated-team/",
-      "httpStatus": 200,
-      "contentType": "text/html; charset=utf-8",
-      "pageTitle": "",
-      "sha256": "65cd789c43592114cb4ac74e9254caac1f9d3ae55120d770ca844e8b14c5e7b9"
+      "sha256": "0aa2b95e5cef3895d49a1f8b476c1eb07d7f4e6e801899d8d41a72fd0592ff22"
     }
   ],
   "sourceCandidates": {
@@ -127,6 +127,14 @@
         "label": "County Commission",
         "discoveredOn": "https://www.washingtonfl.com/",
         "score": 21,
+        "sameHost": true,
+        "reviewStatus": "unreviewed"
+      },
+      {
+        "url": "https://www.washingtonfl.com/news/bocc/press-release-commissioner-david-pettis-jr-achieves-advanced-county-commissioner-level-1-designation-program/",
+        "label": "PRESS RELEASE: Commissioner David Pettis, Jr. Achieves Advanced County Commissioner Level 1 Designation Program",
+        "discoveredOn": "https://www.washingtonfl.com/news/1460/",
+        "score": 20,
         "sameHost": true,
         "reviewStatus": "unreviewed"
       },
@@ -163,16 +171,8 @@
         "reviewStatus": "unreviewed"
       },
       {
-        "url": "https://www.washingtonfl.com/news/bocc/on-thursday-april-28th-2026-a-special-magistrate-hearing/",
-        "label": "On Thursday, April 28th , 2026, a Special Magistrate Hearing",
-        "discoveredOn": "https://www.washingtonfl.com/news/1460/",
-        "score": 17,
-        "sameHost": true,
-        "reviewStatus": "unreviewed"
-      },
-      {
-        "url": "https://www.washingtonfl.com/news/bocc/oneblood-blood-drive-wcbocc-hosting-april-27-2026/",
-        "label": "OneBlood Blood Drive - WCBOCC Hosting April 27, 2026",
+        "url": "https://www.washingtonfl.com/news/bocc/press-release-commissioner-ashlynn-marquez-pursues-local-government-education/",
+        "label": "PRESS RELEASE: Commissioner Ashlynn Marquez Pursues Local Government Education",
         "discoveredOn": "https://www.washingtonfl.com/news/1460/",
         "score": 17,
         "sameHost": true,
@@ -187,9 +187,17 @@
         "reviewStatus": "unreviewed"
       },
       {
-        "url": "https://www.washingtonfl.com/news/bocc/press-release-washington-county-announces-first-major-economic-development-project-at-industrial-rail-park/",
-        "label": "Press Release Washington County Announces First Major Economic Development Project at Industrial Rail Park",
-        "discoveredOn": "https://www.washingtonfl.com/news/1460/",
+        "url": "https://www.washingtonfl.com/news/bocc/press-release-uf-ifas-extension-to-host-free-cool-season-wildlife-food-plot-workshop/",
+        "label": "PRESS RELEASE: UF/IFAS Extension to Host Free Cool-Season Wildlife Food Plot Workshop",
+        "discoveredOn": "https://www.washingtonfl.com/",
+        "score": 17,
+        "sameHost": true,
+        "reviewStatus": "unreviewed"
+      },
+      {
+        "url": "https://www.washingtonfl.com/news/bocc/press-release-uf-ifas-extension-to-host-meet-and-connect-with-extension-community-open-house/",
+        "label": "PRESS RELEASE: UF/IFAS Extension to Host Meet and Connect with Extension Community Open House",
+        "discoveredOn": "https://www.washingtonfl.com/",
         "score": 17,
         "sameHost": true,
         "reviewStatus": "unreviewed"
@@ -211,8 +219,8 @@
         "reviewStatus": "unreviewed"
       },
       {
-        "url": "https://www.washingtonfl.com/news/bocc/press-release-washington-county-encourages-residents-to-improve-address-visibility-for-faster-emergency-response/",
-        "label": "Press Release Washington County Encourages Residents to Improve Address Visibility for Faster Emergency Response",
+        "url": "https://www.washingtonfl.com/news/bocc/press-release-washington-county-seeking-volunteer-for-value-adjustment-board/",
+        "label": "PRESS RELEASE: Washington County Seeking Volunteer for Value Adjustment Board",
         "discoveredOn": "https://www.washingtonfl.com/news/1460/",
         "score": 17,
         "sameHost": true,
@@ -227,17 +235,17 @@
         "reviewStatus": "unreviewed"
       },
       {
-        "url": "https://www.washingtonfl.com/news/bocc/press-release-washington-county-to-celebrate-grand-opening-of-new-splash-pad-at-hunter-park/",
-        "label": "Press Release Washington County to Celebrate Grand Opening of New Splash Pad at Hunter Park",
+        "url": "https://www.washingtonfl.com/news/bocc/special-magistrate-hearing-06.30.26/",
+        "label": "Special Magistrate Hearing 06.30.26",
         "discoveredOn": "https://www.washingtonfl.com/news/1460/",
         "score": 17,
         "sameHost": true,
         "reviewStatus": "unreviewed"
       },
       {
-        "url": "https://www.washingtonfl.com/news/bocc/special-magistrate-hearing-06.30.26/",
-        "label": "Special Magistrate Hearing 06.30.26",
-        "discoveredOn": "https://www.washingtonfl.com/",
+        "url": "https://www.washingtonfl.com/news/bocc/special-magistrate-hearing-will-be-held-june-30-2026/",
+        "label": "Special Magistrate Hearing will be held June 30, 2026",
+        "discoveredOn": "https://www.washingtonfl.com/news/1460/",
         "score": 17,
         "sameHost": true,
         "reviewStatus": "unreviewed"
@@ -245,15 +253,7 @@
       {
         "url": "https://www.washingtonfl.com/news/bocc/washington-county-announces-extended-independence-day-holiday/",
         "label": "Washington County Announces Extended Independence Day Holiday Closure in Celebration of America's 250th Celebration",
-        "discoveredOn": "https://www.washingtonfl.com/",
-        "score": 17,
-        "sameHost": true,
-        "reviewStatus": "unreviewed"
-      },
-      {
-        "url": "https://www.washingtonfl.com/site/assets/files/3013/washington_county_board_of_county_commissioners_76063_3.pdf",
-        "label": "OneBlood Bus at Annex Thursday, July 30, 2026",
-        "discoveredOn": "https://www.washingtonfl.com/",
+        "discoveredOn": "https://www.washingtonfl.com/news/1460/",
         "score": 17,
         "sameHost": true,
         "reviewStatus": "unreviewed"

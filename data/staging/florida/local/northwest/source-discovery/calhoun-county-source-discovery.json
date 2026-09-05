@@ -8,7 +8,7 @@
   "finalRootUrl": "https://www.calhouncountyfl.gov/",
   "rootSeedStatus": "reachable_official_site",
   "sitePlatformHint": "unknown",
-  "fetchedAt": "2026-07-16T07:22:33Z",
+  "fetchedAt": "2026-09-05T13:33:17Z",
   "collectionStatus": "success",
   "publicationAllowed": false,
   "reviewStatus": "unreviewed",
@@ -18,14 +18,14 @@
       "httpStatus": 200,
       "contentType": "text/html; charset=UTF-8",
       "pageTitle": "Calhoun County, Florida | Commissioners, Officials & Information",
-      "sha256": "48be611fc3bdae36520b6735d97d9709a7d6ee93254aed7411edb792dc0f345d"
+      "sha256": "0a3403e5970788ee4f60d7614cbe4cedd704a233756df4f4781dfd942e381716"
     },
     {
       "url": "https://www.calhouncountyfl.gov/government/",
       "httpStatus": 200,
       "contentType": "text/html; charset=UTF-8",
       "pageTitle": "Government | Calhoun County, Florida",
-      "sha256": "7f8146e7568bccef1c6832459e1c76b75bc171ebc716b01bd6d0102c5601475d"
+      "sha256": "52867dce7d140a00f488d0e1dd6f39f414e4360f2695854ad18d7421261b147f"
     }
   ],
   "sourceCandidates": {
