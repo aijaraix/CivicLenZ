@@ -128,6 +128,7 @@ export type ReceiverConfig = {
   maxClockSkewMs: number;
   spoolDirectory: string;
   bridgeSecret: string;
+  intakePaused?: boolean;
   registry: ProducerRegistry;
 };
 

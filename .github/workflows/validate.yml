@@ -47,5 +47,8 @@ jobs:
       - name: HERMES harvester ingest contract tests
         run: npm run test:hermes-ingest
 
+      - name: HERMES observation and recovery tests
+        run: python3 -m unittest discover -s tests -p test_hermes_observer.py
+
       - name: Build
         run: npm run build

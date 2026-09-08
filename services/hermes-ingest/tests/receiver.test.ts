@@ -1,6 +1,6 @@
 import assert from "node:assert/strict";
 import { createHash } from "node:crypto";
-import { mkdtemp, rm } from "node:fs/promises";
+import { mkdtemp, readdir, rm } from "node:fs/promises";
 import os from "node:os";
 import path from "node:path";
 import test from "node:test";
@@ -134,6 +134,23 @@ test("valid authenticated submission is accepted for validation", async () => {
     assert.equal(result.statusCode, 202);
     assert.equal(result.acknowledgement.acknowledgement_state, "ACCEPTED_FOR_VALIDATION");
     assert.ok(result.acknowledgement.receipt_id);
+  } finally {
+    await dispose(harness.directory);
+  }
+});
+
+test("intake pause still authenticates but never creates a receipt", async () => {
+  const harness = await receiver();
+  try {
+    harness.receiver.config.intakePaused = true;
+    const body = bodyFor(payload());
+    const denied = await harness.receiver.handle({}, body);
+    assert.equal(denied.statusCode, 401);
+    const paused = await harness.receiver.handle(headersFor(body), body);
+    assert.equal(paused.statusCode, 503);
+    assert.equal(paused.acknowledgement.acknowledgement_state, "RETRY_LATER");
+    assert.equal(paused.acknowledgement.receipt_id, undefined);
+    assert.deepEqual(await readdir(path.join(harness.directory, "receipts")), []);
   } finally {
     await dispose(harness.directory);
   }

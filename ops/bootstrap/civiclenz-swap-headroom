@@ -1,0 +1,23 @@
+#!/bin/bash
+# Root-only setup; adds dedicated safety swap without touching existing swap.
+set -euo pipefail
+[[ $(id -u) == 0 ]] || exit 1
+target=/opt/civiclenz/runtime/safety.swap
+if swapon --noheadings --show=NAME | grep -Fxq "$target"; then
+  echo 'CivicLenZ safety swap already active.'
+  exit 0
+fi
+if [[ -e "$target" ]]; then
+  echo 'Existing inactive safety swap requires inspection; preserved.' >&2
+  exit 1
+fi
+available=$(df --output=avail -B1 /opt/civiclenz/runtime | tail -1)
+(( available > 15 * 1024 * 1024 * 1024 )) || exit 1
+umask 077
+fallocate -l 2G "$target"
+chmod 0600 "$target"
+mkswap "$target" >/dev/null
+swapon "$target"
+cp -p /etc/fstab "/opt/civiclenz/backups/fstab-before-safety-swap-$(date -u +%Y%m%dT%H%M%SZ)"
+printf '%s none swap sw,nofail 0 0\n' "$target" >> /etc/fstab
+echo 'CivicLenZ safety swap active and configured for reboot.'

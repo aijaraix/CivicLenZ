@@ -51,10 +51,16 @@ create table if not exists civiclenz_internal.harvester_intake_receipts (
   research_work_identity text not null,
   research_reservation_id text,
   result_content_hash text not null check (result_content_hash ~ '^[a-f0-9]{64}$'),
+  extraction_status text not null default 'extracted_unreviewed'
+    check (extraction_status = 'extracted_unreviewed'),
   acknowledgement_state text not null,
   intake_state text not null default 'PENDING_CANONICAL_DISPATCH',
   received_at timestamptz not null,
-  payload jsonb not null,
+  payload jsonb not null check (
+    jsonb_typeof(payload) = 'object'
+    and payload ? 'extraction_status'
+    and coalesce(payload->>'extraction_status' = 'extracted_unreviewed', false)
+  ),
   created_at timestamptz not null default now(),
   updated_at timestamptz not null default now(),
   unique (producer_id, job_id),
@@ -81,14 +87,15 @@ create table if not exists civiclenz_internal.harvester_evidence_metadata (
 
 create table if not exists civiclenz_internal.canonical_dispatch_outbox (
   outbox_id uuid primary key default gen_random_uuid(),
-  receipt_id uuid not null unique references civiclenz_internal.harvester_intake_receipts(receipt_id) on delete cascade,
+  receipt_id uuid not null references civiclenz_internal.harvester_intake_receipts(receipt_id) on delete cascade,
   target text not null check (target in ('R2_RAW_EVIDENCE', 'SUPABASE_EXTRACTED_UNREVIEWED', 'RESEARCH_WORK_LEDGER')),
   state text not null default 'PENDING',
   attempt_count integer not null default 0 check (attempt_count >= 0),
   next_attempt_at timestamptz,
   last_error_class text,
   created_at timestamptz not null default now(),
-  updated_at timestamptz not null default now()
+  updated_at timestamptz not null default now(),
+  unique (receipt_id, target)
 );
 
 create index if not exists harvester_intake_receipts_pending_idx

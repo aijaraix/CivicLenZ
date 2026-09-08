@@ -1,5 +1,6 @@
 import { readFile } from "node:fs/promises";
 import path from "node:path";
+import { loadBridgeSecret } from "./auth.ts";
 
 import { createHermesIngestServer } from "./server.ts";
 import type { ProducerRegistry, ReceiverConfig } from "./types.ts";
@@ -34,7 +35,8 @@ async function main(): Promise<void> {
     retryAfterSeconds: boundedInteger("HERMES_INGEST_RETRY_AFTER_SECONDS", 60, 1, 3600),
     maxClockSkewMs: boundedInteger("HERMES_INGEST_MAX_CLOCK_SKEW_MS", 5 * 60 * 1000, 10_000, 60 * 60 * 1000),
     spoolDirectory: process.env.HERMES_INGEST_SPOOL_DIRECTORY ?? "/var/lib/civiclenz/hermes-ingest",
-    bridgeSecret: requiredEnvironment("CIVICLENZ_HARVESTER_SHARED_SECRET"),
+    bridgeSecret: loadBridgeSecret(requiredEnvironment("CIVICLENZ_HARVESTER_SHARED_SECRET")),
+    intakePaused: process.env.HERMES_INGEST_INTAKE_PAUSED === "true",
     registry: await loadRegistry(registryPath),
   };
   if (config.bindHost !== "127.0.0.1" && config.bindHost !== "::1") {

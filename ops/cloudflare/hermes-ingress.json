@@ -1,0 +1,13 @@
+{
+  "config": {
+    "ingress": [
+      {
+        "hostname": "ingest.civicslenz.com",
+        "path": "^/v1/harvester/(results|health)$",
+        "service": "http://127.0.0.1:8788",
+        "originRequest": { "connectTimeout": 10 }
+      },
+      { "service": "http_status:404" }
+    ]
+  }
+}

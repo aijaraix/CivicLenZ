@@ -93,6 +93,17 @@ export class HermesIngestReceiver {
     }
     await this.spool.recordOutcome("authentication_success", { producer_id: authentication.producerId }).catch(() => undefined);
 
+    if (this.config.intakePaused) {
+      await this.spool.recordOutcome("retry_later").catch(() => undefined);
+      return {
+        statusCode: 503,
+        acknowledgement: acknowledgement("RETRY_LATER", correlationId, {
+          retry_after_seconds: this.config.retryAfterSeconds,
+          reasons: ["canonical intake is paused pending corrected interoperability canary"],
+        }),
+      };
+    }
+
     let parsed: unknown;
     try {
       parsed = JSON.parse(rawBody.toString("utf8"));

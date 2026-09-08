@@ -1,0 +1,32 @@
+[Unit]
+Description=CivicLenZ HERMES Prime observation runtime
+Wants=network-online.target
+After=network-online.target civiclenz-hermes-ingest.service
+
+[Service]
+Type=simple
+User=civiclenz
+Group=civiclenz
+ExecStart=/usr/bin/python3 /opt/civiclenz/hermes/current/observer.py
+Restart=on-failure
+RestartSec=5
+TimeoutStopSec=40
+StateDirectory=civiclenz/hermes-prime
+StateDirectoryMode=0700
+UMask=0077
+NoNewPrivileges=yes
+PrivateTmp=yes
+ProtectHome=yes
+ProtectSystem=strict
+ProtectKernelTunables=yes
+ProtectKernelModules=yes
+ProtectControlGroups=yes
+RestrictSUIDSGID=yes
+RestrictAddressFamilies=AF_UNIX AF_INET AF_INET6
+ReadOnlyPaths=/var/lib/civiclenz/hermes-ingest
+MemoryMax=192M
+CPUQuota=25%
+TasksMax=32
+
+[Install]
+WantedBy=multi-user.target
