@@ -64,7 +64,7 @@ def local_receiver_health():
 def observe(spool):
     measured = resources()
     receipts = spool / "receipts"
-    count = sum(1 for p in receipts.iterdir() if p.is_file()) if receipts.exists() else 0
+    count = sum(1 for p in receipts.iterdir() if p.is_file() and p.suffix == ".json") if receipts.exists() else 0
     return {"version": VERSION, "mode": "OBSERVATION_NO_DISPATCH",
             "observed_at": time.time(), "resources": measured,
             "governor": governor(measured["memory_available_bytes"], measured["disk_free_bytes"],

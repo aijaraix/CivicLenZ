@@ -1,0 +1,32 @@
+[Unit]
+Description=CivicLenZ localhost Qwen3 4B reasoning utility
+After=network-online.target
+ConditionPathExists=/opt/civiclenz/models/Qwen3-4B-Q4_K_M.gguf
+
+[Service]
+Type=simple
+User=civiclenz
+Group=civiclenz
+ExecStart=/opt/civiclenz/runtime/llama.cpp-5266f24da75dc449bd56cbed7addb9c8e4a6a73e/build/bin/llama-server --model /opt/civiclenz/models/Qwen3-4B-Q4_K_M.gguf --alias qwen3-4b --host 127.0.0.1 --port 8081 --ctx-size 16384 --parallel 1 --threads 3 --threads-batch 3 --jinja
+Restart=on-failure
+RestartSec=10
+TimeoutStopSec=40
+UMask=0077
+NoNewPrivileges=yes
+PrivateTmp=yes
+ProtectHome=yes
+ProtectSystem=strict
+InaccessiblePaths=/etc/civiclenz /var/lib/civiclenz/hermes-ingest
+ProtectKernelTunables=yes
+ProtectKernelModules=yes
+ProtectControlGroups=yes
+RestrictSUIDSGID=yes
+RestrictAddressFamilies=AF_UNIX AF_INET AF_INET6
+IPAddressDeny=any
+IPAddressAllow=localhost
+MemoryMax=6G
+CPUQuota=300%
+TasksMax=64
+
+[Install]
+WantedBy=multi-user.target

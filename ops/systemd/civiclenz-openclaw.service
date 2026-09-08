@@ -1,0 +1,38 @@
+[Unit]
+Description=CivicLenZ private OpenClaw gateway
+After=network-online.target civiclenz-qwen.service
+Wants=network-online.target
+ConditionPathExists=/etc/civiclenz-openclaw/gateway.env
+
+[Service]
+Type=simple
+User=civiclenz-openclaw
+Group=civiclenz-openclaw
+Environment=PATH=/opt/civiclenz/runtime/node/bin:/usr/bin:/bin
+Environment=OPENCLAW_CONFIG_PATH=/etc/civiclenz-openclaw/openclaw.json
+Environment=OPENCLAW_STATE_DIR=/var/lib/civiclenz-openclaw
+EnvironmentFile=/etc/civiclenz-openclaw/gateway.env
+ExecStart=/opt/civiclenz/runtime/node/bin/node /opt/civiclenz/openclaw/2026.9.3/node_modules/openclaw/openclaw.mjs gateway run
+Restart=on-failure
+RestartSec=10
+TimeoutStopSec=40
+UMask=0077
+NoNewPrivileges=yes
+PrivateTmp=yes
+ProtectHome=yes
+ProtectSystem=strict
+ReadWritePaths=/var/lib/civiclenz-openclaw
+InaccessiblePaths=/etc/civiclenz /var/lib/civiclenz/hermes-ingest
+ProtectKernelTunables=yes
+ProtectKernelModules=yes
+ProtectControlGroups=yes
+RestrictSUIDSGID=yes
+RestrictAddressFamilies=AF_UNIX AF_INET AF_INET6
+IPAddressDeny=any
+IPAddressAllow=localhost
+MemoryMax=1536M
+CPUQuota=50%
+TasksMax=128
+
+[Install]
+WantedBy=multi-user.target

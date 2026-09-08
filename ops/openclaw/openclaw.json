@@ -1,0 +1,44 @@
+{
+  "gateway": {
+    "mode": "local",
+    "bind": "loopback",
+    "port": 18789,
+    "auth": { "mode": "token" },
+    "controlUi": { "enabled": false }
+  },
+  "agents": {
+    "defaults": {
+      "workspace": "/var/lib/civiclenz-openclaw/workspace",
+      "model": { "primary": "civiclenz-local/qwen3-4b" },
+      "heartbeat": { "every": "0m" },
+      "maxConcurrent": 1
+    }
+  },
+  "models": {
+    "mode": "replace",
+    "providers": {
+      "civiclenz-local": {
+        "baseUrl": "http://127.0.0.1:8081/v1",
+        "apiKey": "localhost-no-auth",
+        "api": "openai-completions",
+        "models": [{
+          "id": "qwen3-4b",
+          "name": "Qwen3 4B local utility",
+          "reasoning": false,
+          "input": ["text"],
+          "contextWindow": 16384,
+          "maxTokens": 1024,
+          "cost": { "input": 0, "output": 0, "cacheRead": 0, "cacheWrite": 0 }
+        }]
+      }
+    }
+  },
+  "tools": {
+    "profile": "minimal",
+    "deny": ["group:runtime", "group:fs", "group:web", "group:automation", "sessions_spawn", "sessions_send"],
+    "elevated": { "enabled": false }
+  },
+  "plugins": { "enabled": false },
+  "browser": { "enabled": false },
+  "discovery": { "mdns": { "mode": "off" } }
+}

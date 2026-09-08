@@ -53,3 +53,53 @@ No real Harvester canary had been submitted when this slice was prepared. An
 existing producer package and access to its delivery/acknowledgment controls are
 still required. The canonical intake URL is
 `https://ingest.civicslenz.com/v1/harvester/results`.
+
+### Copy-format compatibility and corrected-canary hold
+
+The legacy hidden-entry helper could persist Markdown delimiters. The loader
+removes exactly one pair of backticks around exactly 64 hexadecimal characters.
+Other secret values are byte-preserved. Hex characters are used as UTF-8 key
+text, never hex-decoded. This selects one effective key; it does not accept both
+the wrapped and unwrapped key. The stored environment file is not rewritten.
+
+`HERMES_INGEST_INTAKE_PAUSED=true` retains HTTP 401 for unauthenticated requests.
+Authenticated requests receive HTTP 503 / RETRY_LATER without any receipt or
+evidence write. It is used while the producer corrects the canary's Seat-to-
+Occupancy mapping. Do not lift this hold merely because authentication works.
+Select and review the corrected existing result first; run one real delivery,
+then trace its persisted acknowledgment and canonical downstream state.
+
+## Additional Stage 2 components
+
+OpenClaw 2026.9.3 uses a separate non-login `civiclenz-openclaw` identity, with
+traverse-only ACLs to public runtime executables. It cannot read the bridge or
+Cloudflare secrets. Its own gateway credential is distinct and stays in
+`/etc/civiclenz-openclaw/gateway.env`. No secret value belongs in Git. The local
+config disables plugins, browser, public control UI, automatic model heartbeats,
+and execution/filesystem/web/automation tools. HERMES tool integration is pending.
+Systemd permits only localhost network access. Package installation uses a pinned
+version and retains its npm lockfile on the VPS; package code becomes root-owned
+after unprivileged installation.
+
+Qwen3-4B Q4_K_M is obtained from the official Qwen model repository at revision
+`bc640142c66e1fdd12af0bd68f40445458f3869b`, SHA-256
+`7485fe6f11af29433bc51cab58009521f205840f5b4ae3a32fa7f92e8534fdf5`.
+llama.cpp is built from commit `5266f24da75dc449bd56cbed7addb9c8e4a6a73e`
+(tag `v0.4.0`) using CMake Release, static libraries, two build threads, and only
+the llama-server target. The service binds 127.0.0.1:8081, one inference slot,
+16,384 context tokens, three compute threads, 6 GiB memory ceiling, and three CPU
+equivalents. This is a reasoning utility, not a verification capability.
+
+`ops/bootstrap/civiclenz-swap-headroom` adds 2 GiB dedicated safety swap and a
+reboot entry, preserving existing swap and backing up fstab. It refuses to
+overwrite an existing inactive swap file. Docker/Compose use Ubuntu packages;
+no service identity receives membership in the root-equivalent Docker group.
+
+These service definitions establish supervision, not full Stage 2 acceptance:
+physical model inference, restart tests, and final host reboot recovery must be
+recorded separately. Queue/R2/Supabase dispatch and canonical work scheduling
+remain unimplemented in this slice.
+
+References: [llama.cpp build instructions](https://github.com/ggml-org/llama.cpp/blob/master/docs/build.md),
+[official Qwen model](https://huggingface.co/Qwen/Qwen3-4B-GGUF),
+[OpenClaw security](https://docs.openclaw.ai/gateway/security).

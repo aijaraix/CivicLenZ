@@ -1,5 +1,11 @@
 import { createHmac, timingSafeEqual } from "node:crypto";
 
+// Legacy hidden entry could preserve copied Markdown delimiters. Interpret only
+// that exact documented representation; never try multiple keys or decode hex.
+export function loadBridgeSecret(value: string): string {
+  return /^`[0-9a-fA-F]{64}`$/.test(value) ? value.slice(1, -1) : value;
+}
+
 export type AuthHeaders = Record<string, string | string[] | undefined>;
 
 export type AuthResult =
