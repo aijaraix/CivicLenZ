@@ -37,8 +37,11 @@ Stage 1 inventory or claim its historical row counts were remeasured.
   Qwen3-4B Q4_K_M, checksum verified. Local inference returned READY in 1.322 s
   (17 prompt tokens, 2 completion tokens); this is a smoke benchmark, not a load
   benchmark or proof of civic reasoning accuracy.
-- Qwen and OpenClaw service restarts completed; full host reboot acceptance has
-  not been performed. Stage 2 exit gate remains open.
+- Full host reboot recovery passed: boot identity changed, SentinelX reconnected,
+  all five CivicLenZ units recovered active/enabled, receiver/OpenClaw/Qwen health
+  returned 200, HERMES observation health passed, and 2 GiB swap remained active.
+  Receipt count remained zero. This verifies runtime recovery, not later-stage
+  canonical orchestration or data integration.
 - SentinelX preserved. No local model or private administration exposed publicly.
 
 ## Downstream gates
@@ -53,7 +56,7 @@ public-role isolation passed in an isolated PostgreSQL 17 container, which was
 removed after testing. No production civic data was inserted or promoted.
 
 PRs #53 and #54 remain open. PR #55 contains this Stage 2 and authentication
-remediation. At runtime commit a32c1fb both GitHub validation workflows passed;
+remediation. At source commit 1a18eab both GitHub validation workflows passed;
 20 bridge tests and 3 observer tests passed locally. No PR is implicitly merged.
 
 Next gates: prove Google's HMAC parity, obtain the corrected real result, select
