@@ -18,17 +18,30 @@ Before making architectural, runtime, worker, research, UI, Cloudflare, Supabase
 13. `docs/control-plane/PRODUCER_INDEPENDENCE_AND_FRONTIER_HARVESTING.md`
 14. `docs/control-plane/CANONICAL_RESEARCH_CONTRACT_PACKAGE.md`
 15. `docs/control-plane/SEAT_ELECTION_CANDIDATE_PARALLEL_RESEARCH.md`
+16. `docs/control-plane/ADDRESS_BOUNDARY_ELECTION_MAP_ARCHITECTURE.md`
+17. `docs/control-plane/BOUNDARY_AND_SEAT_EVOLUTION.md`
+18. `docs/control-plane/CIVIC_TERRITORY_AND_PUBLIC_RESOURCE_GRAPH.md`
+19. `docs/control-plane/ORGANIZATION_RELATIONSHIP_AND_INFLUENCE_GRAPH.md`
+20. `docs/control-plane/PROMISE_POSITION_EVIDENCE_ALIGNMENT.md`
+21. `docs/control-plane/NATIONAL_COVERAGE_ATLAS_AND_EXPANSION.md`
 
 The master implementation directive defines the seven-stage production activation sequence. Follow it in order while continuing autonomously through non-destructive implementation. Do not reinterpret a stage exit gate as permission to bypass evidence, safety, credential, schema, or production-change controls.
 
 The producer/frontier documents define the replaceable-producer model, canonical machine-readable research specifications, non-duplication/work reservations, and the invariant that Seat discovery must trigger election and candidate research in parallel. Implement integrations so Gemini/CivicsLenZz can accelerate the frontier without becoming required for continuity or bypassing HERMES validation.
 
+The map/territory/accountability documents make address-level map resolution, versioned boundary evolution, elections/candidates, constituency context, public-resource flows, organization relationships, neutral promise-evidence alignment, and national coverage planning part of the canonical product architecture. These are architectural requirements even where implementation is staged later.
+
 Then inspect the existing implementation and current production state before proposing or making changes.
 
 ## Non-negotiable doctrines
 - Seat-centric architecture.
+- Address/map resolution is a core product surface; ZIP/city/county inference is not authoritative representation.
+- Boundaries are versioned evidence-backed data, never hardcoded permanent logic.
 - Seat discovery requires election/candidate discovery in parallel; candidates are first-class.
 - Producers are replaceable executors; HERMES owns research intent, work identity, reservations, priority, validation and recovery.
+- Public-resource context, campaign money, personal disclosures and lobbying are distinct data domains and must not be conflated.
+- Relationship evidence does not establish motive/causation without qualifying evidence.
+- Promise/position analysis classifies evidence relationships, never politicians; no political ranking/score or voting recommendation.
 - No global `COMPLETE` state for a Person/Candidate/Seat/profile; only bounded currentness/reconciliation with cutoff + monitoring.
 - `CAPABILITY_NOT_IMPLEMENTED` is operational state, never a factual `checked_no_authoritative_result` claim.
 - Evidence-first and publication-eligible-claims-only public projection.
