@@ -14,6 +14,9 @@ Before making architectural, runtime, worker, research, UI, Cloudflare, Supabase
 9. `docs/control-plane/HERMES_OPENCLAW_RUNTIME.md`
 10. `docs/control-plane/WORKER_CATALOG_AND_RESEARCH_CONTRACTS.md`
 11. `docs/control-plane/DATA_EVIDENCE_VERIFICATION.md`
+12. `docs/control-plane/CODEX_MASTER_IMPLEMENTATION_DIRECTIVE.md`
+
+The master implementation directive defines the seven-stage production activation sequence. Follow it in order while continuing autonomously through non-destructive implementation. Do not reinterpret a stage exit gate as permission to bypass evidence, safety, credential, schema, or production-change controls.
 
 Then inspect the existing implementation and current production state before proposing or making changes.
 
