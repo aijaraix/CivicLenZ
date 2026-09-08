@@ -63,6 +63,12 @@ approved HTTPS gateway before a public machine URL is announced. Until that
 gateway, DNS, and routing are physically deployed and tested, there is no
 `CIVICLENZ_CANONICAL_INGEST_URL` to configure on the Harvester.
 
+The service uses the version-pinned Node runtime installed beneath
+`/opt/civiclenz/runtime/node`, not an implicit OS `nodejs` package. This keeps
+the receiver reproducible and permits a host to retain a small, separately
+managed base OS. The service remains disabled until its separate bridge-secret
+environment file exists.
+
 ## Operations
 
 `ops/systemd/civiclenz-hermes-ingest.service` loads only the bridge-secret
