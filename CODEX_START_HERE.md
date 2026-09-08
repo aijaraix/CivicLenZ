@@ -15,13 +15,20 @@ Before making architectural, runtime, worker, research, UI, Cloudflare, Supabase
 10. `docs/control-plane/WORKER_CATALOG_AND_RESEARCH_CONTRACTS.md`
 11. `docs/control-plane/DATA_EVIDENCE_VERIFICATION.md`
 12. `docs/control-plane/CODEX_MASTER_IMPLEMENTATION_DIRECTIVE.md`
+13. `docs/control-plane/PRODUCER_INDEPENDENCE_AND_FRONTIER_HARVESTING.md`
+14. `docs/control-plane/CANONICAL_RESEARCH_CONTRACT_PACKAGE.md`
+15. `docs/control-plane/SEAT_ELECTION_CANDIDATE_PARALLEL_RESEARCH.md`
 
 The master implementation directive defines the seven-stage production activation sequence. Follow it in order while continuing autonomously through non-destructive implementation. Do not reinterpret a stage exit gate as permission to bypass evidence, safety, credential, schema, or production-change controls.
+
+The producer/frontier documents define the replaceable-producer model, canonical machine-readable research specifications, non-duplication/work reservations, and the invariant that Seat discovery must trigger election and candidate research in parallel. Implement integrations so Gemini/CivicsLenZz can accelerate the frontier without becoming required for continuity or bypassing HERMES validation.
 
 Then inspect the existing implementation and current production state before proposing or making changes.
 
 ## Non-negotiable doctrines
 - Seat-centric architecture.
+- Seat discovery requires election/candidate discovery in parallel; candidates are first-class.
+- Producers are replaceable executors; HERMES owns research intent, work identity, reservations, priority, validation and recovery.
 - No global `COMPLETE` state for a Person/Candidate/Seat/profile; only bounded currentness/reconciliation with cutoff + monitoring.
 - `CAPABILITY_NOT_IMPLEMENTED` is operational state, never a factual `checked_no_authoritative_result` claim.
 - Evidence-first and publication-eligible-claims-only public projection.
