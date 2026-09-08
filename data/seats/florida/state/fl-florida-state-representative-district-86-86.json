@@ -1,0 +1,39 @@
+{
+  "schemaVersion": "1.0.0",
+  "seatId": "8e894d22-3558-51fb-ae50-0ebca2126034",
+  "seatKey": "fl-florida-state-representative-district-86-86",
+  "seatName": "Florida State Representative, District 86",
+  "officeType": "state_representative",
+  "governmentLevel": "state",
+  "branch": "legislative",
+  "chamber": "house",
+  "jurisdictionId": "d97d0006-4206-514d-ab2e-25611155d60d",
+  "jurisdictionName": "Florida",
+  "stateCode": "FL",
+  "districtName": "District 86",
+  "districtNumber": "86",
+  "seatAtLarge": false,
+  "occupancyStatus": "unknown",
+  "currentTermId": null,
+  "currentPersonId": "3790ac8a-b284-5787-8a2f-85a60df022dc",
+  "termHistoryIds": [],
+  "sourceUrls": [
+    "https://www.myfloridahouse.gov/Sections/Representatives/representatives.aspx"
+  ],
+  "evidenceIds": [],
+  "monitoring": {
+    "active": false,
+    "occupancyCheckClass": "manual",
+    "lastCheckedAt": null,
+    "lastChangedAt": null,
+    "nextScheduledCheckAt": null,
+    "changeReason": null
+  },
+  "researchContractKey": "florida-state-legislator",
+  "ledgerStatus": "expected",
+  "discoveryStatus": "declared_from_count",
+  "occupancyVerificationStatus": "RECOVERED",
+  "coverageRegion": "statewide",
+  "createdAt": "2026-09-01T22:30:00Z",
+  "lastUpdatedAt": "2026-09-01T22:30:00Z"
+}

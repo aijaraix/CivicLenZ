@@ -1,0 +1,14 @@
+{
+  "schemaVersion": "1.0.0",
+  "coverageGapId": "5b8f9382-7bd4-5c28-92c4-66811478ec04",
+  "gapKey": "fl-levy-county-county-commission",
+  "jurisdictionName": "Levy County",
+  "stateCode": "FL",
+  "governmentLevel": "county",
+  "officeFamily": "county_commission",
+  "expectedCountStatus": "expected_count_unknown",
+  "expectedCount": null,
+  "reason": "County commission counts for Levy County are not declared as expected seats. County commission district counts vary; municipal, school, judicial, and special-district inventories are not invented.",
+  "coverageRegion": "remaining",
+  "ledgerStatus": "coverage_gap"
+}

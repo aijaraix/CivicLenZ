@@ -1,0 +1,52 @@
+{
+  "schemaVersion": "1.0.0",
+  "researchContractKey": "florida-statewide-executive",
+  "name": "Florida governor and statewide executive",
+  "appliesToOfficeTypes": [
+    "governor",
+    "lieutenant_governor",
+    "attorney_general",
+    "chief_financial_officer",
+    "commissioner_of_agriculture"
+  ],
+  "governmentLevels": ["state"],
+  "requiredFieldKeys": [
+    "seatKey",
+    "seatName",
+    "office_title",
+    "government_level",
+    "jurisdiction_name",
+    "occupancyStatus",
+    "display_name",
+    "official_profile_url",
+    "portrait_url",
+    "source_id"
+  ],
+  "optionalFieldKeys": [
+    "party_name",
+    "biography_short",
+    "contact_points",
+    "campaign_promises",
+    "executive_orders"
+  ],
+  "notApplicableFieldKeys": [
+    "bills_sponsored",
+    "roll_call_votes"
+  ],
+  "sourcePriority": [
+    "Official executive office website",
+    "Florida Division of Elections",
+    "Florida Constitution and statutes",
+    "Official press office"
+  ],
+  "disallowedShortcuts": [
+    "Do not copy Google Images or search-result thumbnails.",
+    "Do not treat recovered queue names as independently VERIFIED occupancy."
+  ],
+  "publicationGate": "reviewed_canonical_profile",
+  "humanReviewRequired": true,
+  "notes": [
+    "Lieutenant Governor is an expected seat with occupancy unknown unless a reviewed source names the occupant.",
+    "Governor occupancy remains unknown in the seat ledger until independently verified even when a canonical profile exists."
+  ]
+}

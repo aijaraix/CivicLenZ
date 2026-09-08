@@ -1,0 +1,39 @@
+{
+  "schemaVersion": "1.0.0",
+  "seatId": "588af5fc-4331-54d1-b73f-de54a65fa44a",
+  "seatKey": "fl-florida-state-representative-district-5-5",
+  "seatName": "Florida State Representative, District 5",
+  "officeType": "state_representative",
+  "governmentLevel": "state",
+  "branch": "legislative",
+  "chamber": "house",
+  "jurisdictionId": "d97d0006-4206-514d-ab2e-25611155d60d",
+  "jurisdictionName": "Florida",
+  "stateCode": "FL",
+  "districtName": "District 5",
+  "districtNumber": "5",
+  "seatAtLarge": false,
+  "occupancyStatus": "unknown",
+  "currentTermId": null,
+  "currentPersonId": "c1bb18e7-b4e4-5e3c-8de4-f332ff8c2fff",
+  "termHistoryIds": [],
+  "sourceUrls": [
+    "https://www.myfloridahouse.gov/Sections/Representatives/representatives.aspx"
+  ],
+  "evidenceIds": [],
+  "monitoring": {
+    "active": false,
+    "occupancyCheckClass": "manual",
+    "lastCheckedAt": null,
+    "lastChangedAt": null,
+    "nextScheduledCheckAt": null,
+    "changeReason": null
+  },
+  "researchContractKey": "florida-state-legislator",
+  "ledgerStatus": "expected",
+  "discoveryStatus": "declared_from_count",
+  "occupancyVerificationStatus": "RECOVERED",
+  "coverageRegion": "statewide",
+  "createdAt": "2026-09-01T22:30:00Z",
+  "lastUpdatedAt": "2026-09-01T22:30:00Z"
+}

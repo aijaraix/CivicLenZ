@@ -1,0 +1,14 @@
+{
+  "schemaVersion": "1.0.0",
+  "coverageGapId": "06c0302b-f9d1-542b-94f8-bc287182879b",
+  "gapKey": "fl-suwannee-county-special-district",
+  "jurisdictionName": "Suwannee County",
+  "stateCode": "FL",
+  "governmentLevel": "special_district",
+  "officeFamily": "special_district",
+  "expectedCountStatus": "expected_count_unknown",
+  "expectedCount": null,
+  "reason": "Special-district elected seats counts for Suwannee County are not declared as expected seats. County commission district counts vary; municipal, school, judicial, and special-district inventories are not invented.",
+  "coverageRegion": "remaining",
+  "ledgerStatus": "coverage_gap"
+}

@@ -1,0 +1,14 @@
+{
+  "schemaVersion": "1.0.0",
+  "coverageGapId": "17b4633e-5828-5bfb-b9e9-b6a41c468c2e",
+  "gapKey": "fl-franklin-county-county-commission",
+  "jurisdictionName": "Franklin County",
+  "stateCode": "FL",
+  "governmentLevel": "county",
+  "officeFamily": "county_commission",
+  "expectedCountStatus": "expected_count_unknown",
+  "expectedCount": null,
+  "reason": "County commission counts for Franklin County are not declared as expected seats. County commission district counts vary; municipal, school, judicial, and special-district inventories are not invented.",
+  "coverageRegion": "remaining",
+  "ledgerStatus": "coverage_gap"
+}

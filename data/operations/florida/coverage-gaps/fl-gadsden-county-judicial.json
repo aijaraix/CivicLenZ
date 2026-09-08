@@ -1,0 +1,14 @@
+{
+  "schemaVersion": "1.0.0",
+  "coverageGapId": "77398008-cb6e-5667-88dd-82daeb5ae2d2",
+  "gapKey": "fl-gadsden-county-judicial",
+  "jurisdictionName": "Gadsden County",
+  "stateCode": "FL",
+  "governmentLevel": "judicial",
+  "officeFamily": "judicial",
+  "expectedCountStatus": "expected_count_unknown",
+  "expectedCount": null,
+  "reason": "Judicial elected or retention seats counts for Gadsden County are not declared as expected seats. County commission district counts vary; municipal, school, judicial, and special-district inventories are not invented.",
+  "coverageRegion": "remaining",
+  "ledgerStatus": "coverage_gap"
+}

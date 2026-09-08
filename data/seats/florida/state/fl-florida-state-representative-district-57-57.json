@@ -1,0 +1,39 @@
+{
+  "schemaVersion": "1.0.0",
+  "seatId": "a8ccd17d-8e6f-52a7-a31f-a9857f258eb2",
+  "seatKey": "fl-florida-state-representative-district-57-57",
+  "seatName": "Florida State Representative, District 57",
+  "officeType": "state_representative",
+  "governmentLevel": "state",
+  "branch": "legislative",
+  "chamber": "house",
+  "jurisdictionId": "d97d0006-4206-514d-ab2e-25611155d60d",
+  "jurisdictionName": "Florida",
+  "stateCode": "FL",
+  "districtName": "District 57",
+  "districtNumber": "57",
+  "seatAtLarge": false,
+  "occupancyStatus": "unknown",
+  "currentTermId": null,
+  "currentPersonId": "54a0d194-f9f0-54b8-b862-fdb66d8e9e8e",
+  "termHistoryIds": [],
+  "sourceUrls": [
+    "https://www.myfloridahouse.gov/Sections/Representatives/representatives.aspx"
+  ],
+  "evidenceIds": [],
+  "monitoring": {
+    "active": false,
+    "occupancyCheckClass": "manual",
+    "lastCheckedAt": null,
+    "lastChangedAt": null,
+    "nextScheduledCheckAt": null,
+    "changeReason": null
+  },
+  "researchContractKey": "florida-state-legislator",
+  "ledgerStatus": "expected",
+  "discoveryStatus": "declared_from_count",
+  "occupancyVerificationStatus": "RECOVERED",
+  "coverageRegion": "statewide",
+  "createdAt": "2026-09-01T22:30:00Z",
+  "lastUpdatedAt": "2026-09-01T22:30:00Z"
+}

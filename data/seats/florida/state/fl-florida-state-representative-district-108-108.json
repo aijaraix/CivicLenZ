@@ -1,0 +1,39 @@
+{
+  "schemaVersion": "1.0.0",
+  "seatId": "9372e2d5-6fb5-5bb1-8b46-1858ca65ac67",
+  "seatKey": "fl-florida-state-representative-district-108-108",
+  "seatName": "Florida State Representative, District 108",
+  "officeType": "state_representative",
+  "governmentLevel": "state",
+  "branch": "legislative",
+  "chamber": "house",
+  "jurisdictionId": "d97d0006-4206-514d-ab2e-25611155d60d",
+  "jurisdictionName": "Florida",
+  "stateCode": "FL",
+  "districtName": "District 108",
+  "districtNumber": "108",
+  "seatAtLarge": false,
+  "occupancyStatus": "unknown",
+  "currentTermId": null,
+  "currentPersonId": "ef1caa9d-7f0a-5dc4-b143-6d155fed3801",
+  "termHistoryIds": [],
+  "sourceUrls": [
+    "https://www.myfloridahouse.gov/Sections/Representatives/representatives.aspx"
+  ],
+  "evidenceIds": [],
+  "monitoring": {
+    "active": false,
+    "occupancyCheckClass": "manual",
+    "lastCheckedAt": null,
+    "lastChangedAt": null,
+    "nextScheduledCheckAt": null,
+    "changeReason": null
+  },
+  "researchContractKey": "florida-state-legislator",
+  "ledgerStatus": "expected",
+  "discoveryStatus": "declared_from_count",
+  "occupancyVerificationStatus": "RECOVERED",
+  "coverageRegion": "statewide",
+  "createdAt": "2026-09-01T22:30:00Z",
+  "lastUpdatedAt": "2026-09-01T22:30:00Z"
+}

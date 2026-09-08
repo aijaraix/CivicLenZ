@@ -1,0 +1,39 @@
+{
+  "schemaVersion": "1.0.0",
+  "seatId": "4492247b-03f6-5298-aeee-571ac3528dad",
+  "seatKey": "fl-united-states-representative-27",
+  "seatName": "United States Representative, Florida District 27",
+  "officeType": "us_representative",
+  "governmentLevel": "federal",
+  "branch": "legislative",
+  "chamber": "house",
+  "jurisdictionId": "d97d0006-4206-514d-ab2e-25611155d60d",
+  "jurisdictionName": "Florida",
+  "stateCode": "FL",
+  "districtName": "District 27",
+  "districtNumber": "27",
+  "seatAtLarge": false,
+  "occupancyStatus": "unknown",
+  "currentTermId": null,
+  "currentPersonId": "24ac1763-8c08-5105-8433-5c2fcd1c39d0",
+  "termHistoryIds": [],
+  "sourceUrls": [
+    "https://www.house.gov/representatives"
+  ],
+  "evidenceIds": [],
+  "monitoring": {
+    "active": false,
+    "occupancyCheckClass": "manual",
+    "lastCheckedAt": null,
+    "lastChangedAt": null,
+    "nextScheduledCheckAt": null,
+    "changeReason": null
+  },
+  "researchContractKey": "us-legislator",
+  "ledgerStatus": "expected",
+  "discoveryStatus": "declared_from_count",
+  "occupancyVerificationStatus": "RECOVERED",
+  "coverageRegion": "statewide",
+  "createdAt": "2026-09-01T22:30:00Z",
+  "lastUpdatedAt": "2026-09-01T22:30:00Z"
+}

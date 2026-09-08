@@ -1,0 +1,14 @@
+{
+  "schemaVersion": "1.0.0",
+  "coverageGapId": "a2839c6d-167d-5cee-99ef-6414d88f1271",
+  "gapKey": "fl-charlotte-county-special-district",
+  "jurisdictionName": "Charlotte County",
+  "stateCode": "FL",
+  "governmentLevel": "special_district",
+  "officeFamily": "special_district",
+  "expectedCountStatus": "expected_count_unknown",
+  "expectedCount": null,
+  "reason": "Special-district elected seats counts for Charlotte County are not declared as expected seats. County commission district counts vary; municipal, school, judicial, and special-district inventories are not invented.",
+  "coverageRegion": "remaining",
+  "ledgerStatus": "coverage_gap"
+}

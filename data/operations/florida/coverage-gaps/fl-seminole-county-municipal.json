@@ -1,0 +1,14 @@
+{
+  "schemaVersion": "1.0.0",
+  "coverageGapId": "1b948cd1-c5cd-5bb7-8b1f-13737233a1e6",
+  "gapKey": "fl-seminole-county-municipal",
+  "jurisdictionName": "Seminole County",
+  "stateCode": "FL",
+  "governmentLevel": "municipal",
+  "officeFamily": "municipal",
+  "expectedCountStatus": "expected_count_unknown",
+  "expectedCount": null,
+  "reason": "Municipal elected seats counts for Seminole County are not declared as expected seats. County commission district counts vary; municipal, school, judicial, and special-district inventories are not invented.",
+  "coverageRegion": "remaining",
+  "ledgerStatus": "coverage_gap"
+}

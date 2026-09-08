@@ -1,0 +1,14 @@
+{
+  "schemaVersion": "1.0.0",
+  "coverageGapId": "4ca39d37-cdc2-56f8-9f4e-c7519dec8ff3",
+  "gapKey": "fl-jefferson-county-county-commission",
+  "jurisdictionName": "Jefferson County",
+  "stateCode": "FL",
+  "governmentLevel": "county",
+  "officeFamily": "county_commission",
+  "expectedCountStatus": "expected_count_unknown",
+  "expectedCount": null,
+  "reason": "County commission counts for Jefferson County are not declared as expected seats. County commission district counts vary; municipal, school, judicial, and special-district inventories are not invented.",
+  "coverageRegion": "remaining",
+  "ledgerStatus": "coverage_gap"
+}

@@ -1,0 +1,14 @@
+{
+  "schemaVersion": "1.0.0",
+  "coverageGapId": "4454af44-d196-5095-b557-d1e9391b4da0",
+  "gapKey": "fl-liberty-county-school-district",
+  "jurisdictionName": "Liberty County",
+  "stateCode": "FL",
+  "governmentLevel": "school_district",
+  "officeFamily": "school_district",
+  "expectedCountStatus": "expected_count_unknown",
+  "expectedCount": null,
+  "reason": "School district elected seats counts for Liberty County are not declared as expected seats. County commission district counts vary; municipal, school, judicial, and special-district inventories are not invented.",
+  "coverageRegion": "remaining",
+  "ledgerStatus": "coverage_gap"
+}

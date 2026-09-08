@@ -1,0 +1,14 @@
+{
+  "schemaVersion": "1.0.0",
+  "coverageGapId": "4cdebdf1-de32-59a8-bf62-ab4cde67724a",
+  "gapKey": "fl-brevard-county-judicial",
+  "jurisdictionName": "Brevard County",
+  "stateCode": "FL",
+  "governmentLevel": "judicial",
+  "officeFamily": "judicial",
+  "expectedCountStatus": "expected_count_unknown",
+  "expectedCount": null,
+  "reason": "Judicial elected or retention seats counts for Brevard County are not declared as expected seats. County commission district counts vary; municipal, school, judicial, and special-district inventories are not invented.",
+  "coverageRegion": "remaining",
+  "ledgerStatus": "coverage_gap"
+}

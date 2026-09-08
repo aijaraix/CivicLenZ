@@ -1,0 +1,14 @@
+{
+  "schemaVersion": "1.0.0",
+  "coverageGapId": "96ae9776-8075-5e4b-8e29-e6418bb734a1",
+  "gapKey": "fl-bradford-county-judicial",
+  "jurisdictionName": "Bradford County",
+  "stateCode": "FL",
+  "governmentLevel": "judicial",
+  "officeFamily": "judicial",
+  "expectedCountStatus": "expected_count_unknown",
+  "expectedCount": null,
+  "reason": "Judicial elected or retention seats counts for Bradford County are not declared as expected seats. County commission district counts vary; municipal, school, judicial, and special-district inventories are not invented.",
+  "coverageRegion": "remaining",
+  "ledgerStatus": "coverage_gap"
+}

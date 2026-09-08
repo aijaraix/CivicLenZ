@@ -1,0 +1,14 @@
+{
+  "schemaVersion": "1.0.0",
+  "coverageGapId": "1932e819-af39-55d8-9487-3c9ae8fc7159",
+  "gapKey": "fl-sumter-county-municipal",
+  "jurisdictionName": "Sumter County",
+  "stateCode": "FL",
+  "governmentLevel": "municipal",
+  "officeFamily": "municipal",
+  "expectedCountStatus": "expected_count_unknown",
+  "expectedCount": null,
+  "reason": "Municipal elected seats counts for Sumter County are not declared as expected seats. County commission district counts vary; municipal, school, judicial, and special-district inventories are not invented.",
+  "coverageRegion": "remaining",
+  "ledgerStatus": "coverage_gap"
+}

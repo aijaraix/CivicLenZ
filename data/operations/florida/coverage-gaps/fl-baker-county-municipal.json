@@ -1,0 +1,14 @@
+{
+  "schemaVersion": "1.0.0",
+  "coverageGapId": "8278c604-0388-58ec-b1a1-f4316a194244",
+  "gapKey": "fl-baker-county-municipal",
+  "jurisdictionName": "Baker County",
+  "stateCode": "FL",
+  "governmentLevel": "municipal",
+  "officeFamily": "municipal",
+  "expectedCountStatus": "expected_count_unknown",
+  "expectedCount": null,
+  "reason": "Municipal elected seats counts for Baker County are not declared as expected seats. County commission district counts vary; municipal, school, judicial, and special-district inventories are not invented.",
+  "coverageRegion": "remaining",
+  "ledgerStatus": "coverage_gap"
+}

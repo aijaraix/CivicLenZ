@@ -1,0 +1,14 @@
+{
+  "schemaVersion": "1.0.0",
+  "coverageGapId": "7341ee52-f662-5a0e-87a4-2b32816be18e",
+  "gapKey": "fl-seminole-county-special-district",
+  "jurisdictionName": "Seminole County",
+  "stateCode": "FL",
+  "governmentLevel": "special_district",
+  "officeFamily": "special_district",
+  "expectedCountStatus": "expected_count_unknown",
+  "expectedCount": null,
+  "reason": "Special-district elected seats counts for Seminole County are not declared as expected seats. County commission district counts vary; municipal, school, judicial, and special-district inventories are not invented.",
+  "coverageRegion": "remaining",
+  "ledgerStatus": "coverage_gap"
+}

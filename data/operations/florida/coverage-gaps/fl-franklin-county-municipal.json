@@ -1,0 +1,14 @@
+{
+  "schemaVersion": "1.0.0",
+  "coverageGapId": "858f62ed-7367-5f3f-91d0-b91a9e539bf3",
+  "gapKey": "fl-franklin-county-municipal",
+  "jurisdictionName": "Franklin County",
+  "stateCode": "FL",
+  "governmentLevel": "municipal",
+  "officeFamily": "municipal",
+  "expectedCountStatus": "expected_count_unknown",
+  "expectedCount": null,
+  "reason": "Municipal elected seats counts for Franklin County are not declared as expected seats. County commission district counts vary; municipal, school, judicial, and special-district inventories are not invented.",
+  "coverageRegion": "remaining",
+  "ledgerStatus": "coverage_gap"
+}

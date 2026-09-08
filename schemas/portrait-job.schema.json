@@ -1,0 +1,41 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://civicslenz.com/schemas/portrait-job.schema.json",
+  "title": "CivicLenZ Portrait Job",
+  "description": "Official-source portrait fetch result. Search-engine thumbnails are not a source. HTTP 200 is not VERIFIED.",
+  "type": "object",
+  "required": [
+    "schemaVersion",
+    "portraitJobId",
+    "officialId",
+    "status",
+    "reviewStatus",
+    "urlsTried",
+    "checkedAt"
+  ],
+  "properties": {
+    "schemaVersion": {"type": "string", "const": "1.0.0"},
+    "portraitJobId": {"type": "string", "format": "uuid"},
+    "officialId": {"type": "string", "format": "uuid"},
+    "seatKey": {"type": ["string", "null"]},
+    "status": {
+      "type": "string",
+      "enum": ["fetched_unreviewed", "CHECKED_NO_AUTHORITATIVE_RESULT"]
+    },
+    "reviewStatus": {"type": "string", "enum": ["unreviewed"]},
+    "imageUrl": {"type": ["string", "null"], "format": "uri"},
+    "sourcePageUrl": {"type": ["string", "null"], "format": "uri"},
+    "retrievedAt": {"type": ["string", "null"], "format": "date-time"},
+    "contentSha256": {"type": ["string", "null"], "pattern": "^[a-f0-9]{64}$"},
+    "width": {"type": ["integer", "null"], "minimum": 1},
+    "height": {"type": ["integer", "null"], "minimum": 1},
+    "mimeType": {"type": ["string", "null"]},
+    "rights": {"type": ["string", "null"]},
+    "credit": {"type": ["string", "null"]},
+    "urlsTried": {"type": "array", "items": {"type": "string", "format": "uri"}},
+    "failureReason": {"type": ["string", "null"]},
+    "checkedAt": {"type": "string", "format": "date-time"},
+    "notes": {"type": ["string", "null"]}
+  },
+  "additionalProperties": false
+}

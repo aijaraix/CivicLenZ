@@ -1,0 +1,14 @@
+{
+  "schemaVersion": "1.0.0",
+  "coverageGapId": "d356a81a-67ab-5e62-8b35-fda4caf093a5",
+  "gapKey": "fl-martin-county-municipal",
+  "jurisdictionName": "Martin County",
+  "stateCode": "FL",
+  "governmentLevel": "municipal",
+  "officeFamily": "municipal",
+  "expectedCountStatus": "expected_count_unknown",
+  "expectedCount": null,
+  "reason": "Municipal elected seats counts for Martin County are not declared as expected seats. County commission district counts vary; municipal, school, judicial, and special-district inventories are not invented.",
+  "coverageRegion": "remaining",
+  "ledgerStatus": "coverage_gap"
+}

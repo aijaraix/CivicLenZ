@@ -1,0 +1,14 @@
+{
+  "schemaVersion": "1.0.0",
+  "coverageGapId": "a1f9555f-36a8-5a91-b8a5-8b5ef1d89c1d",
+  "gapKey": "fl-liberty-county-county-commission",
+  "jurisdictionName": "Liberty County",
+  "stateCode": "FL",
+  "governmentLevel": "county",
+  "officeFamily": "county_commission",
+  "expectedCountStatus": "expected_count_unknown",
+  "expectedCount": null,
+  "reason": "County commission counts for Liberty County are not declared as expected seats. County commission district counts vary; municipal, school, judicial, and special-district inventories are not invented.",
+  "coverageRegion": "remaining",
+  "ledgerStatus": "coverage_gap"
+}

@@ -1,0 +1,14 @@
+{
+  "schemaVersion": "1.0.0",
+  "coverageGapId": "96db4e19-8618-5e0c-a6da-2498b41f1eec",
+  "gapKey": "fl-sarasota-county-county-commission",
+  "jurisdictionName": "Sarasota County",
+  "stateCode": "FL",
+  "governmentLevel": "county",
+  "officeFamily": "county_commission",
+  "expectedCountStatus": "expected_count_unknown",
+  "expectedCount": null,
+  "reason": "County commission counts for Sarasota County are not declared as expected seats. County commission district counts vary; municipal, school, judicial, and special-district inventories are not invented.",
+  "coverageRegion": "remaining",
+  "ledgerStatus": "coverage_gap"
+}

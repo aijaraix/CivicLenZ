@@ -1,0 +1,45 @@
+{
+  "schemaVersion": "1.0.0",
+  "researchContractKey": "florida-county-constitutional-officer",
+  "name": "Florida county constitutional officer",
+  "appliesToOfficeTypes": [
+    "sheriff",
+    "clerk_of_circuit_court_and_comptroller",
+    "supervisor_of_elections",
+    "tax_collector",
+    "property_appraiser"
+  ],
+  "governmentLevels": ["county"],
+  "requiredFieldKeys": [
+    "seatKey",
+    "seatName",
+    "jurisdiction_name",
+    "occupancyStatus",
+    "display_name",
+    "official_profile_url"
+  ],
+  "optionalFieldKeys": [
+    "contact_points",
+    "portrait_url",
+    "term_end",
+    "elected_or_appointed"
+  ],
+  "notApplicableFieldKeys": [
+    "bills_sponsored",
+    "maha_tracker"
+  ],
+  "sourcePriority": [
+    "Official county constitutional-officer directory",
+    "Supervisor of Elections officeholder lists",
+    "Official office website"
+  ],
+  "disallowedShortcuts": [
+    "Do not invent county commission, school, municipal, judicial, or special-district seat counts.",
+    "Do not promote collector PDF rows into data/officials."
+  ],
+  "publicationGate": "reviewed_canonical_profile",
+  "humanReviewRequired": true,
+  "notes": [
+    "67 counties times these five at-large offices are declared_from_registry. Commission counts remain expected_count_unknown."
+  ]
+}

@@ -1,0 +1,49 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://civicslenz.com/schemas/occupancy-candidate.schema.json",
+  "title": "CivicLenZ Occupancy Candidate",
+  "description": "A named or vacant occupancy attached to an expected seat. Recovered queue data is RECOVERED, not independently VERIFIED. Collector-named offices are extracted_unreviewed until review.",
+  "type": "object",
+  "required": [
+    "schemaVersion",
+    "occupancyCandidateId",
+    "seatKey",
+    "verificationStatus",
+    "candidateKind",
+    "displayName",
+    "sourceKind"
+  ],
+  "properties": {
+    "schemaVersion": {"type": "string", "const": "1.0.0"},
+    "occupancyCandidateId": {"type": "string", "format": "uuid"},
+    "seatId": {"type": ["string", "null"], "format": "uuid"},
+    "seatKey": {"type": "string"},
+    "mappedExpectedSeatKey": {"type": ["string", "null"]},
+    "mappingStatus": {
+      "type": "string",
+      "enum": ["unique_seat", "ambiguous_multi_seat_office", "expected_seat_missing", "vacancy_mapped_to_expected_seat"]
+    },
+    "verificationStatus": {"type": "string", "enum": ["RECOVERED", "VERIFIED", "CHECKED_NO_AUTHORITATIVE_RESULT"]},
+    "candidateKind": {"type": "string", "enum": ["person_officeholder", "office_vacancy"]},
+    "displayName": {"type": "string"},
+    "officeTitle": {"type": ["string", "null"]},
+    "governmentLevel": {"type": ["string", "null"]},
+    "districtNumber": {"type": ["string", "null"]},
+    "personCandidateId": {"type": ["string", "null"], "format": "uuid"},
+    "canonicalPersonId": {"type": ["string", "null"], "format": "uuid"},
+    "canonicalRecordExists": {"type": "boolean"},
+    "sourceKind": {
+      "type": "string",
+      "enum": ["profile_research_queue", "collector_named_office", "canonical_official"]
+    },
+    "sourceKey": {"type": ["string", "null"]},
+    "sourceUrl": {"type": ["string", "null"]},
+    "sourceSnapshotSha256": {"type": ["string", "null"]},
+    "recoveredFrom": {"type": ["string", "null"]},
+    "queueTaskId": {"type": ["string", "null"]},
+    "portraitStatus": {"type": ["string", "null"]},
+    "notes": {"type": ["string", "null"]},
+    "createdAt": {"type": ["string", "null"], "format": "date-time"}
+  },
+  "additionalProperties": false
+}

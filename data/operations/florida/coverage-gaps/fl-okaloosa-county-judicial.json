@@ -1,0 +1,14 @@
+{
+  "schemaVersion": "1.0.0",
+  "coverageGapId": "44f85d78-6597-57a0-be4a-eabb5d80a030",
+  "gapKey": "fl-okaloosa-county-judicial",
+  "jurisdictionName": "Okaloosa County",
+  "stateCode": "FL",
+  "governmentLevel": "judicial",
+  "officeFamily": "judicial",
+  "expectedCountStatus": "expected_count_unknown",
+  "expectedCount": null,
+  "reason": "Judicial elected or retention seats counts for Okaloosa County are not declared as expected seats. County commission district counts vary; municipal, school, judicial, and special-district inventories are not invented.",
+  "coverageRegion": "remaining",
+  "ledgerStatus": "coverage_gap"
+}

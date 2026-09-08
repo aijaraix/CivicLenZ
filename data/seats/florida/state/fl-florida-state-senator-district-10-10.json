@@ -1,0 +1,39 @@
+{
+  "schemaVersion": "1.0.0",
+  "seatId": "c0e147a7-4c27-5c8a-a83c-9af124b4b8cb",
+  "seatKey": "fl-florida-state-senator-district-10-10",
+  "seatName": "Florida State Senator, District 10",
+  "officeType": "state_senator",
+  "governmentLevel": "state",
+  "branch": "legislative",
+  "chamber": "senate",
+  "jurisdictionId": "d97d0006-4206-514d-ab2e-25611155d60d",
+  "jurisdictionName": "Florida",
+  "stateCode": "FL",
+  "districtName": "District 10",
+  "districtNumber": "10",
+  "seatAtLarge": false,
+  "occupancyStatus": "unknown",
+  "currentTermId": null,
+  "currentPersonId": "2242d179-2fcf-5462-800e-0a9ca413141b",
+  "termHistoryIds": [],
+  "sourceUrls": [
+    "https://www.flsenate.gov/Senators"
+  ],
+  "evidenceIds": [],
+  "monitoring": {
+    "active": false,
+    "occupancyCheckClass": "manual",
+    "lastCheckedAt": null,
+    "lastChangedAt": null,
+    "nextScheduledCheckAt": null,
+    "changeReason": null
+  },
+  "researchContractKey": "florida-state-legislator",
+  "ledgerStatus": "expected",
+  "discoveryStatus": "declared_from_count",
+  "occupancyVerificationStatus": "RECOVERED",
+  "coverageRegion": "statewide",
+  "createdAt": "2026-09-01T22:30:00Z",
+  "lastUpdatedAt": "2026-09-01T22:30:00Z"
+}

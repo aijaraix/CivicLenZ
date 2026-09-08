@@ -1,0 +1,39 @@
+{
+  "schemaVersion": "1.0.0",
+  "seatId": "1b5e01a9-cf2e-5170-bae1-0e6c8691fd00",
+  "seatKey": "fl-florida-state-senator-district-26-26",
+  "seatName": "Florida State Senator, District 26",
+  "officeType": "state_senator",
+  "governmentLevel": "state",
+  "branch": "legislative",
+  "chamber": "senate",
+  "jurisdictionId": "d97d0006-4206-514d-ab2e-25611155d60d",
+  "jurisdictionName": "Florida",
+  "stateCode": "FL",
+  "districtName": "District 26",
+  "districtNumber": "26",
+  "seatAtLarge": false,
+  "occupancyStatus": "unknown",
+  "currentTermId": null,
+  "currentPersonId": "ce6dd273-1da9-5e0b-b0bd-cfe156e4dfe4",
+  "termHistoryIds": [],
+  "sourceUrls": [
+    "https://www.flsenate.gov/Senators"
+  ],
+  "evidenceIds": [],
+  "monitoring": {
+    "active": false,
+    "occupancyCheckClass": "manual",
+    "lastCheckedAt": null,
+    "lastChangedAt": null,
+    "nextScheduledCheckAt": null,
+    "changeReason": null
+  },
+  "researchContractKey": "florida-state-legislator",
+  "ledgerStatus": "expected",
+  "discoveryStatus": "declared_from_count",
+  "occupancyVerificationStatus": "RECOVERED",
+  "coverageRegion": "statewide",
+  "createdAt": "2026-09-01T22:30:00Z",
+  "lastUpdatedAt": "2026-09-01T22:30:00Z"
+}

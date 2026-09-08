@@ -1,0 +1,14 @@
+{
+  "schemaVersion": "1.0.0",
+  "coverageGapId": "fa72790b-35b2-5f37-ae87-ec02d194818f",
+  "gapKey": "fl-calhoun-county-judicial",
+  "jurisdictionName": "Calhoun County",
+  "stateCode": "FL",
+  "governmentLevel": "judicial",
+  "officeFamily": "judicial",
+  "expectedCountStatus": "expected_count_unknown",
+  "expectedCount": null,
+  "reason": "Judicial elected or retention seats counts for Calhoun County are not declared as expected seats. County commission district counts vary; municipal, school, judicial, and special-district inventories are not invented.",
+  "coverageRegion": "remaining",
+  "ledgerStatus": "coverage_gap"
+}

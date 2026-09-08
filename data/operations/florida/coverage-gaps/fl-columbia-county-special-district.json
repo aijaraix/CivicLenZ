@@ -1,0 +1,14 @@
+{
+  "schemaVersion": "1.0.0",
+  "coverageGapId": "6d8f3cf0-5e0d-59be-93c8-cd81e01e3f9c",
+  "gapKey": "fl-columbia-county-special-district",
+  "jurisdictionName": "Columbia County",
+  "stateCode": "FL",
+  "governmentLevel": "special_district",
+  "officeFamily": "special_district",
+  "expectedCountStatus": "expected_count_unknown",
+  "expectedCount": null,
+  "reason": "Special-district elected seats counts for Columbia County are not declared as expected seats. County commission district counts vary; municipal, school, judicial, and special-district inventories are not invented.",
+  "coverageRegion": "remaining",
+  "ledgerStatus": "coverage_gap"
+}

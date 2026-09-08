@@ -1,0 +1,14 @@
+{
+  "schemaVersion": "1.0.0",
+  "coverageGapId": "bb72d927-5732-5434-93e9-b942b4c829fd",
+  "gapKey": "fl-palm-beach-county-municipal",
+  "jurisdictionName": "Palm Beach County",
+  "stateCode": "FL",
+  "governmentLevel": "municipal",
+  "officeFamily": "municipal",
+  "expectedCountStatus": "expected_count_unknown",
+  "expectedCount": null,
+  "reason": "Municipal elected seats counts for Palm Beach County are not declared as expected seats. County commission district counts vary; municipal, school, judicial, and special-district inventories are not invented.",
+  "coverageRegion": "palm_beach",
+  "ledgerStatus": "coverage_gap"
+}

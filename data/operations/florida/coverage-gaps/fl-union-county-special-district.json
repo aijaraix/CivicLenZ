@@ -1,0 +1,14 @@
+{
+  "schemaVersion": "1.0.0",
+  "coverageGapId": "c9821c5a-8e9b-5a3f-a3a5-faccb79cf7db",
+  "gapKey": "fl-union-county-special-district",
+  "jurisdictionName": "Union County",
+  "stateCode": "FL",
+  "governmentLevel": "special_district",
+  "officeFamily": "special_district",
+  "expectedCountStatus": "expected_count_unknown",
+  "expectedCount": null,
+  "reason": "Special-district elected seats counts for Union County are not declared as expected seats. County commission district counts vary; municipal, school, judicial, and special-district inventories are not invented.",
+  "coverageRegion": "remaining",
+  "ledgerStatus": "coverage_gap"
+}

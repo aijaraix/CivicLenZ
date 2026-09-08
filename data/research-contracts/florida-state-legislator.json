@@ -1,0 +1,42 @@
+{
+  "schemaVersion": "1.0.0",
+  "researchContractKey": "florida-state-legislator",
+  "name": "Florida state legislator",
+  "appliesToOfficeTypes": ["state_senator", "state_representative"],
+  "governmentLevels": ["state"],
+  "requiredFieldKeys": [
+    "seatKey",
+    "seatName",
+    "district_number",
+    "chamber",
+    "occupancyStatus",
+    "display_name",
+    "official_profile_url"
+  ],
+  "optionalFieldKeys": [
+    "party_name",
+    "committees",
+    "bills_sponsored",
+    "official_votes",
+    "contact_points",
+    "portrait_url"
+  ],
+  "notApplicableFieldKeys": [
+    "executive_orders",
+    "pardons_or_clemency"
+  ],
+  "sourcePriority": [
+    "Official Florida Senate or House member directory",
+    "Official chamber bill and vote systems",
+    "Florida Division of Elections"
+  ],
+  "disallowedShortcuts": [
+    "Do not invent House or Senate districts beyond the known 120 and 40 seats.",
+    "House districts 78 and 113 remain expected seats with unknown occupancy when the queue has no recovered task."
+  ],
+  "publicationGate": "reviewed_canonical_profile",
+  "humanReviewRequired": true,
+  "notes": [
+    "Expected counts are Senate 1-40 and House 1-120. Occupancy is unknown until independently verified."
+  ]
+}

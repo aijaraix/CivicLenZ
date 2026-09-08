@@ -1,0 +1,14 @@
+{
+  "schemaVersion": "1.0.0",
+  "coverageGapId": "cc660929-196d-578a-88f6-9ca5fc375b09",
+  "gapKey": "fl-charlotte-county-school-district",
+  "jurisdictionName": "Charlotte County",
+  "stateCode": "FL",
+  "governmentLevel": "school_district",
+  "officeFamily": "school_district",
+  "expectedCountStatus": "expected_count_unknown",
+  "expectedCount": null,
+  "reason": "School district elected seats counts for Charlotte County are not declared as expected seats. County commission district counts vary; municipal, school, judicial, and special-district inventories are not invented.",
+  "coverageRegion": "remaining",
+  "ledgerStatus": "coverage_gap"
+}

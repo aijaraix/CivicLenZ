@@ -1,0 +1,14 @@
+{
+  "schemaVersion": "1.0.0",
+  "coverageGapId": "5cb6ef0b-f834-50d5-b3fc-46294274dd54",
+  "gapKey": "fl-brevard-county-school-district",
+  "jurisdictionName": "Brevard County",
+  "stateCode": "FL",
+  "governmentLevel": "school_district",
+  "officeFamily": "school_district",
+  "expectedCountStatus": "expected_count_unknown",
+  "expectedCount": null,
+  "reason": "School district elected seats counts for Brevard County are not declared as expected seats. County commission district counts vary; municipal, school, judicial, and special-district inventories are not invented.",
+  "coverageRegion": "remaining",
+  "ledgerStatus": "coverage_gap"
+}
