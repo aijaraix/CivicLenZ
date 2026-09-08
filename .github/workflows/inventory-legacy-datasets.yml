@@ -1,0 +1,76 @@
+name: Inventory legacy official datasets
+
+on:
+  workflow_dispatch:
+  pull_request:
+    paths:
+      - 'scripts/inventory_legacy_official_datasets.py'
+      - 'tests/test_inventory_legacy_official_datasets.py'
+      - 'data/imports/**'
+      - '.github/workflows/inventory-legacy-datasets.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'data/imports/**'
+      - 'scripts/inventory_legacy_official_datasets.py'
+      - '.github/workflows/inventory-legacy-datasets.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  inventory:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Run inventory tests
+        run: python -m unittest tests.test_inventory_legacy_official_datasets
+
+      - name: Inventory all repository dataset candidates
+        run: |
+          mkdir -p artifacts
+          python scripts/inventory_legacy_official_datasets.py \
+            --root . \
+            --output artifacts/repository-dataset-inventory.json \
+            > artifacts/repository-dataset-inventory.stdout.json
+
+      - name: Inventory legacy import landing zone
+        run: |
+          python scripts/inventory_legacy_official_datasets.py \
+            --root data/imports/legacy \
+            --output artifacts/legacy-dataset-inventory.json \
+            > artifacts/legacy-dataset-inventory.stdout.json
+
+      - name: Summarize inventory
+        run: |
+          python - <<'PY' >> "$GITHUB_STEP_SUMMARY"
+          import json
+          from pathlib import Path
+
+          repo = json.loads(Path('artifacts/repository-dataset-inventory.json').read_text())
+          legacy = json.loads(Path('artifacts/legacy-dataset-inventory.json').read_text())
+          print('### CivicLenZ dataset inventory')
+          print(f"- Repository candidate files: **{repo['fileCount']}**")
+          print(f"- Repository probable raw records: **{repo['probableRecordTotal']}**")
+          print(f"- Repository official-like files: **{repo['officialLikeFileCount']}**")
+          print(f"- Legacy landing-zone files: **{legacy['fileCount']}**")
+          print(f"- Legacy probable raw records: **{legacy['probableRecordTotal']}**")
+          print('')
+          print('> Counts are raw inventory estimates, not deduplicated people or permanent elected seats.')
+          PY
+
+      - name: Upload inventory reports
+        uses: actions/upload-artifact@v4
+        with:
+          name: civiclenz-dataset-inventory-${{ github.run_number }}
+          path: artifacts/*.json
+          if-no-files-found: error
+          retention-days: 30

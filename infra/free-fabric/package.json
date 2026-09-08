@@ -1,0 +1,18 @@
+{
+  "name": "civiclenz-free-collection-fabric",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "typecheck": "tsc --noEmit",
+    "dev": "wrangler dev",
+    "deploy": "wrangler deploy",
+    "db:migrate:local": "wrangler d1 execute civiclenz-control --local --file=./schema.sql",
+    "db:migrate:remote": "wrangler d1 execute civiclenz-control --remote --file=./schema.sql"
+  },
+  "devDependencies": {
+    "@cloudflare/workers-types": "5.20260716.1",
+    "typescript": "7.0.2",
+    "wrangler": "4.111.0"
+  }
+}

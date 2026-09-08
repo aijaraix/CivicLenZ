@@ -1,0 +1,106 @@
+{
+  "registryVersion": "1.0.0",
+  "securityModel": "A remote job may select a collectorKey and provide non-executable metadata only. Commands, timeouts, working directories, and output roots are controlled by this repository.",
+  "collectors": {
+    "federal-baseline": {
+      "taskType": "static-http",
+      "command": ["python", "workers/ingestion/run_baseline_collectors.py", "--group", "federal", "--workers", "3"],
+      "timeoutSeconds": 1800,
+      "outputRoots": ["data/staging/federal"],
+      "validationCommands": [["python", "scripts/validate_officials.py"]]
+    },
+    "florida-baseline": {
+      "taskType": "static-http",
+      "command": ["python", "workers/ingestion/run_baseline_collectors.py", "--group", "florida", "--workers", "3"],
+      "timeoutSeconds": 1800,
+      "outputRoots": [
+        "data/staging/florida/state-house",
+        "data/staging/florida/state-senate",
+        "data/staging/florida/statewide-executive"
+      ],
+      "validationCommands": [["python", "scripts/validate_officials.py"]]
+    },
+    "florida-profile-queue": {
+      "taskType": "entity-resolution",
+      "command": ["python", "workers/enrichment/build_profile_research_queue.py"],
+      "timeoutSeconds": 900,
+      "outputRoots": ["data/operations/florida-profile-research-queue.json"],
+      "validationCommands": []
+    },
+    "florida-identity-contact": {
+      "taskType": "enrichment-http",
+      "command": [
+        "python",
+        "-m",
+        "workers.enrichment.collect_identity_contact_candidates",
+        "--workers",
+        "8",
+        "--minimum-success-rate",
+        "0.45"
+      ],
+      "timeoutSeconds": 3600,
+      "outputRoots": ["data/research-staging/florida/identity-contact"],
+      "validationCommands": []
+    },
+    "florida-legislative-details": {
+      "taskType": "enrichment-http",
+      "command": [
+        "python",
+        "-m",
+        "workers.enrichment.collect_florida_legislative_details",
+        "--workers",
+        "8",
+        "--minimum-success-rate",
+        "0.80"
+      ],
+      "timeoutSeconds": 3600,
+      "outputRoots": ["data/research-staging/florida/legislative-details"],
+      "validationCommands": []
+    },
+    "northwest-local-source-discovery": {
+      "taskType": "static-http",
+      "command": [
+        "python",
+        "-m",
+        "workers.ingestion.discover_northwest_florida_local_sources",
+        "--workers",
+        "6",
+        "--max-pages-per-county",
+        "14",
+        "--minimum-success-rate",
+        "0.55"
+      ],
+      "timeoutSeconds": 3600,
+      "outputRoots": ["data/staging/florida/local/northwest/source-discovery"],
+      "validationCommands": []
+    },
+    "repository-dataset-inventory": {
+      "taskType": "local-inventory",
+      "command": [
+        "python",
+        "scripts/inventory_legacy_official_datasets.py",
+        "--root",
+        ".",
+        "--output",
+        "artifacts/repository-dataset-inventory.json"
+      ],
+      "timeoutSeconds": 900,
+      "outputRoots": ["artifacts/repository-dataset-inventory.json"],
+      "validationCommands": []
+    },
+    "legacy-dataset-inventory": {
+      "taskType": "local-inventory",
+      "command": [
+        "python",
+        "scripts/inventory_legacy_official_datasets.py",
+        "--root",
+        "data/imports/legacy",
+        "--output",
+        "artifacts/legacy-dataset-inventory.json"
+      ],
+      "timeoutSeconds": 900,
+      "outputRoots": ["artifacts/legacy-dataset-inventory.json"],
+      "validationCommands": []
+    }
+  }
+}
