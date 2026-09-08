@@ -14,6 +14,13 @@ class CloudflareAccountTokenHelperTests(unittest.TestCase):
         self.assertIn('path = f"/accounts/{account_id}/tokens/verify"', self.source)
         self.assertNotIn('/user/tokens/verify', self.source)
 
+    def test_confirms_the_account_against_a_required_civiclenz_resource(self) -> None:
+        self.assertIn('inventory = request_json(f"/accounts/{account_id}/workers/scripts")', self.source)
+        self.assertLess(
+            self.source.index('payload = request_json(path)'),
+            self.source.index('inventory = request_json(f"/accounts/{account_id}/workers/scripts")'),
+        )
+
     def test_requires_current_account_owned_token_format(self) -> None:
         self.assertIn('"$1" == cfat_*', self.source)
 
