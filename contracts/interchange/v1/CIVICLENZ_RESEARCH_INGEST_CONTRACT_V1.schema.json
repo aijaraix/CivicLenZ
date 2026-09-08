@@ -1,0 +1,259 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://schemas.civicslenz.com/contracts/interchange/v1/CIVICLENZ_RESEARCH_INGEST_CONTRACT_V1.schema.json",
+  "title": "CIVICLENZ_RESEARCH_INGEST_CONTRACT_V1",
+  "description": "Versioned producer-to-HERMES result envelope. A successful intake is extracted_unreviewed only and never publication or verification authority.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "contract_version",
+    "producer",
+    "job",
+    "extraction_status",
+    "capability",
+    "cohort",
+    "sources",
+    "retrievals",
+    "evidence",
+    "entities",
+    "claims",
+    "relationships",
+    "dataset_units",
+    "gis_boundaries",
+    "warnings",
+    "gaps",
+    "currentness",
+    "monitoring_recommendations"
+  ],
+  "properties": {
+    "contract_version": {
+      "const": "CIVICLENZ_RESEARCH_INGEST_CONTRACT_V1"
+    },
+    "producer": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["producer_id", "producer_version"],
+      "properties": {
+        "producer_id": { "type": "string", "minLength": 1, "maxLength": 128 },
+        "producer_version": { "type": "string", "minLength": 1, "maxLength": 128 },
+        "manifest_version": { "type": "string", "maxLength": 128 },
+        "execution_id": { "type": "string", "maxLength": 256 }
+      }
+    },
+    "job": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["job_id", "research_work_identity"],
+      "properties": {
+        "job_id": { "type": "string", "minLength": 1, "maxLength": 256 },
+        "research_work_identity": { "type": "string", "minLength": 16, "maxLength": 512 },
+        "research_reservation": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["reservation_id", "lease_expires_at"],
+          "properties": {
+            "reservation_id": { "type": "string", "minLength": 1, "maxLength": 256 },
+            "lease_expires_at": { "type": "string", "format": "date-time" }
+          }
+        }
+      }
+    },
+    "extraction_status": {
+      "const": "extracted_unreviewed"
+    },
+    "capability": { "type": "string", "minLength": 1, "maxLength": 128 },
+    "cohort": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["cohort_key", "state"],
+      "properties": {
+        "cohort_key": { "type": "string", "minLength": 1, "maxLength": 256 },
+        "state": { "type": "string", "minLength": 1, "maxLength": 128 },
+        "assignment_id": { "type": "string", "maxLength": 256 }
+      }
+    },
+    "sources": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/source" }
+    },
+    "retrievals": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/retrieval" }
+    },
+    "evidence": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/evidence" }
+    },
+    "entities": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "jurisdiction_candidates",
+        "seat_candidates",
+        "person_candidates",
+        "occupancy_candidates",
+        "election_candidates",
+        "candidate_campaign_candidates"
+      ],
+      "properties": {
+        "jurisdiction_candidates": { "type": "array", "items": { "$ref": "#/$defs/entityCandidate" } },
+        "seat_candidates": { "type": "array", "items": { "$ref": "#/$defs/entityCandidate" } },
+        "person_candidates": { "type": "array", "items": { "$ref": "#/$defs/entityCandidate" } },
+        "occupancy_candidates": { "type": "array", "items": { "$ref": "#/$defs/entityCandidate" } },
+        "election_candidates": { "type": "array", "items": { "$ref": "#/$defs/entityCandidate" } },
+        "candidate_campaign_candidates": { "type": "array", "items": { "$ref": "#/$defs/entityCandidate" } }
+      }
+    },
+    "claims": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/claim" }
+    },
+    "relationships": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/relationship" }
+    },
+    "dataset_units": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/datasetUnit" }
+    },
+    "gis_boundaries": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/gisBoundary" }
+    },
+    "warnings": { "type": "array", "items": { "type": "string", "maxLength": 4096 } },
+    "gaps": { "type": "array", "items": { "type": "string", "maxLength": 4096 } },
+    "currentness": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["current_as_of"],
+      "properties": {
+        "current_as_of": { "type": "string", "format": "date-time" },
+        "cutoff": { "type": "string", "format": "date-time" },
+        "source_universe": { "type": "string", "maxLength": 4096 }
+      }
+    },
+    "monitoring_recommendations": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["scope", "reason"],
+        "properties": {
+          "scope": { "type": "string", "minLength": 1, "maxLength": 256 },
+          "reason": { "type": "string", "minLength": 1, "maxLength": 4096 },
+          "next_check_at": { "type": "string", "format": "date-time" }
+        }
+      }
+    }
+  },
+  "$defs": {
+    "sha256": { "type": "string", "pattern": "^[A-Fa-f0-9]{64}$" },
+    "source": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["source_key", "source_url"],
+      "properties": {
+        "source_key": { "type": "string", "minLength": 1, "maxLength": 256 },
+        "source_url": { "type": "string", "format": "uri", "maxLength": 4096 },
+        "source_name": { "type": "string", "maxLength": 512 },
+        "authority_tier": { "type": "string", "maxLength": 128 }
+      }
+    },
+    "retrieval": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["source_key", "source_url", "retrieved_at", "content_hash", "mime_type", "byte_length", "method", "parser_version"],
+      "properties": {
+        "source_key": { "type": "string", "minLength": 1, "maxLength": 256 },
+        "source_url": { "type": "string", "format": "uri", "maxLength": 4096 },
+        "retrieved_at": { "type": "string", "format": "date-time" },
+        "content_hash": { "$ref": "#/$defs/sha256" },
+        "mime_type": { "type": "string", "minLength": 1, "maxLength": 512 },
+        "byte_length": { "type": "integer", "minimum": 0 },
+        "method": { "type": "string", "minLength": 1, "maxLength": 256 },
+        "parser_version": { "type": "string", "minLength": 1, "maxLength": 256 }
+      }
+    },
+    "evidence": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["evidence_key", "source_url", "retrieved_at", "mime_type", "byte_length", "sha256", "method", "parser_version"],
+      "properties": {
+        "evidence_key": { "type": "string", "minLength": 1, "maxLength": 256 },
+        "source_url": { "type": "string", "format": "uri", "maxLength": 4096 },
+        "retrieved_at": { "type": "string", "format": "date-time" },
+        "mime_type": { "type": "string", "minLength": 1, "maxLength": 512 },
+        "byte_length": { "type": "integer", "minimum": 0 },
+        "sha256": { "$ref": "#/$defs/sha256" },
+        "content_base64": { "type": "string", "contentEncoding": "base64", "maxLength": 33554432 },
+        "method": { "type": "string", "minLength": 1, "maxLength": 256 },
+        "parser_version": { "type": "string", "minLength": 1, "maxLength": 256 },
+        "locator": { "type": "string", "maxLength": 4096 }
+      }
+    },
+    "entityCandidate": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["candidate_key", "attributes", "evidence_keys"],
+      "properties": {
+        "candidate_key": { "type": "string", "minLength": 1, "maxLength": 512 },
+        "canonical_id_hint": { "type": "string", "maxLength": 256 },
+        "attributes": { "type": "object" },
+        "evidence_keys": { "type": "array", "items": { "type": "string", "maxLength": 256 } },
+        "identity_resolution_required": { "type": "boolean" }
+      }
+    },
+    "claim": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["claim_key", "subject_candidate_key", "field_key", "value", "evidence_keys"],
+      "properties": {
+        "claim_key": { "type": "string", "minLength": 1, "maxLength": 512 },
+        "subject_candidate_key": { "type": "string", "minLength": 1, "maxLength": 512 },
+        "field_key": { "type": "string", "minLength": 1, "maxLength": 256 },
+        "value": {},
+        "evidence_keys": { "type": "array", "minItems": 1, "items": { "type": "string", "maxLength": 256 } },
+        "observed_at": { "type": "string", "format": "date-time" }
+      }
+    },
+    "relationship": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["subject_candidate_key", "object_candidate_key", "relationship_type", "evidence_keys"],
+      "properties": {
+        "subject_candidate_key": { "type": "string", "minLength": 1, "maxLength": 512 },
+        "object_candidate_key": { "type": "string", "minLength": 1, "maxLength": 512 },
+        "relationship_type": { "type": "string", "minLength": 1, "maxLength": 256 },
+        "direction": { "type": "string", "maxLength": 64 },
+        "amount": { "type": "number" },
+        "period": { "type": "string", "maxLength": 256 },
+        "evidence_keys": { "type": "array", "minItems": 1, "items": { "type": "string", "maxLength": 256 } }
+      }
+    },
+    "datasetUnit": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["dataset_key", "unit_key", "state"],
+      "properties": {
+        "dataset_key": { "type": "string", "minLength": 1, "maxLength": 256 },
+        "unit_key": { "type": "string", "minLength": 1, "maxLength": 512 },
+        "state": { "type": "string", "minLength": 1, "maxLength": 128 },
+        "evidence_keys": { "type": "array", "items": { "type": "string", "maxLength": 256 } }
+      }
+    },
+    "gisBoundary": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["boundary_key", "source_url", "effective_status"],
+      "properties": {
+        "boundary_key": { "type": "string", "minLength": 1, "maxLength": 512 },
+        "source_url": { "type": "string", "format": "uri", "maxLength": 4096 },
+        "effective_status": { "type": "string", "minLength": 1, "maxLength": 128 },
+        "effective_from": { "type": "string", "format": "date" },
+        "effective_to": { "type": "string", "format": "date" },
+        "geometry_sha256": { "$ref": "#/$defs/sha256" },
+        "evidence_keys": { "type": "array", "items": { "type": "string", "maxLength": 256 } }
+      }
+    }
+  }
+}

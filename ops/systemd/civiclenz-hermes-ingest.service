@@ -1,0 +1,35 @@
+[Unit]
+Description=CivicLenZ HERMES Harvester canonical intake receiver
+Documentation=https://github.com/aijaraix/CivicLenZ/blob/main/docs/control-plane/HERMES_HARVESTER_BRIDGE.md
+Wants=network-online.target
+After=network-online.target
+ConditionPathExists=/etc/civiclenz/harvester-bridge.env
+
+[Service]
+Type=simple
+User=civiclenz
+Group=civiclenz
+WorkingDirectory=/opt/civiclenz/current
+EnvironmentFile=/etc/civiclenz/harvester-bridge.env
+Environment=HERMES_INGEST_BIND_HOST=127.0.0.1
+Environment=HERMES_INGEST_PORT=8788
+Environment=HERMES_INGEST_SPOOL_DIRECTORY=/var/lib/civiclenz/hermes-ingest
+Environment=HERMES_INGEST_PRODUCER_REGISTRY=/opt/civiclenz/current/config/producers/registry.json
+ExecStart=/usr/bin/node --experimental-strip-types --no-warnings services/hermes-ingest/src/main.ts
+Restart=on-failure
+RestartSec=10s
+TimeoutStartSec=30s
+TimeoutStopSec=30s
+UMask=0077
+NoNewPrivileges=yes
+PrivateTmp=yes
+ProtectHome=yes
+ProtectSystem=strict
+ProtectKernelTunables=yes
+ProtectKernelModules=yes
+ProtectControlGroups=yes
+RestrictAddressFamilies=AF_UNIX AF_INET AF_INET6
+ReadWritePaths=/var/lib/civiclenz
+
+[Install]
+WantedBy=multi-user.target

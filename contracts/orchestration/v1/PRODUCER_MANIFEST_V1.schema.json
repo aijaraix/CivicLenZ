@@ -1,0 +1,27 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://schemas.civicslenz.com/contracts/orchestration/v1/PRODUCER_MANIFEST_V1.schema.json",
+  "title": "PRODUCER_MANIFEST_V1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["manifest_version", "producer_id", "producer_version", "capabilities", "accepted_job_contracts", "emitted_result_contracts"],
+  "properties": {
+    "manifest_version": { "const": "PRODUCER_MANIFEST_V1" },
+    "producer_id": { "type": "string", "minLength": 1, "maxLength": 128 },
+    "producer_version": { "type": "string", "minLength": 1, "maxLength": 128 },
+    "capabilities": { "type": "array", "items": { "type": "string", "maxLength": 128 } },
+    "accepted_job_contracts": { "type": "array", "items": { "const": "HERMES_RESEARCH_JOB_V1" } },
+    "emitted_result_contracts": { "type": "array", "items": { "const": "CIVICLENZ_RESEARCH_INGEST_CONTRACT_V1" } },
+    "authority_boundary": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["may_submit", "may_verify", "may_publish", "direct_supabase_access"],
+      "properties": {
+        "may_submit": { "const": true },
+        "may_verify": { "const": false },
+        "may_publish": { "const": false },
+        "direct_supabase_access": { "const": false }
+      }
+    }
+  }
+}
