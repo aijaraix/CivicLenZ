@@ -49,5 +49,8 @@ jobs:
       - name: Collection runtime unit tests
         run: npm run test:collection-runtime
 
+      - name: HERMES harvester ingest contract tests
+        run: npm run test:hermes-ingest
+
       - name: Build static website
         run: npm run build

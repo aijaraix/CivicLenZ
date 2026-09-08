@@ -1,0 +1,50 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://schemas.civicslenz.com/contracts/orchestration/v1/HERMES_RESEARCH_JOB_V1.schema.json",
+  "title": "HERMES_RESEARCH_JOB_V1",
+  "description": "Canonical HERMES assignment envelope for replaceable research producers. HERMES remains the owner of work identity, reservation, retries, validation and publication gates.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "contract_version",
+    "job_id",
+    "research_work_identity",
+    "research_reservation",
+    "capability",
+    "cohort",
+    "priority",
+    "subject",
+    "research_contract"
+  ],
+  "properties": {
+    "contract_version": { "const": "HERMES_RESEARCH_JOB_V1" },
+    "job_id": { "type": "string", "minLength": 1, "maxLength": 256 },
+    "research_work_identity": { "type": "string", "minLength": 16, "maxLength": 512 },
+    "research_reservation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["reservation_id", "producer_id", "lease_expires_at"],
+      "properties": {
+        "reservation_id": { "type": "string", "minLength": 1, "maxLength": 256 },
+        "producer_id": { "type": "string", "minLength": 1, "maxLength": 128 },
+        "lease_expires_at": { "type": "string", "format": "date-time" }
+      }
+    },
+    "capability": { "type": "string", "minLength": 1, "maxLength": 128 },
+    "cohort": { "type": "object", "additionalProperties": true },
+    "priority": { "type": "integer", "minimum": 0, "maximum": 1000000 },
+    "subject": { "type": "object", "additionalProperties": true },
+    "research_contract": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["contract_key", "contract_version"],
+      "properties": {
+        "contract_key": { "type": "string", "minLength": 1, "maxLength": 256 },
+        "contract_version": { "type": "string", "minLength": 1, "maxLength": 128 }
+      }
+    },
+    "currentness_cutoff": { "type": "string", "format": "date-time" },
+    "source_hints": { "type": "array", "items": { "type": "object" } },
+    "correlation_id": { "type": "string", "maxLength": 256 }
+  }
+}
