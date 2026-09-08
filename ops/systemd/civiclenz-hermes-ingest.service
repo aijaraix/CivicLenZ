@@ -15,7 +15,10 @@ Environment=HERMES_INGEST_BIND_HOST=127.0.0.1
 Environment=HERMES_INGEST_PORT=8788
 Environment=HERMES_INGEST_SPOOL_DIRECTORY=/var/lib/civiclenz/hermes-ingest
 Environment=HERMES_INGEST_PRODUCER_REGISTRY=/opt/civiclenz/current/config/producers/registry.json
-ExecStart=/usr/bin/node --experimental-strip-types --no-warnings services/hermes-ingest/src/main.ts
+# The release bootstrap installs a version-pinned Node runtime below /opt.
+# Do not depend on Ubuntu's nodejs package or expose this process directly.
+Environment=PATH=/opt/civiclenz/runtime/node/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin
+ExecStart=/usr/bin/env node --experimental-strip-types --no-warnings services/hermes-ingest/src/main.ts
 Restart=on-failure
 RestartSec=10s
 TimeoutStartSec=30s
