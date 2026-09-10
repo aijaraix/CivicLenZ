@@ -1,5 +1,5 @@
 {
-  "manifest_version": "1.0.0",
+  "manifest_version": "1.1.0",
   "package_id": "civiclenz-autonomous-research-control-plane",
   "generated_on": "2026-09-10",
   "canonical_repository": "aijaraix/CivicLenZ",
@@ -11,6 +11,10 @@
     "CODEX_START_HERE.md",
     "docs/control-plane/README.md",
     "docs/control-plane/AUTONOMOUS_RESEARCH_CONTROL_PLANE_MASTER_INDEX_AND_IMPLEMENTATION_ORDER.md",
+    "docs/control-plane/BEHAVIORAL_EXECUTION_PROOF_AND_ANTI_SIMULATION_CONTRACT.md",
+    "docs/control-plane/PHYSICAL_RUNTIME_TOPOLOGY_AND_COMPONENT_CONNECTION_MATRIX.md",
+    "docs/control-plane/SINGLE_ORCHESTRATOR_MULTI_PRODUCER_AND_WORKER_AUTHORITY_CONTRACT.md",
+    "docs/control-plane/SYSTEM_WIDE_BEHAVIORAL_RECONCILIATION_AND_REPAIR_DIRECTIVE.md",
     "docs/control-plane/CIVICLENZ_MASTER_AUTONOMOUS_RESEARCH_OPERATING_CONTRACT.md",
     "docs/control-plane/SUBJECT_RESEARCH_ENRICHMENT_AND_COMPLETENESS_CONTRACT.md",
     "docs/control-plane/AGENT_RUNTIME_TOPOLOGY_HANDOFF_AND_TOOL_AUTHORITY.md",
@@ -53,6 +57,7 @@
   ],
   "non_negotiable_semantics": {
     "canonical_authority": "CivicLenZ/HERMES",
+    "single_canonical_orchestrator": true,
     "producer_default_state": "extracted_unreviewed",
     "interactive_sessions_are_runtime": false,
     "logical_capability_count_equals_process_count": false,
@@ -61,8 +66,21 @@
     "monitoring_required_for_dynamic_truth": true,
     "producer_direct_canonical_db_write_allowed": false,
     "producer_self_validation_allowed": false,
-    "producer_publication_authority": false
+    "producer_self_acknowledgement_allowed": false,
+    "producer_publication_authority": false,
+    "synthetic_fallback_may_count_as_live_execution": false,
+    "heartbeat_alone_proves_dispatch": false,
+    "local_build_alone_proves_deployment": false,
+    "status_string_alone_proves_behavior": false,
+    "critical_transition_requires_independent_attestation": true
   },
+  "proof_sequence": [
+    "REQUIRED_BEHAVIOR",
+    "ACTUAL_EXECUTION",
+    "DURABLE_EVIDENCE",
+    "INDEPENDENT_VERIFICATION",
+    "CLAIM"
+  ],
   "conformance_required_for": [
     "aijaraix/CivicsLenZz",
     "canonical CivicLenZ/HERMES",
@@ -72,7 +90,9 @@
     "record_source_ref": true,
     "record_source_commit": true,
     "verify_required_documents_present": true,
+    "verify_required_document_hashes_where_practical": true,
     "do_not_silently_fork_semantics": true,
-    "report_missing_or_conflicting_contracts": true
+    "report_missing_or_conflicting_contracts": true,
+    "report_local_vs_remote_vs_deployed_source_separately": true
   }
 }
