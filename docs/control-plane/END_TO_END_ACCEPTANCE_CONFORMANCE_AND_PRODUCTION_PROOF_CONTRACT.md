@@ -1,120 +1,75 @@
 # CivicLenZ End-to-End Acceptance, Conformance & Production Proof Contract
 
 ## 1. Purpose
-This document defines the final acceptance and conformance standard for the CivicLenZ autonomous research organization. It specifies what must be physically demonstrated before any implementation—canonical HERMES/Codex, CivicsLenZz/Google, or future compatible producer/runtime—may claim that a capability, subsystem, research domain, cohort, or the overall system is operational.
+This document defines the final acceptance standard for CivicLenZ, canonical HERMES/Codex, CivicsLenZz/Google and future compatible producers/workers.
 
-This contract does not replace specialized contracts. It proves that they have been implemented together as one functioning system.
+It proves that the required architecture is physically implemented as a functioning autonomous system rather than represented by names, status objects, synthetic traces, counters or self-certified proof.
 
-## 2. Governing principle
-Documentation is not completion.
+## 2. Mandatory companion contracts
+Acceptance requires conformance with:
+- `BEHAVIORAL_EXECUTION_PROOF_AND_ANTI_SIMULATION_CONTRACT.md`
+- `PHYSICAL_RUNTIME_TOPOLOGY_AND_COMPONENT_CONNECTION_MATRIX.md`
+- `SINGLE_ORCHESTRATOR_MULTI_PRODUCER_AND_WORKER_AUTHORITY_CONTRACT.md`
+- `SYSTEM_WIDE_BEHAVIORAL_RECONCILIATION_AND_REPAIR_DIRECTIVE.md`
+- all other documents required by the current package manifest
 
-Code existence is not completion.
+These are mandatory, not advisory.
 
-A registered capability is not completion.
+## 3. Governing proof sequence
+Every acceptance claim must follow:
 
-A passing unit test is not completion.
+`REQUIRED_BEHAVIOR -> ACTUAL_EXECUTION -> DURABLE_EVIDENCE -> INDEPENDENT_VERIFICATION -> CLAIM`.
 
-A constructed proof object is not completion.
+If a component can manufacture the proof object that certifies its own success, that object alone is insufficient acceptance evidence.
 
-One successful fetch is not completion.
+## 4. Non-proof examples
+The following do not independently establish production operation:
+- class/function names
+- registration
+- configuration
+- initialized state
+- generated traces
+- generated source-health rows
+- generated hashes over expected strings
+- generated evidence paths
+- status booleans
+- local counters
+- heartbeat updates
+- shape/static tests
+- local builds
+- Google AI Studio workspace state
+- sender-created acknowledgements
+- producer-created validation state
 
-One researched official is not completion.
-
-A schema-valid package is not canonical validation.
-
-A running process is not proof it is doing useful work.
-
-Acceptance requires physical end-to-end evidence.
-
-## 3. Conformance scope
-Conformance must cover the current canonical contract package, including at minimum:
-- Master Autonomous Research Operating Contract
-- Subject Research Enrichment and Completeness Contract
-- Agent Runtime Topology, Handoff and Tool Authority Contract
-- Research Work Ledger, Scheduler and Backlog Execution Contract
-- Source Registry, Retrieval, Extraction and Evidence Execution Contract
-- Canonical Validation, Identity, Contradiction and Publication Gate Contract
-- Monitoring, Currentness, Failure Recovery and Academy Evolution Contract
-- System Security, Service Identity, Secrets and Permission Boundaries Contract
-- Operator Dashboard, Metrics, Backlog and System Truth Contract
-- Deployment, Runtime Supervision, Recovery and Disaster Continuity Contract
-- existing Seat/Election/Candidate, GIS/address, territory/resource, relationship/influence, promise/position, media, evidence/provenance, producer and observability contracts
-
-## 4. Implementation conformance matrix
-Every implementation must maintain a matrix with columns equivalent to:
-- requirement_id
-- canonical document/section
-- semantic requirement
-- implementation component
-- runtime location
-- responsibility owner
-- physical proof
-- test proof
-- live-source proof
-- monitoring proof
-- status
-- gap
-- remediation
-
-Statuses:
-- NOT_IMPLEMENTED
-- IMPLEMENTED_NOT_PROVEN
-- TEST_PROVEN
-- LIVE_SOURCE_PROVEN
-- AUTONOMOUS_RUNTIME_PROVEN
-- MONITORING_PROVEN
-- DEGRADED
-- BLOCKED
-- NOT_APPLICABLE
-
-## 5. Google versus canonical conformance
-Google/CivicsLenZz and canonical HERMES/Codex may use different physical topologies.
-
-They must not diverge semantically.
-
-The conformance matrix must explicitly compare:
-- canonical responsibility
-- canonical implementation
-- producer implementation
-- shared contract/version
-- differences
-- allowed producer limitation
-- unresolved divergence
-
-Producer implementations may stop before canonical validation/publication but must preserve compatible evidence, identity context, ResearchWorkIdentity and handoff contracts.
-
-## 6. No fixed-agent-count acceptance
-Do not use a number such as `47 agents` as a global acceptance criterion.
-
-Acceptance asks:
-- are all required responsibilities owned?
-- do they have executable paths?
-- are real workers/services consuming real backlog?
-- do they produce the required outputs/evidence?
-- are handoffs consumed?
-- are failures isolated?
-- is monitoring active?
-
-Logical capability count and physical process count are separate metrics.
-
-## 7. Overall acceptance dimensions
-The final acceptance report must classify separately:
+## 5. Acceptance dimensions
+Classify independently:
+- CONTRACT_SYNC
 - ARCHITECTURE_CONFORMANCE
+- SINGLE_ORCHESTRATOR_AUTHORITY
+- PHYSICAL_RUNTIME_TOPOLOGY
+- DEPLOYMENT_PROVENANCE
 - RUNTIME_LIVENESS
 - SESSION_INDEPENDENCE
 - SCHEDULER
+- WORK_LEDGER
 - QUEUES
+- LEASES
 - CAPABILITY_EXECUTION
+- SUBJECT_FANOUT
 - SUBJECT_ENRICHMENT
 - DEEP_RESEARCH
 - SOURCE_REGISTRY
+- SOURCE_HEALTH
 - RETRIEVAL
 - EXTRACTION
 - EVIDENCE
 - HANDOFFS
+- PRODUCER_BRIDGE
+- CANONICAL_INTAKE
 - IDENTITY_RESOLUTION
-- CANONICAL_VALIDATION
+- TEMPORAL_CURRENTNESS
 - CONTRADICTION_HANDLING
+- CANONICAL_VALIDATION
 - ELECTION_CURRENTNESS
 - GIS_ADDRESS_READINESS
 - MONITORING
@@ -122,16 +77,14 @@ The final acceptance report must classify separately:
 - ACADEMY
 - SECURITY
 - OPERATOR_TRUTH
-- DEPLOYMENT_PROVENANCE
 - RESTART_SURVIVAL
 - DISASTER_CONTINUITY
-- PRODUCER_BRIDGE
 - PUBLICATION_GATE
 
-Never collapse these into one unqualified PASS.
+Do not collapse these into a single unqualified PASS.
 
-## 8. Acceptance classifications
-Use:
+## 6. Acceptance classifications
+Use only:
 - PASS
 - PASS_WITH_LIMITATIONS
 - DEGRADED
@@ -139,373 +92,337 @@ Use:
 - NOT_YET_PROVEN
 - NOT_APPLICABLE
 
-Every non-PASS state requires reason and remediation/next action.
+Every non-PASS state requires reason and next action.
 
-## 9. Physical-proof hierarchy
-Proof strength increases through:
-1. documentation/contract
-2. implementation inspection
-3. unit/contract test
-4. integration test
-5. live source execution
-6. persistent autonomous execution
-7. longitudinal monitoring
-8. failure/recovery execution
-9. restart/recovery proof
-10. sustained production observation
+## 7. Proof maturity states
+For a requirement/capability use:
+- DECLARED
+- IMPLEMENTED
+- CONNECTED
+- EXECUTED
+- PERSISTED
+- CONSUMED
+- INDEPENDENTLY_VERIFIED
+- MONITORED
 
-Claims must state the achieved level.
+A higher state requires physical evidence of every prior state.
 
-## 10. Real-source requirement
-LIVE_SOURCE_PROVEN requires:
-- real job
-- real capability/worker
-- real approved source/tool
-- physical retrieval
-- actual response bytes/records
-- parser/extraction
-- precise locator
-- evidence/artifact/hash
-- persistence
-- handoff/result
+## 8. Independent attestation rule
+Critical transitions require an attesting component different from the producer whenever technically possible.
 
-Fixtures/static strings cannot satisfy live-source proof.
+Examples:
+- scheduler ledger attests dispatch
+- queue/consumer attests receipt/consumption
+- storage verifier recomputes artifact hash
+- canonical receiver attests bridge receipt
+- validator attests validation state
+- projection service attests publication
+- monitoring service attests currentness check
 
-## 11. Autonomous-runtime requirement
-AUTONOMOUS_RUNTIME_PROVEN requires work to be generated and executed by persistent scheduler/event/queue mechanisms without manual invocation of the individual research function.
+The producer cannot write the receiver's acknowledgement.
 
-Google/Codex/ChatGPT must not be the hidden orchestrator.
+## 9. Single-orchestrator proof
+Acceptance requires proof that one canonical HERMES authority owns global:
+- ResearchWorkIdentity
+- scheduling/prioritization
+- canonical leases
+- validation coordination
+- currentness reconciliation
+- monitoring obligations
+- canonical Gap Detector
+- Academy promotion authority
+- publication eligibility
 
-## 12. Session-independence canary
-Record a before-state:
-- timestamp
-- scheduler heartbeat
-- queue depth
-- jobs created/completed
-- retrieval count
-- evidence count
-- monitoring checks
-- Gap Detector state
+Enumerate all timers, crons, queue triggers, schedulers and event loops capable of creating/dispatching work and prove competing canonical authority does not remain reachable.
 
-Allow the persistent runtime to operate without manually invoking research functions.
+## 10. Observer-versus-executive proof
+A HERMES observer process is not the full executive.
 
-Record after-state and prove legitimate advancement from scheduler/events.
+Full executive acceptance requires:
+`ResearchNeed -> persisted work -> scheduler dispatch -> lease -> worker execution -> result -> downstream consumption -> next eligible work`.
 
-If eligible work exists but nothing advances, investigate rather than manufacturing work.
+A heartbeat/state change without this chain is insufficient.
 
-## 13. Persistent orchestrator proof
-Verify:
+## 11. Physical runtime topology proof
+For each critical service provide:
+- source repository/commit
+- deployed artifact/version
+- host/runtime
 - process/service identity
-- supervisor/autostart
-- start time
-- heartbeat
-- last work scan
-- last dispatch
-- runtime/source version
-- durable dependencies
+- parent/supervisor
+- user/service identity
+- port/binding where applicable
+- input
+- output
+- state store
+- downstream consumer
+- health/readiness
 
-An in-process object instantiated by the interactive session is not sufficient.
+Unknown deployment lineage is DEGRADED or NOT_YET_PROVEN.
+
+## 12. Local/remote/deployed distinction
+Report separately:
+- canonical contract commit
+- implementation remote commit
+- local runtime/workspace commit
+- deployed artifact/runtime commit
+
+Local source cannot establish deployment.
+
+## 13. Session-independence proof
+Without manually invoking the research function during the observation window, record before/after:
+- scheduler heartbeat
+- jobs created/completed
+- queue depth
+- retrievals
+- evidence
+- monitoring checks
+- gaps
+
+Prove persistent runtime generated legitimate new work while interactive Google/Codex/ChatGPT activity was not required.
 
 ## 14. Scheduler proof
-With eligible backlog, prove scheduler:
-- scans due work
-- resolves dependencies
-- prioritizes
-- reserves
-- dispatches
-- records state
-- continues to next work
+With eligible backlog and available resources, prove:
+- due-work scan
+- dependency resolution
+- prioritization
+- reservation
+- dispatch
+- durable state transition
+- subsequent next-work dispatch
 
-Also prove no-dispatch states are explained by resource/dependency/policy conditions.
+Heartbeat-only schedulers fail.
 
-## 15. Queue proof
-For each material queue prove:
-- enqueue
-- consumer receipt
+## 15. Work-ledger proof
+Physically verify durable storage of, as applicable:
+- ResearchNeeds
+- ResearchWorkIdentities
+- jobs
+- attempts
+- leases
+- dependencies
+- retries/dead letters
+- monitoring obligations
+- gaps
+- incidents
+
+Derived counts must identify their exact query/path.
+
+## 16. Queue proof
+For every material queue prove:
+- real enqueue
+- consumer receive
 - lease/visibility semantics
-- acknowledgement
-- retry
-- dead-letter path
-- restart persistence
+- actual acknowledgement
+- retry behavior
+- dead-letter behavior
 - idempotency
+- persistence across process restart where required
 
-Queue existence alone is insufficient.
+A queue-depth counter alone is insufficient.
 
-## 16. Capability liveness proof
-For every required capability report:
-- implementing worker/service
-- eligible backlog
+## 17. Capability proof
+For each required logical capability identify:
+- physical worker/process/module
+- wakeup mechanism
+- input queue/work source
 - last real job
-- last real source/retrieval
-- last real output/evidence
-- last handoff
-- next eligible work
+- last real retrieval/tool execution
+- last durable output/evidence
+- downstream consumer
+- eligible backlog
 - failure state
 
-A capability with backlog and no work beyond service expectation is STARVED, not healthy.
+Registered capability != active agent.
 
-## 17. Subject fan-out proof
-Choose real newly discovered or materially incomplete subjects and prove that ResearchContracts automatically create independent applicable work across multiple domains without a human manually requesting each domain.
+## 18. Subject fan-out proof
+Select a real newly discovered/materially incomplete subject from persisted data.
 
-The fan-out should include applicable identity, biography, career, Election/CandidateCampaign, contact, campaign, finance, disclosure, government activity, statements, relationships, GIS, media and monitoring scopes.
+Prove applicable ResearchContracts automatically create independent durable research work without manually prebuilding expected jobs.
 
-## 18. Missing-field proof
-For sampled and aggregate subjects, every applicable missing scope must have a physical reason/state and next action.
+## 19. Enrichment proof
+Population coverage metrics require:
+- authoritative store/table/path
+- exact numerator
+- applicability denominator
+- currentness rule
+- evidence requirement
+- test/synthetic exclusion
 
-A blank without state/job/reason is a failure.
+Generated summary objects cannot establish population counts.
 
-## 19. Deep-research proof
-Deep research must demonstrate multiple applicable source families and evidence objects for a subject.
+## 20. Deep research proof
+Deep dossier qualification must follow the canonical Subject Research Enrichment contract, not an arbitrary number of evidence categories.
 
-Do not call a dossier deep because one record exists per domain.
+For finite domains, reconcile expected versus discovered/retrieved/parsed/evidence-backed units.
 
-For enumerable domains reconcile expected versus processed units.
+## 21. Real-source proof
+LIVE_SOURCE_PROVEN requires:
+- real approved source
+- real network/file/API transaction
+- actual response bytes/records
+- recorded retrieval metadata
+- parser/extraction execution
+- persisted raw artifact/evidence
+- precise locator
 
-## 20. Research-depth metrics
-Report separately:
-- structural discovery
-- first pass
-- partially enriched
-- deep research active
-- current with applicable evidence
-- current monitoring
-- canonical validated
+Synthetic fallback payloads do not qualify.
 
-Use physical denominators.
+## 22. Synthetic fallback prohibition
+If a primary retrieval fails and no approved real alternate source succeeds:
+- record failure/degraded state
+- retry/backoff according to policy
 
-## 21. Enrichment-velocity proof
-Over an observation window measure:
-- subjects advanced
-- scope cells advanced
-- gaps closed
-- new gaps
-- evidence created
-- relationships created
-- deep dossiers advanced
-- backlog start/end
+Do not manufacture a successful payload, HTTP status, latency, byte count, evidence artifact or claim.
 
-Success means real backlog progress, not job-count inflation.
+## 23. Constructed-hash prohibition
+SHA-256 used as source/evidence proof must derive from actual artifact bytes.
 
-## 22. Source-registry proof
-Audit all registered sources for:
-- authority/source role
-- domains served
-- adapter/parser
-- health/currentness
-- last success/failure
-- dependent capabilities
+Hashes over IDs, expected values, generated strings, labels or `live_bytes_*` placeholders do not prove retrieval.
 
-Important research domains with no authoritative source path are gaps.
+## 24. Evidence persistence proof
+For sampled evidence:
+- artifact/object physically exists
+- bytes can be read
+- SHA-256 recomputes
+- retrieval lineage resolves
+- SourceLocator resolves into the artifact
+- extracted claim matches supporting material
 
-## 23. Source-discovery proof
-For a legitimate gap lacking a known source, demonstrate:
-gap -> source discovery -> authority evaluation -> Source Registry -> retrieval -> extraction/evidence.
+Returning an object path string is not persistence proof.
 
-Stable repeated sources should be candidates for deterministic adapters through Academy.
+## 25. Evidence independence
+An evidence producer may mark extraction metadata but cannot be the sole verifier of evidence integrity/consumption when an independent storage/validator boundary exists.
 
-## 24. Retrieval proof
-Sample physical retrieval records and verify actual bytes/records, timestamps, HTTP/source metadata, hashes and lineage.
+## 26. Handoff proof
+For every critical handoff verify both sides:
+- sender prepared/sent
+- receiver physically received
+- receiver acknowledged
+- hashes/record counts reconcile
 
-Constructed expected payloads must not be counted as retrievals.
+Sender-generated receipt alone is insufficient.
 
-## 25. Precise-evidence proof
-For sampled claims verify:
-claim -> EvidenceObject -> SourceLocator -> preserved artifact -> retrieval -> source.
-
-The locator must physically resolve to supporting material.
-
-Generic homepages fail where a precise locator is reasonably available.
-
-## 26. Evidence integrity proof
-Verify sampled raw artifacts against stored SHA-256 and byte metadata.
-
-Detect:
-- missing artifacts
-- hash mismatch
-- claim without evidence
-- evidence without expected claim linkage
-- broken locator
-
-## 27. Extraction proof
-For HTML/PDF/API/GIS/finance source families verify actual processed units and parser versions.
-
-Do not infer pages inspected from document page count.
-
-## 28. Identity-resolution proof
-Use cases containing:
-- same/similar names
-- historical/current campaigns
-- same district numbers across office types
-- Seat occupant changes
-- organization name variants
-
-Prove identity resolution fails closed on ambiguity and prevents cross-cycle/cross-office collisions.
-
-## 29. Temporal-truth proof
-Use current/historical cases to prove:
-- historical evidence remains preserved
-- current projection uses appropriate current evidence
-- valid-time transitions are modeled
-- stale evidence cannot silently satisfy current-state requirements
-
-## 30. Vacancy/occupancy canary
-Use a real occupancy change/vacancy case from authoritative current sources.
-
-Prove monitoring detects the change generically, preserves past Occupancy, creates current Seat/vacancy state, generates follow-up research and does not require hard-coded subject logic.
-
-## 31. Election lifecycle proof
-For current Election cycles prove legal states are separately represented and sourced:
-filing -> qualifying -> withdrawal/ballot -> primary/result -> general nominee/ballot -> result/certification where applicable.
-
-Do not infer legal qualification from campaign existence.
-
-## 32. CandidateCampaign isolation proof
-Prove CandidateCampaign identity includes sufficient office/Seat/cycle/filing-authority context to prevent historical or cross-office contamination.
-
-## 33. Finite-dataset reconciliation proof
-For representative enumerable datasets prove:
-- universe enumerated
-- expected count
-- processed count
-- missing/failed units
-- reconciliation state
-- reference period
-
-Sampling cannot yield `complete`.
-
-## 34. Contradiction proof
-Use naturally occurring or safe test contradictions to prove:
-- both evidence chains preserved
-- contradiction candidate created
-- current projection does not silently choose unsupported value
-- reconciliation routes correctly
-
-## 35. Root-cause proof
-For a real defect demonstrate:
-incident -> lineage trace -> first incorrect transition -> generalized failure class -> blast radius -> generalized repair -> invalidation/supersession -> regeneration -> regression test -> monitoring.
-
-A hard-coded subject patch fails this criterion.
-
-## 36. Non-blocking failure proof
-During a real retry/degraded incident prove:
-- affected scope retries/degrades
-- sibling scopes continue
-- other subjects continue
-- scheduler continues
-- monitoring continues
-- Gap Detector continues
-- Academy continues
-
-Do not intentionally damage production merely to create failure.
-
-## 37. Handoff proof
-For material handoffs verify both sender and receiver state:
-- prepared/sent
-- received
-- acknowledged
-- manifest/hash/record-count reconciliation
-
-Sender-created receipt alone is insufficient.
-
-## 38. Producer bridge proof
-For CivicsLenZz or another producer prove:
+## 27. Producer bridge proof
+For CivicsLenZz/future producer prove:
 - producer authentication
-- schema/version
-- idempotency
-- evidence manifest
-- extracted_unreviewed status
+- correct schema/version
+- ResearchWorkIdentity/idempotency
+- real evidence manifest
+- `extracted_unreviewed` state
 - durable offline retention
-- retry/backoff
-- canonical acknowledgement mapping
+- bounded retry/backoff
+- physical canonical receiver acknowledgement
 
-Transport success must not be reported as canonical validation.
+Bridge-ready is not canonical-received.
 
-## 39. Canonical intake proof
-When canonical intake is active, prove:
-producer -> authenticated receiver -> durable intake -> validation queue/ledger -> evidence access -> identity/evidence/contradiction processing -> canonical decision.
+## 28. Canonical intake proof
+When intake is active prove:
+`producer -> receiver -> durable intake -> validation work -> identity/evidence/currentness/contradiction processing -> canonical decision`.
 
-If intake is paused, classify this NOT_YET_PROVEN rather than simulating success.
+If intake is paused, report NOT_YET_PROVEN for downstream intake/validation rather than simulating it.
 
-## 40. Canonical metric truth
-Verify counts separately for:
-- received
-- accepted for validation
-- validated current
-- validated historical
-- publication eligible
-- published
+## 29. Canonical validation proof
+Report separately:
+- RECEIVED
+- ACCEPTED_FOR_VALIDATION
+- VALIDATED_CURRENT
+- VALIDATED_HISTORICAL
+- NEEDS_IDENTITY_RESOLUTION
+- NEEDS_MORE_EVIDENCE
+- CONTRADICTION_PENDING
+- REJECTED
+- PUBLICATION_ELIGIBLE
+- PUBLISHED
 
-Zero must remain zero when no canonical processing occurred.
+Local schema-valid records are not canonical validated.
 
-## 41. GIS/address proof
-Use bounded public test addresses/coordinates across different jurisdictions.
+## 30. Identity proof
+Use cases with similar names, cross-office district numbers, historical/current campaigns and Seat changes.
 
-Prove:
-input -> geocode -> boundary versions -> overlapping Seats -> current Occupancies -> active Elections/CandidateCampaigns.
+Prove canonical identity resolution prevents collisions and fails closed on ambiguity.
 
-Verify against authoritative GIS/source layers.
+## 31. Temporal/currentness proof
+Current projection must derive from valid-time state and current authoritative sources.
 
-Do not use private-person addresses as fixtures.
+Prove historical evidence remains historical, succession/appointment closes prior conflicting occupancy where appropriate, resignations use effective dates, candidate campaigns transition correctly, and current Seat/district is resolved from current authority.
 
-## 42. Boundary-version proof
-Demonstrate preservation of historical and current geometry, legal versus operational source distinction and geometry hash/versioning.
+## 32. Contradiction proof
+For a real or safe controlled contradiction:
+- preserve both evidence chains
+- create contradiction candidate
+- avoid unsupported current projection
+- route to canonical reconciliation
 
-## 43. Contact-data proof
-For public official/campaign contact research, sample:
-- phone
-- email
-- contact page/form
-- mailing address where appropriate
-- social account
+## 33. Root-cause proof
+For a real defect prove:
+`incident -> lineage -> first incorrect transition -> blast radius -> generalized repair -> supersession/regeneration -> behavioral regression -> monitoring`.
 
-Verify public source, provenance, currentness and subject/context identity.
+A person-specific hard-coded patch fails acceptance.
 
-Missing contact data remains unresolved/not found as of scope, not invented.
+## 34. Non-blocking failure proof
+During a real naturally occurring retry/degradation prove unaffected subjects/scopes continue.
 
-## 44. Media proof
-For sampled Persons verify:
-context page -> direct asset -> retrieval -> hash -> identity association -> rights/usage state -> eligibility.
+Do not intentionally harm production merely to manufacture a failure test.
 
-No stock/generated/unrelated portrait may pass.
+## 35. Source Registry proof
+Every recurring source must physically declare authority/role, domains, coverage, endpoint family, adapter/parser, currentness role, health, last success/failure and dependent capabilities.
 
-## 45. Money-domain proof
-Audit campaign finance, public money, disclosures and lobbying separately.
+## 36. Source-health proof
+UNKNOWN stays UNKNOWN until a physical check occurs.
 
-Verify record identity, reporting period, source evidence and reproducible derived totals where used.
+Prefilled latency/fingerprint/healthy metadata cannot establish monitoring health.
 
-## 46. Relationship proof
-Sample relationship edges and verify evidence supports the exact relationship type/context.
+## 37. Monitoring proof
+Monitoring requires:
+`scheduled/event wakeup -> physical retrieval/check -> comparison -> persisted changed/no-change state -> follow-up work when needed`.
 
-No motive/influence inference is implied merely by an edge.
+Source registration alone is not monitoring.
 
-## 47. Promise/position proof
-Sample promises/positions and verify original evidence/context plus any later action evidence candidates.
+## 38. Gap Detector proof
+A real missing/stale/conflicting applicable scope must create a durable gap and then enter real scheduler execution.
 
-Unsupported fulfillment/broken judgments must not be auto-generated.
+The reporting component cannot manufacture both the denominator and the successful remediation count.
 
-## 48. Monitoring proof
-For representative dynamic scopes show multiple real checks over time:
-previous state/hash -> new check -> changed/no-change -> currentness -> next check -> follow-up work where changed.
+## 39. Academy proof
+Academy acceptance requires:
+`real production observation -> proposal -> isolated test -> regression -> authorized promotion -> deployed change -> post-change measurement`.
 
-Configured cadence alone is insufficient.
+A local `promoted=true` field or generated score is insufficient.
 
-## 49. Monitoring-coverage proof
-Compare expected dynamic monitoring scopes to physically configured/current scopes.
+## 40. Academy independent authority
+Producer Academy may propose; canonical Academy governance controls shared production-semantic promotion.
 
-Report missing/stale/failed monitoring explicitly.
+No local producer may independently weaken truth, legal, security or publication rules.
 
-## 50. Gap Detector proof
-Use real incomplete subjects to prove missing/stale/conflicting ResearchContract scopes create real work that enters the scheduler and executes.
+## 41. Tool/browser proof
+When a job requires browser behavior prove actual browser/DOM execution.
 
-## 51. Academy proof
-Academy acceptance requires real production observations separate from fixtures.
+Launching Chrome, producing step text, or making a direct API request from browser context does not automatically prove the requested browser journey.
 
-Demonstrate:
-observation -> case -> hypothesis/proposal -> test -> regression -> controlled promotion/rejection -> post-change observation.
+## 42. Model proof
+Qwen/Gemini/model liveness is not utilization proof.
 
-Academy may not weaken truth/security/publication rules.
+Show authorized job -> model request -> response metadata -> downstream consumption.
 
-## 52. Security proof
+Model output is not primary evidence.
+
+## 43. Cloudflare proof
+For Workers/Queues prove deployed version, bindings, trigger execution, real message production/consumption and resulting durable state.
+
+GitHub code or cron configuration alone is not production proof.
+
+## 44. Supabase proof
+Verify actual project/schema/table/role/migration state and physical writes through authorized components.
+
+Do not create parallel canonical truth stores.
+
+## 45. R2 proof
+Verify actual evidence object bytes, hashes, metadata and access boundaries.
+
+An R2 key string is not object persistence proof.
+
+## 46. Security proof
 Audit:
 - service identities
 - least privilege
@@ -513,70 +430,179 @@ Audit:
 - secret redaction
 - no secrets in Git
 - authenticated service traffic
-- replay/idempotency controls
+- replay/idempotency
 - database write boundaries
 - evidence integrity
 - model/browser permissions
 - deployment authority
 
-## 53. Negative security tests
-Where safe, verify:
+## 47. Negative security proof
+Where safe verify:
 - invalid producer auth rejected
-- unauthorized direct canonical write rejected
+- producer cannot self-promote
+- unauthorized canonical write rejected
 - unsupported schema rejected/quarantined
-- secret not returned in telemetry
-- private route not publicly exposed
-- producer cannot self-promote validation/publication
+- secrets absent from telemetry
+- private routes not publicly exposed
 
-## 54. Prompt-injection resilience proof
-Treat external source content as untrusted data.
+## 48. Prompt-injection proof
+External civic source content is untrusted data.
 
-Demonstrate that malicious/instruction-like source text cannot cause workers/models to change system rules, expose secrets, broaden permissions, bypass evidence, or execute unrelated actions.
+Prove it cannot alter instructions, expose secrets, broaden permissions or trigger unrelated actions.
 
-## 55. Dashboard truth proof
-For sampled dashboard metrics trace displayed number/status to physical query/event records and metric definition.
+## 49. Operator metric truth proof
+Sample dashboard metrics and trace each to physical durable state and an explicit metric definition.
 
-Reject metrics with unclear denominators, sample extrapolation or hidden synthetic values.
+Reject unclear denominators, sample extrapolation, generated counters and synthetic/test contamination.
 
-## 56. Agent/capability display proof
-Dashboard must distinguish logical capability from worker/process and show real last-work/backlog/liveness state.
+## 50. Currentness metric truth
+Distinguish:
+- structural discovery
+- any parent source monitored
+- each applicable dynamic scope monitored
+- current with evidence
+- deep research
+- canonical validated
 
-`47 capabilities` must not automatically render as `47 autonomous agents active`.
+Do not label these interchangeably.
 
-## 57. Resource-governor proof
-With eligible backlog, demonstrate useful dispatch within resource limits.
+## 51. Deployment provenance proof
+For every critical service reconcile:
+`GitHub source -> build/artifact -> deployment -> loaded configuration -> running PID/service`.
 
-Verify throttling under constrained conditions without global stall.
+If systemd definitions differ on disk vs loaded state, reconcile before declaring deployment conformance.
 
-Idle capacity with backlog requires explanation.
+## 52. Duplicate runtime proof
+Enumerate legacy/current schedulers, workers, timers and event loops.
 
-## 58. Deployment-provenance proof
-For each critical service reconcile running deployment to:
-- repository
-- commit/build/image digest
-- configuration version
-- deployment timestamp
-- supervisor/runtime
+Prove an old implementation is not still reachable and producing competing truth/work.
 
-Unknown deployment provenance is a failure/degraded state.
-
-## 59. Restart-survival proof
-Perform or cite a recent physical supervised restart/reboot test.
-
-Verify recovery of:
-- orchestrator
-- scheduler
-- workers
+## 53. Restart-survival proof
+When safe, verify supervised restart preserves/reconciles:
+- ledger
 - queues
-- leases/retries
+- leases
+- retries
 - monitoring deadlines
 - incidents
-- bridge backlog
+- producer backlog
 - Academy state
 
 If not physically tested, report NOT_YET_PROVEN.
 
-## 60. Crash-recovery proof
-For safe test/non-destructive conditions, prove worker/process crash does not erase durable work and stale leases recover.
+## 54. Resource proof
+Measure actual CPU/memory/disk/network/browser/model usage during real work.
 
-## 
+Resource tuning must follow observed behavior.
+
+## 55. Session-independent sustained observation
+After activation, observe normal work without interactive invocation and report:
+- legitimate jobs created/completed
+- retrievals
+- artifacts/evidence
+- gaps opened/closed
+- monitoring checks
+- queue age
+- failures/retries
+
+This is stronger than a one-shot canary.
+
+## 56. Historical proof invalidation
+If earlier reports relied on synthetic/self-certified proof machinery, classify those proof assertions as historical untrusted proof.
+
+Do not automatically discard underlying real evidence.
+
+## 57. Test classification
+Every test suite used for acceptance must disclose whether it is:
+- BEHAVIORAL_LIVE
+- BEHAVIORAL_INTEGRATION
+- CONTRACT
+- UNIT
+- SHAPE_STATIC
+- FIXTURE
+
+Only appropriate behavioral/physical evidence may satisfy production acceptance dimensions.
+
+## 58. No golden-answer leakage
+Independent evaluation cannot expose expected/golden answers to the component being evaluated in a way that lets it pass by construction.
+
+## 59. No cloned proof
+One real execution cannot be cloned/relabelled to establish many capabilities unless those capabilities genuinely share the same execution and the proof explicitly states that fact without multiplying work counts.
+
+## 60. No counter inflation
+Incrementing an in-memory/local proof counter is not proof of jobs, pages, evidence, acknowledgements or monitoring.
+
+Metrics must derive from authoritative persisted execution events.
+
+## 61. Finite dataset reconciliation
+For enumerable domains report:
+- EXPECTED
+- DISCOVERED
+- RETRIEVED
+- PARSED
+- EVIDENCE_BACKED
+- MISSING/FAILED
+- reference period
+
+Sampling cannot equal complete.
+
+## 62. GIS/address proof
+Use bounded public test locations to prove geocode -> applicable boundary versions -> Seats -> current Occupancies -> active Elections/CandidateCampaigns, verified against authoritative GIS.
+
+## 63. Contact-data proof
+For public official/campaign contacts verify source, context identity, currentness and provenance. Missing information remains unknown/not found as of search scope, not invented.
+
+## 64. Media proof
+Verify official/context page -> direct asset -> real bytes -> hash -> identity association -> rights/eligibility state.
+
+No stock/generated/unrelated portrait may pass as official media.
+
+## 65. Money-domain proof
+Audit campaign money, public/government money, personal/public disclosures and lobbying separately with source/reporting-period provenance.
+
+## 66. Relationship proof
+Evidence must support the exact relationship type/context. Relationship existence does not itself establish motive or influence.
+
+## 67. Promise/position proof
+Preserve original statement/context and separately link later action evidence. Unsupported fulfilled/broken judgments must not be generated.
+
+## 68. Conformance matrix requirement
+Maintain a durable matrix containing:
+- requirement_id
+- canonical document/section
+- required behavior
+- implementation component
+- runtime location
+- producer/consumer
+- durable evidence
+- independent attestor
+- test classification/proof
+- live proof
+- monitoring proof
+- maturity state
+- acceptance classification
+- gap/remediation
+
+## 69. Required final report lineage
+Every final production report must include:
+- canonical manifest version/blob SHA
+- canonical contract commit
+- implementation remote commit
+- local runtime commit
+- deployed runtime/artifact commit
+- test files/counts/classification
+- current active queues/workers
+- real physical activity window
+- unresolved gaps
+
+## 70. Acceptance gate
+A subsystem may be declared PASS only when its required behavior is physically executed, durably evidenced, independently attested where technically possible, and consistent with canonical authority/security/currentness rules.
+
+If Google/Codex can generate the same PASS report without the intended production path actually occurring, the evidence is insufficient.
+
+## 71. Final owner-level question
+The final acceptance question is:
+
+> With Google, Codex, ChatGPT and browser sessions closed, does the deployed CivicLenZ organization continue to identify real work, dispatch the one authorized orchestration path, execute real workers/tools, retrieve real sources, persist real evidence, receive independent acknowledgements, reconcile canonical currentness, monitor change, learn under governed Academy controls, and advance only through the authorized validation/publication path?
+
+If an applicable element has not been physically demonstrated, classify it NOT_YET_PROVEN rather than manufacturing completion.
