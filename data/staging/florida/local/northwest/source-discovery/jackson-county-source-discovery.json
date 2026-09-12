@@ -5,34 +5,41 @@
   "stateCode": "FL",
   "region": "northwest_florida_panhandle",
   "rootSeedUrl": "https://jacksoncountyfl.gov/",
-  "finalRootUrl": "https://jacksoncountyfl.gov/",
+  "finalRootUrl": "https://www.jacksoncountyfl.gov/",
   "rootSeedStatus": "reachable_official_site",
   "sitePlatformHint": "wordpress_or_custom",
-  "fetchedAt": "2026-07-16T07:22:33Z",
+  "fetchedAt": "2026-09-12T13:44:34Z",
   "collectionStatus": "success",
   "publicationAllowed": false,
   "reviewStatus": "unreviewed",
   "visitedPages": [
     {
-      "url": "https://jacksoncountyfl.gov/",
+      "url": "https://www.jacksoncountyfl.gov/",
       "httpStatus": 200,
       "contentType": "text/html; charset=UTF-8",
       "pageTitle": "Jackson County Florida Board of County Commissioners",
-      "sha256": "74b0013ce413e12e9e3125f484dcd9e2921aaa6cfa5379cf407c3bcbf0e78061"
+      "sha256": "002b5fe6f5d5b52202bd4dcace172b485e45df8c4316d6602e926de8592d78f5"
     },
     {
-      "url": "https://jacksoncountyfl.gov/government/jackson-county-commissioners/",
+      "url": "https://www.jacksoncountyfl.gov/government/jackson-county-commissioners/",
       "httpStatus": 200,
       "contentType": "text/html; charset=UTF-8",
       "pageTitle": "Jackson County Commissioners - Jackson County, Florida",
-      "sha256": "9c50d5b4d8ff6b4586cba6acdb1b6b3398eeabf94df0a70b96ddb38e40ac110b"
+      "sha256": "ed6cf991856f9cbf211d04f0c4503aaeb1b59ee63440c892e129e4d0868d574c"
     },
     {
-      "url": "https://jacksoncountyfl.gov/government/jackson-county-commissioners/",
+      "url": "https://www.jacksoncountyfl.gov/government/jackson-county-commissioners/",
       "httpStatus": 200,
       "contentType": "text/html; charset=UTF-8",
       "pageTitle": "Jackson County Commissioners - Jackson County, Florida",
-      "sha256": "24e97d4795f2b6194a45d1a56e43aa2837c95fe17d93ee9e31516138cd42033c"
+      "sha256": "a7c2f20e68b89f17ba82bd2298560a05aa812b12f59c5abf558158b3cb3e06a7"
+    },
+    {
+      "url": "https://www.jacksoncountyfl.gov/press-release-recap-of-bocc-mtg-9-8-26/",
+      "httpStatus": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "pageTitle": "PRESS RELEASE: Recap of BOCC Meeting 9/8/26 - Jackson County, Florida",
+      "sha256": "80e4aaa8641e6f333c324aab343857aa2c31dbea1b31b6c25eb23cab987c13b2"
     }
   ],
   "sourceCandidates": {
@@ -40,23 +47,39 @@
       {
         "url": "https://jacksoncountyfl.gov/jackson-county-commissioners/",
         "label": "Meet Your Commissioners Board of County Commissioners",
-        "discoveredOn": "https://jacksoncountyfl.gov/",
+        "discoveredOn": "https://www.jacksoncountyfl.gov/",
         "score": 31,
         "sameHost": true,
         "reviewStatus": "unreviewed"
       },
       {
-        "url": "https://jacksoncountyfl.gov/government/jackson-county-commissioners/",
+        "url": "https://www.jacksoncountyfl.gov/government/jackson-county-commissioners/",
         "label": "Jackson County Commissioners",
-        "discoveredOn": "https://jacksoncountyfl.gov/",
+        "discoveredOn": "https://www.jacksoncountyfl.gov/",
         "score": 28,
+        "sameHost": true,
+        "reviewStatus": "unreviewed"
+      },
+      {
+        "url": "https://www.jacksoncountyfl.gov/press-release-recap-of-bocc-mtg-9-8-26/",
+        "label": "read full announcement.",
+        "discoveredOn": "https://www.jacksoncountyfl.gov/",
+        "score": 22,
+        "sameHost": true,
+        "reviewStatus": "unreviewed"
+      },
+      {
+        "url": "https://www.jacksoncountyfl.gov/uploads/2026/09/jcbocc-9-8-26-pr.pdf",
+        "label": "JCBOCC 9.8.26 PR",
+        "discoveredOn": "https://www.jacksoncountyfl.gov/press-release-recap-of-bocc-mtg-9-8-26/",
+        "score": 22,
         "sameHost": true,
         "reviewStatus": "unreviewed"
       },
       {
         "url": "https://jacksoncofl.civicclerk.com/web/home.aspx",
         "label": "BOCC Meetings",
-        "discoveredOn": "https://jacksoncountyfl.gov/",
+        "discoveredOn": "https://www.jacksoncountyfl.gov/",
         "score": 13,
         "sameHost": false,
         "reviewStatus": "unreviewed"
