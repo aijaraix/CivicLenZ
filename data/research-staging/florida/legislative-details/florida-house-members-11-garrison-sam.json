@@ -7,14 +7,14 @@
   "officeTitle": "Florida State Representative, District 11",
   "districtNumber": "11",
   "sourceUrl": "https://www.flhouse.gov/Sections/Representatives/details.aspx?MemberId=4767&LegislativeTermId=91",
-  "fetchedAt": "2026-07-16T05:26:21Z",
+  "fetchedAt": "2026-09-12T14:11:29Z",
   "collectionStatus": "success",
   "reviewStatus": "unreviewed",
   "publicationAllowed": false,
   "errors": [],
   "httpStatus": 200,
   "finalUrl": "https://www.flhouse.gov/Sections/Representatives/custom/details.aspx?MemberId=4767&LegislativeTermId=91",
-  "sourceSnapshotSha256": "d91ad5a86a89ee04875099d70688eecdef0c6cbbdb7bd59173c11cf4dcb0cb3e",
+  "sourceSnapshotSha256": "a7c09a389e181c20c9903bf3d274bc8004e855863000f7d9c13300c871dc0115",
   "partyAndDistrictText": "District: 11 -- Republican",
   "staffCandidates": [
     {
@@ -103,7 +103,7 @@
       "identityReviewStatus": "unreviewed"
     },
     {
-      "url": "https://www.flhouse.gov/FileStores/Web/Imaging/PhotoAlbums/HousePhotoSized8057.JPG",
+      "url": "https://www.flhouse.gov/FileStores/Web/Imaging/PhotoAlbums/HousePhotoSized8356.JPG",
       "method": "img",
       "score": 30,
       "altText": "Representative Garrison Photo",
@@ -112,7 +112,7 @@
       "identityReviewStatus": "unreviewed"
     },
     {
-      "url": "https://www.flhouse.gov/Images/bronze-seal-250.png?cb=4.6.654349",
+      "url": "https://www.flhouse.gov/Images/bronze-seal-250.png?cb=4.6.654350",
       "method": "og:image",
       "score": 14,
       "altText": null,

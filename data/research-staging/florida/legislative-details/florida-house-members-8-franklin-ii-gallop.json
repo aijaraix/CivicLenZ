@@ -7,14 +7,14 @@
   "officeTitle": "Florida State Representative, District 8",
   "districtNumber": "8",
   "sourceUrl": "https://www.flhouse.gov/Sections/Representatives/details.aspx?MemberId=4863&LegislativeTermId=91",
-  "fetchedAt": "2026-07-16T05:26:20Z",
+  "fetchedAt": "2026-09-12T14:11:28Z",
   "collectionStatus": "success",
   "reviewStatus": "unreviewed",
   "publicationAllowed": false,
   "errors": [],
   "httpStatus": 200,
   "finalUrl": "https://www.flhouse.gov/Sections/Representatives/custom/details.aspx?MemberId=4863&LegislativeTermId=91",
-  "sourceSnapshotSha256": "6e7fc4aeea24ced7288d49c5b540564f0c33fc5e79b0677e6f5f010eaf9e8696",
+  "sourceSnapshotSha256": "40257907abe746cc4ca5bd4c2ab6fc615134e613f9b93206eda4d08da5f5a783",
   "partyAndDistrictText": "District: 8 -- Democrat",
   "staffCandidates": [
     {
@@ -133,7 +133,7 @@
       "identityReviewStatus": "unreviewed"
     },
     {
-      "url": "https://www.flhouse.gov/FileStores/Web/Imaging/PhotoAlbums/HousePhotoSized7498.jpg",
+      "url": "https://www.flhouse.gov/FileStores/Web/Imaging/PhotoAlbums/HousePhotoSized7560.jpg",
       "method": "img",
       "score": 30,
       "altText": "Representative Franklin Photo",
@@ -142,7 +142,7 @@
       "identityReviewStatus": "unreviewed"
     },
     {
-      "url": "https://www.flhouse.gov/Images/bronze-seal-250.png?cb=4.6.654349",
+      "url": "https://www.flhouse.gov/Images/bronze-seal-250.png?cb=4.6.654350",
       "method": "og:image",
       "score": 14,
       "altText": null,

@@ -7,14 +7,14 @@
   "officeTitle": "Florida State Representative, District 7",
   "districtNumber": "7",
   "sourceUrl": "https://www.flhouse.gov/Sections/Representatives/details.aspx?MemberId=4756&LegislativeTermId=91",
-  "fetchedAt": "2026-07-16T05:26:20Z",
+  "fetchedAt": "2026-09-12T14:11:28Z",
   "collectionStatus": "success",
   "reviewStatus": "unreviewed",
   "publicationAllowed": false,
   "errors": [],
   "httpStatus": 200,
   "finalUrl": "https://www.flhouse.gov/Sections/Representatives/custom/details.aspx?MemberId=4756&LegislativeTermId=91",
-  "sourceSnapshotSha256": "ce1d7c6099f2aa64e2ac5102067083766326c40aee9c422c1b35ba6eb184ea4e",
+  "sourceSnapshotSha256": "b8b4d1a4cee3708b25c3d159cfde363635a7ae5ad9e7c0c1d1708cc80faf6891",
   "partyAndDistrictText": "District: 7 -- Republican",
   "staffCandidates": [
     {
@@ -133,7 +133,7 @@
       "identityReviewStatus": "unreviewed"
     },
     {
-      "url": "https://www.flhouse.gov/FileStores/Web/Imaging/PhotoAlbums/HousePhotoSized8354.JPG",
+      "url": "https://www.flhouse.gov/FileStores/Web/Imaging/PhotoAlbums/HousePhotoSized8302.JPG",
       "method": "img",
       "score": 30,
       "altText": "Representative Shoaf Photo",
@@ -142,7 +142,7 @@
       "identityReviewStatus": "unreviewed"
     },
     {
-      "url": "https://www.flhouse.gov/Images/bronze-seal-250.png?cb=4.6.654349",
+      "url": "https://www.flhouse.gov/Images/bronze-seal-250.png?cb=4.6.654350",
       "method": "og:image",
       "score": 14,
       "altText": null,
@@ -151,7 +151,7 @@
       "identityReviewStatus": "unreviewed"
     },
     {
-      "url": "https://www.flhouse.gov/FileStores/Web/Imaging/PhotoAlbums/HousePhotoSized8302.JPG",
+      "url": "https://www.flhouse.gov/FileStores/Web/Imaging/PhotoAlbums/HousePhotoSized8354.JPG",
       "method": "img",
       "score": 9,
       "altText": null,

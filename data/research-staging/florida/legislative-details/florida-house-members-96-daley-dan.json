@@ -7,14 +7,14 @@
   "officeTitle": "Florida State Representative, District 96",
   "districtNumber": "96",
   "sourceUrl": "https://www.flhouse.gov/Sections/Representatives/details.aspx?MemberId=4757&LegislativeTermId=91",
-  "fetchedAt": "2026-07-16T05:26:31Z",
+  "fetchedAt": "2026-09-12T14:11:37Z",
   "collectionStatus": "success",
   "reviewStatus": "unreviewed",
   "publicationAllowed": false,
   "errors": [],
   "httpStatus": 200,
   "finalUrl": "https://www.flhouse.gov/Sections/Representatives/custom/details.aspx?MemberId=4757&LegislativeTermId=91",
-  "sourceSnapshotSha256": "bf9600bc1d38ae150d82ac6224a8932aa14a024f83274264b4f3d96ac0765886",
+  "sourceSnapshotSha256": "04e21d1c5a94a9b6215f52612604c69ba135d7696c8305dd8fb6c0413a33f1c8",
   "partyAndDistrictText": "District: 96 -- Democrat",
   "staffCandidates": [
     {
@@ -137,7 +137,7 @@
       "identityReviewStatus": "unreviewed"
     },
     {
-      "url": "https://www.flhouse.gov/FileStores/Web/Imaging/PhotoAlbums/HousePhotoSized7639.jpg",
+      "url": "https://www.flhouse.gov/FileStores/Web/Imaging/PhotoAlbums/HousePhotoSized8063.JPG",
       "method": "img",
       "score": 30,
       "altText": "Representative Daley Photo",
@@ -146,7 +146,7 @@
       "identityReviewStatus": "unreviewed"
     },
     {
-      "url": "https://www.flhouse.gov/Images/bronze-seal-250.png?cb=4.6.654349",
+      "url": "https://www.flhouse.gov/Images/bronze-seal-250.png?cb=4.6.654350",
       "method": "og:image",
       "score": 14,
       "altText": null,
@@ -155,7 +155,7 @@
       "identityReviewStatus": "unreviewed"
     },
     {
-      "url": "https://www.flhouse.gov/FileStores/Web/Imaging/PhotoAlbums/HousePhotoSized7987.JPG",
+      "url": "https://www.flhouse.gov/FileStores/Web/Imaging/PhotoAlbums/HousePhotoSized7639.jpg",
       "method": "img",
       "score": 9,
       "altText": null,
@@ -164,7 +164,7 @@
       "identityReviewStatus": "unreviewed"
     },
     {
-      "url": "https://www.flhouse.gov/FileStores/Web/Imaging/PhotoAlbums/HousePhotoSized8063.JPG",
+      "url": "https://www.flhouse.gov/FileStores/Web/Imaging/PhotoAlbums/HousePhotoSized7987.JPG",
       "method": "img",
       "score": 9,
       "altText": null,

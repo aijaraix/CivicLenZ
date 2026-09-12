@@ -7,19 +7,19 @@
   "officeTitle": "Florida State Representative, District 56",
   "districtNumber": "56",
   "sourceUrl": "https://www.flhouse.gov/Sections/Representatives/details.aspx?MemberId=4882&LegislativeTermId=91",
-  "fetchedAt": "2026-07-16T05:26:26Z",
+  "fetchedAt": "2026-09-12T14:11:34Z",
   "collectionStatus": "success",
   "reviewStatus": "unreviewed",
   "publicationAllowed": false,
   "errors": [],
   "httpStatus": 200,
   "finalUrl": "https://www.flhouse.gov/Sections/Representatives/details.aspx?MemberId=4882&LegislativeTermId=91",
-  "sourceSnapshotSha256": "895a924c26f9d17db286268b6b2143d73934fa7ab25cf0f5353e179f5ec56c55",
+  "sourceSnapshotSha256": "1253c7b87aec9a739bf88284ecd9d2c8983bc394bbc3716fac5bce7c9c78251e",
   "partyAndDistrictText": "District: 56 -- Republican",
   "staffCandidates": [
     {
       "role": "Legislative Aide",
-      "name": "Chase Bohannon",
+      "name": "None",
       "reviewStatus": "unreviewed"
     },
     {
@@ -115,7 +115,7 @@
       "identityReviewStatus": "unreviewed"
     },
     {
-      "url": "https://www.flhouse.gov/Images/bronze-seal-250.png?cb=4.6.654349",
+      "url": "https://www.flhouse.gov/Images/bronze-seal-250.png?cb=4.6.654350",
       "method": "og:image",
       "score": 14,
       "altText": null,

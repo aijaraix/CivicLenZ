@@ -7,14 +7,14 @@
   "officeTitle": "Florida State Representative, District 62",
   "districtNumber": "62",
   "sourceUrl": "https://www.flhouse.gov/Sections/Representatives/details.aspx?MemberId=4781&LegislativeTermId=91",
-  "fetchedAt": "2026-07-16T05:26:27Z",
+  "fetchedAt": "2026-09-12T14:11:34Z",
   "collectionStatus": "success",
   "reviewStatus": "unreviewed",
   "publicationAllowed": false,
   "errors": [],
   "httpStatus": 200,
   "finalUrl": "https://www.flhouse.gov/Sections/Representatives/custom/details.aspx?MemberId=4781&LegislativeTermId=91",
-  "sourceSnapshotSha256": "d14b54c7b02aca87d4b97111d2ae90259c9c6ce4acfdf2bad4d7708d83fec0da",
+  "sourceSnapshotSha256": "e98621db75612f2a78f1d29ed81c915afab04de74d382879b43747ff797c25a6",
   "partyAndDistrictText": "District: 62 -- Democrat",
   "staffCandidates": [
     {
@@ -68,11 +68,6 @@
       "name": "Natural Resources & Disasters Subcommittee",
       "roleType": "member",
       "reviewStatus": "unreviewed"
-    },
-    {
-      "name": "Michele K. Rayner (@ Michele K. Rayner ) • Instagram photos and videos",
-      "roleType": "member",
-      "reviewStatus": "unreviewed"
     }
   ],
   "publicServiceCandidates": [],
@@ -93,22 +88,7 @@
       "sourcePageUrl": "https://www.flhouse.gov/Sections/Representatives/custom/details.aspx?MemberId=4781&LegislativeTermId=91"
     }
   ],
-  "socialCandidates": [
-    {
-      "platform": "Facebook",
-      "url": "https://facebook.com/micheleforfl",
-      "label": "Michele K. Rayner",
-      "sourcePageUrl": "https://www.flhouse.gov/Sections/Representatives/custom/details.aspx?MemberId=4781&LegislativeTermId=91",
-      "reviewStatus": "unreviewed"
-    },
-    {
-      "platform": "Instagram",
-      "url": "https://instagram.com/micheleforfl?utm_source=ig_embed&utm_campaign=loading",
-      "label": "Michele K. Rayner",
-      "sourcePageUrl": "https://www.flhouse.gov/Sections/Representatives/custom/details.aspx?MemberId=4781&LegislativeTermId=91",
-      "reviewStatus": "unreviewed"
-    }
-  ],
+  "socialCandidates": [],
   "websiteCandidates": [
     {
       "url": "https://www.flhouse.gov/Sections/Representatives/custom/contactmember.aspx?MemberId=4781&LegislativeTermId=91",
@@ -134,7 +114,7 @@
       "identityReviewStatus": "unreviewed"
     },
     {
-      "url": "https://www.flhouse.gov/FileStores/Web/Imaging/PhotoAlbums/HousePhotoSized7900.JPG",
+      "url": "https://www.flhouse.gov/FileStores/Web/Imaging/PhotoAlbums/HousePhotoSized8390.JPG",
       "method": "img",
       "score": 30,
       "altText": "Representative Rayner Photo",
@@ -143,7 +123,7 @@
       "identityReviewStatus": "unreviewed"
     },
     {
-      "url": "https://www.flhouse.gov/Images/bronze-seal-250.png?cb=4.6.654349",
+      "url": "https://www.flhouse.gov/Images/bronze-seal-250.png?cb=4.6.654350",
       "method": "og:image",
       "score": 14,
       "altText": null,
@@ -161,7 +141,7 @@
       "identityReviewStatus": "unreviewed"
     },
     {
-      "url": "https://www.flhouse.gov/FileStores/Web/Imaging/PhotoAlbums/HousePhotoSized8390.JPG",
+      "url": "https://www.flhouse.gov/FileStores/Web/Imaging/PhotoAlbums/HousePhotoSized7900.JPG",
       "method": "img",
       "score": 9,
       "altText": null,
@@ -207,13 +187,13 @@
   "candidateCounts": {
     "staffCandidates": 2,
     "educationCandidates": 0,
-    "committeeCandidates": 7,
+    "committeeCandidates": 6,
     "publicServiceCandidates": 0,
     "affiliationCandidates": 0,
     "awardCandidates": 0,
     "officeLocationCandidates": 0,
     "contactCandidates": 2,
-    "socialCandidates": 2,
+    "socialCandidates": 0,
     "websiteCandidates": 2,
     "portraitCandidates": 6
   }
