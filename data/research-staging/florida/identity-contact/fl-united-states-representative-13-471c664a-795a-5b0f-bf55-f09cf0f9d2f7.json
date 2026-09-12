@@ -6,7 +6,7 @@
   "displayName": "Anna Paulina Luna",
   "officeTitle": "United States Representative",
   "sourceUrl": "https://luna.house.gov",
-  "fetchedAt": "2026-07-16T05:19:58Z",
+  "fetchedAt": "2026-09-12T12:59:38Z",
   "collectionStatus": "success",
   "reviewStatus": "unreviewed",
   "publicationAllowed": false,
@@ -156,7 +156,7 @@
   "errors": [],
   "httpStatus": 200,
   "finalUrl": "https://luna.house.gov/",
-  "sourceSnapshotSha256": "20723c4a19e1ace575bb15b22636235d2668a8d3cd65420babdc01983c5cae96",
+  "sourceSnapshotSha256": "f99a74ddb58e36b4671413b4d0888a601d0ba77348bc4ead63151ab1af63af12",
   "contentType": "text/html",
   "pageTitle": "Home",
   "candidateSummary": {

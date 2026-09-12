@@ -6,7 +6,7 @@
   "displayName": "Ed Hooper",
   "officeTitle": "Florida State Senator, District 21",
   "sourceUrl": "https://www.flsenate.gov/Senators/2024-2026/S21",
-  "fetchedAt": "2026-07-16T05:20:41Z",
+  "fetchedAt": "2026-09-12T13:00:31Z",
   "collectionStatus": "success",
   "reviewStatus": "unreviewed",
   "publicationAllowed": false,
@@ -208,7 +208,7 @@
   "errors": [],
   "httpStatus": 200,
   "finalUrl": "https://www.flsenate.gov/Senators/S21",
-  "sourceSnapshotSha256": "7fd4ccf127e12c9e2db408938e5cfee84fc44d1d3b565f610efc60d116a9477f",
+  "sourceSnapshotSha256": "75f3a5cee497c47f390718f5d57fe245f792c7de6771f8806388e44c3599b05c",
   "contentType": "text/html",
   "pageTitle": "Senator Hooper - The Florida Senate",
   "candidateSummary": {

@@ -6,7 +6,7 @@
   "displayName": "Alex Rizo",
   "officeTitle": "Florida State Representative, District 112",
   "sourceUrl": "https://www.flhouse.gov/Sections/Representatives/details.aspx?MemberId=4796&LegislativeTermId=91",
-  "fetchedAt": "2026-07-16T05:20:06Z",
+  "fetchedAt": "2026-09-12T12:59:48Z",
   "collectionStatus": "success",
   "reviewStatus": "unreviewed",
   "publicationAllowed": false,
@@ -27,7 +27,7 @@
       "downloadStatus": "captured_for_hash"
     },
     {
-      "url": "https://www.flhouse.gov/FileStores/Web/Imaging/PhotoAlbums/HousePhotoSized7985.JPG",
+      "url": "https://www.flhouse.gov/FileStores/Web/Imaging/PhotoAlbums/HousePhotoSized7871.JPG",
       "method": "img",
       "score": 30,
       "altText": "Representative Rizo Photo",
@@ -35,14 +35,14 @@
       "rightsStatus": "review_required",
       "identityReviewStatus": "unreviewed",
       "httpStatus": 200,
-      "finalUrl": "https://www.flhouse.gov/FileStores/Web/Imaging/PhotoAlbums/HousePhotoSized7985.JPG",
+      "finalUrl": "https://www.flhouse.gov/FileStores/Web/Imaging/PhotoAlbums/HousePhotoSized7871.JPG",
       "contentType": "image/jpeg",
-      "byteSize": 16315,
-      "imageSha256": "c712a6da5e1dd7e418e210da947377cfc2bc6db03971bbffae96e740a5939423",
+      "byteSize": 20634,
+      "imageSha256": "b30e7a905a7fc23b2c1890d4ba2102bb92acac0406c74e402931cc416bf79b00",
       "downloadStatus": "captured_for_hash"
     },
     {
-      "url": "https://www.flhouse.gov/Images/bronze-seal-250.png?cb=4.6.654349",
+      "url": "https://www.flhouse.gov/Images/bronze-seal-250.png?cb=4.6.654350",
       "method": "og:image",
       "score": 14,
       "altText": null,
@@ -50,7 +50,7 @@
       "rightsStatus": "review_required",
       "identityReviewStatus": "unreviewed",
       "httpStatus": 200,
-      "finalUrl": "https://www.flhouse.gov/Images/bronze-seal-250.png?cb=4.6.654349",
+      "finalUrl": "https://www.flhouse.gov/Images/bronze-seal-250.png?cb=4.6.654350",
       "contentType": "image/png",
       "byteSize": 150275,
       "imageSha256": "36f7c4317f0cc62c44ff5bbfc0a0e5eebf014be23c9c8826141f11a70d9e7ff8",
@@ -116,15 +116,7 @@
       "sourcePageUrl": "https://www.flhouse.gov/Sections/Representatives/custom/details.aspx?MemberId=4796&LegislativeTermId=91"
     }
   ],
-  "socialCandidates": [
-    {
-      "platform": "Instagram",
-      "url": "https://www.instagram.com/teamalexrizo?utm_source=ig_embed&utm_campaign=loading",
-      "label": "Alex Rizo",
-      "sourcePageUrl": "https://www.flhouse.gov/Sections/Representatives/custom/details.aspx?MemberId=4796&LegislativeTermId=91",
-      "reviewStatus": "unreviewed"
-    }
-  ],
+  "socialCandidates": [],
   "websiteCandidates": [
     {
       "url": "https://www.flhouse.gov/Sections/Representatives/custom/contactmember.aspx?MemberId=4796&LegislativeTermId=91",
@@ -142,13 +134,13 @@
   "errors": [],
   "httpStatus": 200,
   "finalUrl": "https://www.flhouse.gov/Sections/Representatives/custom/details.aspx?MemberId=4796&LegislativeTermId=91",
-  "sourceSnapshotSha256": "ba1ef5bfef6c4242c67dd1d09d2be261d833a607e9169bad7e45a4338c0c1cc1",
+  "sourceSnapshotSha256": "26ee360dde848a916f0d8929f5ceef073f871e5c30432dbf4acca1d13797b42b",
   "contentType": "text/html",
   "pageTitle": "Alex Rizo  - 2024 - 2026 ( Speaker Perez ) | Florida House of Representatives",
   "candidateSummary": {
     "portraits": 6,
     "contacts": 2,
-    "socials": 1,
+    "socials": 0,
     "websites": 2
   }
 }

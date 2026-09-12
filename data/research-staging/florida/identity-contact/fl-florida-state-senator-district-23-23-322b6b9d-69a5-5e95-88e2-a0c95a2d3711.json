@@ -6,7 +6,7 @@
   "displayName": "Danny Burgess",
   "officeTitle": "Florida State Senator, District 23",
   "sourceUrl": "https://www.flsenate.gov/Senators/2024-2026/S23",
-  "fetchedAt": "2026-07-16T05:20:41Z",
+  "fetchedAt": "2026-09-12T13:00:33Z",
   "collectionStatus": "success",
   "reviewStatus": "unreviewed",
   "publicationAllowed": false,
@@ -208,7 +208,7 @@
   "errors": [],
   "httpStatus": 200,
   "finalUrl": "https://www.flsenate.gov/Senators/S23",
-  "sourceSnapshotSha256": "5e8d0e49830792427c5304e1459bfffc5535fb9cd7489cf570d43ed250a5b3c7",
+  "sourceSnapshotSha256": "a8938d4a324ebd7212fbce2fad3c0aeddc47bf153f85756b2086bfdf92f7380c",
   "contentType": "text/html",
   "pageTitle": "Senator Burgess - The Florida Senate",
   "candidateSummary": {

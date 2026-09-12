@@ -6,7 +6,7 @@
   "displayName": "Jason W. B. Pizzo",
   "officeTitle": "Florida State Senator, District 37",
   "sourceUrl": "https://www.flsenate.gov/Senators/2024-2026/S37",
-  "fetchedAt": "2026-07-16T05:20:45Z",
+  "fetchedAt": "2026-09-12T13:00:38Z",
   "collectionStatus": "success",
   "reviewStatus": "unreviewed",
   "publicationAllowed": false,
@@ -19,12 +19,11 @@
       "sourcePageUrl": "https://www.flsenate.gov/Senators/S37",
       "rightsStatus": "review_required",
       "identityReviewStatus": "unreviewed",
-      "httpStatus": 200,
+      "httpStatus": 429,
       "finalUrl": "https://www.flsenate.gov/PublishedContent/Senators/2020-2022/5345/Documents/Pizzo_Newsletter_-_December_202112.jpg",
-      "contentType": "image/jpeg",
-      "byteSize": 4983,
-      "imageSha256": "3f48a78b2015d7a87e7519060fde00877b75fc8e4c9c3d4a076a0ab1fd1c77f3",
-      "downloadStatus": "captured_for_hash"
+      "contentType": "text/plain",
+      "byteSize": 17,
+      "downloadStatus": "not_an_image_or_http_error"
     },
     {
       "url": "https://www.flsenate.gov/PublishedContent/Senators/2020-2022/5345/Documents/The_Pizzo_Post_-_February_2022.jpg",
@@ -230,7 +229,7 @@
   "errors": [],
   "httpStatus": 200,
   "finalUrl": "https://www.flsenate.gov/Senators/S37",
-  "sourceSnapshotSha256": "a01522eec1ac6fa78674b37b88470cdf964e5a07ebe161a59adba4c4e3c4630e",
+  "sourceSnapshotSha256": "7a8fa96c4c62405044d2eca63040559a750d5303da36ede7ec71435661dcc8fe",
   "contentType": "text/html",
   "pageTitle": "Senator Pizzo - The Florida Senate",
   "candidateSummary": {

@@ -6,7 +6,7 @@
   "displayName": "Corey Simon",
   "officeTitle": "Florida State Senator, District 3",
   "sourceUrl": "https://www.flsenate.gov/Senators/2024-2026/S3",
-  "fetchedAt": "2026-07-16T05:20:43Z",
+  "fetchedAt": "2026-09-12T13:00:35Z",
   "collectionStatus": "success",
   "reviewStatus": "unreviewed",
   "publicationAllowed": false,
@@ -208,7 +208,7 @@
   "errors": [],
   "httpStatus": 200,
   "finalUrl": "https://www.flsenate.gov/Senators/S3",
-  "sourceSnapshotSha256": "31fd793c2c862223fd476be253be503bb89af23781d05c5414468c848a54251b",
+  "sourceSnapshotSha256": "c1d07964f7c7986618b75b788fae0b79df9b3a5a742325b261ff86c692adb4a5",
   "contentType": "text/html",
   "pageTitle": "Senator Simon - The Florida Senate",
   "candidateSummary": {

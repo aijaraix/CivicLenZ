@@ -6,7 +6,7 @@
   "displayName": "LaVon Bracy Davis",
   "officeTitle": "Florida State Senator, District 15",
   "sourceUrl": "https://www.flsenate.gov/Senators/2024-2026/S15",
-  "fetchedAt": "2026-07-16T05:20:38Z",
+  "fetchedAt": "2026-09-12T13:00:28Z",
   "collectionStatus": "success",
   "reviewStatus": "unreviewed",
   "publicationAllowed": false,
@@ -215,7 +215,7 @@
   "errors": [],
   "httpStatus": 200,
   "finalUrl": "https://www.flsenate.gov/Senators/S15",
-  "sourceSnapshotSha256": "bd14fafa9c3a8ab620b9ae2326ea194d94a7b2e94efa58bed1b179ac0272c629",
+  "sourceSnapshotSha256": "60f671418b36e6c5ae6af07e38a01daa25bf3ac3f9d736cadccd5aba54f153f8",
   "contentType": "text/html",
   "pageTitle": "Senator Bracy Davis - The Florida Senate",
   "candidateSummary": {

@@ -6,7 +6,7 @@
   "displayName": "Lindsay Cross",
   "officeTitle": "Florida State Representative, District 60",
   "sourceUrl": "https://www.flhouse.gov/Sections/Representatives/details.aspx?MemberId=4887&LegislativeTermId=91",
-  "fetchedAt": "2026-07-16T05:20:24Z",
+  "fetchedAt": "2026-09-12T13:00:10Z",
   "collectionStatus": "success",
   "reviewStatus": "unreviewed",
   "publicationAllowed": false,
@@ -27,40 +27,10 @@
       "downloadStatus": "captured_for_hash"
     },
     {
-      "url": "https://www.flhouse.gov/FileStores/Web/Imaging/PhotoAlbums/HousePhotoSized7955.JPG",
+      "url": "https://www.flhouse.gov/FileStores/Web/Imaging/PhotoAlbums/HousePhotoSized7880.JPG",
       "method": "img",
       "score": 30,
       "altText": "Representative Cross Photo",
-      "sourcePageUrl": "https://www.flhouse.gov/Sections/Representatives/custom/details.aspx?MemberId=4887&LegislativeTermId=91",
-      "rightsStatus": "review_required",
-      "identityReviewStatus": "unreviewed",
-      "httpStatus": 200,
-      "finalUrl": "https://www.flhouse.gov/FileStores/Web/Imaging/PhotoAlbums/HousePhotoSized7955.JPG",
-      "contentType": "image/jpeg",
-      "byteSize": 16938,
-      "imageSha256": "377b5cf158b11b9fb1f0ba60e0a8513cddedd08d43cf11c262358c62a5c1aa19",
-      "downloadStatus": "captured_for_hash"
-    },
-    {
-      "url": "https://www.flhouse.gov/Images/bronze-seal-250.png?cb=4.6.654349",
-      "method": "og:image",
-      "score": 14,
-      "altText": null,
-      "sourcePageUrl": "https://www.flhouse.gov/Sections/Representatives/custom/details.aspx?MemberId=4887&LegislativeTermId=91",
-      "rightsStatus": "review_required",
-      "identityReviewStatus": "unreviewed",
-      "httpStatus": 200,
-      "finalUrl": "https://www.flhouse.gov/Images/bronze-seal-250.png?cb=4.6.654349",
-      "contentType": "image/png",
-      "byteSize": 150275,
-      "imageSha256": "36f7c4317f0cc62c44ff5bbfc0a0e5eebf014be23c9c8826141f11a70d9e7ff8",
-      "downloadStatus": "captured_for_hash"
-    },
-    {
-      "url": "https://www.flhouse.gov/FileStores/Web/Imaging/PhotoAlbums/HousePhotoSized7880.JPG",
-      "method": "img",
-      "score": 9,
-      "altText": null,
       "sourcePageUrl": "https://www.flhouse.gov/Sections/Representatives/custom/details.aspx?MemberId=4887&LegislativeTermId=91",
       "rightsStatus": "review_required",
       "identityReviewStatus": "unreviewed",
@@ -69,6 +39,21 @@
       "contentType": "image/jpeg",
       "byteSize": 17994,
       "imageSha256": "5a53262db75608024a7225ca504e4884e708fbe01b28164573ab5db485a6a99f",
+      "downloadStatus": "captured_for_hash"
+    },
+    {
+      "url": "https://www.flhouse.gov/Images/bronze-seal-250.png?cb=4.6.654350",
+      "method": "og:image",
+      "score": 14,
+      "altText": null,
+      "sourcePageUrl": "https://www.flhouse.gov/Sections/Representatives/custom/details.aspx?MemberId=4887&LegislativeTermId=91",
+      "rightsStatus": "review_required",
+      "identityReviewStatus": "unreviewed",
+      "httpStatus": 200,
+      "finalUrl": "https://www.flhouse.gov/Images/bronze-seal-250.png?cb=4.6.654350",
+      "contentType": "image/png",
+      "byteSize": 150275,
+      "imageSha256": "36f7c4317f0cc62c44ff5bbfc0a0e5eebf014be23c9c8826141f11a70d9e7ff8",
       "downloadStatus": "captured_for_hash"
     },
     {
@@ -84,6 +69,21 @@
       "contentType": "image/jpeg",
       "byteSize": 13411,
       "imageSha256": "3afb70c0840a9d73b0b7f4770bf71367e95313b3cadf3be502ffaef7d75186a1",
+      "downloadStatus": "captured_for_hash"
+    },
+    {
+      "url": "https://www.flhouse.gov/FileStores/Web/Imaging/PhotoAlbums/HousePhotoSized7955.JPG",
+      "method": "img",
+      "score": 9,
+      "altText": null,
+      "sourcePageUrl": "https://www.flhouse.gov/Sections/Representatives/custom/details.aspx?MemberId=4887&LegislativeTermId=91",
+      "rightsStatus": "review_required",
+      "identityReviewStatus": "unreviewed",
+      "httpStatus": 200,
+      "finalUrl": "https://www.flhouse.gov/FileStores/Web/Imaging/PhotoAlbums/HousePhotoSized7955.JPG",
+      "contentType": "image/jpeg",
+      "byteSize": 16938,
+      "imageSha256": "377b5cf158b11b9fb1f0ba60e0a8513cddedd08d43cf11c262358c62a5c1aa19",
       "downloadStatus": "captured_for_hash"
     },
     {
@@ -149,7 +149,7 @@
   "errors": [],
   "httpStatus": 200,
   "finalUrl": "https://www.flhouse.gov/Sections/Representatives/custom/details.aspx?MemberId=4887&LegislativeTermId=91",
-  "sourceSnapshotSha256": "0e1d56dbd2fe9220d5c1f5d57ff0c3ea9f659994081e38e8b581c0a071c839b9",
+  "sourceSnapshotSha256": "86a571e25ba24291b5e23702ee7970b63cc67dc992287883b993c70ddeb6f5c6",
   "contentType": "text/html",
   "pageTitle": "Lindsay Cross  - 2024 - 2026 ( Speaker Perez ) | Florida House of Representatives",
   "candidateSummary": {

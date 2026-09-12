@@ -6,7 +6,7 @@
   "displayName": "Jennifer \"Rita\" Harris",
   "officeTitle": "Florida State Representative, District 44",
   "sourceUrl": "https://www.flhouse.gov/Sections/Representatives/details.aspx?MemberId=4877&LegislativeTermId=91",
-  "fetchedAt": "2026-07-16T05:20:19Z",
+  "fetchedAt": "2026-09-12T13:00:04Z",
   "collectionStatus": "success",
   "reviewStatus": "unreviewed",
   "publicationAllowed": false,
@@ -42,7 +42,7 @@
       "downloadStatus": "captured_for_hash"
     },
     {
-      "url": "https://www.flhouse.gov/Images/bronze-seal-250.png?cb=4.6.654349",
+      "url": "https://www.flhouse.gov/Images/bronze-seal-250.png?cb=4.6.654350",
       "method": "og:image",
       "score": 14,
       "altText": null,
@@ -50,7 +50,7 @@
       "rightsStatus": "review_required",
       "identityReviewStatus": "unreviewed",
       "httpStatus": 200,
-      "finalUrl": "https://www.flhouse.gov/Images/bronze-seal-250.png?cb=4.6.654349",
+      "finalUrl": "https://www.flhouse.gov/Images/bronze-seal-250.png?cb=4.6.654350",
       "contentType": "image/png",
       "byteSize": 150275,
       "imageSha256": "36f7c4317f0cc62c44ff5bbfc0a0e5eebf014be23c9c8826141f11a70d9e7ff8",
@@ -116,15 +116,7 @@
       "sourcePageUrl": "https://www.flhouse.gov/Sections/Representatives/custom/details.aspx?MemberId=4877&LegislativeTermId=91"
     }
   ],
-  "socialCandidates": [
-    {
-      "platform": "Facebook",
-      "url": "https://www.facebook.com/RitaForFL",
-      "label": "Jennifer \"Rita\" Harris",
-      "sourcePageUrl": "https://www.flhouse.gov/Sections/Representatives/custom/details.aspx?MemberId=4877&LegislativeTermId=91",
-      "reviewStatus": "unreviewed"
-    }
-  ],
+  "socialCandidates": [],
   "websiteCandidates": [
     {
       "url": "https://www.flhouse.gov/Sections/Representatives/custom/contactmember.aspx?MemberId=4877&LegislativeTermId=91",
@@ -142,13 +134,13 @@
   "errors": [],
   "httpStatus": 200,
   "finalUrl": "https://www.flhouse.gov/Sections/Representatives/custom/details.aspx?MemberId=4877&LegislativeTermId=91",
-  "sourceSnapshotSha256": "3027db920319d1214cf99bf6d8abf7d0b5c0193a30051f2a96759ba5a197bd1c",
+  "sourceSnapshotSha256": "18628084e24a6bb5134ebcaef8120baab0584421a9f4413364bc4beb04b2eba9",
   "contentType": "text/html",
   "pageTitle": "Jennifer \"Rita\" Harris  - 2024 - 2026 ( Speaker Perez ) | Florida House of Representatives",
   "candidateSummary": {
     "portraits": 6,
     "contacts": 2,
-    "socials": 1,
+    "socials": 0,
     "websites": 2
   }
 }

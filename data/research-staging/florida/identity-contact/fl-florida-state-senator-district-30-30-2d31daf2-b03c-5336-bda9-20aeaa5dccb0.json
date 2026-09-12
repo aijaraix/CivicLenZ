@@ -6,7 +6,7 @@
   "displayName": "Tina Scott Polsky",
   "officeTitle": "Florida State Senator, District 30",
   "sourceUrl": "https://www.flsenate.gov/Senators/2024-2026/S30",
-  "fetchedAt": "2026-07-16T05:20:44Z",
+  "fetchedAt": "2026-09-12T13:00:36Z",
   "collectionStatus": "success",
   "reviewStatus": "unreviewed",
   "publicationAllowed": false,
@@ -214,7 +214,7 @@
   "errors": [],
   "httpStatus": 200,
   "finalUrl": "https://www.flsenate.gov/Senators/S30",
-  "sourceSnapshotSha256": "1f1e7b5cfe402b932fdad17f5c346b812e00510d66eb4b5b5168794a83e3b4d7",
+  "sourceSnapshotSha256": "c22bb42c7ebb773f48ce8a627602ca4cfd7699e62c232e1c8311eae5177d9981",
   "contentType": "text/html",
   "pageTitle": "Senator Polsky - The Florida Senate",
   "candidateSummary": {

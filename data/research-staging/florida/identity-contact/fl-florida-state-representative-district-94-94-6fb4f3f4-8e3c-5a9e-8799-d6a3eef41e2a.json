@@ -6,7 +6,7 @@
   "displayName": "Meg Weinberger",
   "officeTitle": "Florida State Representative, District 94",
   "sourceUrl": "https://www.flhouse.gov/Sections/Representatives/details.aspx?MemberId=4926&LegislativeTermId=91",
-  "fetchedAt": "2026-07-16T05:20:34Z",
+  "fetchedAt": "2026-09-12T13:00:23Z",
   "collectionStatus": "success",
   "reviewStatus": "unreviewed",
   "publicationAllowed": false,
@@ -27,7 +27,7 @@
       "downloadStatus": "captured_for_hash"
     },
     {
-      "url": "https://www.flhouse.gov/FileStores/Web/Imaging/PhotoAlbums/HousePhotoSized8262.JPG",
+      "url": "https://www.flhouse.gov/FileStores/Web/Imaging/PhotoAlbums/HousePhotoSized7963.JPG",
       "method": "img",
       "score": 30,
       "altText": "Representative Weinberger Photo",
@@ -35,14 +35,14 @@
       "rightsStatus": "review_required",
       "identityReviewStatus": "unreviewed",
       "httpStatus": 200,
-      "finalUrl": "https://www.flhouse.gov/FileStores/Web/Imaging/PhotoAlbums/HousePhotoSized8262.JPG",
+      "finalUrl": "https://www.flhouse.gov/FileStores/Web/Imaging/PhotoAlbums/HousePhotoSized7963.JPG",
       "contentType": "image/jpeg",
-      "byteSize": 14149,
-      "imageSha256": "ae52837a7da1b9365c2d5333e5949ad85c3c30654b30605e6a5edc075e98d336",
+      "byteSize": 15003,
+      "imageSha256": "b767a0ce6cf26afc21c97afc016ea31fca95e61c480c26c24463f217c87f39dd",
       "downloadStatus": "captured_for_hash"
     },
     {
-      "url": "https://www.flhouse.gov/Images/bronze-seal-250.png?cb=4.6.654349",
+      "url": "https://www.flhouse.gov/Images/bronze-seal-250.png?cb=4.6.654350",
       "method": "og:image",
       "score": 14,
       "altText": null,
@@ -50,7 +50,7 @@
       "rightsStatus": "review_required",
       "identityReviewStatus": "unreviewed",
       "httpStatus": 200,
-      "finalUrl": "https://www.flhouse.gov/Images/bronze-seal-250.png?cb=4.6.654349",
+      "finalUrl": "https://www.flhouse.gov/Images/bronze-seal-250.png?cb=4.6.654350",
       "contentType": "image/png",
       "byteSize": 150275,
       "imageSha256": "36f7c4317f0cc62c44ff5bbfc0a0e5eebf014be23c9c8826141f11a70d9e7ff8",
@@ -72,7 +72,7 @@
       "downloadStatus": "captured_for_hash"
     },
     {
-      "url": "https://www.flhouse.gov/FileStores/Web/Imaging/PhotoAlbums/HousePhotoSized7963.JPG",
+      "url": "https://www.flhouse.gov/FileStores/Web/Imaging/PhotoAlbums/HousePhotoSized8262.JPG",
       "method": "img",
       "score": 9,
       "altText": null,
@@ -80,10 +80,10 @@
       "rightsStatus": "review_required",
       "identityReviewStatus": "unreviewed",
       "httpStatus": 200,
-      "finalUrl": "https://www.flhouse.gov/FileStores/Web/Imaging/PhotoAlbums/HousePhotoSized7963.JPG",
+      "finalUrl": "https://www.flhouse.gov/FileStores/Web/Imaging/PhotoAlbums/HousePhotoSized8262.JPG",
       "contentType": "image/jpeg",
-      "byteSize": 15003,
-      "imageSha256": "b767a0ce6cf26afc21c97afc016ea31fca95e61c480c26c24463f217c87f39dd",
+      "byteSize": 14149,
+      "imageSha256": "ae52837a7da1b9365c2d5333e5949ad85c3c30654b30605e6a5edc075e98d336",
       "downloadStatus": "captured_for_hash"
     },
     {
@@ -134,7 +134,7 @@
   "errors": [],
   "httpStatus": 200,
   "finalUrl": "https://www.flhouse.gov/Sections/Representatives/custom/details.aspx?MemberId=4926&LegislativeTermId=91",
-  "sourceSnapshotSha256": "6f376330f8ccc5830ff0e92d6fd626e849478d31dd291da14a0fc0dd9cbe6f5f",
+  "sourceSnapshotSha256": "4f829e2b77e4609fb5dd31e12c1cad173ee9b0a4f8778f8054527e3a25699a85",
   "contentType": "text/html",
   "pageTitle": "Meg Weinberger  - 2024 - 2026 ( Speaker Perez ) | Florida House of Representatives",
   "candidateSummary": {

@@ -6,7 +6,7 @@
   "displayName": "Fabián Basabe",
   "officeTitle": "Florida State Representative, District 106",
   "sourceUrl": "https://www.flhouse.gov/Sections/Representatives/details.aspx?MemberId=4900&LegislativeTermId=91",
-  "fetchedAt": "2026-07-16T05:20:03Z",
+  "fetchedAt": "2026-09-12T12:59:45Z",
   "collectionStatus": "success",
   "reviewStatus": "unreviewed",
   "publicationAllowed": false,
@@ -42,7 +42,7 @@
       "downloadStatus": "captured_for_hash"
     },
     {
-      "url": "https://www.flhouse.gov/Images/bronze-seal-250.png?cb=4.6.654349",
+      "url": "https://www.flhouse.gov/Images/bronze-seal-250.png?cb=4.6.654350",
       "method": "og:image",
       "score": 14,
       "altText": null,
@@ -50,7 +50,7 @@
       "rightsStatus": "review_required",
       "identityReviewStatus": "unreviewed",
       "httpStatus": 200,
-      "finalUrl": "https://www.flhouse.gov/Images/bronze-seal-250.png?cb=4.6.654349",
+      "finalUrl": "https://www.flhouse.gov/Images/bronze-seal-250.png?cb=4.6.654350",
       "contentType": "image/png",
       "byteSize": 150275,
       "imageSha256": "36f7c4317f0cc62c44ff5bbfc0a0e5eebf014be23c9c8826141f11a70d9e7ff8",
@@ -134,7 +134,7 @@
   "errors": [],
   "httpStatus": 200,
   "finalUrl": "https://www.flhouse.gov/Sections/Representatives/custom/details.aspx?MemberId=4900&LegislativeTermId=91",
-  "sourceSnapshotSha256": "2f1750f2d25a0cce0bc2935a8176e4a4e595c6441abdefd0fa13063593c44b5f",
+  "sourceSnapshotSha256": "9732368341ad969dd2002b5f59a5c35f7e36a96f10d6f26471f05c643cabbb0b",
   "contentType": "text/html",
   "pageTitle": "Fabián Basabe  - 2024 - 2026 ( Speaker Perez ) | Florida House of Representatives",
   "candidateSummary": {
