@@ -7,14 +7,14 @@
   "officeTitle": "Florida State Representative, District 29",
   "districtNumber": "29",
   "sourceUrl": "https://www.flhouse.gov/Sections/Representatives/details.aspx?MemberId=4770&LegislativeTermId=91",
-  "fetchedAt": "2026-07-16T05:26:23Z",
+  "fetchedAt": "2026-09-12T14:11:31Z",
   "collectionStatus": "success",
   "reviewStatus": "unreviewed",
   "publicationAllowed": false,
   "errors": [],
   "httpStatus": 200,
   "finalUrl": "https://www.flhouse.gov/Sections/Representatives/custom/details.aspx?MemberId=4770&LegislativeTermId=91",
-  "sourceSnapshotSha256": "8ae9debf16330f62b26146c112d5193acf759e06765befb33b3ecb40be1f49b8",
+  "sourceSnapshotSha256": "53915e43d0fa73a230b3224fee2de5c1c4c38ed24d938409e060cd36a82c9525",
   "partyAndDistrictText": "District: 29 -- Republican",
   "staffCandidates": [
     {
@@ -109,7 +109,7 @@
       "identityReviewStatus": "unreviewed"
     },
     {
-      "url": "https://www.flhouse.gov/FileStores/Web/Imaging/PhotoAlbums/HousePhotoSized7348.jpg",
+      "url": "https://www.flhouse.gov/FileStores/Web/Imaging/PhotoAlbums/HousePhotoSized7318.jpg",
       "method": "img",
       "score": 30,
       "altText": "Representative Barnaby Photo",
@@ -118,7 +118,7 @@
       "identityReviewStatus": "unreviewed"
     },
     {
-      "url": "https://www.flhouse.gov/Images/bronze-seal-250.png?cb=4.6.654349",
+      "url": "https://www.flhouse.gov/Images/bronze-seal-250.png?cb=4.6.654350",
       "method": "og:image",
       "score": 14,
       "altText": null,

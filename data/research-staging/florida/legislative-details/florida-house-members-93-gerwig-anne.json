@@ -7,14 +7,14 @@
   "officeTitle": "Florida State Representative, District 93",
   "districtNumber": "93",
   "sourceUrl": "https://www.flhouse.gov/Sections/Representatives/details.aspx?MemberId=4925&LegislativeTermId=91",
-  "fetchedAt": "2026-07-16T05:26:30Z",
+  "fetchedAt": "2026-09-12T14:11:37Z",
   "collectionStatus": "success",
   "reviewStatus": "unreviewed",
   "publicationAllowed": false,
   "errors": [],
   "httpStatus": 200,
   "finalUrl": "https://www.flhouse.gov/Sections/Representatives/custom/details.aspx?MemberId=4925&LegislativeTermId=91",
-  "sourceSnapshotSha256": "2808208132ac5996c64fbe4d026337a5d3fd18cf7b20a9bc1248946d8ccfb397",
+  "sourceSnapshotSha256": "1f1cc871f69a64bfb5225d3462e262c863b4369720497b8f5e16a596edf0fac7",
   "partyAndDistrictText": "District: 93 -- Republican",
   "staffCandidates": [
     {
@@ -131,18 +131,9 @@
       "identityReviewStatus": "unreviewed"
     },
     {
-      "url": "https://www.flhouse.gov/Images/bronze-seal-250.png?cb=4.6.654349",
+      "url": "https://www.flhouse.gov/Images/bronze-seal-250.png?cb=4.6.654350",
       "method": "og:image",
       "score": 14,
-      "altText": null,
-      "sourcePageUrl": "https://www.flhouse.gov/Sections/Representatives/custom/details.aspx?MemberId=4925&LegislativeTermId=91",
-      "rightsStatus": "review_required",
-      "identityReviewStatus": "unreviewed"
-    },
-    {
-      "url": "https://www.flhouse.gov/FileStores/Web/Imaging/PhotoAlbums/HousePhotoSized7928.jpg",
-      "method": "img",
-      "score": 9,
       "altText": null,
       "sourcePageUrl": "https://www.flhouse.gov/Sections/Representatives/custom/details.aspx?MemberId=4925&LegislativeTermId=91",
       "rightsStatus": "review_required",
@@ -159,6 +150,15 @@
     },
     {
       "url": "https://www.flhouse.gov/FileStores/Web/Imaging/PhotoAlbums/HousePhotoSized8323.JPG",
+      "method": "img",
+      "score": 9,
+      "altText": null,
+      "sourcePageUrl": "https://www.flhouse.gov/Sections/Representatives/custom/details.aspx?MemberId=4925&LegislativeTermId=91",
+      "rightsStatus": "review_required",
+      "identityReviewStatus": "unreviewed"
+    },
+    {
+      "url": "https://www.flhouse.gov/FileStores/Web/Imaging/PhotoAlbums/HousePhotoSized8357.JPG",
       "method": "img",
       "score": 9,
       "altText": null,

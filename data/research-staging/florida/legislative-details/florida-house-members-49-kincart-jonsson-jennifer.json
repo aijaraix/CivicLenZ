@@ -7,14 +7,14 @@
   "officeTitle": "Florida State Representative, District 49",
   "districtNumber": "49",
   "sourceUrl": "https://www.flhouse.gov/Sections/Representatives/details.aspx?MemberId=4918&LegislativeTermId=91",
-  "fetchedAt": "2026-07-16T05:26:26Z",
+  "fetchedAt": "2026-09-12T14:11:33Z",
   "collectionStatus": "success",
   "reviewStatus": "unreviewed",
   "publicationAllowed": false,
   "errors": [],
   "httpStatus": 200,
   "finalUrl": "https://www.flhouse.gov/Sections/Representatives/custom/details.aspx?MemberId=4918&LegislativeTermId=91",
-  "sourceSnapshotSha256": "d17eb093c8af781ef5a4d214f7720d42e2f71e2f1013721d78425bd9357c2f0c",
+  "sourceSnapshotSha256": "1e1637b01a5c5a2e46000bf8c40c8eafeb3ebb74321634de5b615a77b62c2518",
   "partyAndDistrictText": "District: 49 -- Republican",
   "staffCandidates": [
     {
@@ -118,7 +118,7 @@
       "identityReviewStatus": "unreviewed"
     },
     {
-      "url": "https://www.flhouse.gov/FileStores/Web/Imaging/PhotoAlbums/HousePhotoSized8362.JPG",
+      "url": "https://www.flhouse.gov/FileStores/Web/Imaging/PhotoAlbums/HousePhotoSized8368.JPG",
       "method": "img",
       "score": 42,
       "altText": "Representative Kincart Jonsson Photo",
@@ -127,7 +127,7 @@
       "identityReviewStatus": "unreviewed"
     },
     {
-      "url": "https://www.flhouse.gov/Images/bronze-seal-250.png?cb=4.6.654349",
+      "url": "https://www.flhouse.gov/Images/bronze-seal-250.png?cb=4.6.654350",
       "method": "og:image",
       "score": 14,
       "altText": null,
@@ -145,7 +145,7 @@
       "identityReviewStatus": "unreviewed"
     },
     {
-      "url": "https://www.flhouse.gov/FileStores/Web/Imaging/PhotoAlbums/HousePhotoSized8368.JPG",
+      "url": "https://www.flhouse.gov/FileStores/Web/Imaging/PhotoAlbums/HousePhotoSized8362.JPG",
       "method": "img",
       "score": 9,
       "altText": null,

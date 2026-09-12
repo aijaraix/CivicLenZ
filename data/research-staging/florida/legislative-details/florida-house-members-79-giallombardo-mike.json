@@ -7,14 +7,14 @@
   "officeTitle": "Florida State Representative, District 79",
   "districtNumber": "79",
   "sourceUrl": "https://www.flhouse.gov/Sections/Representatives/details.aspx?MemberId=4783&LegislativeTermId=91",
-  "fetchedAt": "2026-07-16T05:26:29Z",
+  "fetchedAt": "2026-09-12T14:11:35Z",
   "collectionStatus": "success",
   "reviewStatus": "unreviewed",
   "publicationAllowed": false,
   "errors": [],
   "httpStatus": 200,
   "finalUrl": "https://www.flhouse.gov/Sections/Representatives/details.aspx?MemberId=4783&LegislativeTermId=91",
-  "sourceSnapshotSha256": "7410dc8a0c70e5cd1c41a71a6411fffd8f3a4508cda717c453455504346337a4",
+  "sourceSnapshotSha256": "738a93a1ba644fe3c7ccf2e9a59338e04c47c45a68f99e671ab952ad2ec2fdfc",
   "partyAndDistrictText": "District: 79 -- Republican",
   "staffCandidates": [
     {
@@ -124,7 +124,7 @@
       "identityReviewStatus": "unreviewed"
     },
     {
-      "url": "https://www.flhouse.gov/Images/bronze-seal-250.png?cb=4.6.654349",
+      "url": "https://www.flhouse.gov/Images/bronze-seal-250.png?cb=4.6.654350",
       "method": "og:image",
       "score": 14,
       "altText": null,

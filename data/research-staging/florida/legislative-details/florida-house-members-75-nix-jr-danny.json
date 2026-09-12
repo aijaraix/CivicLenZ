@@ -7,19 +7,19 @@
   "officeTitle": "Florida State Representative, District 75",
   "districtNumber": "75",
   "sourceUrl": "https://www.flhouse.gov/Sections/Representatives/details.aspx?MemberId=4921&LegislativeTermId=91",
-  "fetchedAt": "2026-07-16T05:26:29Z",
+  "fetchedAt": "2026-09-12T14:11:35Z",
   "collectionStatus": "success",
   "reviewStatus": "unreviewed",
   "publicationAllowed": false,
   "errors": [],
   "httpStatus": 200,
   "finalUrl": "https://www.flhouse.gov/Sections/Representatives/custom/details.aspx?MemberId=4921&LegislativeTermId=91",
-  "sourceSnapshotSha256": "4afe114119b7f3f05c70d75ea09db7020ea85e7b827ec21e4093ce9a9540ddf1",
+  "sourceSnapshotSha256": "8f05ca737030b82acfac3a466eb6d5c5c5cf8702d07a584783a03d57fe8f97ac",
   "partyAndDistrictText": "District: 75 -- Republican",
   "staffCandidates": [
     {
       "role": "Legislative Aide",
-      "name": "Clark Merritt",
+      "name": "None",
       "reviewStatus": "unreviewed"
     },
     {
@@ -128,7 +128,7 @@
       "identityReviewStatus": "unreviewed"
     },
     {
-      "url": "https://www.flhouse.gov/FileStores/Web/Imaging/PhotoAlbums/HousePhotoSized8000.JPG",
+      "url": "https://www.flhouse.gov/FileStores/Web/Imaging/PhotoAlbums/HousePhotoSized7927.jpg",
       "method": "img",
       "score": 30,
       "altText": "Representative Nix Photo",
@@ -137,7 +137,7 @@
       "identityReviewStatus": "unreviewed"
     },
     {
-      "url": "https://www.flhouse.gov/Images/bronze-seal-250.png?cb=4.6.654349",
+      "url": "https://www.flhouse.gov/Images/bronze-seal-250.png?cb=4.6.654350",
       "method": "og:image",
       "score": 14,
       "altText": null,
@@ -146,7 +146,7 @@
       "identityReviewStatus": "unreviewed"
     },
     {
-      "url": "https://www.flhouse.gov/FileStores/Web/Imaging/PhotoAlbums/HousePhotoSized7927.jpg",
+      "url": "https://www.flhouse.gov/FileStores/Web/Imaging/PhotoAlbums/HousePhotoSized8000.JPG",
       "method": "img",
       "score": 9,
       "altText": null,

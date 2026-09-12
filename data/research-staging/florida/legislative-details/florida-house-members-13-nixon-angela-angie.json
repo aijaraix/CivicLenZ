@@ -7,14 +7,14 @@
   "officeTitle": "Florida State Representative, District 13",
   "districtNumber": "13",
   "sourceUrl": "https://www.flhouse.gov/Sections/Representatives/details.aspx?MemberId=4766&LegislativeTermId=91",
-  "fetchedAt": "2026-07-16T05:26:21Z",
+  "fetchedAt": "2026-09-12T14:11:30Z",
   "collectionStatus": "success",
   "reviewStatus": "unreviewed",
   "publicationAllowed": false,
   "errors": [],
   "httpStatus": 200,
   "finalUrl": "https://www.flhouse.gov/Sections/Representatives/custom/details.aspx?MemberId=4766&LegislativeTermId=91",
-  "sourceSnapshotSha256": "155992162649a55661bc658b6436eae7ec5e5e562f2781bab3d6c38dbb2da8c6",
+  "sourceSnapshotSha256": "c309be679a0b613c62e00eededc85cd2dfb432b2a2b69b99d2157c4640a5e8b5",
   "partyAndDistrictText": "District: 13 -- Democrat",
   "staffCandidates": [
     {
@@ -132,14 +132,14 @@
     {
       "url": "https://www.flhouse.gov/FileStores/Web/Imaging/PhotoAlbums/HousePhotoSized7742.JPG",
       "method": "img",
-      "score": 21,
-      "altText": "Rep. Angela",
+      "score": 30,
+      "altText": "Representative Nixon Photo",
       "sourcePageUrl": "https://www.flhouse.gov/Sections/Representatives/custom/details.aspx?MemberId=4766&LegislativeTermId=91",
       "rightsStatus": "review_required",
       "identityReviewStatus": "unreviewed"
     },
     {
-      "url": "https://www.flhouse.gov/Images/bronze-seal-250.png?cb=4.6.654349",
+      "url": "https://www.flhouse.gov/Images/bronze-seal-250.png?cb=4.6.654350",
       "method": "og:image",
       "score": 14,
       "altText": null,

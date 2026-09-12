@@ -7,14 +7,14 @@
   "officeTitle": "Florida State Representative, District 115",
   "districtNumber": "115",
   "sourceUrl": "https://www.flhouse.gov/Sections/Representatives/details.aspx?MemberId=4929&LegislativeTermId=91",
-  "fetchedAt": "2026-07-16T05:26:33Z",
+  "fetchedAt": "2026-09-12T14:11:38Z",
   "collectionStatus": "success",
   "reviewStatus": "unreviewed",
   "publicationAllowed": false,
   "errors": [],
   "httpStatus": 200,
   "finalUrl": "https://www.flhouse.gov/Sections/Representatives/custom/details.aspx?MemberId=4929&LegislativeTermId=91",
-  "sourceSnapshotSha256": "57f637fb10f0d40cbe4acb863c9ea2d6e729693adf1bb99791e9a2a05fe80604",
+  "sourceSnapshotSha256": "967cb212494880be8153f37e7f05f31f2a04588e67c23008608fa2442c0691b7",
   "partyAndDistrictText": "District: 115 -- Republican",
   "staffCandidates": [
     {
@@ -122,7 +122,7 @@
       "identityReviewStatus": "unreviewed"
     },
     {
-      "url": "https://www.flhouse.gov/FileStores/Web/Imaging/PhotoAlbums/HousePhotoSized7956.JPG",
+      "url": "https://www.flhouse.gov/FileStores/Web/Imaging/PhotoAlbums/HousePhotoSized7929.jpg",
       "method": "img",
       "score": 30,
       "altText": "Representative Blanco Photo",
@@ -131,7 +131,7 @@
       "identityReviewStatus": "unreviewed"
     },
     {
-      "url": "https://www.flhouse.gov/Images/bronze-seal-250.png?cb=4.6.654349",
+      "url": "https://www.flhouse.gov/Images/bronze-seal-250.png?cb=4.6.654350",
       "method": "og:image",
       "score": 14,
       "altText": null,
@@ -140,7 +140,7 @@
       "identityReviewStatus": "unreviewed"
     },
     {
-      "url": "https://www.flhouse.gov/FileStores/Web/Imaging/PhotoAlbums/HousePhotoSized7929.jpg",
+      "url": "https://www.flhouse.gov/FileStores/Web/Imaging/PhotoAlbums/HousePhotoSized7956.JPG",
       "method": "img",
       "score": 9,
       "altText": null,

@@ -7,14 +7,14 @@
   "officeTitle": "Florida State Representative, District 22",
   "districtNumber": "22",
   "sourceUrl": "https://www.flhouse.gov/Sections/Representatives/details.aspx?MemberId=4908&LegislativeTermId=91",
-  "fetchedAt": "2026-07-16T05:26:22Z",
+  "fetchedAt": "2026-09-12T14:11:30Z",
   "collectionStatus": "success",
   "reviewStatus": "unreviewed",
   "publicationAllowed": false,
   "errors": [],
   "httpStatus": 200,
   "finalUrl": "https://www.flhouse.gov/Sections/Representatives/custom/details.aspx?MemberId=4908&LegislativeTermId=91",
-  "sourceSnapshotSha256": "65b0ef4d0dfb5de753e7e6d932eac97084f234c5cfffd982def2f8d705a82b70",
+  "sourceSnapshotSha256": "fe6c560faeab416beedb6817c03fbe3defc1d8a41e7b9b485deb6064e01323f7",
   "partyAndDistrictText": "District: 22 -- Republican",
   "staffCandidates": [
     {
@@ -132,7 +132,7 @@
       "identityReviewStatus": "unreviewed"
     },
     {
-      "url": "https://www.flhouse.gov/Images/bronze-seal-250.png?cb=4.6.654349",
+      "url": "https://www.flhouse.gov/Images/bronze-seal-250.png?cb=4.6.654350",
       "method": "og:image",
       "score": 14,
       "altText": null,
