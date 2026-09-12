@@ -6,7 +6,7 @@
   "displayName": "Maria Salazar",
   "officeTitle": "United States Representative",
   "sourceUrl": "https://salazar.house.gov",
-  "fetchedAt": "2026-07-16T05:19:59Z",
+  "fetchedAt": "2026-09-12T12:59:40Z",
   "collectionStatus": "success",
   "reviewStatus": "unreviewed",
   "publicationAllowed": false,
@@ -42,21 +42,6 @@
       "downloadStatus": "captured_for_hash"
     },
     {
-      "url": "https://salazar.house.gov/sites/evo-subsites/salazar.house.gov/files/styles/medium/public/evo-media-image/earth-42.PNG?itok=irjDLMYV",
-      "method": "img",
-      "score": 33,
-      "altText": "Rep. Maria Salazar",
-      "sourcePageUrl": "https://salazar.house.gov/",
-      "rightsStatus": "review_required",
-      "identityReviewStatus": "unreviewed",
-      "httpStatus": 200,
-      "finalUrl": "https://salazar.house.gov/sites/evo-subsites/salazar.house.gov/files/styles/medium/public/evo-media-image/earth-42.PNG?itok=irjDLMYV",
-      "contentType": "image/png",
-      "byteSize": 168792,
-      "imageSha256": "6fb625fbc20b017b719817d18e8fb7ce1cd6fbe8e27e37f120f7268839956496",
-      "downloadStatus": "captured_for_hash"
-    },
-    {
       "url": "https://salazar.house.gov/sites/evo-subsites/salazar.house.gov/files/styles/medium/public/evo-media-image/hfac.jpg?itok=PtPdQkMe",
       "method": "img",
       "score": 33,
@@ -87,18 +72,33 @@
       "downloadStatus": "captured_for_hash"
     },
     {
-      "url": "https://salazar.house.gov/sites/evo-subsites/salazar.house.gov/files/styles/medium/public/evo-media-image/earth-43.PNG?itok=VuOQEZ2l",
+      "url": "https://salazar.house.gov/sites/evo-subsites/salazar.house.gov/files/styles/medium/public/evo-media-image/good-photo5.jpg?itok=nTe8AOAa",
       "method": "img",
       "score": 21,
-      "altText": "Housing Act",
+      "altText": "yale",
       "sourcePageUrl": "https://salazar.house.gov/",
       "rightsStatus": "review_required",
       "identityReviewStatus": "unreviewed",
       "httpStatus": 200,
-      "finalUrl": "https://salazar.house.gov/sites/evo-subsites/salazar.house.gov/files/styles/medium/public/evo-media-image/earth-43.PNG?itok=VuOQEZ2l",
+      "finalUrl": "https://salazar.house.gov/sites/evo-subsites/salazar.house.gov/files/styles/medium/public/evo-media-image/good-photo5.jpg?itok=nTe8AOAa",
+      "contentType": "image/jpeg",
+      "byteSize": 10461,
+      "imageSha256": "bf630ea2b0ff34ce695169a76e10c2a2b13f77a9e70f75bbbd54594d71f04990",
+      "downloadStatus": "captured_for_hash"
+    },
+    {
+      "url": "https://salazar.house.gov/sites/evo-subsites/salazar.house.gov/files/styles/medium/public/evo-media-image/untitled-design-1.PNG?itok=u2GEB1mj",
+      "method": "img",
+      "score": 21,
+      "altText": "roundtable",
+      "sourcePageUrl": "https://salazar.house.gov/",
+      "rightsStatus": "review_required",
+      "identityReviewStatus": "unreviewed",
+      "httpStatus": 200,
+      "finalUrl": "https://salazar.house.gov/sites/evo-subsites/salazar.house.gov/files/styles/medium/public/evo-media-image/untitled-design-1.PNG?itok=u2GEB1mj",
       "contentType": "image/png",
-      "byteSize": 108331,
-      "imageSha256": "abe0c0d457243bd7b5549da6cea92ab819d96d02bd62f6f003145fb4d980adc0",
+      "byteSize": 127311,
+      "imageSha256": "2ffbfdc894cf0e8f02e0936081091d5d35ce8f789d6066650d4c141848e4824d",
       "downloadStatus": "captured_for_hash"
     }
   ],
@@ -198,7 +198,7 @@
   "errors": [],
   "httpStatus": 200,
   "finalUrl": "https://salazar.house.gov/",
-  "sourceSnapshotSha256": "be7e0ac6d9ecc3f06ba809e90a14c615f97498969c405c6fdf93ff9f7a5abc1d",
+  "sourceSnapshotSha256": "001923ffd2b827104f4bc1fca45b4de5b636c70e8f59d387e2ac79ea76660a63",
   "contentType": "text/html",
   "pageTitle": "Representative Maria Salazar |",
   "candidateSummary": {

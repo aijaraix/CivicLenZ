@@ -6,26 +6,11 @@
   "displayName": "Ileana Garcia",
   "officeTitle": "Florida State Senator, District 36",
   "sourceUrl": "https://www.flsenate.gov/Senators/2024-2026/S36",
-  "fetchedAt": "2026-07-16T05:20:45Z",
+  "fetchedAt": "2026-09-12T13:00:38Z",
   "collectionStatus": "success",
   "reviewStatus": "unreviewed",
   "publicationAllowed": false,
   "portraitCandidates": [
-    {
-      "url": "https://www.flsenate.gov/PublishedContent/Offices/Senator/Declaraci_n_de_la_Senadora_Ileana_Garc_a_sobre_el_liderazgo.jpg",
-      "method": "img",
-      "score": 30,
-      "altText": null,
-      "sourcePageUrl": "https://www.flsenate.gov/Senators/S36",
-      "rightsStatus": "review_required",
-      "identityReviewStatus": "unreviewed",
-      "httpStatus": 200,
-      "finalUrl": "https://www.flsenate.gov/PublishedContent/Offices/Senator/Declaraci_n_de_la_Senadora_Ileana_Garc_a_sobre_el_liderazgo.jpg",
-      "contentType": "image/jpeg",
-      "byteSize": 4669,
-      "imageSha256": "27686031327e293c6b0c9604f57da4b3410efd079a3ade7add1bf45ff04e744c",
-      "downloadStatus": "captured_for_hash"
-    },
     {
       "url": "https://www.flsenate.gov/PublishedContent/Senators/2024-2026/Photos/s36_5515.jpg",
       "method": "img",
@@ -34,11 +19,12 @@
       "sourcePageUrl": "https://www.flsenate.gov/Senators/S36",
       "rightsStatus": "review_required",
       "identityReviewStatus": "unreviewed",
-      "httpStatus": 429,
+      "httpStatus": 200,
       "finalUrl": "https://www.flsenate.gov/PublishedContent/Senators/2024-2026/Photos/s36_5515.jpg",
-      "contentType": "text/plain",
-      "byteSize": 17,
-      "downloadStatus": "not_an_image_or_http_error"
+      "contentType": "image/jpeg",
+      "byteSize": 60138,
+      "imageSha256": "df663bb6fa1bec65ea962df704ee90683d78c9f848a43a3449f484b10f5eb185",
+      "downloadStatus": "captured_for_hash"
     },
     {
       "url": "https://www.flsenate.gov/PublishedContent/Offices/Senator/ACJ_Press_Release.jpg",
@@ -64,6 +50,20 @@
       "identityReviewStatus": "unreviewed",
       "httpStatus": 429,
       "finalUrl": "https://www.flsenate.gov/PublishedContent/Offices/Senator/Property_Tax_Press_Release.jpg",
+      "contentType": "text/plain",
+      "byteSize": 17,
+      "downloadStatus": "not_an_image_or_http_error"
+    },
+    {
+      "url": "https://www.flsenate.gov/PublishedContent/Offices/Senator/booker_t_press_release.jpg",
+      "method": "img",
+      "score": 18,
+      "altText": null,
+      "sourcePageUrl": "https://www.flsenate.gov/Senators/S36",
+      "rightsStatus": "review_required",
+      "identityReviewStatus": "unreviewed",
+      "httpStatus": 429,
+      "finalUrl": "https://www.flsenate.gov/PublishedContent/Offices/Senator/booker_t_press_release.jpg",
       "contentType": "text/plain",
       "byteSize": 17,
       "downloadStatus": "not_an_image_or_http_error"
@@ -188,6 +188,12 @@
       "reviewStatus": "unreviewed"
     },
     {
+      "url": "https://www.flsenate.gov/PublishedContent/Offices/Senator/booker_t_press_release.pdf",
+      "label": "Senator Ileana Garcia and Representative Ashley Gantt Join Miami-Dade County Public Schools for Check Presentation",
+      "sourcePageUrl": "https://www.flsenate.gov/Senators/S36",
+      "reviewStatus": "unreviewed"
+    },
+    {
       "url": "https://www.flsenate.gov/PublishedContent/Offices/Senator/ACJ_Press_Release.pdf",
       "label": "Senator Garcia Shares Highlights of Florida’s Criminal and Civil Justice Budget",
       "sourcePageUrl": "https://www.flsenate.gov/Senators/S36",
@@ -202,12 +208,6 @@
     {
       "url": "https://www.flsenate.gov/PublishedContent/Offices/Senator/sb_988_press_release_senate.pdf",
       "label": "Senator Garcia and Representative Cross File the “MANTA” Protection Act to Protect Endangered or Threatened Marine Animals",
-      "sourcePageUrl": "https://www.flsenate.gov/Senators/S36",
-      "reviewStatus": "unreviewed"
-    },
-    {
-      "url": "https://www.flsenate.gov/PublishedContent/Offices/Senator/Declaraci_n_de_la_Senadora_Ileana_Garc_a_sobre_el_liderazgo.pdf",
-      "label": "Declaración de la Senadora Ileana García sobre el liderazgo del Presidente Trump contra regímenes opresivos",
       "sourcePageUrl": "https://www.flsenate.gov/Senators/S36",
       "reviewStatus": "unreviewed"
     },
@@ -227,7 +227,7 @@
   "errors": [],
   "httpStatus": 200,
   "finalUrl": "https://www.flsenate.gov/Senators/S36",
-  "sourceSnapshotSha256": "7c6ba6584f697824d85589ac816d1c774c6c8b321b56dd79b418f25927579bef",
+  "sourceSnapshotSha256": "6ca00da807d629ff1ea6fade8ecfa7c997e67542189952a73ed59546fe0a3746",
   "contentType": "text/html",
   "pageTitle": "Senator Garcia - The Florida Senate",
   "candidateSummary": {

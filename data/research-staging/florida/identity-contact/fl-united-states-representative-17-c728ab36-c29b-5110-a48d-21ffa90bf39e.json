@@ -6,7 +6,7 @@
   "displayName": "W. Steube",
   "officeTitle": "United States Representative",
   "sourceUrl": "https://steube.house.gov/",
-  "fetchedAt": "2026-07-16T05:20:00Z",
+  "fetchedAt": "2026-09-12T12:59:41Z",
   "collectionStatus": "success",
   "reviewStatus": "unreviewed",
   "publicationAllowed": false,
@@ -168,35 +168,28 @@
     },
     {
       "platform": "Facebook",
-      "url": "https://facebook.com/1641117200703171",
-      "label": "Play",
-      "sourcePageUrl": "https://steube.house.gov/",
-      "reviewStatus": "unreviewed"
-    },
-    {
-      "platform": "Facebook",
-      "url": "https://www.facebook.com/1641117200703171",
+      "url": "https://www.facebook.com/271736323517059_1693749128773311",
       "label": "View on Facebook",
       "sourcePageUrl": "https://steube.house.gov/",
       "reviewStatus": "unreviewed"
     },
     {
       "platform": "Facebook",
-      "url": "https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fwww.facebook.com%2F1641117200703171",
+      "url": "https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fwww.facebook.com%2F271736323517059_1693749128773311",
       "label": "Share on Facebook",
       "sourcePageUrl": "https://steube.house.gov/",
       "reviewStatus": "unreviewed"
     },
     {
       "platform": "X",
-      "url": "https://twitter.com/intent/tweet?text=https%3A%2F%2Fwww.facebook.com%2F1641117200703171",
+      "url": "https://twitter.com/intent/tweet?text=https%3A%2F%2Fwww.facebook.com%2F271736323517059_1693749128773311",
       "label": "Share on Twitter",
       "sourcePageUrl": "https://steube.house.gov/",
       "reviewStatus": "unreviewed"
     },
     {
       "platform": "LinkedIn",
-      "url": "https://www.linkedin.com/shareArticle?mini=true&url=https%3A%2F%2Fwww.facebook.com%2F1641117200703171&title=%09The%20Sunshine%20Protection%20Act%20has%20been%20nearly%20a%20decade%20in%20the%20making.%20I%20fought%20for%20it%20in%20the%20Florida%20Legislature%20back%20in%202018%2C%20and%20now%20Congress%20is%20finally%20acting.It%E2%80%99s%20time%20to%20end%20the%20outdated%20ritual%20of%20springing%20forward%20and%20falling%20back.%20It%E2%80%99s%20time%20to%20LOCK%20the%20CLOCK%21%20%E2%8F%B0%F0%9F%94%92%E2%98%80%EF%B8%8F%20%09%09",
+      "url": "https://www.linkedin.com/shareArticle?mini=true&url=https%3A%2F%2Fwww.facebook.com%2F271736323517059_1693749128773311&title=%09The%20House%20PASSED%20the%20SAVE%20America%20Act.%20Over%2080%25%20of%20the%20American%20people%20support%20voter%20ID.Yet%20the%20Senate%20STILL%20refuses%20to%20get%20it%20done.Nuke%20the%20filibuster%20and%20pass%20the%20SAVE%20America%20Act.ONLY%20AMERICANS%20SHOULD%20DECIDE%20AMERICAN%20ELECTIONS%21%21%20%F0%9F%87%BA%F0%9F%87%B8%20%09%09",
       "label": "Share on Linked In",
       "sourcePageUrl": "https://steube.house.gov/",
       "reviewStatus": "unreviewed"
@@ -225,13 +218,13 @@
   "errors": [],
   "httpStatus": 200,
   "finalUrl": "https://steube.house.gov/",
-  "sourceSnapshotSha256": "903c2adcb0303033a8879f338850dd86f3823ea189517ca75d3f6e61820e0f8e",
+  "sourceSnapshotSha256": "eaf0e74d823600f45dac547c23f129f176b18ef83082f6a29b4d1c31608b95f6",
   "contentType": "text/html",
   "pageTitle": "Congressman Steube – Representing Florida",
   "candidateSummary": {
     "portraits": 6,
     "contacts": 2,
-    "socials": 12,
+    "socials": 11,
     "websites": 3
   }
 }

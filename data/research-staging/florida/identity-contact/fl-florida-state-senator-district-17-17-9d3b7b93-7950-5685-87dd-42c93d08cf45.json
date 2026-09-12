@@ -6,7 +6,7 @@
   "displayName": "Carlos Guillermo Smith",
   "officeTitle": "Florida State Senator, District 17",
   "sourceUrl": "https://www.flsenate.gov/Senators/2024-2026/S17",
-  "fetchedAt": "2026-07-16T05:20:39Z",
+  "fetchedAt": "2026-09-12T13:00:29Z",
   "collectionStatus": "success",
   "reviewStatus": "unreviewed",
   "publicationAllowed": false,
@@ -232,7 +232,7 @@
   "errors": [],
   "httpStatus": 200,
   "finalUrl": "https://www.flsenate.gov/Senators/S17",
-  "sourceSnapshotSha256": "092bfadd510fe110d8b150d5ca7df9f848c6c84de12cd9157c5fec2886ae4a64",
+  "sourceSnapshotSha256": "72a0a42ee4348017847e55a447f2e7072256308b3bb586c1574de5829d4d5213",
   "contentType": "text/html",
   "pageTitle": "Senator Smith - The Florida Senate",
   "candidateSummary": {

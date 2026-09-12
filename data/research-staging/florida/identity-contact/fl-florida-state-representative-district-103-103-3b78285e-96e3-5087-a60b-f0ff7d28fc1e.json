@@ -6,77 +6,32 @@
   "displayName": "Robin Bartleman",
   "officeTitle": "Florida State Representative, District 103",
   "sourceUrl": "https://www.flhouse.gov/Sections/Representatives/details.aspx?MemberId=4793&LegislativeTermId=91",
-  "fetchedAt": "2026-07-16T05:20:01Z",
+  "fetchedAt": "2026-09-12T12:59:43Z",
   "collectionStatus": "success",
   "reviewStatus": "unreviewed",
   "publicationAllowed": false,
   "portraitCandidates": [
     {
-      "url": "https://www.flhouse.gov/FileStores/Web/Imaging/Member/4793.jpg",
+      "url": "https://www.flhouse.gov/FileStores/Web/Imaging/Member/cutout%2f4793.png",
       "method": "img",
       "score": 39,
       "altText": "Representative Bartleman Photo",
-      "sourcePageUrl": "https://www.flhouse.gov/Sections/Representatives/details.aspx?MemberId=4793&LegislativeTermId=91",
+      "sourcePageUrl": "https://www.flhouse.gov/Sections/Representatives/custom/details.aspx?MemberId=4793&LegislativeTermId=91",
       "rightsStatus": "review_required",
       "identityReviewStatus": "unreviewed",
       "httpStatus": 200,
-      "finalUrl": "https://www.flhouse.gov/FileStores/Web/Imaging/Member/4793.jpg",
-      "contentType": "image/jpeg",
-      "byteSize": 70501,
-      "imageSha256": "38ae1af2cd78c9bb750b993644d793fc0c6bae793f2cc60c9d148b6ee6fd862e",
-      "downloadStatus": "captured_for_hash"
-    },
-    {
-      "url": "https://www.flhouse.gov/Images/bronze-seal-250.png?cb=4.6.654349",
-      "method": "og:image",
-      "score": 14,
-      "altText": null,
-      "sourcePageUrl": "https://www.flhouse.gov/Sections/Representatives/details.aspx?MemberId=4793&LegislativeTermId=91",
-      "rightsStatus": "review_required",
-      "identityReviewStatus": "unreviewed",
-      "httpStatus": 200,
-      "finalUrl": "https://www.flhouse.gov/Images/bronze-seal-250.png?cb=4.6.654349",
+      "finalUrl": "https://www.flhouse.gov/FileStores/Web/Imaging/Member/cutout%2F4793.png",
       "contentType": "image/png",
-      "byteSize": 150275,
-      "imageSha256": "36f7c4317f0cc62c44ff5bbfc0a0e5eebf014be23c9c8826141f11a70d9e7ff8",
-      "downloadStatus": "captured_for_hash"
-    },
-    {
-      "url": "https://www.flhouse.gov/FileStores/Web/Imaging/PhotoAlbums/HousePhotoSized7752.JPG",
-      "method": "img",
-      "score": 9,
-      "altText": null,
-      "sourcePageUrl": "https://www.flhouse.gov/Sections/Representatives/details.aspx?MemberId=4793&LegislativeTermId=91",
-      "rightsStatus": "review_required",
-      "identityReviewStatus": "unreviewed",
-      "httpStatus": 200,
-      "finalUrl": "https://www.flhouse.gov/FileStores/Web/Imaging/PhotoAlbums/HousePhotoSized7752.JPG",
-      "contentType": "image/jpeg",
-      "byteSize": 19513,
-      "imageSha256": "6ba5ac3c2c86ea842abb175d622bba904d85a75033b6940a2e4d14456e39be5e",
-      "downloadStatus": "captured_for_hash"
-    },
-    {
-      "url": "https://www.flhouse.gov/FileStores/Web/Imaging/PhotoAlbums/HousePhotoSized7762.JPG",
-      "method": "img",
-      "score": 9,
-      "altText": null,
-      "sourcePageUrl": "https://www.flhouse.gov/Sections/Representatives/details.aspx?MemberId=4793&LegislativeTermId=91",
-      "rightsStatus": "review_required",
-      "identityReviewStatus": "unreviewed",
-      "httpStatus": 200,
-      "finalUrl": "https://www.flhouse.gov/FileStores/Web/Imaging/PhotoAlbums/HousePhotoSized7762.JPG",
-      "contentType": "image/jpeg",
-      "byteSize": 22929,
-      "imageSha256": "30d1cb68388d548e7d9de0a46b853c1694bb2342c43450d5188c89f4d6332260",
+      "byteSize": 367906,
+      "imageSha256": "5f75cd874701ce9e57b34c2dc473fdae7f72e168bcaac33330b2d218d79ff10d",
       "downloadStatus": "captured_for_hash"
     },
     {
       "url": "https://www.flhouse.gov/FileStores/Web/Imaging/PhotoAlbums/HousePhotoSized7763.JPG",
       "method": "img",
-      "score": 9,
-      "altText": null,
-      "sourcePageUrl": "https://www.flhouse.gov/Sections/Representatives/details.aspx?MemberId=4793&LegislativeTermId=91",
+      "score": 30,
+      "altText": "Representative Bartleman Photo",
+      "sourcePageUrl": "https://www.flhouse.gov/Sections/Representatives/custom/details.aspx?MemberId=4793&LegislativeTermId=91",
       "rightsStatus": "review_required",
       "identityReviewStatus": "unreviewed",
       "httpStatus": 200,
@@ -87,11 +42,26 @@
       "downloadStatus": "captured_for_hash"
     },
     {
+      "url": "https://www.flhouse.gov/Images/bronze-seal-250.png?cb=4.6.654350",
+      "method": "og:image",
+      "score": 14,
+      "altText": null,
+      "sourcePageUrl": "https://www.flhouse.gov/Sections/Representatives/custom/details.aspx?MemberId=4793&LegislativeTermId=91",
+      "rightsStatus": "review_required",
+      "identityReviewStatus": "unreviewed",
+      "httpStatus": 200,
+      "finalUrl": "https://www.flhouse.gov/Images/bronze-seal-250.png?cb=4.6.654350",
+      "contentType": "image/png",
+      "byteSize": 150275,
+      "imageSha256": "36f7c4317f0cc62c44ff5bbfc0a0e5eebf014be23c9c8826141f11a70d9e7ff8",
+      "downloadStatus": "captured_for_hash"
+    },
+    {
       "url": "https://www.flhouse.gov/FileStores/Web/Imaging/PhotoAlbums/HousePhotoSized7968.JPG",
       "method": "img",
       "score": 9,
       "altText": null,
-      "sourcePageUrl": "https://www.flhouse.gov/Sections/Representatives/details.aspx?MemberId=4793&LegislativeTermId=91",
+      "sourcePageUrl": "https://www.flhouse.gov/Sections/Representatives/custom/details.aspx?MemberId=4793&LegislativeTermId=91",
       "rightsStatus": "review_required",
       "identityReviewStatus": "unreviewed",
       "httpStatus": 200,
@@ -100,48 +70,77 @@
       "byteSize": 11973,
       "imageSha256": "03b84155ae730b602e5e4c856dea924cfd2c1bc51335305e31940323288b7109",
       "downloadStatus": "captured_for_hash"
-    }
-  ],
-  "contactCandidates": [],
-  "socialCandidates": [
+    },
     {
-      "platform": "YouTube",
-      "url": "https://www.youtube.com/channel/UCGiMELcyYCuDPP3N0Tg5sTg",
-      "label": "Subscribe",
-      "sourcePageUrl": "https://www.flhouse.gov/Sections/Representatives/details.aspx?MemberId=4793&LegislativeTermId=91",
-      "reviewStatus": "unreviewed"
+      "url": "https://www.flhouse.gov/FileStores/Web/Imaging/PhotoAlbums/HousePhotoSized8187.JPG",
+      "method": "img",
+      "score": 9,
+      "altText": null,
+      "sourcePageUrl": "https://www.flhouse.gov/Sections/Representatives/custom/details.aspx?MemberId=4793&LegislativeTermId=91",
+      "rightsStatus": "review_required",
+      "identityReviewStatus": "unreviewed",
+      "httpStatus": 200,
+      "finalUrl": "https://www.flhouse.gov/FileStores/Web/Imaging/PhotoAlbums/HousePhotoSized8187.JPG",
+      "contentType": "image/jpeg",
+      "byteSize": 16842,
+      "imageSha256": "a3f3e3bb0ce280ba3a0916eeb46aca6f4a06f3e51fd0c5d69f98dd432a4155bd",
+      "downloadStatus": "captured_for_hash"
+    },
+    {
+      "url": "https://www.flhouse.gov/FileStores/Web/Imaging/PhotoAlbums/HousePhotoSized8322.JPG",
+      "method": "img",
+      "score": 9,
+      "altText": null,
+      "sourcePageUrl": "https://www.flhouse.gov/Sections/Representatives/custom/details.aspx?MemberId=4793&LegislativeTermId=91",
+      "rightsStatus": "review_required",
+      "identityReviewStatus": "unreviewed",
+      "httpStatus": 200,
+      "finalUrl": "https://www.flhouse.gov/FileStores/Web/Imaging/PhotoAlbums/HousePhotoSized8322.JPG",
+      "contentType": "image/jpeg",
+      "byteSize": 19496,
+      "imageSha256": "65a68e94dd2950aea2cbdf75d99ac689e681138543ec29dbfb7261ab92a76868",
+      "downloadStatus": "captured_for_hash"
     }
   ],
+  "contactCandidates": [
+    {
+      "type": "phone",
+      "value": "(850) 717-5103",
+      "label": null,
+      "sourcePageUrl": "https://www.flhouse.gov/Sections/Representatives/custom/details.aspx?MemberId=4793&LegislativeTermId=91"
+    },
+    {
+      "type": "phone",
+      "value": "(954) 872-1770",
+      "label": null,
+      "sourcePageUrl": "https://www.flhouse.gov/Sections/Representatives/custom/details.aspx?MemberId=4793&LegislativeTermId=91"
+    }
+  ],
+  "socialCandidates": [],
   "websiteCandidates": [
     {
-      "url": "https://www.flhouse.gov/Sections/HouseSchedule/houseschedule.aspx",
-      "label": "House Schedule",
-      "sourcePageUrl": "https://www.flhouse.gov/Sections/Representatives/details.aspx?MemberId=4793&LegislativeTermId=91",
-      "reviewStatus": "unreviewed"
-    },
-    {
-      "url": "https://www.flhouse.gov/Sections/Representatives/contactmember.aspx?MemberId=4793&SessionId=113",
+      "url": "https://www.flhouse.gov/Sections/Representatives/custom/contactmember.aspx?MemberId=4793&LegislativeTermId=91",
       "label": "Contact Member",
-      "sourcePageUrl": "https://www.flhouse.gov/Sections/Representatives/details.aspx?MemberId=4793&LegislativeTermId=91",
+      "sourcePageUrl": "https://www.flhouse.gov/Sections/Representatives/custom/details.aspx?MemberId=4793&LegislativeTermId=91",
       "reviewStatus": "unreviewed"
     },
     {
-      "url": "https://www.flhouse.gov/contentViewer.aspx?Category=website&File=contact us.htm",
-      "label": "Contact Us",
-      "sourcePageUrl": "https://www.flhouse.gov/Sections/Representatives/details.aspx?MemberId=4793&LegislativeTermId=91",
+      "url": "https://www.flhouse.gov/Sections/Representatives/custom/maps-and-offices.aspx?MemberId=4793&LegislativeTermId=91",
+      "label": "Maps & Offices",
+      "sourcePageUrl": "https://www.flhouse.gov/Sections/Representatives/custom/details.aspx?MemberId=4793&LegislativeTermId=91",
       "reviewStatus": "unreviewed"
     }
   ],
   "errors": [],
   "httpStatus": 200,
-  "finalUrl": "https://www.flhouse.gov/Sections/Representatives/details.aspx?MemberId=4793&LegislativeTermId=91",
-  "sourceSnapshotSha256": "e624fbf3df871bca5700446d83a61a3f8deea26909773244458f93d008ba6519",
+  "finalUrl": "https://www.flhouse.gov/Sections/Representatives/custom/details.aspx?MemberId=4793&LegislativeTermId=91",
+  "sourceSnapshotSha256": "969ce6f634ca84f8eaaf6e1474e7c57602d6d9438243709c86fb487d3d0e2f69",
   "contentType": "text/html",
   "pageTitle": "Robin Bartleman  - 2024 - 2026 ( Speaker Perez ) | Florida House of Representatives",
   "candidateSummary": {
     "portraits": 6,
-    "contacts": 0,
-    "socials": 1,
-    "websites": 3
+    "contacts": 2,
+    "socials": 0,
+    "websites": 2
   }
 }

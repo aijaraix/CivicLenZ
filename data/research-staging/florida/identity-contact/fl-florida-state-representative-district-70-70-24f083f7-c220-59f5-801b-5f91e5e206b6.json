@@ -6,7 +6,7 @@
   "displayName": "Michael Owen",
   "officeTitle": "Florida State Representative, District 70",
   "sourceUrl": "https://www.flhouse.gov/Sections/Representatives/details.aspx?MemberId=4919&LegislativeTermId=91",
-  "fetchedAt": "2026-07-16T05:20:27Z",
+  "fetchedAt": "2026-09-12T13:00:14Z",
   "collectionStatus": "success",
   "reviewStatus": "unreviewed",
   "publicationAllowed": false,
@@ -42,7 +42,7 @@
       "downloadStatus": "captured_for_hash"
     },
     {
-      "url": "https://www.flhouse.gov/Images/bronze-seal-250.png?cb=4.6.654349",
+      "url": "https://www.flhouse.gov/Images/bronze-seal-250.png?cb=4.6.654350",
       "method": "og:image",
       "score": 14,
       "altText": null,
@@ -50,7 +50,7 @@
       "rightsStatus": "review_required",
       "identityReviewStatus": "unreviewed",
       "httpStatus": 200,
-      "finalUrl": "https://www.flhouse.gov/Images/bronze-seal-250.png?cb=4.6.654349",
+      "finalUrl": "https://www.flhouse.gov/Images/bronze-seal-250.png?cb=4.6.654350",
       "contentType": "image/png",
       "byteSize": 150275,
       "imageSha256": "36f7c4317f0cc62c44ff5bbfc0a0e5eebf014be23c9c8826141f11a70d9e7ff8",
@@ -134,7 +134,7 @@
   "errors": [],
   "httpStatus": 200,
   "finalUrl": "https://www.flhouse.gov/Sections/Representatives/custom/details.aspx?MemberId=4919&LegislativeTermId=91",
-  "sourceSnapshotSha256": "931374d347a6ea18d2e1874c92c468e8a99a038ccebdc543226f70eea1a66896",
+  "sourceSnapshotSha256": "0e990c14db3f5fe5d49e93429bd3ce39d51a0c61e336b6d3dc4ed670c4d8b174",
   "contentType": "text/html",
   "pageTitle": "Michael Owen  - 2024 - 2026 ( Speaker Perez ) | Florida House of Representatives",
   "candidateSummary": {
