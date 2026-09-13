@@ -8,7 +8,7 @@
   "finalRootUrl": "https://www.mywakulla.com/",
   "rootSeedStatus": "reachable_official_site",
   "sitePlatformHint": "civicplus",
-  "fetchedAt": "2026-07-16T07:22:37Z",
+  "fetchedAt": "2026-09-13T14:42:02Z",
   "collectionStatus": "success",
   "publicationAllowed": false,
   "reviewStatus": "unreviewed",
@@ -18,21 +18,21 @@
       "httpStatus": 200,
       "contentType": "text/html; charset=UTF-8",
       "pageTitle": "Wakulla County, FL | Home",
-      "sha256": "c91a48aa2ea39881802ef6f59392c4ed9d2526654e97bc856d788b678ecb4f62"
+      "sha256": "0f8b1056c3c23880531336ed3697cbac5d2e47616fc83d81b0c9cc180979f3cc"
     },
     {
       "url": "https://www.mywakulla.com/meet_your_commissioners/index.php",
       "httpStatus": 200,
       "contentType": "text/html; charset=UTF-8",
       "pageTitle": "Meet Your Commissioners",
-      "sha256": "7f6579f521837025a82f68c53f93da47099f9b763309702407a585b27809fd19"
+      "sha256": "377c57609802ea05fdc7f3d22a8e6a0b8e60f0db685824fb230e1a6c4f9ccef7"
     },
     {
       "url": "https://www.mywakulla.com/meet_your_commissioners/contact_all_commissioners.php",
       "httpStatus": 200,
       "contentType": "text/html; charset=UTF-8",
       "pageTitle": "Contact All Commissioners",
-      "sha256": "3c047c67823cd5939700b89d51a3c8df15a83fef863ac9b720529e18c6e72ad8"
+      "sha256": "ad3e1bbed3e23018f580cf9a08d32c0deb5325de147e7cac38583469d3c8d6f5"
     },
     {
       "url": "https://www.mywakulla.com/meet_your_commissioners/visitors/index.php",

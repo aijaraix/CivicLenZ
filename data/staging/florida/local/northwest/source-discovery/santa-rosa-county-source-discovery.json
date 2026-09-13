@@ -8,7 +8,7 @@
   "finalRootUrl": "https://www.santarosa.fl.gov/",
   "rootSeedStatus": "reachable_official_site",
   "sitePlatformHint": "civicplus",
-  "fetchedAt": "2026-07-16T07:22:36Z",
+  "fetchedAt": "2026-09-13T14:42:01Z",
   "collectionStatus": "success",
   "publicationAllowed": false,
   "reviewStatus": "unreviewed",
@@ -18,14 +18,14 @@
       "httpStatus": 200,
       "contentType": "text/html; charset=utf-8",
       "pageTitle": "Santa Rosa County, FL | Official Website",
-      "sha256": "b1ebd2ad27928224b3d09dfc63eb1aea5df959e656353056ffb83d5eb6286849"
+      "sha256": "9f13429adafb95d1deb6e5f56633718c074c01f3b7e31f3d92fa93a5044cf805"
     },
     {
       "url": "https://www.santarosa.fl.gov/FormCenter/BOCCAdmin-21/Citizen-Input-Form-for-agenda-items-or-p-95",
       "httpStatus": 200,
       "contentType": "text/html; charset=utf-8",
       "pageTitle": "Form Center • Citizen Input Form - for agenda items or publi",
-      "sha256": "b2aea5737384e724b878664a27688a11daaed1be5e93bab1d638857a41f6e9eb"
+      "sha256": "9504cfc2ba142f97048fa4571aa78453d86f24c804c23197a301fff1f52f206c"
     }
   ],
   "sourceCandidates": {
