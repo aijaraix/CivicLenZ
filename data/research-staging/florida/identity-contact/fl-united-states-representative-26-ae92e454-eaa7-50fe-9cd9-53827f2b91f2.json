@@ -6,7 +6,7 @@
   "displayName": "Mario Diaz-Balart",
   "officeTitle": "United States Representative",
   "sourceUrl": "https://mariodiazbalart.house.gov/",
-  "fetchedAt": "2026-07-16T05:19:59Z",
+  "fetchedAt": "2026-09-13T13:51:38Z",
   "collectionStatus": "success",
   "reviewStatus": "unreviewed",
   "publicationAllowed": false,
@@ -184,7 +184,7 @@
   "errors": [],
   "httpStatus": 200,
   "finalUrl": "https://mariodiazbalart.house.gov/",
-  "sourceSnapshotSha256": "75e71b59ed167b37eb307390e34e78d8f66eef34e0913bb95f82bab58b898ea4",
+  "sourceSnapshotSha256": "1676bd7666aeef7e4e6129c3324be46caf42029c6bd7b1df7da9f3a76fc96c82",
   "contentType": "text/html",
   "pageTitle": "Congressman Mario Diaz-Balart |",
   "candidateSummary": {

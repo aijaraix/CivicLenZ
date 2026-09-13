@@ -6,7 +6,7 @@
   "displayName": "Ashley Viola Gantt",
   "officeTitle": "Florida State Representative, District 109",
   "sourceUrl": "https://www.flhouse.gov/Sections/Representatives/details.aspx?MemberId=4897&LegislativeTermId=91",
-  "fetchedAt": "2026-07-16T05:20:04Z",
+  "fetchedAt": "2026-09-13T13:51:45Z",
   "collectionStatus": "success",
   "reviewStatus": "unreviewed",
   "publicationAllowed": false,
@@ -27,7 +27,7 @@
       "downloadStatus": "captured_for_hash"
     },
     {
-      "url": "https://www.flhouse.gov/FileStores/Web/Imaging/PhotoAlbums/HousePhotoSized7704.jpg",
+      "url": "https://www.flhouse.gov/FileStores/Web/Imaging/PhotoAlbums/HousePhotoSized7871.JPG",
       "method": "img",
       "score": 30,
       "altText": "Representative Gantt Photo",
@@ -35,14 +35,14 @@
       "rightsStatus": "review_required",
       "identityReviewStatus": "unreviewed",
       "httpStatus": 200,
-      "finalUrl": "https://www.flhouse.gov/FileStores/Web/Imaging/PhotoAlbums/HousePhotoSized7704.jpg",
+      "finalUrl": "https://www.flhouse.gov/FileStores/Web/Imaging/PhotoAlbums/HousePhotoSized7871.JPG",
       "contentType": "image/jpeg",
-      "byteSize": 25186,
-      "imageSha256": "1393153bd1249594091ebc380ad8dbf41a91ff2c5fc5a64f5d74f9e3c35fd42e",
+      "byteSize": 20634,
+      "imageSha256": "b30e7a905a7fc23b2c1890d4ba2102bb92acac0406c74e402931cc416bf79b00",
       "downloadStatus": "captured_for_hash"
     },
     {
-      "url": "https://www.flhouse.gov/Images/bronze-seal-250.png?cb=4.6.654349",
+      "url": "https://www.flhouse.gov/Images/bronze-seal-250.png?cb=4.6.654350",
       "method": "og:image",
       "score": 14,
       "altText": null,
@@ -50,7 +50,7 @@
       "rightsStatus": "review_required",
       "identityReviewStatus": "unreviewed",
       "httpStatus": 200,
-      "finalUrl": "https://www.flhouse.gov/Images/bronze-seal-250.png?cb=4.6.654349",
+      "finalUrl": "https://www.flhouse.gov/Images/bronze-seal-250.png?cb=4.6.654350",
       "contentType": "image/png",
       "byteSize": 150275,
       "imageSha256": "36f7c4317f0cc62c44ff5bbfc0a0e5eebf014be23c9c8826141f11a70d9e7ff8",
@@ -116,22 +116,7 @@
       "sourcePageUrl": "https://www.flhouse.gov/Sections/Representatives/custom/details.aspx?MemberId=4897&LegislativeTermId=91"
     }
   ],
-  "socialCandidates": [
-    {
-      "platform": "Facebook",
-      "url": "https://facebook.com/ganttforflorida",
-      "label": "Ashley Viola Gantt",
-      "sourcePageUrl": "https://www.flhouse.gov/Sections/Representatives/custom/details.aspx?MemberId=4897&LegislativeTermId=91",
-      "reviewStatus": "unreviewed"
-    },
-    {
-      "platform": "Instagram",
-      "url": "https://www.instagram.com/ganttforflorida?utm_source=ig_embed&utm_campaign=loading",
-      "label": "Ashley Viola Gantt",
-      "sourcePageUrl": "https://www.flhouse.gov/Sections/Representatives/custom/details.aspx?MemberId=4897&LegislativeTermId=91",
-      "reviewStatus": "unreviewed"
-    }
-  ],
+  "socialCandidates": [],
   "websiteCandidates": [
     {
       "url": "https://www.flhouse.gov/Sections/Representatives/custom/contactmember.aspx?MemberId=4897&LegislativeTermId=91",
@@ -149,13 +134,13 @@
   "errors": [],
   "httpStatus": 200,
   "finalUrl": "https://www.flhouse.gov/Sections/Representatives/custom/details.aspx?MemberId=4897&LegislativeTermId=91",
-  "sourceSnapshotSha256": "03fe21b13dd45add46229f8b48b59b7db1f8bfc83b0e2f97da76b9036231cdaf",
+  "sourceSnapshotSha256": "47e187c052f4bd9ab9da0a1a2358a0b4b7f621646336d41b0837e73392185a40",
   "contentType": "text/html",
   "pageTitle": "Ashley Viola Gantt  - 2024 - 2026 ( Speaker Perez ) | Florida House of Representatives",
   "candidateSummary": {
     "portraits": 6,
     "contacts": 2,
-    "socials": 2,
+    "socials": 0,
     "websites": 2
   }
 }
