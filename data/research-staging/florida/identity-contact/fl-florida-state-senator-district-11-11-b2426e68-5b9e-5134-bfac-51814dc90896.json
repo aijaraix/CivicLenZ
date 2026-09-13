@@ -6,7 +6,7 @@
   "displayName": "Ralph E., Jr. Massullo",
   "officeTitle": "Florida State Senator, District 11",
   "sourceUrl": "https://www.flsenate.gov/Senators/2024-2026/S11",
-  "fetchedAt": "2026-07-16T05:20:37Z",
+  "fetchedAt": "2026-09-13T13:52:20Z",
   "collectionStatus": "success",
   "reviewStatus": "unreviewed",
   "publicationAllowed": false,
@@ -214,7 +214,7 @@
   "errors": [],
   "httpStatus": 200,
   "finalUrl": "https://www.flsenate.gov/Senators/S11",
-  "sourceSnapshotSha256": "ec4ac717cf1b88339ff5d6b99228d9f1cd58a62d144a7ec3c09d01e7e88ca478",
+  "sourceSnapshotSha256": "9caf92acd265e021c1178fe7a7805adea089d83b4e813b4f2f7fad942f0b2f67",
   "contentType": "text/html",
   "pageTitle": "Senator Massullo - The Florida Senate",
   "candidateSummary": {

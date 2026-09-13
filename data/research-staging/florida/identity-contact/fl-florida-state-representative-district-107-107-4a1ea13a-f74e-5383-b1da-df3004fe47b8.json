@@ -6,7 +6,7 @@
   "displayName": "Wallace Aristide",
   "officeTitle": "Florida State Representative, District 107",
   "sourceUrl": "https://www.flhouse.gov/Sections/Representatives/details.aspx?MemberId=4928&LegislativeTermId=91",
-  "fetchedAt": "2026-07-16T05:20:04Z",
+  "fetchedAt": "2026-09-13T13:51:45Z",
   "collectionStatus": "success",
   "reviewStatus": "unreviewed",
   "publicationAllowed": false,
@@ -22,8 +22,8 @@
       "httpStatus": 200,
       "finalUrl": "https://www.flhouse.gov/FileStores/Web/Imaging/Member/cutout%2F4928.png",
       "contentType": "image/png",
-      "byteSize": 242953,
-      "imageSha256": "5ec2d817331c254143023b0d7a7d813dab4b05b0a028030a800e105352e72aec",
+      "byteSize": 160973,
+      "imageSha256": "574607c2795752bbbb531fc7c99acfba62f55d3e921011d5f9f581ea1283b52d",
       "downloadStatus": "captured_for_hash"
     },
     {
@@ -42,7 +42,7 @@
       "downloadStatus": "captured_for_hash"
     },
     {
-      "url": "https://www.flhouse.gov/Images/bronze-seal-250.png?cb=4.6.654349",
+      "url": "https://www.flhouse.gov/Images/bronze-seal-250.png?cb=4.6.654350",
       "method": "og:image",
       "score": 14,
       "altText": null,
@@ -50,7 +50,7 @@
       "rightsStatus": "review_required",
       "identityReviewStatus": "unreviewed",
       "httpStatus": 200,
-      "finalUrl": "https://www.flhouse.gov/Images/bronze-seal-250.png?cb=4.6.654349",
+      "finalUrl": "https://www.flhouse.gov/Images/bronze-seal-250.png?cb=4.6.654350",
       "contentType": "image/png",
       "byteSize": 150275,
       "imageSha256": "36f7c4317f0cc62c44ff5bbfc0a0e5eebf014be23c9c8826141f11a70d9e7ff8",
@@ -142,7 +142,7 @@
   "errors": [],
   "httpStatus": 200,
   "finalUrl": "https://www.flhouse.gov/Sections/Representatives/custom/details.aspx?MemberId=4928&LegislativeTermId=91",
-  "sourceSnapshotSha256": "59348486ad2d5ad5d1b8abb5ad2ef2023a2ba46920ac9cebed3134410930a951",
+  "sourceSnapshotSha256": "4e226f703ac82d0653e00fb9c2a8f402260763200086bd91a0235486ed70a89f",
   "contentType": "text/html",
   "pageTitle": "Wallace Aristide  - 2024 - 2026 ( Speaker Perez ) | Florida House of Representatives",
   "candidateSummary": {

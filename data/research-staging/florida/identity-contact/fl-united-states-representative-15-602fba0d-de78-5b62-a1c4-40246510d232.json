@@ -6,7 +6,7 @@
   "displayName": "Laurel Lee",
   "officeTitle": "United States Representative",
   "sourceUrl": "https://laurellee.house.gov",
-  "fetchedAt": "2026-07-16T05:19:59Z",
+  "fetchedAt": "2026-09-13T13:51:38Z",
   "collectionStatus": "success",
   "reviewStatus": "unreviewed",
   "publicationAllowed": false,
@@ -216,7 +216,7 @@
   "errors": [],
   "httpStatus": 200,
   "finalUrl": "https://laurellee.house.gov/",
-  "sourceSnapshotSha256": "5334f4b3344607e2d4a29af96e334345d6b2b573a7b1022d181259e6933b424a",
+  "sourceSnapshotSha256": "1458813353190911b133b69e40d8de8d074a7d5d963573fd52bddf5c48d5e4f5",
   "contentType": "text/html",
   "pageTitle": "Congresswoman Laurel Lee | Representing the 15th District of Florida",
   "candidateSummary": {

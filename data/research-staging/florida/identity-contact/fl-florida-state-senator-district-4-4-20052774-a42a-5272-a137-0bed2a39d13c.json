@@ -6,7 +6,7 @@
   "displayName": "Clay Yarborough",
   "officeTitle": "Florida State Senator, District 4",
   "sourceUrl": "https://www.flsenate.gov/Senators/2024-2026/S4",
-  "fetchedAt": "2026-07-16T05:20:46Z",
+  "fetchedAt": "2026-09-13T13:52:31Z",
   "collectionStatus": "success",
   "reviewStatus": "unreviewed",
   "publicationAllowed": false,
@@ -212,7 +212,7 @@
   "errors": [],
   "httpStatus": 200,
   "finalUrl": "https://www.flsenate.gov/Senators/S4",
-  "sourceSnapshotSha256": "2521194a861b6b5c22f7ee6786c186856b22ade0128d106c3e827a7eb11870bf",
+  "sourceSnapshotSha256": "bb786d456d4a2fe2b0b8712c911b829a766e3f4065698a0fe791fc117cb3d559",
   "contentType": "text/html",
   "pageTitle": "Senator Yarborough - The Florida Senate",
   "candidateSummary": {
