@@ -7,14 +7,14 @@
   "officeTitle": "Florida State Representative, District 60",
   "districtNumber": "60",
   "sourceUrl": "https://www.flhouse.gov/Sections/Representatives/details.aspx?MemberId=4887&LegislativeTermId=91",
-  "fetchedAt": "2026-07-16T05:26:27Z",
+  "fetchedAt": "2026-09-13T14:55:52Z",
   "collectionStatus": "success",
   "reviewStatus": "unreviewed",
   "publicationAllowed": false,
   "errors": [],
   "httpStatus": 200,
   "finalUrl": "https://www.flhouse.gov/Sections/Representatives/custom/details.aspx?MemberId=4887&LegislativeTermId=91",
-  "sourceSnapshotSha256": "0576dde48202b0f637dd8d1669144c6d1bd8fdcee47906e5a812b60c502afbe2",
+  "sourceSnapshotSha256": "d8a5a22058743d943ae25b0bd82de43bb5c3c227eb190e6cbe1c3a8c1de0b25d",
   "partyAndDistrictText": "District: 60 -- Democrat",
   "staffCandidates": [
     {
@@ -138,7 +138,7 @@
       "identityReviewStatus": "unreviewed"
     },
     {
-      "url": "https://www.flhouse.gov/FileStores/Web/Imaging/PhotoAlbums/HousePhotoSized7546.jpg",
+      "url": "https://www.flhouse.gov/FileStores/Web/Imaging/PhotoAlbums/HousePhotoSized7552.jpg",
       "method": "img",
       "score": 30,
       "altText": "Representative Cross Photo",
@@ -147,7 +147,7 @@
       "identityReviewStatus": "unreviewed"
     },
     {
-      "url": "https://www.flhouse.gov/Images/bronze-seal-250.png?cb=4.6.654349",
+      "url": "https://www.flhouse.gov/Images/bronze-seal-250.png?cb=4.6.654350",
       "method": "og:image",
       "score": 14,
       "altText": null,
