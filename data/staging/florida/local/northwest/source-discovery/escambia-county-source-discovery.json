@@ -8,7 +8,7 @@
   "finalRootUrl": "https://myescambia.com/",
   "rootSeedStatus": "reachable_official_site",
   "sitePlatformHint": "custom",
-  "fetchedAt": "2026-07-16T07:22:33Z",
+  "fetchedAt": "2026-09-13T14:42:00Z",
   "collectionStatus": "success",
   "publicationAllowed": false,
   "reviewStatus": "unreviewed",
@@ -18,70 +18,63 @@
       "httpStatus": 200,
       "contentType": "text/html; charset=utf-8",
       "pageTitle": "MyEscambia Home",
-      "sha256": "38b886b6d57b4c79ae12483d1b930932fb9d202c91e6db038e1d4158c96aaf4a"
+      "sha256": "70bf2d3cf4163efc80083e8873728ffe9d6025d30f6281096dc8b693f1b3a841"
     },
     {
       "url": "https://myescambia.com/elected-officials/commissioners",
       "httpStatus": 200,
       "contentType": "text/html; charset=utf-8",
       "pageTitle": "Escambia County Board of County Commissioners",
-      "sha256": "fa62e264382be3ca2a289c3acd53ad0b8179c12db1690ac1be78f5f4795f1c95"
+      "sha256": "55dc6bc4455b1b04700700c048084b57da6a7948e80e6a203bc449a95fc87b46"
     },
     {
       "url": "https://myescambia.com/open-government/districts/district-1",
       "httpStatus": 200,
       "contentType": "text/html; charset=utf-8",
       "pageTitle": "District 1",
-      "sha256": "8034592ec0822c717b3303785beb67f362b2923f4147c76a6e4f2b57ed3e78bb"
+      "sha256": "30c68a7e2c63d4602ea4b9adbbd8c226a94f564e63b32d40cd4b60320f750deb"
     },
     {
       "url": "https://myescambia.com/open-government/districts/district-2",
       "httpStatus": 200,
       "contentType": "text/html; charset=utf-8",
       "pageTitle": "District 2",
-      "sha256": "ab3f0b719d9da465aab7d04cd17e4499969a6f217aa3c995b5250f665e8618d7"
+      "sha256": "82073bce1c5e7addd433dedfe318247a1ea6346d96646c272716b036bb550619"
     },
     {
       "url": "https://myescambia.com/open-government/districts/district-3",
       "httpStatus": 200,
       "contentType": "text/html; charset=utf-8",
       "pageTitle": "District 3",
-      "sha256": "7bcb65f6e7d362d522435128f2f7e0729c275b8b8614ff8e3a49761ba4c634c3"
+      "sha256": "3f0496f3a887e6027174a7782af3fa5fd480463b1b5e0bad0eafd987a344970f"
     },
     {
       "url": "https://myescambia.com/open-government/districts/district-4",
       "httpStatus": 200,
       "contentType": "text/html; charset=utf-8",
       "pageTitle": "District 4",
-      "sha256": "99d6fc4028fac7e77489efa61f616da15ee411967b13bb0017a72e828cc15baf"
+      "sha256": "2e098ca8874b307d0676b2afdb440ff06de9bd631bfc2f87f6aa3102c5438546"
     },
     {
       "url": "https://myescambia.com/open-government/districts/district-5",
       "httpStatus": 200,
       "contentType": "text/html; charset=utf-8",
       "pageTitle": "District 5",
-      "sha256": "c6da1af99a0baa25da755c7f21ce7b2da8977e6672860c6684038121c84c4278"
+      "sha256": "f2eece45615e93a99ff73bf17a01cc5cc681c98c6d14ea032661767e13eabf45"
     },
     {
       "url": "https://myescambia.com/open-government/meetings",
       "httpStatus": 200,
       "contentType": "text/html; charset=utf-8",
       "pageTitle": "Meetings",
-      "sha256": "8d5cdb19de9a9fe80455ceb6bac9d40c4a00f637df16a54206eb8361ac5ce72e"
+      "sha256": "123e8928b5835af2dc13074a1d956cc7242205eb909f6e1f48ca9d2da948e483"
     },
     {
-      "url": "https://myescambia.com/elected-officials/commissioners/find-your-district",
+      "url": "https://escfl.maps.arcgis.com/apps/instant/basic/index.html?appid=237c033fd6ee41eb9bada15a37f34b4e",
       "httpStatus": 200,
-      "contentType": "text/html; charset=utf-8",
-      "pageTitle": "Find Your District",
-      "sha256": "ed640e1cdbb3c9124d41d506a6fcfed291b3a8c02f5b276eba6966712049d70f"
-    },
-    {
-      "url": "https://myescambia.com/elected-officials/commissioners/show-district-map",
-      "httpStatus": 200,
-      "contentType": "text/html; charset=utf-8",
-      "pageTitle": "Show District Map",
-      "sha256": "bb0ba86232dca75bdf9a7335fa8b15092e982a6eaa7190802b73473d4e82e70b"
+      "contentType": "text/html",
+      "pageTitle": "Basic",
+      "sha256": "ac388fcc5e50f95d843ea71531b3516a094192d0840a4d20c0085b1d4b7ff505"
     }
   ],
   "sourceCandidates": {
@@ -137,14 +130,6 @@
       {
         "url": "https://myescambia.com/elected-officials/commissioners/bcc-meetings",
         "label": "BCC Meetings",
-        "discoveredOn": "https://myescambia.com/elected-officials/commissioners",
-        "score": 22,
-        "sameHost": true,
-        "reviewStatus": "unreviewed"
-      },
-      {
-        "url": "https://myescambia.com/elected-officials/commissioners/find-your-district",
-        "label": "Find Your District",
         "discoveredOn": "https://myescambia.com/elected-officials/commissioners",
         "score": 22,
         "sameHost": true,
