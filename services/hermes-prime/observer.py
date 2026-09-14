@@ -134,9 +134,10 @@ def main():
     args = parser.parse_args()
     if args.health:
         with sqlite3.connect(f"file:{args.state}?mode=ro", uri=True) as db:
-            row = db.execute("SELECT observed_at FROM observations ORDER BY id DESC LIMIT 1").fetchone()
+            row = db.execute("SELECT observed_at,snapshot FROM observations ORDER BY id DESC LIMIT 1").fetchone()
         healthy = bool(row and 0 <= time.time() - row[0] < 90)
-        print(json.dumps({"healthy": healthy, "mode": "OBSERVATION_NO_DISPATCH"}))
+        mode = json.loads(row[1]).get("mode", "UNKNOWN") if row else "UNKNOWN"
+        print(json.dumps({"healthy": healthy, "mode": mode}))
         raise SystemExit(0 if healthy else 1)
     os.umask(0o077)
     args.state.parent.mkdir(parents=True, exist_ok=True)
@@ -175,11 +176,13 @@ def main():
                 except Exception:
                     snapshot["canonical_dispatch"] = "DISPATCH_TICK_FAILED"
                     snapshot["governor"].update(dispatch_enabled=False, dispatch_limit=0)
-                snapshot["mode"] = "BOUNDED_CONTRACT_ROUTING"
             if planning_enabled:
                 snapshot["mode"] = "OBSERVATION_AND_GAP_PLANNING_NO_DISPATCH"
                 snapshot["canonical_work_ledger"] = "PARTIAL"
                 snapshot["gap_detector"] = planning
+            if os.environ.get("HERMES_ROUTE_CONTRACTS") == "true":
+                snapshot["mode"] = ("GAP_PLANNING_AND_BOUNDED_CONTRACT_ROUTING"
+                                    if planning_enabled else "BOUNDED_CONTRACT_ROUTING")
             persist(db, snapshot, trigger)
             # Bound event bursts to one observation per second; no payloads are read.
             time.sleep(1)

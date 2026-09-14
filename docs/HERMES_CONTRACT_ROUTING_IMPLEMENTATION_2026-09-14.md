@@ -30,7 +30,7 @@ The existing Cloudflare collector has `SUPABASE_SERVICE_ROLE_KEY`, `SUPABASE_URL
 
 HERMES's OS identity cannot read `/etc/civiclenz/secrets.env`. That file holds an existing infrastructure Cloudflare API token. It was not copied, exposed to HERMES, or granted additional readability.
 
-Before production dispatch, provision an explicitly scoped queue-producer credential for the existing `civiclenz-ingest` queue (`9302857ddec747a4919268ad2f8ffb39`) in the existing account. Use the minimum Cloudflare-supported scope, verifying whether that scope can be restricted to this queue. Do not silently use broader account administration permission. If the provider cannot enforce the desired boundary, record that limitation and obtain an explicit decision before provisioning.
+Before production dispatch, provision an explicitly scoped queue-producer credential for the existing `civiclenz-ingest` queue (`9302857ddec747a4919268ad2f8ffb39`) in the existing account. The owner has explicitly accepted account-level Queue write scope restricted to account `26b7bb3e78f1d2d6cd86b78468424c93`; Cloudflare does not offer individual-queue token resource scoping. Only Queues Write is authorized. Account-owned tokens support Workers Queues.
 
 Deliver the approved credential through systemd `LoadCredential` as `cloudflare-queue-producer`. The code does not fall back to an owner/admin token or service-role database key.
 
@@ -47,7 +47,7 @@ Do not set the deployment ID to an old collector version. Deploy and verify the 
 
 ## Validation performed
 
-- Six Python UNIT tests: eligibility identity checks, unsupported scopes, source restrictions, credential/deployment gates, resource allowance.
+- Seven Python UNIT tests (including persisted observation/health mode regression with simultaneous planning and bounded dispatch): eligibility identity checks, unsupported scopes, source restrictions, credential/deployment gates, resource allowance.
 - 112 Cloudflare UNIT/FIXTURE tests passed, including seven new worker tests: raw persistence and duplicate suppression, stale lease, test-work rejection, real-helper network failure behavior, R2 mismatch, lease loss, wrong deployment.
 - Isolated TypeScript compilation of the new worker and imports passed with TypeScript 5.9.3. An existing BufferSource typing issue was corrected by explicitly copying the exact bytes to an ArrayBuffer.
 - Live-schema/RLS compatibility test under `current_user=hermes_runtime`, **rolled back**: router evaluated 25 actual jobs; 24 remained unsupported and one selected the evidence route but remained deployment-gated. Independently queried after rollback: all 25 still had their original BLOCKED routing reason. No test changes were retained and no worker was dispatched.
@@ -70,3 +70,15 @@ These are not production execution proof.
 Production acceptance is NOT_YET_PROVEN. After the scoped credential boundary is resolved, deploy the reviewed handler/runtime, verify release/ExecStart/PID lineage, let persistent HERMES execute the one bounded canary, and independently read the job, attempt, worker_run, raw_retrieval and R2 bytes/hash. Keep the ResearchNeed pending canonical extraction/validation. Only consider a second execution when a separate legitimate eligible unit exists; do not replay a succeeded job to inflate proof.
 
 The next downstream missing transition after successful raw retrieval is scoped extraction/evidence construction and canonical validation handoff. That transition is not implemented by this bounded retrieval route.
+
+## Authorized credential provisioning follow-up
+
+The current ingest queue ID was independently verified unchanged. The existing infrastructure credential can read queue and worker settings, but account-token listing and permission-group discovery both returned HTTP 403 / code 9109. Cloudflare documents `Account API Tokens Write` as required to create an account-owned token. No existing credential was broadened and no producer token was created. Only provisioning is blocked; implementation/review can proceed with dispatch disabled.
+
+Two independent HTTPS services observed VPS public egress `47.251.111.63`. This verifies current egress, not a provider guarantee of a permanent assignment. Before adding a `/32` request-IP condition, verify that assignment remains stable.
+
+Provision through an existing authorized account administrator without granting token administration to HERMES or broadening the infrastructure token. Use only Queues Write for the single account. Deliver directly to a root-owned mode-0600 credential source and systemd `LoadCredential=cloudflare-queue-producer:<root-only source>`. Never place the value in this repository, shared environment, telemetry, payload, or report. Verify service-directory readability as `civiclenz-hermes` and denial for unrelated identities; never print the value. Keep dispatch false until those checks succeed.
+
+Rotation: pause bounded dispatch, allow owned attempts to finish/expire, create a replacement with the same minimal policy, atomically replace the root-only credential source, restart HERMES to refresh systemd credentials, verify access and provider validity without printing values, then revoke the previous token by its nonsecret token ID. Resume only the remaining approved attempt budget. Emergency revocation: disable dispatch and revoke that dedicated token using an existing account administrator; preserve job/attempt lineage. No short expiry is required for the persistent runtime.
+
+Provider references: [account-owned token compatibility](https://developers.cloudflare.com/fundamentals/api/get-started/account-owned-tokens/), [account-token creation permission](https://developers.cloudflare.com/api/resources/accounts/subresources/tokens/methods/create/), [Queue message permission](https://developers.cloudflare.com/api/resources/queues/subresources/messages/methods/push/).
