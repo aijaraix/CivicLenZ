@@ -48,6 +48,8 @@ export async function runContractEvidence(input: {
       || route.version !== "hermes-evidence-v1" || route.worker !== "civiclenz-collector"
       || !input.deploymentId || route.deployment_id !== input.deploymentId
       || !config?.active || config.heavyRequired || config.baseUrl !== route.source_url
+      || route.retrieval_url !== (route.source_key === "florida-governor-official"
+        ? "https://www.flgov.com/eog/" : config.baseUrl)
       || config.authorityTier !== "TIER_1_PRIMARY_OFFICIAL"
       || route.max_bytes !== 1048576 || route.timeout_seconds !== 15
       || Date.parse(job.lease_expires_at) - Date.now() < 90000) throw new Error("canonical_route_or_lease_rejected");
@@ -63,9 +65,9 @@ export async function runContractEvidence(input: {
     worker_key: "hermes.cloudflare.evidence", runtime: "cloudflare", deployment_id: input.deploymentId,
     status: "started", metadata: lineage });
   try {
-    const document = await fetchDocument(route.source_url, { maxBytes: route.max_bytes,
+    const document = await fetchDocument(route.retrieval_url, { maxBytes: route.max_bytes,
       timeoutMs: 15000, fetchImpl: (url, init) => (input.fetchImpl ?? fetch)(url, { ...init, redirect: "error" }),
-      // Redirects require separate source-policy review for this initial route.
+      // Fetch only the explicit HTTPS endpoint. Never follow a downgrade or arbitrary redirect.
     });
     if (document.status !== 200 || !document.bytes.length
         || new URL(document.url).hostname !== new URL(route.source_url).hostname) throw new Error("invalid_retrieval_response");
@@ -77,14 +79,14 @@ export async function runContractEvidence(input: {
     const priorBytes = await withTimeout(input.bucket.get(key), 10000, new CivicError("r2_timeout", "R2 read timeout", { retryable: true }));
     if (priorBytes && await sha256Hex(priorBytes) !== digest) throw new Error("r2_existing_object_mismatch");
     if (!priorBytes) await withTimeout(input.bucket.put(key, document.bytes, { contentType: document.contentType,
-      customMetadata: { sha256: digest, sourceUrl: route.source_url } }), 10000,
+      customMetadata: { sha256: digest, sourceUrl: route.retrieval_url } }), 10000,
       new CivicError("r2_timeout", "R2 write timeout", { retryable: true }));
     const saved = await withTimeout(input.bucket.get(key), 10000, new CivicError("r2_timeout", "R2 read timeout", { retryable: true }));
     if (!saved || saved.byteLength !== document.bytes.byteLength || await sha256Hex(saved) !== digest) throw new Error("r2_readback_mismatch");
     if (!(await input.database(query)).length) throw new Error("lease_lost_before_result");
     const retrievalId = await uuidFromName(`hermes-contract-retrieval:${runId}`);
     await input.database("raw_retrievals", "POST", { retrieval_id: retrievalId, source_id: route.source_id,
-      job_id: job.job_id, source_url: route.source_url, retrieved_at: document.retrievedAt,
+      job_id: job.job_id, source_url: route.retrieval_url, retrieved_at: document.retrievedAt,
       http_status: document.status, content_type: document.contentType, content_hash: digest,
       byte_length: document.bytes.byteLength, raw_object_uri: rawObjectUri("civiclenzevidence", key),
       retrieval_status: "stored", parser_key: "pending_extraction", parser_version: "none",

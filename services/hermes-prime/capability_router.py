@@ -52,7 +52,9 @@ def resolve(job, need, field, sources, deployment_id=None, transport_ready=False
                  "pool": "cloudflare-deterministic-http", "worker": "civiclenz-collector",
                  "module": WORKER_MODULE, "deployment_id": deployment_id,
                  "source_id": str(source["source_id"]), "source_key": source["source_key"],
-                 "source_url": source["source_url"], "max_bytes": 1048576,
+                 "source_url": source["source_url"],
+                 "retrieval_url": ("https://www.flgov.com/eog/" if source["source_key"] == "florida-governor-official" else source["source_url"]),
+                 "max_bytes": 1048576,
                  "timeout_seconds": 15, "max_concurrency": 1,
                  "output": "raw_retrievals+r2; pending extraction and validation"}
         break

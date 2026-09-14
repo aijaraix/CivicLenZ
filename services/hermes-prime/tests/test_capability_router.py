@@ -19,7 +19,9 @@ class RoutingTests(unittest.TestCase):
   self.assertEqual(self.route()['state'],'BLOCKED')
   self.assertIn('CREDENTIAL_REQUIRED',self.route(deployment_id='release')['reason'])
  def test_route_only_opens_with_all_gates(self):
-  self.assertEqual(self.route(deployment_id='release',transport_ready=True)['state'],'OPEN')
+  decision=self.route(deployment_id='release',transport_ready=True)
+  self.assertEqual(decision['state'],'OPEN')
+  self.assertEqual(decision['route']['retrieval_url'],'https://www.flgov.com/eog/')
  def test_rejects_legacy_test_unknown_and_mismatch(self):
   original=copy.deepcopy(self.job)
   for key,value in [('orchestration_authority','legacy'),('execution_class','TEST'),('research_work_identity','other'),('contract_version','2')]:
