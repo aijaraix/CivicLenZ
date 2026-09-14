@@ -17,7 +17,7 @@ function findAll(haystack: string, needle: string): number[] {
 }
 
 async function inflate(bytes: Uint8Array): Promise<Uint8Array> {
-  const stream = new Blob([bytes]).stream().pipeThrough(new DecompressionStream("deflate"));
+  const stream = new Blob([new Uint8Array(bytes).buffer]).stream().pipeThrough(new DecompressionStream("deflate"));
   return new Uint8Array(await new Response(stream).arrayBuffer());
 }
 
@@ -70,7 +70,7 @@ export async function extractPdfText(bytes: Uint8Array): Promise<string> {
     const dictStart = ascii.lastIndexOf("<<", startToken);
     const dict = dictStart >= 0 ? ascii.slice(dictStart, startToken) : "";
     const raw = bytes.slice(dataStart, end);
-    let payload = raw;
+    let payload: Uint8Array = raw;
     if (/\/Filter\s*\/FlateDecode/.test(dict) || /\/Filter\s*\[(?:[^\]]*\/FlateDecode[^\]]*)\]/.test(dict)) {
       try {
         payload = await inflate(raw);

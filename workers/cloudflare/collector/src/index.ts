@@ -1,3 +1,4 @@
+import { runContractExtraction } from "../../shared/src/contract-extraction.ts";
 import { runCollectorJob } from "../../shared/src/collector.ts";
 import { contractDatabase, runContractEvidence } from "../../shared/src/contract-evidence.ts";
 import { CivicError } from "../../shared/src/errors.ts";
@@ -60,9 +61,10 @@ export default {
       deploymentId: deploymentIdFrom(env),
     };
     for (const message of batch.messages) {
-      if ((message.body as { schemaVersion?: string })?.schemaVersion === "hermes.contract.v1") {
+      if (["hermes.contract.v1", "hermes.extraction.v1"].includes((message.body as { schemaVersion?: string })?.schemaVersion ?? "")) {
         try {
-          await runContractEvidence({ message: message.body,
+          const execute = (message.body as { schemaVersion: string }).schemaVersion === "hermes.extraction.v1" ? runContractExtraction : runContractEvidence;
+          await execute({ message: message.body,
             database: contractDatabase(env.SUPABASE_URL, env.SUPABASE_SERVICE_ROLE_KEY),
             bucket: bucket(env), deploymentId: deploymentIdFrom(env) });
           message.ack();

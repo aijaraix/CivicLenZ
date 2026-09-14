@@ -12,6 +12,7 @@ import urllib.request
 from psycopg2.extras import RealDictCursor
 from database_bootstrap import connect_database
 from capability_router import resolve, ROUTE_VERSION
+from extraction_handoff import plan_extraction, plan_validation_handoff
 
 
 def settings():
@@ -22,7 +23,7 @@ def settings():
                 and bool(os.environ.get("HERMES_CF_INGEST_QUEUE_ID")),
             "deployment": os.environ.get("HERMES_EVIDENCE_WORKER_DEPLOYMENT"),
             "enabled": os.environ.get("HERMES_CONTRACT_DISPATCH") == "true",
-            "budget": min(3, max(0, int(os.environ.get("HERMES_CONTRACT_DISPATCH_BUDGET", "1"))))}
+            "budget": min(4, max(0, int(os.environ.get("HERMES_CONTRACT_DISPATCH_BUDGET", "1"))))}
 
 
 def route_pending(cursor, config):
@@ -79,26 +80,33 @@ def recover_and_collect(cursor):
         AND j.payload->'capability_route'->>'version'=%s FOR UPDATE SKIP LOCKED""", (ROUTE_VERSION,))
     for job in cursor.fetchall():
         cursor.execute("""SELECT * FROM public.worker_runs WHERE job_id=%s
-            AND worker_key='hermes.cloudflare.evidence' AND metadata->>'attempt_token'=%s
-            ORDER BY started_at DESC LIMIT 1""", (job['job_id'], job['leased_by']))
+            AND worker_key=%s AND metadata->>'attempt_token'=%s
+            ORDER BY started_at DESC LIMIT 1""", (job['job_id'], 'hermes.cloudflare.extraction' if job['job_type']=='contract_evidence_extract' else 'hermes.cloudflare.evidence', job['leased_by']))
         run = cursor.fetchone()
         if run and run['status'] == 'succeeded' and not job['expired']:
             result = run['metadata']
+            extracting = job['job_type']=='contract_evidence_extract'
             cursor.execute("""SELECT retrieval_id FROM public.raw_retrievals WHERE retrieval_id=%s
                 AND job_id=%s AND content_hash=%s AND byte_length>0 AND http_status=200
                 AND metadata->>'attempt_token'=%s AND metadata->>'worker_run_id'=%s""",
-                (result.get('retrieval_id'), job['job_id'], result.get('sha256'), job['leased_by'], str(run['worker_run_id'])))
+                (result.get('retrieval_id'), job['payload']['parent_job_id'] if extracting else job['job_id'], result.get('sha256'), result.get('retrieval_attempt_token') if extracting else job['leased_by'], result.get('retrieval_worker_run_id') if extracting else str(run['worker_run_id'])))
             if not cursor.fetchone():
                 continue
+            if extracting:
+                cursor.execute("SELECT evidence_id FROM public.evidence_objects WHERE evidence_id=%s AND retrieval_id=%s AND content_hash=%s AND verification_state='collected_unreviewed'", (result.get('evidence_id'),result.get('retrieval_id'),result.get('sha256')))
+                if not cursor.fetchone():
+                    continue
             cursor.execute("""UPDATE public.jobs SET status='succeeded',completed_at=clock_timestamp(),
                 checkpoint=coalesce(checkpoint,'{}'::jsonb)||%s::jsonb,
                 leased_by=NULL,lease_expires_at=NULL,error_class=NULL,error_message=NULL WHERE job_id=%s
                 AND leased_by=%s AND lease_expires_at>clock_timestamp() RETURNING job_id""",
                 (json.dumps({'worker_run_id':str(run['worker_run_id']), **result}),job['job_id'],job['leased_by']))
             if cursor.fetchone():
+                if extracting:
+                    plan_validation_handoff(cursor,job,result)
                 cursor.execute("""UPDATE hermes_ops.research_needs SET state='AWAITING_RESULT',
-                    reason='RAW_RETRIEVAL_STORED: extraction and canonical validation pending',
-                    evaluated_at=clock_timestamp() WHERE need_id=%s""", (job['research_need_id'],))
+                    reason=%s,
+                    evaluated_at=clock_timestamp() WHERE need_id=%s""", ('EVIDENCE_CONSTRUCTED: internal canonical validation receipt pending' if extracting else 'RAW_RETRIEVAL_STORED: extraction and canonical validation pending',job['research_need_id']))
         elif job['expired'] or (run and run['status'] == 'failed'):
             if job['expired'] and run and run['status']=='started':
                 cursor.execute("""UPDATE public.worker_runs SET status='failed',completed_at=clock_timestamp(),
@@ -128,6 +136,8 @@ def tick(governor):
                 return {'state':'ANOTHER_CANONICAL_TICK_ACTIVE'}
             recover_and_collect(cursor)
             routed = route_pending(cursor,config)
+            if os.environ.get('HERMES_EXTRACT_EVIDENCE')=='true':
+                plan_extraction(cursor,config)
             if not config['enabled'] or not config['ready'] or not config['deployment']:
                 return {'state':'DISPATCH_GATED','routing_evaluated':routed,
                         'credential_ready':config['ready'],'worker_deployment_configured':bool(config['deployment'])}
@@ -143,17 +153,18 @@ def tick(governor):
                 return {'state':'BOUNDED_CANARY_BUDGET','attempts':int(budget['attempts'])}
             cursor.execute("""SELECT j.job_id FROM public.jobs j
                 JOIN hermes_ops.research_needs n ON n.need_id=j.research_need_id
-                WHERE j.job_type='contract_scope_research' AND j.status='queued'
+                WHERE j.job_type IN ('contract_scope_research','contract_evidence_extract') AND j.status='queued'
                 AND j.payload->>'orchestration_authority'='hermes'
                 AND j.payload->>'execution_class'='PRODUCTION' AND n.execution_class='PRODUCTION'
-                AND n.origin='CONTRACT_GAP' AND n.state='OPEN'
+                AND n.origin='CONTRACT_GAP' AND (n.state='OPEN' OR (j.job_type='contract_evidence_extract' AND n.state='AWAITING_RESULT'))
+                AND (j.job_type<>'contract_evidence_extract' OR %s)
                 AND j.payload->>'research_work_identity'=j.dedupe_key
                 AND j.payload->'capability_route'->>'version'=%s
                 AND NOT (j.payload ? 'dispatch_blocker') AND j.attempt_count<j.max_attempts
                 AND (j.scheduled_for IS NULL OR j.scheduled_for<=clock_timestamp())
                 AND NOT EXISTS (SELECT 1 FROM hermes_ops.job_dependencies d JOIN public.jobs p
                     ON p.job_id=d.prerequisite_job_id WHERE d.job_id=j.job_id AND p.status<>'succeeded')
-                ORDER BY n.priority,j.created_at LIMIT 1""",(ROUTE_VERSION,))
+                ORDER BY n.priority,j.created_at LIMIT 1""",(os.environ.get('HERMES_EXTRACT_EVIDENCE')=='true',ROUTE_VERSION))
             candidate=cursor.fetchone()
             if candidate:
                 token=secrets.token_hex(32)
@@ -174,7 +185,7 @@ def tick(governor):
     try:
         token=config['credential'].read_text().strip()
         account=os.environ['HERMES_CF_ACCOUNT_ID']; queue=os.environ['HERMES_CF_INGEST_QUEUE_ID']
-        message={'schemaVersion':'hermes.contract.v1','job_id':str(selected['job_id']),
+        message={'schemaVersion':'hermes.extraction.v1' if selected['job_type']=='contract_evidence_extract' else 'hermes.contract.v1','job_id':str(selected['job_id']),
                  'attempt_token':selected['leased_by'],'research_work_identity':selected['dedupe_key']}
         body=json.dumps({'body':message,'content_type':'json'}).encode()
         request=urllib.request.Request(f'https://api.cloudflare.com/client/v4/accounts/{account}/queues/{queue}/messages',
