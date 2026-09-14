@@ -29,6 +29,8 @@ def plan_extraction(cursor, config):
         route = dict(parent['payload']['capability_route'])
         route.update(deployment_id=config['deployment'], stage='extraction',
                      capability='official_profile_evidence_extraction',
+                     module='workers/cloudflare/shared/src/contract-extraction.ts',
+                     output='evidence_objects pending; canonical validation handoff',
                      input_retrieval_id=str(parent['retrieval_id']), input_sha256=parent['content_hash'])
         work = child_identity(parent['dedupe_key'], parent['retrieval_id'], 'extraction')
         payload = {**parent['payload'], 'research_work_identity':work,
