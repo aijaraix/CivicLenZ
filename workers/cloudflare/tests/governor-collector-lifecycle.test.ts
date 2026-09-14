@@ -22,6 +22,8 @@ import {
 const here = path.dirname(fileURLToPath(import.meta.url));
 const repoRoot = path.resolve(here, "../../..");
 const governorHtml = readFileSync(path.join(repoRoot, "tests/fixtures/florida_governor_official.html"), "utf8");
+// Preserve the object store across retries against the same test ledger.
+const buckets = new WeakMap<object, ReturnType<typeof createMemoryBucket>>();
 
 function occupantNameFromFixture(html: string): string {
   const match = html.match(/property="og:title" content="Governor ([^"]+)"/i);
@@ -78,6 +80,7 @@ async function collectGovernor(
     runTimeoutMs?: number;
   } = {},
 ) {
+  if (!buckets.has(store)) buckets.set(store, createMemoryBucket());
   return withWorkerRun({
     store,
     worker: worker(),
@@ -89,7 +92,7 @@ async function collectGovernor(
       const collected = await runCollectorJob({
         store,
         message,
-        bucket: createMemoryBucket(),
+        bucket: buckets.get(store)!,
         worker: worker(),
         queues: options.queues,
         callTimeoutMs: options.callTimeoutMs,

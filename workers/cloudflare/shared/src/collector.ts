@@ -1,4 +1,5 @@
 import { CivicError, ParserError } from "./errors.ts";
+import { readVerifiedEvidence, verifyEvidenceBytes } from "./evidence-integrity.ts";
 import { createDeadLetterPayload, shouldDeadLetter } from "./dead-letter.ts";
 import { sha256Hex, valueHash } from "./hash.ts";
 import { fetchDocument } from "./http.ts";
@@ -99,6 +100,7 @@ export async function runCollectorJob(input: {
       seats: await input.store.listSeats(),
     });
     let bytes = document.bytes;
+    let retrievalHttpStatus = document.status;
     let sha256 = document.status === 200 ? await sha256Hex(document.bytes) : prior?.contentHash;
     let contentType = document.contentType ?? prior?.contentType;
     let retrievedAt = document.retrievedAt;
@@ -110,6 +112,9 @@ export async function runCollectorJob(input: {
       httpUnchanged(document.status) ||
       retrievalUnchanged({ contentHash: prior?.contentHash, etag: prior?.etag }, { contentHash: sha256, etag: document.etag });
     if (bytesUnchanged && downstreamComplete) {
+      const key = objectKeyFromRawObjectUri(prior?.rawObjectUri);
+      if (!key || !prior?.contentHash) throw new CivicError("evidence_reference_missing", "Unchanged retrieval has no evidence reference");
+      await readVerifiedEvidence(input.bucket, key, prior.contentHash, callTimeoutMs);
       return { status: "unchanged", extractedCount: 0, claimsWritten: 0, sha256: sha256 ?? prior?.contentHash };
     }
     if (httpUnchanged(document.status) && !downstreamComplete) {
@@ -122,9 +127,14 @@ export async function runCollectorJob(input: {
         timeoutMs: callTimeoutMs,
       });
       bytes = resumed.bytes;
-      sha256 = prior?.contentHash ?? (await sha256Hex(bytes));
-      contentType = prior?.contentType ?? resumed.contentType ?? contentType;
-      retrievedAt = prior?.retrievedAt ?? retrievedAt;
+      sha256 = await sha256Hex(bytes);
+      contentType = resumed.contentType ?? contentType;
+      retrievedAt = resumed.fromStore ? (prior?.retrievedAt ?? retrievedAt) : resumed.retrievedAt!;
+      if (!resumed.fromStore) {
+        retrievalHttpStatus = 200;
+        etag = resumed.etag;
+        lastModified = resumed.lastModified;
+      }
       skipR2Put = resumed.fromStore;
     } else if (bytesUnchanged && !downstreamComplete) {
       skipR2Put = Boolean(prior?.rawObjectUri);
@@ -145,7 +155,13 @@ export async function runCollectorJob(input: {
     if (!input.bucket) {
       throw new CivicError("r2_binding_missing", "EVIDENCE_BUCKET binding is required");
     }
-    if (!skipR2Put || !hashMatchesPrior) {
+    await verifyEvidenceBytes(r2Key, bytes, sha256);
+    if (!input.bucket.get) throw new CivicError("r2_read_binding_missing", "Evidence verification requires R2 read access");
+    const existingBytes = await withTimeout(input.bucket.get(r2Key), callTimeoutMs,
+      new CivicError("r2_read_timeout", "Pre-write evidence check timed out", { retryable: true }));
+    if (existingBytes) await verifyEvidenceBytes(r2Key, existingBytes, sha256);
+    // Preserve existing artifacts, including corrupted objects needed for an audit.
+    if (!existingBytes && (!skipR2Put || !hashMatchesPrior)) {
       try {
         await withTimeout(
           input.bucket.put(r2Key, bytes, {
@@ -167,6 +183,9 @@ export async function runCollectorJob(input: {
       }
     }
 
+    // A successful PUT or a previous URI is not persistence proof.
+    await readVerifiedEvidence(input.bucket, r2Key, sha256, callTimeoutMs);
+
     const source = await input.store.recordSource({
       sourceKey,
       name: config?.sourceName ?? sourceKey,
@@ -183,7 +202,7 @@ export async function runCollectorJob(input: {
       retrievalId: prior?.contentHash === sha256 ? prior.retrievalId : undefined,
       retrievedAt,
       sourceUrl,
-      httpStatus: document.status,
+      httpStatus: retrievalHttpStatus,
       contentType,
       etag,
       lastModified,
@@ -283,12 +302,12 @@ export async function runCollectorJob(input: {
 
 async function resumeStoredBytes(input: {
   bucket?: EvidenceBucket;
-  prior?: { rawObjectUri?: string; contentType?: string };
+  prior?: { rawObjectUri?: string; contentType?: string; contentHash?: string };
   sourceUrl: string;
   fetchImpl?: typeof fetch;
   headers?: Record<string, string>;
   timeoutMs?: number;
-}): Promise<{ bytes: Uint8Array; fromStore: boolean; contentType?: string }> {
+}): Promise<{ bytes: Uint8Array; fromStore: boolean; contentType?: string; retrievedAt?: string; etag?: string; lastModified?: string }> {
   const timeoutMs = input.timeoutMs ?? EXTERNAL_CALL_TIMEOUT_MS;
   const key = objectKeyFromRawObjectUri(input.prior?.rawObjectUri);
   if (key && input.bucket?.get) {
@@ -298,6 +317,8 @@ async function resumeStoredBytes(input: {
       new CivicError("r2_read_timeout", `R2 get exceeded ${timeoutMs}ms`, { retryable: true }),
     );
     if (stored && stored.byteLength > 0) {
+      if (!input.prior?.contentHash) throw new CivicError("evidence_reference_missing", "Stored evidence has no ledger digest");
+      await verifyEvidenceBytes(key, stored, input.prior.contentHash);
       return { bytes: stored, fromStore: true, contentType: input.prior?.contentType };
     }
   }
@@ -306,7 +327,9 @@ async function resumeStoredBytes(input: {
     headers: input.headers,
     timeoutMs,
   });
-  return { bytes: fresh.bytes, fromStore: false, contentType: fresh.contentType };
+  if (fresh.status !== 200) throw new CivicError("evidence_refetch_failed", "Unconditional evidence retrieval did not return bytes");
+  return { bytes: fresh.bytes, fromStore: false, contentType: fresh.contentType,
+    retrievedAt: fresh.retrievedAt, etag: fresh.etag, lastModified: fresh.lastModified };
 }
 
 export async function persistExtractedHolders(

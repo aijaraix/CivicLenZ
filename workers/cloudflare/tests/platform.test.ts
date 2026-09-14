@@ -93,11 +93,12 @@ test("authority tiers: TIER_5 cannot independently verify", () => {
 
 test("ETag 304 and Last-Modified/hash unchanged skip new claims", async () => {
   const store = createMemoryStore();
+  const bucket = createMemoryBucket();
   const bytes = readFileSync(path.join(repoRoot, "tests/fixtures/miami_dade_elected_officials.html"));
   const first = await runCollectorJob({
     store,
     message: ingestMessage(),
-    bucket: createMemoryBucket(),
+    bucket,
     worker: { workerKey: "civiclenz-collector", runtime: "test" },
     fetchImpl: async () =>
       new Response(bytes, { status: 200, headers: { etag: '"abc"', "content-type": "text/html", "last-modified": "Tue, 01 Sep 2026 00:00:00 GMT" } }),
@@ -106,7 +107,7 @@ test("ETag 304 and Last-Modified/hash unchanged skip new claims", async () => {
   const second = await runCollectorJob({
     store,
     message: ingestMessage(),
-    bucket: createMemoryBucket(),
+    bucket,
     worker: { workerKey: "civiclenz-collector", runtime: "test" },
     fetchImpl: async () => new Response(null, { status: 304, headers: { etag: '"abc"' } }),
   });

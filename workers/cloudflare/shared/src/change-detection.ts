@@ -6,7 +6,8 @@ export type ChangeSignals = {
 
 export function retrievalUnchanged(previous: ChangeSignals | undefined, next: ChangeSignals): boolean {
   if (!previous) return false;
-  if (next.contentHash && previous.contentHash && next.contentHash === previous.contentHash) return true;
+  // Physical bytes take precedence over validators reused incorrectly by a source.
+  if (next.contentHash && previous.contentHash) return next.contentHash === previous.contentHash;
   if (next.etag && previous.etag && next.etag === previous.etag) return true;
   if (next.lastModified && previous.lastModified && next.lastModified === previous.lastModified && !next.contentHash) {
     return true;
