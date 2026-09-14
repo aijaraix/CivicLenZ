@@ -35,11 +35,16 @@ test('lease loss after network execution prevents result persistence',async()=>{
 test('wrong deployment never executes',async()=>{const f=fixture();await assert.rejects(runContractEvidence({...f,deploymentId:'old'}));assert.equal(f.calls(),0);});
 
 test('explicit official HTTPS endpoint executes without following redirects',async()=>{
- const f=fixture();const urls:string[]=[];f.fetchImpl=async(url?:any,init?:any)=>{urls.push(String(url));assert.equal(init.redirect,'error');return new Response('bytes');};
+ const f=fixture();const urls:string[]=[];f.fetchImpl=async(url?:any,init?:any)=>{urls.push(String(url));assert.equal(init.redirect,'manual');return new Response('bytes');};
  await invoke(f);assert.deepEqual(urls,['https://www.flgov.com/eog/']);assert.equal(f.results[0].source_url,urls[0]);
 });
 test('arbitrary or downgraded retrieval endpoints never execute',async()=>{
  for(const url of ['http://www.flgov.com/eog/','https://unapproved.example/','https://www.flgov.com/other']){
   const f=fixture();f.job.payload.capability_route.retrieval_url=url;await assert.rejects(invoke(f));assert.equal(f.calls(),0);assert.equal(f.runs.length,0);
  }
+});
+
+test('manual redirect response is rejected without fetching its target',async()=>{
+ const f=fixture();let calls=0;f.fetchImpl=async()=>{calls++;return new Response(null,{status:302,headers:{location:'http://www.flgov.com/eog/'}});};
+ await assert.rejects(invoke(f));assert.equal(calls,1);assert.equal(f.results.length,0);assert.equal(f.runs[0].status,'failed');
 });

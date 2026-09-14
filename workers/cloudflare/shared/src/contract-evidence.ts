@@ -66,7 +66,7 @@ export async function runContractEvidence(input: {
     status: "started", metadata: lineage });
   try {
     const document = await fetchDocument(route.retrieval_url, { maxBytes: route.max_bytes,
-      timeoutMs: 15000, fetchImpl: (url, init) => (input.fetchImpl ?? fetch)(url, { ...init, redirect: "error" }),
+      timeoutMs: 15000, fetchImpl: (url, init) => (input.fetchImpl ?? fetch)(url, { ...init, redirect: "manual" }),
       // Fetch only the explicit HTTPS endpoint. Never follow a downgrade or arbitrary redirect.
     });
     if (document.status !== 200 || !document.bytes.length
