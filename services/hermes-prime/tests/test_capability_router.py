@@ -1,0 +1,41 @@
+"""UNIT tests, not production evidence."""
+import copy
+import sys
+from pathlib import Path
+import unittest
+sys.path.insert(0,str(Path(__file__).resolve().parents[1]))
+from capability_router import resolve
+from observer import governor
+
+class RoutingTests(unittest.TestCase):
+ def setUp(self):
+  self.need=dict(need_id='n',target_id='s',target_type='seat',contract_id='c',contract_version='1',scope_key='evidence',execution_class='PRODUCTION',origin='CONTRACT_GAP')
+  self.job=dict(job_type='contract_scope_research',research_need_id='n',target_id='s',target_type='seat',dedupe_key='work:v1:test',payload=dict(orchestration_authority='hermes',execution_class='PRODUCTION',research_work_identity='work:v1:test',scope_key='evidence',contract_id='c',contract_version='1'))
+  self.field=dict(verification_requirement='official_source',sensitivity_rule='publication_eligible_claims_only',source_priority={'policy':'florida-governor-official'})
+  self.sources=[dict(source_id='source',source_key='florida-governor-official',source_url='https://www.flgov.com/',active=True,authority_tier='TIER_1_PRIMARY_OFFICIAL')]
+ def route(self,**kw):
+  return resolve(self.job,self.need,self.field,self.sources,**kw)
+ def test_no_credential_or_deployment_never_opens(self):
+  self.assertEqual(self.route()['state'],'BLOCKED')
+  self.assertIn('CREDENTIAL_REQUIRED',self.route(deployment_id='release')['reason'])
+ def test_route_only_opens_with_all_gates(self):
+  self.assertEqual(self.route(deployment_id='release',transport_ready=True)['state'],'OPEN')
+ def test_rejects_legacy_test_unknown_and_mismatch(self):
+  original=copy.deepcopy(self.job)
+  for key,value in [('orchestration_authority','legacy'),('execution_class','TEST'),('research_work_identity','other'),('contract_version','2')]:
+   self.job=copy.deepcopy(original);self.job['payload'][key]=value
+   self.assertEqual(self.route(deployment_id='release',transport_ready=True)['state'],'BLOCKED')
+ def test_unsupported_scope_stays_blocked(self):
+  self.need['scope_key']=self.job['payload']['scope_key']='current_occupant'
+  self.assertIn('CAPABILITY_NOT_IMPLEMENTED',self.route()['reason'])
+ def test_source_policy_and_url_fail_closed(self):
+  for url in ['http://www.flgov.com/','https://127.0.0.1/','https://www.flgov.com/unregistered']:
+   self.sources[0]['source_url']=url
+   self.assertEqual(self.route(deployment_id='release',transport_ready=True)['state'],'BLOCKED')
+ def test_resource_budget(self):
+  self.assertEqual(governor(3*1024**3,20*1024**3,0,4)['dispatch_limit'],1)
+  self.assertEqual(governor(1024,20*1024**3,0,4)['dispatch_limit'],0)
+  self.assertEqual(governor(3*1024**3,1024,0,4)['dispatch_limit'],0)
+  self.assertEqual(governor(3*1024**3,20*1024**3,9,4)['dispatch_limit'],0)
+
+if __name__=='__main__':unittest.main()

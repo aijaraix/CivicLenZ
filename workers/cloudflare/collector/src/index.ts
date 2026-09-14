@@ -1,4 +1,5 @@
 import { runCollectorJob } from "../../shared/src/collector.ts";
+import { contractDatabase, runContractEvidence } from "../../shared/src/contract-evidence.ts";
 import { CivicError } from "../../shared/src/errors.ts";
 import { parseQueueJobMessage } from "../../shared/src/queue-messages.ts";
 import { createSupabaseStore } from "../../shared/src/supabase-store.ts";
@@ -59,6 +60,19 @@ export default {
       deploymentId: deploymentIdFrom(env),
     };
     for (const message of batch.messages) {
+      if ((message.body as { schemaVersion?: string })?.schemaVersion === "hermes.contract.v1") {
+        try {
+          await runContractEvidence({ message: message.body,
+            database: contractDatabase(env.SUPABASE_URL, env.SUPABASE_SERVICE_ROLE_KEY),
+            bucket: bucket(env), deploymentId: deploymentIdFrom(env) });
+          message.ack();
+        } catch {
+          // The canonical lease/attempt policy controls a new execution attempt.
+          // Queue redelivery may only reconcile the same deterministic run.
+          message.retry();
+        }
+        continue;
+      }
       const parsed = parseQueueJobMessage(message.body);
       await runQueueJobWithWorker({
         store: civicStore,

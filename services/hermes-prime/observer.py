@@ -26,8 +26,8 @@ def governor(memory_available, disk_free, load, cpus):
     if load > max(1, cpus) * .85:
         reasons.append("CPU_HEADROOM")
     return {"state": "PAUSE_NEW_WORK" if reasons else "HEADROOM_AVAILABLE",
-            "reasons": reasons, "dispatch_enabled": False,
-            "dispatch_limit": 0}
+            "reasons": reasons, "dispatch_enabled": not reasons,
+            "dispatch_limit": 0 if reasons else 1}
 
 
 def resources():
@@ -63,12 +63,16 @@ def local_receiver_health():
 
 def observe(spool):
     measured = resources()
+    allowance = governor(measured["memory_available_bytes"], measured["disk_free_bytes"],
+                         measured["load_one_minute"], measured["cpus"])
+    allowance["resource_dispatch_allowance"] = allowance["dispatch_limit"]
+    if os.environ.get("HERMES_CONTRACT_DISPATCH") != "true":
+        allowance.update(dispatch_enabled=False, dispatch_limit=0)
     receipts = spool / "receipts"
     count = sum(1 for p in receipts.iterdir() if p.is_file() and p.suffix == ".json") if receipts.exists() else 0
     return {"version": VERSION, "mode": "OBSERVATION_NO_DISPATCH",
             "observed_at": time.time(), "resources": measured,
-            "governor": governor(measured["memory_available_bytes"], measured["disk_free_bytes"],
-                                 measured["load_one_minute"], measured["cpus"]),
+            "governor": allowance,
             "services": {name: service_state(name) for name in SERVICES},
             "receiver_health": local_receiver_health(), "local_receipt_files": count,
             "canonical_dispatch": "NOT_IMPLEMENTED",
@@ -161,6 +165,17 @@ def main():
                     planning = {"state": "PLANNING_FAILED", "observed_at": time.time()}
                 next_planning = time.monotonic() + 300
             snapshot = observe(args.spool)
+            if os.environ.get("HERMES_ROUTE_CONTRACTS") == "true":
+                try:
+                    from contract_dispatcher import tick
+                    snapshot["contract_dispatch"] = tick(snapshot["governor"])
+                    snapshot["canonical_dispatch"] = snapshot["contract_dispatch"]["state"]
+                    if snapshot["canonical_dispatch"] in ("DISPATCH_GATED", "BOUNDED_CANARY_BUDGET"):
+                        snapshot["governor"].update(dispatch_enabled=False, dispatch_limit=0)
+                except Exception:
+                    snapshot["canonical_dispatch"] = "DISPATCH_TICK_FAILED"
+                    snapshot["governor"].update(dispatch_enabled=False, dispatch_limit=0)
+                snapshot["mode"] = "BOUNDED_CONTRACT_ROUTING"
             if planning_enabled:
                 snapshot["mode"] = "OBSERVATION_AND_GAP_PLANNING_NO_DISPATCH"
                 snapshot["canonical_work_ledger"] = "PARTIAL"
