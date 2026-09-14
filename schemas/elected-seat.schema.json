@@ -75,7 +75,30 @@
       "additionalProperties": false
     },
     "createdAt": {"type": "string", "format": "date-time"},
-    "lastUpdatedAt": {"type": "string", "format": "date-time"}
+    "lastUpdatedAt": {"type": "string", "format": "date-time"},
+    "researchContractKey": {"type": ["string", "null"], "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$"},
+    "ledgerStatus": {
+      "type": "string",
+      "enum": ["expected", "discovered", "recovered", "verified"]
+    },
+    "discoveryStatus": {
+      "type": "string",
+      "enum": [
+        "declared_from_count",
+        "declared_from_registry",
+        "named_in_source",
+        "recovered_from_queue",
+        "expected_count_unknown"
+      ]
+    },
+    "occupancyVerificationStatus": {
+      "type": ["string", "null"],
+      "enum": ["RECOVERED", "VERIFIED", "UNKNOWN", null]
+    },
+    "coverageRegion": {
+      "type": ["string", "null"],
+      "enum": ["miami_dade", "broward", "palm_beach", "remaining", "statewide", "national", null]
+    }
   },
   "additionalProperties": false
 }

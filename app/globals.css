@@ -424,6 +424,35 @@ body { font-family: Satoshi, Inter, ui-sans-serif, system-ui, -apple-system, Bli
 .member-visual-stack .member-preview > p { font-size: .78rem; }
 .member-visual-stack .member-preview-row { font-size: .72rem; }
 
+.control-plane-page { padding-bottom: 72px; }
+.control-plane-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 0 0 28px;
+  background: white;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  box-shadow: var(--shadow);
+}
+.control-plane-table caption {
+  caption-side: top;
+  padding: 16px 18px 8px;
+  color: var(--navy);
+  font-weight: 800;
+  text-align: left;
+}
+.control-plane-table th,
+.control-plane-table td {
+  padding: 10px 12px;
+  border-top: 1px solid var(--line);
+  font-size: .86rem;
+  text-align: right;
+}
+.control-plane-table th[scope="col"] { background: var(--blue-soft); color: var(--navy); font-size: .72rem; letter-spacing: .04em; }
+.control-plane-table th[scope="row"] { text-align: left; color: var(--navy); }
+.control-plane-files { color: var(--muted); font-size: .92rem; }
+
 @media (max-width: 930px) {
   .human-story-layout { grid-template-columns: 1fr; }
   .human-story-image { width: min(100%, 650px); }

@@ -11,6 +11,7 @@ OFFICIALS_LOADER = ROOT / "lib" / "officials.ts"
 PUBLIC_PAGES = (
     ROOT / "app" / "officials" / "page.tsx",
     ROOT / "app" / "officials" / "[slug]" / "page.tsx",
+    ROOT / "app" / "control-plane" / "page.tsx",
     ROOT / "components" / "official-directory.tsx",
 )
 STAGING_ROOT = ROOT / "data" / "staging"

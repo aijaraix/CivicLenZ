@@ -29,6 +29,12 @@ jobs:
       - name: Test ingestion parsers
         run: python -m unittest discover -s tests -p 'test_*.py'
 
+      - name: Check Florida seat registry file counts
+        run: python -m workers.seats.build_florida_seat_registry --check
+
+      - name: Quality control
+        run: python -m workers.quality.quality_control
+
       - name: Validate JSON records
         run: python scripts/validate_officials.py
 
