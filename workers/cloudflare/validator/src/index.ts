@@ -1,3 +1,5 @@
+import { runCanonicalValidation } from "../../shared/src/contract-validation.ts";
+import { contractDatabase } from "../../shared/src/contract-evidence.ts";
 import { CivicError } from "../../shared/src/errors.ts";
 import { parseQueueJobMessage } from "../../shared/src/queue-messages.ts";
 import { createSupabaseStore } from "../../shared/src/supabase-store.ts";
@@ -34,6 +36,13 @@ export default {
       deploymentId: deploymentIdFrom(env),
     };
     for (const message of batch.messages) {
+      if ((message.body as {schemaVersion?:string})?.schemaVersion === 'hermes.validation.v1') {
+        try {
+          await runCanonicalValidation({message:message.body,database:contractDatabase(env.SUPABASE_URL,env.SUPABASE_SERVICE_ROLE_KEY),deploymentId:deploymentIdFrom(env)});
+          message.ack();
+        } catch { message.retry(); }
+        continue;
+      }
       const parsed = parseQueueJobMessage(message.body);
       await runQueueJobWithWorker({
         store: civicStore,
