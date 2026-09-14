@@ -22,7 +22,7 @@ def settings():
                 and bool(os.environ.get("HERMES_CF_INGEST_QUEUE_ID")),
             "deployment": os.environ.get("HERMES_EVIDENCE_WORKER_DEPLOYMENT"),
             "enabled": os.environ.get("HERMES_CONTRACT_DISPATCH") == "true",
-            "budget": min(2, max(0, int(os.environ.get("HERMES_CONTRACT_DISPATCH_BUDGET", "1"))))}
+            "budget": min(3, max(0, int(os.environ.get("HERMES_CONTRACT_DISPATCH_BUDGET", "1"))))}
 
 
 def route_pending(cursor, config):
