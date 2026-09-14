@@ -63,17 +63,9 @@ export async function runCollectorJob(input: {
   const sourceUrl = input.message.sourceUrl;
   const sourceKey = input.message.sourceKey;
   if (input.message.route === "monitor" && !sourceUrl) {
-    const subjectId = await uuidFromName(`monitor:${input.message.entityType ?? "unknown"}:${input.message.entityId ?? "unknown"}`);
-    await input.store.recordClaim({
-      subjectType: "monitor",
-      subjectId,
-      fieldKey: "authoritative_source",
-      normalizedValue: "none",
-      displayValue: "No first-wave official source URL is registered for this monitor target.",
-      valueHash: await valueHash("authoritative_source", "none"),
-      verificationState: "checked_no_authoritative_result",
-    });
-    return { status: "collected", extractedCount: 0, claimsWritten: 1 };
+    // Missing routing configuration is an operational failure, not a source check
+    // or evidence that authoritative civic information does not exist.
+    throw new CivicError("source_not_configured", "Monitoring requires an authorized source URL");
   }
   if (!sourceUrl || !sourceKey) {
     throw new CivicError("invalid_job", "ingest/monitor job requires sourceKey and sourceUrl");
