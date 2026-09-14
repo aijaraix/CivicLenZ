@@ -9,14 +9,16 @@ from pathlib import Path
 import runpy
 import sqlite3
 import time
+from contextlib import contextmanager
 
 import psycopg2
 
 
-def check_database():
+@contextmanager
+def connect_database():
     credential_dir = Path(os.environ["CREDENTIALS_DIRECTORY"])
     password = (credential_dir / "database-password").read_text().strip()
-    with psycopg2.connect(
+    connection = psycopg2.connect(
         host="aws-0-us-west-2.pooler.supabase.com",
         port=5432,
         user="hermes_runtime.uazqyzmzydtmbypjuqjw",
@@ -26,7 +28,15 @@ def check_database():
         sslrootcert="/etc/civiclenz/supabase-prod-ca-2021.crt",
         connect_timeout=8,
         application_name="civiclenz-hermes-prime",
-    ) as connection:
+    )
+    try:
+        yield connection
+    finally:
+        connection.close()
+
+
+def check_database():
+    with connect_database() as connection:
         with connection.cursor() as cursor:
             cursor.execute("SELECT current_user")
             identity = cursor.fetchone()[0]
@@ -62,7 +72,7 @@ def main():
             (result["observed_at"], json.dumps(result, sort_keys=True)),
         )
     print(json.dumps({"database_readiness": result}), flush=True)
-    runpy.run_path("/opt/civiclenz/hermes/current/observer.py", run_name="__main__")
+    runpy.run_path(str(Path(__file__).with_name("observer.py")), run_name="__main__")
 
 
 if __name__ == "__main__":
