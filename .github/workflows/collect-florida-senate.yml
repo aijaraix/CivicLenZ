@@ -1,25 +1,9 @@
 name: Collect Florida baseline officials
 
+# Retained for migration history. Production research must be dispatched by
+# canonical HERMES; GitHub Actions is reserved for engineering maintenance.
 on:
-  schedule:
-    - cron: '27 9 * * *'
   workflow_dispatch:
-  push:
-    branches: [main]
-    paths:
-      - 'workers/ingestion/common.py'
-      - 'workers/ingestion/collect_florida_senate.py'
-      - 'workers/ingestion/collect_florida_house.py'
-      - 'workers/ingestion/collect_florida_statewide_executive.py'
-      - 'workers/ingestion/collect_miami_dade.py'
-      - 'workers/ingestion/run_baseline_collectors.py'
-      - 'workers/enrichment/build_profile_research_queue.py'
-      - 'workers/enrichment/collect_identity_contact_candidates.py'
-      - 'data/sources/collector-manifest.json'
-      - 'data/sources/source-registry.json'
-      - 'data/sources/enrichment-agent-manifest.json'
-      - 'data/sources/florida-county-source-registry.json'
-      - '.github/workflows/collect-florida-senate.yml'
 
 concurrency:
   group: florida-baseline-aggregation
@@ -31,6 +15,7 @@ permissions:
 
 jobs:
   collect:
+    if: ${{ false }} # LEGACY_DISABLED: no research dispatch from GitHub Actions.
     runs-on: ubuntu-latest
     timeout-minutes: 45
     steps:

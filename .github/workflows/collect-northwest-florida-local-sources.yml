@@ -1,23 +1,9 @@
 name: Collect Northwest Florida local sources
 
+# Retained for migration history. Production research must be dispatched by
+# canonical HERMES; GitHub Actions is reserved for engineering maintenance.
 on:
-  schedule:
-    - cron: '43 10 * * *'
   workflow_dispatch:
-  pull_request:
-    paths:
-      - 'data/operations/florida-work-allocation.json'
-      - 'data/sources/florida-regions/northwest/**'
-      - 'workers/ingestion/discover_northwest_florida_local_sources.py'
-      - 'tests/test_northwest_florida_source_discovery.py'
-      - '.github/workflows/collect-northwest-florida-local-sources.yml'
-  push:
-    branches: [main]
-    paths:
-      - 'data/operations/florida-work-allocation.json'
-      - 'data/sources/florida-regions/northwest/**'
-      - 'workers/ingestion/discover_northwest_florida_local_sources.py'
-      - '.github/workflows/collect-northwest-florida-local-sources.yml'
 
 concurrency:
   group: northwest-florida-local-source-discovery
@@ -29,6 +15,7 @@ permissions:
 
 jobs:
   discover:
+    if: ${{ false }} # LEGACY_DISABLED: no research dispatch from GitHub Actions.
     runs-on: ubuntu-latest
     timeout-minutes: 35
     steps:

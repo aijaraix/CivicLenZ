@@ -1,20 +1,10 @@
 name: Collect federal baseline officials
 
 # Aggregation-first worker: collect and preserve the federal roster without manual dispatch.
+# Retained for migration history. Production research must be dispatched by
+# canonical HERMES; GitHub Actions is reserved for engineering maintenance.
 on:
-  schedule:
-    - cron: '17 7 * * *'
   workflow_dispatch:
-  push:
-    branches: [main]
-    paths:
-      - 'workers/ingestion/common.py'
-      - 'workers/ingestion/collect_us_house.py'
-      - 'workers/ingestion/collect_us_senate.py'
-      - 'workers/ingestion/collect_white_house_executive.py'
-      - 'workers/ingestion/run_baseline_collectors.py'
-      - 'data/sources/collector-manifest.json'
-      - '.github/workflows/collect-federal-baseline.yml'
 
 concurrency:
   group: federal-baseline-aggregation
@@ -26,6 +16,7 @@ permissions:
 
 jobs:
   collect:
+    if: ${{ false }} # LEGACY_DISABLED: no research dispatch from GitHub Actions.
     runs-on: ubuntu-latest
     steps:
       - name: Checkout main

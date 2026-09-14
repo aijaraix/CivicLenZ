@@ -1,17 +1,9 @@
 name: Collect Florida legislative profile details
 
+# Retained for migration history. Production research must be dispatched by
+# canonical HERMES; GitHub Actions is reserved for engineering maintenance.
 on:
-  schedule:
-    - cron: '17 11 * * *'
   workflow_dispatch:
-  push:
-    branches: [main]
-    paths:
-      - 'workers/enrichment/collect_florida_legislative_details.py'
-      - 'workers/enrichment/collect_identity_contact_candidates.py'
-      - 'data/staging/florida/state-house/**'
-      - 'data/staging/florida/state-senate/**'
-      - '.github/workflows/collect-florida-legislative-details.yml'
 
 concurrency:
   group: florida-legislative-detail-enrichment
@@ -23,6 +15,7 @@ permissions:
 
 jobs:
   collect-details:
+    if: ${{ false }} # LEGACY_DISABLED: no research dispatch from GitHub Actions.
     runs-on: ubuntu-latest
     timeout-minutes: 35
     steps:
