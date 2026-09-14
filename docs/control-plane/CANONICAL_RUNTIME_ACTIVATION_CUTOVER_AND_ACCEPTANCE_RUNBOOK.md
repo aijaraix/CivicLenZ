@@ -604,3 +604,15 @@ A. physically running end-to-end and accepted under the canonical acceptance con
 B. every independent safe stage has been completed and the remaining blocked stage(s) are explicitly human-only under Section 4.
 
 Do not stop at intermediate checkpoints.
+
+## Physical activation checkpoint — 2026-09-14, 05:00 UTC
+
+See [independent execution proof](HERMES_CANONICAL_EXECUTION_PROOF_2026-09-14.md) for complete IDs, failure history, token boundary, and deployment lineage.
+
+- Main and deployed HERMES: `819402d5cc74ed4bc6aa325b7a0f004cd2b249ff`; PID `153897`; explicit release ExecStart and HERMES-specific pointer agree. Shared pointer remains unchanged for intake.
+- Dedicated account-owned Queues Write token provisioned through systemd LoadCredential, single account, verified elastic-IP condition. No HERMES civic privilege expansion.
+- Genuine production retrieval job `4e159022-80a3-4fc4-8357-2c2747365805` succeeded; raw retrieval `fda8ef65-ea36-520a-af5f-cbde68e82c70`; independent R2 read-back: 34,484 bytes and ledger SHA-256 match.
+- Dependent extraction job `5fbaebc0-a1f0-4307-b38e-9c6720a11343` succeeded; evidence `0544818c-24d4-5075-b4b1-25e2f8ee7691` remains pending; exact byte locator independently verified.
+- Validation handoff job `62130c71-1656-4f93-bf19-a153401b86d1` exists but is blocked by `CAPABILITY_NOT_IMPLEMENTED: internal canonical validation receipt`. This is the next missing transition. No canonical validation or publication has occurred.
+- ResearchNeed remains AWAITING_RESULT. Other 24 original needs remain capability-blocked. Budget exhausted at five historical attempts (three retrieval, two extraction); concurrency never exceeded one. Failures were preserved, not reset.
+- Producer intake remains paused in both running service environments. Full autonomous acceptance is not claimed.
