@@ -1,0 +1,68 @@
+{
+  "operationVersion": "1.0.0",
+  "workstreamId": "fl-central-florida-local-source-discovery",
+  "coordinationClaim": {
+    "pullRequest": "https://github.com/aijaraix/CivicLenZ/pull/32",
+    "branch": "agent/florida-local-claims-south-central",
+    "statusAtCreation": "draft_mergeable"
+  },
+  "ownerKey": "agent-central-florida-source-discovery",
+  "boundary": {
+    "includedCounties": [
+      "Lake",
+      "Orange",
+      "Osceola",
+      "Polk",
+      "Seminole"
+    ],
+    "includedGovernmentLevels": [
+      "county",
+      "school_district",
+      "municipal",
+      "special_district",
+      "judicial"
+    ],
+    "includedDataPhase": "source_discovery",
+    "excludedData": [
+      "current_officeholder",
+      "portrait",
+      "contact",
+      "social",
+      "biography",
+      "finance",
+      "score",
+      "monitoring",
+      "public_profile_presentation"
+    ],
+    "excludedPaths": [
+      "data/sources/florida-regions/northwest",
+      "data/staging/florida/local/northwest",
+      "data/research-staging/florida/local/northwest",
+      "data/research-staging/florida/identity-contact",
+      "data/research-staging/florida/legislative-details",
+      "app/officials",
+      "workers/orchestration/worker-registry.json",
+      "data/operations/florida-work-allocation.json"
+    ]
+  },
+  "inputs": {
+    "sourcePlan": "data/sources/florida-regions/central/source-plan.json",
+    "worker": "workers/ingestion/discover_central_florida_local_sources.py"
+  },
+  "outputs": {
+    "reviewOnlySourceMaps": "data/staging/florida/local/central/source-discovery",
+    "publicPublication": "prohibited",
+    "canonicalPromotion": "prohibited"
+  },
+  "runPolicy": {
+    "cadence": "daily at 10:43 UTC after the workflow is merged to main",
+    "heartbeat": "The separate 15-minute heartbeat observes freshness and coverage; it must not fetch source sites.",
+    "requestLimit": "15 configured entry-point requests per run, maximum two per host, with robots.txt respected and at least 1.5 seconds between requests to one host.",
+    "retryPolicy": "No automatic retry loop in this worker. A later scheduled run or a manually reviewed source-plan update handles failures.",
+    "retention": "Only URLs, retrieval metadata, status codes, titles, and SHA-256 hashes are written. Response bodies and person-level data are not stored."
+  },
+  "reviewGate": {
+    "condition": "A reviewer must approve a direct authoritative roster source before a downstream seat-registry or officeholder collector is proposed.",
+    "nonEvidenceRule": "A successful hub retrieval is not evidence of an official, officeholder, affiliation, social account, portrait, vote, finance record, or score."
+  }
+}
