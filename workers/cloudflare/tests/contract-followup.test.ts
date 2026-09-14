@@ -91,3 +91,68 @@ test('redirects, network failure, R2 corruption and lease loss do not produce su
   await assert.rejects(runValidationFollowup(f));assert.equal(f.validations.length,0);assert.equal(f.runs[0].status,'failed');
  }
 });
+
+function governorFixture(scope='identity') {
+ const f=fixture();
+ f.message.schemaVersion='hermes.governor-context.v1';
+ f.job.payload.scope_key=scope;
+ Object.assign(f.job.payload.validation_followup,{scope,allowance:'governor-context-initial-v1',context_parent_job_id:id(30)});
+ Object.assign(f.job.payload.capability_route,{version:'hermes-governor-context-v1',capability:'governor_authoritative_context',retrieval_url:'https://www.flgov.com/eog/leadership'});
+ f.field.verification_requirement=scope==='identity'?'official_source':'review';
+ const db=f.database;
+ f.database=async(path,method='GET',body)=>path.startsWith(`jobs?job_id=eq.${id(30)}`)?[{
+  target_id:f.job.target_id,dedupe_key:'prior-work',payload:{orchestration_authority:'hermes',execution_class:'PRODUCTION',research_work_identity:'prior-work',
+   validation_followup:{receipt_id:id(2)},capability_route:{version:FOLLOWUP_VERSION}},
+  checkpoint:{independent_acknowledgement:'HERMES_ARTIFACT_LINEAGE_AND_UNCHANGED_TRUTH'}}]:db(path,method,body);
+ f.fetchImpl=async(url:any,init:any)=>{
+  assert.equal(url,'https://www.flgov.com/eog/leadership');assert.equal(init.redirect,'manual');
+  return new Response('<main><article><h2>Governor</h2><a href="/eog/leadership/people/alex-example">Alex Example</a></article></main>',{headers:{'content-type':'text/html'}});
+ };
+ return f;
+}
+test('governor contexts reuse existing scope and preserve review, identity, temporal and publication gates',async()=>{
+ for(const scope of ['identity','person','occupancy']) {
+  const f=governorFixture(scope);await runValidationFollowup(f);
+  const v=f.validations[0],r=v.result_summary;
+  assert.equal(f.runs[0].worker_key,'hermes.cloudflare.governor_context');
+  assert.equal(v.validator_key,'hermes-governor-context-v1');
+  assert.equal(r.research_scope,scope);
+  assert.equal(r.authoritative_context.officialProfileUrl,'https://www.flgov.com/eog/leadership/people/alex-example');
+  assert.equal(r.identity_assessment.contextual_candidate_proposed,true);
+  assert.equal(r.identity_assessment.resolved,false);
+  assert.equal(r.currentness_assessment.current_as_of,null);
+  assert.equal(r.authoritative_context.start_date,null);
+  assert.equal(r.schema_certified,false);assert.equal(r.publication_eligible,false);
+  assert.equal(r.review_required,scope!=='identity');
+  assert.ok(Date.parse(v.started_at)<=Date.parse(v.completed_at));
+ }
+});
+test('HTTP 200 access challenge preserves raw failure evidence without validation success',async()=>{
+ const f=governorFixture();f.fetchImpl=async()=>new Response('<html>wsidchk verify you are human</html>',{headers:{'content-type':'text/html'}});
+ await assert.rejects(runValidationFollowup(f),/authoritative_source_access_restricted/);
+ assert.equal(f.raws.length,1);assert.equal(f.validations.length,0);
+ assert.equal(f.runs[0].status,'failed');assert.equal(f.runs[0].metadata.retryable,false);
+});
+test('metadata-only page is not a supported governor identity structure',async()=>{
+ const f=governorFixture();f.fetchImpl=async()=>new Response('<title>Governor Alex Example</title>',{headers:{'content-type':'text/html'}});
+ await assert.rejects(runValidationFollowup(f),/governor_card_structure_unproven/);
+ assert.equal(f.validations.length,0);
+});
+test('governor context rejects missing proven parent before HTTP',async()=>{
+ const f=governorFixture();delete f.job.payload.validation_followup.context_parent_job_id;
+ f.fetchImpl=async()=>{throw Error('must_not_fetch');};
+ await assert.rejects(runValidationFollowup(f),/context_parent_missing/);
+});
+test('person research does not waive the persisted review requirement',async()=>{
+ const f=governorFixture('person');f.field.verification_requirement='official_source';
+ f.fetchImpl=async()=>{throw Error('must_not_fetch');};
+ await assert.rejects(runValidationFollowup(f),/followup_context_rejected/);
+});
+test('HTTP 403 is durable access-restriction failure, never factual not-found',async()=>{
+ const f=governorFixture();f.fetchImpl=async()=>new Response('challenge',{status:403});
+ await assert.rejects(runValidationFollowup(f));
+ assert.equal(f.runs[0].error_class,'authoritative_source_access_restricted');
+ assert.equal(f.runs[0].metadata.http_status,403);
+ assert.equal(f.runs[0].metadata.retryable,false);
+ assert.equal(f.validations.length,0);
+});

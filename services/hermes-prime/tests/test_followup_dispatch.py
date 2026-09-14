@@ -48,6 +48,7 @@ class DispatcherTests(unittest.TestCase):
         with patch.object(d,'connect_database',connect),patch.object(d,'settings',return_value={'enabled':True,'ready':True,'deployment':'old','budget':5,'credential':credential}), \
              patch.object(d,'route_pending',return_value=0),patch.object(d,'recover_and_collect'), \
              patch.object(d.validation_receipt,'collect'),patch.object(d.validation_followup,'collect'), \
+             patch.object(d.governor_context,'collect'),patch.object(d.governor_context,'plan'),patch.object(d.governor_context,'candidate',return_value=None), \
              patch.object(d.validation_followup,'plan'),patch.object(d.validation_followup,'safety_snapshot',return_value={'digest':'fixture'}),patch.object(d.validation_followup,'candidate',return_value={'job_id':'job'}), \
              patch.object(d.urllib.request,'urlopen',return_value=io.BytesIO(b'{"success":true}')) as send, \
              patch.dict(d.os.environ,{'HERMES_CF_ACCOUNT_ID':'account','HERMES_CF_INGEST_QUEUE_ID':'ingest','HERMES_EXTRACT_EVIDENCE':'false'},clear=True):
@@ -70,6 +71,7 @@ class DispatcherTests(unittest.TestCase):
         with patch.object(d,'connect_database',connect),patch.object(d,'settings',return_value={'enabled':True,'ready':True,'deployment':'release'}), \
              patch.object(d,'route_pending',return_value=0),patch.object(d,'recover_and_collect'), \
              patch.object(d.validation_receipt,'collect'),patch.object(d.validation_followup,'collect'), \
+             patch.object(d.governor_context,'collect'),patch.object(d.governor_context,'plan'),patch.object(d.governor_context,'candidate',return_value=None), \
              patch.object(d.validation_followup,'plan'),patch.object(d.validation_followup,'candidate') as candidate, \
              patch.dict(d.os.environ,{},clear=True):
             self.assertEqual(d.tick({'dispatch_limit':0})['state'],'RESOURCE_GATED')

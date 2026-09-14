@@ -15,6 +15,7 @@ from capability_router import resolve, ROUTE_VERSION
 from extraction_handoff import plan_extraction, plan_validation_handoff
 import validation_receipt
 import validation_followup
+import governor_context
 
 
 def settings():
@@ -139,9 +140,11 @@ def tick(governor):
                 return {'state':'ANOTHER_CANONICAL_TICK_ACTIVE'}
             validation_receipt.collect(cursor)
             validation_followup.collect(cursor)
+            governor_context.collect(cursor)
             recover_and_collect(cursor)
             routed = route_pending(cursor,config)
             validation_followup.plan(cursor,config)
+            governor_context.plan(cursor,config)
             if os.environ.get('HERMES_EXTRACT_EVIDENCE')=='true':
                 plan_extraction(cursor,config)
             if not config['enabled'] or not config['ready'] or not config['deployment']:
@@ -149,7 +152,9 @@ def tick(governor):
                         'credential_ready':config['ready'],'worker_deployment_configured':bool(config['deployment'])}
             if governor['dispatch_limit'] < 1:
                 return {'state':'RESOURCE_GATED'}
-            candidate=validation_followup.candidate(cursor)
+            candidate=governor_context.candidate(cursor)
+            if candidate is None:
+                candidate=validation_followup.candidate(cursor)
             if candidate is None:
                 candidate=validation_receipt.candidate(cursor,config)
             if candidate is None:
@@ -201,7 +206,7 @@ def tick(governor):
     try:
         token=config['credential'].read_text().strip()
         account=os.environ['HERMES_CF_ACCOUNT_ID']; queue=os.environ['HERMES_CF_VALIDATE_QUEUE_ID'] if selected['job_type']=='contract_evidence_validate' else os.environ['HERMES_CF_INGEST_QUEUE_ID']
-        message={'schemaVersion':'hermes.validation-followup.v1' if selected['payload'].get('capability_route',{}).get('version')==validation_followup.VERSION else 'hermes.validation.v1' if selected['job_type']=='contract_evidence_validate' else 'hermes.extraction.v1' if selected['job_type']=='contract_evidence_extract' else 'hermes.contract.v1','job_id':str(selected['job_id']),
+        message={'schemaVersion':'hermes.governor-context.v1' if selected['payload'].get('capability_route',{}).get('version')==governor_context.VERSION else 'hermes.validation-followup.v1' if selected['payload'].get('capability_route',{}).get('version')==validation_followup.VERSION else 'hermes.validation.v1' if selected['job_type']=='contract_evidence_validate' else 'hermes.extraction.v1' if selected['job_type']=='contract_evidence_extract' else 'hermes.contract.v1','job_id':str(selected['job_id']),
                  'attempt_token':selected['leased_by'],'research_work_identity':selected['dedupe_key']}
         body=json.dumps({'body':message,'content_type':'json'}).encode()
         request=urllib.request.Request(f'https://api.cloudflare.com/client/v4/accounts/{account}/queues/{queue}/messages',

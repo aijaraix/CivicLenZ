@@ -62,10 +62,10 @@ export default {
       deploymentId: deploymentIdFrom(env),
     };
     for (const message of batch.messages) {
-      if (["hermes.contract.v1", "hermes.extraction.v1", "hermes.validation-followup.v1"].includes((message.body as { schemaVersion?: string })?.schemaVersion ?? "")) {
+      if (["hermes.contract.v1", "hermes.extraction.v1", "hermes.validation-followup.v1", "hermes.governor-context.v1"].includes((message.body as { schemaVersion?: string })?.schemaVersion ?? "")) {
         try {
           const schema = (message.body as { schemaVersion: string }).schemaVersion;
-          const execute = schema === "hermes.validation-followup.v1" ? runValidationFollowup
+          const execute = ["hermes.validation-followup.v1", "hermes.governor-context.v1"].includes(schema ?? "") ? runValidationFollowup
             : schema === "hermes.extraction.v1" ? runContractExtraction : runContractEvidence;
           await execute({ message: message.body,
             database: contractDatabase(env.SUPABASE_URL, env.SUPABASE_SERVICE_ROLE_KEY),
