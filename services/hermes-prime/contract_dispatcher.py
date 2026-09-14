@@ -23,7 +23,7 @@ def settings():
                 and bool(os.environ.get("HERMES_CF_INGEST_QUEUE_ID")),
             "deployment": os.environ.get("HERMES_EVIDENCE_WORKER_DEPLOYMENT"),
             "enabled": os.environ.get("HERMES_CONTRACT_DISPATCH") == "true",
-            "budget": min(4, max(0, int(os.environ.get("HERMES_CONTRACT_DISPATCH_BUDGET", "1"))))}
+            "budget": min(5, max(0, int(os.environ.get("HERMES_CONTRACT_DISPATCH_BUDGET", "1"))))}
 
 
 def route_pending(cursor, config):
@@ -93,7 +93,7 @@ def recover_and_collect(cursor):
             if not cursor.fetchone():
                 continue
             if extracting:
-                cursor.execute("SELECT evidence_id FROM public.evidence_objects WHERE evidence_id=%s AND retrieval_id=%s AND content_hash=%s AND verification_state='collected_unreviewed'", (result.get('evidence_id'),result.get('retrieval_id'),result.get('sha256')))
+                cursor.execute("SELECT evidence_id FROM public.evidence_objects WHERE evidence_id=%s AND retrieval_id=%s AND content_hash=%s AND verification_state='pending'", (result.get('evidence_id'),result.get('retrieval_id'),result.get('sha256')))
                 if not cursor.fetchone():
                     continue
             cursor.execute("""UPDATE public.jobs SET status='succeeded',completed_at=clock_timestamp(),

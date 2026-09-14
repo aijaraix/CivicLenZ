@@ -33,7 +33,7 @@ export async function runContractExtraction(input:{message:unknown,database:Data
  const lineage={orchestration_authority:'hermes',execution_class:'PRODUCTION',research_need_id:job.research_need_id,
    research_work_identity:job.dedupe_key,parent_research_work_identity:p.parent_research_work_identity,
    attempt_token:m.attempt_token,attempt_count:job.attempt_count,lease_expires_at:job.lease_expires_at,
-   capability:r.capability,route:r,extraction_run_id:id,parser_key:'official-profile-discovery',parser_version:'canonical-stored-v1',
+   capability:r.capability,route:r,tool:'workers/cloudflare/shared/src/adapters.ts:dispatchSourceAdapter',worker_module:'workers/cloudflare/shared/src/contract-extraction.ts',extraction_run_id:id,parser_key:'official-profile-discovery',parser_version:'canonical-stored-v1',
    retrieval_id:raw.retrieval_id,retrieval_job_id:raw.job_id,retrieval_attempt_token:raw.metadata.attempt_token,
    retrieval_worker_run_id:raw.metadata.worker_run_id,sha256:raw.content_hash,byte_length:raw.byte_length};
  await input.database('worker_runs','POST',{worker_run_id:id,job_id:job.job_id,worker_key:'hermes.cloudflare.extraction',runtime:'cloudflare',deployment_id:input.deploymentId,status:'started',metadata:lineage});
@@ -56,7 +56,7 @@ export async function runContractExtraction(input:{message:unknown,database:Data
    if(prior&&(prior.content_hash!==raw.content_hash||prior.retrieval_id!==raw.retrieval_id||prior.excerpt!==excerpt))throw Error('extraction_evidence_collision');
    if(!prior)await input.database('evidence_objects','POST',{evidence_id:evidenceId,source_id:raw.source_id,retrieval_id:raw.retrieval_id,
      evidence_type:'html_excerpt',source_url:raw.source_url,supporting_locator:`utf8-byte-offset:${offset};length:${new TextEncoder().encode(excerpt).length}`,
-     excerpt,asset_uri:raw.raw_object_uri,content_hash:raw.content_hash,verification_state:'collected_unreviewed'});
+     excerpt,asset_uri:raw.raw_object_uri,content_hash:raw.content_hash,verification_state:'pending'});
    if(!(await input.database(query)).length)throw Error('extraction_lease_lost');
    await input.database(`worker_runs?worker_run_id=eq.${id}&status=eq.started`,'PATCH',{status:'succeeded',completed_at:new Date().toISOString(),records_read:1,records_written:1,
      metadata:{...lineage,evidence_id:evidenceId,candidate_count:1,evidence_objects_created:prior?0:1,
