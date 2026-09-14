@@ -11,6 +11,7 @@ import sqlite3
 import subprocess
 import time
 import urllib.request
+import validation_telemetry
 
 VERSION = "0.1.0"
 SERVICES = ("civiclenz-hermes-ingest", "civiclenz-cloudflared-ingest",
@@ -70,6 +71,7 @@ def observe(spool):
         allowance.update(dispatch_enabled=False, dispatch_limit=0)
     receipts = spool / "receipts"
     count = sum(1 for p in receipts.iterdir() if p.is_file() and p.suffix == ".json") if receipts.exists() else 0
+    validation = validation_telemetry.observe()
     return {"version": VERSION, "mode": "OBSERVATION_NO_DISPATCH",
             "observed_at": time.time(), "resources": measured,
             "governor": allowance,
@@ -77,7 +79,7 @@ def observe(spool):
             "receiver_health": local_receiver_health(), "local_receipt_files": count,
             "canonical_dispatch": "NOT_IMPLEMENTED",
             "canonical_work_ledger": "NOT_IMPLEMENTED",
-            "civic_validation": "NOT_IMPLEMENTED"}
+            "civic_validation": validation["state"], "validation_telemetry": validation}
 
 
 def persist(db, snapshot, trigger):
