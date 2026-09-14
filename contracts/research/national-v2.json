@@ -1,0 +1,2902 @@
+{
+  "formatVersion": 1,
+  "libraryVersion": 2,
+  "activation": "INACTIVE_UNBOUND",
+  "description": "Versioned permanent Seat contracts. Source roles are requirements, not registered endpoints or proof. Existing v1 contracts are preserved.",
+  "scopeDefinitions": {
+    "jurisdiction": {
+      "scopeKey": "jurisdiction",
+      "schemaVersion": 1,
+      "kind": "atomic",
+      "category": "seat",
+      "description": "jurisdiction",
+      "required": true,
+      "requiredForBaseline": true,
+      "applicability": "always",
+      "sourcePriority": [
+        "official_office_roster",
+        "official_appointing_or_certifying_authority"
+      ],
+      "sourceBinding": "REGISTER_AND_VERIFY_FOR_EXACT_JURISDICTION_SEAT_AND_CLAIM",
+      "verification": {
+        "required": [
+          "artifact_integrity",
+          "source_suitability",
+          "contextual_identity",
+          "valid_time",
+          "contradiction_check"
+        ],
+        "parserCertification": "exact_semantic_output_and_parser_version_with_production_lineage",
+        "candidateRecordsAreProof": false
+      },
+      "volatility": "LOW",
+      "freshnessDays": 365,
+      "monitoringDays": 365,
+      "temporalPolicy": "supported_valid_time_only; retrieval_time_is_not_tenure_start",
+      "publicationPolicy": {
+        "state": "SEPARATE_GATE",
+        "requirements": [
+          "verified_claim",
+          "applicable_currentness",
+          "no_unresolved_contradiction",
+          "privacy_and_public_interest_review"
+        ],
+        "private_personal_contact": "NEVER_PUBLISH"
+      },
+      "capability": "contract.jurisdiction.v1",
+      "pool": "bounded_deterministic_http_first",
+      "maxConcurrency": 1,
+      "activation": "CAPABILITY_NOT_IMPLEMENTED",
+      "completion": "CURRENT_AS_OF",
+      "datasetReconciliation": {
+        "decision": "NOT_APPLICABLE",
+        "reason": "Atomic assertion or defined open scope; discovered finite datasets get separate reconciliation work."
+      }
+    },
+    "seat": {
+      "scopeKey": "seat",
+      "schemaVersion": 1,
+      "kind": "atomic",
+      "category": "seat",
+      "description": "seat",
+      "required": true,
+      "requiredForBaseline": true,
+      "applicability": "always",
+      "sourcePriority": [
+        "official_office_roster",
+        "official_appointing_or_certifying_authority"
+      ],
+      "sourceBinding": "REGISTER_AND_VERIFY_FOR_EXACT_JURISDICTION_SEAT_AND_CLAIM",
+      "verification": {
+        "required": [
+          "artifact_integrity",
+          "source_suitability",
+          "contextual_identity",
+          "valid_time",
+          "contradiction_check"
+        ],
+        "parserCertification": "exact_semantic_output_and_parser_version_with_production_lineage",
+        "candidateRecordsAreProof": false
+      },
+      "volatility": "LOW",
+      "freshnessDays": 365,
+      "monitoringDays": 365,
+      "temporalPolicy": "supported_valid_time_only; retrieval_time_is_not_tenure_start",
+      "publicationPolicy": {
+        "state": "SEPARATE_GATE",
+        "requirements": [
+          "verified_claim",
+          "applicable_currentness",
+          "no_unresolved_contradiction",
+          "privacy_and_public_interest_review"
+        ],
+        "private_personal_contact": "NEVER_PUBLISH"
+      },
+      "capability": "contract.seat.v1",
+      "pool": "bounded_deterministic_http_first",
+      "maxConcurrency": 1,
+      "activation": "CAPABILITY_NOT_IMPLEMENTED",
+      "completion": "CURRENT_AS_OF",
+      "datasetReconciliation": {
+        "decision": "NOT_APPLICABLE",
+        "reason": "Atomic assertion or defined open scope; discovered finite datasets get separate reconciliation work."
+      }
+    },
+    "person": {
+      "scopeKey": "person",
+      "schemaVersion": 1,
+      "kind": "relationship",
+      "category": "identity",
+      "description": "person",
+      "required": true,
+      "requiredForBaseline": true,
+      "applicability": "always",
+      "sourcePriority": [
+        "official_office_roster",
+        "official_appointing_or_certifying_authority"
+      ],
+      "sourceBinding": "REGISTER_AND_VERIFY_FOR_EXACT_JURISDICTION_SEAT_AND_CLAIM",
+      "verification": {
+        "required": [
+          "artifact_integrity",
+          "source_suitability",
+          "contextual_identity",
+          "valid_time",
+          "contradiction_check"
+        ],
+        "parserCertification": "exact_semantic_output_and_parser_version_with_production_lineage",
+        "candidateRecordsAreProof": false
+      },
+      "volatility": "MEDIUM",
+      "freshnessDays": 90,
+      "monitoringDays": 90,
+      "temporalPolicy": "supported_valid_time_only; retrieval_time_is_not_tenure_start",
+      "publicationPolicy": {
+        "state": "SEPARATE_GATE",
+        "requirements": [
+          "verified_claim",
+          "applicable_currentness",
+          "no_unresolved_contradiction",
+          "privacy_and_public_interest_review"
+        ],
+        "private_personal_contact": "NEVER_PUBLISH"
+      },
+      "capability": "contract.person.v1",
+      "pool": "bounded_deterministic_http_first",
+      "maxConcurrency": 1,
+      "activation": "CAPABILITY_NOT_IMPLEMENTED",
+      "completion": "CURRENT_AS_OF",
+      "datasetReconciliation": {
+        "decision": "NOT_APPLICABLE",
+        "reason": "Atomic assertion or defined open scope; discovered finite datasets get separate reconciliation work."
+      }
+    },
+    "identity": {
+      "scopeKey": "identity",
+      "schemaVersion": 1,
+      "kind": "atomic",
+      "category": "identity",
+      "description": "identity",
+      "required": true,
+      "requiredForBaseline": true,
+      "applicability": "always",
+      "sourcePriority": [
+        "official_office_roster",
+        "official_appointing_or_certifying_authority"
+      ],
+      "sourceBinding": "REGISTER_AND_VERIFY_FOR_EXACT_JURISDICTION_SEAT_AND_CLAIM",
+      "verification": {
+        "required": [
+          "artifact_integrity",
+          "source_suitability",
+          "contextual_identity",
+          "valid_time",
+          "contradiction_check"
+        ],
+        "parserCertification": "exact_semantic_output_and_parser_version_with_production_lineage",
+        "candidateRecordsAreProof": false
+      },
+      "volatility": "MEDIUM",
+      "freshnessDays": 90,
+      "monitoringDays": 90,
+      "temporalPolicy": "supported_valid_time_only; retrieval_time_is_not_tenure_start",
+      "publicationPolicy": {
+        "state": "SEPARATE_GATE",
+        "requirements": [
+          "verified_claim",
+          "applicable_currentness",
+          "no_unresolved_contradiction",
+          "privacy_and_public_interest_review"
+        ],
+        "private_personal_contact": "NEVER_PUBLISH"
+      },
+      "capability": "contract.identity.v1",
+      "pool": "bounded_deterministic_http_first",
+      "maxConcurrency": 1,
+      "activation": "CAPABILITY_NOT_IMPLEMENTED",
+      "completion": "CURRENT_AS_OF",
+      "datasetReconciliation": {
+        "decision": "NOT_APPLICABLE",
+        "reason": "Atomic assertion or defined open scope; discovered finite datasets get separate reconciliation work."
+      }
+    },
+    "occupancy": {
+      "scopeKey": "occupancy",
+      "schemaVersion": 1,
+      "kind": "relationship",
+      "category": "occupancy",
+      "description": "occupancy",
+      "required": true,
+      "requiredForBaseline": true,
+      "applicability": "always",
+      "sourcePriority": [
+        "official_office_roster",
+        "official_appointing_or_certifying_authority"
+      ],
+      "sourceBinding": "REGISTER_AND_VERIFY_FOR_EXACT_JURISDICTION_SEAT_AND_CLAIM",
+      "verification": {
+        "required": [
+          "artifact_integrity",
+          "source_suitability",
+          "contextual_identity",
+          "valid_time",
+          "contradiction_check"
+        ],
+        "parserCertification": "exact_semantic_output_and_parser_version_with_production_lineage",
+        "candidateRecordsAreProof": false
+      },
+      "volatility": "HIGH",
+      "freshnessDays": 1,
+      "monitoringDays": 1,
+      "temporalPolicy": "supported_valid_time_only; retrieval_time_is_not_tenure_start",
+      "publicationPolicy": {
+        "state": "SEPARATE_GATE",
+        "requirements": [
+          "verified_claim",
+          "applicable_currentness",
+          "no_unresolved_contradiction",
+          "privacy_and_public_interest_review"
+        ],
+        "private_personal_contact": "NEVER_PUBLISH"
+      },
+      "capability": "contract.occupancy.v1",
+      "pool": "bounded_deterministic_http_first",
+      "maxConcurrency": 1,
+      "activation": "CAPABILITY_NOT_IMPLEMENTED",
+      "completion": "CURRENT_AS_OF",
+      "datasetReconciliation": {
+        "decision": "NOT_APPLICABLE",
+        "reason": "Atomic assertion or defined open scope; discovered finite datasets get separate reconciliation work."
+      }
+    },
+    "current_occupant": {
+      "scopeKey": "current_occupant",
+      "schemaVersion": 1,
+      "kind": "atomic",
+      "category": "occupancy",
+      "description": "current occupant",
+      "required": true,
+      "requiredForBaseline": true,
+      "applicability": "always",
+      "sourcePriority": [
+        "official_office_roster",
+        "official_appointing_or_certifying_authority"
+      ],
+      "sourceBinding": "REGISTER_AND_VERIFY_FOR_EXACT_JURISDICTION_SEAT_AND_CLAIM",
+      "verification": {
+        "required": [
+          "artifact_integrity",
+          "source_suitability",
+          "contextual_identity",
+          "valid_time",
+          "contradiction_check"
+        ],
+        "parserCertification": "exact_semantic_output_and_parser_version_with_production_lineage",
+        "candidateRecordsAreProof": false
+      },
+      "volatility": "HIGH",
+      "freshnessDays": 1,
+      "monitoringDays": 1,
+      "temporalPolicy": "supported_valid_time_only; retrieval_time_is_not_tenure_start",
+      "publicationPolicy": {
+        "state": "SEPARATE_GATE",
+        "requirements": [
+          "verified_claim",
+          "applicable_currentness",
+          "no_unresolved_contradiction",
+          "privacy_and_public_interest_review"
+        ],
+        "private_personal_contact": "NEVER_PUBLISH"
+      },
+      "capability": "contract.current_occupant.v1",
+      "pool": "bounded_deterministic_http_first",
+      "maxConcurrency": 1,
+      "activation": "CAPABILITY_NOT_IMPLEMENTED",
+      "completion": "CURRENT_AS_OF",
+      "datasetReconciliation": {
+        "decision": "NOT_APPLICABLE",
+        "reason": "Atomic assertion or defined open scope; discovered finite datasets get separate reconciliation work."
+      }
+    },
+    "evidence": {
+      "scopeKey": "evidence",
+      "schemaVersion": 1,
+      "kind": "open_scope",
+      "category": "evidence",
+      "description": "evidence",
+      "required": true,
+      "requiredForBaseline": true,
+      "applicability": "always",
+      "sourcePriority": [
+        "claim_specific_primary_authority"
+      ],
+      "sourceBinding": "REGISTER_AND_VERIFY_FOR_EXACT_JURISDICTION_SEAT_AND_CLAIM",
+      "verification": {
+        "required": [
+          "artifact_integrity",
+          "source_suitability",
+          "contextual_identity",
+          "valid_time",
+          "contradiction_check"
+        ],
+        "parserCertification": "exact_semantic_output_and_parser_version_with_production_lineage",
+        "candidateRecordsAreProof": false
+      },
+      "volatility": "HIGH",
+      "freshnessDays": 1,
+      "monitoringDays": 1,
+      "temporalPolicy": "supported_valid_time_only; retrieval_time_is_not_tenure_start",
+      "publicationPolicy": {
+        "state": "SEPARATE_GATE",
+        "requirements": [
+          "verified_claim",
+          "applicable_currentness",
+          "no_unresolved_contradiction",
+          "privacy_and_public_interest_review"
+        ],
+        "private_personal_contact": "NEVER_PUBLISH"
+      },
+      "capability": "contract.evidence.v1",
+      "pool": "bounded_deterministic_http_first",
+      "maxConcurrency": 1,
+      "activation": "CAPABILITY_NOT_IMPLEMENTED",
+      "completion": "COVERAGE_RECONCILED_FOR_DEFINED_SCOPE_AS_OF",
+      "datasetReconciliation": {
+        "decision": "NOT_APPLICABLE",
+        "reason": "Atomic assertion or defined open scope; discovered finite datasets get separate reconciliation work."
+      }
+    },
+    "contact": {
+      "scopeKey": "contact",
+      "schemaVersion": 1,
+      "kind": "atomic",
+      "category": "contact",
+      "description": "contact",
+      "required": true,
+      "requiredForBaseline": true,
+      "applicability": "always",
+      "sourcePriority": [
+        "official_office_directory"
+      ],
+      "sourceBinding": "REGISTER_AND_VERIFY_FOR_EXACT_JURISDICTION_SEAT_AND_CLAIM",
+      "verification": {
+        "required": [
+          "artifact_integrity",
+          "source_suitability",
+          "contextual_identity",
+          "valid_time",
+          "contradiction_check"
+        ],
+        "parserCertification": "exact_semantic_output_and_parser_version_with_production_lineage",
+        "candidateRecordsAreProof": false
+      },
+      "volatility": "MEDIUM",
+      "freshnessDays": 30,
+      "monitoringDays": 30,
+      "temporalPolicy": "supported_valid_time_only; retrieval_time_is_not_tenure_start",
+      "publicationPolicy": {
+        "state": "SEPARATE_GATE",
+        "requirements": [
+          "verified_claim",
+          "applicable_currentness",
+          "no_unresolved_contradiction",
+          "privacy_and_public_interest_review"
+        ],
+        "private_personal_contact": "NEVER_PUBLISH"
+      },
+      "capability": "contract.contact.v1",
+      "pool": "bounded_deterministic_http_first",
+      "maxConcurrency": 1,
+      "activation": "CAPABILITY_NOT_IMPLEMENTED",
+      "completion": "CURRENT_AS_OF",
+      "datasetReconciliation": {
+        "decision": "NOT_APPLICABLE",
+        "reason": "Atomic assertion or defined open scope; discovered finite datasets get separate reconciliation work."
+      }
+    },
+    "portrait": {
+      "scopeKey": "portrait",
+      "schemaVersion": 1,
+      "kind": "atomic",
+      "category": "portrait",
+      "description": "portrait",
+      "required": true,
+      "requiredForBaseline": false,
+      "applicability": "always",
+      "sourcePriority": [
+        "official_office_profile"
+      ],
+      "sourceBinding": "REGISTER_AND_VERIFY_FOR_EXACT_JURISDICTION_SEAT_AND_CLAIM",
+      "verification": {
+        "required": [
+          "artifact_integrity",
+          "source_suitability",
+          "contextual_identity",
+          "valid_time",
+          "contradiction_check"
+        ],
+        "parserCertification": "exact_semantic_output_and_parser_version_with_production_lineage",
+        "candidateRecordsAreProof": false
+      },
+      "volatility": "MEDIUM",
+      "freshnessDays": 90,
+      "monitoringDays": 90,
+      "temporalPolicy": "supported_valid_time_only; retrieval_time_is_not_tenure_start",
+      "publicationPolicy": {
+        "state": "SEPARATE_GATE",
+        "requirements": [
+          "verified_claim",
+          "applicable_currentness",
+          "no_unresolved_contradiction",
+          "privacy_and_public_interest_review"
+        ],
+        "private_personal_contact": "NEVER_PUBLISH"
+      },
+      "capability": "contract.portrait.v1",
+      "pool": "bounded_deterministic_http_first",
+      "maxConcurrency": 1,
+      "activation": "CAPABILITY_NOT_IMPLEMENTED",
+      "completion": "CURRENT_AS_OF",
+      "datasetReconciliation": {
+        "decision": "NOT_APPLICABLE",
+        "reason": "Atomic assertion or defined open scope; discovered finite datasets get separate reconciliation work."
+      }
+    },
+    "biography": {
+      "scopeKey": "biography",
+      "schemaVersion": 1,
+      "kind": "open_scope",
+      "category": "biography",
+      "description": "biography",
+      "required": true,
+      "requiredForBaseline": false,
+      "applicability": "always",
+      "sourcePriority": [
+        "official_biography",
+        "official_archival_record",
+        "reputable_independent_reporting"
+      ],
+      "sourceBinding": "REGISTER_AND_VERIFY_FOR_EXACT_JURISDICTION_SEAT_AND_CLAIM",
+      "verification": {
+        "required": [
+          "artifact_integrity",
+          "source_suitability",
+          "contextual_identity",
+          "valid_time",
+          "contradiction_check"
+        ],
+        "parserCertification": "exact_semantic_output_and_parser_version_with_production_lineage",
+        "candidateRecordsAreProof": false
+      },
+      "volatility": "LOW",
+      "freshnessDays": 365,
+      "monitoringDays": 365,
+      "temporalPolicy": "supported_valid_time_only; retrieval_time_is_not_tenure_start",
+      "publicationPolicy": {
+        "state": "SEPARATE_GATE",
+        "requirements": [
+          "verified_claim",
+          "applicable_currentness",
+          "no_unresolved_contradiction",
+          "privacy_and_public_interest_review"
+        ],
+        "private_personal_contact": "NEVER_PUBLISH"
+      },
+      "capability": "contract.biography.v1",
+      "pool": "bounded_deterministic_http_first",
+      "maxConcurrency": 1,
+      "activation": "CAPABILITY_NOT_IMPLEMENTED",
+      "completion": "COVERAGE_RECONCILED_FOR_DEFINED_SCOPE_AS_OF",
+      "datasetReconciliation": {
+        "decision": "NOT_APPLICABLE",
+        "reason": "Atomic assertion or defined open scope; discovered finite datasets get separate reconciliation work."
+      }
+    },
+    "prior_offices": {
+      "scopeKey": "prior_offices",
+      "schemaVersion": 1,
+      "kind": "dataset",
+      "category": "biography",
+      "description": "prior offices",
+      "required": true,
+      "requiredForBaseline": false,
+      "applicability": "always",
+      "sourcePriority": [
+        "official_historical_roster",
+        "official_election_results"
+      ],
+      "sourceBinding": "REGISTER_AND_VERIFY_FOR_EXACT_JURISDICTION_SEAT_AND_CLAIM",
+      "verification": {
+        "required": [
+          "artifact_integrity",
+          "source_suitability",
+          "contextual_identity",
+          "valid_time",
+          "contradiction_check"
+        ],
+        "parserCertification": "exact_semantic_output_and_parser_version_with_production_lineage",
+        "candidateRecordsAreProof": false
+      },
+      "volatility": "LOW",
+      "freshnessDays": 365,
+      "monitoringDays": 365,
+      "temporalPolicy": "supported_valid_time_only; retrieval_time_is_not_tenure_start",
+      "publicationPolicy": {
+        "state": "SEPARATE_GATE",
+        "requirements": [
+          "verified_claim",
+          "applicable_currentness",
+          "no_unresolved_contradiction",
+          "privacy_and_public_interest_review"
+        ],
+        "private_personal_contact": "NEVER_PUBLISH"
+      },
+      "capability": "contract.prior_offices.v1",
+      "pool": "bounded_deterministic_http_first",
+      "maxConcurrency": 1,
+      "activation": "CAPABILITY_NOT_IMPLEMENTED",
+      "completion": "RECONCILED_THROUGH_CUTOFF",
+      "datasetReconciliation": {
+        "schemaVersion": 1,
+        "universe": "resolved_subject+authority+jurisdiction+defined_scope+period",
+        "requirements": [
+          "authority_declared_universe",
+          "enumerate_all_units",
+          "all_pages_and_partitions",
+          "amendments_and_replacements",
+          "counts_and_applicable_totals",
+          "missing_units",
+          "cutoff",
+          "next_check"
+        ],
+        "samplingAllowed": false
+      }
+    },
+    "education_and_professional_history": {
+      "scopeKey": "education_and_professional_history",
+      "schemaVersion": 1,
+      "kind": "open_scope",
+      "category": "biography",
+      "description": "education and professional history",
+      "required": true,
+      "requiredForBaseline": false,
+      "applicability": "always",
+      "sourcePriority": [
+        "issuing_institution",
+        "official_disclosure",
+        "official_biography"
+      ],
+      "sourceBinding": "REGISTER_AND_VERIFY_FOR_EXACT_JURISDICTION_SEAT_AND_CLAIM",
+      "verification": {
+        "required": [
+          "artifact_integrity",
+          "source_suitability",
+          "contextual_identity",
+          "valid_time",
+          "contradiction_check"
+        ],
+        "parserCertification": "exact_semantic_output_and_parser_version_with_production_lineage",
+        "candidateRecordsAreProof": false
+      },
+      "volatility": "LOW",
+      "freshnessDays": 365,
+      "monitoringDays": 365,
+      "temporalPolicy": "supported_valid_time_only; retrieval_time_is_not_tenure_start",
+      "publicationPolicy": {
+        "state": "SEPARATE_GATE",
+        "requirements": [
+          "verified_claim",
+          "applicable_currentness",
+          "no_unresolved_contradiction",
+          "privacy_and_public_interest_review"
+        ],
+        "private_personal_contact": "NEVER_PUBLISH"
+      },
+      "capability": "contract.education_and_professional_history.v1",
+      "pool": "bounded_deterministic_http_first",
+      "maxConcurrency": 1,
+      "activation": "CAPABILITY_NOT_IMPLEMENTED",
+      "completion": "COVERAGE_RECONCILED_FOR_DEFINED_SCOPE_AS_OF",
+      "datasetReconciliation": {
+        "decision": "NOT_APPLICABLE",
+        "reason": "Atomic assertion or defined open scope; discovered finite datasets get separate reconciliation work."
+      }
+    },
+    "public_statements": {
+      "scopeKey": "public_statements",
+      "schemaVersion": 1,
+      "kind": "open_scope",
+      "category": "media",
+      "description": "public statements",
+      "required": true,
+      "requiredForBaseline": false,
+      "applicability": "always",
+      "sourcePriority": [
+        "official_transcript",
+        "original_recording",
+        "reputable_independent_reporting"
+      ],
+      "sourceBinding": "REGISTER_AND_VERIFY_FOR_EXACT_JURISDICTION_SEAT_AND_CLAIM",
+      "verification": {
+        "required": [
+          "artifact_integrity",
+          "source_suitability",
+          "contextual_identity",
+          "valid_time",
+          "contradiction_check"
+        ],
+        "parserCertification": "exact_semantic_output_and_parser_version_with_production_lineage",
+        "candidateRecordsAreProof": false
+      },
+      "volatility": "HIGH",
+      "freshnessDays": 7,
+      "monitoringDays": 7,
+      "temporalPolicy": "supported_valid_time_only; retrieval_time_is_not_tenure_start",
+      "publicationPolicy": {
+        "state": "SEPARATE_GATE",
+        "requirements": [
+          "verified_claim",
+          "applicable_currentness",
+          "no_unresolved_contradiction",
+          "privacy_and_public_interest_review"
+        ],
+        "private_personal_contact": "NEVER_PUBLISH"
+      },
+      "capability": "contract.public_statements.v1",
+      "pool": "bounded_deterministic_http_first",
+      "maxConcurrency": 1,
+      "activation": "CAPABILITY_NOT_IMPLEMENTED",
+      "completion": "COVERAGE_RECONCILED_FOR_DEFINED_SCOPE_AS_OF",
+      "datasetReconciliation": {
+        "decision": "NOT_APPLICABLE",
+        "reason": "Atomic assertion or defined open scope; discovered finite datasets get separate reconciliation work."
+      }
+    },
+    "official_media": {
+      "scopeKey": "official_media",
+      "schemaVersion": 1,
+      "kind": "open_scope",
+      "category": "media",
+      "description": "official media",
+      "required": true,
+      "requiredForBaseline": false,
+      "applicability": "always",
+      "sourcePriority": [
+        "official_office_linked_channel",
+        "official_website"
+      ],
+      "sourceBinding": "REGISTER_AND_VERIFY_FOR_EXACT_JURISDICTION_SEAT_AND_CLAIM",
+      "verification": {
+        "required": [
+          "artifact_integrity",
+          "source_suitability",
+          "contextual_identity",
+          "valid_time",
+          "contradiction_check"
+        ],
+        "parserCertification": "exact_semantic_output_and_parser_version_with_production_lineage",
+        "candidateRecordsAreProof": false
+      },
+      "volatility": "HIGH",
+      "freshnessDays": 7,
+      "monitoringDays": 7,
+      "temporalPolicy": "supported_valid_time_only; retrieval_time_is_not_tenure_start",
+      "publicationPolicy": {
+        "state": "SEPARATE_GATE",
+        "requirements": [
+          "verified_claim",
+          "applicable_currentness",
+          "no_unresolved_contradiction",
+          "privacy_and_public_interest_review"
+        ],
+        "private_personal_contact": "NEVER_PUBLISH"
+      },
+      "capability": "contract.official_media.v1",
+      "pool": "bounded_deterministic_http_first",
+      "maxConcurrency": 1,
+      "activation": "CAPABILITY_NOT_IMPLEMENTED",
+      "completion": "COVERAGE_RECONCILED_FOR_DEFINED_SCOPE_AS_OF",
+      "datasetReconciliation": {
+        "decision": "NOT_APPLICABLE",
+        "reason": "Atomic assertion or defined open scope; discovered finite datasets get separate reconciliation work."
+      }
+    },
+    "relationships": {
+      "scopeKey": "relationships",
+      "schemaVersion": 1,
+      "kind": "open_scope",
+      "category": "relationships",
+      "description": "relationships",
+      "required": true,
+      "requiredForBaseline": false,
+      "applicability": "always",
+      "sourcePriority": [
+        "official_disclosure",
+        "official_public_record"
+      ],
+      "sourceBinding": "REGISTER_AND_VERIFY_FOR_EXACT_JURISDICTION_SEAT_AND_CLAIM",
+      "verification": {
+        "required": [
+          "artifact_integrity",
+          "source_suitability",
+          "contextual_identity",
+          "valid_time",
+          "contradiction_check"
+        ],
+        "parserCertification": "exact_semantic_output_and_parser_version_with_production_lineage",
+        "candidateRecordsAreProof": false
+      },
+      "volatility": "MEDIUM",
+      "freshnessDays": 90,
+      "monitoringDays": 90,
+      "temporalPolicy": "supported_valid_time_only; retrieval_time_is_not_tenure_start",
+      "publicationPolicy": {
+        "state": "SEPARATE_GATE",
+        "requirements": [
+          "verified_claim",
+          "applicable_currentness",
+          "no_unresolved_contradiction",
+          "privacy_and_public_interest_review"
+        ],
+        "private_personal_contact": "NEVER_PUBLISH"
+      },
+      "capability": "contract.relationships.v1",
+      "pool": "bounded_deterministic_http_first",
+      "maxConcurrency": 1,
+      "activation": "CAPABILITY_NOT_IMPLEMENTED",
+      "completion": "COVERAGE_RECONCILED_FOR_DEFINED_SCOPE_AS_OF",
+      "datasetReconciliation": {
+        "decision": "NOT_APPLICABLE",
+        "reason": "Atomic assertion or defined open scope; discovered finite datasets get separate reconciliation work."
+      }
+    },
+    "public_records": {
+      "scopeKey": "public_records",
+      "schemaVersion": 1,
+      "kind": "open_scope",
+      "category": "accountability",
+      "description": "public records",
+      "required": true,
+      "requiredForBaseline": false,
+      "applicability": "always",
+      "sourcePriority": [
+        "official_records_custodian"
+      ],
+      "sourceBinding": "REGISTER_AND_VERIFY_FOR_EXACT_JURISDICTION_SEAT_AND_CLAIM",
+      "verification": {
+        "required": [
+          "artifact_integrity",
+          "source_suitability",
+          "contextual_identity",
+          "valid_time",
+          "contradiction_check"
+        ],
+        "parserCertification": "exact_semantic_output_and_parser_version_with_production_lineage",
+        "candidateRecordsAreProof": false
+      },
+      "volatility": "MEDIUM",
+      "freshnessDays": 30,
+      "monitoringDays": 30,
+      "temporalPolicy": "supported_valid_time_only; retrieval_time_is_not_tenure_start",
+      "publicationPolicy": {
+        "state": "SEPARATE_GATE",
+        "requirements": [
+          "verified_claim",
+          "applicable_currentness",
+          "no_unresolved_contradiction",
+          "privacy_and_public_interest_review"
+        ],
+        "private_personal_contact": "NEVER_PUBLISH"
+      },
+      "capability": "contract.public_records.v1",
+      "pool": "bounded_deterministic_http_first",
+      "maxConcurrency": 1,
+      "activation": "CAPABILITY_NOT_IMPLEMENTED",
+      "completion": "COVERAGE_RECONCILED_FOR_DEFINED_SCOPE_AS_OF",
+      "datasetReconciliation": {
+        "decision": "NOT_APPLICABLE",
+        "reason": "Atomic assertion or defined open scope; discovered finite datasets get separate reconciliation work."
+      }
+    },
+    "ethics_proceedings": {
+      "scopeKey": "ethics_proceedings",
+      "schemaVersion": 1,
+      "kind": "dataset",
+      "category": "accountability",
+      "description": "ethics proceedings",
+      "required": true,
+      "requiredForBaseline": false,
+      "applicability": "published_proceedings_with_disposition_and_response_context; no_inference_from_allegation",
+      "sourcePriority": [
+        "official_ethics_authority",
+        "official_court_record"
+      ],
+      "sourceBinding": "REGISTER_AND_VERIFY_FOR_EXACT_JURISDICTION_SEAT_AND_CLAIM",
+      "verification": {
+        "required": [
+          "artifact_integrity",
+          "source_suitability",
+          "contextual_identity",
+          "valid_time",
+          "contradiction_check"
+        ],
+        "parserCertification": "exact_semantic_output_and_parser_version_with_production_lineage",
+        "candidateRecordsAreProof": false
+      },
+      "volatility": "MEDIUM",
+      "freshnessDays": 30,
+      "monitoringDays": 30,
+      "temporalPolicy": "supported_valid_time_only; retrieval_time_is_not_tenure_start",
+      "publicationPolicy": {
+        "state": "SEPARATE_GATE",
+        "requirements": [
+          "verified_claim",
+          "applicable_currentness",
+          "no_unresolved_contradiction",
+          "privacy_and_public_interest_review"
+        ],
+        "private_personal_contact": "NEVER_PUBLISH"
+      },
+      "capability": "contract.ethics_proceedings.v1",
+      "pool": "bounded_deterministic_http_first",
+      "maxConcurrency": 1,
+      "activation": "CAPABILITY_NOT_IMPLEMENTED",
+      "completion": "RECONCILED_THROUGH_CUTOFF",
+      "datasetReconciliation": {
+        "schemaVersion": 1,
+        "universe": "resolved_subject+authority+jurisdiction+defined_scope+period",
+        "requirements": [
+          "authority_declared_universe",
+          "enumerate_all_units",
+          "all_pages_and_partitions",
+          "amendments_and_replacements",
+          "counts_and_applicable_totals",
+          "missing_units",
+          "cutoff",
+          "next_check"
+        ],
+        "samplingAllowed": false
+      }
+    },
+    "financial_disclosures": {
+      "scopeKey": "financial_disclosures",
+      "schemaVersion": 1,
+      "kind": "dataset",
+      "category": "disclosures",
+      "description": "financial disclosures",
+      "required": true,
+      "requiredForBaseline": false,
+      "applicability": "jurisdiction_requires_public_filing; establish_applicability_from_authority",
+      "sourcePriority": [
+        "official_disclosure_filing_authority"
+      ],
+      "sourceBinding": "REGISTER_AND_VERIFY_FOR_EXACT_JURISDICTION_SEAT_AND_CLAIM",
+      "verification": {
+        "required": [
+          "artifact_integrity",
+          "source_suitability",
+          "contextual_identity",
+          "valid_time",
+          "contradiction_check"
+        ],
+        "parserCertification": "exact_semantic_output_and_parser_version_with_production_lineage",
+        "candidateRecordsAreProof": false
+      },
+      "volatility": "MEDIUM",
+      "freshnessDays": 30,
+      "monitoringDays": 30,
+      "temporalPolicy": "supported_valid_time_only; retrieval_time_is_not_tenure_start",
+      "publicationPolicy": {
+        "state": "SEPARATE_GATE",
+        "requirements": [
+          "verified_claim",
+          "applicable_currentness",
+          "no_unresolved_contradiction",
+          "privacy_and_public_interest_review"
+        ],
+        "private_personal_contact": "NEVER_PUBLISH"
+      },
+      "capability": "contract.financial_disclosures.v1",
+      "pool": "bounded_deterministic_http_first",
+      "maxConcurrency": 1,
+      "activation": "CAPABILITY_NOT_IMPLEMENTED",
+      "completion": "RECONCILED_THROUGH_CUTOFF",
+      "datasetReconciliation": {
+        "schemaVersion": 1,
+        "universe": "resolved_subject+authority+jurisdiction+defined_scope+period",
+        "requirements": [
+          "authority_declared_universe",
+          "enumerate_all_units",
+          "all_pages_and_partitions",
+          "amendments_and_replacements",
+          "counts_and_applicable_totals",
+          "missing_units",
+          "cutoff",
+          "next_check"
+        ],
+        "samplingAllowed": false
+      }
+    },
+    "business_interests": {
+      "scopeKey": "business_interests",
+      "schemaVersion": 1,
+      "kind": "dataset",
+      "category": "disclosures",
+      "description": "business interests",
+      "required": true,
+      "requiredForBaseline": false,
+      "applicability": "publicly_disclosed_civically_relevant_interests_only",
+      "sourcePriority": [
+        "official_disclosure_filing_authority",
+        "official_business_registry"
+      ],
+      "sourceBinding": "REGISTER_AND_VERIFY_FOR_EXACT_JURISDICTION_SEAT_AND_CLAIM",
+      "verification": {
+        "required": [
+          "artifact_integrity",
+          "source_suitability",
+          "contextual_identity",
+          "valid_time",
+          "contradiction_check"
+        ],
+        "parserCertification": "exact_semantic_output_and_parser_version_with_production_lineage",
+        "candidateRecordsAreProof": false
+      },
+      "volatility": "MEDIUM",
+      "freshnessDays": 90,
+      "monitoringDays": 90,
+      "temporalPolicy": "supported_valid_time_only; retrieval_time_is_not_tenure_start",
+      "publicationPolicy": {
+        "state": "SEPARATE_GATE",
+        "requirements": [
+          "verified_claim",
+          "applicable_currentness",
+          "no_unresolved_contradiction",
+          "privacy_and_public_interest_review"
+        ],
+        "private_personal_contact": "NEVER_PUBLISH"
+      },
+      "capability": "contract.business_interests.v1",
+      "pool": "bounded_deterministic_http_first",
+      "maxConcurrency": 1,
+      "activation": "CAPABILITY_NOT_IMPLEMENTED",
+      "completion": "RECONCILED_THROUGH_CUTOFF",
+      "datasetReconciliation": {
+        "schemaVersion": 1,
+        "universe": "resolved_subject+authority+jurisdiction+defined_scope+period",
+        "requirements": [
+          "authority_declared_universe",
+          "enumerate_all_units",
+          "all_pages_and_partitions",
+          "amendments_and_replacements",
+          "counts_and_applicable_totals",
+          "missing_units",
+          "cutoff",
+          "next_check"
+        ],
+        "samplingAllowed": false
+      }
+    },
+    "elections": {
+      "scopeKey": "elections",
+      "schemaVersion": 1,
+      "kind": "dataset",
+      "category": "elections",
+      "description": "elections",
+      "required": true,
+      "requiredForBaseline": false,
+      "applicability": "elected_or_retention_election_seat; authoritative_election_cycle_and_candidate_campaign_required",
+      "sourcePriority": [
+        "official_election_administrator"
+      ],
+      "sourceBinding": "REGISTER_AND_VERIFY_FOR_EXACT_JURISDICTION_SEAT_AND_CLAIM",
+      "verification": {
+        "required": [
+          "artifact_integrity",
+          "source_suitability",
+          "contextual_identity",
+          "valid_time",
+          "contradiction_check"
+        ],
+        "parserCertification": "exact_semantic_output_and_parser_version_with_production_lineage",
+        "candidateRecordsAreProof": false
+      },
+      "volatility": "HIGH",
+      "freshnessDays": 7,
+      "monitoringDays": 7,
+      "temporalPolicy": "supported_valid_time_only; retrieval_time_is_not_tenure_start",
+      "publicationPolicy": {
+        "state": "SEPARATE_GATE",
+        "requirements": [
+          "verified_claim",
+          "applicable_currentness",
+          "no_unresolved_contradiction",
+          "privacy_and_public_interest_review"
+        ],
+        "private_personal_contact": "NEVER_PUBLISH"
+      },
+      "capability": "contract.elections.v1",
+      "pool": "bounded_deterministic_http_first",
+      "maxConcurrency": 1,
+      "activation": "CAPABILITY_NOT_IMPLEMENTED",
+      "completion": "RECONCILED_THROUGH_CUTOFF",
+      "datasetReconciliation": {
+        "schemaVersion": 1,
+        "universe": "resolved_subject+authority+jurisdiction+defined_scope+period",
+        "requirements": [
+          "authority_declared_universe",
+          "enumerate_all_units",
+          "all_pages_and_partitions",
+          "amendments_and_replacements",
+          "counts_and_applicable_totals",
+          "missing_units",
+          "cutoff",
+          "next_check"
+        ],
+        "samplingAllowed": false
+      }
+    },
+    "candidates": {
+      "scopeKey": "candidates",
+      "schemaVersion": 1,
+      "kind": "dataset",
+      "category": "elections",
+      "description": "candidates",
+      "required": true,
+      "requiredForBaseline": false,
+      "applicability": "elected_or_retention_election_seat; authoritative_election_cycle_and_candidate_campaign_required",
+      "sourcePriority": [
+        "official_candidate_filing_authority"
+      ],
+      "sourceBinding": "REGISTER_AND_VERIFY_FOR_EXACT_JURISDICTION_SEAT_AND_CLAIM",
+      "verification": {
+        "required": [
+          "artifact_integrity",
+          "source_suitability",
+          "contextual_identity",
+          "valid_time",
+          "contradiction_check"
+        ],
+        "parserCertification": "exact_semantic_output_and_parser_version_with_production_lineage",
+        "candidateRecordsAreProof": false
+      },
+      "volatility": "HIGH",
+      "freshnessDays": 7,
+      "monitoringDays": 7,
+      "temporalPolicy": "supported_valid_time_only; retrieval_time_is_not_tenure_start",
+      "publicationPolicy": {
+        "state": "SEPARATE_GATE",
+        "requirements": [
+          "verified_claim",
+          "applicable_currentness",
+          "no_unresolved_contradiction",
+          "privacy_and_public_interest_review"
+        ],
+        "private_personal_contact": "NEVER_PUBLISH"
+      },
+      "capability": "contract.candidates.v1",
+      "pool": "bounded_deterministic_http_first",
+      "maxConcurrency": 1,
+      "activation": "CAPABILITY_NOT_IMPLEMENTED",
+      "completion": "RECONCILED_THROUGH_CUTOFF",
+      "datasetReconciliation": {
+        "schemaVersion": 1,
+        "universe": "resolved_subject+authority+jurisdiction+defined_scope+period",
+        "requirements": [
+          "authority_declared_universe",
+          "enumerate_all_units",
+          "all_pages_and_partitions",
+          "amendments_and_replacements",
+          "counts_and_applicable_totals",
+          "missing_units",
+          "cutoff",
+          "next_check"
+        ],
+        "samplingAllowed": false
+      }
+    },
+    "election_results": {
+      "scopeKey": "election_results",
+      "schemaVersion": 1,
+      "kind": "dataset",
+      "category": "elections",
+      "description": "election results",
+      "required": true,
+      "requiredForBaseline": false,
+      "applicability": "elected_or_retention_election_seat; authoritative_election_cycle_and_candidate_campaign_required",
+      "sourcePriority": [
+        "official_election_certifying_authority"
+      ],
+      "sourceBinding": "REGISTER_AND_VERIFY_FOR_EXACT_JURISDICTION_SEAT_AND_CLAIM",
+      "verification": {
+        "required": [
+          "artifact_integrity",
+          "source_suitability",
+          "contextual_identity",
+          "valid_time",
+          "contradiction_check"
+        ],
+        "parserCertification": "exact_semantic_output_and_parser_version_with_production_lineage",
+        "candidateRecordsAreProof": false
+      },
+      "volatility": "HIGH",
+      "freshnessDays": 7,
+      "monitoringDays": 7,
+      "temporalPolicy": "supported_valid_time_only; retrieval_time_is_not_tenure_start",
+      "publicationPolicy": {
+        "state": "SEPARATE_GATE",
+        "requirements": [
+          "verified_claim",
+          "applicable_currentness",
+          "no_unresolved_contradiction",
+          "privacy_and_public_interest_review"
+        ],
+        "private_personal_contact": "NEVER_PUBLISH"
+      },
+      "capability": "contract.election_results.v1",
+      "pool": "bounded_deterministic_http_first",
+      "maxConcurrency": 1,
+      "activation": "CAPABILITY_NOT_IMPLEMENTED",
+      "completion": "RECONCILED_THROUGH_CUTOFF",
+      "datasetReconciliation": {
+        "schemaVersion": 1,
+        "universe": "resolved_subject+authority+jurisdiction+defined_scope+period",
+        "requirements": [
+          "authority_declared_universe",
+          "enumerate_all_units",
+          "all_pages_and_partitions",
+          "amendments_and_replacements",
+          "counts_and_applicable_totals",
+          "missing_units",
+          "cutoff",
+          "next_check"
+        ],
+        "samplingAllowed": false
+      }
+    },
+    "campaign_finance": {
+      "scopeKey": "campaign_finance",
+      "schemaVersion": 1,
+      "kind": "dataset",
+      "category": "finance",
+      "description": "campaign finance",
+      "required": true,
+      "requiredForBaseline": false,
+      "applicability": "elected_or_retention_election_seat; authoritative_election_cycle_and_candidate_campaign_required",
+      "sourcePriority": [
+        "official_campaign_finance_filing_authority"
+      ],
+      "sourceBinding": "REGISTER_AND_VERIFY_FOR_EXACT_JURISDICTION_SEAT_AND_CLAIM",
+      "verification": {
+        "required": [
+          "artifact_integrity",
+          "source_suitability",
+          "contextual_identity",
+          "valid_time",
+          "contradiction_check"
+        ],
+        "parserCertification": "exact_semantic_output_and_parser_version_with_production_lineage",
+        "candidateRecordsAreProof": false
+      },
+      "volatility": "HIGH",
+      "freshnessDays": 7,
+      "monitoringDays": 7,
+      "temporalPolicy": "supported_valid_time_only; retrieval_time_is_not_tenure_start",
+      "publicationPolicy": {
+        "state": "SEPARATE_GATE",
+        "requirements": [
+          "verified_claim",
+          "applicable_currentness",
+          "no_unresolved_contradiction",
+          "privacy_and_public_interest_review"
+        ],
+        "private_personal_contact": "NEVER_PUBLISH"
+      },
+      "capability": "contract.campaign_finance.v1",
+      "pool": "bounded_deterministic_http_first",
+      "maxConcurrency": 1,
+      "activation": "CAPABILITY_NOT_IMPLEMENTED",
+      "completion": "RECONCILED_THROUGH_CUTOFF",
+      "datasetReconciliation": {
+        "schemaVersion": 1,
+        "universe": "resolved_subject+authority+jurisdiction+defined_scope+period",
+        "requirements": [
+          "authority_declared_universe",
+          "enumerate_all_units",
+          "all_pages_and_partitions",
+          "amendments_and_replacements",
+          "counts_and_applicable_totals",
+          "missing_units",
+          "cutoff",
+          "next_check"
+        ],
+        "samplingAllowed": false
+      }
+    },
+    "campaign_platform": {
+      "scopeKey": "campaign_platform",
+      "schemaVersion": 1,
+      "kind": "open_scope",
+      "category": "political",
+      "description": "campaign platform",
+      "required": true,
+      "requiredForBaseline": false,
+      "applicability": "resolved_candidate_campaign; self_reported_position_not_independent_truth",
+      "sourcePriority": [
+        "candidate_campaign_primary_material"
+      ],
+      "sourceBinding": "REGISTER_AND_VERIFY_FOR_EXACT_JURISDICTION_SEAT_AND_CLAIM",
+      "verification": {
+        "required": [
+          "artifact_integrity",
+          "source_suitability",
+          "contextual_identity",
+          "valid_time",
+          "contradiction_check"
+        ],
+        "parserCertification": "exact_semantic_output_and_parser_version_with_production_lineage",
+        "candidateRecordsAreProof": false
+      },
+      "volatility": "HIGH",
+      "freshnessDays": 7,
+      "monitoringDays": 7,
+      "temporalPolicy": "supported_valid_time_only; retrieval_time_is_not_tenure_start",
+      "publicationPolicy": {
+        "state": "SEPARATE_GATE",
+        "requirements": [
+          "verified_claim",
+          "applicable_currentness",
+          "no_unresolved_contradiction",
+          "privacy_and_public_interest_review"
+        ],
+        "private_personal_contact": "NEVER_PUBLISH"
+      },
+      "capability": "contract.campaign_platform.v1",
+      "pool": "bounded_deterministic_http_first",
+      "maxConcurrency": 1,
+      "activation": "CAPABILITY_NOT_IMPLEMENTED",
+      "completion": "COVERAGE_RECONCILED_FOR_DEFINED_SCOPE_AS_OF",
+      "datasetReconciliation": {
+        "decision": "NOT_APPLICABLE",
+        "reason": "Atomic assertion or defined open scope; discovered finite datasets get separate reconciliation work."
+      }
+    },
+    "promises": {
+      "scopeKey": "promises",
+      "schemaVersion": 1,
+      "kind": "open_scope",
+      "category": "political",
+      "description": "promises",
+      "required": true,
+      "requiredForBaseline": false,
+      "applicability": "attributed_material_commitment; preserve_qualifiers; no_scores_or_rankings",
+      "sourcePriority": [
+        "original_campaign_statement",
+        "official_transcript"
+      ],
+      "sourceBinding": "REGISTER_AND_VERIFY_FOR_EXACT_JURISDICTION_SEAT_AND_CLAIM",
+      "verification": {
+        "required": [
+          "artifact_integrity",
+          "source_suitability",
+          "contextual_identity",
+          "valid_time",
+          "contradiction_check"
+        ],
+        "parserCertification": "exact_semantic_output_and_parser_version_with_production_lineage",
+        "candidateRecordsAreProof": false
+      },
+      "volatility": "HIGH",
+      "freshnessDays": 7,
+      "monitoringDays": 7,
+      "temporalPolicy": "supported_valid_time_only; retrieval_time_is_not_tenure_start",
+      "publicationPolicy": {
+        "state": "SEPARATE_GATE",
+        "requirements": [
+          "verified_claim",
+          "applicable_currentness",
+          "no_unresolved_contradiction",
+          "privacy_and_public_interest_review"
+        ],
+        "private_personal_contact": "NEVER_PUBLISH"
+      },
+      "capability": "contract.promises.v1",
+      "pool": "bounded_deterministic_http_first",
+      "maxConcurrency": 1,
+      "activation": "CAPABILITY_NOT_IMPLEMENTED",
+      "completion": "COVERAGE_RECONCILED_FOR_DEFINED_SCOPE_AS_OF",
+      "datasetReconciliation": {
+        "decision": "NOT_APPLICABLE",
+        "reason": "Atomic assertion or defined open scope; discovered finite datasets get separate reconciliation work."
+      }
+    },
+    "monitoring": {
+      "scopeKey": "monitoring",
+      "schemaVersion": 1,
+      "kind": "open_scope",
+      "category": "monitoring",
+      "description": "Track due times, source changes, contradictions and unresolved gaps; never declare global completion.",
+      "required": true,
+      "requiredForBaseline": true,
+      "applicability": "always",
+      "sourcePriority": [
+        "scope_specific_authority"
+      ],
+      "sourceBinding": "REGISTER_AND_VERIFY_FOR_EXACT_JURISDICTION_SEAT_AND_CLAIM",
+      "verification": {
+        "required": [
+          "artifact_integrity",
+          "source_suitability",
+          "contextual_identity",
+          "valid_time",
+          "contradiction_check"
+        ],
+        "parserCertification": "exact_semantic_output_and_parser_version_with_production_lineage",
+        "candidateRecordsAreProof": false
+      },
+      "volatility": "HIGH",
+      "freshnessDays": 1,
+      "monitoringDays": 1,
+      "temporalPolicy": "supported_valid_time_only; retrieval_time_is_not_tenure_start",
+      "publicationPolicy": {
+        "state": "SEPARATE_GATE",
+        "requirements": [
+          "verified_claim",
+          "applicable_currentness",
+          "no_unresolved_contradiction",
+          "privacy_and_public_interest_review"
+        ],
+        "private_personal_contact": "NEVER_PUBLISH"
+      },
+      "capability": "contract.monitoring.v1",
+      "pool": "bounded_deterministic_http_first",
+      "maxConcurrency": 1,
+      "activation": "CAPABILITY_NOT_IMPLEMENTED",
+      "completion": "COVERAGE_RECONCILED_FOR_DEFINED_SCOPE_AS_OF",
+      "datasetReconciliation": {
+        "decision": "NOT_APPLICABLE",
+        "reason": "Atomic assertion or defined open scope; discovered finite datasets get separate reconciliation work."
+      }
+    },
+    "executive_actions": {
+      "scopeKey": "executive_actions",
+      "schemaVersion": 1,
+      "kind": "dataset",
+      "category": "government_activity",
+      "description": "executive actions",
+      "required": true,
+      "requiredForBaseline": false,
+      "applicability": "within_legally_established_office_powers_and_public_record_access; record_authoritative_not_applicable_if_outside_powers",
+      "sourcePriority": [
+        "official_executive_action_register"
+      ],
+      "sourceBinding": "REGISTER_AND_VERIFY_FOR_EXACT_JURISDICTION_SEAT_AND_CLAIM",
+      "verification": {
+        "required": [
+          "artifact_integrity",
+          "source_suitability",
+          "contextual_identity",
+          "valid_time",
+          "contradiction_check"
+        ],
+        "parserCertification": "exact_semantic_output_and_parser_version_with_production_lineage",
+        "candidateRecordsAreProof": false
+      },
+      "volatility": "HIGH",
+      "freshnessDays": 7,
+      "monitoringDays": 7,
+      "temporalPolicy": "supported_valid_time_only; retrieval_time_is_not_tenure_start",
+      "publicationPolicy": {
+        "state": "SEPARATE_GATE",
+        "requirements": [
+          "verified_claim",
+          "applicable_currentness",
+          "no_unresolved_contradiction",
+          "privacy_and_public_interest_review"
+        ],
+        "private_personal_contact": "NEVER_PUBLISH"
+      },
+      "capability": "contract.executive_actions.v1",
+      "pool": "bounded_deterministic_http_first",
+      "maxConcurrency": 1,
+      "activation": "CAPABILITY_NOT_IMPLEMENTED",
+      "completion": "RECONCILED_THROUGH_CUTOFF",
+      "datasetReconciliation": {
+        "schemaVersion": 1,
+        "universe": "resolved_subject+authority+jurisdiction+defined_scope+period",
+        "requirements": [
+          "authority_declared_universe",
+          "enumerate_all_units",
+          "all_pages_and_partitions",
+          "amendments_and_replacements",
+          "counts_and_applicable_totals",
+          "missing_units",
+          "cutoff",
+          "next_check"
+        ],
+        "samplingAllowed": false
+      }
+    },
+    "appointments": {
+      "scopeKey": "appointments",
+      "schemaVersion": 1,
+      "kind": "dataset",
+      "category": "government_activity",
+      "description": "appointments",
+      "required": true,
+      "requiredForBaseline": false,
+      "applicability": "within_legally_established_office_powers_and_public_record_access; record_authoritative_not_applicable_if_outside_powers",
+      "sourcePriority": [
+        "official_appointment_register"
+      ],
+      "sourceBinding": "REGISTER_AND_VERIFY_FOR_EXACT_JURISDICTION_SEAT_AND_CLAIM",
+      "verification": {
+        "required": [
+          "artifact_integrity",
+          "source_suitability",
+          "contextual_identity",
+          "valid_time",
+          "contradiction_check"
+        ],
+        "parserCertification": "exact_semantic_output_and_parser_version_with_production_lineage",
+        "candidateRecordsAreProof": false
+      },
+      "volatility": "HIGH",
+      "freshnessDays": 7,
+      "monitoringDays": 7,
+      "temporalPolicy": "supported_valid_time_only; retrieval_time_is_not_tenure_start",
+      "publicationPolicy": {
+        "state": "SEPARATE_GATE",
+        "requirements": [
+          "verified_claim",
+          "applicable_currentness",
+          "no_unresolved_contradiction",
+          "privacy_and_public_interest_review"
+        ],
+        "private_personal_contact": "NEVER_PUBLISH"
+      },
+      "capability": "contract.appointments.v1",
+      "pool": "bounded_deterministic_http_first",
+      "maxConcurrency": 1,
+      "activation": "CAPABILITY_NOT_IMPLEMENTED",
+      "completion": "RECONCILED_THROUGH_CUTOFF",
+      "datasetReconciliation": {
+        "schemaVersion": 1,
+        "universe": "resolved_subject+authority+jurisdiction+defined_scope+period",
+        "requirements": [
+          "authority_declared_universe",
+          "enumerate_all_units",
+          "all_pages_and_partitions",
+          "amendments_and_replacements",
+          "counts_and_applicable_totals",
+          "missing_units",
+          "cutoff",
+          "next_check"
+        ],
+        "samplingAllowed": false
+      }
+    },
+    "budget_actions": {
+      "scopeKey": "budget_actions",
+      "schemaVersion": 1,
+      "kind": "dataset",
+      "category": "government_activity",
+      "description": "budget actions",
+      "required": true,
+      "requiredForBaseline": false,
+      "applicability": "within_legally_established_office_powers_and_public_record_access; record_authoritative_not_applicable_if_outside_powers",
+      "sourcePriority": [
+        "official_budget_publication"
+      ],
+      "sourceBinding": "REGISTER_AND_VERIFY_FOR_EXACT_JURISDICTION_SEAT_AND_CLAIM",
+      "verification": {
+        "required": [
+          "artifact_integrity",
+          "source_suitability",
+          "contextual_identity",
+          "valid_time",
+          "contradiction_check"
+        ],
+        "parserCertification": "exact_semantic_output_and_parser_version_with_production_lineage",
+        "candidateRecordsAreProof": false
+      },
+      "volatility": "HIGH",
+      "freshnessDays": 7,
+      "monitoringDays": 7,
+      "temporalPolicy": "supported_valid_time_only; retrieval_time_is_not_tenure_start",
+      "publicationPolicy": {
+        "state": "SEPARATE_GATE",
+        "requirements": [
+          "verified_claim",
+          "applicable_currentness",
+          "no_unresolved_contradiction",
+          "privacy_and_public_interest_review"
+        ],
+        "private_personal_contact": "NEVER_PUBLISH"
+      },
+      "capability": "contract.budget_actions.v1",
+      "pool": "bounded_deterministic_http_first",
+      "maxConcurrency": 1,
+      "activation": "CAPABILITY_NOT_IMPLEMENTED",
+      "completion": "RECONCILED_THROUGH_CUTOFF",
+      "datasetReconciliation": {
+        "schemaVersion": 1,
+        "universe": "resolved_subject+authority+jurisdiction+defined_scope+period",
+        "requirements": [
+          "authority_declared_universe",
+          "enumerate_all_units",
+          "all_pages_and_partitions",
+          "amendments_and_replacements",
+          "counts_and_applicable_totals",
+          "missing_units",
+          "cutoff",
+          "next_check"
+        ],
+        "samplingAllowed": false
+      }
+    },
+    "vetoes_and_signings": {
+      "scopeKey": "vetoes_and_signings",
+      "schemaVersion": 1,
+      "kind": "dataset",
+      "category": "government_activity",
+      "description": "vetoes and signings",
+      "required": true,
+      "requiredForBaseline": false,
+      "applicability": "within_legally_established_office_powers_and_public_record_access; record_authoritative_not_applicable_if_outside_powers",
+      "sourcePriority": [
+        "official_executive_legislative_record"
+      ],
+      "sourceBinding": "REGISTER_AND_VERIFY_FOR_EXACT_JURISDICTION_SEAT_AND_CLAIM",
+      "verification": {
+        "required": [
+          "artifact_integrity",
+          "source_suitability",
+          "contextual_identity",
+          "valid_time",
+          "contradiction_check"
+        ],
+        "parserCertification": "exact_semantic_output_and_parser_version_with_production_lineage",
+        "candidateRecordsAreProof": false
+      },
+      "volatility": "HIGH",
+      "freshnessDays": 7,
+      "monitoringDays": 7,
+      "temporalPolicy": "supported_valid_time_only; retrieval_time_is_not_tenure_start",
+      "publicationPolicy": {
+        "state": "SEPARATE_GATE",
+        "requirements": [
+          "verified_claim",
+          "applicable_currentness",
+          "no_unresolved_contradiction",
+          "privacy_and_public_interest_review"
+        ],
+        "private_personal_contact": "NEVER_PUBLISH"
+      },
+      "capability": "contract.vetoes_and_signings.v1",
+      "pool": "bounded_deterministic_http_first",
+      "maxConcurrency": 1,
+      "activation": "CAPABILITY_NOT_IMPLEMENTED",
+      "completion": "RECONCILED_THROUGH_CUTOFF",
+      "datasetReconciliation": {
+        "schemaVersion": 1,
+        "universe": "resolved_subject+authority+jurisdiction+defined_scope+period",
+        "requirements": [
+          "authority_declared_universe",
+          "enumerate_all_units",
+          "all_pages_and_partitions",
+          "amendments_and_replacements",
+          "counts_and_applicable_totals",
+          "missing_units",
+          "cutoff",
+          "next_check"
+        ],
+        "samplingAllowed": false
+      }
+    },
+    "committees": {
+      "scopeKey": "committees",
+      "schemaVersion": 1,
+      "kind": "dataset",
+      "category": "government_activity",
+      "description": "committees",
+      "required": true,
+      "requiredForBaseline": false,
+      "applicability": "within_legally_established_office_powers_and_public_record_access; record_authoritative_not_applicable_if_outside_powers",
+      "sourcePriority": [
+        "official_legislative_roster"
+      ],
+      "sourceBinding": "REGISTER_AND_VERIFY_FOR_EXACT_JURISDICTION_SEAT_AND_CLAIM",
+      "verification": {
+        "required": [
+          "artifact_integrity",
+          "source_suitability",
+          "contextual_identity",
+          "valid_time",
+          "contradiction_check"
+        ],
+        "parserCertification": "exact_semantic_output_and_parser_version_with_production_lineage",
+        "candidateRecordsAreProof": false
+      },
+      "volatility": "HIGH",
+      "freshnessDays": 7,
+      "monitoringDays": 7,
+      "temporalPolicy": "supported_valid_time_only; retrieval_time_is_not_tenure_start",
+      "publicationPolicy": {
+        "state": "SEPARATE_GATE",
+        "requirements": [
+          "verified_claim",
+          "applicable_currentness",
+          "no_unresolved_contradiction",
+          "privacy_and_public_interest_review"
+        ],
+        "private_personal_contact": "NEVER_PUBLISH"
+      },
+      "capability": "contract.committees.v1",
+      "pool": "bounded_deterministic_http_first",
+      "maxConcurrency": 1,
+      "activation": "CAPABILITY_NOT_IMPLEMENTED",
+      "completion": "RECONCILED_THROUGH_CUTOFF",
+      "datasetReconciliation": {
+        "schemaVersion": 1,
+        "universe": "resolved_subject+authority+jurisdiction+defined_scope+period",
+        "requirements": [
+          "authority_declared_universe",
+          "enumerate_all_units",
+          "all_pages_and_partitions",
+          "amendments_and_replacements",
+          "counts_and_applicable_totals",
+          "missing_units",
+          "cutoff",
+          "next_check"
+        ],
+        "samplingAllowed": false
+      }
+    },
+    "legislation": {
+      "scopeKey": "legislation",
+      "schemaVersion": 1,
+      "kind": "dataset",
+      "category": "government_activity",
+      "description": "legislation",
+      "required": true,
+      "requiredForBaseline": false,
+      "applicability": "within_legally_established_office_powers_and_public_record_access; record_authoritative_not_applicable_if_outside_powers",
+      "sourcePriority": [
+        "official_legislative_register"
+      ],
+      "sourceBinding": "REGISTER_AND_VERIFY_FOR_EXACT_JURISDICTION_SEAT_AND_CLAIM",
+      "verification": {
+        "required": [
+          "artifact_integrity",
+          "source_suitability",
+          "contextual_identity",
+          "valid_time",
+          "contradiction_check"
+        ],
+        "parserCertification": "exact_semantic_output_and_parser_version_with_production_lineage",
+        "candidateRecordsAreProof": false
+      },
+      "volatility": "HIGH",
+      "freshnessDays": 7,
+      "monitoringDays": 7,
+      "temporalPolicy": "supported_valid_time_only; retrieval_time_is_not_tenure_start",
+      "publicationPolicy": {
+        "state": "SEPARATE_GATE",
+        "requirements": [
+          "verified_claim",
+          "applicable_currentness",
+          "no_unresolved_contradiction",
+          "privacy_and_public_interest_review"
+        ],
+        "private_personal_contact": "NEVER_PUBLISH"
+      },
+      "capability": "contract.legislation.v1",
+      "pool": "bounded_deterministic_http_first",
+      "maxConcurrency": 1,
+      "activation": "CAPABILITY_NOT_IMPLEMENTED",
+      "completion": "RECONCILED_THROUGH_CUTOFF",
+      "datasetReconciliation": {
+        "schemaVersion": 1,
+        "universe": "resolved_subject+authority+jurisdiction+defined_scope+period",
+        "requirements": [
+          "authority_declared_universe",
+          "enumerate_all_units",
+          "all_pages_and_partitions",
+          "amendments_and_replacements",
+          "counts_and_applicable_totals",
+          "missing_units",
+          "cutoff",
+          "next_check"
+        ],
+        "samplingAllowed": false
+      }
+    },
+    "votes": {
+      "scopeKey": "votes",
+      "schemaVersion": 1,
+      "kind": "dataset",
+      "category": "government_activity",
+      "description": "votes",
+      "required": true,
+      "requiredForBaseline": false,
+      "applicability": "within_legally_established_office_powers_and_public_record_access; record_authoritative_not_applicable_if_outside_powers",
+      "sourcePriority": [
+        "official_roll_call_register"
+      ],
+      "sourceBinding": "REGISTER_AND_VERIFY_FOR_EXACT_JURISDICTION_SEAT_AND_CLAIM",
+      "verification": {
+        "required": [
+          "artifact_integrity",
+          "source_suitability",
+          "contextual_identity",
+          "valid_time",
+          "contradiction_check"
+        ],
+        "parserCertification": "exact_semantic_output_and_parser_version_with_production_lineage",
+        "candidateRecordsAreProof": false
+      },
+      "volatility": "HIGH",
+      "freshnessDays": 7,
+      "monitoringDays": 7,
+      "temporalPolicy": "supported_valid_time_only; retrieval_time_is_not_tenure_start",
+      "publicationPolicy": {
+        "state": "SEPARATE_GATE",
+        "requirements": [
+          "verified_claim",
+          "applicable_currentness",
+          "no_unresolved_contradiction",
+          "privacy_and_public_interest_review"
+        ],
+        "private_personal_contact": "NEVER_PUBLISH"
+      },
+      "capability": "contract.votes.v1",
+      "pool": "bounded_deterministic_http_first",
+      "maxConcurrency": 1,
+      "activation": "CAPABILITY_NOT_IMPLEMENTED",
+      "completion": "RECONCILED_THROUGH_CUTOFF",
+      "datasetReconciliation": {
+        "schemaVersion": 1,
+        "universe": "resolved_subject+authority+jurisdiction+defined_scope+period",
+        "requirements": [
+          "authority_declared_universe",
+          "enumerate_all_units",
+          "all_pages_and_partitions",
+          "amendments_and_replacements",
+          "counts_and_applicable_totals",
+          "missing_units",
+          "cutoff",
+          "next_check"
+        ],
+        "samplingAllowed": false
+      }
+    },
+    "attendance": {
+      "scopeKey": "attendance",
+      "schemaVersion": 1,
+      "kind": "dataset",
+      "category": "government_activity",
+      "description": "attendance",
+      "required": true,
+      "requiredForBaseline": false,
+      "applicability": "within_legally_established_office_powers_and_public_record_access; record_authoritative_not_applicable_if_outside_powers",
+      "sourcePriority": [
+        "official_meeting_journal"
+      ],
+      "sourceBinding": "REGISTER_AND_VERIFY_FOR_EXACT_JURISDICTION_SEAT_AND_CLAIM",
+      "verification": {
+        "required": [
+          "artifact_integrity",
+          "source_suitability",
+          "contextual_identity",
+          "valid_time",
+          "contradiction_check"
+        ],
+        "parserCertification": "exact_semantic_output_and_parser_version_with_production_lineage",
+        "candidateRecordsAreProof": false
+      },
+      "volatility": "HIGH",
+      "freshnessDays": 7,
+      "monitoringDays": 7,
+      "temporalPolicy": "supported_valid_time_only; retrieval_time_is_not_tenure_start",
+      "publicationPolicy": {
+        "state": "SEPARATE_GATE",
+        "requirements": [
+          "verified_claim",
+          "applicable_currentness",
+          "no_unresolved_contradiction",
+          "privacy_and_public_interest_review"
+        ],
+        "private_personal_contact": "NEVER_PUBLISH"
+      },
+      "capability": "contract.attendance.v1",
+      "pool": "bounded_deterministic_http_first",
+      "maxConcurrency": 1,
+      "activation": "CAPABILITY_NOT_IMPLEMENTED",
+      "completion": "RECONCILED_THROUGH_CUTOFF",
+      "datasetReconciliation": {
+        "schemaVersion": 1,
+        "universe": "resolved_subject+authority+jurisdiction+defined_scope+period",
+        "requirements": [
+          "authority_declared_universe",
+          "enumerate_all_units",
+          "all_pages_and_partitions",
+          "amendments_and_replacements",
+          "counts_and_applicable_totals",
+          "missing_units",
+          "cutoff",
+          "next_check"
+        ],
+        "samplingAllowed": false
+      }
+    },
+    "ordinances": {
+      "scopeKey": "ordinances",
+      "schemaVersion": 1,
+      "kind": "dataset",
+      "category": "government_activity",
+      "description": "ordinances",
+      "required": true,
+      "requiredForBaseline": false,
+      "applicability": "within_legally_established_office_powers_and_public_record_access; record_authoritative_not_applicable_if_outside_powers",
+      "sourcePriority": [
+        "official_local_code_and_action_register"
+      ],
+      "sourceBinding": "REGISTER_AND_VERIFY_FOR_EXACT_JURISDICTION_SEAT_AND_CLAIM",
+      "verification": {
+        "required": [
+          "artifact_integrity",
+          "source_suitability",
+          "contextual_identity",
+          "valid_time",
+          "contradiction_check"
+        ],
+        "parserCertification": "exact_semantic_output_and_parser_version_with_production_lineage",
+        "candidateRecordsAreProof": false
+      },
+      "volatility": "HIGH",
+      "freshnessDays": 7,
+      "monitoringDays": 7,
+      "temporalPolicy": "supported_valid_time_only; retrieval_time_is_not_tenure_start",
+      "publicationPolicy": {
+        "state": "SEPARATE_GATE",
+        "requirements": [
+          "verified_claim",
+          "applicable_currentness",
+          "no_unresolved_contradiction",
+          "privacy_and_public_interest_review"
+        ],
+        "private_personal_contact": "NEVER_PUBLISH"
+      },
+      "capability": "contract.ordinances.v1",
+      "pool": "bounded_deterministic_http_first",
+      "maxConcurrency": 1,
+      "activation": "CAPABILITY_NOT_IMPLEMENTED",
+      "completion": "RECONCILED_THROUGH_CUTOFF",
+      "datasetReconciliation": {
+        "schemaVersion": 1,
+        "universe": "resolved_subject+authority+jurisdiction+defined_scope+period",
+        "requirements": [
+          "authority_declared_universe",
+          "enumerate_all_units",
+          "all_pages_and_partitions",
+          "amendments_and_replacements",
+          "counts_and_applicable_totals",
+          "missing_units",
+          "cutoff",
+          "next_check"
+        ],
+        "samplingAllowed": false
+      }
+    },
+    "meetings": {
+      "scopeKey": "meetings",
+      "schemaVersion": 1,
+      "kind": "dataset",
+      "category": "government_activity",
+      "description": "meetings",
+      "required": true,
+      "requiredForBaseline": false,
+      "applicability": "within_legally_established_office_powers_and_public_record_access; record_authoritative_not_applicable_if_outside_powers",
+      "sourcePriority": [
+        "official_agenda_minutes_register"
+      ],
+      "sourceBinding": "REGISTER_AND_VERIFY_FOR_EXACT_JURISDICTION_SEAT_AND_CLAIM",
+      "verification": {
+        "required": [
+          "artifact_integrity",
+          "source_suitability",
+          "contextual_identity",
+          "valid_time",
+          "contradiction_check"
+        ],
+        "parserCertification": "exact_semantic_output_and_parser_version_with_production_lineage",
+        "candidateRecordsAreProof": false
+      },
+      "volatility": "HIGH",
+      "freshnessDays": 7,
+      "monitoringDays": 7,
+      "temporalPolicy": "supported_valid_time_only; retrieval_time_is_not_tenure_start",
+      "publicationPolicy": {
+        "state": "SEPARATE_GATE",
+        "requirements": [
+          "verified_claim",
+          "applicable_currentness",
+          "no_unresolved_contradiction",
+          "privacy_and_public_interest_review"
+        ],
+        "private_personal_contact": "NEVER_PUBLISH"
+      },
+      "capability": "contract.meetings.v1",
+      "pool": "bounded_deterministic_http_first",
+      "maxConcurrency": 1,
+      "activation": "CAPABILITY_NOT_IMPLEMENTED",
+      "completion": "RECONCILED_THROUGH_CUTOFF",
+      "datasetReconciliation": {
+        "schemaVersion": 1,
+        "universe": "resolved_subject+authority+jurisdiction+defined_scope+period",
+        "requirements": [
+          "authority_declared_universe",
+          "enumerate_all_units",
+          "all_pages_and_partitions",
+          "amendments_and_replacements",
+          "counts_and_applicable_totals",
+          "missing_units",
+          "cutoff",
+          "next_check"
+        ],
+        "samplingAllowed": false
+      }
+    },
+    "procurement": {
+      "scopeKey": "procurement",
+      "schemaVersion": 1,
+      "kind": "dataset",
+      "category": "government_activity",
+      "description": "procurement",
+      "required": true,
+      "requiredForBaseline": false,
+      "applicability": "within_legally_established_office_powers_and_public_record_access; record_authoritative_not_applicable_if_outside_powers",
+      "sourcePriority": [
+        "official_procurement_register"
+      ],
+      "sourceBinding": "REGISTER_AND_VERIFY_FOR_EXACT_JURISDICTION_SEAT_AND_CLAIM",
+      "verification": {
+        "required": [
+          "artifact_integrity",
+          "source_suitability",
+          "contextual_identity",
+          "valid_time",
+          "contradiction_check"
+        ],
+        "parserCertification": "exact_semantic_output_and_parser_version_with_production_lineage",
+        "candidateRecordsAreProof": false
+      },
+      "volatility": "HIGH",
+      "freshnessDays": 7,
+      "monitoringDays": 7,
+      "temporalPolicy": "supported_valid_time_only; retrieval_time_is_not_tenure_start",
+      "publicationPolicy": {
+        "state": "SEPARATE_GATE",
+        "requirements": [
+          "verified_claim",
+          "applicable_currentness",
+          "no_unresolved_contradiction",
+          "privacy_and_public_interest_review"
+        ],
+        "private_personal_contact": "NEVER_PUBLISH"
+      },
+      "capability": "contract.procurement.v1",
+      "pool": "bounded_deterministic_http_first",
+      "maxConcurrency": 1,
+      "activation": "CAPABILITY_NOT_IMPLEMENTED",
+      "completion": "RECONCILED_THROUGH_CUTOFF",
+      "datasetReconciliation": {
+        "schemaVersion": 1,
+        "universe": "resolved_subject+authority+jurisdiction+defined_scope+period",
+        "requirements": [
+          "authority_declared_universe",
+          "enumerate_all_units",
+          "all_pages_and_partitions",
+          "amendments_and_replacements",
+          "counts_and_applicable_totals",
+          "missing_units",
+          "cutoff",
+          "next_check"
+        ],
+        "samplingAllowed": false
+      }
+    },
+    "office_services": {
+      "scopeKey": "office_services",
+      "schemaVersion": 1,
+      "kind": "dataset",
+      "category": "government_activity",
+      "description": "office services",
+      "required": true,
+      "requiredForBaseline": false,
+      "applicability": "within_legally_established_office_powers_and_public_record_access; record_authoritative_not_applicable_if_outside_powers",
+      "sourcePriority": [
+        "official_office_service_directory"
+      ],
+      "sourceBinding": "REGISTER_AND_VERIFY_FOR_EXACT_JURISDICTION_SEAT_AND_CLAIM",
+      "verification": {
+        "required": [
+          "artifact_integrity",
+          "source_suitability",
+          "contextual_identity",
+          "valid_time",
+          "contradiction_check"
+        ],
+        "parserCertification": "exact_semantic_output_and_parser_version_with_production_lineage",
+        "candidateRecordsAreProof": false
+      },
+      "volatility": "HIGH",
+      "freshnessDays": 7,
+      "monitoringDays": 7,
+      "temporalPolicy": "supported_valid_time_only; retrieval_time_is_not_tenure_start",
+      "publicationPolicy": {
+        "state": "SEPARATE_GATE",
+        "requirements": [
+          "verified_claim",
+          "applicable_currentness",
+          "no_unresolved_contradiction",
+          "privacy_and_public_interest_review"
+        ],
+        "private_personal_contact": "NEVER_PUBLISH"
+      },
+      "capability": "contract.office_services.v1",
+      "pool": "bounded_deterministic_http_first",
+      "maxConcurrency": 1,
+      "activation": "CAPABILITY_NOT_IMPLEMENTED",
+      "completion": "RECONCILED_THROUGH_CUTOFF",
+      "datasetReconciliation": {
+        "schemaVersion": 1,
+        "universe": "resolved_subject+authority+jurisdiction+defined_scope+period",
+        "requirements": [
+          "authority_declared_universe",
+          "enumerate_all_units",
+          "all_pages_and_partitions",
+          "amendments_and_replacements",
+          "counts_and_applicable_totals",
+          "missing_units",
+          "cutoff",
+          "next_check"
+        ],
+        "samplingAllowed": false
+      }
+    },
+    "court_assignments": {
+      "scopeKey": "court_assignments",
+      "schemaVersion": 1,
+      "kind": "dataset",
+      "category": "government_activity",
+      "description": "court assignments",
+      "required": true,
+      "requiredForBaseline": false,
+      "applicability": "within_legally_established_office_powers_and_public_record_access; record_authoritative_not_applicable_if_outside_powers",
+      "sourcePriority": [
+        "official_judicial_roster"
+      ],
+      "sourceBinding": "REGISTER_AND_VERIFY_FOR_EXACT_JURISDICTION_SEAT_AND_CLAIM",
+      "verification": {
+        "required": [
+          "artifact_integrity",
+          "source_suitability",
+          "contextual_identity",
+          "valid_time",
+          "contradiction_check"
+        ],
+        "parserCertification": "exact_semantic_output_and_parser_version_with_production_lineage",
+        "candidateRecordsAreProof": false
+      },
+      "volatility": "HIGH",
+      "freshnessDays": 7,
+      "monitoringDays": 7,
+      "temporalPolicy": "supported_valid_time_only; retrieval_time_is_not_tenure_start",
+      "publicationPolicy": {
+        "state": "SEPARATE_GATE",
+        "requirements": [
+          "verified_claim",
+          "applicable_currentness",
+          "no_unresolved_contradiction",
+          "privacy_and_public_interest_review"
+        ],
+        "private_personal_contact": "NEVER_PUBLISH"
+      },
+      "capability": "contract.court_assignments.v1",
+      "pool": "bounded_deterministic_http_first",
+      "maxConcurrency": 1,
+      "activation": "CAPABILITY_NOT_IMPLEMENTED",
+      "completion": "RECONCILED_THROUGH_CUTOFF",
+      "datasetReconciliation": {
+        "schemaVersion": 1,
+        "universe": "resolved_subject+authority+jurisdiction+defined_scope+period",
+        "requirements": [
+          "authority_declared_universe",
+          "enumerate_all_units",
+          "all_pages_and_partitions",
+          "amendments_and_replacements",
+          "counts_and_applicable_totals",
+          "missing_units",
+          "cutoff",
+          "next_check"
+        ],
+        "samplingAllowed": false
+      }
+    },
+    "judicial_decisions": {
+      "scopeKey": "judicial_decisions",
+      "schemaVersion": 1,
+      "kind": "dataset",
+      "category": "government_activity",
+      "description": "judicial decisions",
+      "required": true,
+      "requiredForBaseline": false,
+      "applicability": "within_legally_established_office_powers_and_public_record_access; record_authoritative_not_applicable_if_outside_powers",
+      "sourcePriority": [
+        "official_court_decision_register"
+      ],
+      "sourceBinding": "REGISTER_AND_VERIFY_FOR_EXACT_JURISDICTION_SEAT_AND_CLAIM",
+      "verification": {
+        "required": [
+          "artifact_integrity",
+          "source_suitability",
+          "contextual_identity",
+          "valid_time",
+          "contradiction_check"
+        ],
+        "parserCertification": "exact_semantic_output_and_parser_version_with_production_lineage",
+        "candidateRecordsAreProof": false
+      },
+      "volatility": "HIGH",
+      "freshnessDays": 7,
+      "monitoringDays": 7,
+      "temporalPolicy": "supported_valid_time_only; retrieval_time_is_not_tenure_start",
+      "publicationPolicy": {
+        "state": "SEPARATE_GATE",
+        "requirements": [
+          "verified_claim",
+          "applicable_currentness",
+          "no_unresolved_contradiction",
+          "privacy_and_public_interest_review"
+        ],
+        "private_personal_contact": "NEVER_PUBLISH"
+      },
+      "capability": "contract.judicial_decisions.v1",
+      "pool": "bounded_deterministic_http_first",
+      "maxConcurrency": 1,
+      "activation": "CAPABILITY_NOT_IMPLEMENTED",
+      "completion": "RECONCILED_THROUGH_CUTOFF",
+      "datasetReconciliation": {
+        "schemaVersion": 1,
+        "universe": "resolved_subject+authority+jurisdiction+defined_scope+period",
+        "requirements": [
+          "authority_declared_universe",
+          "enumerate_all_units",
+          "all_pages_and_partitions",
+          "amendments_and_replacements",
+          "counts_and_applicable_totals",
+          "missing_units",
+          "cutoff",
+          "next_check"
+        ],
+        "samplingAllowed": false
+      }
+    },
+    "district_policies": {
+      "scopeKey": "district_policies",
+      "schemaVersion": 1,
+      "kind": "dataset",
+      "category": "government_activity",
+      "description": "district policies",
+      "required": true,
+      "requiredForBaseline": false,
+      "applicability": "within_legally_established_office_powers_and_public_record_access; record_authoritative_not_applicable_if_outside_powers",
+      "sourcePriority": [
+        "official_district_policy_register"
+      ],
+      "sourceBinding": "REGISTER_AND_VERIFY_FOR_EXACT_JURISDICTION_SEAT_AND_CLAIM",
+      "verification": {
+        "required": [
+          "artifact_integrity",
+          "source_suitability",
+          "contextual_identity",
+          "valid_time",
+          "contradiction_check"
+        ],
+        "parserCertification": "exact_semantic_output_and_parser_version_with_production_lineage",
+        "candidateRecordsAreProof": false
+      },
+      "volatility": "HIGH",
+      "freshnessDays": 7,
+      "monitoringDays": 7,
+      "temporalPolicy": "supported_valid_time_only; retrieval_time_is_not_tenure_start",
+      "publicationPolicy": {
+        "state": "SEPARATE_GATE",
+        "requirements": [
+          "verified_claim",
+          "applicable_currentness",
+          "no_unresolved_contradiction",
+          "privacy_and_public_interest_review"
+        ],
+        "private_personal_contact": "NEVER_PUBLISH"
+      },
+      "capability": "contract.district_policies.v1",
+      "pool": "bounded_deterministic_http_first",
+      "maxConcurrency": 1,
+      "activation": "CAPABILITY_NOT_IMPLEMENTED",
+      "completion": "RECONCILED_THROUGH_CUTOFF",
+      "datasetReconciliation": {
+        "schemaVersion": 1,
+        "universe": "resolved_subject+authority+jurisdiction+defined_scope+period",
+        "requirements": [
+          "authority_declared_universe",
+          "enumerate_all_units",
+          "all_pages_and_partitions",
+          "amendments_and_replacements",
+          "counts_and_applicable_totals",
+          "missing_units",
+          "cutoff",
+          "next_check"
+        ],
+        "samplingAllowed": false
+      }
+    }
+  },
+  "officeClasses": {
+    "FEDERAL_EXECUTIVE": {
+      "contractKey": "FEDERAL_EXECUTIVE_V2",
+      "version": "2",
+      "officeClass": "FEDERAL_EXECUTIVE",
+      "active": false,
+      "name": "Federal Executive research v2",
+      "description": "Bounded dossiers with recurring monitoring; jurisdiction-specific applicability and sources must be resolved before activation.",
+      "scopes": [
+        "jurisdiction",
+        "seat",
+        "person",
+        "identity",
+        "occupancy",
+        "current_occupant",
+        "evidence",
+        "contact",
+        "portrait",
+        "biography",
+        "prior_offices",
+        "education_and_professional_history",
+        "public_statements",
+        "official_media",
+        "relationships",
+        "public_records",
+        "ethics_proceedings",
+        "financial_disclosures",
+        "business_interests",
+        "elections",
+        "candidates",
+        "election_results",
+        "campaign_finance",
+        "campaign_platform",
+        "promises",
+        "monitoring",
+        "executive_actions",
+        "appointments",
+        "budget_actions",
+        "vetoes_and_signings",
+        "procurement"
+      ]
+    },
+    "US_SENATOR": {
+      "contractKey": "US_SENATOR_V2",
+      "version": "2",
+      "officeClass": "US_SENATOR",
+      "active": false,
+      "name": "Us Senator research v2",
+      "description": "Bounded dossiers with recurring monitoring; jurisdiction-specific applicability and sources must be resolved before activation.",
+      "scopes": [
+        "jurisdiction",
+        "seat",
+        "person",
+        "identity",
+        "occupancy",
+        "current_occupant",
+        "evidence",
+        "contact",
+        "portrait",
+        "biography",
+        "prior_offices",
+        "education_and_professional_history",
+        "public_statements",
+        "official_media",
+        "relationships",
+        "public_records",
+        "ethics_proceedings",
+        "financial_disclosures",
+        "business_interests",
+        "elections",
+        "candidates",
+        "election_results",
+        "campaign_finance",
+        "campaign_platform",
+        "promises",
+        "monitoring",
+        "committees",
+        "legislation",
+        "votes",
+        "attendance",
+        "budget_actions"
+      ]
+    },
+    "US_REPRESENTATIVE": {
+      "contractKey": "US_REPRESENTATIVE_V2",
+      "version": "2",
+      "officeClass": "US_REPRESENTATIVE",
+      "active": false,
+      "name": "Us Representative research v2",
+      "description": "Bounded dossiers with recurring monitoring; jurisdiction-specific applicability and sources must be resolved before activation.",
+      "scopes": [
+        "jurisdiction",
+        "seat",
+        "person",
+        "identity",
+        "occupancy",
+        "current_occupant",
+        "evidence",
+        "contact",
+        "portrait",
+        "biography",
+        "prior_offices",
+        "education_and_professional_history",
+        "public_statements",
+        "official_media",
+        "relationships",
+        "public_records",
+        "ethics_proceedings",
+        "financial_disclosures",
+        "business_interests",
+        "elections",
+        "candidates",
+        "election_results",
+        "campaign_finance",
+        "campaign_platform",
+        "promises",
+        "monitoring",
+        "committees",
+        "legislation",
+        "votes",
+        "attendance",
+        "budget_actions"
+      ]
+    },
+    "STATE_GOVERNOR": {
+      "contractKey": "STATE_GOVERNOR_V2",
+      "version": "2",
+      "officeClass": "STATE_GOVERNOR",
+      "active": false,
+      "name": "State Governor research v2",
+      "description": "Bounded dossiers with recurring monitoring; jurisdiction-specific applicability and sources must be resolved before activation.",
+      "scopes": [
+        "jurisdiction",
+        "seat",
+        "person",
+        "identity",
+        "occupancy",
+        "current_occupant",
+        "evidence",
+        "contact",
+        "portrait",
+        "biography",
+        "prior_offices",
+        "education_and_professional_history",
+        "public_statements",
+        "official_media",
+        "relationships",
+        "public_records",
+        "ethics_proceedings",
+        "financial_disclosures",
+        "business_interests",
+        "elections",
+        "candidates",
+        "election_results",
+        "campaign_finance",
+        "campaign_platform",
+        "promises",
+        "monitoring",
+        "executive_actions",
+        "appointments",
+        "budget_actions",
+        "vetoes_and_signings",
+        "procurement"
+      ]
+    },
+    "STATE_EXECUTIVE": {
+      "contractKey": "STATE_EXECUTIVE_V2",
+      "version": "2",
+      "officeClass": "STATE_EXECUTIVE",
+      "active": false,
+      "name": "State Executive research v2",
+      "description": "Bounded dossiers with recurring monitoring; jurisdiction-specific applicability and sources must be resolved before activation.",
+      "scopes": [
+        "jurisdiction",
+        "seat",
+        "person",
+        "identity",
+        "occupancy",
+        "current_occupant",
+        "evidence",
+        "contact",
+        "portrait",
+        "biography",
+        "prior_offices",
+        "education_and_professional_history",
+        "public_statements",
+        "official_media",
+        "relationships",
+        "public_records",
+        "ethics_proceedings",
+        "financial_disclosures",
+        "business_interests",
+        "elections",
+        "candidates",
+        "election_results",
+        "campaign_finance",
+        "campaign_platform",
+        "promises",
+        "monitoring",
+        "executive_actions",
+        "appointments",
+        "budget_actions",
+        "vetoes_and_signings",
+        "procurement",
+        "office_services"
+      ]
+    },
+    "STATE_SENATOR": {
+      "contractKey": "STATE_SENATOR_V2",
+      "version": "2",
+      "officeClass": "STATE_SENATOR",
+      "active": false,
+      "name": "State Senator research v2",
+      "description": "Bounded dossiers with recurring monitoring; jurisdiction-specific applicability and sources must be resolved before activation.",
+      "scopes": [
+        "jurisdiction",
+        "seat",
+        "person",
+        "identity",
+        "occupancy",
+        "current_occupant",
+        "evidence",
+        "contact",
+        "portrait",
+        "biography",
+        "prior_offices",
+        "education_and_professional_history",
+        "public_statements",
+        "official_media",
+        "relationships",
+        "public_records",
+        "ethics_proceedings",
+        "financial_disclosures",
+        "business_interests",
+        "elections",
+        "candidates",
+        "election_results",
+        "campaign_finance",
+        "campaign_platform",
+        "promises",
+        "monitoring",
+        "committees",
+        "legislation",
+        "votes",
+        "attendance",
+        "budget_actions"
+      ]
+    },
+    "STATE_REPRESENTATIVE": {
+      "contractKey": "STATE_REPRESENTATIVE_V2",
+      "version": "2",
+      "officeClass": "STATE_REPRESENTATIVE",
+      "active": false,
+      "name": "State Representative research v2",
+      "description": "Bounded dossiers with recurring monitoring; jurisdiction-specific applicability and sources must be resolved before activation.",
+      "scopes": [
+        "jurisdiction",
+        "seat",
+        "person",
+        "identity",
+        "occupancy",
+        "current_occupant",
+        "evidence",
+        "contact",
+        "portrait",
+        "biography",
+        "prior_offices",
+        "education_and_professional_history",
+        "public_statements",
+        "official_media",
+        "relationships",
+        "public_records",
+        "ethics_proceedings",
+        "financial_disclosures",
+        "business_interests",
+        "elections",
+        "candidates",
+        "election_results",
+        "campaign_finance",
+        "campaign_platform",
+        "promises",
+        "monitoring",
+        "committees",
+        "legislation",
+        "votes",
+        "attendance",
+        "budget_actions"
+      ]
+    },
+    "COUNTY_EXECUTIVE": {
+      "contractKey": "COUNTY_EXECUTIVE_V2",
+      "version": "2",
+      "officeClass": "COUNTY_EXECUTIVE",
+      "active": false,
+      "name": "County Executive research v2",
+      "description": "Bounded dossiers with recurring monitoring; jurisdiction-specific applicability and sources must be resolved before activation.",
+      "scopes": [
+        "jurisdiction",
+        "seat",
+        "person",
+        "identity",
+        "occupancy",
+        "current_occupant",
+        "evidence",
+        "contact",
+        "portrait",
+        "biography",
+        "prior_offices",
+        "education_and_professional_history",
+        "public_statements",
+        "official_media",
+        "relationships",
+        "public_records",
+        "ethics_proceedings",
+        "financial_disclosures",
+        "business_interests",
+        "elections",
+        "candidates",
+        "election_results",
+        "campaign_finance",
+        "campaign_platform",
+        "promises",
+        "monitoring",
+        "executive_actions",
+        "appointments",
+        "budget_actions",
+        "vetoes_and_signings",
+        "procurement",
+        "office_services"
+      ]
+    },
+    "COUNTY_COMMISSIONER": {
+      "contractKey": "COUNTY_COMMISSIONER_V2",
+      "version": "2",
+      "officeClass": "COUNTY_COMMISSIONER",
+      "active": false,
+      "name": "County Commissioner research v2",
+      "description": "Bounded dossiers with recurring monitoring; jurisdiction-specific applicability and sources must be resolved before activation.",
+      "scopes": [
+        "jurisdiction",
+        "seat",
+        "person",
+        "identity",
+        "occupancy",
+        "current_occupant",
+        "evidence",
+        "contact",
+        "portrait",
+        "biography",
+        "prior_offices",
+        "education_and_professional_history",
+        "public_statements",
+        "official_media",
+        "relationships",
+        "public_records",
+        "ethics_proceedings",
+        "financial_disclosures",
+        "business_interests",
+        "elections",
+        "candidates",
+        "election_results",
+        "campaign_finance",
+        "campaign_platform",
+        "promises",
+        "monitoring",
+        "ordinances",
+        "meetings",
+        "votes",
+        "budget_actions",
+        "procurement"
+      ]
+    },
+    "COUNTY_CONSTITUTIONAL_OFFICER": {
+      "contractKey": "COUNTY_CONSTITUTIONAL_OFFICER_V2",
+      "version": "2",
+      "officeClass": "COUNTY_CONSTITUTIONAL_OFFICER",
+      "active": false,
+      "name": "County Constitutional Officer research v2",
+      "description": "Bounded dossiers with recurring monitoring; jurisdiction-specific applicability and sources must be resolved before activation.",
+      "scopes": [
+        "jurisdiction",
+        "seat",
+        "person",
+        "identity",
+        "occupancy",
+        "current_occupant",
+        "evidence",
+        "contact",
+        "portrait",
+        "biography",
+        "prior_offices",
+        "education_and_professional_history",
+        "public_statements",
+        "official_media",
+        "relationships",
+        "public_records",
+        "ethics_proceedings",
+        "financial_disclosures",
+        "business_interests",
+        "elections",
+        "candidates",
+        "election_results",
+        "campaign_finance",
+        "campaign_platform",
+        "promises",
+        "monitoring",
+        "office_services",
+        "budget_actions",
+        "procurement"
+      ]
+    },
+    "SHERIFF": {
+      "contractKey": "SHERIFF_V2",
+      "version": "2",
+      "officeClass": "SHERIFF",
+      "active": false,
+      "name": "Sheriff research v2",
+      "description": "Bounded dossiers with recurring monitoring; jurisdiction-specific applicability and sources must be resolved before activation.",
+      "scopes": [
+        "jurisdiction",
+        "seat",
+        "person",
+        "identity",
+        "occupancy",
+        "current_occupant",
+        "evidence",
+        "contact",
+        "portrait",
+        "biography",
+        "prior_offices",
+        "education_and_professional_history",
+        "public_statements",
+        "official_media",
+        "relationships",
+        "public_records",
+        "ethics_proceedings",
+        "financial_disclosures",
+        "business_interests",
+        "elections",
+        "candidates",
+        "election_results",
+        "campaign_finance",
+        "campaign_platform",
+        "promises",
+        "monitoring",
+        "office_services",
+        "budget_actions",
+        "procurement"
+      ]
+    },
+    "MAYOR": {
+      "contractKey": "MAYOR_V2",
+      "version": "2",
+      "officeClass": "MAYOR",
+      "active": false,
+      "name": "Mayor research v2",
+      "description": "Bounded dossiers with recurring monitoring; jurisdiction-specific applicability and sources must be resolved before activation.",
+      "scopes": [
+        "jurisdiction",
+        "seat",
+        "person",
+        "identity",
+        "occupancy",
+        "current_occupant",
+        "evidence",
+        "contact",
+        "portrait",
+        "biography",
+        "prior_offices",
+        "education_and_professional_history",
+        "public_statements",
+        "official_media",
+        "relationships",
+        "public_records",
+        "ethics_proceedings",
+        "financial_disclosures",
+        "business_interests",
+        "elections",
+        "candidates",
+        "election_results",
+        "campaign_finance",
+        "campaign_platform",
+        "promises",
+        "monitoring",
+        "executive_actions",
+        "appointments",
+        "budget_actions",
+        "vetoes_and_signings",
+        "procurement",
+        "ordinances",
+        "meetings"
+      ]
+    },
+    "CITY_COUNCIL_MEMBER": {
+      "contractKey": "CITY_COUNCIL_MEMBER_V2",
+      "version": "2",
+      "officeClass": "CITY_COUNCIL_MEMBER",
+      "active": false,
+      "name": "City Council Member research v2",
+      "description": "Bounded dossiers with recurring monitoring; jurisdiction-specific applicability and sources must be resolved before activation.",
+      "scopes": [
+        "jurisdiction",
+        "seat",
+        "person",
+        "identity",
+        "occupancy",
+        "current_occupant",
+        "evidence",
+        "contact",
+        "portrait",
+        "biography",
+        "prior_offices",
+        "education_and_professional_history",
+        "public_statements",
+        "official_media",
+        "relationships",
+        "public_records",
+        "ethics_proceedings",
+        "financial_disclosures",
+        "business_interests",
+        "elections",
+        "candidates",
+        "election_results",
+        "campaign_finance",
+        "campaign_platform",
+        "promises",
+        "monitoring",
+        "ordinances",
+        "meetings",
+        "votes",
+        "budget_actions",
+        "procurement"
+      ]
+    },
+    "SCHOOL_BOARD_MEMBER": {
+      "contractKey": "SCHOOL_BOARD_MEMBER_V2",
+      "version": "2",
+      "officeClass": "SCHOOL_BOARD_MEMBER",
+      "active": false,
+      "name": "School Board Member research v2",
+      "description": "Bounded dossiers with recurring monitoring; jurisdiction-specific applicability and sources must be resolved before activation.",
+      "scopes": [
+        "jurisdiction",
+        "seat",
+        "person",
+        "identity",
+        "occupancy",
+        "current_occupant",
+        "evidence",
+        "contact",
+        "portrait",
+        "biography",
+        "prior_offices",
+        "education_and_professional_history",
+        "public_statements",
+        "official_media",
+        "relationships",
+        "public_records",
+        "ethics_proceedings",
+        "financial_disclosures",
+        "business_interests",
+        "elections",
+        "candidates",
+        "election_results",
+        "campaign_finance",
+        "campaign_platform",
+        "promises",
+        "monitoring",
+        "meetings",
+        "votes",
+        "budget_actions",
+        "district_policies",
+        "procurement"
+      ]
+    },
+    "JUDGE": {
+      "contractKey": "JUDGE_V2",
+      "version": "2",
+      "officeClass": "JUDGE",
+      "active": false,
+      "name": "Judge research v2",
+      "description": "Bounded dossiers with recurring monitoring; jurisdiction-specific applicability and sources must be resolved before activation.",
+      "scopes": [
+        "jurisdiction",
+        "seat",
+        "person",
+        "identity",
+        "occupancy",
+        "current_occupant",
+        "evidence",
+        "contact",
+        "portrait",
+        "biography",
+        "prior_offices",
+        "education_and_professional_history",
+        "public_statements",
+        "official_media",
+        "relationships",
+        "public_records",
+        "ethics_proceedings",
+        "financial_disclosures",
+        "business_interests",
+        "elections",
+        "candidates",
+        "election_results",
+        "campaign_finance",
+        "campaign_platform",
+        "promises",
+        "monitoring",
+        "court_assignments",
+        "judicial_decisions"
+      ]
+    },
+    "SPECIAL_DISTRICT_MEMBER": {
+      "contractKey": "SPECIAL_DISTRICT_MEMBER_V2",
+      "version": "2",
+      "officeClass": "SPECIAL_DISTRICT_MEMBER",
+      "active": false,
+      "name": "Special District Member research v2",
+      "description": "Bounded dossiers with recurring monitoring; jurisdiction-specific applicability and sources must be resolved before activation.",
+      "scopes": [
+        "jurisdiction",
+        "seat",
+        "person",
+        "identity",
+        "occupancy",
+        "current_occupant",
+        "evidence",
+        "contact",
+        "portrait",
+        "biography",
+        "prior_offices",
+        "education_and_professional_history",
+        "public_statements",
+        "official_media",
+        "relationships",
+        "public_records",
+        "ethics_proceedings",
+        "financial_disclosures",
+        "business_interests",
+        "elections",
+        "candidates",
+        "election_results",
+        "campaign_finance",
+        "campaign_platform",
+        "promises",
+        "monitoring",
+        "meetings",
+        "votes",
+        "budget_actions",
+        "district_policies",
+        "procurement"
+      ]
+    }
+  }
+}
