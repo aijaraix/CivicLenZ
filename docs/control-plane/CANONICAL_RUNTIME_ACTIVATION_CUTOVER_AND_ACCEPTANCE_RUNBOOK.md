@@ -616,3 +616,16 @@ See [independent execution proof](HERMES_CANONICAL_EXECUTION_PROOF_2026-09-14.md
 - Validation handoff job `62130c71-1656-4f93-bf19-a153401b86d1` exists but is blocked by `CAPABILITY_NOT_IMPLEMENTED: internal canonical validation receipt`. This is the next missing transition. No canonical validation or publication has occurred.
 - ResearchNeed remains AWAITING_RESULT. Other 24 original needs remain capability-blocked. Budget exhausted at five historical attempts (three retrieval, two extraction); concurrency never exceeded one. Failures were preserved, not reset.
 - Producer intake remains paused in both running service environments. Full autonomous acceptance is not claimed.
+
+## Physical validation receipt checkpoint — 2026-09-14, 05:55 UTC
+
+This supersedes the earlier receipt-routing blocker, while preserving the historical proof above. See [independent validation receipt proof](HERMES_VALIDATION_RECEIPT_PROOF_2026-09-14.md) for deployment, lease, durable object and safety evidence.
+
+- PR #61 merged normally. Main and deployed HERMES are `c2d301bc15f8314e622dc290ca96e1590bddf4fa`; PID `155831`; explicit ExecStart and HERMES-specific pointer agree. Shared intake pointer is unchanged.
+- Validator version `33307ef2-d1c6-4061-86c8-0be9fc651eef` was deployed and independently verified before enabling HERMES. Existing queue `civiclenz-validate` (`9c2ee6c1e5574a009253f28cb9aa7625`) and existing LoadCredential token were reused. No HERMES civic privilege expansion.
+- Validation job `62130c71-1656-4f93-bf19-a153401b86d1` succeeded on its first canonical atomic lease. The distinct `hermes.validation.v1` consumer verifies that lease and does not reacquire or complete the job. HERMES independently acknowledged the durable result.
+- Worker run `bb8ae247-03e3-5e50-b2c7-bb1eaae072c1` succeeded; receipt `78963717-dcaa-588f-b201-99c3ea65e066` is `ACCEPTED_FOR_VALIDATION`.
+- Claim `986e7902-17c5-5fd3-832f-eebf35c69f4f` is `collected_unreviewed`, linked with role `supports` to original pending evidence `0544818c-24d4-5075-b4b1-25e2f8ee7691`. No Occupancy changed; no claim became verified or publication eligible. ResearchNeed remains AWAITING_RESULT with `VALIDATION_RECEIPT_ACCEPTED: identity/currentness/contradiction validation pending`.
+- Continued read-only gate processing found one name-match candidate and active primary-official source, but no established identity/tenure or dataset reference period. The receipt records `NEEDS_FURTHER_VALIDATION`, `schema_certified=false` and no auto-verification permission. Empty bounded contradiction results are not exhaustive clearance.
+- Separate validation receipt budget 1 is exhausted. Original retrieval/extraction budget 5 and all historical attempts/runs remain unchanged. Both runtime intake environments stay paused; other 24 needs stay BLOCKED.
+- Exact next missing transition: lease-owned identity and effective-tenure validation, evidence sufficiency, contradiction/dataset reconciliation, then a justified canonical decision. No executable subsequent job or additional allowance was created. The pending gate assessment is durable; canonical validation, publication eligibility, producer acceptance and full autonomous acceptance remain unproven.
