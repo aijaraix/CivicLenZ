@@ -1,3 +1,4 @@
+import { runValidationFollowup } from "../../shared/src/contract-followup.ts";
 import { runContractExtraction } from "../../shared/src/contract-extraction.ts";
 import { runCollectorJob } from "../../shared/src/collector.ts";
 import { contractDatabase, runContractEvidence } from "../../shared/src/contract-evidence.ts";
@@ -61,9 +62,11 @@ export default {
       deploymentId: deploymentIdFrom(env),
     };
     for (const message of batch.messages) {
-      if (["hermes.contract.v1", "hermes.extraction.v1"].includes((message.body as { schemaVersion?: string })?.schemaVersion ?? "")) {
+      if (["hermes.contract.v1", "hermes.extraction.v1", "hermes.validation-followup.v1"].includes((message.body as { schemaVersion?: string })?.schemaVersion ?? "")) {
         try {
-          const execute = (message.body as { schemaVersion: string }).schemaVersion === "hermes.extraction.v1" ? runContractExtraction : runContractEvidence;
+          const schema = (message.body as { schemaVersion: string }).schemaVersion;
+          const execute = schema === "hermes.validation-followup.v1" ? runValidationFollowup
+            : schema === "hermes.extraction.v1" ? runContractExtraction : runContractEvidence;
           await execute({ message: message.body,
             database: contractDatabase(env.SUPABASE_URL, env.SUPABASE_SERVICE_ROLE_KEY),
             bucket: bucket(env), deploymentId: deploymentIdFrom(env) });

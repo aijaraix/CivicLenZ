@@ -14,6 +14,7 @@ from database_bootstrap import connect_database
 from capability_router import resolve, ROUTE_VERSION
 from extraction_handoff import plan_extraction, plan_validation_handoff
 import validation_receipt
+import validation_followup
 
 
 def settings():
@@ -35,6 +36,7 @@ def route_pending(cursor, config):
           AND c.active AND c.version::text=n.contract_version
         JOIN public.research_contract_fields f ON f.research_contract_id=n.contract_id AND f.field_key=n.scope_key
         WHERE j.job_type='contract_scope_research' AND j.status='queued'
+          AND NOT (j.payload ? 'validation_followup')
           AND j.payload->>'orchestration_authority'='hermes'
           AND j.payload->>'execution_class'='PRODUCTION'
           AND n.execution_class='PRODUCTION' AND n.origin='CONTRACT_GAP'
@@ -136,8 +138,10 @@ def tick(governor):
             if not cursor.fetchone()['acquired']:
                 return {'state':'ANOTHER_CANONICAL_TICK_ACTIVE'}
             validation_receipt.collect(cursor)
+            validation_followup.collect(cursor)
             recover_and_collect(cursor)
             routed = route_pending(cursor,config)
+            validation_followup.plan(cursor,config)
             if os.environ.get('HERMES_EXTRACT_EVIDENCE')=='true':
                 plan_extraction(cursor,config)
             if not config['enabled'] or not config['ready'] or not config['deployment']:
@@ -145,7 +149,9 @@ def tick(governor):
                         'credential_ready':config['ready'],'worker_deployment_configured':bool(config['deployment'])}
             if governor['dispatch_limit'] < 1:
                 return {'state':'RESOURCE_GATED'}
-            candidate=validation_receipt.candidate(cursor,config)
+            candidate=validation_followup.candidate(cursor)
+            if candidate is None:
+                candidate=validation_receipt.candidate(cursor,config)
             if candidate is None:
                 cursor.execute("""SELECT coalesce(sum(attempt_count),0) AS attempts,
                     count(*) FILTER (WHERE status='leased') AS active FROM public.jobs
@@ -175,6 +181,9 @@ def tick(governor):
                 cursor.execute("SELECT * FROM hermes_ops.lease_job(%s,%s,300)",(candidate['job_id'],token))
                 selected=cursor.fetchone()
                 if selected:
+                    if selected['payload'].get('validation_followup'):
+                        safety=validation_followup.safety_snapshot(cursor,selected['target_id'])
+                        cursor.execute("UPDATE public.jobs SET checkpoint=coalesce(checkpoint,'{}'::jsonb)||%s::jsonb WHERE job_id=%s AND leased_by=%s",(json.dumps({'followup_safety_before':safety}),selected['job_id'],token))
                     if selected['job_type']=='contract_evidence_validate':
                         safety=validation_receipt.snapshot(cursor,selected['target_id'])
                         cursor.execute("UPDATE public.jobs SET checkpoint=coalesce(checkpoint,'{}'::jsonb)||%s::jsonb WHERE job_id=%s AND leased_by=%s",(json.dumps({'validation_safety_before':safety}),selected['job_id'],token))
@@ -192,7 +201,7 @@ def tick(governor):
     try:
         token=config['credential'].read_text().strip()
         account=os.environ['HERMES_CF_ACCOUNT_ID']; queue=os.environ['HERMES_CF_VALIDATE_QUEUE_ID'] if selected['job_type']=='contract_evidence_validate' else os.environ['HERMES_CF_INGEST_QUEUE_ID']
-        message={'schemaVersion':'hermes.validation.v1' if selected['job_type']=='contract_evidence_validate' else 'hermes.extraction.v1' if selected['job_type']=='contract_evidence_extract' else 'hermes.contract.v1','job_id':str(selected['job_id']),
+        message={'schemaVersion':'hermes.validation-followup.v1' if selected['payload'].get('capability_route',{}).get('version')==validation_followup.VERSION else 'hermes.validation.v1' if selected['job_type']=='contract_evidence_validate' else 'hermes.extraction.v1' if selected['job_type']=='contract_evidence_extract' else 'hermes.contract.v1','job_id':str(selected['job_id']),
                  'attempt_token':selected['leased_by'],'research_work_identity':selected['dedupe_key']}
         body=json.dumps({'body':message,'content_type':'json'}).encode()
         request=urllib.request.Request(f'https://api.cloudflare.com/client/v4/accounts/{account}/queues/{queue}/messages',

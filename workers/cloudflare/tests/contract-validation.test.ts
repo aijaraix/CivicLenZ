@@ -42,3 +42,16 @@ test('individually existing but mismatched lineage never produces claim or recei
  }
 });
 test('loss of lease before persistence never creates a receipt',async()=>{const f=fixture();const db=f.database;f.database=async(...args:any[])=>{const result=await (db as any)(...args);if(args[0].startsWith('sources?'))f.invalidate();return result;};await assert.rejects(invoke(f));assert.equal(f.claims.length,0);assert.equal(f.receipts.length,0);});
+test('new receipts persist ordered explicit lifecycle timestamps even on wall clock rollback',async()=>{
+ const f=fixture(),original=Date.now; let calls=0;
+ Date.now=()=>original()-(calls++>1?1000:0);
+ try { await invoke(f); } finally { Date.now=original; }
+ assert.ok(f.receipts[0].started_at);
+ assert.ok(Date.parse(f.receipts[0].started_at)<=Date.parse(f.receipts[0].completed_at));
+});
+test('historical accepted receipt timestamps are never repaired in place',async()=>{
+ const f=fixture();await invoke(f);
+ f.receipts[0].started_at='2026-01-01T00:00:01Z';f.receipts[0].completed_at='2026-01-01T00:00:00Z';
+ const original=JSON.stringify(f.receipts[0]);f.runs.length=0;
+ await invoke(f);assert.equal(JSON.stringify(f.receipts[0]),original);
+});

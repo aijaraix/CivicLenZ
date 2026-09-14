@@ -16,6 +16,7 @@ export async function runCanonicalValidation(input:{message:unknown,database:Dat
    ||!same(m.research_work_identity,j.dedupe_key)||route.version!=='hermes-validation-receipt-v1'
    ||route.worker!=='civiclenz-validator'||!input.deploymentId||route.deployment_id!==input.deploymentId
    ||!same(route.research_need_id,j.research_need_id)||Date.parse(j.lease_expires_at)-Date.now()<90000)throw Error('validation_route_or_lease_rejected');
+ const receiptStartedAt=Date.now();
  const runId=await uuidFromName(`hermes-validation-worker:${j.job_id}:${m.attempt_token}`);
  const receiptId=await uuidFromName(`hermes-validation-receipt:${j.dedupe_key}`);
  if((await db(`worker_runs?worker_run_id=eq.${runId}`)).length)return;
@@ -97,7 +98,8 @@ export async function runCanonicalValidation(input:{message:unknown,database:Dat
   if(prior&&(prior.status!=='ACCEPTED_FOR_VALIDATION'||prior.input_summary?.research_work_identity!==j.dedupe_key
     ||prior.result_summary?.claim_id!==claimId||prior.result_summary?.evidence_id!==evidence.evidence_id))throw Error('validation_receipt_collision');
   if(!prior)await db('validation_runs','POST',{validation_run_id:receiptId,subject_type:'seat',subject_id:j.target_id,seat_id:j.target_id,
-    validator_key:'hermes.internal.receipt.v1',status:'ACCEPTED_FOR_VALIDATION',input_summary:receipt,result_summary:receipt,completed_at:new Date().toISOString()});
+    validator_key:'hermes.internal.receipt.v1',status:'ACCEPTED_FOR_VALIDATION',input_summary:receipt,result_summary:receipt,started_at:new Date(receiptStartedAt).toISOString(),
+    completed_at:new Date(Math.max(receiptStartedAt,Date.now())).toISOString()});
   await assertLease();
   await db(`worker_runs?worker_run_id=eq.${runId}&status=eq.started`,'PATCH',{status:'succeeded',completed_at:new Date().toISOString(),records_read:1,records_written:1,metadata:{...receipt,receipt_attempt_token:prior?.input_summary?.attempt_token??m.attempt_token}});
  }catch(e){
