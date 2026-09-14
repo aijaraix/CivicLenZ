@@ -1,7 +1,7 @@
 """Bounded canonical planning for persisted contract scopes with no linked evidence.
 
-This initial rule detects complete absence of linked Seat evidence. It does not
-assert field-level currentness when evidence exists, mark scopes reconciled, or
+Detects absence of linked evidence for each exact Seat/field. It does not
+assert currentness or sufficiency when evidence exists, mark scopes reconciled, or
 dispatch an unimplemented capability. The same HERMES process owns planning.
 """
 import hashlib
@@ -36,8 +36,8 @@ def reconcile():
                     SELECT 1 FROM public.claims claim
                     JOIN public.claim_evidence link ON link.claim_id=claim.claim_id
                     JOIN public.evidence_objects evidence ON evidence.evidence_id=link.evidence_id
-                    WHERE claim.seat_id=s.seat_id OR
-                          (claim.subject_type='seat' AND claim.subject_id=s.seat_id))
+                    WHERE claim.field_key=f.field_key AND (claim.seat_id=s.seat_id OR
+                          (claim.subject_type='seat' AND claim.subject_id=s.seat_id)))
                 AND NOT EXISTS (SELECT 1 FROM hermes_ops.research_needs n
                     WHERE n.target_type='seat' AND n.target_id=s.seat_id
                     AND n.contract_id=c.research_contract_id AND n.contract_version=c.version::text
@@ -47,10 +47,10 @@ def reconcile():
             for seat, contract, version, field, contract_field, baseline in cursor.fetchall():
                 examined += 1
                 need_key, work_key = semantic_identity(seat, contract, version, field)
-                basis = {"rule": "seat_contract_with_zero_linked_evidence_v1",
+                basis = {"rule": "seat_field_with_zero_linked_evidence_v2",
                          "contract_field_id": str(contract_field), "linked_evidence_count": 0,
-                         "evidence_query": "claims JOIN claim_evidence JOIN evidence_objects scoped to Seat",
-                         "limitation": "Partial evidence and currentness reconciliation require additional rules"}
+                         "evidence_query": "claims JOIN claim_evidence JOIN evidence_objects scoped to exact Seat and field",
+                         "limitation": "Linked evidence does not establish sufficiency, verification or currentness"}
                 cursor.execute("""INSERT INTO hermes_ops.research_needs
                     (need_key,contract_id,contract_version,target_type,target_id,scope_key,
                      origin,execution_class,state,reason,basis,priority)

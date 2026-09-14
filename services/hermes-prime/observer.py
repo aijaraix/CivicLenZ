@@ -155,6 +155,9 @@ def main():
     fd = watch_receipts(args.spool / "receipts")
     trigger = "STARTUP"
     planning_enabled = os.environ.get("HERMES_PLAN_GAPS") == "true"
+    inventory_enabled = os.environ.get("HERMES_BACKLOG_INVENTORY") == "true"
+    inventory = {"state": "DISABLED"}
+    next_inventory = 0.0
     next_planning = 0.0
     planning = {"state": "DISABLED"}
     try:
@@ -167,7 +170,15 @@ def main():
                     # Never expose driver errors or connection strings in telemetry.
                     planning = {"state": "PLANNING_FAILED", "observed_at": time.time()}
                 next_planning = time.monotonic() + 300
+            if inventory_enabled and time.monotonic() >= next_inventory:
+                try:
+                    from backlog_inventory import reconcile as inventory_reconcile
+                    inventory = inventory_reconcile()
+                except Exception:
+                    inventory = {"state": "INVENTORY_FAILED", "observed_at": time.time()}
+                next_inventory = time.monotonic() + 300
             snapshot = observe(args.spool)
+            snapshot["backlog_inventory"] = inventory
             if os.environ.get("HERMES_ROUTE_CONTRACTS") == "true":
                 try:
                     from contract_dispatcher import tick
