@@ -14,7 +14,7 @@ export function exactByteCopy(data: BufferSource | Uint8Array | string): Uint8Ar
 
 export async function sha256Hex(data: BufferSource | Uint8Array | string): Promise<string> {
   const bytes = exactByteCopy(data);
-  const digest = new Uint8Array(await crypto.subtle.digest("SHA-256", bytes));
+  const digest = new Uint8Array(await crypto.subtle.digest("SHA-256", new Uint8Array(bytes).buffer));
   return [...digest].map((byte) => byte.toString(16).padStart(2, "0")).join("");
 }
 

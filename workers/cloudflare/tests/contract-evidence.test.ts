@@ -1,0 +1,35 @@
+// FIXTURE / UNIT tests. No production retrieval or persistence is claimed.
+import test from 'node:test';
+import assert from 'node:assert/strict';
+import { runContractEvidence } from '../shared/src/contract-evidence.ts';
+
+function fixture() {
+ const token='a'.repeat(64), jobId='00000000-0000-4000-8000-000000000001';
+ const message={schemaVersion:'hermes.contract.v1',job_id:jobId,attempt_token:token,research_work_identity:'work:v1:test'};
+ const job={job_id:jobId,research_need_id:'need',dedupe_key:'work:v1:test',job_type:'contract_scope_research',attempt_count:1,lease_expires_at:new Date(Date.now()+300000).toISOString(),payload:{orchestration_authority:'hermes',execution_class:'PRODUCTION',scope_key:'evidence',research_work_identity:'work:v1:test',capability_route:{version:'hermes-evidence-v1',worker:'civiclenz-collector',deployment_id:'release',source_key:'florida-governor-official',source_url:'https://www.flgov.com/',source_id:'source',max_bytes:1048576,timeout_seconds:15}}};
+ const runs:any[]=[], results:any[]=[], objects=new Map<string,Uint8Array>();let calls=0,validLease=true;
+ const database=async(path:string,method='GET',body?:any)=>{
+  if(path.startsWith('jobs?'))return validLease?[job]:[];
+  if(path.startsWith('worker_runs')){
+   if(method==='GET')return runs;
+   if(method==='POST'){if(runs.length)throw Error('conflict');runs.push(body);return [body];}
+   if(method==='PATCH'){Object.assign(runs[0],body);return runs;}
+  }
+  if(path==='raw_retrievals'){results.push(body);return [body];}
+  throw Error('unexpected_store_operation');
+ };
+ const bucket={put:async(k:string,v:Uint8Array)=>{objects.set(k,v);},get:async(k:string)=>objects.get(k)};
+ const fetchImpl=async()=>{calls++;return new Response('unit fixture bytes',{status:200,headers:{'content-type':'text/html'}});};
+ return {message,job,database,bucket,fetchImpl,runs,results,objects,calls:()=>calls,invalidate:()=>{validLease=false;}};
+}
+const invoke=(f:ReturnType<typeof fixture>)=>runContractEvidence({...f,deploymentId:'release'});
+test('real helper path in fixture persists raw bytes and independent run lineage only',async()=>{
+ const f=fixture();await invoke(f);assert.equal(f.calls(),1);assert.equal(f.runs[0].status,'succeeded');assert.equal(f.results.length,1);assert.equal(f.results[0].metadata.worker_run_id,f.runs[0].worker_run_id);
+ await invoke(f);assert.equal(f.calls(),1);assert.equal(f.runs.length,1);
+});
+test('stale envelope performs no tool action',async()=>{const f=fixture();f.invalidate();await invoke(f);assert.equal(f.calls(),0);assert.equal(f.runs.length,0);});
+test('TEST work is rejected before worker start',async()=>{const f=fixture();f.job.payload.execution_class='TEST';await assert.rejects(invoke(f));assert.equal(f.calls(),0);});
+test('network failure cannot create a successful run or result',async()=>{const f=fixture();f.fetchImpl=async()=>{throw Error('network failure');};await assert.rejects(invoke(f));assert.equal(f.runs[0].status,'failed');assert.equal(f.runs[0].metadata.retryable,true);assert.equal(f.results.length,0);});
+test('R2 mismatch cannot create a result',async()=>{const f=fixture();f.bucket.get=async()=>new TextEncoder().encode('corrupt');await assert.rejects(invoke(f));assert.equal(f.runs[0].status,'failed');assert.equal(f.results.length,0);});
+test('lease loss after network execution prevents result persistence',async()=>{const f=fixture();f.fetchImpl=async()=>{f.invalidate();return new Response('bytes');};await assert.rejects(invoke(f));assert.equal(f.results.length,0);assert.equal(f.runs[0].status,'failed');});
+test('wrong deployment never executes',async()=>{const f=fixture();await assert.rejects(runContractEvidence({...f,deploymentId:'old'}));assert.equal(f.calls(),0);});
