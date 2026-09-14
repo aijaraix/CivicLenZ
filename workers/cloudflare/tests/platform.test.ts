@@ -152,6 +152,7 @@ test("collector fail-closed on HTTP error and R2 write failure", async () => {
     store,
     message: ingestMessage(),
     bucket: {
+      async get() { return undefined; },
       async put() {
         throw new Error("R2 unavailable");
       },
