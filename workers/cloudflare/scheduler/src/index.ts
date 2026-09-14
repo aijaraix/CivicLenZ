@@ -1,169 +1,43 @@
-// Deployment trigger: operator enqueue hotfix on main; no runtime behavior change.
-import {
-  OPERATOR_ENQUEUE_PATH,
-  authorizeOperator,
-  enqueueControlledSourceJob,
-  enqueueExistingJobById,
-  responseContainsSecret,
-} from "../../shared/src/operator-enqueue.ts";
-import { parseQueueJobMessage } from "../../shared/src/queue-messages.ts";
-import { recoverExpiredLeases } from "../../shared/src/lease-recovery.ts";
-import { planAndEnqueue } from "../../shared/src/scheduler.ts";
-import { createSupabaseStore } from "../../shared/src/supabase-store.ts";
+/** Legacy global planner retired: canonical scheduling belongs to HERMES. */
+import { OPERATOR_ENQUEUE_PATH, authorizeOperator } from "../../shared/src/operator-enqueue.ts";
+import { deploymentIdFrom } from "../../shared/src/worker-lifecycle.ts";
 import type { CivicStore } from "../../shared/src/store.ts";
-import { CivicError, sanitizeErrorMessage } from "../../shared/src/errors.ts";
-import { deploymentIdFrom, withWorkerRun } from "../../shared/src/worker-lifecycle.ts";
 
-export type SchedulerFetchDeps = {
-  store?: CivicStore;
-  now?: Date;
-};
+export type SchedulerFetchDeps = { store?: CivicStore; now?: Date };
 
-function queues(env: Env) {
-  return {
-    ingest: env.INGEST_QUEUE,
-    validate: env.VALIDATE_QUEUE,
-    monitor: env.MONITOR_QUEUE,
-    heavy: env.HEAVY_QUEUE,
-    deadLetter: env.DEAD_LETTER_QUEUE,
-  };
+/** Deliberately performs no database, lease, queue, or worker-run writes. */
+export async function runSchedule(_env: Env, _dryRun: boolean, _deps?: SchedulerFetchDeps) {
+  return { authority: "HERMES", state: "LEGACY_PLANNER_DISABLED", dryRun: true,
+    scheduled: [], skippedActive: [], enqueued: [], recoveredLeases: [] };
 }
 
-function store(env: Env, deps?: SchedulerFetchDeps) {
-  if (deps?.store) return deps.store;
-  return createSupabaseStore({
-    url: env.SUPABASE_URL,
-    serviceRoleKey: env.SUPABASE_SERVICE_ROLE_KEY,
-  });
-}
-
-function worker(env: Env) {
-  return {
-    workerKey: env.WORKER_KEY || "civiclenz-scheduler",
-    runtime: "cloudflare" as const,
-    deploymentId: deploymentIdFrom(env),
-  };
-}
-
-function jsonResponse(body: unknown, status: number, secrets: Array<string | undefined>): Response {
-  if (responseContainsSecret(body, secrets)) {
-    return Response.json({ error: "internal_error" }, { status: 500 });
-  }
-  return Response.json(body, { status });
-}
-
-export async function runSchedule(env: Env, dryRun: boolean, deps?: SchedulerFetchDeps) {
-  const civicStore = store(env, deps);
-  const now = deps?.now ?? new Date();
-  const outcome = await withWorkerRun({
-    store: civicStore,
-    worker: worker(env),
-    secrets: [env.SUPABASE_SERVICE_ROLE_KEY, env.CIVICLENZ_OPERATOR_TRIGGER_SECRET],
-    queues: queues(env),
-    run: async () => {
-      const recovery = await recoverExpiredLeases({ store: civicStore, now });
-      const plan = await planAndEnqueue({
-        store: civicStore,
-        queues: queues(env),
-        now,
-        dryRun,
-      });
-      return {
-        result: { ...plan, recoveredLeases: recovery.recovered },
-        recordsRead: plan.skippedActive.length + plan.scheduled.length + recovery.recovered.length,
-        recordsWritten: plan.scheduled.length + recovery.recovered.length,
-        claimsVerified: 0,
-      };
-    },
-  });
-  if (outcome.skipped || !outcome.result) {
-    throw new CivicError("worker_failed", "scheduler run did not produce a plan");
-  }
-  return outcome.result;
-}
-
-async function handleOperatorEnqueue(request: Request, env: Env, deps?: SchedulerFetchDeps): Promise<Response> {
-  const secrets = [env.CIVICLENZ_OPERATOR_TRIGGER_SECRET, env.SUPABASE_SERVICE_ROLE_KEY];
-  const authorized = await authorizeOperator(
-    request.headers.get("Authorization"),
-    env.CIVICLENZ_OPERATOR_TRIGGER_SECRET,
-  );
-  if (!authorized) {
-    return jsonResponse({ error: "unauthorized" }, 401, secrets);
-  }
-  let jobId: unknown;
-  let sourceKey: unknown;
-  try {
-    const parsed = (await request.json()) as { jobId?: unknown; sourceKey?: unknown };
-    jobId = parsed?.jobId;
-    sourceKey = parsed?.sourceKey;
-  } catch {
-    return jsonResponse({ error: "invalid_json" }, 400, secrets);
-  }
-  if (typeof jobId !== "string" && typeof sourceKey !== "string") {
-    return jsonResponse({ error: "invalid_job_id" }, 400, secrets);
-  }
-  try {
-    const result =
-      typeof jobId === "string"
-        ? await enqueueExistingJobById({
-            store: store(env, deps),
-            queues: queues(env),
-            jobId,
-            now: deps?.now,
-          })
-        : await enqueueControlledSourceJob({
-            store: store(env, deps),
-            queues: queues(env),
-            sourceKey: sourceKey as string,
-            now: deps?.now,
-          });
-    return jsonResponse(result.body, result.status, secrets);
-  } catch (error) {
-    const message = sanitizeErrorMessage(error instanceof Error ? error.message : "enqueue_failed", secrets);
-    return jsonResponse({ error: "enqueue_failed", message }, 500, secrets);
-  }
-}
-
-export async function handleSchedulerFetch(request: Request, env: Env, deps?: SchedulerFetchDeps): Promise<Response> {
+export async function handleSchedulerFetch(request: Request, env: Env, _deps?: SchedulerFetchDeps): Promise<Response> {
   const url = new URL(request.url);
   if (url.pathname === "/health" && request.method === "GET") {
-    return Response.json({
-      worker: env.WORKER_KEY || "civiclenz-scheduler",
-      dryRun: env.DRY_RUN !== "false",
-      deploymentId: deploymentIdFrom(env) ?? null,
+    return Response.json({ worker: env.WORKER_KEY || "civiclenz-scheduler",
+      authority: "HERMES", state: "LEGACY_PLANNER_DISABLED", dispatchActive: false,
+      dryRun: env.DRY_RUN !== "false", deploymentId: deploymentIdFrom(env) ?? null,
       supabaseConfigured: Boolean(env.SUPABASE_URL && env.SUPABASE_SERVICE_ROLE_KEY),
-      queueBindingsConfigured: Boolean(env.INGEST_QUEUE && env.VALIDATE_QUEUE && env.MONITOR_QUEUE && env.HEAVY_QUEUE),
-    });
+      queueBindingsConfigured: Boolean(env.INGEST_QUEUE && env.VALIDATE_QUEUE && env.MONITOR_QUEUE && env.HEAVY_QUEUE) });
   }
   if (url.pathname === OPERATOR_ENQUEUE_PATH) {
-    if (request.method !== "POST") {
-      return new Response("method not allowed", { status: 405 });
+    if (request.method !== "POST") return new Response("method not allowed", { status: 405 });
+    if (!await authorizeOperator(request.headers.get("Authorization"), env.CIVICLENZ_OPERATOR_TRIGGER_SECRET)) {
+      return Response.json({ error: "unauthorized" }, { status: 401 });
     }
-    return handleOperatorEnqueue(request, env, deps);
+    return Response.json({ error: "legacy_enqueue_retired", authority: "HERMES" }, { status: 410 });
   }
   if (url.pathname === "/dry-run" && request.method === "POST") {
-    const plan = await runSchedule(env, true, deps);
-    return Response.json({
-      dryRun: true,
-      scheduledDedupeKeys: plan.scheduled.map((job) => job.dedupeKey),
-      skippedActive: plan.skippedActive,
-      enqueued: plan.enqueued.length,
-      recoveredJobIds: (plan.recoveredLeases ?? []).map((job) => job.jobId),
-    });
+    return Response.json(await runSchedule(env, true));
   }
   return new Response("not found", { status: 404 });
 }
 
 export default {
   async scheduled(_controller: ScheduledController, env: Env, _ctx: ExecutionContext) {
-    const dryRun = env.DRY_RUN !== "false";
-    await runSchedule(env, dryRun);
+    // Also safe if a stale deployed cron survives configuration reconciliation.
+    await runSchedule(env, env.DRY_RUN !== "false");
   },
-
-  async fetch(request: Request, env: Env): Promise<Response> {
-    return handleSchedulerFetch(request, env);
-  },
+  async fetch(request: Request, env: Env) { return handleSchedulerFetch(request, env); },
 } satisfies ExportedHandler<Env>;
-
-export { parseQueueJobMessage };
+export { parseQueueJobMessage } from "../../shared/src/queue-messages.ts";

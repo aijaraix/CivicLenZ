@@ -225,84 +225,23 @@ test("F: duplicate recovery is idempotent and does not insert a second job", asy
   assert.equal(again, undefined);
 });
 
-test("G: operator jobId expired lease recovers the same row then enqueues it", async () => {
+test("legacy Cloudflare planner cannot recover leases or dispatch even with DRY_RUN=false", async () => {
   const store = createMemoryStore();
   seedGovernorJob(store);
+  const before = structuredClone(await store.listJobs());
   const sent: SentMessage[] = [];
-  const response = await handleSchedulerFetch(enqueueRequest({ jobId: CONTROLLED_FLORIDA_GOVERNOR_INGEST_JOB_ID }), testEnv(sent), {
-    store,
-    now: NOW,
-  });
-  assert.equal(response.status, 200);
-  const body = (await response.json()) as { jobId: string; dedupeKey: string; enqueued: boolean; queue: string };
-  assert.equal(body.jobId, CONTROLLED_FLORIDA_GOVERNOR_INGEST_JOB_ID);
-  assert.equal(body.dedupeKey, CONTROLLED_FLORIDA_GOVERNOR_DEDUPE_KEY);
-  assert.equal(body.enqueued, true);
-  assert.equal(body.queue, "civiclenz-ingest");
-  assert.equal((await store.listJobs()).length, 1);
-  const job = await store.getJob(CONTROLLED_FLORIDA_GOVERNOR_INGEST_JOB_ID);
-  assert.equal(job?.status, "queued");
-  assert.equal(job?.dedupeKey, CONTROLLED_FLORIDA_GOVERNOR_DEDUPE_KEY);
-  assert.equal(job?.attemptCount, 2);
-  assert.equal(sent.length, 1);
-  const message = parseQueueJobMessage(sent[0]?.message);
-  assert.equal(message.jobId, CONTROLLED_FLORIDA_GOVERNOR_INGEST_JOB_ID);
-  assert.equal(message.dedupeKey, CONTROLLED_FLORIDA_GOVERNOR_DEDUPE_KEY);
-  assert.equal(message.sourceKey, CONTROLLED_FLORIDA_GOVERNOR_SOURCE_KEY);
-});
-
-test("H: operator jobId active lease returns 409 job_not_enqueueable", async () => {
-  const store = createMemoryStore();
-  seedGovernorJob(store, { leaseExpiresAt: ACTIVE_LEASE });
-  const sent: SentMessage[] = [];
-  const response = await handleSchedulerFetch(enqueueRequest({ jobId: CONTROLLED_FLORIDA_GOVERNOR_INGEST_JOB_ID }), testEnv(sent), {
-    store,
-    now: NOW,
-  });
-  assert.equal(response.status, 409);
-  assert.equal(((await response.json()) as { error: string }).error, "job_not_enqueueable");
+  for (const flag of ["true", "false"]) {
+    const env = testEnv(sent, { DRY_RUN: flag });
+    const plan = await runSchedule(env, flag !== "false", { store, now: NOW });
+    assert.equal(plan.state, "LEGACY_PLANNER_DISABLED");
+    assert.deepEqual(plan.recoveredLeases, []);
+    const response = await handleSchedulerFetch(enqueueRequest({ jobId: CONTROLLED_FLORIDA_GOVERNOR_INGEST_JOB_ID }), env, { store, now: NOW });
+    assert.equal(response.status, 410);
+    await handleSchedulerFetch(new Request("https://civiclenz-scheduler.example/dry-run", { method: "POST" }), env, { store, now: NOW });
+  }
+  assert.deepEqual(await store.listJobs(), before);
+  assert.equal((await store.listWorkerRuns()).length, 0);
   assert.equal(sent.length, 0);
-  const job = await store.getJob(CONTROLLED_FLORIDA_GOVERNOR_INGEST_JOB_ID);
-  assert.equal(job?.status, "leased");
-  assert.equal(job?.leasedBy, "civiclenz-collector");
-  assert.equal(job?.leaseExpiresAt, ACTIVE_LEASE);
-  assert.equal((await store.listJobs()).length, 1);
-});
-
-test("I: scheduler recovery does not duplicate the job and dryRun does not send collection messages", async () => {
-  const wrangler = readFileSync(path.join(repoRoot, "workers/cloudflare/scheduler/wrangler.jsonc"), "utf8");
-  assert.match(wrangler, /"DRY_RUN": "true"/);
-  const store = createMemoryStore();
-  seedGovernorJob(store);
-  const sent: SentMessage[] = [];
-  const env = testEnv(sent);
-  const plan = await runSchedule(env, true, { store, now: NOW });
-  assert.equal(plan.dryRun, true);
-  assert.equal(plan.enqueued.length, 0);
-  assert.equal(sent.length, 0);
-  assert.equal(env.DRY_RUN, "true");
-  const recovered = plan.recoveredLeases ?? [];
-  assert.equal(recovered.length, 1);
-  assert.equal(recovered[0]?.jobId, CONTROLLED_FLORIDA_GOVERNOR_INGEST_JOB_ID);
-  const matches = (await store.listJobs()).filter(
-    (job) =>
-      job.jobId === CONTROLLED_FLORIDA_GOVERNOR_INGEST_JOB_ID ||
-      job.dedupeKey === CONTROLLED_FLORIDA_GOVERNOR_DEDUPE_KEY,
-  );
-  assert.equal(matches.length, 1);
-  assert.equal(matches[0]?.status, "queued");
-  assert.equal(matches[0]?.attemptCount, 2);
-
-  const dryRun = await handleSchedulerFetch(new Request("https://civiclenz-scheduler.example/dry-run", { method: "POST" }), env, {
-    store,
-    now: NOW,
-  });
-  const body = (await dryRun.json()) as { dryRun: boolean; enqueued: number; recoveredJobIds: string[] };
-  assert.equal(body.dryRun, true);
-  assert.equal(body.enqueued, 0);
-  assert.deepEqual(body.recoveredJobIds, []);
-  assert.equal(sent.length, 0);
-  assert.equal((await store.listJobs()).filter((job) => job.dedupeKey === CONTROLLED_FLORIDA_GOVERNOR_DEDUPE_KEY).length, 1);
 });
 
 test("supabase recoverExpiredLease uses a conditional PATCH and skips 0-row races", async () => {
