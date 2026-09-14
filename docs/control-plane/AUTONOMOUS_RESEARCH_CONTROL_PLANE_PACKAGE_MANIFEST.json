@@ -1,7 +1,7 @@
 {
-  "manifest_version": "1.1.0",
+  "manifest_version": "1.2.0",
   "package_id": "civiclenz-autonomous-research-control-plane",
-  "generated_on": "2026-09-10",
+  "generated_on": "2026-09-13",
   "canonical_repository": "aijaraix/CivicLenZ",
   "authoritative_ref": "docs/research-observability-control-plane",
   "authority_state": "OWNER_AUTHORIZED_WORKING_PACKAGE_PENDING_MAIN_MERGE",
@@ -15,6 +15,8 @@
     "docs/control-plane/PHYSICAL_RUNTIME_TOPOLOGY_AND_COMPONENT_CONNECTION_MATRIX.md",
     "docs/control-plane/SINGLE_ORCHESTRATOR_MULTI_PRODUCER_AND_WORKER_AUTHORITY_CONTRACT.md",
     "docs/control-plane/SYSTEM_WIDE_BEHAVIORAL_RECONCILIATION_AND_REPAIR_DIRECTIVE.md",
+    "docs/control-plane/CANONICAL_RUNTIME_ACTIVATION_CUTOVER_AND_ACCEPTANCE_RUNBOOK.md",
+    "docs/control-plane/WORKER_POOL_CAPACITY_ROUTING_AND_RESOURCE_BUDGET.md",
     "docs/control-plane/CIVICLENZ_MASTER_AUTONOMOUS_RESEARCH_OPERATING_CONTRACT.md",
     "docs/control-plane/SUBJECT_RESEARCH_ENRICHMENT_AND_COMPLETENESS_CONTRACT.md",
     "docs/control-plane/AGENT_RUNTIME_TOPOLOGY_HANDOFF_AND_TOOL_AUTHORITY.md",
@@ -72,7 +74,11 @@
     "heartbeat_alone_proves_dispatch": false,
     "local_build_alone_proves_deployment": false,
     "status_string_alone_proves_behavior": false,
-    "critical_transition_requires_independent_attestation": true
+    "critical_transition_requires_independent_attestation": true,
+    "runtime_activation_follows_cutover_runbook": true,
+    "worker_pool_capacity_is_resource_governed": true,
+    "successful_phase_is_not_a_handoff_stop": true,
+    "canonical_intake_unpause_requires_acceptance_gate": true
   },
   "proof_sequence": [
     "REQUIRED_BEHAVIOR",
