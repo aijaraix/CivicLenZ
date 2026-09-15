@@ -1,0 +1,16 @@
+{
+  "registry_version": "PRODUCER_REGISTRY_V1",
+  "producers": [
+    {
+      "producer_id": "civicslenzz-gemini-harvester",
+      "active": true,
+      "allowed_result_contracts": ["CIVICLENZ_RESEARCH_INGEST_CONTRACT_V1"],
+      "accepted_job_contracts": ["HERMES_RESEARCH_JOB_V1"],
+      "allowed_capabilities": ["advance_research_harvest"],
+      "authority_boundary": "submit_extracted_unreviewed_only",
+      "direct_canonical_storage_access": false,
+      "canonical_verification_authority": false,
+      "canonical_publication_authority": false
+    }
+  ]
+}

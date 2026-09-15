@@ -1,0 +1,28 @@
+name: Bounded canary release gates
+on:
+  push:
+    branches: [codex/bounded-ingest-canary]
+permissions:
+  contents: read
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: npm install --no-audit --no-fund
+      - run: pip install -r workers/ingestion/requirements.txt psycopg2-binary
+      - run: node --experimental-strip-types --no-warnings --test services/hermes-ingest/tests/*.test.ts
+      - run: python -m unittest discover -s services/hermes-prime/tests -p 'test_*.py'
+      - run: python -m unittest discover -s tests -p 'test_*.py'
+      - run: npm run test:public-officials
+      - run: npm run test:collection-runtime
+      - run: npm install --no-save --no-audit --no-fund @electric-sql/pglite
+      - run: node --test services/hermes-prime/tests/*.test.mjs
+      - run: npm run typecheck
+      - run: npm run build
