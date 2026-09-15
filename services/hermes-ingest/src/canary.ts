@@ -37,8 +37,9 @@ export async function readAuthorization(directory: string, correlation: string):
 // Local operator command only; no HTTP arming API and no producer authority.
 export async function armCanary(directory: string, correlation: string, ttlSeconds: number): Promise<CanaryAuthorization> {
   if (!UUID.test(correlation) || !Number.isInteger(ttlSeconds) || ttlSeconds < 60 || ttlSeconds > 3600) throw new Error('invalid bounded authorization');
+  const now = Date.now();
   const a: CanaryAuthorization = { authorization_id: randomUUID(), producer_id: CANARY_PRODUCER,
-    correlation_id: correlation, created_at: new Date().toISOString(), expires_at: new Date(Date.now()+ttlSeconds*1000).toISOString(),
+    correlation_id: correlation, created_at: new Date(now).toISOString(), expires_at: new Date(now+ttlSeconds*1000).toISOString(),
     status: 'ARMED', maximum_uses: 1, use_count: 0, consumed_at: null, consumed_receipt_id: null,
     allowed_classification: 'extracted_unreviewed', publication_allowed: false };
   const dir = path.join(directory, 'canary-authorizations');
