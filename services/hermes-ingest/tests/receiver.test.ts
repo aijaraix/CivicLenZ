@@ -383,7 +383,7 @@ test("acknowledgement shape is versioned and correlation-safe", async () => {
 });
 
 // Behavioral integration tests: isolated disk spools, never production data.
-import { armCanary, readAuthorization } from '../src/canary.ts';
+import { armCanary, readAuthorization, validAuthorization } from '../src/canary.ts';
 import { writeFile, readFile } from 'node:fs/promises';
 import { randomUUID } from 'node:crypto';
 
@@ -453,5 +453,15 @@ test('concurrent different jobs and receiver instances accept a canary only once
     assert.equal(results.filter(r=>r.statusCode===202).length,1);
     assert.equal((await readAuthorization(h.directory,correlation))?.use_count,1);
     assert.equal((await readdir(path.join(h.directory,'receipts'))).filter(x=>x.endsWith('.json')).length,1);
+  } finally { await dispose(h.directory); }
+});
+
+
+test('maximum TTL uses one lifecycle clock and creates an immediately valid grant', async () => {
+  const h=await receiver();
+  try {
+    const a=await armCanary(h.directory,randomUUID(),3600);
+    assert.equal(Date.parse(a.expires_at)-Date.parse(a.created_at),3600000);
+    assert.equal(validAuthorization(a),true);
   } finally { await dispose(h.directory); }
 });
