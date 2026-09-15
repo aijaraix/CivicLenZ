@@ -1,4 +1,4 @@
-import { readAuthorization, validAuthorization, type CanaryAuthorization } from "./canary.ts";
+import { auditCanary, readAuthorization, validAuthorization, type CanaryAuthorization } from "./canary.ts";
 import { randomUUID } from "node:crypto";
 
 import { verifyHarvesterAuthentication, type AuthHeaders } from "./auth.ts";
@@ -107,6 +107,10 @@ export class HermesIngestReceiver {
       } catch { /* malformed or unavailable authorization fails closed */ }
     }
     if (this.config.intakePaused && !canary) {
+      try {
+        const candidate = JSON.parse(rawBody.toString("utf8"));
+        await auditCanary(this.config.spoolDirectory, candidate.producer?.execution_id, authentication.producerId, "PAUSED_CANARY_REJECTED");
+      } catch { /* rejection stays fail closed */ }
       await this.spool.recordOutcome("retry_later").catch(() => undefined);
       return {
         statusCode: 503,
@@ -181,9 +185,11 @@ export class HermesIngestReceiver {
     };
     switch (result.kind) {
       case "canary_rejected":
+        if (canary) await auditCanary(this.config.spoolDirectory, canary.correlation_id, authentication.producerId, "CANARY_REPLAY_OR_RACE_REJECTED").catch(() => undefined);
         await this.spool.recordOutcome("policy_reject", telemetryDetails).catch(() => undefined);
         return { statusCode: 403, acknowledgement: acknowledgement("REJECTED_POLICY", correlationId, { reasons: ["canary authorization unavailable or consumed"] }) };
       case "accepted": {
+        if (canary) await auditCanary(this.config.spoolDirectory, canary.correlation_id, authentication.producerId, "ACCEPTED_ONCE", result.receipt.receipt_id).catch(() => undefined);
         const outcome =
           requestedAcknowledgement === "NEEDS_IDENTITY_RESOLUTION"
             ? "identity_resolution_requirement"

@@ -50,3 +50,15 @@ export async function armCanary(directory: string, correlation: string, ttlSecon
   finally { await unlink(temp); }
   return a;
 }
+
+export async function auditCanary(directory: string, correlation: string, producer: string, disposition: string, receipt?: string): Promise<void> {
+  if (!UUID.test(correlation)) return;
+  // Only correlate against an operator-created grant, never arbitrary producer paths.
+  if (!await readAuthorization(directory, correlation)) return;
+  const dir = path.join(directory, 'canary-audit');
+  await mkdir(dir, {recursive:true, mode:0o700});
+  const f = await open(path.join(dir, randomUUID()+'.json'), 'wx', 0o600);
+  try { await f.writeFile(JSON.stringify({correlation_id:correlation,authenticated_producer_id:producer,
+    disposition,receipt_id:receipt??null,observed_at:new Date().toISOString()})+'\n'); await f.sync(); } finally { await f.close(); }
+  const d=await open(dir,'r'); try { await d.sync(); } finally { await d.close(); }
+}
