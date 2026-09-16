@@ -46,3 +46,38 @@ class ObserverModesTest(unittest.TestCase):
                     observer.main()
                 self.assertEqual(exited.exception.code, 0)
                 self.assertEqual(json.loads(output.getvalue())["mode"], saved["mode"])
+
+    def test_receipt_handoff_uses_prime_loop_and_consumes_single_governor_allowance(self):
+        with tempfile.TemporaryDirectory() as directory:
+            path = Path(directory) / "state.sqlite3"
+            calls = []
+            receipt_dispatcher = types.SimpleNamespace(tick=lambda spool, governor: {
+                "state": "RECEIPT_CANONICAL_HANDOFF_PROVEN_VALIDATION_WORKER_GAP",
+                "eligible_receipts_observed": 1, "durable_handoffs": 1})
+            contract_dispatcher = types.SimpleNamespace(
+                tick=lambda governor: calls.append(dict(governor)) or {"state": "RESOURCE_GATED"})
+            snapshot = {"observed_at": time.time(), "mode": "OBSERVATION_NO_DISPATCH",
+                "governor": {"reasons": [], "dispatch_enabled": True, "dispatch_limit": 1},
+                "receiver_health": True, "local_receipt_files": 1,
+                "canonical_dispatch": "RECEIPT_DISPATCH_ENABLED_PENDING_TICK",
+                "canonical_work_ledger": "EXISTING_HERMES_LEDGER_PENDING_RECEIPT_HANDOFF"}
+            with patch.dict(os.environ, {"HERMES_PRODUCER_RECEIPT_DISPATCH": "true",
+                                        "HERMES_ROUTE_CONTRACTS": "true"}, clear=True), \
+                 patch.dict(sys.modules, {"producer_receipt_dispatch": receipt_dispatcher,
+                                          "contract_dispatcher": contract_dispatcher}), \
+                 patch.object(sys, "argv", ["observer", "--state", str(path), "--spool", directory]), \
+                 patch.object(observer, "observe", return_value=snapshot), \
+                 patch.object(observer, "watch_receipts", return_value=None), \
+                 patch.object(observer.signal, "signal"), \
+                 patch.object(observer.time, "sleep", side_effect=KeyboardInterrupt):
+                with self.assertRaises(KeyboardInterrupt):
+                    observer.main()
+            with sqlite3.connect(path) as db:
+                saved = json.loads(db.execute("SELECT snapshot FROM observations").fetchone()[0])
+            self.assertEqual(saved["canonical_dispatch"],
+                             "RECEIPT_CANONICAL_HANDOFF_PROVEN_VALIDATION_WORKER_GAP")
+            self.assertEqual(saved["canonical_work_ledger"],
+                             "RECEIPT_HANDOFF_DURABLE_VALIDATION_WORKER_GAP")
+            self.assertEqual(saved["governor"]["receipt_dispatch_consumed_allowance"], 1)
+            self.assertEqual(calls[0]["dispatch_limit"], 0)
+            self.assertTrue(saved["mode"].endswith("_AND_PRODUCER_RECEIPT_HANDOFF"))

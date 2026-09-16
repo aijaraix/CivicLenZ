@@ -1,6 +1,6 @@
 import { readAuthorization, validAuthorization, type CanaryAuthorization } from "./canary.ts";
 import { createHash, randomUUID } from "node:crypto";
-import { link, mkdir, open, readdir, readFile, rename, stat, unlink, writeFile } from "node:fs/promises";
+import { chmod, link, mkdir, open, readdir, readFile, rename, stat, unlink, writeFile } from "node:fs/promises";
 import path from "node:path";
 
 import { sha256Hex } from "./contract.ts";
@@ -58,6 +58,7 @@ async function writeAtomic(target: string, bytes: Buffer, mode = 0o600): Promise
   } finally {
     await handle.close();
   }
+  await chmod(temporary, mode);
   await rename(temporary, target);
   await fsyncDirectory(directory);
 }
@@ -73,6 +74,7 @@ async function writeIfAbsent(target: string, bytes: Buffer, mode = 0o600): Promi
   } finally {
     await handle.close();
   }
+  await chmod(temporary, mode);
   try {
     await link(temporary, target);
     await fsyncDirectory(directory);
@@ -128,6 +130,15 @@ export class DurableIntakeSpool {
         (directory) => mkdir(directory, { recursive: true, mode: 0o700 }),
       ),
     );
+    // Receipt JSON is the narrow handoff boundary shared with the supervised
+    // HERMES service.  Setgid retains the ingest group on atomic replacements;
+    // evidence bytes and all other spool paths remain private to the receiver.
+    await chmod(this.receiptsDirectory, 0o2770);
+    for (const entry of await readdir(this.receiptsDirectory, { withFileTypes: true })) {
+      if (entry.isFile() && entry.name.endsWith(".json")) {
+        await chmod(path.join(this.receiptsDirectory, entry.name), 0o660);
+      }
+    }
     await this.recoverIndexes();
     this.initialized = true;
   }
@@ -388,8 +399,8 @@ export class DurableIntakeSpool {
         receipt.canary_authorization = { ...canary, status: "CONSUMED", use_count: 1,
           consumed_at: receipt.received_at, consumed_receipt_id: receiptId };
         // Hard-link commit is create-only and atomic across processes/restarts.
-        if (!await writeIfAbsent(this.receiptPath(receiptId), jsonBuffer(receipt))) return { kind: "canary_rejected" };
-      } else await writeAtomic(this.receiptPath(receiptId), jsonBuffer(receipt));
+        if (!await writeIfAbsent(this.receiptPath(receiptId), jsonBuffer(receipt), 0o660)) return { kind: "canary_rejected" };
+      } else await writeAtomic(this.receiptPath(receiptId), jsonBuffer(receipt), 0o660);
       await writeAtomic(indexPath, jsonBuffer({ receipt_id: receiptId, result_content_hash: resultContentHash }));
       return { kind: "accepted", receipt };
     });
@@ -404,7 +415,7 @@ export class DurableIntakeSpool {
     const receipt = await this.getReceipt(receiptId);
     if (!receipt) return undefined;
     const updated: StoredReceipt = { ...receipt, dispatch_state: "DISPATCHED" };
-    await writeAtomic(this.receiptPath(receiptId), jsonBuffer(updated));
+    await writeAtomic(this.receiptPath(receiptId), jsonBuffer(updated), 0o660);
     return updated;
   }
 
