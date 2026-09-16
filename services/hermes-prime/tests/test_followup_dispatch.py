@@ -47,6 +47,7 @@ class DispatcherTests(unittest.TestCase):
         credential=types.SimpleNamespace(read_text=lambda:'fixture-not-a-credential')
         with patch.object(d,'connect_database',connect),patch.object(d,'settings',return_value={'enabled':True,'ready':True,'deployment':'old','budget':5,'credential':credential}), \
              patch.object(d,'route_pending',return_value=0),patch.object(d,'recover_and_collect'), \
+             patch.object(d.producer_receipt_validation,'collect'),patch.object(d.producer_receipt_validation,'candidate',return_value=None), \
              patch.object(d.validation_receipt,'collect'),patch.object(d.validation_followup,'collect'), \
              patch.object(d.governor_context,'collect'),patch.object(d.governor_context,'plan'),patch.object(d.governor_context,'candidate',return_value=None), \
              patch.object(d.validation_followup,'plan'),patch.object(d.validation_followup,'safety_snapshot',return_value={'digest':'fixture'}),patch.object(d.validation_followup,'candidate',return_value={'job_id':'job'}), \
@@ -70,12 +71,37 @@ class DispatcherTests(unittest.TestCase):
         def connect():yield Connection(cursor)
         with patch.object(d,'connect_database',connect),patch.object(d,'settings',return_value={'enabled':True,'ready':True,'deployment':'release'}), \
              patch.object(d,'route_pending',return_value=0),patch.object(d,'recover_and_collect'), \
+             patch.object(d.producer_receipt_validation,'collect'),patch.object(d.producer_receipt_validation,'candidate') as producer_candidate, \
              patch.object(d.validation_receipt,'collect'),patch.object(d.validation_followup,'collect'), \
              patch.object(d.governor_context,'collect'),patch.object(d.governor_context,'plan'),patch.object(d.governor_context,'candidate',return_value=None), \
              patch.object(d.validation_followup,'plan'),patch.object(d.validation_followup,'candidate') as candidate, \
              patch.dict(d.os.environ,{},clear=True):
             self.assertEqual(d.tick({'dispatch_limit':0})['state'],'RESOURCE_GATED')
-            candidate.assert_not_called()
+            producer_candidate.assert_not_called();candidate.assert_not_called()
         self.assertFalse(any('hermes_ops.lease_job' in sql for sql,args in cursor.calls))
+
+    def test_producer_receipt_validation_uses_existing_lease_and_never_cloudflare_queue(self):
+        d=self.load()
+        job={'job_id':'job','job_type':'producer_receipt_validate','target_id':'receipt','research_need_id':'need',
+             'dedupe_key':'work','payload':{'canonical_receipt_id':'receipt','capability_route':{'version':d.producer_receipt_validation.VERSION}}}
+        cursor=Cursor(job)
+        @contextlib.contextmanager
+        def connect():yield Connection(cursor)
+        with patch.object(d,'connect_database',connect), \
+             patch.object(d,'settings',return_value={'enabled':False,'ready':False,'deployment':None,'budget':0}), \
+             patch.object(d,'route_pending',return_value=0),patch.object(d,'recover_and_collect'), \
+             patch.object(d.producer_receipt_validation,'collect'), \
+             patch.object(d.producer_receipt_validation,'candidate',return_value={'job_id':'job'}), \
+             patch.object(d.producer_receipt_validation,'execute',return_value={'state':'LOCAL_VALIDATION_RECORDED_AWAITING_COLLECTION','job_id':'job'}) as execute, \
+             patch.object(d.validation_receipt,'collect'),patch.object(d.validation_followup,'collect'), \
+             patch.object(d.governor_context,'collect'),patch.object(d.governor_context,'plan'), \
+             patch.object(d.validation_followup,'plan'),patch.dict(d.os.environ,{'HERMES_EXTRACT_EVIDENCE':'false'},clear=True), \
+             patch.object(d.urllib.request,'urlopen') as send:
+            result=d.tick({'dispatch_limit':1})
+        self.assertEqual(result['state'],'LOCAL_VALIDATION_RECORDED_AWAITING_COLLECTION')
+        self.assertEqual(sum('hermes_ops.lease_job' in sql for sql,args in cursor.calls),1)
+        execute.assert_called_once()
+        send.assert_not_called()
+        self.assertEqual(len(job['leased_by']),64)
 
 if __name__=='__main__':unittest.main()
