@@ -439,6 +439,68 @@ def record_delivery(cursor, leased: dict, result: dict) -> None:
         (json.dumps(payload), result["state"], result["state"], leased["job_id"], leased["leased_by"]))
 
 
+def reconcile_validated_parent(cursor) -> int:
+    """Propagate a completed receipt-validation disposition to the original contract need.
+
+    The producer execution may close as soon as a durable receipt handoff exists, before
+    the independent receipt validator finishes. This pass only reconciles that already-
+    succeeded execution after the exact validation job succeeds; it cannot create civic
+    truth, reopen work, or mark the contract need reconciled.
+    """
+    cursor.execute("""SELECT j.job_id,j.research_need_id,
+            rn.need_id AS receipt_need_id,rn.target_id AS receipt_id,rn.state AS receipt_need_state,
+            rn.reason AS receipt_need_reason,rn.basis AS receipt_basis,
+            v.job_id AS validation_job_id,v.status AS validation_job_status,v.checkpoint AS validation_checkpoint
+        FROM public.jobs j
+        JOIN hermes_ops.research_needs parent ON parent.need_id=j.research_need_id
+        JOIN hermes_ops.research_needs rn
+          ON rn.origin='PRODUCER' AND rn.execution_class='PRODUCTION'
+          AND rn.basis->>'producer_job_id'=j.job_id::text
+          AND rn.basis->>'producer_research_work_identity'=j.dedupe_key
+        JOIN public.jobs v ON v.research_need_id=rn.need_id AND v.job_type='producer_receipt_validate'
+        WHERE j.status='succeeded'
+          AND j.checkpoint->'producer_outbound'->>'version'=%s
+          AND j.checkpoint->>'producer_receipt_id'=rn.target_id::text
+          AND j.checkpoint->>'producer_receipt_handoff_id'=rn.need_id::text
+          AND j.checkpoint->>'producer_validation_job_id'=v.job_id::text
+          AND v.status='succeeded'
+          AND rn.state='BLOCKED' AND rn.reason LIKE 'PRODUCER_RECEIPT_VALIDATED_%%'
+          AND parent.state='AWAITING_RESULT'
+          AND parent.reason='PRODUCER_RECEIPT_ACCEPTED_PENDING_CANONICAL_VALIDATION'
+        FOR UPDATE OF j,parent SKIP LOCKED""", (VERSION,))
+    rows = cursor.fetchall()
+    reconciled = 0
+    for row in rows:
+        validation_checkpoint = row.get("validation_checkpoint") or {}
+        receipt_basis = row.get("receipt_basis") or {}
+        validation_summary = receipt_basis.get("producer_receipt_validation") or {}
+        checkpoint = {
+            "producer_validation_state": row["receipt_need_state"],
+            "producer_validation_reason": row["receipt_need_reason"],
+            "producer_validation_evaluation_id": validation_checkpoint.get("validation_evaluation_id"),
+            "producer_validation_disposition": validation_checkpoint.get("validation_disposition"),
+        }
+        cursor.execute("""UPDATE public.jobs
+            SET checkpoint=coalesce(checkpoint,'{}'::jsonb)||%s::jsonb
+            WHERE job_id=%s AND status='succeeded'
+              AND checkpoint->>'producer_validation_job_id'=%s
+            RETURNING job_id""",
+            (json.dumps(checkpoint), row["job_id"], str(row["validation_job_id"])))
+        if not cursor.fetchone():
+            continue
+        cursor.execute("""UPDATE hermes_ops.research_needs
+            SET state='BLOCKED',reason=%s,
+                basis=basis||jsonb_build_object('producer_receipt_validation',%s::jsonb),
+                evaluated_at=clock_timestamp()
+            WHERE need_id=%s AND state='AWAITING_RESULT'
+              AND reason='PRODUCER_RECEIPT_ACCEPTED_PENDING_CANONICAL_VALIDATION'
+            RETURNING need_id""",
+            (row["receipt_need_reason"], json.dumps(validation_summary), row["research_need_id"]))
+        if cursor.fetchone():
+            reconciled += 1
+    return reconciled
+
+
 def collect(cursor) -> int:
     """Close producer execution only after canonical receipt handoff is durable.
 
@@ -486,4 +548,4 @@ def collect(cursor) -> int:
             cursor.execute("""UPDATE hermes_ops.research_needs SET state=%s,reason=%s,
                 evaluated_at=clock_timestamp() WHERE need_id=%s""",
                 ("BLOCKED" if validation_done else "AWAITING_RESULT", final_reason, row["research_need_id"]))
-    return len(rows)
+    return len(rows) + reconcile_validated_parent(cursor)
