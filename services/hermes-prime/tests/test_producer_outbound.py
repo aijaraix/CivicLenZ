@@ -68,14 +68,16 @@ class ProducerOutboundTests(unittest.TestCase):
         self.assertIn("jur.jurisdiction_key=%s", source)
         self.assertIn("PRODUCER_OUTBOUND_ROUTE_READY", source)
 
-    def test_recovery_is_same_attempt_once_and_receipt_fenced(self):
+    def test_recovery_is_same_attempt_bounded_and_receipt_fenced(self):
         source = Path(outbound.__file__).read_text()
         self.assertIn("j.status='leased' AND j.attempt_count=1", source)
         self.assertIn("j.lease_expires_at<=clock_timestamp()", source)
         self.assertIn("PRODUCER_DELIVERY_UNCONFIRMED", source)
-        self.assertIn("NOT (j.checkpoint ? 'producer_outbound_recovery')", source)
+        self.assertIn("recovery_limit > 2", source)
+        self.assertIn("END < %s", source)
         self.assertIn("rn.origin='PRODUCER'", source)
         self.assertIn("lease_expires_at=clock_timestamp()+make_interval(secs=>300)", source)
+        self.assertIn('"count": prior_count + 1', source)
         self.assertNotIn("attempt_count=attempt_count+1", source)
 
     def test_first_attempt_only(self):
@@ -87,6 +89,18 @@ class ProducerOutboundTests(unittest.TestCase):
              'HERMES_PRODUCER_ENDPOINT':'https://civiclenz.ai.studio/api/harvester/jobs',
              'CIVICLENZ_HARVESTER_SHARED_SECRET':'x'}
         with patch.dict(os.environ,env,clear=True):
-            self.assertFalse(outbound.settings()['ready'])
+            config=outbound.settings()
+            self.assertFalse(config['ready'])
+            self.assertEqual(config['recovery_limit'],1)
+
+    def test_recovery_limit_is_explicit_and_clamped(self):
+        env={'HERMES_PRODUCER_OUTBOUND':'true','HERMES_PRODUCER_OUTBOUND_BUDGET':'1',
+             'HERMES_PRODUCER_OUTBOUND_JOB_ID':str(uuid.uuid4()),
+             'HERMES_PRODUCER_ENDPOINT':'https://civiclenz.ai.studio/api/harvester/jobs',
+             'CIVICLENZ_HARVESTER_SHARED_SECRET':'x','HERMES_PRODUCER_OUTBOUND_RECOVERY_LIMIT':'99'}
+        with patch.dict(os.environ,env,clear=True):
+            config=outbound.settings()
+            self.assertTrue(config['ready'])
+            self.assertEqual(config['recovery_limit'],2)
 
 if __name__=='__main__': unittest.main()
