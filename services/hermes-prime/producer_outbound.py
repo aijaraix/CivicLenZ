@@ -70,7 +70,7 @@ def settings() -> dict:
     except ValueError:
         budget = 0
     try:
-        recovery_limit = min(4, max(0, int(raw_recovery_limit)))
+        recovery_limit = min(5, max(0, int(raw_recovery_limit)))
     except ValueError:
         recovery_limit = 0
     endpoint = os.environ.get("HERMES_PRODUCER_ENDPOINT", "").strip()
@@ -178,7 +178,7 @@ def recover_unconfirmed(cursor, config: dict):
     recovery_limit = config.get("recovery_limit", 1)
     if (not config.get("ready") or config.get("budget") != 1 or not config.get("exact_job_id")
             or isinstance(recovery_limit, bool) or not isinstance(recovery_limit, int)
-            or recovery_limit < 1 or recovery_limit > 4):
+            or recovery_limit < 1 or recovery_limit > 5):
         return None
     cursor.execute("""
         SELECT j.*
@@ -353,14 +353,31 @@ def deliver(leased: dict, config: dict, opener=None) -> dict:
         with open_url(request, timeout=15) as response:
             status = getattr(response, "status", 0)
             raw = response.read(64 * 1024)
-    except (OSError, urllib.error.URLError, urllib.error.HTTPError, TimeoutError):
-        return {"state": "PRODUCER_DELIVERY_UNCONFIRMED", "job_id": assignment["job_id"]}
+    except urllib.error.HTTPError as error:
+        raw = error.read(8 * 1024)
+        result = {"state": "PRODUCER_DELIVERY_UNCONFIRMED", "job_id": assignment["job_id"],
+                  "http_status": int(error.code)}
+        try:
+            rejected = json.loads(raw)
+        except ValueError:
+            rejected = None
+        if isinstance(rejected, dict):
+            code = rejected.get("error_code") or rejected.get("error")
+            message = rejected.get("message")
+            if isinstance(code, str): result["producer_error_code"] = code[:128]
+            if isinstance(message, str): result["producer_error_message"] = message[:256]
+        return result
+    except (OSError, urllib.error.URLError, TimeoutError) as error:
+        return {"state": "PRODUCER_DELIVERY_UNCONFIRMED", "job_id": assignment["job_id"],
+                "transport_error_class": type(error).__name__[:64]}
     if status not in (200, 201):
-        return {"state": "PRODUCER_DELIVERY_UNCONFIRMED", "job_id": assignment["job_id"]}
+        return {"state": "PRODUCER_DELIVERY_UNCONFIRMED", "job_id": assignment["job_id"],
+                "http_status": int(status)}
     try:
         acknowledged = json.loads(raw)
     except ValueError:
-        return {"state": "PRODUCER_DELIVERY_UNCONFIRMED", "job_id": assignment["job_id"]}
+        return {"state": "PRODUCER_DELIVERY_UNCONFIRMED", "job_id": assignment["job_id"],
+                "http_status": int(status), "producer_error_code": "INVALID_JSON_ACK"}
     producer_job = acknowledged.get("job") if isinstance(acknowledged, dict) else None
     checkpoint = producer_job.get("checkpoint") if isinstance(producer_job, dict) else None
     canonical = checkpoint.get("canonical_assignment") if isinstance(checkpoint, dict) else None
@@ -372,7 +389,12 @@ def deliver(leased: dict, config: dict, opener=None) -> dict:
             or not isinstance(canonical, dict)
             or canonical.get("canonical_job_id") != assignment["job_id"]
             or canonical.get("research_scope") != RESEARCH_SCOPE):
-        return {"state": "PRODUCER_DELIVERY_UNCONFIRMED", "job_id": assignment["job_id"]}
+        result = {"state": "PRODUCER_DELIVERY_UNCONFIRMED", "job_id": assignment["job_id"],
+                  "http_status": int(status), "producer_error_code": "ACK_CONTRACT_MISMATCH"}
+        if isinstance(acknowledged, dict):
+            if isinstance(acknowledged.get("status"), str): result["producer_ack_status"] = acknowledged["status"][:64]
+            if isinstance(acknowledged.get("storage"), str): result["producer_ack_storage"] = acknowledged["storage"][:64]
+        return result
     return {
         "state": "PRODUCER_ASSIGNMENT_ACCEPTED",
         "job_id": assignment["job_id"],
@@ -394,6 +416,12 @@ def record_delivery(cursor, leased: dict, result: dict) -> None:
         "producer_job_id": result.get("producer_job_id"),
         "producer_status": result.get("producer_status"),
         "research_reservation_id": result.get("research_reservation_id"),
+        "http_status": result.get("http_status"),
+        "producer_error_code": result.get("producer_error_code"),
+        "producer_error_message": result.get("producer_error_message"),
+        "transport_error_class": result.get("transport_error_class"),
+        "producer_ack_status": result.get("producer_ack_status"),
+        "producer_ack_storage": result.get("producer_ack_storage"),
         "observed_at": datetime.now(timezone.utc).isoformat().replace("+00:00", "Z"),
     }
     cursor.execute("""UPDATE public.jobs

@@ -1,6 +1,7 @@
 import hashlib
 import hmac
 import json
+import io
 import os
 import sys
 from pathlib import Path
@@ -51,6 +52,19 @@ class ProducerOutboundTests(unittest.TestCase):
         self.assertNotIn('x-civiclenz-timestamp',headers)
         self.assertEqual(body,json.dumps(a,separators=(',',':')).encode())
 
+    def test_http_rejection_captures_only_bounded_safe_metadata(self):
+        leased=self.leased()
+        cfg={'ready':True,'secret':'test-secret','endpoint':'https://example.test/api/harvester/jobs','auth_mode':'token'}
+        def opener(request,timeout=0):
+            body=json.dumps({'status':'ERROR','error_code':'RESEARCH_SCOPE_REJECTED','message':'scope rejected'}).encode()
+            raise __import__('urllib').error.HTTPError(request.full_url,400,'Bad Request',{},io.BytesIO(body))
+        result=outbound.deliver(leased,cfg,opener=opener)
+        self.assertEqual(result['state'],'PRODUCER_DELIVERY_UNCONFIRMED')
+        self.assertEqual(result['http_status'],400)
+        self.assertEqual(result['producer_error_code'],'RESEARCH_SCOPE_REJECTED')
+        self.assertEqual(result['producer_error_message'],'scope rejected')
+        self.assertNotIn('secret',result)
+
     def test_delivery_requires_durable_producer_ack(self):
         leased=self.leased(); a=outbound.build_assignment(leased)
         ack={'status':'SUCCESS','storage':'AUTHORITATIVE_PRODUCER_PERSISTENCE','is_new_job':True,
@@ -81,7 +95,7 @@ class ProducerOutboundTests(unittest.TestCase):
         self.assertIn("j.status='leased' AND j.attempt_count=1", source)
         self.assertIn("j.lease_expires_at<=clock_timestamp()", source)
         self.assertIn("PRODUCER_DELIVERY_UNCONFIRMED", source)
-        self.assertIn("recovery_limit > 4", source)
+        self.assertIn("recovery_limit > 5", source)
         self.assertIn("END < %s", source)
         self.assertIn("rn.origin='PRODUCER'", source)
         self.assertIn("lease_expires_at=clock_timestamp()+make_interval(secs=>300)", source)
@@ -109,7 +123,7 @@ class ProducerOutboundTests(unittest.TestCase):
         with patch.dict(os.environ,env,clear=True):
             config=outbound.settings()
             self.assertTrue(config['ready'])
-            self.assertEqual(config['recovery_limit'],4)
+            self.assertEqual(config['recovery_limit'],5)
             self.assertEqual(config['auth_mode'],'token')
 
 if __name__=='__main__': unittest.main()
