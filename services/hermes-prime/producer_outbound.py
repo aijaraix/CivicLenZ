@@ -64,12 +64,13 @@ def _secret_from_credential() -> str | None:
 def settings() -> dict:
     raw_budget = os.environ.get("HERMES_PRODUCER_OUTBOUND_BUDGET", "1")
     raw_recovery_limit = os.environ.get("HERMES_PRODUCER_OUTBOUND_RECOVERY_LIMIT", "1")
+    auth_mode = os.environ.get("HERMES_PRODUCER_AUTH_MODE", "hmac").strip().lower()
     try:
         budget = min(1, max(0, int(raw_budget)))
     except ValueError:
         budget = 0
     try:
-        recovery_limit = min(3, max(0, int(raw_recovery_limit)))
+        recovery_limit = min(4, max(0, int(raw_recovery_limit)))
     except ValueError:
         recovery_limit = 0
     endpoint = os.environ.get("HERMES_PRODUCER_ENDPOINT", "").strip()
@@ -77,7 +78,7 @@ def settings() -> dict:
     secret = _secret_from_credential()
     enabled = os.environ.get("HERMES_PRODUCER_OUTBOUND") == "true"
     ready = bool(
-        enabled and budget == 1 and exact_job_id and secret
+        enabled and budget == 1 and exact_job_id and secret and auth_mode in ("hmac", "token")
         and endpoint.startswith("https://") and endpoint.endswith("/api/harvester/jobs")
     )
     return {
@@ -85,6 +86,7 @@ def settings() -> dict:
         "ready": ready,
         "budget": budget,
         "recovery_limit": recovery_limit,
+        "auth_mode": auth_mode,
         "endpoint": endpoint,
         "exact_job_id": exact_job_id,
         "secret": secret,
@@ -176,7 +178,7 @@ def recover_unconfirmed(cursor, config: dict):
     recovery_limit = config.get("recovery_limit", 1)
     if (not config.get("ready") or config.get("budget") != 1 or not config.get("exact_job_id")
             or isinstance(recovery_limit, bool) or not isinstance(recovery_limit, int)
-            or recovery_limit < 1 or recovery_limit > 3):
+            or recovery_limit < 1 or recovery_limit > 4):
         return None
     cursor.execute("""
         SELECT j.*
@@ -324,8 +326,12 @@ def build_assignment(leased: dict) -> dict:
     }
 
 
-def _body_and_headers(assignment: dict, secret: str, now: int | None = None) -> tuple[bytes, dict]:
+def _body_and_headers(assignment: dict, secret: str, now: int | None = None, auth_mode: str = "hmac") -> tuple[bytes, dict]:
     body = json.dumps(assignment, ensure_ascii=False, separators=(",", ":")).encode("utf-8")
+    if auth_mode == "token":
+        return body, {"Content-Type": "application/json", "x-harvester-secret": secret}
+    if auth_mode != "hmac":
+        raise ValueError("unsupported producer authentication mode")
     timestamp = str(int(time.time() if now is None else now))
     signature = hmac.new(secret.encode("utf-8"), timestamp.encode("utf-8") + b"." + body, hashlib.sha256).hexdigest()
     return body, {
@@ -340,7 +346,7 @@ def deliver(leased: dict, config: dict, opener=None) -> dict:
     if not config.get("ready") or not config.get("secret"):
         return {"state": "PRODUCER_OUTBOUND_GATED", "job_id": str(leased.get("job_id"))}
     assignment = build_assignment(leased)
-    body, headers = _body_and_headers(assignment, config["secret"])
+    body, headers = _body_and_headers(assignment, config["secret"], auth_mode=config.get("auth_mode", "hmac"))
     request = urllib.request.Request(config["endpoint"], data=body, headers=headers, method="POST")
     open_url = opener or urllib.request.urlopen
     try:
