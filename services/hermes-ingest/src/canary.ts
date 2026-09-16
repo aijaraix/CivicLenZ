@@ -2,22 +2,42 @@ import { randomUUID } from 'node:crypto';
 import { mkdir, open, link, unlink, readFile } from 'node:fs/promises';
 import path from 'node:path';
 
+export type AuthorizationPurpose = 'INTEROPERABILITY_CANARY' | 'BOUNDED_PRODUCTION_RETURN';
 export type CanaryAuthorization = {
   authorization_id: string; producer_id: string; correlation_id: string;
   created_at: string; expires_at: string; status: 'ARMED' | 'CONSUMED' | 'EXPIRED';
   maximum_uses: 1; use_count: number; consumed_at: string | null;
   consumed_receipt_id: string | null; allowed_classification: 'extracted_unreviewed';
   publication_allowed: false;
+  authorization_purpose?: AuthorizationPurpose;
+  allowed_job_id?: string; allowed_research_work_identity?: string;
 };
 export const UUID = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/;
 export const CANARY_PRODUCER = 'civicslenzz-gemini-harvester';
+export const WORK_ID = /^work:v1:[0-9a-f]{64}$/;
 export function validAuthorization(a: CanaryAuthorization, now = Date.now()): boolean {
+  const bounded = a.authorization_purpose === 'BOUNDED_PRODUCTION_RETURN';
+  const boundedIdentity = !bounded || (a.allowed_job_id !== undefined && UUID.test(a.allowed_job_id)
+    && a.allowed_research_work_identity !== undefined && WORK_ID.test(a.allowed_research_work_identity)
+    && a.correlation_id === a.allowed_job_id);
   return UUID.test(a.authorization_id) && UUID.test(a.correlation_id)
     && a.producer_id === CANARY_PRODUCER && a.maximum_uses === 1
     && a.allowed_classification === 'extracted_unreviewed' && a.publication_allowed === false
     && a.status === 'ARMED' && a.use_count === 0 && a.consumed_at === null && a.consumed_receipt_id === null
     && Number.isFinite(Date.parse(a.created_at)) && Date.parse(a.created_at) <= now
-    && Date.parse(a.expires_at) > now && Date.parse(a.expires_at) - Date.parse(a.created_at) <= 3600000;
+    && Date.parse(a.expires_at) > now && Date.parse(a.expires_at) - Date.parse(a.created_at) <= 3600000
+    && boundedIdentity;
+}
+
+export function authorizationMatchesEnvelope(a: CanaryAuthorization, envelope: any, authenticatedProducerId?: string): boolean {
+  if (!validAuthorization(a)) return false;
+  if (authenticatedProducerId && authenticatedProducerId !== a.producer_id) return false;
+  if (envelope?.producer?.producer_id !== a.producer_id || envelope?.extraction_status !== a.allowed_classification) return false;
+  if (a.authorization_purpose === 'BOUNDED_PRODUCTION_RETURN') {
+    return envelope?.job?.job_id === a.allowed_job_id
+      && envelope?.job?.research_work_identity === a.allowed_research_work_identity;
+  }
+  return envelope?.producer?.execution_id === a.correlation_id;
 }
 export async function readAuthorization(directory: string, correlation: string): Promise<CanaryAuthorization | undefined> {
   if (!UUID.test(correlation)) return undefined;
@@ -48,6 +68,26 @@ export async function armCanary(directory: string, correlation: string, ttlSecon
   const f = await open(temp, 'wx', 0o600);
   try { await f.writeFile(JSON.stringify(a)+'\n'); await f.sync(); } finally { await f.close(); }
   try { await link(temp, path.join(dir, correlation+'.json')); const d=await open(dir,'r'); try { await d.sync(); } finally { await d.close(); } }
+  finally { await unlink(temp); }
+  return a;
+}
+
+export async function armBoundedReturn(directory: string, jobId: string, researchWorkIdentity: string, ttlSeconds: number): Promise<CanaryAuthorization> {
+  if (!UUID.test(jobId) || !WORK_ID.test(researchWorkIdentity) || !Number.isInteger(ttlSeconds) || ttlSeconds < 60 || ttlSeconds > 3600)
+    throw new Error('invalid bounded production authorization');
+  const now = Date.now();
+  const a: CanaryAuthorization = { authorization_id: randomUUID(), producer_id: CANARY_PRODUCER,
+    correlation_id: jobId, created_at: new Date(now).toISOString(), expires_at: new Date(now+ttlSeconds*1000).toISOString(),
+    status: 'ARMED', maximum_uses: 1, use_count: 0, consumed_at: null, consumed_receipt_id: null,
+    allowed_classification: 'extracted_unreviewed', publication_allowed: false,
+    authorization_purpose: 'BOUNDED_PRODUCTION_RETURN', allowed_job_id: jobId,
+    allowed_research_work_identity: researchWorkIdentity };
+  const dir = path.join(directory, 'canary-authorizations');
+  await mkdir(dir, { recursive: true, mode: 0o700 });
+  const temp = path.join(dir, '.' + a.authorization_id + '.tmp');
+  const f = await open(temp, 'wx', 0o600);
+  try { await f.writeFile(JSON.stringify(a)+'\n'); await f.sync(); } finally { await f.close(); }
+  try { await link(temp, path.join(dir, jobId+'.json')); const d=await open(dir,'r'); try { await d.sync(); } finally { await d.close(); } }
   finally { await unlink(temp); }
   return a;
 }

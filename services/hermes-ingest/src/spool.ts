@@ -1,4 +1,4 @@
-import { readAuthorization, validAuthorization, type CanaryAuthorization } from "./canary.ts";
+import { authorizationMatchesEnvelope, readAuthorization, validAuthorization, type CanaryAuthorization } from "./canary.ts";
 import { createHash, randomUUID } from "node:crypto";
 import { chmod, link, mkdir, open, readdir, readFile, rename, stat, unlink, writeFile } from "node:fs/promises";
 import path from "node:path";
@@ -359,7 +359,7 @@ export class DurableIntakeSpool {
       if (canary) {
         const live = await readAuthorization(this.directory, canary.correlation_id);
         if (!live || !validAuthorization(live) || live.authorization_id !== canary.authorization_id || live.producer_id !== producerId
-          || envelope.producer.execution_id !== live.correlation_id || envelope.extraction_status !== live.allowed_classification) return { kind: "canary_rejected" };
+          || !authorizationMatchesEnvelope(live, envelope)) return { kind: "canary_rejected" };
       }
       const indexPath = this.jobIndexPath(producerId, jobId);
       const existingIndex = await readJson<JobIndex>(indexPath);
