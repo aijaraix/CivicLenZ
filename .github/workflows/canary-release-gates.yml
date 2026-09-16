@@ -1,7 +1,7 @@
 name: Bounded canary release gates
 on:
   push:
-    branches: [codex/bounded-ingest-canary]
+    branches: [codex/bounded-ingest-canary, codex/producer-receipt-telemetry]
 permissions:
   contents: read
 jobs:

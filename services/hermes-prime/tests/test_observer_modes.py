@@ -56,15 +56,18 @@ class ObserverModesTest(unittest.TestCase):
                 "eligible_receipts_observed": 1, "durable_handoffs": 1})
             contract_dispatcher = types.SimpleNamespace(
                 tick=lambda governor: calls.append(dict(governor)) or {"state": "RESOURCE_GATED"})
+            gap_planner = types.SimpleNamespace(reconcile=lambda: {"state": "PARTIAL"})
             snapshot = {"observed_at": time.time(), "mode": "OBSERVATION_NO_DISPATCH",
                 "governor": {"reasons": [], "dispatch_enabled": True, "dispatch_limit": 1},
                 "receiver_health": True, "local_receipt_files": 1,
                 "canonical_dispatch": "RECEIPT_DISPATCH_ENABLED_PENDING_TICK",
                 "canonical_work_ledger": "EXISTING_HERMES_LEDGER_PENDING_RECEIPT_HANDOFF"}
             with patch.dict(os.environ, {"HERMES_PRODUCER_RECEIPT_DISPATCH": "true",
-                                        "HERMES_ROUTE_CONTRACTS": "true"}, clear=True), \
+                                        "HERMES_ROUTE_CONTRACTS": "true",
+                                        "HERMES_PLAN_GAPS": "true"}, clear=True), \
                  patch.dict(sys.modules, {"producer_receipt_dispatch": receipt_dispatcher,
-                                          "contract_dispatcher": contract_dispatcher}), \
+                                          "contract_dispatcher": contract_dispatcher,
+                                          "gap_planner": gap_planner}), \
                  patch.object(sys, "argv", ["observer", "--state", str(path), "--spool", directory]), \
                  patch.object(observer, "observe", return_value=snapshot), \
                  patch.object(observer, "watch_receipts", return_value=None), \
