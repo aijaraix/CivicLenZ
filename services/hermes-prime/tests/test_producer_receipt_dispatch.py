@@ -190,6 +190,30 @@ class ProducerReceiptDispatchTests(unittest.TestCase):
         for key in ("evidence", "envelope", "acknowledgement_state", "canary_authorization", "result_content_hash"):
             self.assertEqual(live[key], original[key])
 
+    def test_partially_accepted_unreviewed_evidence_dispatches_to_validation_without_truth_promotion(self):
+        ledger = Ledger()
+        with tempfile.TemporaryDirectory() as folder:
+            receipt = fixture()
+            receipt["acknowledgement_state"] = "PARTIALLY_ACCEPTED"
+            receipt["envelope"]["gaps"] = ["CANONICAL_ENTITY_MAPPING_REQUIRED"]
+            receipt["result_content_hash"] = hashlib.sha256(compact(receipt["envelope"])).hexdigest()
+            path = self.write(folder, receipt)
+            with patch.object(dispatch, "connect_database", connector(ledger)):
+                result = dispatch.dispatch_path(path, registry())
+            live = json.loads(path.read_text())
+        self.assertEqual(result["state"], "RECEIPT_CANONICAL_HANDOFF_PROVEN_VALIDATION_WORKER_GAP")
+        self.assertEqual(live["dispatch_state"], "DISPATCHED")
+        self.assertEqual(live["acknowledgement_state"], "PARTIALLY_ACCEPTED")
+        self.assertEqual(len(ledger.jobs), 1)
+        job = next(iter(ledger.jobs.values()))
+        self.assertEqual(job["payload"]["classification"], "extracted_unreviewed")
+        self.assertEqual(job["payload"]["publication_allowed"], False)
+        self.assertEqual(next(iter(ledger.needs.values()))["state"], "BLOCKED")
+        sql = "\n".join(ledger.statements).lower()
+        self.assertNotIn("insert into public.claims", sql)
+        self.assertNotIn("insert into public.seat_occupancies", sql)
+        self.assertNotIn("insert into public.people", sql)
+
     def test_database_commit_then_receipt_failure_is_restart_recoverable_without_duplicate(self):
         ledger = Ledger()
         with tempfile.TemporaryDirectory() as folder:
