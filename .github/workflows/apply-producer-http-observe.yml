@@ -1,0 +1,33 @@
+name: Apply producer delivery observability
+on:
+  push:
+    branches: [chatgpt/producer-delivery-observability]
+permissions:
+  contents: write
+jobs:
+  apply-test-clean:
+    if: github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-latest
+    env:
+      PYTHONDONTWRITEBYTECODE: '1'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: pip install psycopg2-binary
+      - run: git apply producer-http-observe.patch
+      - run: python -m unittest discover -s services/hermes-prime/tests -p 'test_*.py'
+      - name: Verify exact hashes
+        run: |
+          test "$(git hash-object services/hermes-prime/producer_outbound.py)" = 2a80c51b7cd7dd155863e0b3ff2d936dc67acd11
+          test "$(git hash-object services/hermes-prime/tests/test_producer_outbound.py)" = 3dba9cc001073e7e4ae8ad01ae1eafeafed271f2
+          git diff --check
+      - run: rm producer-http-observe.patch .github/workflows/apply-producer-http-observe.yml
+      - name: Commit verified source only
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add services/hermes-prime/producer_outbound.py services/hermes-prime/tests/test_producer_outbound.py producer-http-observe.patch .github/workflows/apply-producer-http-observe.yml
+          git commit -m 'Record bounded producer delivery rejection metadata [skip ci]'
+          git push
