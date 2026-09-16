@@ -16,6 +16,7 @@ from extraction_handoff import plan_extraction, plan_validation_handoff
 import validation_receipt
 import validation_followup
 import governor_context
+import producer_receipt_validation
 
 
 def settings():
@@ -132,12 +133,14 @@ def recover_and_collect(cursor):
 def tick(governor):
     config = settings()
     selected = None
+    local_validation = False
     with connect_database() as connection:
         with connection, connection.cursor(cursor_factory=RealDictCursor) as cursor:
             # This serializes selection/budget decisions, not a parallel job lease.
             cursor.execute("SELECT pg_try_advisory_xact_lock(184913,3) AS acquired")
             if not cursor.fetchone()['acquired']:
                 return {'state':'ANOTHER_CANONICAL_TICK_ACTIVE'}
+            producer_receipt_validation.collect(cursor)
             validation_receipt.collect(cursor)
             validation_followup.collect(cursor)
             governor_context.collect(cursor)
@@ -147,40 +150,45 @@ def tick(governor):
             governor_context.plan(cursor,config)
             if os.environ.get('HERMES_EXTRACT_EVIDENCE')=='true':
                 plan_extraction(cursor,config)
-            if not config['enabled'] or not config['ready'] or not config['deployment']:
-                return {'state':'DISPATCH_GATED','routing_evaluated':routed,
-                        'credential_ready':config['ready'],'worker_deployment_configured':bool(config['deployment'])}
             if governor['dispatch_limit'] < 1:
                 return {'state':'RESOURCE_GATED'}
-            candidate=governor_context.candidate(cursor)
-            if candidate is None:
-                candidate=validation_followup.candidate(cursor)
-            if candidate is None:
-                candidate=validation_receipt.candidate(cursor,config)
-            if candidate is None:
-                cursor.execute("""SELECT coalesce(sum(attempt_count),0) AS attempts,
-                    count(*) FILTER (WHERE status='leased') AS active FROM public.jobs
-                    WHERE payload->'capability_route'->>'version'=%s
-                    AND payload->>'orchestration_authority'='hermes'
-                    AND payload->>'execution_class'='PRODUCTION'""", (ROUTE_VERSION,))
-                budget = cursor.fetchone()
-                if budget['active'] or budget['attempts'] >= config['budget']:
-                    return {'state':'BOUNDED_CANARY_BUDGET','attempts':int(budget['attempts'])}
-                cursor.execute("""SELECT j.job_id FROM public.jobs j
-                    JOIN hermes_ops.research_needs n ON n.need_id=j.research_need_id
-                    WHERE j.job_type IN ('contract_scope_research','contract_evidence_extract') AND j.status='queued'
-                    AND j.payload->>'orchestration_authority'='hermes'
-                    AND j.payload->>'execution_class'='PRODUCTION' AND n.execution_class='PRODUCTION'
-                    AND n.origin='CONTRACT_GAP' AND (n.state='OPEN' OR (j.job_type='contract_evidence_extract' AND n.state='AWAITING_RESULT'))
-                    AND (j.job_type<>'contract_evidence_extract' OR %s)
-                    AND j.payload->>'research_work_identity'=j.dedupe_key
-                    AND j.payload->'capability_route'->>'version'=%s
-                    AND NOT (j.payload ? 'dispatch_blocker') AND j.attempt_count<j.max_attempts
-                    AND (j.scheduled_for IS NULL OR j.scheduled_for<=clock_timestamp())
-                    AND NOT EXISTS (SELECT 1 FROM hermes_ops.job_dependencies d JOIN public.jobs p
-                        ON p.job_id=d.prerequisite_job_id WHERE d.job_id=j.job_id AND p.status<>'succeeded')
-                    ORDER BY n.priority,j.created_at LIMIT 1""",(os.environ.get('HERMES_EXTRACT_EVIDENCE')=='true',ROUTE_VERSION))
-                candidate=cursor.fetchone()
+
+            candidate = producer_receipt_validation.candidate(cursor)
+            if candidate is not None:
+                local_validation = True
+            else:
+                if not config['enabled'] or not config['ready'] or not config['deployment']:
+                    return {'state':'DISPATCH_GATED','routing_evaluated':routed,
+                            'credential_ready':config['ready'],'worker_deployment_configured':bool(config['deployment'])}
+                candidate=governor_context.candidate(cursor)
+                if candidate is None:
+                    candidate=validation_followup.candidate(cursor)
+                if candidate is None:
+                    candidate=validation_receipt.candidate(cursor,config)
+                if candidate is None:
+                    cursor.execute("""SELECT coalesce(sum(attempt_count),0) AS attempts,
+                        count(*) FILTER (WHERE status='leased') AS active FROM public.jobs
+                        WHERE payload->'capability_route'->>'version'=%s
+                        AND payload->>'orchestration_authority'='hermes'
+                        AND payload->>'execution_class'='PRODUCTION'""", (ROUTE_VERSION,))
+                    budget = cursor.fetchone()
+                    if budget['active'] or budget['attempts'] >= config['budget']:
+                        return {'state':'BOUNDED_CANARY_BUDGET','attempts':int(budget['attempts'])}
+                    cursor.execute("""SELECT j.job_id FROM public.jobs j
+                        JOIN hermes_ops.research_needs n ON n.need_id=j.research_need_id
+                        WHERE j.job_type IN ('contract_scope_research','contract_evidence_extract') AND j.status='queued'
+                        AND j.payload->>'orchestration_authority'='hermes'
+                        AND j.payload->>'execution_class'='PRODUCTION' AND n.execution_class='PRODUCTION'
+                        AND n.origin='CONTRACT_GAP' AND (n.state='OPEN' OR (j.job_type='contract_evidence_extract' AND n.state='AWAITING_RESULT'))
+                        AND (j.job_type<>'contract_evidence_extract' OR %s)
+                        AND j.payload->>'research_work_identity'=j.dedupe_key
+                        AND j.payload->'capability_route'->>'version'=%s
+                        AND NOT (j.payload ? 'dispatch_blocker') AND j.attempt_count<j.max_attempts
+                        AND (j.scheduled_for IS NULL OR j.scheduled_for<=clock_timestamp())
+                        AND NOT EXISTS (SELECT 1 FROM hermes_ops.job_dependencies d JOIN public.jobs p
+                            ON p.job_id=d.prerequisite_job_id WHERE d.job_id=j.job_id AND p.status<>'succeeded')
+                        ORDER BY n.priority,j.created_at LIMIT 1""",(os.environ.get('HERMES_EXTRACT_EVIDENCE')=='true',ROUTE_VERSION))
+                    candidate=cursor.fetchone()
             if candidate:
                 token=secrets.token_hex(32)
                 cursor.execute("SELECT * FROM hermes_ops.lease_job(%s,%s,300)",(candidate['job_id'],token))
@@ -201,6 +209,13 @@ def tick(governor):
                     cursor.execute("UPDATE hermes_ops.research_needs SET state='AWAITING_RESULT',reason='CANONICAL_LEASE_ACQUIRED' WHERE need_id=%s",(selected['research_need_id'],))
     if not selected:
         return {'state':'NO_ELIGIBLE_JOB'}
+    if local_validation:
+        try:
+            return producer_receipt_validation.execute(selected)
+        except Exception:
+            # The lease remains authoritative. Recovery/collection handles expiry;
+            # do not expose database/file details or invent a successful result.
+            return {'state':'LOCAL_VALIDATION_EXECUTION_FAILED','job_id':str(selected['job_id'])}
     # Commit the lease before delivery; failure or uncertain delivery expires under
     # the same canonical policy. Never reacquire via the legacy worker RPC.
     try:
