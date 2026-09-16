@@ -1,0 +1,36 @@
+name: Apply post-deployment producer recovery 3
+on:
+  push:
+    branches: [chatgpt/producer-outbound-postdeploy-recovery]
+permissions:
+  contents: write
+jobs:
+  apply-test-clean:
+    if: github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-latest
+    env:
+      PYTHONDONTWRITEBYTECODE: '1'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: pip install psycopg2-binary
+      - name: Apply exact patch
+        run: git apply recovery3.patch
+      - name: Prime tests
+        run: python -m unittest discover -s services/hermes-prime/tests -p 'test_*.py'
+      - name: Verify exact hashes
+        run: |
+          test "$(git hash-object services/hermes-prime/producer_outbound.py)" = c33b9bef6b880f4a57da18377d60a061f4cefe2d
+          test "$(git hash-object services/hermes-prime/tests/test_producer_outbound.py)" = c2d3f9022824bbbc8879e07130035f8685de467a
+          git diff --check
+      - name: Clean staging artifacts
+        run: rm recovery3.patch .github/workflows/apply-postdeploy-recovery3.yml
+      - name: Commit verified source only
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add services/hermes-prime/producer_outbound.py services/hermes-prime/tests/test_producer_outbound.py recovery3.patch .github/workflows/apply-postdeploy-recovery3.yml
+          git commit -m 'Permit one explicit post-deployment same-attempt recovery [skip ci]'
+          git push
