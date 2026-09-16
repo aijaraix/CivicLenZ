@@ -63,10 +63,15 @@ def _secret_from_credential() -> str | None:
 
 def settings() -> dict:
     raw_budget = os.environ.get("HERMES_PRODUCER_OUTBOUND_BUDGET", "1")
+    raw_recovery_limit = os.environ.get("HERMES_PRODUCER_OUTBOUND_RECOVERY_LIMIT", "1")
     try:
         budget = min(1, max(0, int(raw_budget)))
     except ValueError:
         budget = 0
+    try:
+        recovery_limit = min(2, max(0, int(raw_recovery_limit)))
+    except ValueError:
+        recovery_limit = 0
     endpoint = os.environ.get("HERMES_PRODUCER_ENDPOINT", "").strip()
     exact_job_id = _uuid(os.environ.get("HERMES_PRODUCER_OUTBOUND_JOB_ID"))
     secret = _secret_from_credential()
@@ -79,6 +84,7 @@ def settings() -> dict:
         "enabled": enabled,
         "ready": ready,
         "budget": budget,
+        "recovery_limit": recovery_limit,
         "endpoint": endpoint,
         "exact_job_id": exact_job_id,
         "secret": secret,
@@ -161,13 +167,16 @@ def activate_exact_route(cursor, config: dict) -> str | None:
 
 
 def recover_unconfirmed(cursor, config: dict):
-    """Renew the exact expired delivery lease once without consuming attempt 2.
+    """Renew the exact expired delivery lease within an explicit bounded limit.
 
-    This is only for a delivery that never became durable at the producer and has
-    no canonical receipt handoff. The original lease token and attempt_count=1 are
-    preserved, so downstream identity remains the same canonical attempt.
+    Recovery preserves the original lease token and canonical attempt_count=1.
+    The production default limit is one. A second and final recovery requires
+    explicit operator configuration after the producer-side defect is repaired.
     """
-    if not config.get("ready") or config.get("budget") != 1 or not config.get("exact_job_id"):
+    recovery_limit = config.get("recovery_limit", 1)
+    if (not config.get("ready") or config.get("budget") != 1 or not config.get("exact_job_id")
+            or isinstance(recovery_limit, bool) or not isinstance(recovery_limit, int)
+            or recovery_limit < 1 or recovery_limit > 2):
         return None
     cursor.execute("""
         SELECT j.*
@@ -183,7 +192,15 @@ def recover_unconfirmed(cursor, config: dict):
           AND j.payload->'producer_outbound_route'->>'bounded_job_id'=j.job_id::text
           AND j.checkpoint->'producer_outbound'->>'version'=%s
           AND j.checkpoint->'producer_outbound'->>'state'='PRODUCER_DELIVERY_UNCONFIRMED'
-          AND NOT (j.checkpoint ? 'producer_outbound_recovery')
+          AND (
+            NOT (j.checkpoint ? 'producer_outbound_recovery')
+            OR (j.checkpoint->'producer_outbound_recovery'->>'count') ~ '^[0-9]+$'
+          )
+          AND CASE
+                WHEN (j.checkpoint->'producer_outbound_recovery'->>'count') ~ '^[0-9]+$'
+                THEN (j.checkpoint->'producer_outbound_recovery'->>'count')::int
+                ELSE 0
+              END < %s
           AND n.origin='CONTRACT_GAP' AND n.execution_class='PRODUCTION'
           AND n.state='AWAITING_RESULT' AND n.reason='PRODUCER_ASSIGNMENT_LEASE_ACQUIRED'
           AND NOT EXISTS (
@@ -193,13 +210,18 @@ def recover_unconfirmed(cursor, config: dict):
               AND rn.basis->>'producer_research_work_identity'=j.dedupe_key
           )
         FOR UPDATE OF j,n SKIP LOCKED
-    """, (config["exact_job_id"], VERSION, VERSION))
+    """, (config["exact_job_id"], VERSION, VERSION, recovery_limit))
     row = cursor.fetchone()
     if not row:
         return None
+    prior = (row.get("checkpoint") or {}).get("producer_outbound_recovery") or {}
+    prior_count = prior.get("count", 0)
+    if isinstance(prior_count, bool) or not isinstance(prior_count, int) or prior_count < 0 or prior_count >= recovery_limit:
+        return None
     recovery = {
         "version": VERSION,
-        "count": 1,
+        "count": prior_count + 1,
+        "limit": recovery_limit,
         "attempt_count": 1,
         "renewed_at": datetime.now(timezone.utc).isoformat().replace("+00:00", "Z"),
         "reason": "SAME_ATTEMPT_DELIVERY_RECOVERY",
@@ -210,8 +232,12 @@ def recover_unconfirmed(cursor, config: dict):
         WHERE job_id=%s AND status='leased' AND attempt_count=1 AND leased_by=%s
           AND lease_expires_at<=clock_timestamp()
           AND checkpoint->'producer_outbound'->>'state'='PRODUCER_DELIVERY_UNCONFIRMED'
-          AND NOT (checkpoint ? 'producer_outbound_recovery')
-        RETURNING *""", (json.dumps(recovery), row["job_id"], row["leased_by"]))
+          AND CASE
+                WHEN (checkpoint->'producer_outbound_recovery'->>'count') ~ '^[0-9]+$'
+                THEN (checkpoint->'producer_outbound_recovery'->>'count')::int
+                ELSE 0
+              END=%s
+        RETURNING *""", (json.dumps(recovery), row["job_id"], row["leased_by"], prior_count))
     return cursor.fetchone()
 
 
