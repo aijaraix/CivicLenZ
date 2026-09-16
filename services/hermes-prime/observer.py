@@ -219,7 +219,8 @@ def main():
                     snapshot["governor"].update(dispatch_enabled=False, dispatch_limit=0)
             if planning_enabled:
                 snapshot["mode"] = "OBSERVATION_AND_GAP_PLANNING_NO_DISPATCH"
-                snapshot["canonical_work_ledger"] = "PARTIAL"
+                if not receipt_dispatch_enabled:
+                    snapshot["canonical_work_ledger"] = "PARTIAL"
                 snapshot["gap_detector"] = planning
             if os.environ.get("HERMES_ROUTE_CONTRACTS") == "true":
                 snapshot["mode"] = ("GAP_PLANNING_AND_BOUNDED_CONTRACT_ROUTING"
