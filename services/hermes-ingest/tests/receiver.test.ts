@@ -1,6 +1,6 @@
 import assert from "node:assert/strict";
 import { createHash } from "node:crypto";
-import { mkdtemp, readdir, rm } from "node:fs/promises";
+import { mkdtemp, readdir, rm, stat } from "node:fs/promises";
 import os from "node:os";
 import path from "node:path";
 import test from "node:test";
@@ -134,6 +134,9 @@ test("valid authenticated submission is accepted for validation", async () => {
     assert.equal(result.statusCode, 202);
     assert.equal(result.acknowledgement.acknowledgement_state, "ACCEPTED_FOR_VALIDATION");
     assert.ok(result.acknowledgement.receipt_id);
+    const receiptPath = path.join(harness.directory, "receipts", `${result.acknowledgement.receipt_id}.json`);
+    assert.equal((await stat(path.join(harness.directory, "receipts"))).mode & 0o2770, 0o2770);
+    assert.equal((await stat(receiptPath)).mode & 0o660, 0o660);
   } finally {
     await dispose(harness.directory);
   }

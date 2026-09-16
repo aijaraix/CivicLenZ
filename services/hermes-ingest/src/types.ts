@@ -156,6 +156,17 @@ export type StoredReceipt = {
   received_at: string;
   acknowledgement_state: Exclude<AcknowledgementState, "DUPLICATE" | "CANONICAL_CONFLICT" | "REJECTED_SCHEMA" | "REJECTED_POLICY" | "RETRY_LATER">;
   dispatch_state: "PENDING_CANONICAL_DISPATCH" | "DISPATCHED" | "DISPATCH_FAILED";
+  dispatch_attempts?: number;
+  last_dispatch_attempt_at?: string;
+  dispatch_failure?: { code: string; observed_at: string };
+  canonical_handoff?: {
+    version: string;
+    handoff_id: string;
+    job_id: string;
+    job_type: string;
+    validation_state: string;
+    dispatched_at: string;
+  };
   evidence: StoredEvidenceArtifact[];
   envelope: ResearchIngestEnvelope;
 };

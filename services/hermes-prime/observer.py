@@ -72,13 +72,16 @@ def observe(spool):
     receipts = spool / "receipts"
     count = sum(1 for p in receipts.iterdir() if p.is_file() and p.suffix == ".json") if receipts.exists() else 0
     validation = validation_telemetry.observe()
+    receipt_dispatch_enabled = os.environ.get("HERMES_PRODUCER_RECEIPT_DISPATCH") == "true"
     return {"version": VERSION, "mode": "OBSERVATION_NO_DISPATCH",
             "observed_at": time.time(), "resources": measured,
             "governor": allowance,
             "services": {name: service_state(name) for name in SERVICES},
             "receiver_health": local_receiver_health(), "local_receipt_files": count,
-            "canonical_dispatch": "NOT_IMPLEMENTED",
-            "canonical_work_ledger": "NOT_IMPLEMENTED",
+            "canonical_dispatch": ("RECEIPT_DISPATCH_ENABLED_PENDING_TICK"
+                                   if receipt_dispatch_enabled else "NOT_IMPLEMENTED"),
+            "canonical_work_ledger": ("EXISTING_HERMES_LEDGER_PENDING_RECEIPT_HANDOFF"
+                                      if receipt_dispatch_enabled else "NOT_IMPLEMENTED"),
             "civic_validation": validation["state"], "validation_telemetry": validation}
 
 
@@ -179,15 +182,40 @@ def main():
                 next_inventory = time.monotonic() + 300
             snapshot = observe(args.spool)
             snapshot["backlog_inventory"] = inventory
+            receipt_dispatch_enabled = os.environ.get("HERMES_PRODUCER_RECEIPT_DISPATCH") == "true"
+            receipt_consumed_allowance = False
+            if receipt_dispatch_enabled:
+                try:
+                    from producer_receipt_dispatch import tick as producer_receipt_tick
+                    snapshot["producer_receipt_dispatch"] = producer_receipt_tick(args.spool, snapshot["governor"])
+                    receipt_state = snapshot["producer_receipt_dispatch"]["state"]
+                    snapshot["canonical_dispatch"] = receipt_state
+                    if receipt_state == "RECEIPT_CANONICAL_HANDOFF_PROVEN_VALIDATION_WORKER_GAP":
+                        snapshot["canonical_work_ledger"] = "RECEIPT_HANDOFF_DURABLE_VALIDATION_WORKER_GAP"
+                    elif receipt_state in ("RECEIPT_DISPATCH_FAILED_RECOVERABLE", "RECEIPT_REJECTED_FAIL_CLOSED",
+                                           "CANONICAL_COMMITTED_RECEIPT_TRANSITION_PENDING"):
+                        snapshot["canonical_work_ledger"] = "RECEIPT_HANDOFF_REQUIRES_RECOVERY"
+                    receipt_consumed_allowance = bool(
+                        snapshot["producer_receipt_dispatch"].get("eligible_receipts_observed", 0))
+                except Exception:
+                    snapshot["producer_receipt_dispatch"] = {"state": "RECEIPT_DISPATCH_TICK_FAILED"}
+                    snapshot["canonical_dispatch"] = "RECEIPT_DISPATCH_TICK_FAILED"
+                    snapshot["canonical_work_ledger"] = "RECEIPT_HANDOFF_REQUIRES_RECOVERY"
             if os.environ.get("HERMES_ROUTE_CONTRACTS") == "true":
                 try:
                     from contract_dispatcher import tick
-                    snapshot["contract_dispatch"] = tick(snapshot["governor"])
-                    snapshot["canonical_dispatch"] = snapshot["contract_dispatch"]["state"]
-                    if snapshot["canonical_dispatch"] in ("DISPATCH_GATED", "BOUNDED_CANARY_BUDGET"):
+                    contract_governor = dict(snapshot["governor"])
+                    if receipt_consumed_allowance:
+                        contract_governor.update(dispatch_enabled=False, dispatch_limit=0)
+                        snapshot["governor"]["receipt_dispatch_consumed_allowance"] = 1
+                    snapshot["contract_dispatch"] = tick(contract_governor)
+                    if not receipt_dispatch_enabled:
+                        snapshot["canonical_dispatch"] = snapshot["contract_dispatch"]["state"]
+                    if snapshot["contract_dispatch"]["state"] in ("DISPATCH_GATED", "BOUNDED_CANARY_BUDGET"):
                         snapshot["governor"].update(dispatch_enabled=False, dispatch_limit=0)
                 except Exception:
-                    snapshot["canonical_dispatch"] = "DISPATCH_TICK_FAILED"
+                    if not receipt_dispatch_enabled:
+                        snapshot["canonical_dispatch"] = "DISPATCH_TICK_FAILED"
                     snapshot["governor"].update(dispatch_enabled=False, dispatch_limit=0)
             if planning_enabled:
                 snapshot["mode"] = "OBSERVATION_AND_GAP_PLANNING_NO_DISPATCH"
@@ -196,6 +224,8 @@ def main():
             if os.environ.get("HERMES_ROUTE_CONTRACTS") == "true":
                 snapshot["mode"] = ("GAP_PLANNING_AND_BOUNDED_CONTRACT_ROUTING"
                                     if planning_enabled else "BOUNDED_CONTRACT_ROUTING")
+            if receipt_dispatch_enabled:
+                snapshot["mode"] += "_AND_PRODUCER_RECEIPT_HANDOFF"
             persist(db, snapshot, trigger)
             # Bound event bursts to one observation per second; no payloads are read.
             time.sleep(1)
