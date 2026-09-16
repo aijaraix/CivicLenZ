@@ -69,7 +69,7 @@ def settings() -> dict:
     except ValueError:
         budget = 0
     try:
-        recovery_limit = min(2, max(0, int(raw_recovery_limit)))
+        recovery_limit = min(3, max(0, int(raw_recovery_limit)))
     except ValueError:
         recovery_limit = 0
     endpoint = os.environ.get("HERMES_PRODUCER_ENDPOINT", "").strip()
@@ -176,7 +176,7 @@ def recover_unconfirmed(cursor, config: dict):
     recovery_limit = config.get("recovery_limit", 1)
     if (not config.get("ready") or config.get("budget") != 1 or not config.get("exact_job_id")
             or isinstance(recovery_limit, bool) or not isinstance(recovery_limit, int)
-            or recovery_limit < 1 or recovery_limit > 2):
+            or recovery_limit < 1 or recovery_limit > 3):
         return None
     cursor.execute("""
         SELECT j.*

@@ -73,7 +73,7 @@ class ProducerOutboundTests(unittest.TestCase):
         self.assertIn("j.status='leased' AND j.attempt_count=1", source)
         self.assertIn("j.lease_expires_at<=clock_timestamp()", source)
         self.assertIn("PRODUCER_DELIVERY_UNCONFIRMED", source)
-        self.assertIn("recovery_limit > 2", source)
+        self.assertIn("recovery_limit > 3", source)
         self.assertIn("END < %s", source)
         self.assertIn("rn.origin='PRODUCER'", source)
         self.assertIn("lease_expires_at=clock_timestamp()+make_interval(secs=>300)", source)
@@ -101,6 +101,6 @@ class ProducerOutboundTests(unittest.TestCase):
         with patch.dict(os.environ,env,clear=True):
             config=outbound.settings()
             self.assertTrue(config['ready'])
-            self.assertEqual(config['recovery_limit'],2)
+            self.assertEqual(config['recovery_limit'],3)
 
 if __name__=='__main__': unittest.main()
