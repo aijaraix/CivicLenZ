@@ -158,14 +158,21 @@ def tick(governor):
             if governor['dispatch_limit'] < 1:
                 return {'state':'RESOURCE_GATED'}
 
-            candidate = producer_receipt_validation.candidate(cursor)
-            if candidate is not None:
-                local_validation = True
+            recovered = producer_outbound.recover_unconfirmed(cursor, producer_config)
+            if recovered is not None:
+                selected = recovered
+                producer_delivery = True
+                candidate = None
             else:
-                candidate = producer_outbound.candidate(cursor, producer_config)
+                candidate = producer_receipt_validation.candidate(cursor)
                 if candidate is not None:
-                    producer_delivery = True
+                    local_validation = True
                 else:
+                    candidate = producer_outbound.candidate(cursor, producer_config)
+                    if candidate is not None:
+                        producer_delivery = True
+            if selected is None:
+                if candidate is None and not local_validation and not producer_delivery:
                     if not config['enabled'] or not config['ready'] or not config['deployment']:
                         return {'state':'DISPATCH_GATED','routing_evaluated':routed,
                                 'credential_ready':config['ready'],'worker_deployment_configured':bool(config['deployment']),

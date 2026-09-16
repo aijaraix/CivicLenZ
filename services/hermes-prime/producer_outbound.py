@@ -160,6 +160,61 @@ def activate_exact_route(cursor, config: dict) -> str | None:
     return str(row["job_id"]) if cursor.fetchone() else None
 
 
+def recover_unconfirmed(cursor, config: dict):
+    """Renew the exact expired delivery lease once without consuming attempt 2.
+
+    This is only for a delivery that never became durable at the producer and has
+    no canonical receipt handoff. The original lease token and attempt_count=1 are
+    preserved, so downstream identity remains the same canonical attempt.
+    """
+    if not config.get("ready") or config.get("budget") != 1 or not config.get("exact_job_id"):
+        return None
+    cursor.execute("""
+        SELECT j.*
+        FROM public.jobs j
+        JOIN hermes_ops.research_needs n ON n.need_id=j.research_need_id
+        WHERE j.job_id=%s
+          AND j.status='leased' AND j.attempt_count=1
+          AND j.leased_by IS NOT NULL AND j.lease_expires_at<=clock_timestamp()
+          AND j.payload->>'orchestration_authority'='hermes'
+          AND j.payload->>'execution_class'='PRODUCTION'
+          AND j.payload->>'research_work_identity'=j.dedupe_key
+          AND j.payload->'producer_outbound_route'->>'version'=%s
+          AND j.payload->'producer_outbound_route'->>'bounded_job_id'=j.job_id::text
+          AND j.checkpoint->'producer_outbound'->>'version'=%s
+          AND j.checkpoint->'producer_outbound'->>'state'='PRODUCER_DELIVERY_UNCONFIRMED'
+          AND NOT (j.checkpoint ? 'producer_outbound_recovery')
+          AND n.origin='CONTRACT_GAP' AND n.execution_class='PRODUCTION'
+          AND n.state='AWAITING_RESULT' AND n.reason='PRODUCER_ASSIGNMENT_LEASE_ACQUIRED'
+          AND NOT EXISTS (
+            SELECT 1 FROM hermes_ops.research_needs rn
+            WHERE rn.origin='PRODUCER' AND rn.execution_class='PRODUCTION'
+              AND rn.basis->>'producer_job_id'=j.job_id::text
+              AND rn.basis->>'producer_research_work_identity'=j.dedupe_key
+          )
+        FOR UPDATE OF j,n SKIP LOCKED
+    """, (config["exact_job_id"], VERSION, VERSION))
+    row = cursor.fetchone()
+    if not row:
+        return None
+    recovery = {
+        "version": VERSION,
+        "count": 1,
+        "attempt_count": 1,
+        "renewed_at": datetime.now(timezone.utc).isoformat().replace("+00:00", "Z"),
+        "reason": "SAME_ATTEMPT_DELIVERY_RECOVERY",
+    }
+    cursor.execute("""UPDATE public.jobs
+        SET lease_expires_at=clock_timestamp()+make_interval(secs=>300),
+            checkpoint=coalesce(checkpoint,'{}'::jsonb)||jsonb_build_object('producer_outbound_recovery',%s::jsonb)
+        WHERE job_id=%s AND status='leased' AND attempt_count=1 AND leased_by=%s
+          AND lease_expires_at<=clock_timestamp()
+          AND checkpoint->'producer_outbound'->>'state'='PRODUCER_DELIVERY_UNCONFIRMED'
+          AND NOT (checkpoint ? 'producer_outbound_recovery')
+        RETURNING *""", (json.dumps(recovery), row["job_id"], row["leased_by"]))
+    return cursor.fetchone()
+
+
 def candidate(cursor, config: dict):
     if not config.get("ready") or config.get("budget") != 1 or not config.get("exact_job_id"):
         return None
