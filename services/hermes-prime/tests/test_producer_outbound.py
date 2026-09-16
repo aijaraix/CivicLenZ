@@ -68,6 +68,16 @@ class ProducerOutboundTests(unittest.TestCase):
         self.assertIn("jur.jurisdiction_key=%s", source)
         self.assertIn("PRODUCER_OUTBOUND_ROUTE_READY", source)
 
+    def test_recovery_is_same_attempt_once_and_receipt_fenced(self):
+        source = Path(outbound.__file__).read_text()
+        self.assertIn("j.status='leased' AND j.attempt_count=1", source)
+        self.assertIn("j.lease_expires_at<=clock_timestamp()", source)
+        self.assertIn("PRODUCER_DELIVERY_UNCONFIRMED", source)
+        self.assertIn("NOT (j.checkpoint ? 'producer_outbound_recovery')", source)
+        self.assertIn("rn.origin='PRODUCER'", source)
+        self.assertIn("lease_expires_at=clock_timestamp()+make_interval(secs=>300)", source)
+        self.assertNotIn("attempt_count=attempt_count+1", source)
+
     def test_first_attempt_only(self):
         leased=self.leased(); leased['attempt_count']=2
         with self.assertRaises(ValueError): outbound.build_assignment(leased)
