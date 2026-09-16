@@ -109,6 +109,38 @@ class ProducerOutboundTests(unittest.TestCase):
         self.assertIn('"count": prior_count + 1', source)
         self.assertNotIn("attempt_count=attempt_count+1", source)
 
+    def test_completed_receipt_validation_reconciles_original_contract_need(self):
+        class Cursor:
+            def __init__(self):
+                self.rows=[]; self.one=None; self.calls=[]
+            def execute(self,sql,args=()):
+                self.calls.append((sql,args)); self.one=None
+                if "j.status='succeeded'" in sql and "PRODUCER_RECEIPT_ACCEPTED_PENDING_CANONICAL_VALIDATION" in sql:
+                    self.rows=[{
+                        'job_id':'parent-job','research_need_id':'parent-need',
+                        'receipt_need_id':'receipt-need','receipt_id':'receipt-id',
+                        'receipt_need_state':'BLOCKED','receipt_need_reason':'PRODUCER_RECEIPT_VALIDATED_NEEDS_MORE_EVIDENCE',
+                        'receipt_basis':{'producer_receipt_validation':{'validation_disposition':'NEEDS_MORE_EVIDENCE'}},
+                        'validation_job_id':'validation-job','validation_job_status':'succeeded',
+                        'validation_checkpoint':{'validation_evaluation_id':'evaluation-id','validation_disposition':'NEEDS_MORE_EVIDENCE'},
+                    }]
+                elif "UPDATE public.jobs" in sql and "producer_validation_job_id" in sql:
+                    self.one={'job_id':'parent-job'}
+                elif "UPDATE hermes_ops.research_needs" in sql and "PRODUCER_RECEIPT_ACCEPTED_PENDING_CANONICAL_VALIDATION" in sql:
+                    self.one={'need_id':'parent-need'}
+            def fetchall(self):
+                rows=self.rows; self.rows=[]; return rows
+            def fetchone(self):
+                one=self.one; self.one=None; return one
+        cursor=Cursor()
+        self.assertEqual(outbound.reconcile_validated_parent(cursor),1)
+        writes=[(sql,args) for sql,args in cursor.calls if sql.lstrip().startswith('UPDATE')]
+        self.assertTrue(any("producer_validation_disposition" in args[0] for sql,args in writes if sql.lstrip().startswith('UPDATE public.jobs')))
+        need_writes=[(sql,args) for sql,args in writes if sql.lstrip().startswith('UPDATE hermes_ops.research_needs')]
+        self.assertEqual(len(need_writes),1)
+        self.assertEqual(need_writes[0][1][0],'PRODUCER_RECEIPT_VALIDATED_NEEDS_MORE_EVIDENCE')
+        self.assertIn('NEEDS_MORE_EVIDENCE',need_writes[0][1][1])
+
     def test_first_attempt_only(self):
         leased=self.leased(); leased['attempt_count']=2
         with self.assertRaises(ValueError): outbound.build_assignment(leased)
