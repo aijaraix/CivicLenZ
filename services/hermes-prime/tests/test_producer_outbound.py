@@ -43,6 +43,14 @@ class ProducerOutboundTests(unittest.TestCase):
         self.assertEqual(headers['x-civiclenz-signature'],'sha256='+expected)
         self.assertEqual(body,json.dumps(a,separators=(',',':')).encode())
 
+    def test_token_auth_mode_uses_supported_secret_header_without_hmac(self):
+        a=outbound.build_assignment(self.leased())
+        body,headers=outbound._body_and_headers(a,'test-secret',auth_mode='token')
+        self.assertEqual(headers['x-harvester-secret'],'test-secret')
+        self.assertNotIn('x-civiclenz-signature',headers)
+        self.assertNotIn('x-civiclenz-timestamp',headers)
+        self.assertEqual(body,json.dumps(a,separators=(',',':')).encode())
+
     def test_delivery_requires_durable_producer_ack(self):
         leased=self.leased(); a=outbound.build_assignment(leased)
         ack={'status':'SUCCESS','storage':'AUTHORITATIVE_PRODUCER_PERSISTENCE','is_new_job':True,
@@ -73,7 +81,7 @@ class ProducerOutboundTests(unittest.TestCase):
         self.assertIn("j.status='leased' AND j.attempt_count=1", source)
         self.assertIn("j.lease_expires_at<=clock_timestamp()", source)
         self.assertIn("PRODUCER_DELIVERY_UNCONFIRMED", source)
-        self.assertIn("recovery_limit > 3", source)
+        self.assertIn("recovery_limit > 4", source)
         self.assertIn("END < %s", source)
         self.assertIn("rn.origin='PRODUCER'", source)
         self.assertIn("lease_expires_at=clock_timestamp()+make_interval(secs=>300)", source)
@@ -97,10 +105,11 @@ class ProducerOutboundTests(unittest.TestCase):
         env={'HERMES_PRODUCER_OUTBOUND':'true','HERMES_PRODUCER_OUTBOUND_BUDGET':'1',
              'HERMES_PRODUCER_OUTBOUND_JOB_ID':str(uuid.uuid4()),
              'HERMES_PRODUCER_ENDPOINT':'https://civiclenz.ai.studio/api/harvester/jobs',
-             'CIVICLENZ_HARVESTER_SHARED_SECRET':'x','HERMES_PRODUCER_OUTBOUND_RECOVERY_LIMIT':'99'}
+             'CIVICLENZ_HARVESTER_SHARED_SECRET':'x','HERMES_PRODUCER_OUTBOUND_RECOVERY_LIMIT':'99','HERMES_PRODUCER_AUTH_MODE':'token'}
         with patch.dict(os.environ,env,clear=True):
             config=outbound.settings()
             self.assertTrue(config['ready'])
-            self.assertEqual(config['recovery_limit'],3)
+            self.assertEqual(config['recovery_limit'],4)
+            self.assertEqual(config['auth_mode'],'token')
 
 if __name__=='__main__': unittest.main()
