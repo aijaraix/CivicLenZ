@@ -1,4 +1,4 @@
-import { auditCanary, readAuthorization, validAuthorization, type CanaryAuthorization } from "./canary.ts";
+import { auditCanary, authorizationMatchesEnvelope, readAuthorization, type CanaryAuthorization } from "./canary.ts";
 import { randomUUID } from "node:crypto";
 
 import { verifyHarvesterAuthentication, type AuthHeaders } from "./auth.ts";
@@ -98,11 +98,13 @@ export class HermesIngestReceiver {
     if (this.config.intakePaused) {
       try {
         const candidate = JSON.parse(rawBody.toString("utf8"));
-        const a = await readAuthorization(this.config.spoolDirectory, candidate.producer?.execution_id);
-        if (a && validAuthorization(a) && a.producer_id === authentication.producerId
-          && candidate.producer?.producer_id === authentication.producerId
-          && candidate.extraction_status === a.allowed_classification) {
-          canary = a; correlationId = a.correlation_id;
+        const keys = [candidate.producer?.execution_id, candidate.job?.job_id]
+          .filter((value: unknown, index: number, all: unknown[]) => typeof value === 'string' && all.indexOf(value) === index) as string[];
+        for (const key of keys) {
+          const a = await readAuthorization(this.config.spoolDirectory, key);
+          if (a && authorizationMatchesEnvelope(a, candidate, authentication.producerId)) {
+            canary = a; correlationId = a.correlation_id; break;
+          }
         }
       } catch { /* malformed or unavailable authorization fails closed */ }
     }

@@ -386,7 +386,7 @@ test("acknowledgement shape is versioned and correlation-safe", async () => {
 });
 
 // Behavioral integration tests: isolated disk spools, never production data.
-import { armCanary, readAuthorization, validAuthorization } from '../src/canary.ts';
+import { armBoundedReturn, armCanary, readAuthorization, validAuthorization } from '../src/canary.ts';
 import { writeFile, readFile } from 'node:fs/promises';
 import { randomUUID } from 'node:crypto';
 
@@ -466,5 +466,31 @@ test('maximum TTL uses one lifecycle clock and creates an immediately valid gran
     const a=await armCanary(h.directory,randomUUID(),3600);
     assert.equal(Date.parse(a.expires_at)-Date.parse(a.created_at),3600000);
     assert.equal(validAuthorization(a),true);
+  } finally { await dispose(h.directory); }
+});
+
+
+test('paused bounded production authorization is exact job/work bound and single-use', async () => {
+  const h = await receiver(); h.receiver.config.intakePaused = true;
+  const jobId = randomUUID();
+  const workId = 'work:v1:' + 'a'.repeat(64);
+  try {
+    const a = await armBoundedReturn(h.directory, jobId, workId, 600);
+    assert.equal(a.authorization_purpose, 'BOUNDED_PRODUCTION_RETURN');
+    const base = payload({
+      producer: { producer_id: PRODUCER_ID, producer_version: 'test-production', execution_id: randomUUID() },
+      job: { job_id: jobId, research_work_identity: workId },
+    });
+    let b = bodyFor({ ...base, job: { job_id: randomUUID(), research_work_identity: workId } });
+    assert.equal((await h.receiver.handle(headersFor(b), b)).statusCode, 503);
+    b = bodyFor({ ...base, job: { job_id: jobId, research_work_identity: 'work:v1:' + 'b'.repeat(64) } });
+    assert.equal((await h.receiver.handle(headersFor(b), b)).statusCode, 503);
+    assert.equal((await readAuthorization(h.directory, jobId))?.status, 'ARMED');
+    b = bodyFor(base);
+    const accepted = await h.receiver.handle(headersFor(b), b);
+    assert.equal(accepted.statusCode, 202);
+    assert.equal(accepted.acknowledgement.correlation_id, jobId);
+    assert.equal((await readAuthorization(h.directory, jobId))?.status, 'CONSUMED');
+    assert.equal((await h.receiver.handle(headersFor(b), b)).statusCode, 503);
   } finally { await dispose(h.directory); }
 });
