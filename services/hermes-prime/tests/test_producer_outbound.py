@@ -27,6 +27,13 @@ class ProducerOutboundTests(unittest.TestCase):
         job=str(uuid.uuid4()); need=str(uuid.uuid4()); work='work:v1:'+'a'*64
         return {'job_id':job,'research_need_id':need,'dedupe_key':work,'attempt_count':1,'leased_by':'lease-token'}
 
+    def test_bridge_secret_uses_same_legacy_backtick_normalization_as_receiver(self):
+        raw='`' + ('a'*64) + '`'
+        self.assertEqual(outbound._normalize_bridge_secret(raw),'a'*64)
+        self.assertEqual(outbound._normalize_bridge_secret('plain-secret'),'plain-secret')
+        with patch.dict(os.environ,{'CIVICLENZ_HARVESTER_SHARED_SECRET':raw},clear=True):
+            self.assertEqual(outbound._secret_from_credential(),'a'*64)
+
     def test_assignment_is_exact_bounded_contract(self):
         leased=self.leased(); a=outbound.build_assignment(leased)
         self.assertEqual(a['contract_version'],'HERMES_RESEARCH_JOB_V1')
@@ -95,7 +102,7 @@ class ProducerOutboundTests(unittest.TestCase):
         self.assertIn("j.status='leased' AND j.attempt_count=1", source)
         self.assertIn("j.lease_expires_at<=clock_timestamp()", source)
         self.assertIn("PRODUCER_DELIVERY_UNCONFIRMED", source)
-        self.assertIn("recovery_limit > 5", source)
+        self.assertIn("recovery_limit > 6", source)
         self.assertIn("END < %s", source)
         self.assertIn("rn.origin='PRODUCER'", source)
         self.assertIn("lease_expires_at=clock_timestamp()+make_interval(secs=>300)", source)
@@ -123,7 +130,7 @@ class ProducerOutboundTests(unittest.TestCase):
         with patch.dict(os.environ,env,clear=True):
             config=outbound.settings()
             self.assertTrue(config['ready'])
-            self.assertEqual(config['recovery_limit'],5)
+            self.assertEqual(config['recovery_limit'],6)
             self.assertEqual(config['auth_mode'],'token')
 
 if __name__=='__main__': unittest.main()

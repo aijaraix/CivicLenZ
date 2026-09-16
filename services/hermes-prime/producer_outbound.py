@@ -40,8 +40,15 @@ def _uuid(value: object) -> str | None:
         return None
 
 
+def _normalize_bridge_secret(value: str) -> str:
+    value = value.strip()
+    if re.fullmatch(r"`[0-9a-fA-F]{64}`", value):
+        return value[1:-1]
+    return value
+
+
 def _secret_from_credential() -> str | None:
-    direct = os.environ.get("CIVICLENZ_HARVESTER_SHARED_SECRET", "").strip()
+    direct = _normalize_bridge_secret(os.environ.get("CIVICLENZ_HARVESTER_SHARED_SECRET", ""))
     if direct:
         return direct
     directory = Path(os.environ.get("CREDENTIALS_DIRECTORY", "/nonexistent"))
@@ -54,10 +61,10 @@ def _secret_from_credential() -> str | None:
         if not text:
             continue
         if "\n" not in text and "=" not in text:
-            return text
+            return _normalize_bridge_secret(text)
         for line in text.splitlines():
             if line.startswith("CIVICLENZ_HARVESTER_SHARED_SECRET="):
-                return line.split("=", 1)[1].strip().strip('"').strip("'")
+                return _normalize_bridge_secret(line.split("=", 1)[1].strip().strip('"').strip("'"))
     return None
 
 
@@ -70,7 +77,7 @@ def settings() -> dict:
     except ValueError:
         budget = 0
     try:
-        recovery_limit = min(5, max(0, int(raw_recovery_limit)))
+        recovery_limit = min(6, max(0, int(raw_recovery_limit)))
     except ValueError:
         recovery_limit = 0
     endpoint = os.environ.get("HERMES_PRODUCER_ENDPOINT", "").strip()
@@ -178,7 +185,7 @@ def recover_unconfirmed(cursor, config: dict):
     recovery_limit = config.get("recovery_limit", 1)
     if (not config.get("ready") or config.get("budget") != 1 or not config.get("exact_job_id")
             or isinstance(recovery_limit, bool) or not isinstance(recovery_limit, int)
-            or recovery_limit < 1 or recovery_limit > 5):
+            or recovery_limit < 1 or recovery_limit > 6):
         return None
     cursor.execute("""
         SELECT j.*
