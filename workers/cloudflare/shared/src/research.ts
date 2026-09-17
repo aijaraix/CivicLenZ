@@ -90,24 +90,9 @@ export async function queueMissingProfileWork(
     missingFields.push(item.fieldKey);
     const spec = persisted.contract.fields.find((field) => field.fieldKey === item.fieldKey);
     if (item.action === "close_not_implemented") {
-      const existing = claims.find(
-        (claim) =>
-          claim.subjectType === "person" &&
-          claim.subjectId === input.person.personId &&
-          claim.fieldKey === item.fieldKey,
-      );
-      if (!existing) {
-        await store.recordClaim({
-          subjectType: "person",
-          subjectId: input.person.personId,
-          seatId: input.seat.seatId,
-          fieldKey: item.fieldKey,
-          normalizedValue: "",
-          displayValue: `${item.fieldKey} checked_no_authoritative_result (NOT_IMPLEMENTED)`,
-          valueHash: await valueHash(item.fieldKey, `checked_no_authoritative_result:NOT_IMPLEMENTED`),
-          verificationState: "checked_no_authoritative_result",
-        });
-      }
+      // Missing execution capability is operational state, never a civic
+      // research result. Keep the gap open and visible; only a real compatible
+      // source execution may produce CHECKED_NO_AUTHORITATIVE_RESULT.
       continue;
     }
     const purpose =

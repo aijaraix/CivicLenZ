@@ -1,8 +1,10 @@
 import { OfficialDirectory } from '@/components/official-directory';
-import { getAllOfficials } from '@/lib/officials';
+import { getCanonicalPublicOfficials } from '@/lib/civic-data/supabase-server';
 
-export default function OfficialsPage() {
-  const officials = getAllOfficials();
+export const dynamic = 'force-dynamic';
+
+export default async function OfficialsPage() {
+  const officials = await getCanonicalPublicOfficials();
 
   return (
     <>
@@ -11,7 +13,7 @@ export default function OfficialsPage() {
           <span className="eyebrow">Florida official directory</span>
           <h1>Find the people representing Florida</h1>
           <p>
-            CivicLenZ publishes reviewed official profiles. Newly collected directory extracts remain in staging until a reviewer promotes them.
+            CivicLenZ publishes canonical, publication-eligible official profiles. Unreviewed extracts remain private.
           </p>
         </div>
       </section>
