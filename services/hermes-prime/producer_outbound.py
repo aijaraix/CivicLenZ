@@ -325,9 +325,10 @@ def candidate(cursor, config: dict):
             JOIN public.jobs p ON p.job_id=d.prerequisite_job_id
             WHERE d.job_id=j.job_id AND p.status<>'succeeded'
           )
-        AND NOT EXISTS(SELECT 1 FROM public.jobs active WHERE active.status='leased'
-          AND active.lease_expires_at>clock_timestamp()
-          AND active.checkpoint->'producer_outbound'->>'version'=%s)
+        AND NOT EXISTS(SELECT 1 FROM public.jobs outstanding
+          WHERE outstanding.job_id<>j.job_id
+          AND outstanding.status='leased'
+          AND outstanding.checkpoint->'producer_outbound'->>'version'=%s)
         ORDER BY n.priority,j.created_at,j.job_id
         LIMIT 1 FOR UPDATE OF j,n SKIP LOCKED
     """, (config.get("exact_job_id"), config.get("exact_job_id"), VERSION,

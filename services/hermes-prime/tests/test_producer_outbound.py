@@ -123,6 +123,12 @@ class ProducerOutboundTests(unittest.TestCase):
         self.assertIn("SUPPORTED_FL_DOS_CURRENTNESS_WORK_READY", source)
         self.assertIn("NOT (j.payload ? 'dispatch_blocker')", source)
 
+    def test_queue_capacity_counts_unreconciled_assignments_after_lease_expiry(self):
+        source = Path(outbound.__file__).read_text()
+        self.assertIn("outstanding.status='leased'", source)
+        self.assertIn("outstanding.job_id<>j.job_id", source)
+        self.assertNotIn("active.lease_expires_at>clock_timestamp()", source)
+
     def test_recovery_is_same_attempt_bounded_and_receipt_fenced(self):
         source = Path(outbound.__file__).read_text()
         self.assertIn("j.status='leased' AND j.attempt_count=1", source)
