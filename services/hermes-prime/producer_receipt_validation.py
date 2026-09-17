@@ -48,10 +48,12 @@ def settings() -> dict:
         receipt_id = str(uuid.UUID(raw_receipt)) if raw_receipt else None
     except (ValueError, TypeError, AttributeError):
         receipt_id = None
+    queue_selection = os.environ.get("HERMES_PRODUCER_RECEIPT_VALIDATION_SELECTION", "exact_receipt") == "bounded_queue"
     return {
         "enabled": os.environ.get("HERMES_PRODUCER_RECEIPT_VALIDATION") == "true",
         "budget": budget,
-        "receipt_id": receipt_id,
+        "receipt_id": None if queue_selection else receipt_id,
+        "queue_selection": queue_selection,
         "spool": Path(os.environ.get("HERMES_INGEST_SPOOL_DIRECTORY", "/var/lib/civiclenz/hermes-ingest")),
         "registry": Path(os.environ.get(
             "HERMES_INGEST_PRODUCER_REGISTRY",
@@ -398,12 +400,13 @@ def collect(cursor) -> None:
 
 def candidate(cursor) -> dict | None:
     config = settings()
-    if not config["enabled"] or not config["receipt_id"] or config["budget"] < 1:
+    if (not config["enabled"] or config["budget"] < 1
+            or (not config["receipt_id"] and not config["queue_selection"])):
         return None
     cursor.execute("""SELECT row_to_json(j) AS job,row_to_json(n) AS need FROM public.jobs j
         JOIN hermes_ops.research_needs n ON n.need_id=j.research_need_id
         WHERE j.job_type=%s AND j.status='queued' AND j.attempt_count<j.max_attempts
-        AND j.payload->>'canonical_receipt_id'=%s
+        AND (%s::uuid IS NULL OR j.payload->>'canonical_receipt_id'=%s::text)
         AND j.payload->>'orchestration_authority'='hermes' AND j.payload->>'execution_class'='PRODUCTION'
         AND j.dedupe_key=j.payload->>'research_work_identity'
         AND n.origin='PRODUCER' AND n.execution_class='PRODUCTION' AND n.scope_key='canonical_validation'
@@ -411,7 +414,7 @@ def candidate(cursor) -> dict | None:
         AND ((n.state='BLOCKED' AND n.reason=%s AND j.payload->>'dispatch_blocker'=%s)
           OR (n.state='OPEN' AND j.payload->'capability_route'->>'version'=%s))
         ORDER BY j.created_at LIMIT 1 FOR UPDATE OF j,n SKIP LOCKED""",
-        (receipt_dispatch.JOB_TYPE, config["receipt_id"], receipt_dispatch.CAPABILITY_GAP,
+        (receipt_dispatch.JOB_TYPE, config["receipt_id"], config["receipt_id"], receipt_dispatch.CAPABILITY_GAP,
          receipt_dispatch.CAPABILITY_GAP, VERSION))
     row = cursor.fetchone()
     if not row:
@@ -425,7 +428,7 @@ def candidate(cursor) -> dict | None:
         "capability": CAPABILITY,
         "worker": WORKER_KEY,
         "runtime": "local",
-        "receipt_id": config["receipt_id"],
+        "receipt_id": payload.get("canonical_receipt_id"),
         "research_need_id": str(job["research_need_id"]),
         "max_concurrency": 1,
     }
@@ -439,7 +442,7 @@ def candidate(cursor) -> dict | None:
 
     cursor.execute("""SELECT coalesce(sum(attempt_count),0) AS attempts FROM public.jobs
         WHERE job_type=%s AND payload->>'canonical_receipt_id'=%s""",
-        (receipt_dispatch.JOB_TYPE, config["receipt_id"]))
+        (receipt_dispatch.JOB_TYPE, payload.get("canonical_receipt_id")))
     if int(cursor.fetchone()["attempts"]) >= config["budget"]:
         return None
     cursor.execute("""SELECT j.job_id FROM public.jobs j JOIN hermes_ops.research_needs n ON n.need_id=j.research_need_id

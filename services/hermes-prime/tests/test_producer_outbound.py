@@ -8,6 +8,7 @@ from pathlib import Path
 import unittest
 from unittest.mock import patch
 import uuid
+import tempfile
 
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT))
@@ -229,5 +230,43 @@ class ProducerOutboundTests(unittest.TestCase):
             self.assertTrue(config['ready'])
             self.assertEqual(config['recovery_limit'],6)
             self.assertEqual(config['auth_mode'],'token')
+
+    def test_bounded_supported_queue_is_ready_without_manual_job_rotation(self):
+        env={'HERMES_PRODUCER_OUTBOUND':'true','HERMES_PRODUCER_OUTBOUND_BUDGET':'1',
+             'HERMES_PRODUCER_OUTBOUND_SELECTION':'bounded_supported_queue',
+             'HERMES_PRODUCER_ENDPOINT':'https://civiclenz.ai.studio/api/harvester/jobs',
+             'CIVICLENZ_HARVESTER_SHARED_SECRET':'x','HERMES_PRODUCER_AUTH_MODE':'hmac'}
+        with patch.dict(os.environ,env,clear=True):
+            config=outbound.settings()
+            self.assertTrue(config['ready'])
+            self.assertTrue(config['queue_selection'])
+            self.assertIsNone(config['exact_job_id'])
+
+    def test_machine_authorization_is_exact_single_use_create_only_and_rearmable(self):
+        leased=self.leased()
+        with tempfile.TemporaryDirectory() as directory:
+            cfg={'authorization_directory':Path(directory),'authorization_ttl_seconds':3600}
+            first=outbound.arm_return_authorization(leased,cfg)
+            self.assertEqual(first['allowed_job_id'],leased['job_id'])
+            self.assertEqual(first['allowed_research_work_identity'],leased['dedupe_key'])
+            self.assertEqual(first['maximum_uses'],1)
+            self.assertFalse(first['publication_allowed'])
+            self.assertEqual(outbound.arm_return_authorization(leased,cfg)['authorization_id'],first['authorization_id'])
+            active=Path(directory)/(leased['job_id']+'.json')
+            expired=json.loads(active.read_text())
+            expired['expires_at']='2000-01-01T00:00:00Z'
+            active.write_text(json.dumps(expired)+'\n')
+            second=outbound.arm_return_authorization(leased,cfg)
+            self.assertNotEqual(second['authorization_id'],first['authorization_id'])
+            self.assertTrue((Path(directory)/'history'/f"{leased['job_id']}.{first['authorization_id']}.json").exists())
+
+    def test_machine_authorization_rejects_identity_drift(self):
+        leased=self.leased()
+        with tempfile.TemporaryDirectory() as directory:
+            cfg={'authorization_directory':Path(directory),'authorization_ttl_seconds':3600}
+            outbound.arm_return_authorization(leased,cfg)
+            drift={**leased,'dedupe_key':'work:v1:'+'b'*64}
+            with self.assertRaises(ValueError):
+                outbound.arm_return_authorization(drift,cfg)
 
 if __name__=='__main__': unittest.main()
