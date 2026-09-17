@@ -85,6 +85,29 @@ class ProducerOutboundTests(unittest.TestCase):
         self.assertEqual(r['state'],'PRODUCER_ASSIGNMENT_ACCEPTED')
         self.assertEqual(r['producer_job_id'],'job-producer-1')
 
+    def test_terminal_child_recovery_requires_new_nonterminal_producer_child(self):
+        leased=self.leased()
+        leased['checkpoint']={
+            'producer_outbound_recovery':{
+                'reason':'SAME_ATTEMPT_TERMINAL_CHILD_RECOVERY',
+                'previous_producer_job_id':'job-producer-failed',
+            }
+        }
+        base={'status':'SUCCESS','storage':'AUTHORITATIVE_PRODUCER_PERSISTENCE',
+              'job':{'job_uuid':'job-producer-failed','status':'FAILED_PERMANENT',
+                     'logical_work_key':'canonical:'+leased['dedupe_key'],
+                     'checkpoint':{'canonical_assignment':{'canonical_job_id':leased['job_id'],
+                                                           'research_scope':outbound.RESEARCH_SCOPE}}}}
+        cfg={'ready':True,'secret':'test-secret','endpoint':'https://example.test/api/harvester/jobs'}
+        rejected=outbound.deliver(leased,cfg,opener=lambda *_args,**_kwargs: FakeResponse({**base,'is_new_job':False}))
+        self.assertEqual(rejected['state'],'PRODUCER_DELIVERY_UNCONFIRMED')
+        self.assertEqual(rejected['producer_error_code'],'ACK_CONTRACT_MISMATCH')
+        replacement={**base,'is_new_job':True,'job':{**base['job'],'job_uuid':'job-producer-replacement','status':'QUEUED'}}
+        accepted=outbound.deliver(leased,cfg,opener=lambda *_args,**_kwargs: FakeResponse(replacement))
+        self.assertEqual(accepted['state'],'PRODUCER_ASSIGNMENT_ACCEPTED')
+        self.assertEqual(accepted['producer_job_id'],'job-producer-replacement')
+        self.assertTrue(accepted['is_new_job'])
+
     def test_activation_is_exact_blocker_and_target_scoped(self):
         source = Path(outbound.__file__).read_text()
         self.assertIn("j.job_id=%s", source)
@@ -102,12 +125,42 @@ class ProducerOutboundTests(unittest.TestCase):
         self.assertIn("j.status='leased' AND j.attempt_count=1", source)
         self.assertIn("j.lease_expires_at<=clock_timestamp()", source)
         self.assertIn("PRODUCER_DELIVERY_UNCONFIRMED", source)
+        self.assertIn("PRODUCER_ASSIGNMENT_ACCEPTED", source)
+        self.assertIn("HERMES_PRODUCER_OUTBOUND_TERMINAL_CHILD_RECOVERY", source)
+        self.assertIn("SAME_ATTEMPT_TERMINAL_CHILD_RECOVERY", source)
         self.assertIn("recovery_limit > 6", source)
         self.assertIn("END < %s", source)
         self.assertIn("rn.origin='PRODUCER'", source)
         self.assertIn("lease_expires_at=clock_timestamp()+make_interval(secs=>300)", source)
         self.assertIn('"count": prior_count + 1', source)
         self.assertNotIn("attempt_count=attempt_count+1", source)
+
+    def test_terminal_child_recovery_preserves_prior_child_lineage(self):
+        row=self.leased()
+        row.update({'status':'leased','lease_expires_at':'expired','checkpoint':{
+            'producer_outbound':{'version':outbound.VERSION,'state':'PRODUCER_ASSIGNMENT_ACCEPTED',
+                                 'producer_job_id':'job-producer-failed','producer_status':'QUEUED',
+                                 'observed_at':'2026-09-16T22:18:08Z'},
+        }})
+        class Cursor:
+            def __init__(self): self.step=0; self.recovery=None
+            def execute(inner,sql,args=()):
+                inner.step+=1
+                if inner.step==2:
+                    inner.recovery=json.loads(args[0])
+            def fetchone(inner):
+                if inner.step==1: return row
+                if inner.step==2: return {**row,'checkpoint':{**row['checkpoint'],'producer_outbound_recovery':inner.recovery}}
+        config={'ready':True,'budget':1,'exact_job_id':row['job_id'],'recovery_limit':1,
+                'terminal_child_recovery':True}
+        recovered=outbound.recover_unconfirmed(Cursor(),config)
+        metadata=recovered['checkpoint']['producer_outbound_recovery']
+        self.assertEqual(metadata['reason'],'SAME_ATTEMPT_TERMINAL_CHILD_RECOVERY')
+        self.assertEqual(metadata['previous_delivery_state'],'PRODUCER_ASSIGNMENT_ACCEPTED')
+        self.assertEqual(metadata['previous_producer_job_id'],'job-producer-failed')
+        self.assertEqual(metadata['previous_producer_status'],'QUEUED')
+        self.assertEqual(metadata['previous_observed_at'],'2026-09-16T22:18:08Z')
+        self.assertEqual(metadata['attempt_count'],1)
 
     def test_completed_receipt_validation_reconciles_original_contract_need(self):
         class Cursor:
@@ -153,6 +206,18 @@ class ProducerOutboundTests(unittest.TestCase):
             config=outbound.settings()
             self.assertFalse(config['ready'])
             self.assertEqual(config['recovery_limit'],1)
+            self.assertFalse(config['terminal_child_recovery'])
+
+    def test_terminal_child_recovery_requires_explicit_gate(self):
+        env={'HERMES_PRODUCER_OUTBOUND':'true','HERMES_PRODUCER_OUTBOUND_BUDGET':'1',
+             'HERMES_PRODUCER_OUTBOUND_JOB_ID':str(uuid.uuid4()),
+             'HERMES_PRODUCER_ENDPOINT':'https://civiclenz.ai.studio/api/harvester/jobs',
+             'CIVICLENZ_HARVESTER_SHARED_SECRET':'x','HERMES_PRODUCER_AUTH_MODE':'hmac',
+             'HERMES_PRODUCER_OUTBOUND_TERMINAL_CHILD_RECOVERY':'true'}
+        with patch.dict(os.environ,env,clear=True):
+            config=outbound.settings()
+            self.assertTrue(config['ready'])
+            self.assertTrue(config['terminal_child_recovery'])
 
     def test_recovery_limit_is_explicit_and_clamped(self):
         env={'HERMES_PRODUCER_OUTBOUND':'true','HERMES_PRODUCER_OUTBOUND_BUDGET':'1',

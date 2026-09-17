@@ -84,6 +84,7 @@ def settings() -> dict:
     exact_job_id = _uuid(os.environ.get("HERMES_PRODUCER_OUTBOUND_JOB_ID"))
     secret = _secret_from_credential()
     enabled = os.environ.get("HERMES_PRODUCER_OUTBOUND") == "true"
+    terminal_child_recovery = os.environ.get("HERMES_PRODUCER_OUTBOUND_TERMINAL_CHILD_RECOVERY") == "true"
     ready = bool(
         enabled and budget == 1 and exact_job_id and secret and auth_mode in ("hmac", "token")
         and endpoint.startswith("https://") and endpoint.endswith("/api/harvester/jobs")
@@ -93,6 +94,7 @@ def settings() -> dict:
         "ready": ready,
         "budget": budget,
         "recovery_limit": recovery_limit,
+        "terminal_child_recovery": terminal_child_recovery,
         "auth_mode": auth_mode,
         "endpoint": endpoint,
         "exact_job_id": exact_job_id,
@@ -181,6 +183,9 @@ def recover_unconfirmed(cursor, config: dict):
     Recovery preserves the original lease token and canonical attempt_count=1.
     The production default limit is one. A second and final recovery requires
     explicit operator configuration after the producer-side defect is repaired.
+    A previously acknowledged assignment is eligible only behind the explicit
+    terminal-child recovery gate. The producer ACK is then fenced separately so
+    only a genuinely new nonterminal child can confirm recovery.
     """
     recovery_limit = config.get("recovery_limit", 1)
     if (not config.get("ready") or config.get("budget") != 1 or not config.get("exact_job_id")
@@ -200,7 +205,11 @@ def recover_unconfirmed(cursor, config: dict):
           AND j.payload->'producer_outbound_route'->>'version'=%s
           AND j.payload->'producer_outbound_route'->>'bounded_job_id'=j.job_id::text
           AND j.checkpoint->'producer_outbound'->>'version'=%s
-          AND j.checkpoint->'producer_outbound'->>'state'='PRODUCER_DELIVERY_UNCONFIRMED'
+          AND (
+            j.checkpoint->'producer_outbound'->>'state'='PRODUCER_DELIVERY_UNCONFIRMED'
+            OR (%s AND j.checkpoint->'producer_outbound'->>'state'='PRODUCER_ASSIGNMENT_ACCEPTED'
+                AND coalesce(j.checkpoint->'producer_outbound'->>'producer_job_id','')<>'')
+          )
           AND (
             NOT (j.checkpoint ? 'producer_outbound_recovery')
             OR (j.checkpoint->'producer_outbound_recovery'->>'count') ~ '^[0-9]+$'
@@ -219,7 +228,8 @@ def recover_unconfirmed(cursor, config: dict):
               AND rn.basis->>'producer_research_work_identity'=j.dedupe_key
           )
         FOR UPDATE OF j,n SKIP LOCKED
-    """, (config["exact_job_id"], VERSION, VERSION, recovery_limit))
+    """, (config["exact_job_id"], VERSION, VERSION,
+          bool(config.get("terminal_child_recovery")), recovery_limit))
     row = cursor.fetchone()
     if not row:
         return None
@@ -227,26 +237,41 @@ def recover_unconfirmed(cursor, config: dict):
     prior_count = prior.get("count", 0)
     if isinstance(prior_count, bool) or not isinstance(prior_count, int) or prior_count < 0 or prior_count >= recovery_limit:
         return None
+    previous_outbound = (row.get("checkpoint") or {}).get("producer_outbound") or {}
+    previous_state = previous_outbound.get("state")
+    terminal_child_recovery = previous_state == "PRODUCER_ASSIGNMENT_ACCEPTED"
+    if terminal_child_recovery and not config.get("terminal_child_recovery"):
+        return None
     recovery = {
         "version": VERSION,
         "count": prior_count + 1,
         "limit": recovery_limit,
         "attempt_count": 1,
         "renewed_at": datetime.now(timezone.utc).isoformat().replace("+00:00", "Z"),
-        "reason": "SAME_ATTEMPT_DELIVERY_RECOVERY",
+        "reason": ("SAME_ATTEMPT_TERMINAL_CHILD_RECOVERY" if terminal_child_recovery
+                   else "SAME_ATTEMPT_DELIVERY_RECOVERY"),
+        "previous_delivery_state": previous_state,
+        "previous_producer_job_id": previous_outbound.get("producer_job_id"),
+        "previous_producer_status": previous_outbound.get("producer_status"),
+        "previous_observed_at": previous_outbound.get("observed_at"),
     }
     cursor.execute("""UPDATE public.jobs
         SET lease_expires_at=clock_timestamp()+make_interval(secs=>300),
             checkpoint=coalesce(checkpoint,'{}'::jsonb)||jsonb_build_object('producer_outbound_recovery',%s::jsonb)
         WHERE job_id=%s AND status='leased' AND attempt_count=1 AND leased_by=%s
           AND lease_expires_at<=clock_timestamp()
-          AND checkpoint->'producer_outbound'->>'state'='PRODUCER_DELIVERY_UNCONFIRMED'
+          AND (
+            checkpoint->'producer_outbound'->>'state'='PRODUCER_DELIVERY_UNCONFIRMED'
+            OR (%s AND checkpoint->'producer_outbound'->>'state'='PRODUCER_ASSIGNMENT_ACCEPTED'
+                AND checkpoint->'producer_outbound'->>'producer_job_id'=%s)
+          )
           AND CASE
                 WHEN (checkpoint->'producer_outbound_recovery'->>'count') ~ '^[0-9]+$'
                 THEN (checkpoint->'producer_outbound_recovery'->>'count')::int
                 ELSE 0
               END=%s
-        RETURNING *""", (json.dumps(recovery), row["job_id"], row["leased_by"], prior_count))
+        RETURNING *""", (json.dumps(recovery), row["job_id"], row["leased_by"],
+                          terminal_child_recovery, previous_outbound.get("producer_job_id"), prior_count))
     return cursor.fetchone()
 
 
@@ -389,9 +414,23 @@ def deliver(leased: dict, config: dict, opener=None) -> dict:
     checkpoint = producer_job.get("checkpoint") if isinstance(producer_job, dict) else None
     canonical = checkpoint.get("canonical_assignment") if isinstance(checkpoint, dict) else None
     expected_logical = "canonical:" + assignment["research_work_identity"]["work_key"]
+    producer_job_id = producer_job.get("job_uuid") if isinstance(producer_job, dict) else None
+    producer_status = producer_job.get("status") if isinstance(producer_job, dict) else None
+    recovery = (leased.get("checkpoint") or {}).get("producer_outbound_recovery") or {}
+    terminal_child_recovery = recovery.get("reason") == "SAME_ATTEMPT_TERMINAL_CHILD_RECOVERY"
+    previous_producer_job_id = recovery.get("previous_producer_job_id")
+    active_producer_status = producer_status in ("QUEUED", "LEASED", "RUNNING", "CHECKPOINTED")
+    replacement_acknowledged = (not terminal_child_recovery or (
+        acknowledged.get("is_new_job") is True
+        and isinstance(producer_job_id, str) and producer_job_id
+        and producer_job_id != previous_producer_job_id
+    ))
     if (acknowledged.get("status") != "SUCCESS"
             or acknowledged.get("storage") != "AUTHORITATIVE_PRODUCER_PERSISTENCE"
             or not isinstance(producer_job, dict)
+            or not isinstance(producer_job_id, str) or not producer_job_id
+            or not active_producer_status
+            or not replacement_acknowledged
             or producer_job.get("logical_work_key") != expected_logical
             or not isinstance(canonical, dict)
             or canonical.get("canonical_job_id") != assignment["job_id"]
@@ -405,8 +444,8 @@ def deliver(leased: dict, config: dict, opener=None) -> dict:
     return {
         "state": "PRODUCER_ASSIGNMENT_ACCEPTED",
         "job_id": assignment["job_id"],
-        "producer_job_id": producer_job.get("job_uuid"),
-        "producer_status": producer_job.get("status"),
+        "producer_job_id": producer_job_id,
+        "producer_status": producer_status,
         "is_new_job": acknowledged.get("is_new_job"),
         "research_reservation_id": assignment["research_reservation_id"],
     }
@@ -422,6 +461,7 @@ def record_delivery(cursor, leased: dict, result: dict) -> None:
         "source_constraint": SOURCE_CONSTRAINT,
         "producer_job_id": result.get("producer_job_id"),
         "producer_status": result.get("producer_status"),
+        "is_new_job": result.get("is_new_job"),
         "research_reservation_id": result.get("research_reservation_id"),
         "http_status": result.get("http_status"),
         "producer_error_code": result.get("producer_error_code"),
