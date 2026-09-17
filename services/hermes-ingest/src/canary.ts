@@ -92,6 +92,65 @@ export async function armBoundedReturn(directory: string, jobId: string, researc
   return a;
 }
 
+/**
+ * Replace only an expired, unused bounded-production grant for the same exact
+ * canonical job/work identity.  The old file is hard-linked into immutable
+ * history before the active correlation path is released.  A crash can leave
+ * the path safely unarmed, but can never erase the prior grant or broaden it.
+ */
+export async function rearmExpiredBoundedReturn(
+  directory: string,
+  jobId: string,
+  researchWorkIdentity: string,
+  ttlSeconds: number,
+): Promise<CanaryAuthorization> {
+  if (!UUID.test(jobId) || !WORK_ID.test(researchWorkIdentity) || !Number.isInteger(ttlSeconds)
+    || ttlSeconds < 60 || ttlSeconds > 3600) throw new Error('invalid bounded production authorization');
+  const dir = path.join(directory, 'canary-authorizations');
+  const activePath = path.join(dir, jobId + '.json');
+  const rawText = await readFile(activePath, 'utf8');
+  const raw = JSON.parse(rawText) as CanaryAuthorization;
+  const exactUnusedExpired = raw.authorization_purpose === 'BOUNDED_PRODUCTION_RETURN'
+    && raw.producer_id === CANARY_PRODUCER
+    && raw.correlation_id === jobId
+    && raw.allowed_job_id === jobId
+    && raw.allowed_research_work_identity === researchWorkIdentity
+    && raw.allowed_classification === 'extracted_unreviewed'
+    && raw.publication_allowed === false
+    && raw.maximum_uses === 1 && raw.use_count === 0
+    && raw.consumed_at === null && raw.consumed_receipt_id === null
+    && raw.status === 'ARMED' && Number.isFinite(Date.parse(raw.expires_at))
+    && Date.parse(raw.expires_at) <= Date.now();
+  if (!exactUnusedExpired || !UUID.test(raw.authorization_id)) {
+    throw new Error('only the exact expired unused bounded production authorization may be rearmed');
+  }
+  const historyDir = path.join(dir, 'history');
+  await mkdir(historyDir, { recursive: true, mode: 0o700 });
+  const historyPath = path.join(historyDir, `${jobId}.${raw.authorization_id}.json`);
+  try {
+    await link(activePath, historyPath);
+  } catch (error: any) {
+    if (error.code !== 'EEXIST') throw error;
+    const archivedText = await readFile(historyPath, 'utf8');
+    if (archivedText !== rawText) {
+      throw new Error('bounded production authorization history collision');
+    }
+  }
+  const historyDirectory = await open(historyDir, 'r');
+  try { await historyDirectory.sync(); } finally { await historyDirectory.close(); }
+  await unlink(activePath);
+  const authorizationDirectory = await open(dir, 'r');
+  try { await authorizationDirectory.sync(); } finally { await authorizationDirectory.close(); }
+  try {
+    return await armBoundedReturn(directory, jobId, researchWorkIdentity, ttlSeconds);
+  } catch (error) {
+    // Best-effort fail-closed restoration. Never overwrite a concurrently
+    // created active grant.
+    try { await link(historyPath, activePath); } catch { /* active or safely unarmed */ }
+    throw error;
+  }
+}
+
 export async function auditCanary(directory: string, correlation: string, producer: string, disposition: string, receipt?: string): Promise<void> {
   if (!UUID.test(correlation)) return;
   // Only correlate against an operator-created grant, never arbitrary producer paths.

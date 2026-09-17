@@ -386,7 +386,7 @@ test("acknowledgement shape is versioned and correlation-safe", async () => {
 });
 
 // Behavioral integration tests: isolated disk spools, never production data.
-import { armBoundedReturn, armCanary, readAuthorization, validAuthorization } from '../src/canary.ts';
+import { armBoundedReturn, armCanary, readAuthorization, rearmExpiredBoundedReturn, validAuthorization } from '../src/canary.ts';
 import { writeFile, readFile } from 'node:fs/promises';
 import { randomUUID } from 'node:crypto';
 
@@ -492,5 +492,28 @@ test('paused bounded production authorization is exact job/work bound and single
     assert.equal(accepted.acknowledgement.correlation_id, jobId);
     assert.equal((await readAuthorization(h.directory, jobId))?.status, 'CONSUMED');
     assert.equal((await h.receiver.handle(headersFor(b), b)).statusCode, 503);
+  } finally { await dispose(h.directory); }
+});
+
+test('expired bounded production authorization is preserved and safely rearmed for the same identity', async () => {
+  const h = await receiver();
+  const jobId = randomUUID();
+  const workId = 'work:v1:' + 'c'.repeat(64);
+  try {
+    const first = await armBoundedReturn(h.directory, jobId, workId, 600);
+    const activePath = path.join(h.directory, 'canary-authorizations', jobId + '.json');
+    const expired = { ...first, expires_at: new Date(Date.now() - 1).toISOString() };
+    await writeFile(activePath, JSON.stringify(expired) + '\n');
+    const replacement = await rearmExpiredBoundedReturn(h.directory, jobId, workId, 600);
+    assert.notEqual(replacement.authorization_id, first.authorization_id);
+    assert.equal(replacement.allowed_job_id, jobId);
+    assert.equal(replacement.allowed_research_work_identity, workId);
+    assert.equal(validAuthorization(replacement), true);
+    const archivedPath = path.join(h.directory, 'canary-authorizations', 'history', `${jobId}.${first.authorization_id}.json`);
+    assert.deepEqual(JSON.parse(await readFile(archivedPath, 'utf8')), expired);
+    await assert.rejects(
+      () => rearmExpiredBoundedReturn(h.directory, jobId, workId, 600),
+      /only the exact expired unused bounded production authorization may be rearmed/,
+    );
   } finally { await dispose(h.directory); }
 });
