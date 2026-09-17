@@ -57,8 +57,9 @@ Continue through the master index reading order, including at minimum:
 40. `docs/control-plane/MEDIA_ASSET_IDENTITY_AND_PROVENANCE.md`
 41. `docs/control-plane/DATA_ACQUISITION_MACHINE_AND_DEEP_DOSSIER_SWARM_OPERATING_CONTRACT.md`
 42. `docs/control-plane/IMMEDIATE_DEEP_DOSSIER_SWARM_ACTIVATION_DIRECTIVE_2026_09_17.md`
+43. `docs/control-plane/RESEARCH_EXHAUSTION_COMPLETENESS_AND_MULTI_PASS_VALIDATION_CONTRACT.md`
 
-The data-acquisition-machine and immediate deep-dossier swarm documents are mandatory for any work touching research activation, worker scheduling, subject fan-out, monitoring/currentness, promise intelligence, GIS/map acquisition, or expansion throughput. They make explicit that a resolved subject must trigger the full applicable deep-research graph, independent workers must not wait on sibling scopes, discovery continues while prior subjects enrich, and measured Resource Governor capacity—not arbitrary batch size—is the steady-state concurrency authority.
+The data-acquisition-machine, immediate deep-dossier swarm, and research-exhaustion documents are mandatory for any work touching research activation, worker scheduling, subject fan-out, completeness, monitoring/currentness, promise intelligence, GIS/map acquisition, or expansion throughput. They make explicit that a resolved subject must trigger the full applicable deep-research graph, independent workers must not wait on sibling scopes, discovery continues while prior subjects enrich, measured Resource Governor capacity—not arbitrary batch size—is the steady-state concurrency authority, and no scope is reconciled merely because one worker found useful facts.
 
 If the master index identifies additional current canonical files applicable to the change, read those as well.
 
@@ -81,6 +82,10 @@ Then inspect the existing implementation and current production state before pro
 - A worker completing one bounded task immediately becomes eligible for the next task in its capability pool, including work for a different subject.
 - Discovery/identity acquisition continues while previously identified subjects are being enriched, validated, monitored, or recursively expanded.
 - Cohort sizes are safety/proof controls, not the steady-state production model; measured Resource Governor capacity controls continuous concurrency after a capability path is proven.
+- Finite authoritative scopes must reconcile the entire defined public universe/cutoff; arbitrary top-N sampling cannot satisfy completeness.
+- Open-ended scopes require contract-defined multi-pass discovery, unresolved-lead closure, independent coverage audit and search saturation before `CURRENT_TO_CONTRACT_DEPTH`/equivalent reconciliation.
+- Search engines, browser research and reference sources such as Wikipedia may be used for discovery/corroboration, but search snippets/AI summaries are not primary evidence and material claims should preserve the strongest appropriate underlying source.
+- High-value scopes require separate collection, coverage-audit and canonical validation/reconciliation boundaries; a worker cannot self-certify exhaustive research.
 - Producers are replaceable executors; HERMES owns canonical research intent, work identity, reservations, priority, validation and recovery.
 - Producer results remain `extracted_unreviewed` until canonical HERMES processes them.
 - Logical capability count does not equal physical autonomous-agent/process count.
