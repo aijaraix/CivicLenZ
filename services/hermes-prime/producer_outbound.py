@@ -8,7 +8,7 @@ validation path and never directly creates civic truth.
 """
 from __future__ import annotations
 
-from datetime import datetime, timezone
+from datetime import datetime, timedelta, timezone
 import hashlib
 import hmac
 import json
@@ -82,11 +82,13 @@ def settings() -> dict:
         recovery_limit = 0
     endpoint = os.environ.get("HERMES_PRODUCER_ENDPOINT", "").strip()
     exact_job_id = _uuid(os.environ.get("HERMES_PRODUCER_OUTBOUND_JOB_ID"))
+    selection = os.environ.get("HERMES_PRODUCER_OUTBOUND_SELECTION", "exact_job").strip().lower()
+    queue_selection = selection == "bounded_supported_queue"
     secret = _secret_from_credential()
     enabled = os.environ.get("HERMES_PRODUCER_OUTBOUND") == "true"
     terminal_child_recovery = os.environ.get("HERMES_PRODUCER_OUTBOUND_TERMINAL_CHILD_RECOVERY") == "true"
     ready = bool(
-        enabled and budget == 1 and exact_job_id and secret and auth_mode in ("hmac", "token")
+        enabled and budget == 1 and (exact_job_id or queue_selection) and secret and auth_mode in ("hmac", "token")
         and endpoint.startswith("https://") and endpoint.endswith("/api/harvester/jobs")
     )
     return {
@@ -98,6 +100,13 @@ def settings() -> dict:
         "auth_mode": auth_mode,
         "endpoint": endpoint,
         "exact_job_id": exact_job_id,
+        "selection": selection,
+        "queue_selection": queue_selection,
+        "authorization_directory": Path(os.environ.get(
+            "HERMES_PRODUCER_RETURN_AUTHORIZATION_DIRECTORY",
+            "/var/lib/civiclenz/hermes-ingest/canary-authorizations",
+        )),
+        "authorization_ttl_seconds": 3600,
         "secret": secret,
     }
 
@@ -109,7 +118,7 @@ def activate_exact_route(cursor, config: dict) -> str | None:
     deliberately exact: any drift in job, need, contract, source policy, target,
     blocker, attempt count, or dependency state leaves the row untouched.
     """
-    if not config.get("ready") or config.get("budget") != 1 or not config.get("exact_job_id"):
+    if not config.get("ready") or config.get("budget") != 1:
         return None
     cursor.execute("""
         SELECT j.job_id,j.payload,n.need_id,n.state,n.reason,n.basis
@@ -121,7 +130,7 @@ def activate_exact_route(cursor, config: dict) -> str | None:
           AND f.field_key=n.scope_key
         JOIN public.seats s ON s.seat_id=j.target_id AND j.target_type='seat'
         JOIN public.jurisdictions jur ON jur.jurisdiction_id=s.jurisdiction_id
-        WHERE j.job_id=%s
+        WHERE (%s::uuid IS NULL OR j.job_id=%s::uuid)
           AND j.job_type='contract_scope_research' AND j.status='queued'
           AND j.attempt_count=0 AND j.max_attempts>=1
           AND j.payload->>'orchestration_authority'='hermes'
@@ -129,8 +138,9 @@ def activate_exact_route(cursor, config: dict) -> str | None:
           AND j.payload->>'research_work_identity'=j.dedupe_key
           AND NOT (j.payload ? 'validation_followup')
           AND j.payload->>'dispatch_blocker'='CAPABILITY_NOT_IMPLEMENTED: contract scope requirements'
-          AND n.origin='CONTRACT_GAP' AND n.execution_class='PRODUCTION'
-          AND n.state='BLOCKED' AND n.reason='CAPABILITY_NOT_IMPLEMENTED: contract scope requirements'
+          AND n.origin IN ('CONTRACT_GAP','MONITORING') AND n.execution_class='PRODUCTION'
+          AND ((n.state='BLOCKED' AND n.reason='CAPABILITY_NOT_IMPLEMENTED: contract scope requirements')
+            OR (n.state='OPEN' AND n.reason='SUPPORTED_FL_DOS_CURRENTNESS_WORK_READY'))
           AND n.scope_key='election_history'
           AND c.contract_key='STATE_GOVERNOR'
           AND f.verification_requirement='official_source'
@@ -141,8 +151,9 @@ def activate_exact_route(cursor, config: dict) -> str | None:
             JOIN public.jobs p ON p.job_id=d.prerequisite_job_id
             WHERE d.job_id=j.job_id AND p.status<>'succeeded'
           )
-        FOR UPDATE OF j,n SKIP LOCKED
-    """, (config["exact_job_id"], CANONICAL_TARGET_SEAT, CANONICAL_JURISDICTION))
+        ORDER BY n.priority,j.created_at,j.job_id
+        LIMIT 1 FOR UPDATE OF j,n SKIP LOCKED
+    """, (config.get("exact_job_id"), config.get("exact_job_id"), CANONICAL_TARGET_SEAT, CANONICAL_JURISDICTION))
     row = cursor.fetchone()
     if not row:
         return None
@@ -170,8 +181,9 @@ def activate_exact_route(cursor, config: dict) -> str | None:
         return None
     cursor.execute("""UPDATE hermes_ops.research_needs
         SET state='OPEN',reason=%s,basis=%s::jsonb,evaluated_at=clock_timestamp()
-        WHERE need_id=%s AND state='BLOCKED'
-          AND reason='CAPABILITY_NOT_IMPLEMENTED: contract scope requirements'
+        WHERE need_id=%s AND ((state='BLOCKED'
+          AND reason='CAPABILITY_NOT_IMPLEMENTED: contract scope requirements')
+          OR (state='OPEN' AND reason='SUPPORTED_FL_DOS_CURRENTNESS_WORK_READY'))
         RETURNING need_id""",
         (f"PRODUCER_OUTBOUND_ROUTE_READY: {RESEARCH_SCOPE}", json.dumps(basis), row["need_id"]))
     return str(row["job_id"]) if cursor.fetchone() else None
@@ -276,7 +288,7 @@ def recover_unconfirmed(cursor, config: dict):
 
 
 def candidate(cursor, config: dict):
-    if not config.get("ready") or config.get("budget") != 1 or not config.get("exact_job_id"):
+    if not config.get("ready") or config.get("budget") != 1:
         return None
     cursor.execute("""
         SELECT j.job_id
@@ -288,7 +300,7 @@ def candidate(cursor, config: dict):
           AND f.field_key=n.scope_key
         JOIN public.seats s ON s.seat_id=j.target_id AND j.target_type='seat'
         JOIN public.jurisdictions jur ON jur.jurisdiction_id=s.jurisdiction_id
-        WHERE j.job_id=%s
+        WHERE (%s::uuid IS NULL OR j.job_id=%s::uuid)
           AND j.job_type='contract_scope_research' AND j.status='queued'
           AND j.attempt_count=0 AND j.max_attempts>=1
           AND j.payload->>'orchestration_authority'='hermes'
@@ -298,7 +310,7 @@ def candidate(cursor, config: dict):
           AND NOT (j.payload ? 'dispatch_blocker')
           AND j.payload->'producer_outbound_route'->>'version'=%s
           AND j.payload->'producer_outbound_route'->>'bounded_job_id'=j.job_id::text
-          AND n.origin='CONTRACT_GAP' AND n.execution_class='PRODUCTION'
+          AND n.origin IN ('CONTRACT_GAP','MONITORING') AND n.execution_class='PRODUCTION'
           AND n.state='OPEN' AND n.reason=%s
           AND n.scope_key='election_history'
           AND c.contract_key='STATE_GOVERNOR'
@@ -310,11 +322,97 @@ def candidate(cursor, config: dict):
             JOIN public.jobs p ON p.job_id=d.prerequisite_job_id
             WHERE d.job_id=j.job_id AND p.status<>'succeeded'
           )
-        FOR UPDATE OF j,n SKIP LOCKED
-    """, (config["exact_job_id"], VERSION,
+        AND NOT EXISTS(SELECT 1 FROM public.jobs active WHERE active.status='leased'
+          AND active.lease_expires_at>clock_timestamp()
+          AND active.checkpoint->'producer_outbound'->>'version'=%s)
+        ORDER BY n.priority,j.created_at,j.job_id
+        LIMIT 1 FOR UPDATE OF j,n SKIP LOCKED
+    """, (config.get("exact_job_id"), config.get("exact_job_id"), VERSION,
           f"PRODUCER_OUTBOUND_ROUTE_READY: {RESEARCH_SCOPE}",
-          CANONICAL_TARGET_SEAT, CANONICAL_JURISDICTION))
+          CANONICAL_TARGET_SEAT, CANONICAL_JURISDICTION, VERSION))
     return cursor.fetchone()
+
+
+def _authorization_payload(job_id: str, work_identity: str, ttl_seconds: int) -> dict:
+    now = datetime.now(timezone.utc)
+    return {
+        "authorization_id": str(uuid.uuid4()),
+        "producer_id": PRODUCER_TARGET,
+        "correlation_id": job_id,
+        "created_at": now.isoformat().replace("+00:00", "Z"),
+        "expires_at": (now + timedelta(seconds=ttl_seconds)).isoformat().replace("+00:00", "Z"),
+        "status": "ARMED", "maximum_uses": 1, "use_count": 0,
+        "consumed_at": None, "consumed_receipt_id": None,
+        "allowed_classification": "extracted_unreviewed", "publication_allowed": False,
+        "authorization_purpose": "BOUNDED_PRODUCTION_RETURN",
+        "allowed_job_id": job_id,
+        "allowed_research_work_identity": work_identity,
+    }
+
+
+def arm_return_authorization(leased: dict, config: dict) -> dict:
+    """Create/reuse only the exact one-use authorization for this leased job.
+
+    The active path is create-only. An expired unused exact grant is archived by
+    hard link before replacement; consumed or mismatched grants fail closed.
+    """
+    job_id = _uuid(leased.get("job_id"))
+    work = leased.get("dedupe_key")
+    ttl = config.get("authorization_ttl_seconds", 3600)
+    directory = config.get("authorization_directory")
+    if not job_id or not isinstance(work, str) or not WORK_ID.fullmatch(work):
+        raise ValueError("invalid bounded authorization identity")
+    if not isinstance(directory, Path) or not isinstance(ttl, int) or ttl < 60 or ttl > 3600:
+        raise ValueError("invalid bounded authorization configuration")
+    directory.mkdir(parents=True, exist_ok=True, mode=0o700)
+    active = directory / f"{job_id}.json"
+    if active.exists():
+        raw_text = active.read_text(encoding="utf-8")
+        raw = json.loads(raw_text)
+        exact = (raw.get("authorization_purpose") == "BOUNDED_PRODUCTION_RETURN"
+                 and raw.get("producer_id") == PRODUCER_TARGET
+                 and raw.get("correlation_id") == job_id and raw.get("allowed_job_id") == job_id
+                 and raw.get("allowed_research_work_identity") == work
+                 and raw.get("allowed_classification") == "extracted_unreviewed"
+                 and raw.get("publication_allowed") is False and raw.get("maximum_uses") == 1
+                 and raw.get("use_count") == 0 and raw.get("consumed_at") is None
+                 and raw.get("consumed_receipt_id") is None and raw.get("status") == "ARMED")
+        expires = datetime.fromisoformat(str(raw.get("expires_at", "")).replace("Z", "+00:00"))
+        if exact and expires > datetime.now(timezone.utc):
+            return raw
+        if not exact or expires > datetime.now(timezone.utc):
+            raise ValueError("existing bounded authorization is not reusable")
+        history = directory / "history"
+        history.mkdir(parents=True, exist_ok=True, mode=0o700)
+        archived = history / f"{job_id}.{raw['authorization_id']}.json"
+        try:
+            os.link(active, archived)
+        except FileExistsError:
+            if archived.read_text(encoding="utf-8") != raw_text:
+                raise ValueError("bounded authorization history collision")
+        archive_fd = os.open(history, os.O_RDONLY | os.O_DIRECTORY)
+        try: os.fsync(archive_fd)
+        finally: os.close(archive_fd)
+        active.unlink()
+        directory_fd = os.open(directory, os.O_RDONLY | os.O_DIRECTORY)
+        try: os.fsync(directory_fd)
+        finally: os.close(directory_fd)
+    authorization = _authorization_payload(job_id, work, ttl)
+    temporary = directory / f".{authorization['authorization_id']}.tmp"
+    fd = os.open(temporary, os.O_WRONLY | os.O_CREAT | os.O_EXCL, 0o600)
+    try:
+        os.write(fd, (json.dumps(authorization, separators=(",", ":")) + "\n").encode())
+        os.fsync(fd)
+    finally:
+        os.close(fd)
+    try:
+        os.link(temporary, active)
+        directory_fd = os.open(directory, os.O_RDONLY | os.O_DIRECTORY)
+        try: os.fsync(directory_fd)
+        finally: os.close(directory_fd)
+    finally:
+        temporary.unlink(missing_ok=True)
+    return authorization
 
 
 def reservation_id(job_id: str, attempt_count: int) -> str:

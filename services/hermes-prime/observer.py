@@ -162,9 +162,28 @@ def main():
     inventory = {"state": "DISABLED"}
     next_inventory = 0.0
     next_planning = 0.0
+    next_supported_discovery = 0.0
+    next_academy = 0.0
     planning = {"state": "DISABLED"}
     try:
         while running:
+            if (os.environ.get("HERMES_SUPPORTED_FLORIDA_DISCOVERY_MODE", "off") != "off"
+                    and time.monotonic() >= next_supported_discovery):
+                try:
+                    from supported_discovery import reconcile as discovery_reconcile, reconcile_monitoring_outcomes
+                    snapshot_discovery = discovery_reconcile()
+                    snapshot_monitoring = reconcile_monitoring_outcomes()
+                except Exception:
+                    snapshot_discovery = {"state": "SUPPORTED_DISCOVERY_TICK_FAILED"}
+                    snapshot_monitoring = {"state": "SUPPORTED_MONITORING_TICK_FAILED"}
+                next_supported_discovery = time.monotonic() + 30
+            if os.environ.get("HERMES_ACADEMY_OBSERVATION") == "true" and time.monotonic() >= next_academy:
+                try:
+                    from academy import reconcile as academy_reconcile
+                    academy_state = academy_reconcile(args.spool)
+                except Exception:
+                    academy_state = {"state": "ACADEMY_TICK_FAILED"}
+                next_academy = time.monotonic() + 300
             if planning_enabled and time.monotonic() >= next_planning:
                 try:
                     from gap_planner import reconcile
@@ -181,6 +200,9 @@ def main():
                     inventory = {"state": "INVENTORY_FAILED", "observed_at": time.time()}
                 next_inventory = time.monotonic() + 300
             snapshot = observe(args.spool)
+            snapshot["supported_discovery"] = locals().get("snapshot_discovery", {"state": "DISABLED"})
+            snapshot["monitoring_currentness"] = locals().get("snapshot_monitoring", {"state": "DISABLED"})
+            snapshot["academy"] = locals().get("academy_state", {"state": "DISABLED"})
             snapshot["backlog_inventory"] = inventory
             receipt_dispatch_enabled = os.environ.get("HERMES_PRODUCER_RECEIPT_DISPATCH") == "true"
             receipt_consumed_allowance = False

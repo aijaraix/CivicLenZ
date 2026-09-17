@@ -211,6 +211,20 @@ def tick(governor):
                 cursor.execute("SELECT * FROM hermes_ops.lease_job(%s,%s,300)",(candidate['job_id'],token))
                 selected=cursor.fetchone()
                 if selected:
+                    if producer_delivery:
+                        authorization = producer_outbound.arm_return_authorization(selected, producer_config)
+                        cursor.execute("""UPDATE public.jobs SET checkpoint=coalesce(checkpoint,'{}'::jsonb)||
+                            jsonb_build_object('producer_return_authorization',%s::jsonb)
+                            WHERE job_id=%s AND leased_by=%s""",
+                            (json.dumps({
+                                'authorization_id': authorization['authorization_id'],
+                                'status': authorization['status'],
+                                'maximum_uses': authorization['maximum_uses'],
+                                'allowed_job_id': authorization['allowed_job_id'],
+                                'allowed_research_work_identity': authorization['allowed_research_work_identity'],
+                                'expires_at': authorization['expires_at'],
+                                'publication_allowed': False,
+                            }), selected['job_id'], token))
                     if selected['payload'].get('validation_followup'):
                         safety=validation_followup.safety_snapshot(cursor,selected['target_id'])
                         cursor.execute("UPDATE public.jobs SET checkpoint=coalesce(checkpoint,'{}'::jsonb)||%s::jsonb WHERE job_id=%s AND leased_by=%s",(json.dumps({'followup_safety_before':safety}),selected['job_id'],token))
