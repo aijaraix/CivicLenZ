@@ -1,7 +1,8 @@
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { CompletenessPanel } from '@/components/canonical-profile';
-import { getAllOfficials, getOfficialBySlug, humanize, initials } from '@/lib/officials';
+import { getCanonicalOfficialBySlug } from '@/lib/civic-data/supabase-server';
+import { humanize, initials } from '@/lib/officials';
 
 const standardTrackers = [
   {
@@ -43,9 +44,7 @@ function Placeholder({ children }: { children: React.ReactNode }) {
   return <div className="empty-state">{children}</div>;
 }
 
-export function generateStaticParams() {
-  return getAllOfficials().map((official) => ({ slug: official.slug }));
-}
+export const dynamic = 'force-dynamic';
 
 export default async function OfficialProfilePage({
   params,
@@ -53,7 +52,7 @@ export default async function OfficialProfilePage({
   params: Promise<{ slug: string }>;
 }) {
   const { slug } = await params;
-  const official = getOfficialBySlug(slug);
+  const official = await getCanonicalOfficialBySlug(slug);
   if (!official) notFound();
 
   const scores = official.civicScores ?? [];

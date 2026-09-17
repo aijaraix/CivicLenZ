@@ -118,7 +118,7 @@ test("completeness engine exposes nine queryable dimensions", async () => {
   assert.equal(statewide.length, 1);
 });
 
-test("job generator skips when completeness audit is complete and fresh", async () => {
+test("unsupported scopes remain gaps and do not become false completion", async () => {
   const store = createMemoryStore();
   const jurisdiction = await store.upsertJurisdiction({
     jurisdictionKey: "us-fl",
@@ -186,9 +186,15 @@ test("job generator skips when completeness audit is complete and fresh", async 
   const first = await queueMissingProfileWork(store, { seat, person, officialWebsite: "https://www.flgov.com/" });
   assert.equal(first.skippedComplete, false);
   const second = await queueMissingProfileWork(store, { seat, person, officialWebsite: "https://www.flgov.com/" });
-  assert.equal(second.skippedComplete, true);
+  assert.equal(second.skippedComplete, false);
   assert.equal(second.queued, false);
-  assert.deepEqual(second.missingFields, []);
+  assert.ok(second.missingFields.length > 0);
+  assert.equal(
+    (await store.listClaims()).some(
+      (claim) => claim.verificationState === "checked_no_authoritative_result" && claim.displayValue.includes("NOT_IMPLEMENTED"),
+    ),
+    false,
+  );
 });
 
 test("OFFICIAL_PROFILE extracts the occupant from fixture HTML without a name constant", () => {
@@ -263,12 +269,11 @@ test("collector persists governor seat/person/occupancy/contract from fixture HT
   const claims = await store.listClaims();
   assert.ok(claims.some((claim) => claim.fieldKey === "current_occupant" && claim.displayValue === expected));
   assert.equal(claims.some((claim) => claim.verificationState === "verified"), false);
-  assert.ok(
+  assert.equal(
     claims.some(
-      (claim) =>
-        claim.verificationState === "checked_no_authoritative_result" ||
-        claim.verificationState === "not_collected",
+      (claim) => claim.verificationState === "checked_no_authoritative_result" && claim.displayValue.includes("NOT_IMPLEMENTED"),
     ),
+    false,
   );
   const portrait = claims.find((claim) => claim.fieldKey === "portrait");
   assert.ok(portrait);
@@ -396,6 +401,16 @@ test("READY capabilities are not ACTIVE without a matching worker_run", () => {
     "ACTIVE",
   );
   assert.equal(runtimeCapabilityState("campaign_finance", []), "NOT_IMPLEMENTED");
+
+  const researchSource = readFileSync(
+    new URL("../shared/src/research.ts", import.meta.url),
+    "utf8",
+  );
+  assert.equal(
+    researchSource.includes("checked_no_authoritative_result (NOT_IMPLEMENTED)"),
+    false,
+    "NOT_IMPLEMENTED must remain an operational blocker and never become a civic claim",
+  );
 });
 
 test("application logic does not hardcode the fixture occupant name", () => {
