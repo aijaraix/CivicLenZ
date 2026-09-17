@@ -120,6 +120,8 @@ class ProducerOutboundTests(unittest.TestCase):
         self.assertIn("s.seat_key=%s", source)
         self.assertIn("jur.jurisdiction_key=%s", source)
         self.assertIn("PRODUCER_OUTBOUND_ROUTE_READY", source)
+        self.assertIn("SUPPORTED_FL_DOS_CURRENTNESS_WORK_READY", source)
+        self.assertIn("NOT (j.payload ? 'dispatch_blocker')", source)
 
     def test_recovery_is_same_attempt_bounded_and_receipt_fenced(self):
         source = Path(outbound.__file__).read_text()

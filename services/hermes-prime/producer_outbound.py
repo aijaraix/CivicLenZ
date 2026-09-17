@@ -137,10 +137,12 @@ def activate_exact_route(cursor, config: dict) -> str | None:
           AND j.payload->>'execution_class'='PRODUCTION'
           AND j.payload->>'research_work_identity'=j.dedupe_key
           AND NOT (j.payload ? 'validation_followup')
-          AND j.payload->>'dispatch_blocker'='CAPABILITY_NOT_IMPLEMENTED: contract scope requirements'
+          AND ((n.state='BLOCKED'
+                AND n.reason='CAPABILITY_NOT_IMPLEMENTED: contract scope requirements'
+                AND j.payload->>'dispatch_blocker'='CAPABILITY_NOT_IMPLEMENTED: contract scope requirements')
+            OR (n.state='OPEN' AND n.reason='SUPPORTED_FL_DOS_CURRENTNESS_WORK_READY'
+                AND NOT (j.payload ? 'dispatch_blocker')))
           AND n.origin IN ('CONTRACT_GAP','MONITORING') AND n.execution_class='PRODUCTION'
-          AND ((n.state='BLOCKED' AND n.reason='CAPABILITY_NOT_IMPLEMENTED: contract scope requirements')
-            OR (n.state='OPEN' AND n.reason='SUPPORTED_FL_DOS_CURRENTNESS_WORK_READY'))
           AND n.scope_key='election_history'
           AND c.contract_key='STATE_GOVERNOR'
           AND f.verification_requirement='official_source'
@@ -175,7 +177,8 @@ def activate_exact_route(cursor, config: dict) -> str | None:
     basis["producer_outbound_route"] = route
     cursor.execute("""UPDATE public.jobs SET payload=%s::jsonb
         WHERE job_id=%s AND status='queued' AND attempt_count=0
-        AND payload->>'dispatch_blocker'='CAPABILITY_NOT_IMPLEMENTED: contract scope requirements'
+        AND (payload->>'dispatch_blocker'='CAPABILITY_NOT_IMPLEMENTED: contract scope requirements'
+          OR NOT (payload ? 'dispatch_blocker'))
         RETURNING job_id""", (json.dumps(payload), row["job_id"]))
     if not cursor.fetchone():
         return None
