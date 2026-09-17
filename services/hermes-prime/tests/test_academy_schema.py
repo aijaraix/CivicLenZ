@@ -16,6 +16,12 @@ class AcademySchemaTests(unittest.TestCase):
         self.assertIn("promotion_state='PENDING_REVIEW'",sql)
         self.assertIn('REVOKE ALL',sql)
 
+    def test_runtime_upsert_cannot_update_promotion_decision(self):
+        source=(ROOT/'services/hermes-prime/academy.py').read_text()
+        self.assertIn('promotion_state,post_promotion_monitoring',source)
+        self.assertNotIn('promotion_state=excluded.promotion_state',source)
+        self.assertIn('post_promotion_monitoring=excluded.post_promotion_monitoring',source)
+
     def test_supported_discovery_preserves_authority_and_dedupe(self):
         source=(ROOT/'services/hermes-prime/supported_discovery.py').read_text()
         self.assertIn('research_work_identity',source)
