@@ -58,8 +58,10 @@ Continue through the master index reading order, including at minimum:
 41. `docs/control-plane/DATA_ACQUISITION_MACHINE_AND_DEEP_DOSSIER_SWARM_OPERATING_CONTRACT.md`
 42. `docs/control-plane/IMMEDIATE_DEEP_DOSSIER_SWARM_ACTIVATION_DIRECTIVE_2026_09_17.md`
 43. `docs/control-plane/RESEARCH_EXHAUSTION_COMPLETENESS_AND_MULTI_PASS_VALIDATION_CONTRACT.md`
+44. `docs/control-plane/PHYSICAL_CAPABILITY_REGISTRY_AND_SWARM_EXECUTION_CONTRACT.md`
+45. `docs/control-plane/LIVE_CANONICAL_PRODUCT_PROJECTION_OPERATOR_PUBLIC_MOBILE_AND_SOCIAL_CONTRACT.md`
 
-The data-acquisition-machine, immediate deep-dossier swarm, and research-exhaustion documents are mandatory for any work touching research activation, worker scheduling, subject fan-out, completeness, monitoring/currentness, promise intelligence, GIS/map acquisition, or expansion throughput. They make explicit that a resolved subject must trigger the full applicable deep-research graph, independent workers must not wait on sibling scopes, discovery continues while prior subjects enrich, measured Resource Governor capacity—not arbitrary batch size—is the steady-state concurrency authority, and no scope is reconciled merely because one worker found useful facts.
+The data-acquisition-machine, deep-dossier swarm, research-exhaustion, physical-capability-registry, and live-product-projection documents are mandatory for any work touching research activation, worker scheduling, subject fan-out, completeness, monitoring/currentness, promise intelligence, GIS/map acquisition, product projection, website/mobile/social publication, operator visibility, or expansion throughput. They make explicit that a resolved subject must trigger the full applicable deep-research graph, independent workers must not wait on sibling scopes, discovery continues while prior subjects enrich, measured Resource Governor capacity—not arbitrary batch size—is the steady-state concurrency authority, no scope is reconciled merely because one worker found useful facts, logical capabilities do not count as ACTIVE without physical execution proof, and validated canonical intelligence must flow into the authorized operator/public product without hand-maintained JSON copies.
 
 If the master index identifies additional current canonical files applicable to the change, read those as well.
 
@@ -67,7 +69,7 @@ The master implementation directive defines the staged production activation seq
 
 The producer/frontier documents define the replaceable-producer model, canonical machine-readable research specifications, non-duplication/work reservations, and the invariant that Seat discovery must trigger election and candidate research in parallel. Implement integrations so Gemini/CivicsLenZz can accelerate the frontier without becoming required for continuity or bypassing HERMES validation.
 
-The new integrated operating contracts make the complete execution chain explicit: discovery -> ResearchContract evaluation -> durable backlog -> scheduling/reservations -> workers/tools/sources -> retrieval -> evidence -> extraction -> handoff -> canonical validation/reconciliation -> persistence/projection -> monitoring -> Academy -> next work. Treat the chain as one system.
+The integrated operating contracts make the complete execution chain explicit: discovery -> ResearchContract evaluation -> durable backlog -> scheduling/reservations -> workers/tools/sources -> retrieval -> evidence -> extraction -> handoff -> canonical validation/reconciliation -> persistence -> canonical projection/API -> operator/public/mobile/social surfaces as authorized -> monitoring -> Academy -> next work. Treat the chain as one system.
 
 Then inspect the existing implementation and current production state before proposing or making changes.
 
@@ -86,9 +88,16 @@ Then inspect the existing implementation and current production state before pro
 - Open-ended scopes require contract-defined multi-pass discovery, unresolved-lead closure, independent coverage audit and search saturation before `CURRENT_TO_CONTRACT_DEPTH`/equivalent reconciliation.
 - Search engines, browser research and reference sources such as Wikipedia may be used for discovery/corroboration, but search snippets/AI summaries are not primary evidence and material claims should preserve the strongest appropriate underlying source.
 - High-value scopes require separate collection, coverage-audit and canonical validation/reconciliation boundaries; a worker cannot self-certify exhaustive research.
+- Logical capability count, physical process count, and current concurrency are separate metrics. ACTIVE requires real recent production execution and durable lineage.
+- Every declared capability must map to a physical route or an explicit READY/BLOCKED/NOT_IMPLEMENTED state; missing workers may not silently erase ResearchContract obligations.
+- Canonical research must be durably aggregated into approved structured/evidence stores; worker-local JSON is not a finished product.
+- The private operator dashboard must expose real physical jobs/workers/capabilities/backlog/depth/monitoring and must be access-controlled before sensitive live operations are wired.
+- Production directory/profile/mobile data must project from canonical publication-eligible state through a least-privilege API/projection boundary, not a separate hand-maintained filesystem official universe.
+- Public clients display publication-eligible validated state only; internal/unreviewed pipeline data remains private/operator-only.
+- Website, mobile, map and later social publishing share the same canonical truth/projection contract rather than independent civic databases.
+- Automated social publishing is downstream of the publication gate and may publish neutral evidence-backed civic events; it is not a research, verification, ranking, recommendation or persuasion authority.
 - Producers are replaceable executors; HERMES owns canonical research intent, work identity, reservations, priority, validation and recovery.
 - Producer results remain `extracted_unreviewed` until canonical HERMES processes them.
-- Logical capability count does not equal physical autonomous-agent/process count.
 - A class/function named `Agent` is not proof of autonomous execution.
 - Every required responsibility must have a real execution path, tool/source authority, evidence obligations, handoff, liveness and monitoring.
 - Public-resource context, campaign money, personal disclosures and lobbying are distinct data domains and must not be conflated.
