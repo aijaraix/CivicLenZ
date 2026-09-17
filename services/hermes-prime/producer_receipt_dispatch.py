@@ -136,7 +136,7 @@ def validate_receipt(receipt: dict, path: Path, registry: dict) -> dict:
         raise ReceiptRejected("RECEIPT_VERSION_UNSUPPORTED")
     if receipt.get("contract_version") != CONTRACT_VERSION:
         raise ReceiptRejected("CONTRACT_NOT_AUTHORIZED")
-    if receipt.get("acknowledgement_state") not in ("ACCEPTED_FOR_VALIDATION", "PARTIALLY_ACCEPTED"):
+    if receipt.get("acknowledgement_state") not in ("ACCEPTED_FOR_VALIDATION", "PARTIALLY_ACCEPTED", "NEEDS_IDENTITY_RESOLUTION"):
         raise ReceiptRejected("ACKNOWLEDGEMENT_NOT_DISPATCHABLE")
     if receipt.get("dispatch_state") not in ("PENDING_CANONICAL_DISPATCH", "DISPATCH_FAILED"):
         raise ReceiptRejected("RECEIPT_NOT_PENDING")

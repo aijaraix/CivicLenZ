@@ -214,6 +214,35 @@ class ProducerReceiptDispatchTests(unittest.TestCase):
         self.assertNotIn("insert into public.seat_occupancies", sql)
         self.assertNotIn("insert into public.people", sql)
 
+    def test_needs_identity_resolution_dispatches_once_preserves_ack_and_never_writes_truth(self):
+        ledger = Ledger()
+        with tempfile.TemporaryDirectory() as folder:
+            receipt = fixture()
+            receipt["acknowledgement_state"] = "NEEDS_IDENTITY_RESOLUTION"
+            receipt["envelope"]["gaps"] = ["CANONICAL_IDENTITY_RESOLUTION_REQUIRED"]
+            receipt["result_content_hash"] = hashlib.sha256(compact(receipt["envelope"])).hexdigest()
+            path = self.write(folder, receipt)
+            with patch.object(dispatch, "connect_database", connector(ledger)):
+                first = dispatch.dispatch_path(path, registry())
+                second = dispatch.dispatch_path(path, registry())
+            live = json.loads(path.read_text())
+        self.assertEqual(first["state"], "RECEIPT_CANONICAL_HANDOFF_PROVEN_VALIDATION_WORKER_GAP")
+        self.assertEqual(second["state"], "RECEIPT_REJECTED_FAIL_CLOSED")
+        self.assertEqual(second["failure"], "RECEIPT_NOT_PENDING")
+        self.assertEqual(live["dispatch_state"], "DISPATCHED")
+        self.assertEqual(live["acknowledgement_state"], "NEEDS_IDENTITY_RESOLUTION")
+        self.assertEqual(len(ledger.needs), 1)
+        self.assertEqual(len(ledger.jobs), 1)
+        job = next(iter(ledger.jobs.values()))
+        self.assertEqual(job["job_type"], dispatch.JOB_TYPE)
+        self.assertEqual(job["payload"]["classification"], "extracted_unreviewed")
+        self.assertEqual(job["payload"]["publication_allowed"], False)
+        self.assertEqual(job["attempt_count"], 0)
+        sql = "\n".join(ledger.statements).lower()
+        self.assertNotIn("insert into public.claims", sql)
+        self.assertNotIn("insert into public.seat_occupancies", sql)
+        self.assertNotIn("insert into public.people", sql)
+
     def test_database_commit_then_receipt_failure_is_restart_recoverable_without_duplicate(self):
         ledger = Ledger()
         with tempfile.TemporaryDirectory() as folder:
