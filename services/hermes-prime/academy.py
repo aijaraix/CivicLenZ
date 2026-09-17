@@ -66,7 +66,6 @@ def _upsert(cursor, observation: dict, case: dict, evaluation: dict) -> None:
         ON CONFLICT(evaluation_key) DO UPDATE SET
           measured_result=excluded.measured_result,
           regression_state=excluded.regression_state,
-          promotion_state=excluded.promotion_state,
           post_promotion_monitoring=excluded.post_promotion_monitoring""", (
         case_id, evaluation["key"], json.dumps(evaluation["tests"]),
         json.dumps(evaluation["result"]), evaluation["regression"], evaluation["promotion"],
