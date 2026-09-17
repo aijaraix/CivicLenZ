@@ -55,6 +55,10 @@ Continue through the master index reading order, including at minimum:
 38. `docs/control-plane/PUBLIC_OPERATOR_UI_TRUTH_CONTRACT.md`
 39. `docs/control-plane/FAILURE_EXCEPTION_AND_MONITORING_ARCHITECTURE.md`
 40. `docs/control-plane/MEDIA_ASSET_IDENTITY_AND_PROVENANCE.md`
+41. `docs/control-plane/DATA_ACQUISITION_MACHINE_AND_DEEP_DOSSIER_SWARM_OPERATING_CONTRACT.md`
+42. `docs/control-plane/IMMEDIATE_DEEP_DOSSIER_SWARM_ACTIVATION_DIRECTIVE_2026_09_17.md`
+
+The data-acquisition-machine and immediate deep-dossier swarm documents are mandatory for any work touching research activation, worker scheduling, subject fan-out, monitoring/currentness, promise intelligence, GIS/map acquisition, or expansion throughput. They make explicit that a resolved subject must trigger the full applicable deep-research graph, independent workers must not wait on sibling scopes, discovery continues while prior subjects enrich, and measured Resource Governor capacity—not arbitrary batch size—is the steady-state concurrency authority.
 
 If the master index identifies additional current canonical files applicable to the change, read those as well.
 
@@ -72,6 +76,11 @@ Then inspect the existing implementation and current production state before pro
 - Boundaries are versioned evidence-backed data, never hardcoded permanent logic.
 - Seat discovery requires election/candidate discovery in parallel; candidates are first-class.
 - Discovery of any supported researchable subject must automatically generate/reconcile applicable ResearchContract scope and durable work.
+- Once identity is sufficiently resolved, generate the full applicable deep-dossier ResearchContract graph; do not stop at shallow baseline fields.
+- Independent scopes for the same subject run in parallel unless a genuine dependency exists; workers do not wait for sibling scopes to finish.
+- A worker completing one bounded task immediately becomes eligible for the next task in its capability pool, including work for a different subject.
+- Discovery/identity acquisition continues while previously identified subjects are being enriched, validated, monitored, or recursively expanded.
+- Cohort sizes are safety/proof controls, not the steady-state production model; measured Resource Governor capacity controls continuous concurrency after a capability path is proven.
 - Producers are replaceable executors; HERMES owns canonical research intent, work identity, reservations, priority, validation and recovery.
 - Producer results remain `extracted_unreviewed` until canonical HERMES processes them.
 - Logical capability count does not equal physical autonomous-agent/process count.
@@ -80,6 +89,8 @@ Then inspect the existing implementation and current production state before pro
 - Public-resource context, campaign money, personal disclosures and lobbying are distinct data domains and must not be conflated.
 - Relationship evidence does not establish motive/causation without qualifying evidence.
 - Promise/position analysis classifies evidence relationships, never politicians; no political ranking/score or voting recommendation.
+- Campaign promises/public commitments are first-class monitored evidence objects; later statements/actions may trigger reviewable potential-conflict events, never unsupported automatic political verdicts.
+- GIS/boundary/map acquisition is a parallel first-class research lane, not a later visualization after dossier completion.
 - No global `COMPLETE` state for a Person/Candidate/Seat/profile; only bounded currentness/reconciliation with cutoff + monitoring.
 - `CAPABILITY_NOT_IMPLEMENTED` is operational state, never a factual `checked_no_authoritative_result` claim.
 - Evidence-first and publication-eligible-claims-only public projection.
@@ -122,7 +133,7 @@ For every requested change:
 ## Completion and checkpoint rule
 A checkpoint is not a stop condition.
 
-Do not claim `COMPLETE`, `100% OPERATIONAL`, `ALL AGENTS WORKING`, `FULLY VALIDATED`, or equivalent based on documentation, capability registration, passing tests, one canary, a small research sample, or locally schema-valid packages.
+Do not claim `COMPLETE`, `100% OPERATIONAL`, `ALL AGENTS WORKING`, `FULLY_VALIDATED`, or equivalent based on documentation, capability registration, passing tests, one canary, a small research sample, or locally schema-valid packages.
 
 Use the End-to-End Acceptance, Conformance & Production Proof Contract and report dimensions separately.
 
