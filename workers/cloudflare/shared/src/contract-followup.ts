@@ -6,7 +6,7 @@ import { sha256Hex } from './hash.ts';
 import { uuidFromName } from './ids.ts';
 import { sourceAdapter } from './source-config.ts';
 import { dispatchSourceAdapter } from './adapters.ts';
-import { rawObjectUri } from './r2-keys.ts';
+import { objectKeyFromRawObjectUri, rawObjectUri } from './r2-keys.ts';
 import { withTimeout } from './timeouts.ts';
 import { CivicError, HttpFetchError } from './errors.ts';
 import type { EvidenceBucket } from './types.ts';
@@ -105,25 +105,41 @@ export async function runValidationFollowup(input: {
     if (document.status !== 200 || !document.bytes.length || document.url !== route.retrieval_url
         || !/^text\/html(?:;|$)/i.test(document.contentType ?? '')) throw Error('followup_source_response_rejected');
     await assertLease();
-    const digest = await sha256Hex(document.bytes), retrievalId = await uuidFromName(`followup-retrieval:${runId}`);
-    // Each run has its own immutable artifact; no prior retrieval is overwritten.
-    const key = `validation-followup/${runId}/${digest}.html`, uri = rawObjectUri('civiclenzevidence', key);
+    const digest = await sha256Hex(document.bytes);
+    // The canonical raw store deduplicates identical source bytes by
+    // (source_id, content_hash). Reuse only a fully verified immutable object;
+    // never overwrite it or manufacture another retrieval row for the same
+    // bytes. The worker-run still records this distinct observation/attempt.
+    const [existingRaw] = await db(`raw_retrievals?source_id=eq.${route.source_id}&content_hash=eq.${digest}&select=retrieval_id,http_status,byte_length,raw_object_uri,retrieval_status`);
+    let retrievalId: string, uri: string, evidenceBytes: Uint8Array, rawRetrievalReused = false;
     if (!input.bucket.get) throw Error('followup_r2_readback_required');
     const r2 = <T>(promise: Promise<T>) => withTimeout(promise, 10000, new CivicError('r2_timeout','R2 timeout'));
-    const prior = await r2(input.bucket.get(key));
-    if (prior && await sha256Hex(prior) !== digest) throw Error('followup_r2_collision');
-    if (!prior) await r2(input.bucket.put(key, document.bytes, { contentType: document.contentType!, customMetadata: { sha256: digest } }));
-    const saved = await r2(input.bucket.get(key));
-    if (!saved || saved.byteLength !== document.bytes.byteLength || await sha256Hex(saved) !== digest) throw Error('followup_r2_integrity_failed');
+    if (existingRaw) {
+      const existingKey = objectKeyFromRawObjectUri(existingRaw.raw_object_uri);
+      if (existingRaw.http_status !== 200 || existingRaw.retrieval_status !== 'stored' || !existingKey
+          || existingRaw.byte_length !== document.bytes.byteLength) throw Error('followup_existing_raw_invalid');
+      const saved = await r2(input.bucket.get(existingKey));
+      if (!saved || saved.byteLength !== document.bytes.byteLength || await sha256Hex(saved) !== digest) throw Error('followup_existing_raw_integrity_failed');
+      retrievalId = existingRaw.retrieval_id; uri = existingRaw.raw_object_uri; evidenceBytes = saved; rawRetrievalReused = true;
+    } else {
+      retrievalId = await uuidFromName(`followup-retrieval:${runId}`);
+      const key = `validation-followup/${runId}/${digest}.html`; uri = rawObjectUri('civiclenzevidence', key);
+      const prior = await r2(input.bucket.get(key));
+      if (prior && await sha256Hex(prior) !== digest) throw Error('followup_r2_collision');
+      if (!prior) await r2(input.bucket.put(key, document.bytes, { contentType: document.contentType!, customMetadata: { sha256: digest } }));
+      const saved = await r2(input.bucket.get(key));
+      if (!saved || saved.byteLength !== document.bytes.byteLength || await sha256Hex(saved) !== digest) throw Error('followup_r2_integrity_failed');
+      evidenceBytes = saved;
+      await db('raw_retrievals', 'POST', { retrieval_id: retrievalId, source_id: route.source_id, job_id: j.job_id,
+        source_url: document.url, retrieved_at: document.retrievedAt, http_status: 200, content_type: document.contentType,
+        content_hash: digest, byte_length: saved.byteLength, raw_object_uri: uri, retrieval_status: 'stored',
+        parser_key: context ? 'florida-governor-leadership-card' : 'official-profile-discovery', parser_version: version, metadata: { ...lineage, raw_retrieval_reused: false } });
+    }
     await assertLease();
-    await db('raw_retrievals', 'POST', { retrieval_id: retrievalId, source_id: route.source_id, job_id: j.job_id,
-      source_url: document.url, retrieved_at: document.retrievedAt, http_status: 200, content_type: document.contentType,
-      content_hash: digest, byte_length: saved.byteLength, raw_object_uri: uri, retrieval_status: 'stored',
-      parser_key: context ? 'florida-governor-leadership-card' : 'official-profile-discovery', parser_version: version, metadata: lineage });
     // Preserve source bytes before parsing; parser failure never erases retrieval.
-    const html = new TextDecoder('utf-8', { fatal: true }).decode(saved);
+    const html = new TextDecoder('utf-8', { fatal: true }).decode(evidenceBytes);
     const contextual = context ? parseGovernorContext(html, document.url, seat.seat_key) : null;
-    const parsed = contextual ? {holders:[contextual]} : await dispatchSourceAdapter({ sourceKey: route.source_key, bytes: saved,
+    const parsed = contextual ? {holders:[contextual]} : await dispatchSourceAdapter({ sourceKey: route.source_key, bytes: evidenceBytes,
       sourceUrl: document.url, contentType: document.contentType });
     const holder = parsed.holders[0];
     if (parsed.holders.length !== 1 || !holder || holder.vacant || holder.seatKey !== seat.seat_key
@@ -135,14 +151,18 @@ export async function runValidationFollowup(input: {
     const encoder = new TextEncoder(), offset = encoder.encode(html.slice(0, start)).length;
     const evidenceId = await uuidFromName(`followup-evidence:${retrievalId}`);
     await assertLease();
-    await db('evidence_objects', 'POST', { evidence_id: evidenceId, source_id: route.source_id, retrieval_id: retrievalId,
+    const [existingEvidence] = await db(`evidence_objects?evidence_id=eq.${evidenceId}`);
+    if (existingEvidence) {
+      if (existingEvidence.retrieval_id !== retrievalId || existingEvidence.source_id !== route.source_id
+          || existingEvidence.content_hash !== digest || existingEvidence.asset_uri !== uri || existingEvidence.verification_state !== 'pending') throw Error('followup_existing_evidence_invalid');
+    } else await db('evidence_objects', 'POST', { evidence_id: evidenceId, source_id: route.source_id, retrieval_id: retrievalId,
       evidence_type: 'html_excerpt', source_url: document.url, supporting_locator: `utf8-byte-offset:${offset};length:${encoder.encode(excerpt).length}`,
       excerpt, asset_uri: uri, content_hash: digest, verification_state: 'pending' });
     // Read candidates only. Even a single name match plus pending Occupancy is
     // not an independent identity anchor; do not copy status/dates from it.
     const people = await db(`persons?canonical_name=eq.${encodeURIComponent(holder.displayName)}&select=person_id,canonical_name,identity_status&limit=21`);
     const result = { ...lineage, authoritative_context: contextual, research_scope: p.scope_key,
-      review_required: context && ['person','occupancy'].includes(p.scope_key), retrieval_id: retrievalId, evidence_id: evidenceId, sha256: digest,
+      review_required: context && ['person','occupancy'].includes(p.scope_key), retrieval_id: retrievalId, evidence_id: evidenceId, sha256: digest, raw_retrieval_reused: rawRetrievalReused,
       display_value: holder.displayName, agrees_with_original_display: holder.displayName === claim.display_value,
       seat_context: { seat_id: seat.seat_id, seat_key: seat.seat_key, office: holder.officeKind, jurisdiction: holder.jurisdictionKey },
       identity_assessment: { state: 'NEEDS_IDENTITY_RESOLUTION', candidate_person_ids: people.map(x => x.person_id),
@@ -168,7 +188,7 @@ export async function runValidationFollowup(input: {
       started_at: new Date(started).toISOString(), completed_at: completeTime(), input_summary: lineage, result_summary: result });
     await assertLease();
     await db(`worker_runs?worker_run_id=eq.${runId}&status=eq.started`, 'PATCH', { status: 'succeeded', completed_at: completeTime(),
-      records_read: 1, records_written: 3, metadata: { ...lineage, retrieval_id: retrievalId, evidence_id: evidenceId,
+      records_read: 1, records_written: rawRetrievalReused ? 1 : 3, metadata: { ...lineage, retrieval_id: retrievalId, evidence_id: evidenceId, raw_retrieval_reused: rawRetrievalReused,
         sha256: digest, validation_run_id: validationId } });
   } catch (error) {
     const code = context && error instanceof HttpFetchError && [401,403].includes(error.httpStatus ?? 0)
