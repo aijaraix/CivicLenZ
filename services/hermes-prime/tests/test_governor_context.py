@@ -106,3 +106,27 @@ class GovernorContextTests(unittest.TestCase):
   update=[x for x in c.calls if x[0].startswith("UPDATE public.jobs SET status='queued'")]
   self.assertEqual(len(update),1);self.assertEqual(update[0][1][-1],4)
   self.assertEqual(__import__('json').loads(update[0][1][1])['worker_error_class'],'worker_store_http_409')
+ def test_expired_final_attempt_with_existing_success_is_acknowledged_not_retried(self):
+  job={'job_id':'exhausted-governor','target_id':'seat','research_need_id':'need-identity','dedupe_key':'work-identity',
+    'status':'dead_letter','leased_by':'attempt-5-token','expired':True,'postlease_ack':True,
+    'attempt_count':5,'max_attempts':5,'error_class':'GOVERNOR_CONTEXT_ALLOWANCE_EXHAUSTED',
+    'checkpoint':{'followup_safety_before':{'digest':'same'}},
+    'payload':{'validation_followup':{'allowance':g.ALLOWANCE,'receipt_id':RECEIPT},
+      'capability_route':{'deployment_id':'release','source_id':'source','retrieval_url':'url'}}}
+  run={'status':'succeeded','worker_run_id':'attempt-5-run','metadata':{'validation_run_id':'attempt-5-validation'}}
+  artifact={'retrieved_at':'2026-09-18T00:00:00Z',
+    'result_summary':{'display_value':'Unresolved context','retrieval_id':'raw','evidence_id':'pending-evidence'}}
+  c=Cursor([None,None,[job],run,artifact,[],[],{'job_id':'exhausted-governor'}])
+  with patch.dict(os.environ,ENV,clear=True), patch.object(g,'safety_snapshot',return_value={'digest':'same'}):
+   g.collect(c)
+  updates=[(sql,args) for sql,args in c.calls if sql.startswith('UPDATE public.jobs')]
+  self.assertEqual(len(updates),1)
+  sql,args=updates[0]
+  self.assertIn("status='dead_letter'",sql)
+  self.assertIn('attempt_count=max_attempts',sql)
+  self.assertNotIn("status='queued'",sql)
+  self.assertNotIn('attempt_count=',sql.replace('attempt_count=max_attempts',''))
+  result=__import__('json').loads(args[0])
+  self.assertEqual(result['worker_run_id'],'attempt-5-run')
+  self.assertEqual(result['validation_run_id'],'attempt-5-validation')
+  self.assertEqual(result['decision'],'NEEDS_FURTHER_VALIDATION')
