@@ -3,7 +3,10 @@
 **CivicLenZ** is an AI-assisted, evidence-first civic accountability platform for researching elected officials, understanding their records, tracking promises and policy positions, and helping residents take informed civic action.
 
 - Product: `CivicLenZ`
-- Website: `civiclenz.ai`
+- Canonical public website: `https://civicslenz.com`
+- Legacy/deprecated public domain: `https://civiclenz.ai`
+- Legacy producer/site: `civiclenz.ai.studio` / the old Google AI Studio deployment. Preserve its historical lineage, but do not treat it as the target runtime architecture.
+- Current producer/worker runtimes: must be physically discovered, durably supervised, and recorded separately from the public website.
 - Initial launch scope: Florida-first, designed to scale nationwide
 - Repository: private working repository for product specifications, schemas, research rules, ingestion architecture, and application code
 
@@ -63,4 +66,4 @@ The repository foundation is being established. The first implementation target 
 
 ## Naming
 
-Use **CivicLenZ** for the product and repository name. Use **civiclenz.ai** for the public website.
+Use **CivicLenZ** for the product and repository name. Use **civicslenz.com** for the canonical public website. `civiclenz.ai` is legacy and must not be used for current public URLs. `civiclenz.ai.studio` is a distinct but legacy producer/site runtime: never substitute the public website for it, and never treat it as the required future producer architecture. Retire it only after a persistent replacement completes the governed assignment-to-validation canary.

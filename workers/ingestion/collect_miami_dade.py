@@ -98,7 +98,7 @@ def fetch(url: str) -> requests.Response:
         url,
         headers={
             "User-Agent": USER_AGENT,
-            "From": "research@civiclenz.ai",
+            "From": "research@civicslenz.com",
             "Accept": "application/pdf,text/html,application/xhtml+xml;q=0.9,*/*;q=0.8",
             "Accept-Language": "en-US,en;q=0.9",
             "Cache-Control": "no-cache",

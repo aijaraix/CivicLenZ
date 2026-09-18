@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://civiclenz.ai/schemas/elected-official-profile.schema.json",
+  "$id": "https://civicslenz.com/schemas/elected-official-profile.schema.json",
   "title": "CivicLenZ Elected Official Profile",
   "description": "Canonical, evidence-aware representation of an elected official in a specific office-term context.",
   "type": "object",

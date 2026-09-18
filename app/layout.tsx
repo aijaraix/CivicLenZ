@@ -1,9 +1,10 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
+import { CANONICAL_PUBLIC_SITE_URL } from '@/lib/site-config';
 import './globals.css';
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://www.civicslenz.com'),
+  metadataBase: CANONICAL_PUBLIC_SITE_URL,
   title: {
     default: 'CivicLenZ — Clearer civic insight',
     template: '%s | CivicLenZ',
