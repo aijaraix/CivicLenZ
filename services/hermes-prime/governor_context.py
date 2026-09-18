@@ -280,17 +280,29 @@ def collect(cursor):
               basis=basis||%s::jsonb WHERE need_id=%s AND state='BLOCKED'
               AND reason='GOVERNOR_CONTEXT_ALLOWANCE_EXHAUSTED'""",
               (json.dumps({'governor_context_retry': prior}), retry['research_need_id']))
-    cursor.execute("""SELECT j.*,lease_expires_at<=clock_timestamp() AS expired FROM public.jobs j
-      WHERE j.status='leased' AND j.payload->>'orchestration_authority'='hermes'
+    cursor.execute("""SELECT j.*,lease_expires_at<=clock_timestamp() AS expired,
+      (j.status='dead_letter' AND j.error_class='GOVERNOR_CONTEXT_ALLOWANCE_EXHAUSTED'
+       AND j.attempt_count=j.max_attempts
+       AND NOT (j.checkpoint ? 'independent_acknowledgement')) AS postlease_ack
+      FROM public.jobs j
+      WHERE j.status IN ('leased','dead_letter')
+      AND j.payload->>'orchestration_authority'='hermes'
       AND j.payload->>'execution_class'='PRODUCTION'
-      AND j.payload->'validation_followup'->>'allowance'=%s FOR UPDATE SKIP LOCKED""", (ALLOWANCE,))
+      AND j.payload->'validation_followup'->>'allowance'=%s
+      AND (j.status='leased' OR (j.error_class='GOVERNOR_CONTEXT_ALLOWANCE_EXHAUSTED'
+        AND j.attempt_count=j.max_attempts AND NOT (j.checkpoint ? 'independent_acknowledgement')))
+      FOR UPDATE SKIP LOCKED""", (ALLOWANCE,))
     for job in cursor.fetchall():
         p = job['payload']; link = p['validation_followup']; route = p['capability_route']
         cursor.execute("""SELECT * FROM public.worker_runs WHERE job_id=%s AND worker_key='hermes.cloudflare.governor_context'
           AND metadata->>'attempt_token'=%s AND deployment_id=%s ORDER BY started_at DESC LIMIT 1""",
           (job['job_id'], job['leased_by'], route['deployment_id']))
         run = cursor.fetchone()
-        if job['expired'] or (run and run['status'] == 'failed'):
+        # A completed worker run is canonical input to acknowledgement even if
+        # the lease sweep runs after expiry.  The post-lease branch is limited
+        # to the already dead-lettered final attempt; it never requeues,
+        # dispatches, or changes attempt_count.
+        if (job['expired'] and not (run and run['status'] == 'succeeded')) or (run and run['status'] == 'failed'):
             if run and run['status'] == 'started':
                 cursor.execute("UPDATE public.worker_runs SET status='failed',completed_at=clock_timestamp(),error_class='lease_expired' WHERE worker_run_id=%s AND status='started'", (run['worker_run_id'],))
             cursor.execute("""UPDATE public.jobs SET status='dead_letter',leased_by=NULL,lease_expires_at=NULL,
@@ -353,8 +365,10 @@ def collect(cursor):
                   'decision': 'NEEDS_FURTHER_VALIDATION'}
         cursor.execute("""UPDATE public.jobs SET status='succeeded',completed_at=clock_timestamp(),
           checkpoint=checkpoint||%s::jsonb,leased_by=NULL,lease_expires_at=NULL,error_class=NULL,error_message=NULL
-          WHERE job_id=%s AND leased_by=%s AND lease_expires_at>clock_timestamp() RETURNING job_id""",
-          (json.dumps(result), job['job_id'], job['leased_by']))
+          WHERE job_id=%s AND ((status='leased' AND leased_by=%s AND lease_expires_at>clock_timestamp())
+            OR (status='dead_letter' AND error_class='GOVERNOR_CONTEXT_ALLOWANCE_EXHAUSTED'
+              AND attempt_count=max_attempts AND NOT (checkpoint ? 'independent_acknowledgement')))
+          RETURNING job_id""", (json.dumps(result), job['job_id'], job['leased_by']))
         if cursor.fetchone():
             cursor.execute("""UPDATE hermes_ops.research_needs SET state='AWAITING_RESULT',
               reason='NEEDS_FURTHER_VALIDATION: authoritative context acknowledged; identity/review/parser/currentness gates remain',
