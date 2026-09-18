@@ -1,0 +1,39 @@
+{
+  "schemaVersion": "1.0.0",
+  "seatId": "02432352-eba4-521e-8c86-c6b664df2855",
+  "seatKey": "fl-vice-president-of-the-united-states-at-large",
+  "seatName": "Vice President of the United States",
+  "officeType": "vice_president",
+  "governmentLevel": "federal",
+  "branch": "executive",
+  "chamber": null,
+  "jurisdictionId": "85d7eeac-507c-508d-b141-63714d8c7fe0",
+  "jurisdictionName": "United States",
+  "stateCode": "FL",
+  "districtName": "United States",
+  "districtNumber": null,
+  "seatAtLarge": true,
+  "occupancyStatus": "unknown",
+  "currentTermId": null,
+  "currentPersonId": null,
+  "termHistoryIds": [],
+  "sourceUrls": [
+    "https://www.whitehouse.gov/administration/"
+  ],
+  "evidenceIds": [],
+  "monitoring": {
+    "active": false,
+    "occupancyCheckClass": "manual",
+    "lastCheckedAt": null,
+    "lastChangedAt": null,
+    "nextScheduledCheckAt": null,
+    "changeReason": null
+  },
+  "researchContractKey": "us-federal-executive",
+  "ledgerStatus": "expected",
+  "discoveryStatus": "declared_from_count",
+  "occupancyVerificationStatus": "UNKNOWN",
+  "coverageRegion": "national",
+  "createdAt": "2026-09-01T22:30:00Z",
+  "lastUpdatedAt": "2026-09-01T22:30:00Z"
+}

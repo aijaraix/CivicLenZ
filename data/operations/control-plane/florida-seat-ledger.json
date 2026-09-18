@@ -1,0 +1,174 @@
+{
+  "schemaVersion": "1.0.0",
+  "source": "persisted_files",
+  "truthRule": "Every number equals a count of persisted JSON files or rows. 0 is valid. Recovered is not VERIFIED.",
+  "totals": {
+    "expected": 532,
+    "discovered": 0,
+    "verified": 0,
+    "currentOccupancies": 191,
+    "baselineResearch": 192,
+    "baselineComplete": 0,
+    "monitoring": 0
+  },
+  "byLevel": {
+    "federal": {
+      "expected": 32,
+      "discovered": 0,
+      "verified": 0,
+      "currentOccupancies": 29,
+      "baselineResearch": 30,
+      "baselineComplete": 0,
+      "monitoring": 0
+    },
+    "state": {
+      "expected": 165,
+      "discovered": 0,
+      "verified": 0,
+      "currentOccupancies": 162,
+      "baselineResearch": 162,
+      "baselineComplete": 0,
+      "monitoring": 0
+    },
+    "county": {
+      "expected": 335,
+      "discovered": 0,
+      "verified": 0,
+      "currentOccupancies": 0,
+      "baselineResearch": 0,
+      "baselineComplete": 0,
+      "monitoring": 0
+    },
+    "school_district": {
+      "expected": 0,
+      "discovered": 0,
+      "verified": 0,
+      "currentOccupancies": 0,
+      "baselineResearch": 0,
+      "baselineComplete": 0,
+      "monitoring": 0
+    },
+    "municipal": {
+      "expected": 0,
+      "discovered": 0,
+      "verified": 0,
+      "currentOccupancies": 0,
+      "baselineResearch": 0,
+      "baselineComplete": 0,
+      "monitoring": 0
+    },
+    "special_district": {
+      "expected": 0,
+      "discovered": 0,
+      "verified": 0,
+      "currentOccupancies": 0,
+      "baselineResearch": 0,
+      "baselineComplete": 0,
+      "monitoring": 0
+    },
+    "judicial": {
+      "expected": 0,
+      "discovered": 0,
+      "verified": 0,
+      "currentOccupancies": 0,
+      "baselineResearch": 0,
+      "baselineComplete": 0,
+      "monitoring": 0
+    }
+  },
+  "byRegion": {
+    "miami_dade": {
+      "expected": 5,
+      "discovered": 0,
+      "verified": 0,
+      "currentOccupancies": 0,
+      "baselineResearch": 0,
+      "baselineComplete": 0,
+      "monitoring": 0
+    },
+    "broward": {
+      "expected": 5,
+      "discovered": 0,
+      "verified": 0,
+      "currentOccupancies": 0,
+      "baselineResearch": 0,
+      "baselineComplete": 0,
+      "monitoring": 0
+    },
+    "palm_beach": {
+      "expected": 5,
+      "discovered": 0,
+      "verified": 0,
+      "currentOccupancies": 0,
+      "baselineResearch": 0,
+      "baselineComplete": 0,
+      "monitoring": 0
+    },
+    "remaining": {
+      "expected": 320,
+      "discovered": 0,
+      "verified": 0,
+      "currentOccupancies": 0,
+      "baselineResearch": 0,
+      "baselineComplete": 0,
+      "monitoring": 0
+    },
+    "statewide": {
+      "expected": 195,
+      "discovered": 0,
+      "verified": 0,
+      "currentOccupancies": 191,
+      "baselineResearch": 192,
+      "baselineComplete": 0,
+      "monitoring": 0
+    },
+    "national": {
+      "expected": 2,
+      "discovered": 0,
+      "verified": 0,
+      "currentOccupancies": 0,
+      "baselineResearch": 0,
+      "baselineComplete": 0,
+      "monitoring": 0
+    }
+  },
+  "fileCounts": {
+    "expectedSeatFiles": 532,
+    "discoveredSeatFiles": 0,
+    "occupancyCandidateFiles": 192,
+    "coverageGapFiles": 335,
+    "seatFiles": 532
+  },
+  "coverageGaps": {
+    "rows": 335,
+    "expectedCountUnknown": 335,
+    "byRegion": {
+      "remaining": 320,
+      "broward": 5,
+      "miami_dade": 5,
+      "palm_beach": 5
+    },
+    "byOfficeFamily": {
+      "county_commission": 67,
+      "judicial": 67,
+      "municipal": 67,
+      "school_district": 67,
+      "special_district": 67
+    }
+  },
+  "declaredAt": "2026-09-01T22:30:00Z",
+  "catalogSummary": {
+    "usPresident": 1,
+    "usVicePresident": 1,
+    "floridaUsSenate": 2,
+    "floridaUsHouse": 28,
+    "floridaStatewideExecutive": 5,
+    "floridaSenate": 40,
+    "floridaHouse": 120,
+    "counties": 67,
+    "countyConstitutionalOfficesPerCounty": 5,
+    "countyConstitutionalSeats": 335,
+    "expectedSeats": 532,
+    "coverageGapRows": 335
+  }
+}
