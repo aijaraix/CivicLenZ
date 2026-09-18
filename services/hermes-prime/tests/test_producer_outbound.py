@@ -268,6 +268,20 @@ class ProducerOutboundTests(unittest.TestCase):
             self.assertNotEqual(second['authorization_id'],first['authorization_id'])
             self.assertTrue((Path(directory)/'history'/f"{leased['job_id']}.{first['authorization_id']}.json").exists())
 
+    def test_machine_authorization_can_share_read_only_with_ingest_group(self):
+        leased=self.leased()
+        with tempfile.TemporaryDirectory() as directory:
+            cfg={'authorization_directory':Path(directory),'authorization_ttl_seconds':3600,
+                 'authorization_group':'civiclenz'}
+            group=type('Group',(),{'gr_gid':1234})()
+            with patch.object(outbound.grp,'getgrnam',return_value=group), \
+                 patch.object(outbound.os,'chown') as chown, patch.object(outbound.os,'chmod') as chmod:
+                outbound.arm_return_authorization(leased,cfg)
+            active=Path(directory)/(leased['job_id']+'.json')
+            self.assertTrue(active.exists())
+            chown.assert_called()
+            self.assertEqual(chmod.call_args.args[1],0o640)
+
     def test_machine_authorization_rejects_identity_drift(self):
         leased=self.leased()
         with tempfile.TemporaryDirectory() as directory:

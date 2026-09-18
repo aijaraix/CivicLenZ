@@ -13,6 +13,7 @@ import hashlib
 import hmac
 import json
 import os
+import grp
 from pathlib import Path
 import re
 import time
@@ -107,6 +108,7 @@ def settings() -> dict:
             "/var/lib/civiclenz/hermes-ingest/canary-authorizations",
         )),
         "authorization_ttl_seconds": 3600,
+        "authorization_group": os.environ.get("HERMES_PRODUCER_RETURN_AUTHORIZATION_GROUP", "").strip() or None,
         "secret": secret,
     }
 
@@ -354,6 +356,20 @@ def _authorization_payload(job_id: str, work_identity: str, ttl_seconds: int) ->
     }
 
 
+def _prepare_authorization_file(path: Path, config: dict) -> None:
+    group_name = config.get("authorization_group")
+    if not group_name:
+        return
+    if not isinstance(group_name, str) or not group_name.strip():
+        raise ValueError("invalid bounded authorization group")
+    try:
+        gid = grp.getgrnam(group_name).gr_gid
+    except KeyError as error:
+        raise ValueError("bounded authorization group does not exist") from error
+    os.chown(path, -1, gid)
+    os.chmod(path, 0o640)
+
+
 def arm_return_authorization(leased: dict, config: dict) -> dict:
     """Create/reuse only the exact one-use authorization for this leased job.
 
@@ -383,6 +399,7 @@ def arm_return_authorization(leased: dict, config: dict) -> dict:
                  and raw.get("consumed_receipt_id") is None and raw.get("status") == "ARMED")
         expires = datetime.fromisoformat(str(raw.get("expires_at", "")).replace("Z", "+00:00"))
         if exact and expires > datetime.now(timezone.utc):
+            _prepare_authorization_file(active, config)
             return raw
         if not exact or expires > datetime.now(timezone.utc):
             raise ValueError("existing bounded authorization is not reusable")
@@ -409,6 +426,7 @@ def arm_return_authorization(leased: dict, config: dict) -> dict:
         os.fsync(fd)
     finally:
         os.close(fd)
+    _prepare_authorization_file(temporary, config)
     try:
         os.link(temporary, active)
         directory_fd = os.open(directory, os.O_RDONLY | os.O_DIRECTORY)
