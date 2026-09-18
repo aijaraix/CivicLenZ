@@ -281,6 +281,8 @@ def collect(cursor):
               AND reason='GOVERNOR_CONTEXT_ALLOWANCE_EXHAUSTED'""",
               (json.dumps({'governor_context_retry': prior}), retry['research_need_id']))
     cursor.execute("""SELECT j.*,lease_expires_at<=clock_timestamp() AS expired,
+      CASE WHEN j.status='dead_letter' THEN j.checkpoint->'dispatch_attempts'->-1->>'attempt_token'
+        ELSE j.leased_by END AS acknowledgement_attempt_token,
       (j.status='dead_letter' AND j.error_class='GOVERNOR_CONTEXT_ALLOWANCE_EXHAUSTED'
        AND j.attempt_count=j.max_attempts
        AND NOT (j.checkpoint ? 'independent_acknowledgement')) AS postlease_ack
@@ -296,7 +298,7 @@ def collect(cursor):
         p = job['payload']; link = p['validation_followup']; route = p['capability_route']
         cursor.execute("""SELECT * FROM public.worker_runs WHERE job_id=%s AND worker_key='hermes.cloudflare.governor_context'
           AND metadata->>'attempt_token'=%s AND deployment_id=%s ORDER BY started_at DESC LIMIT 1""",
-          (job['job_id'], job['leased_by'], route['deployment_id']))
+          (job['job_id'], job['acknowledgement_attempt_token'], route['deployment_id']))
         run = cursor.fetchone()
         # A completed worker run is canonical input to acknowledgement even if
         # the lease sweep runs after expiry.  The post-lease branch is limited
@@ -336,9 +338,9 @@ def collect(cursor):
           AND v.result_summary->'identity_assessment'->>'resolved'='false'
           AND v.result_summary->'currentness_assessment'->>'tenure_effective_period_established'='false'
           AND v.result_summary->'dataset_applicability'->>'state'='NOT_APPLICABLE'""",
-          (m.get('validation_run_id'), VERSION, job['target_id'], str(job['job_id']), job['leased_by'],
+          (m.get('validation_run_id'), VERSION, job['target_id'], str(job['job_id']), job['acknowledgement_attempt_token'],
            job['dedupe_key'], link['receipt_id'], route['deployment_id'], str(job['research_need_id']),
-           job['job_id'], m.get('sha256'), str(run['worker_run_id']), job['leased_by'], route['source_id'], route['retrieval_url']))
+           job['job_id'], m.get('sha256'), str(run['worker_run_id']), job['acknowledgement_attempt_token'], route['source_id'], route['retrieval_url']))
         artifact = cursor.fetchone()
         if not artifact or safety_snapshot(cursor, job['target_id']) != job['checkpoint'].get('followup_safety_before'):
             continue  # Never acknowledge inconsistent artifacts; lease recovery records failure.

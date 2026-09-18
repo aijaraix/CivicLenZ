@@ -108,7 +108,7 @@ class GovernorContextTests(unittest.TestCase):
   self.assertEqual(__import__('json').loads(update[0][1][1])['worker_error_class'],'worker_store_http_409')
  def test_expired_final_attempt_with_existing_success_is_acknowledged_not_retried(self):
   job={'job_id':'exhausted-governor','target_id':'seat','research_need_id':'need-identity','dedupe_key':'work-identity',
-    'status':'dead_letter','leased_by':'attempt-5-token','expired':True,'postlease_ack':True,
+    'status':'dead_letter','leased_by':None,'acknowledgement_attempt_token':'attempt-5-token','expired':True,'postlease_ack':True,
     'attempt_count':5,'max_attempts':5,'error_class':'GOVERNOR_CONTEXT_ALLOWANCE_EXHAUSTED',
     'checkpoint':{'followup_safety_before':{'digest':'same'}},
     'payload':{'validation_followup':{'allowance':g.ALLOWANCE,'receipt_id':RECEIPT},
@@ -130,3 +130,5 @@ class GovernorContextTests(unittest.TestCase):
   self.assertEqual(result['worker_run_id'],'attempt-5-run')
   self.assertEqual(result['validation_run_id'],'attempt-5-validation')
   self.assertEqual(result['decision'],'NEEDS_FURTHER_VALIDATION')
+  worker_query=[args for query,args in c.calls if 'FROM public.worker_runs' in query][-1]
+  self.assertEqual(worker_query[1],'attempt-5-token')
