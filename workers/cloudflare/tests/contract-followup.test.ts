@@ -33,7 +33,8 @@ function fixture(name='Alex Example') {
   if(table==='worker_runs')return runs;
   if(table==='validation_runs')return [receipt];
   if(table==='claims')return [claim];
-  if(table==='evidence_objects')return [oldEvidence];
+  if(table==='raw_retrievals')return raws;
+  if(table==='evidence_objects')return path.includes(`evidence_id=eq.${id(6)}`)?[oldEvidence]:evidence;
   if(table==='claim_evidence')return [{role:'supports'}];
   if(table==='seats')return [seat];
   if(table==='sources')return [source];
@@ -65,6 +66,15 @@ test('no hardcoded officeholder and differing authoritative candidate remains un
  const f=fixture('Taylor Sample');f.claim.display_value='Different Candidate';await runValidationFollowup(f);
  assert.equal(f.validations[0].result_summary.display_value,'Taylor Sample');assert.equal(f.validations[0].result_summary.agrees_with_original_display,false);
  assert.equal(f.claim.display_value,'Different Candidate');
+});
+test('identical immutable source bytes reuse the verified raw artifact without a duplicate retrieval row',async()=>{
+ const f=fixture(), bytes=new TextEncoder().encode('<html><head><title>Governor Alex Example</title></head><body><h1>Governor Alex Example</h1></body></html>');
+ const digest=await sha256Hex(bytes), key=`validation-followup/prior-run/${digest}.html`, uri=`r2://civiclenzevidence/${key}`;
+ f.objects.set(key,bytes);f.raws.push({retrieval_id:id(40),source_id:id(11),http_status:200,byte_length:bytes.byteLength,raw_object_uri:uri,retrieval_status:'stored',content_hash:digest});
+ await runValidationFollowup(f);
+ assert.equal(f.raws.length,1);assert.equal(f.validations.length,1);
+ assert.equal(f.validations[0].result_summary.raw_retrieval_reused,true);
+ assert.ok(!f.writes.filter(x=>x==='raw_retrievals').length);
 });
 test('stale delivery and wrong deployment, budget lane, invalid attempt or identity cannot fetch',async()=>{
  const stale=fixture();stale.invalidate();await runValidationFollowup(stale);assert.equal(stale.writes.length,0);
