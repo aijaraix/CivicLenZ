@@ -1,0 +1,166 @@
+name: Collect Central Florida local source maps
+
+# Review-only, fixed-entry-point discovery. This workflow never creates official
+# profiles or public data; it only preserves source-map retrieval metadata.
+on:
+  schedule:
+    - cron: '43 10 * * *'
+  workflow_dispatch:
+    inputs:
+      mode:
+        description: 'Validate the plan or run the bounded source-map collector'
+        required: true
+        default: validate
+        type: choice
+        options:
+          - validate
+          - collect
+  push:
+    branches: [main]
+    paths:
+      - 'data/sources/florida-regions/central/**'
+      - 'data/operations/florida/central/**'
+      - 'workers/ingestion/discover_central_florida_local_sources.py'
+      - '.github/workflows/collect-central-florida-local-sources.yml'
+  pull_request:
+    paths:
+      - 'data/sources/florida-regions/central/**'
+      - 'data/operations/florida/central/**'
+      - 'workers/ingestion/discover_central_florida_local_sources.py'
+      - '.github/workflows/collect-central-florida-local-sources.yml'
+
+permissions:
+  contents: read
+
+concurrency:
+  group: central-florida-local-source-discovery
+  cancel-in-progress: false
+
+jobs:
+  validate-plan:
+    name: Validate Central Florida source plan
+    permissions:
+      contents: read
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Checkout proposed source plan
+        uses: actions/checkout@v6
+        with:
+          fetch-depth: 1
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+          cache: pip
+          cache-dependency-path: workers/ingestion/requirements.txt
+
+      - name: Install collector dependencies
+        run: pip install -r workers/ingestion/requirements.txt
+
+      - name: Verify bounded source plan without fetching
+        run: python -m workers.ingestion.discover_central_florida_local_sources --validate-plan
+
+  collect:
+    name: Collect review-only Central Florida source maps
+    permissions:
+      contents: write
+      pull-requests: write
+    needs: validate-plan
+    if: >-
+      github.event_name == 'schedule' ||
+      (github.event_name == 'workflow_dispatch' && inputs.mode == 'collect')
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - name: Checkout default branch
+        uses: actions/checkout@v6
+        with:
+          ref: main
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+          cache: pip
+          cache-dependency-path: workers/ingestion/requirements.txt
+
+      - name: Install collector dependencies
+        run: pip install -r workers/ingestion/requirements.txt
+
+      - name: Confirm source plan and active workstream claim
+        run: python -m workers.ingestion.discover_central_florida_local_sources --validate-active-claim
+
+      - name: Fetch fixed official source entry points
+        run: python -m workers.ingestion.discover_central_florida_local_sources
+
+      - name: Validate review-only source maps
+        run: python scripts/validate_officials.py
+
+      - name: Summarize bounded collection
+        run: |
+          python - <<'PY' >> "$GITHUB_STEP_SUMMARY"
+          import json
+          from collections import Counter
+          from pathlib import Path
+
+          root = Path("data/staging/florida/local/central/source-discovery")
+          records = [json.loads(path.read_text(encoding="utf-8")) for path in sorted(root.glob("*.json"))]
+          statuses = Counter(record.get("collectionStatus") for record in records)
+          resolved = sum(int(record.get("resolvedCategoryCount", 0)) for record in records)
+          required = sum(int(record.get("requiredCategoryCount", 0)) for record in records)
+          print("### Central Florida local source discovery")
+          print(f"- County source maps: **{len(records)}**")
+          print(f"- Collection status: **{dict(sorted(statuses.items()))}**")
+          print(f"- Resolved source categories: **{resolved}/{required}**")
+          print("- Publication state: **review-only source maps; no person or officeholder records**")
+          PY
+
+      - name: Upload review-only source-map snapshot
+        uses: actions/upload-artifact@v4
+        with:
+          name: central-florida-source-maps-${{ github.run_number }}
+          path: data/staging/florida/local/central/source-discovery/*.json
+          if-no-files-found: error
+          retention-days: 30
+
+      - name: Save or refresh Central Florida source-map review branch
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          STAGING_PATH="data/staging/florida/local/central/source-discovery"
+          BRANCH="bot/fl-central-local-source-discovery"
+          CHANGES=$(git status --porcelain --untracked-files=all -- "$STAGING_PATH")
+
+          if [ -z "$CHANGES" ]; then
+            echo "No Central Florida source-map changes detected."
+            exit 0
+          fi
+
+          git config user.name "civiclenz-data-bot"
+          git config user.email "civiclenz-data-bot@users.noreply.github.com"
+          git checkout -B "$BRANCH"
+          git add "$STAGING_PATH"
+
+          if git diff --cached --quiet; then
+            echo "No staged source-map differences remained."
+            exit 0
+          fi
+
+          git commit -m "Refresh Central Florida source maps"
+          git push --force origin "HEAD:refs/heads/$BRANCH"
+          git ls-remote --exit-code --heads origin "refs/heads/$BRANCH"
+
+          OPEN_PR=$(gh pr list --head "$BRANCH" --base main --state open --json number --jq '.[0].number // empty')
+          if [ -z "$OPEN_PR" ]; then
+            gh pr create \
+              --base main \
+              --head "$BRANCH" \
+              --title "Data review: Central Florida local source maps" \
+              --body "Automated, bounded discovery of official source entry points for Lake, Orange, Osceola, Polk, and Seminole counties. These are non-public source-map artifacts only; they do not contain officeholder or profile data, and direct roster sources still require review."
+          else
+            echo "Updated existing Central Florida source-map review PR #$OPEN_PR"
+          fi
