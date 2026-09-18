@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://civiclenz.ai/schemas/civic-queue-job.schema.json",
+  "$id": "https://civicslenz.com/schemas/civic-queue-job.schema.json",
   "title": "CivicLenZ queue job message",
   "type": "object",
   "additionalProperties": false,

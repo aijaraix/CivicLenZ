@@ -11,7 +11,7 @@ GitHub Pages remains a supported alternative when the account plan permits Pages
 1. Merge a reviewed website pull request into `main`.
 2. Create the hosting project from `aijaraix/CivicLenZ`.
 3. Confirm the generated preview URL works on desktop and mobile.
-4. Add both `civiclenz.ai` and `www.civiclenz.ai` in the hosting provider's domain settings.
+4. Add both `civicslenz.com` and `www.civicslenz.com` in the hosting provider's domain settings.
 5. Copy the exact DNS records shown by the hosting provider.
 6. In GoDaddy, change only the website records after the provider is ready to verify them.
 7. Do not delete MX, SPF, DKIM, DMARC, verification, or other email/service TXT records.
@@ -28,13 +28,13 @@ GitHub Pages remains a supported alternative when the account plan permits Pages
 6. The Next.js configuration produces an `out/` static export; Vercel can also serve the project through its native Next.js integration.
 7. Deploy and test the temporary `vercel.app` address.
 8. Open **Project Settings → Domains**.
-9. Add `civiclenz.ai` and `www.civiclenz.ai`.
+9. Add `civicslenz.com` and `www.civicslenz.com`.
 10. Vercel will display the exact root A record, `www` CNAME record, and any TXT ownership-verification record required for this project. Use those displayed values rather than copying values from an old deployment.
 
 ## GoDaddy DNS steps
 
 1. Open the GoDaddy **Domain Portfolio**.
-2. Select `civiclenz.ai`.
+2. Select `civicslenz.com`.
 3. Open **DNS**.
 4. Save screenshots or a written copy of the existing root (`@`) and `www` website records before editing.
 5. Remove or edit only conflicting website A/CNAME records.
@@ -53,7 +53,7 @@ The repository includes a manual Pages deployment workflow. Before running it:
 2. Under **Build and deployment**, choose **GitHub Actions**.
 3. Run the `Deploy static site to GitHub Pages` workflow.
 4. Test the generated GitHub Pages URL.
-5. Add `civiclenz.ai` as the custom domain in repository Pages settings before changing DNS.
+5. Add `civicslenz.com` as the custom domain in repository Pages settings before changing DNS.
 
 For an apex domain, GitHub currently documents these A records:
 

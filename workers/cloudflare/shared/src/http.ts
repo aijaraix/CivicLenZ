@@ -60,7 +60,7 @@ async function fetchDocumentInner(
       signal,
       headers: {
         "User-Agent": USER_AGENT,
-        From: "research@civiclenz.ai",
+        From: "research@civicslenz.com",
         Accept: "application/pdf,application/json,text/csv,text/html,application/xhtml+xml,application/xml,text/plain;q=0.9,*/*;q=0.5",
         "Accept-Language": "en-US,en;q=0.9",
         "Cache-Control": "no-cache",
