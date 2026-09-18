@@ -459,10 +459,19 @@ def candidate(cursor) -> dict | None:
     return cursor.fetchone()
 
 
+def _receipt_selected(config: dict, receipt_id: object) -> bool:
+    if not isinstance(receipt_id, str) or not receipt_id:
+        return False
+    if config.get("queue_selection") is True:
+        return True
+    configured = config.get("receipt_id")
+    return isinstance(configured, str) and configured == receipt_id
+
+
 def execute(job: dict) -> dict:
     config = settings()
     receipt_id = job.get("payload", {}).get("canonical_receipt_id")
-    if (not config["enabled"] or not config["receipt_id"] or receipt_id != config["receipt_id"]
+    if (not config["enabled"] or not _receipt_selected(config, receipt_id)
             or job.get("job_type") != receipt_dispatch.JOB_TYPE or not job.get("leased_by")):
         return {"state": "LOCAL_VALIDATION_GATED"}
     worker_run_id = _uuid5(f"https://civiclenz.com/hermes/producer-receipts/{receipt_id}/worker/{job['job_id']}/{job['leased_by']}/{VERSION}")
