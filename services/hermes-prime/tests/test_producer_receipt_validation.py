@@ -119,6 +119,11 @@ class ProducerReceiptValidationTests(unittest.TestCase):
         self.assertTrue(validation._receipt_selected({"queue_selection": False, "receipt_id": receipt_id}, receipt_id))
         self.assertFalse(validation._receipt_selected({"queue_selection": False, "receipt_id": str(uuid.uuid4())}, receipt_id))
 
+    def test_retry_attempt_is_not_blocked_by_initial_budget_history(self):
+        self.assertFalse(validation._attempt_budget_allows({"budget": 1}, 0, 1))
+        self.assertTrue(validation._attempt_budget_allows({"budget": 1}, 1, 1))
+        self.assertTrue(validation._attempt_budget_allows({"budget": 1}, 2, 5))
+
     def test_zero_candidate_canary_truthfully_needs_more_evidence(self):
         with tempfile.TemporaryDirectory() as folder:
             path, receipt, lineage, job = make_dispatched(folder)
