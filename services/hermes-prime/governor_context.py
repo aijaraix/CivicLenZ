@@ -11,12 +11,17 @@ from capability_router import resolve
 VERSION = 'hermes-governor-context-v1'
 ALLOWANCE = 'governor-context-initial-v1'
 SCOPES = ('identity', 'person', 'occupancy')
+# A parser/schema repair can safely resume the *same* durable work after the
+# corrected worker is deployed.  This is deliberately narrower than generic
+# failed-work retry: the failure must be a structural non-match and the prior
+# worker deployment must differ from the configured deployment.
+RETRYABLE_WORKER_FAILURES = ('governor_card_structure_unproven',)
 
 
 def settings():
     try:
         receipt = str(uuid.UUID(os.environ.get('HERMES_GOVERNOR_CONTEXT_RECEIPT_ID', '')))
-        budget = min(3, max(0, int(os.environ.get('HERMES_GOVERNOR_CONTEXT_BUDGET', '0'))))
+        budget = min(5, max(0, int(os.environ.get('HERMES_GOVERNOR_CONTEXT_BUDGET', '0'))))
     except (ValueError, TypeError):
         receipt, budget = None, 0
     return {'enabled': os.environ.get('HERMES_GOVERNOR_CONTEXT') == 'true',
@@ -224,6 +229,46 @@ def collect(cursor):
                      'error_class': retry['error_class'], 'error_message': retry['error_message'],
                      'worker_deployment': retry['payload']['capability_route'].get('deployment_id'),
                      'recovery': 'NO_WORKER_RUN_DEPLOYMENT_REFRESH'}
+            payload = {**retry['payload']}
+            payload['capability_route'] = {**payload['capability_route'], 'deployment_id': follow['deployment']}
+            cursor.execute("""UPDATE public.jobs SET status='queued',payload=%s::jsonb,
+              checkpoint=checkpoint||jsonb_build_object('governor_context_failed_attempt_'||attempt_count::text,%s::jsonb),
+              error_class=NULL,error_message=NULL,scheduled_for=clock_timestamp(),updated_at=clock_timestamp()
+              WHERE job_id=%s AND status='dead_letter' AND attempt_count=%s""",
+              (json.dumps(payload), json.dumps(prior), retry['job_id'], retry['attempt_count']))
+            cursor.execute("""UPDATE hermes_ops.research_needs SET state='OPEN',reason='GOVERNOR_CONTEXT_RETRY_READY',
+              basis=basis||%s::jsonb WHERE need_id=%s AND state='BLOCKED'
+              AND reason='GOVERNOR_CONTEXT_ALLOWANCE_EXHAUSTED'""",
+              (json.dumps({'governor_context_retry': prior}), retry['research_need_id']))
+        # Preserve failed worker history, but allow a structural parser repair
+        # to use the next existing canonical attempt.  A different deployment
+        # is an explicit guard against re-running unchanged code; arbitrary
+        # worker failures and exhausted jobs remain terminal.
+        cursor.execute("""SELECT j.*,w.worker_run_id,w.deployment_id AS failed_deployment,
+            w.error_class AS worker_error_class,w.error_message AS worker_error_message
+          FROM public.jobs j JOIN public.worker_runs w ON w.job_id=j.job_id
+          WHERE j.status='dead_letter' AND j.error_class='GOVERNOR_CONTEXT_ALLOWANCE_EXHAUSTED'
+          AND j.attempt_count>0 AND j.attempt_count<j.max_attempts AND j.attempt_count<%s
+          AND j.payload->'validation_followup'->>'allowance'=%s
+          AND j.payload->'validation_followup'->>'receipt_id'=%s
+          AND j.payload->'capability_route'->>'version'=%s
+          AND w.worker_key='hermes.cloudflare.governor_context' AND w.status='failed'
+          AND w.error_class=ANY(%s) AND w.deployment_id<>%s
+          AND NOT EXISTS(SELECT 1 FROM public.worker_runs newer WHERE newer.job_id=j.job_id
+            AND newer.started_at>w.started_at)
+          ORDER BY w.completed_at DESC NULLS LAST,j.job_id LIMIT 1 FOR UPDATE OF j,w SKIP LOCKED""",
+          (follow['budget'], ALLOWANCE, follow['receipt_id'], VERSION,
+           list(RETRYABLE_WORKER_FAILURES), follow['deployment']))
+        retry = cursor.fetchone()
+        if retry:
+            prior = {'attempt_count': retry['attempt_count'], 'status': retry['status'],
+                     'error_class': retry['error_class'], 'error_message': retry['error_message'],
+                     'worker_run_id': str(retry['worker_run_id']),
+                     'worker_error_class': retry['worker_error_class'],
+                     'worker_error_message': retry['worker_error_message'],
+                     'worker_deployment': retry['failed_deployment'],
+                     'replacement_deployment': follow['deployment'],
+                     'recovery': 'PARSER_DEPLOYMENT_REFRESH'}
             payload = {**retry['payload']}
             payload['capability_route'] = {**payload['capability_route'], 'deployment_id': follow['deployment']}
             cursor.execute("""UPDATE public.jobs SET status='queued',payload=%s::jsonb,
