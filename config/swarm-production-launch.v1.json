@@ -1,0 +1,64 @@
+{
+  "schema_version": "civiclenz.swarm-production-launch.v1",
+  "purpose": "Operational activation metadata only; not civic truth and not authority to bypass canonical contracts.",
+  "canonical_public_domain": "https://civicslenz.com",
+  "legacy_domains": [
+    "civiclenz.ai",
+    "civiclenz.ai.studio"
+  ],
+  "orchestrator": "HERMES Prime",
+  "activation_policy": {
+    "active_requires_physical_proof": true,
+    "lane_local_blockers": true,
+    "unresolved_attribution_quarantine": true,
+    "continuous_validation": true,
+    "continuous_discovery": true,
+    "resource_governor_after_proof": true,
+    "public_projection_requires_publication_gate": true
+  },
+  "priority_families": [
+    "foundation_source",
+    "social_media",
+    "background",
+    "elections_campaign",
+    "finance_disclosure",
+    "government_activity",
+    "promises_statements",
+    "news_relationships_public_records",
+    "gis",
+    "quality_monitoring"
+  ],
+  "rollout": {
+    "phase": "PRE_ACTIVATION",
+    "generic_router_required": true,
+    "current_collector_required": true,
+    "minimum_distinct_families_for_initial_multilane_proof": 3,
+    "multi_subject_proof_required": true,
+    "unattended_endurance_required": true
+  },
+  "telemetry": [
+    "subjects_discovered_per_hour",
+    "active_subjects",
+    "jobs_created_per_hour",
+    "jobs_completed_per_hour",
+    "queue_depth",
+    "effective_concurrency_by_family",
+    "retrievals_per_hour",
+    "evidence_objects_per_hour",
+    "validation_backlog",
+    "validation_throughput",
+    "retry_failure_rate",
+    "monitoring_due",
+    "source_health",
+    "resource_headroom"
+  ],
+  "references": [
+    "docs/control-plane/WEEKEND_AUTONOMOUS_DEEP_DOSSIER_PRODUCTION_LAUNCH_2026_09_18.md",
+    "docs/control-plane/PHYSICAL_SWARM_CAPABILITY_ACTIVATION_MATRIX_2026_09_18.md",
+    "docs/control-plane/DEEP_DOSSIER_CANONICAL_STORAGE_AND_EVIDENCE_MAPPING_2026_09_18.md",
+    "docs/control-plane/UNATTENDED_RESOURCE_GOVERNOR_AND_WEEKEND_OPERATIONS_2026_09_18.md",
+    "docs/control-plane/DATA_ACQUISITION_MACHINE_AND_DEEP_DOSSIER_SWARM_OPERATING_CONTRACT.md",
+    "docs/control-plane/PHYSICAL_CAPABILITY_REGISTRY_AND_SWARM_EXECUTION_CONTRACT.md",
+    "docs/control-plane/RESEARCH_EXHAUSTION_COMPLETENESS_AND_MULTI_PASS_VALIDATION_CONTRACT.md"
+  ]
+}
