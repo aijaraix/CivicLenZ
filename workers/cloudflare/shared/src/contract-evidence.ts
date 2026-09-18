@@ -41,9 +41,15 @@ export async function runContractEvidence(input: {
   const p = job.payload ?? {};
   const route = p.capability_route ?? {};
   const config = sourceAdapter(route.source_key);
+  const quarantineScopes = new Set(["portrait", "contact", "identity", "biography", "education", "career",
+    "political_history", "prior_offices", "election_history", "campaign_finance", "financial_disclosure",
+    "executive_actions", "promises_statements", "news_activity", "social", "jurisdiction", "seat"]);
+  const quarantine = route.stage === "quarantine" && quarantineScopes.has(p.scope_key)
+    && route.capability === "evidence_quarantine_source_discovery"
+    && route.identity_attribution === "unresolved" && route.publication_eligible === false;
   if (job.job_type !== "contract_scope_research" || !job.research_need_id
       || p.orchestration_authority !== "hermes" || p.execution_class !== "PRODUCTION"
-      || p.scope_key !== "evidence" || p.dispatch_blocker
+      || (p.scope_key !== "evidence" && !quarantine) || p.dispatch_blocker
       || p.research_work_identity !== job.dedupe_key || message.research_work_identity !== job.dedupe_key
       || route.version !== "hermes-evidence-v1" || route.worker !== "civiclenz-collector"
       || !input.deploymentId || route.deployment_id !== input.deploymentId
@@ -57,7 +63,7 @@ export async function runContractEvidence(input: {
   const lineage = { orchestration_authority: "hermes", execution_class: "PRODUCTION",
     research_need_id: job.research_need_id, research_work_identity: job.dedupe_key,
     attempt_token: message.attempt_token, attempt_count: job.attempt_count,
-    lease_expires_at: job.lease_expires_at, capability: route.capability,
+    lease_expires_at: job.lease_expires_at, capability: route.capability, quarantine,
     route, tool: "workers/cloudflare/shared/src/http.ts:fetchDocument" };
   const existing = await input.database(`worker_runs?worker_run_id=eq.${runId}`);
   if (existing.length) return; // Deterministic PK also fences concurrent duplicate deliveries.
