@@ -113,7 +113,8 @@ class GovernorContextTests(unittest.TestCase):
     'checkpoint':{'followup_safety_before':{'digest':'same'}},
     'payload':{'validation_followup':{'allowance':g.ALLOWANCE,'receipt_id':RECEIPT},
       'capability_route':{'deployment_id':'release','source_id':'source','retrieval_url':'url'}}}
-  run={'status':'succeeded','worker_run_id':'attempt-5-run','metadata':{'validation_run_id':'attempt-5-validation'}}
+  run={'status':'succeeded','worker_run_id':'attempt-5-run',
+    'metadata':{'validation_run_id':'attempt-5-validation','raw_retrieval_reused':True}}
   artifact={'retrieved_at':'2026-09-18T00:00:00Z',
     'result_summary':{'display_value':'Unresolved context','retrieval_id':'raw','evidence_id':'pending-evidence'}}
   c=Cursor([None,None,[job],run,artifact,[],[],{'job_id':'exhausted-governor'}])
@@ -132,3 +133,6 @@ class GovernorContextTests(unittest.TestCase):
   self.assertEqual(result['decision'],'NEEDS_FURTHER_VALIDATION')
   worker_query=[args for query,args in c.calls if 'FROM public.worker_runs' in query][-1]
   self.assertEqual(worker_query[1],'attempt-5-token')
+  artifact_query=[(query,args) for query,args in c.calls if 'FROM public.validation_runs v' in query][-1]
+  self.assertIn("OR %s",artifact_query[0])
+  self.assertIn(True,artifact_query[1])
