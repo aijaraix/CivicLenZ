@@ -97,7 +97,9 @@ class PublicOfficialsLoaderTests(unittest.TestCase):
         self.assertNotRegex(public_loader, r"['\"]staging['\"]")
         self.assertIn("getAllOfficials()", slug_loader)
         self.assertNotIn("getStagingRecordsForReview", slug_loader)
-        self.assertIn("getAllOfficials()", static_params)
+        self.assertIn("getCanonicalOfficialBySlug", static_params)
+        self.assertIn("@/lib/civic-data/supabase-server", static_params)
+        self.assertNotIn("getAllOfficials()", static_params)
         self.assertNotIn("getStagingRecordsForReview", static_params)
 
     def test_public_pages_do_not_import_staging_review_loader(self) -> None:

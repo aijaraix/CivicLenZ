@@ -58,3 +58,18 @@ class GovernorContextTests(unittest.TestCase):
    self.assertEqual(d.tick({'dispatch_limit':1})['state'],'DELIVERED_AWAITING_WORKER')
   self.assertEqual(sum('hermes_ops.lease_job' in q for q,a in c.calls),1)
   self.assertEqual(json.loads(send.call_args.args[0].data)['body']['schemaVersion'],'hermes.governor-context.v1')
+ def test_no_worker_dead_letter_requeues_same_job_without_resetting_attempt(self):
+  retry={'job_id':'job-identity','research_need_id':'need-identity','status':'dead_letter',
+    'attempt_count':1,'max_attempts':5,'error_class':'GOVERNOR_CONTEXT_ALLOWANCE_EXHAUSTED','error_message':None,
+    'payload':{'validation_followup':{'allowance':g.ALLOWANCE,'receipt_id':RECEIPT},
+      'capability_route':{'version':g.VERSION,'deployment_id':'superseded'}}}
+  c=Cursor([retry,[]])
+  with patch.dict(os.environ,{**ENV,'HERMES_GOVERNOR_CONTEXT_BUDGET':'2','HERMES_GOVERNOR_CONTEXT_WORKER_DEPLOYMENT':'current'},clear=True):
+   g.collect(c)
+  job_update=[x for x in c.calls if x[0].startswith("UPDATE public.jobs SET status='queued'")]
+  self.assertEqual(len(job_update),1)
+  payload=__import__('json').loads(job_update[0][1][0])
+  self.assertEqual(payload['capability_route']['deployment_id'],'current')
+  self.assertEqual(job_update[0][1][-1],1)
+  sql='\n'.join(q for q,a in c.calls)
+  self.assertNotIn('attempt_count=0',sql)
