@@ -35,7 +35,8 @@ export async function runValidationFollowup(input: {
   const config = sourceAdapter(route.source_key);
   if (!canonical(j) || j.job_type !== 'contract_scope_research' || !(context ? ['identity','person','occupancy'] : ['current_occupant']).includes(p.scope_key)
       || j.target_type !== 'seat' || j.seat_id !== j.target_id || !uuid(j.target_id) || !uuid(j.research_need_id)
-      || j.attempt_count !== 1 || p.dispatch_blocker || m.research_work_identity !== j.dedupe_key
+      || !Number.isInteger(j.attempt_count) || j.attempt_count < 1 || j.attempt_count > j.max_attempts
+      || p.dispatch_blocker || m.research_work_identity !== j.dedupe_key
       || !Number.isFinite(Date.parse(j.lease_expires_at)) || Date.parse(j.lease_expires_at) - Date.now() < 90000
       || link.allowance !== allowance || link.scope !== p.scope_key
       || !['receipt_id','receipt_job_id','evidence_need_id','claim_id','parent_evidence_id'].every(k => uuid(link[k]))

@@ -8,7 +8,7 @@ function fixture(name='Alex Example') {
  const html=`<html><head><title>Governor ${name}</title></head><body><h1>Governor ${name}</h1></body></html>`;
  const link={receipt_id:id(2),receipt_job_id:id(3),evidence_need_id:id(4),claim_id:id(5),parent_evidence_id:id(6),scope:'current_occupant',allowance:'validation-followup-initial-v1'};
  const common={contract_id:id(10),contract_version:'1',orchestration_authority:'hermes',execution_class:'PRODUCTION'};
- const job:any={job_id:id(1),job_type:'contract_scope_research',target_type:'seat',target_id:id(8),seat_id:id(8),research_need_id:id(9),attempt_count:1,dedupe_key:'followup-work',lease_expires_at:new Date(Date.now()+300000).toISOString(),payload:{...common,research_work_identity:'followup-work',scope_key:'current_occupant',validation_followup:link,capability_route:{version:FOLLOWUP_VERSION,capability:'current_occupant_context_research',worker:'civiclenz-collector',research_need_id:id(9),deployment_id:'release',source_id:id(11),source_key:'florida-governor-official',source_url:'https://www.flgov.com/',retrieval_url:'https://www.flgov.com/eog/',max_bytes:1048576,timeout_seconds:15}}};
+ const job:any={job_id:id(1),job_type:'contract_scope_research',target_type:'seat',target_id:id(8),seat_id:id(8),research_need_id:id(9),attempt_count:1,max_attempts:5,dedupe_key:'followup-work',lease_expires_at:new Date(Date.now()+300000).toISOString(),payload:{...common,research_work_identity:'followup-work',scope_key:'current_occupant',validation_followup:link,capability_route:{version:FOLLOWUP_VERSION,capability:'current_occupant_context_research',worker:'civiclenz-collector',research_need_id:id(9),deployment_id:'release',source_id:id(11),source_key:'florida-governor-official',source_url:'https://www.flgov.com/',retrieval_url:'https://www.flgov.com/eog/',max_bytes:1048576,timeout_seconds:15}}};
  const parent:any={job_id:id(3),job_type:'contract_evidence_validate',target_id:id(8),research_need_id:id(4),dedupe_key:'parent-work',payload:{...common,research_work_identity:'parent-work'},checkpoint:{validation_run_id:id(2),independent_safety_check:'UNCHANGED_OCCUPANCY_AND_VERIFIED_CLAIMS'}};
  const receipt:any={validation_run_id:id(2),status:'ACCEPTED_FOR_VALIDATION',validator_key:'hermes.internal.receipt.v1',subject_id:id(8),input_summary:{job_id:id(3),research_work_identity:'parent-work'},result_summary:{claim_id:id(5),evidence_id:id(6),gate_facts:{outcome:'NEEDS_FURTHER_VALIDATION'}}};
  const claim:any={claim_id:id(5),subject_type:'seat',subject_id:id(8),seat_id:id(8),field_key:'current_occupant',verification_state:'collected_unreviewed',display_value:name};
@@ -66,9 +66,9 @@ test('no hardcoded officeholder and differing authoritative candidate remains un
  assert.equal(f.validations[0].result_summary.display_value,'Taylor Sample');assert.equal(f.validations[0].result_summary.agrees_with_original_display,false);
  assert.equal(f.claim.display_value,'Different Candidate');
 });
-test('stale delivery and wrong deployment, budget lane, scope, attempt or identity cannot fetch',async()=>{
+test('stale delivery and wrong deployment, budget lane, invalid attempt or identity cannot fetch',async()=>{
  const stale=fixture();stale.invalidate();await runValidationFollowup(stale);assert.equal(stale.writes.length,0);
- for(const mutate of [(f:any)=>f.job.payload.capability_route.deployment_id='old',(f:any)=>f.job.payload.validation_followup.allowance='other',(f:any)=>f.job.payload.scope_key='identity',(f:any)=>f.job.attempt_count=2,(f:any)=>f.job.payload.execution_class='TEST',(f:any)=>f.message.research_work_identity='wrong',(f:any)=>f.job.lease_expires_at='invalid']){
+ for(const mutate of [(f:any)=>f.job.payload.capability_route.deployment_id='old',(f:any)=>f.job.payload.validation_followup.allowance='other',(f:any)=>f.job.payload.scope_key='identity',(f:any)=>f.job.attempt_count=0,(f:any)=>f.job.attempt_count=6,(f:any)=>f.job.payload.execution_class='TEST',(f:any)=>f.message.research_work_identity='wrong',(f:any)=>f.job.lease_expires_at='invalid']){
   const f=fixture();mutate(f);await assert.rejects(runValidationFollowup(f));assert.equal(f.fetches(),0);assert.equal(f.writes.length,0);
  }
 });
@@ -126,6 +126,12 @@ test('governor contexts reuse existing scope and preserve review, identity, temp
   assert.equal(r.review_required,scope!=='identity');
   assert.ok(Date.parse(v.started_at)<=Date.parse(v.completed_at));
  }
+});
+test('governor retry preserves bounded canonical attempt and completes the same work identity',async()=>{
+ const f=governorFixture();f.job.attempt_count=2;await runValidationFollowup(f);
+ assert.equal(f.runs[0].status,'succeeded');
+ assert.equal(f.runs[0].metadata.attempt_count,2);
+ assert.equal(f.validations[0].input_summary.research_work_identity,'followup-work');
 });
 test('HTTP 200 access challenge preserves raw failure evidence without validation success',async()=>{
  const f=governorFixture();f.fetchImpl=async()=>new Response('<html>wsidchk verify you are human</html>',{headers:{'content-type':'text/html'}});
