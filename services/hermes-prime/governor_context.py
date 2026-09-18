@@ -15,7 +15,7 @@ SCOPES = ('identity', 'person', 'occupancy')
 # corrected worker is deployed.  This is deliberately narrower than generic
 # failed-work retry: the failure must be a structural non-match and the prior
 # worker deployment must differ from the configured deployment.
-RETRYABLE_WORKER_FAILURES = ('governor_card_structure_unproven',)
+RETRYABLE_WORKER_FAILURES = ('governor_card_structure_unproven', 'worker_store_http_409')
 
 
 def settings():

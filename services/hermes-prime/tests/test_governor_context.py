@@ -93,3 +93,16 @@ class GovernorContextTests(unittest.TestCase):
   self.assertEqual(recovery['worker_run_id'],'failed-run')
   self.assertEqual(recovery['recovery'],'PARSER_DEPLOYMENT_REFRESH')
   self.assertFalse(any('attempt_count=0' in q or q.startswith('INSERT INTO public.jobs') for q,a in c.calls))
+ def test_storage_conflict_is_recoverable_only_with_a_repaired_deployment(self):
+  retry={'job_id':'job-identity','research_need_id':'need-identity','status':'dead_letter',
+    'attempt_count':4,'max_attempts':5,'error_class':'GOVERNOR_CONTEXT_ALLOWANCE_EXHAUSTED','error_message':None,
+    'worker_run_id':'failed-run','failed_deployment':'old-worker','worker_error_class':'worker_store_http_409',
+    'worker_error_message':'immutable raw duplicate',
+    'payload':{'validation_followup':{'allowance':g.ALLOWANCE,'receipt_id':RECEIPT},
+      'capability_route':{'version':g.VERSION,'deployment_id':'old-worker'}}}
+  c=Cursor([None,retry,[]])
+  with patch.dict(os.environ,{**ENV,'HERMES_GOVERNOR_CONTEXT_BUDGET':'5','HERMES_GOVERNOR_CONTEXT_WORKER_DEPLOYMENT':'raw-reuse-worker'},clear=True):
+   g.collect(c)
+  update=[x for x in c.calls if x[0].startswith("UPDATE public.jobs SET status='queued'")]
+  self.assertEqual(len(update),1);self.assertEqual(update[0][1][-1],4)
+  self.assertEqual(__import__('json').loads(update[0][1][1])['worker_error_class'],'worker_store_http_409')
