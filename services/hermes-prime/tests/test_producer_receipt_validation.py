@@ -112,6 +112,13 @@ class SourceCursor:
 
 
 class ProducerReceiptValidationTests(unittest.TestCase):
+    def test_bounded_queue_execution_selects_receipt_from_leased_job(self):
+        receipt_id = str(uuid.uuid4())
+        self.assertTrue(validation._receipt_selected({"queue_selection": True, "receipt_id": None}, receipt_id))
+        self.assertFalse(validation._receipt_selected({"queue_selection": True, "receipt_id": None}, None))
+        self.assertTrue(validation._receipt_selected({"queue_selection": False, "receipt_id": receipt_id}, receipt_id))
+        self.assertFalse(validation._receipt_selected({"queue_selection": False, "receipt_id": str(uuid.uuid4())}, receipt_id))
+
     def test_zero_candidate_canary_truthfully_needs_more_evidence(self):
         with tempfile.TemporaryDirectory() as folder:
             path, receipt, lineage, job = make_dispatched(folder)
