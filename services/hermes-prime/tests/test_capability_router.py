@@ -30,6 +30,15 @@ class RoutingTests(unittest.TestCase):
  def test_unsupported_scope_stays_blocked(self):
   self.need['scope_key']=self.job['payload']['scope_key']='current_occupant'
   self.assertIn('CAPABILITY_NOT_IMPLEMENTED',self.route()['reason'])
+ def test_quarantine_route_preserves_unresolved_attribution(self):
+  self.need['scope_key']=self.job['payload']['scope_key']='social'
+  self.field['verification_requirement']='review'
+  self.field['sensitivity_rule']='publication_eligible_claims_only'
+  decision=self.route(deployment_id='release',transport_ready=True)
+  self.assertEqual(decision['state'],'OPEN')
+  self.assertEqual(decision['route']['stage'],'quarantine')
+  self.assertEqual(decision['route']['identity_attribution'],'unresolved')
+  self.assertFalse(decision['route']['publication_eligible'])
  def test_source_policy_and_url_fail_closed(self):
   for url in ['http://www.flgov.com/','https://127.0.0.1/','https://www.flgov.com/unregistered']:
    self.sources[0]['source_url']=url
