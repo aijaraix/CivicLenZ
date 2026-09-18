@@ -14,7 +14,7 @@ class GovernorContextTests(unittest.TestCase):
   with patch.dict(os.environ,ENV,clear=True):
    c=Cursor([{'attempts':1}]);self.assertIsNone(g.candidate(c))
    self.assertEqual(c.calls[0][1],('governor-context-initial-v1',))
-  with patch.dict(os.environ,{**ENV,'HERMES_GOVERNOR_CONTEXT_BUDGET':'99'},clear=True):self.assertEqual(g.settings()['budget'],3)
+  with patch.dict(os.environ,{**ENV,'HERMES_GOVERNOR_CONTEXT_BUDGET':'99'},clear=True):self.assertEqual(g.settings()['budget'],5)
  def test_routes_exact_scopes_without_satisfying_review(self):
   for scope in ('identity','person','occupancy','biography','current_occupant'):
    item=row(scope)
@@ -63,7 +63,7 @@ class GovernorContextTests(unittest.TestCase):
     'attempt_count':1,'max_attempts':5,'error_class':'GOVERNOR_CONTEXT_ALLOWANCE_EXHAUSTED','error_message':None,
     'payload':{'validation_followup':{'allowance':g.ALLOWANCE,'receipt_id':RECEIPT},
       'capability_route':{'version':g.VERSION,'deployment_id':'superseded'}}}
-  c=Cursor([retry,[]])
+  c=Cursor([retry,None,[]])
   with patch.dict(os.environ,{**ENV,'HERMES_GOVERNOR_CONTEXT_BUDGET':'2','HERMES_GOVERNOR_CONTEXT_WORKER_DEPLOYMENT':'current'},clear=True):
    g.collect(c)
   job_update=[x for x in c.calls if x[0].startswith("UPDATE public.jobs SET status='queued'")]
@@ -73,3 +73,23 @@ class GovernorContextTests(unittest.TestCase):
   self.assertEqual(job_update[0][1][-1],1)
   sql='\n'.join(q for q,a in c.calls)
   self.assertNotIn('attempt_count=0',sql)
+ def test_parser_fix_requeues_same_failed_job_only_after_deployment_changes(self):
+  retry={'job_id':'job-identity','research_need_id':'need-identity','status':'dead_letter',
+    'attempt_count':3,'max_attempts':5,'error_class':'GOVERNOR_CONTEXT_ALLOWANCE_EXHAUSTED','error_message':None,
+    'worker_run_id':'failed-run','failed_deployment':'old-parser','worker_error_class':'governor_card_structure_unproven',
+    'worker_error_message':'structure unproven',
+    'payload':{'validation_followup':{'allowance':g.ALLOWANCE,'receipt_id':RECEIPT},
+      'capability_route':{'version':g.VERSION,'deployment_id':'old-parser'}}}
+  # First recovery query is specifically no-worker; the parser repair path is second.
+  c=Cursor([None,retry,[]])
+  with patch.dict(os.environ,{**ENV,'HERMES_GOVERNOR_CONTEXT_BUDGET':'4','HERMES_GOVERNOR_CONTEXT_WORKER_DEPLOYMENT':'new-parser'},clear=True):
+   g.collect(c)
+  job_update=[x for x in c.calls if x[0].startswith("UPDATE public.jobs SET status='queued'")]
+  self.assertEqual(len(job_update),1)
+  payload=__import__('json').loads(job_update[0][1][0])
+  self.assertEqual(payload['capability_route']['deployment_id'],'new-parser')
+  self.assertEqual(job_update[0][1][-1],3)
+  recovery=__import__('json').loads(job_update[0][1][1])
+  self.assertEqual(recovery['worker_run_id'],'failed-run')
+  self.assertEqual(recovery['recovery'],'PARSER_DEPLOYMENT_REFRESH')
+  self.assertFalse(any('attempt_count=0' in q or q.startswith('INSERT INTO public.jobs') for q,a in c.calls))
