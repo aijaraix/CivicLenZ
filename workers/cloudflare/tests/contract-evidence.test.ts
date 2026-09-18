@@ -33,6 +33,19 @@ test('network failure cannot create a successful run or result',async()=>{const 
 test('R2 mismatch cannot create a result',async()=>{const f=fixture();f.bucket.get=async()=>new TextEncoder().encode('corrupt');await assert.rejects(invoke(f));assert.equal(f.runs[0].status,'failed');assert.equal(f.results.length,0);});
 test('lease loss after network execution prevents result persistence',async()=>{const f=fixture();f.fetchImpl=async()=>{f.invalidate();return new Response('bytes');};await assert.rejects(invoke(f));assert.equal(f.results.length,0);assert.equal(f.runs[0].status,'failed');});
 test('wrong deployment never executes',async()=>{const f=fixture();await assert.rejects(runContractEvidence({...f,deploymentId:'old'}));assert.equal(f.calls(),0);});
+test('quarantine route stores raw evidence without asserting attribution',async()=>{
+ const f=fixture();Object.assign(f.job.payload,{scope_key:'social'});Object.assign(f.job.payload.capability_route,
+  {stage:'quarantine',capability:'evidence_quarantine_source_discovery',identity_attribution:'unresolved',publication_eligible:false});
+ await invoke(f);assert.equal(f.runs[0].metadata.quarantine,true);assert.equal(f.results.length,1);
+ assert.equal(f.runs[0].metadata.route.publication_eligible,false);
+});
+test('quarantine route fails closed if attribution or publication flag changes',async()=>{
+ for(const change of [(r:any)=>r.identity_attribution='verified',(r:any)=>r.publication_eligible=true]){
+  const f=fixture();f.job.payload.scope_key='social';Object.assign(f.job.payload.capability_route,
+   {stage:'quarantine',capability:'evidence_quarantine_source_discovery',identity_attribution:'unresolved',publication_eligible:false});change(f.job.payload.capability_route);
+  await assert.rejects(invoke(f));assert.equal(f.calls(),0);assert.equal(f.runs.length,0);
+ }
+});
 
 test('explicit official HTTPS endpoint executes without following redirects',async()=>{
  const f=fixture();const urls:string[]=[];f.fetchImpl=async(url?:any,init?:any)=>{urls.push(String(url));assert.equal(init.redirect,'manual');return new Response('bytes');};
