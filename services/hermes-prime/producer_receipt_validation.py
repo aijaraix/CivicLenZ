@@ -398,6 +398,15 @@ def collect(cursor) -> None:
                 ("PRODUCER_RECEIPT_VALIDATION_FAILED: " + reason, job["research_need_id"]))
 
 
+def _attempt_budget_allows(config: dict, job_attempt_count: int, cumulative_attempts: int) -> bool:
+    # The one-unit budget fences new receipt-validation work. A retry of the
+    # same already-created validation job is governed by that job's max_attempts
+    # and must not be blocked merely because attempt 1 is part of history.
+    if job_attempt_count > 0:
+        return True
+    return cumulative_attempts < int(config.get("budget", 0))
+
+
 def candidate(cursor) -> dict | None:
     config = settings()
     if (not config["enabled"] or config["budget"] < 1
@@ -443,7 +452,8 @@ def candidate(cursor) -> dict | None:
     cursor.execute("""SELECT coalesce(sum(attempt_count),0) AS attempts FROM public.jobs
         WHERE job_type=%s AND payload->>'canonical_receipt_id'=%s""",
         (receipt_dispatch.JOB_TYPE, payload.get("canonical_receipt_id")))
-    if int(cursor.fetchone()["attempts"]) >= config["budget"]:
+    cumulative_attempts = int(cursor.fetchone()["attempts"])
+    if not _attempt_budget_allows(config, int(job.get("attempt_count") or 0), cumulative_attempts):
         return None
     cursor.execute("""SELECT j.job_id FROM public.jobs j JOIN hermes_ops.research_needs n ON n.need_id=j.research_need_id
         WHERE j.job_id=%s AND j.status='queued' AND j.attempt_count<j.max_attempts
