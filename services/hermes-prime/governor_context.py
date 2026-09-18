@@ -168,7 +168,7 @@ def candidate(cursor):
     if cursor.fetchone()['attempts'] >= follow['budget']:
         return None
     cursor.execute("""SELECT j.job_id FROM public.jobs j JOIN hermes_ops.research_needs n ON n.need_id=j.research_need_id
-      WHERE j.status='queued' AND j.attempt_count=0 AND j.attempt_count<j.max_attempts
+      WHERE j.status='queued' AND j.attempt_count<j.max_attempts
       AND j.job_type='contract_scope_research' AND n.state='OPEN' AND n.scope_key=%s
       AND n.execution_class='PRODUCTION' AND n.origin='CONTRACT_GAP'
       AND j.payload->>'orchestration_authority'='hermes' AND j.payload->>'execution_class'='PRODUCTION'
@@ -204,6 +204,37 @@ def safety_snapshot(cursor, seat):
 
 def collect(cursor):
     # Recovery is independent of enable switches and budget, including rollback.
+    # A dispatch that never reached a worker may be retried on the same durable
+    # job. Preserve its consumed attempt and dead-letter details in checkpoint;
+    # only refresh the stale physical worker deployment binding.
+    follow = settings()
+    if follow['enabled'] and follow['deployment'] and follow['budget']:
+        cursor.execute("""SELECT j.* FROM public.jobs j
+          WHERE j.status='dead_letter' AND j.error_class='GOVERNOR_CONTEXT_ALLOWANCE_EXHAUSTED'
+          AND j.attempt_count>0 AND j.attempt_count<j.max_attempts AND j.attempt_count<%s
+          AND j.payload->'validation_followup'->>'allowance'=%s
+          AND j.payload->'validation_followup'->>'receipt_id'=%s
+          AND j.payload->'capability_route'->>'version'=%s
+          AND NOT EXISTS(SELECT 1 FROM public.worker_runs w WHERE w.job_id=j.job_id)
+          ORDER BY j.updated_at,j.job_id LIMIT 1 FOR UPDATE SKIP LOCKED""",
+          (follow['budget'], ALLOWANCE, follow['receipt_id'], VERSION))
+        retry = cursor.fetchone()
+        if retry:
+            prior = {'attempt_count': retry['attempt_count'], 'status': retry['status'],
+                     'error_class': retry['error_class'], 'error_message': retry['error_message'],
+                     'worker_deployment': retry['payload']['capability_route'].get('deployment_id'),
+                     'recovery': 'NO_WORKER_RUN_DEPLOYMENT_REFRESH'}
+            payload = {**retry['payload']}
+            payload['capability_route'] = {**payload['capability_route'], 'deployment_id': follow['deployment']}
+            cursor.execute("""UPDATE public.jobs SET status='queued',payload=%s::jsonb,
+              checkpoint=checkpoint||jsonb_build_object('governor_context_failed_attempt_'||attempt_count::text,%s::jsonb),
+              error_class=NULL,error_message=NULL,scheduled_for=clock_timestamp(),updated_at=clock_timestamp()
+              WHERE job_id=%s AND status='dead_letter' AND attempt_count=%s""",
+              (json.dumps(payload), json.dumps(prior), retry['job_id'], retry['attempt_count']))
+            cursor.execute("""UPDATE hermes_ops.research_needs SET state='OPEN',reason='GOVERNOR_CONTEXT_RETRY_READY',
+              basis=basis||%s::jsonb WHERE need_id=%s AND state='BLOCKED'
+              AND reason='GOVERNOR_CONTEXT_ALLOWANCE_EXHAUSTED'""",
+              (json.dumps({'governor_context_retry': prior}), retry['research_need_id']))
     cursor.execute("""SELECT j.*,lease_expires_at<=clock_timestamp() AS expired FROM public.jobs j
       WHERE j.status='leased' AND j.payload->>'orchestration_authority'='hermes'
       AND j.payload->>'execution_class'='PRODUCTION'
