@@ -11,6 +11,17 @@ WORKER_MODULE = "workers/cloudflare/shared/src/contract-evidence.ts"
 SOURCE_ENDPOINTS = {"florida-governor-official": "https://www.flgov.com/",
                     "florida-election-calendar": "https://dos.fl.gov/elections/"}
 
+# These routes preserve source evidence only.  They are deliberately not an
+# identity, claim, occupancy, or publication path: the bounded scope remains
+# unresolved until a later capability supplies its own extraction and
+# validation contract.
+QUARANTINE_SCOPES = frozenset((
+    "portrait", "contact", "identity", "biography", "education", "career",
+    "political_history", "prior_offices", "election_history", "campaign_finance",
+    "financial_disclosure", "executive_actions", "promises_statements",
+    "news_activity", "social", "jurisdiction", "seat",
+))
+
 
 def resolve(job, need, field, sources, deployment_id=None, transport_ready=False):
     payload = job.get("payload") or {}
@@ -28,9 +39,12 @@ def resolve(job, need, field, sources, deployment_id=None, transport_ready=False
             or payload.get("contract_id") != str(need.get("contract_id"))
             or payload.get("contract_version") != need.get("contract_version")):
         return {"state": "BLOCKED", "reason": "CANONICAL_IDENTITY_MISMATCH"}
-    if (need.get("scope_key") != "evidence"
-            or field.get("verification_requirement") != "official_source"
-            or field.get("sensitivity_rule") != "publication_eligible_claims_only"):
+    scope = need.get("scope_key")
+    evidence_scope = (scope == "evidence"
+        and field.get("verification_requirement") == "official_source"
+        and field.get("sensitivity_rule") == "publication_eligible_claims_only")
+    quarantine_scope = scope in QUARANTINE_SCOPES
+    if not evidence_scope and not quarantine_scope:
         return {"state": "BLOCKED", "reason": "CAPABILITY_NOT_IMPLEMENTED: contract scope requirements"}
     policy = field.get("source_priority") or {}
     keys = policy.get("policy", "") if isinstance(policy, dict) else ""
@@ -48,7 +62,9 @@ def resolve(job, need, field, sources, deployment_id=None, transport_ready=False
         if (url.scheme != "https" or not url.hostname or url.username or url.password
                 or source.get("authority_tier") != "TIER_1_PRIMARY_OFFICIAL"):
             continue
-        route = {"version": ROUTE_VERSION, "capability": "authoritative_evidence_retrieval",
+        route = {"version": ROUTE_VERSION,
+                 "capability": "authoritative_evidence_retrieval" if evidence_scope else "evidence_quarantine_source_discovery",
+                 "stage": "evidence" if evidence_scope else "quarantine",
                  "pool": "cloudflare-deterministic-http", "worker": "civiclenz-collector",
                  "module": WORKER_MODULE, "deployment_id": deployment_id,
                  "source_id": str(source["source_id"]), "source_key": source["source_key"],
@@ -56,7 +72,10 @@ def resolve(job, need, field, sources, deployment_id=None, transport_ready=False
                  "retrieval_url": ("https://www.flgov.com/eog/" if source["source_key"] == "florida-governor-official" else source["source_url"]),
                  "max_bytes": 1048576,
                  "timeout_seconds": 15, "max_concurrency": 1,
-                 "output": "raw_retrievals+r2; pending extraction and validation"}
+                 "output": "raw_retrievals+r2; pending extraction and validation" if evidence_scope
+                    else "raw_retrievals+r2; unresolved source/evidence quarantine only",
+                 "identity_attribution": "unresolved" if quarantine_scope else "contract_bound",
+                 "publication_eligible": False}
         break
     if not route:
         return {"state": "BLOCKED", "reason": "NO_APPROVED_AUTHORITATIVE_SOURCE"}
@@ -64,4 +83,5 @@ def resolve(job, need, field, sources, deployment_id=None, transport_ready=False
         return {"state": "BLOCKED", "reason": "WORKER_DEPLOYMENT_NOT_VERIFIED", "candidate_route": route}
     if not transport_ready:
         return {"state": "BLOCKED", "reason": "CREDENTIAL_REQUIRED: HERMES scoped Cloudflare queue producer", "candidate_route": route}
-    return {"state": "OPEN", "reason": "ROUTE_RESOLVED: authoritative retrieval stage", "route": route}
+    return {"state": "OPEN", "reason": "ROUTE_RESOLVED: authoritative retrieval stage" if evidence_scope
+            else "ROUTE_RESOLVED: evidence quarantine source discovery", "route": route}
