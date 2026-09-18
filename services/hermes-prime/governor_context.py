@@ -325,8 +325,9 @@ def collect(cursor):
           AND v.input_summary->>'receipt_id'=%s AND v.input_summary->>'deployment_id'=%s
           AND v.input_summary->>'research_need_id'=%s
           AND r.job_id=%s AND r.http_status=200 AND r.byte_length>0
-          AND r.content_hash=%s AND r.metadata->>'worker_run_id'=%s
-          AND r.metadata->>'attempt_token'=%s AND r.source_id::text=%s AND r.source_url=%s
+          AND r.content_hash=%s AND ((r.metadata->>'worker_run_id'=%s
+            AND r.metadata->>'attempt_token'=%s) OR %s)
+          AND r.source_id::text=%s AND r.source_url=%s
           AND e.retrieval_id=r.retrieval_id AND e.content_hash=r.content_hash
           AND e.asset_uri=r.raw_object_uri AND e.verification_state='pending'
           AND v.result_summary->>'research_scope'=j_scope.scope_key
@@ -340,7 +341,8 @@ def collect(cursor):
           AND v.result_summary->'dataset_applicability'->>'state'='NOT_APPLICABLE'""",
           (m.get('validation_run_id'), VERSION, job['target_id'], str(job['job_id']), job['acknowledgement_attempt_token'],
            job['dedupe_key'], link['receipt_id'], route['deployment_id'], str(job['research_need_id']),
-           job['job_id'], m.get('sha256'), str(run['worker_run_id']), job['acknowledgement_attempt_token'], route['source_id'], route['retrieval_url']))
+           job['job_id'], m.get('sha256'), str(run['worker_run_id']), job['acknowledgement_attempt_token'],
+           bool(m.get('raw_retrieval_reused')), route['source_id'], route['retrieval_url']))
         artifact = cursor.fetchone()
         if not artifact or safety_snapshot(cursor, job['target_id']) != job['checkpoint'].get('followup_safety_before'):
             continue  # Never acknowledge inconsistent artifacts; lease recovery records failure.
