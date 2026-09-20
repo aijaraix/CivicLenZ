@@ -2,7 +2,7 @@
 import { fetchDocument } from "./http.ts";
 import { sha256Hex } from "./hash.ts";
 import { sourceAdapter } from "./source-config.ts";
-import { evidenceObjectKey, rawObjectUri } from "./r2-keys.ts";
+import { evidenceObjectKey, objectKeyFromRawObjectUri, rawObjectUri } from "./r2-keys.ts";
 import { uuidFromName } from "./ids.ts";
 import type { EvidenceBucket } from "./types.ts";
 import { CivicError, HttpFetchError } from "./errors.ts";
@@ -79,28 +79,43 @@ export async function runContractEvidence(input: {
         || new URL(document.url).hostname !== new URL(route.source_url).hostname) throw new Error("invalid_retrieval_response");
     if (!(await input.database(query)).length) throw new Error("lease_lost_before_persistence");
     const digest = await sha256Hex(document.bytes);
-    const key = evidenceObjectKey({ sourceKey: route.source_key, retrievedAt: document.retrievedAt,
-      sha256: digest, contentType: document.contentType });
+    // Raw source bytes are immutable and deduplicated by (source_id, hash).
+    // A second bounded scope observing the same bytes must reference the
+    // verified artifact, not fail with a duplicate-row conflict or create a
+    // second raw object.
+    const [existingRaw] = await input.database(`raw_retrievals?source_id=eq.${route.source_id}&content_hash=eq.${digest}&select=retrieval_id,http_status,byte_length,raw_object_uri,retrieval_status`);
     if (!input.bucket.get) throw new Error("r2_readback_required");
-    const priorBytes = await withTimeout(input.bucket.get(key), 10000, new CivicError("r2_timeout", "R2 read timeout", { retryable: true }));
-    if (priorBytes && await sha256Hex(priorBytes) !== digest) throw new Error("r2_existing_object_mismatch");
-    if (!priorBytes) await withTimeout(input.bucket.put(key, document.bytes, { contentType: document.contentType,
-      customMetadata: { sha256: digest, sourceUrl: route.retrieval_url } }), 10000,
-      new CivicError("r2_timeout", "R2 write timeout", { retryable: true }));
-    const saved = await withTimeout(input.bucket.get(key), 10000, new CivicError("r2_timeout", "R2 read timeout", { retryable: true }));
+    let retrievalId: string, uri: string, saved: Uint8Array, rawRetrievalReused = false;
+    if (existingRaw) {
+      const existingKey = objectKeyFromRawObjectUri(existingRaw.raw_object_uri);
+      if (existingRaw.http_status !== 200 || existingRaw.retrieval_status !== "stored" || !existingKey
+          || existingRaw.byte_length !== document.bytes.byteLength) throw new Error("existing_raw_invalid");
+      saved = await withTimeout(input.bucket.get(existingKey), 10000, new CivicError("r2_timeout", "R2 read timeout", { retryable: true }));
+      if (!saved || saved.byteLength !== document.bytes.byteLength || await sha256Hex(saved) !== digest) throw new Error("existing_raw_integrity_failed");
+      retrievalId = existingRaw.retrieval_id; uri = existingRaw.raw_object_uri; rawRetrievalReused = true;
+    } else {
+      const key = evidenceObjectKey({ sourceKey: route.source_key, retrievedAt: document.retrievedAt,
+        sha256: digest, contentType: document.contentType });
+      const priorBytes = await withTimeout(input.bucket.get(key), 10000, new CivicError("r2_timeout", "R2 read timeout", { retryable: true }));
+      if (priorBytes && await sha256Hex(priorBytes) !== digest) throw new Error("r2_existing_object_mismatch");
+      if (!priorBytes) await withTimeout(input.bucket.put(key, document.bytes, { contentType: document.contentType,
+        customMetadata: { sha256: digest, sourceUrl: route.retrieval_url } }), 10000,
+        new CivicError("r2_timeout", "R2 write timeout", { retryable: true }));
+      saved = await withTimeout(input.bucket.get(key), 10000, new CivicError("r2_timeout", "R2 read timeout", { retryable: true }));
+      retrievalId = await uuidFromName(`hermes-contract-retrieval:${runId}`); uri = rawObjectUri("civiclenzevidence", key);
+    }
     if (!saved || saved.byteLength !== document.bytes.byteLength || await sha256Hex(saved) !== digest) throw new Error("r2_readback_mismatch");
     if (!(await input.database(query)).length) throw new Error("lease_lost_before_result");
-    const retrievalId = await uuidFromName(`hermes-contract-retrieval:${runId}`);
-    await input.database("raw_retrievals", "POST", { retrieval_id: retrievalId, source_id: route.source_id,
+    if (!rawRetrievalReused) await input.database("raw_retrievals", "POST", { retrieval_id: retrievalId, source_id: route.source_id,
       job_id: job.job_id, source_url: route.retrieval_url, retrieved_at: document.retrievedAt,
       http_status: document.status, content_type: document.contentType, content_hash: digest,
-      byte_length: document.bytes.byteLength, raw_object_uri: rawObjectUri("civiclenzevidence", key),
+      byte_length: document.bytes.byteLength, raw_object_uri: uri,
       retrieval_status: "stored", parser_key: "pending_extraction", parser_version: "none",
-      metadata: { ...lineage, worker_run_id: runId, final_url: document.url } });
+      metadata: { ...lineage, worker_run_id: runId, final_url: document.url, raw_retrieval_reused: false } });
     await input.database(`worker_runs?worker_run_id=eq.${runId}&status=eq.started`, "PATCH", {
       status: "succeeded", completed_at: new Date().toISOString(), records_read: 1, records_written: 1,
-      metadata: { ...lineage, retrieval_id: retrievalId, raw_object_uri: rawObjectUri("civiclenzevidence", key),
-        sha256: digest, byte_length: document.bytes.byteLength, http_status: document.status } });
+      metadata: { ...lineage, retrieval_id: retrievalId, raw_object_uri: uri,
+        sha256: digest, byte_length: document.bytes.byteLength, http_status: document.status, raw_retrieval_reused: rawRetrievalReused } });
     // HERMES independently reads this result and owns all job/need transitions.
   } catch (error) {
     const failure = error instanceof CivicError ? error.errorClass
