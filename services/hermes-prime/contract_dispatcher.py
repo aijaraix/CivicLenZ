@@ -28,13 +28,18 @@ QUARANTINE_CAPABILITY = 'evidence_quarantine_source_discovery'
 
 def settings():
     credential = Path(os.environ.get("CREDENTIALS_DIRECTORY", "/nonexistent")) / "cloudflare-queue-producer"
+    mode = os.environ.get("HERMES_CONTRACT_DISPATCH_MODE", "canary")
+    # An unrecognized value is deliberately fail-closed: bounded canary only.
+    mode = mode if mode in ("canary", "continuous") else "canary"
     return {"credential": credential,
             "ready": credential.is_file() and os.access(credential, os.R_OK)
                 and bool(os.environ.get("HERMES_CF_ACCOUNT_ID"))
                 and bool(os.environ.get("HERMES_CF_INGEST_QUEUE_ID")),
             "deployment": os.environ.get("HERMES_EVIDENCE_WORKER_DEPLOYMENT"),
             "enabled": os.environ.get("HERMES_CONTRACT_DISPATCH") == "true",
-            "budget": min(5, max(0, int(os.environ.get("HERMES_CONTRACT_DISPATCH_BUDGET", "1"))))}
+            "mode": mode,
+            "budget": min(5, max(0, int(os.environ.get("HERMES_CONTRACT_DISPATCH_BUDGET", "1")))),
+            "concurrency": min(5, max(1, int(os.environ.get("HERMES_CONTRACT_DISPATCH_CONCURRENCY", "1"))))}
 
 
 def route_pending(cursor, config):
@@ -206,8 +211,11 @@ def tick(governor):
                         candidate=validation_receipt.candidate(cursor,config)
                     if candidate is None:
                         budget = quarantine_canary_budget(cursor)
-                        if budget['active'] or budget['attempts'] >= config['budget']:
+                        if config['mode'] == 'canary' and budget['attempts'] >= config['budget']:
                             return {'state':'BOUNDED_CANARY_BUDGET','attempts':int(budget['attempts'])}
+                        if int(budget['active']) >= config['concurrency']:
+                            return {'state':'RESOURCE_GOVERNED_CONCURRENCY','active':int(budget['active']),
+                                    'concurrency':config['concurrency']}
                         cursor.execute("""SELECT j.job_id FROM public.jobs j
                             JOIN hermes_ops.research_needs n ON n.need_id=j.research_need_id
                             WHERE j.job_type IN ('contract_scope_research','contract_evidence_extract') AND j.status='queued'
