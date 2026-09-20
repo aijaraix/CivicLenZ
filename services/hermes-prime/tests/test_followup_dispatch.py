@@ -63,7 +63,7 @@ class DispatcherTests(unittest.TestCase):
         def connect():yield Connection(cursor)
         credential=types.SimpleNamespace(read_text=lambda:'fixture-not-a-credential')
         with patch.object(d,'connect_database',connect),patch.object(d,'settings',return_value={'enabled':True,'ready':True,'deployment':'old','budget':5,'credential':credential}), \
-             patch.object(d,'route_pending',return_value=0),patch.object(d,'recover_and_collect'), \
+             patch.object(d,'route_pending',return_value=0),patch.object(d,'recover_and_collect'),patch.object(d,'recover_immutable_raw_conflicts',return_value=0), \
              patch.object(d.producer_receipt_validation,'collect'),patch.object(d.producer_receipt_validation,'candidate',return_value=None), \
              patch.object(d.validation_receipt,'collect'),patch.object(d.validation_followup,'collect'), \
              patch.object(d.governor_context,'collect'),patch.object(d.governor_context,'plan'),patch.object(d.governor_context,'candidate',return_value=None), \
@@ -87,7 +87,7 @@ class DispatcherTests(unittest.TestCase):
         @contextlib.contextmanager
         def connect():yield Connection(cursor)
         with patch.object(d,'connect_database',connect),patch.object(d,'settings',return_value={'enabled':True,'ready':True,'deployment':'release'}), \
-             patch.object(d,'route_pending',return_value=0),patch.object(d,'recover_and_collect'), \
+             patch.object(d,'route_pending',return_value=0),patch.object(d,'recover_and_collect'),patch.object(d,'recover_immutable_raw_conflicts',return_value=0), \
              patch.object(d.producer_receipt_validation,'collect'),patch.object(d.producer_receipt_validation,'candidate') as producer_candidate, \
              patch.object(d.validation_receipt,'collect'),patch.object(d.validation_followup,'collect'), \
              patch.object(d.governor_context,'collect'),patch.object(d.governor_context,'plan'),patch.object(d.governor_context,'candidate',return_value=None), \
@@ -106,7 +106,7 @@ class DispatcherTests(unittest.TestCase):
         def connect():yield Connection(cursor)
         with patch.object(d,'connect_database',connect), \
              patch.object(d,'settings',return_value={'enabled':False,'ready':False,'deployment':None,'budget':0}), \
-             patch.object(d,'route_pending',return_value=0),patch.object(d,'recover_and_collect'), \
+             patch.object(d,'route_pending',return_value=0),patch.object(d,'recover_and_collect'),patch.object(d,'recover_immutable_raw_conflicts',return_value=0), \
              patch.object(d.producer_receipt_validation,'collect'), \
              patch.object(d.producer_receipt_validation,'candidate',return_value={'job_id':'job'}), \
              patch.object(d.producer_receipt_validation,'execute',return_value={'state':'LOCAL_VALIDATION_RECORDED_AWAITING_COLLECTION','job_id':'job'}) as execute, \
@@ -120,5 +120,29 @@ class DispatcherTests(unittest.TestCase):
         execute.assert_called_once()
         send.assert_not_called()
         self.assertEqual(len(job['leased_by']),64)
+
+    def test_immutable_raw_conflict_reuses_same_job_only_after_new_deployment(self):
+        d=self.load()
+        item={'job_id':'same-job','research_need_id':'need','attempt_count':1,
+              'worker_run_id':'failed-run','failed_deployment':'old','error_class':'worker_store_http_409',
+              'payload':{'orchestration_authority':'hermes','execution_class':'PRODUCTION',
+                         'capability_route':{'version':d.ROUTE_VERSION,'capability':d.QUARANTINE_CAPABILITY,
+                                             'deployment_id':'old'}}}
+        class RecoveryCursor:
+            def __init__(self): self.calls=[]
+            def execute(self,sql,args=()): self.calls.append((sql,args))
+            def fetchall(self): return [item]
+        cursor=RecoveryCursor()
+        self.assertEqual(d.recover_immutable_raw_conflicts(cursor,{'deployment':'new'}),1)
+        updates=[x for x in cursor.calls if x[0].startswith("UPDATE public.jobs SET status='queued'")]
+        self.assertEqual(len(updates),1)
+        payload=__import__('json').loads(updates[0][1][0])
+        checkpoint=__import__('json').loads(updates[0][1][1])
+        self.assertEqual(payload['capability_route']['deployment_id'],'new')
+        self.assertEqual(checkpoint['recovery'],'IMMUTABLE_RAW_REUSE_DEPLOYMENT_REFRESH')
+        self.assertEqual(updates[0][1][-1],1)
+        sql='\n'.join(query for query,args in cursor.calls)
+        self.assertNotIn('attempt_count=0',sql)
+        self.assertNotIn('INSERT INTO public.jobs',sql)
 
 if __name__=='__main__':unittest.main()
