@@ -18,6 +18,7 @@ import validation_followup
 import governor_context
 import producer_receipt_validation
 import producer_outbound
+import authoritative_roster_discovery
 
 # A canary budget belongs to the newly introduced quarantine route, not to
 # every historical route that happened to share the generic router version.
@@ -53,7 +54,7 @@ def route_pending(cursor, config):
           AND NOT (j.payload ? 'validation_followup')
           AND j.payload->>'orchestration_authority'='hermes'
           AND j.payload->>'execution_class'='PRODUCTION'
-          AND n.execution_class='PRODUCTION' AND n.origin='CONTRACT_GAP'
+          AND n.execution_class='PRODUCTION' AND n.origin IN ('CONTRACT_GAP','MONITORING','DISCOVERY')
           AND n.state IN ('BLOCKED','OPEN')
           AND (j.payload->>'dispatch_blocker'='CAPABILITY_NOT_IMPLEMENTED'
             OR j.payload->'routing_decision'->>'version'=%s)
@@ -122,9 +123,18 @@ def recover_and_collect(cursor):
                     (result.get('retrieval_id'), job['payload']['parent_job_id'] if extracting else job['job_id'], result.get('sha256'), result.get('retrieval_attempt_token') if extracting else job['leased_by'], result.get('retrieval_worker_run_id') if extracting else str(run['worker_run_id'])))
             if not cursor.fetchone():
                 continue
-            if extracting:
+            roster_extracting = extracting and job['payload'].get('capability_route', {}).get('capability') == 'authoritative_roster_extraction'
+            if extracting and not roster_extracting:
                 cursor.execute("SELECT evidence_id FROM public.evidence_objects WHERE evidence_id=%s AND retrieval_id=%s AND content_hash=%s AND verification_state='pending'", (result.get('evidence_id'),result.get('retrieval_id'),result.get('sha256')))
                 if not cursor.fetchone():
+                    continue
+            if roster_extracting:
+                cursor.execute("""SELECT count(*) AS count FROM public.unresolved_roster_units
+                    WHERE extraction_worker_run_id=%s AND retrieval_id=%s AND content_hash=%s
+                      AND publication_eligible=false""",
+                    (result.get('extraction_run_id'), result.get('retrieval_id'), result.get('sha256')))
+                row = cursor.fetchone()
+                if not row or int(row['count']) < 1:
                     continue
             cursor.execute("""UPDATE public.jobs SET status='succeeded',completed_at=clock_timestamp(),
                 checkpoint=coalesce(checkpoint,'{}'::jsonb)||%s::jsonb,
@@ -132,11 +142,18 @@ def recover_and_collect(cursor):
                 AND leased_by=%s AND lease_expires_at>clock_timestamp() RETURNING job_id""",
                 (json.dumps({'worker_run_id':str(run['worker_run_id']), **result}),job['job_id'],job['leased_by']))
             if cursor.fetchone():
-                if extracting:
+                if roster_extracting:
+                    summary = authoritative_roster_discovery.plan_downstream(cursor, job, result)
+                    cursor.execute("""UPDATE public.jobs SET checkpoint=coalesce(checkpoint,'{}'::jsonb)||%s::jsonb
+                        WHERE job_id=%s""", (json.dumps({'authoritative_roster_downstream': summary}), job['job_id']))
+                elif extracting:
                     plan_validation_handoff(cursor,job,result)
                 cursor.execute("""UPDATE hermes_ops.research_needs SET state='AWAITING_RESULT',
                     reason=%s,
-                    evaluated_at=clock_timestamp() WHERE need_id=%s""", ('EVIDENCE_CONSTRUCTED: internal canonical validation receipt pending' if extracting else 'RAW_RETRIEVAL_STORED: extraction and canonical validation pending',job['research_need_id']))
+                    evaluated_at=clock_timestamp() WHERE need_id=%s""",
+                    ('ROSTER_EXTRACTED_UNRESOLVED: identity research work pending' if roster_extracting
+                     else 'EVIDENCE_CONSTRUCTED: internal canonical validation receipt pending' if extracting
+                     else 'RAW_RETRIEVAL_STORED: extraction and canonical validation pending',job['research_need_id']))
         elif job['expired'] or (run and run['status'] == 'failed'):
             if job['expired'] and run and run['status']=='started':
                 cursor.execute("""UPDATE public.worker_runs SET status='failed',completed_at=clock_timestamp(),
@@ -283,11 +300,14 @@ def tick(governor):
                             WHERE j.job_type IN ('contract_scope_research','contract_evidence_extract') AND j.status='queued'
                             AND j.payload->>'orchestration_authority'='hermes'
                             AND j.payload->>'execution_class'='PRODUCTION' AND n.execution_class='PRODUCTION'
-                            AND n.origin='CONTRACT_GAP' AND (n.state='OPEN' OR (j.job_type='contract_evidence_extract' AND n.state='AWAITING_RESULT'))
+                            AND n.origin IN ('CONTRACT_GAP','MONITORING','DISCOVERY') AND (n.state='OPEN' OR (j.job_type='contract_evidence_extract' AND n.state='AWAITING_RESULT'))
                             AND (j.job_type<>'contract_evidence_extract' OR %s)
                             AND j.payload->>'research_work_identity'=j.dedupe_key
                             AND j.payload->'capability_route'->>'version'=%s
-                            AND j.payload->'capability_route'->>'capability'=%s
+                            AND ((j.job_type='contract_scope_research'
+                                  AND j.payload->'capability_route'->>'capability'=%s)
+                              OR (j.job_type='contract_evidence_extract'
+                                  AND j.payload->'capability_route'->>'stage'='extraction'))
                             AND NOT (j.payload ? 'dispatch_blocker') AND j.attempt_count<j.max_attempts
                             AND (j.scheduled_for IS NULL OR j.scheduled_for<=clock_timestamp())
                             AND NOT EXISTS (SELECT 1 FROM hermes_ops.job_dependencies d JOIN public.jobs p

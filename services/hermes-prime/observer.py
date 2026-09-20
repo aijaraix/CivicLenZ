@@ -163,6 +163,7 @@ def main():
     next_inventory = 0.0
     next_planning = 0.0
     next_supported_discovery = 0.0
+    next_authoritative_roster = 0.0
     next_academy = 0.0
     planning = {"state": "DISABLED"}
     try:
@@ -177,6 +178,14 @@ def main():
                     snapshot_discovery = {"state": "SUPPORTED_DISCOVERY_TICK_FAILED"}
                     snapshot_monitoring = {"state": "SUPPORTED_MONITORING_TICK_FAILED"}
                 next_supported_discovery = time.monotonic() + 30
+            if (os.environ.get("HERMES_AUTHORITATIVE_ROSTER_DISCOVERY") == "true"
+                    and time.monotonic() >= next_authoritative_roster):
+                try:
+                    from authoritative_roster_discovery import reconcile as roster_reconcile
+                    snapshot_authoritative_roster = roster_reconcile()
+                except Exception:
+                    snapshot_authoritative_roster = {"state": "AUTHORITATIVE_ROSTER_TICK_FAILED"}
+                next_authoritative_roster = time.monotonic() + 30
             if os.environ.get("HERMES_ACADEMY_OBSERVATION") == "true" and time.monotonic() >= next_academy:
                 try:
                     from academy import reconcile as academy_reconcile
@@ -201,6 +210,7 @@ def main():
                 next_inventory = time.monotonic() + 300
             snapshot = observe(args.spool)
             snapshot["supported_discovery"] = locals().get("snapshot_discovery", {"state": "DISABLED"})
+            snapshot["authoritative_roster_discovery"] = locals().get("snapshot_authoritative_roster", {"state": "DISABLED"})
             snapshot["monitoring_currentness"] = locals().get("snapshot_monitoring", {"state": "DISABLED"})
             snapshot["academy"] = locals().get("academy_state", {"state": "DISABLED"})
             snapshot["backlog_inventory"] = inventory

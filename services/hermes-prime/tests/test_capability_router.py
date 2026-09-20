@@ -53,6 +53,16 @@ class RoutingTests(unittest.TestCase):
   result=self.route(deployment_id='release',transport_ready=True)
   self.assertEqual(result['state'],'OPEN')
   self.assertEqual(result['route']['retrieval_url'],self.sources[0]['source_url'])
+ def test_monitoring_and_discovery_origins_can_route_registered_sources(self):
+  self.need['scope_key']=self.job['payload']['scope_key']='seat'
+  self.field['verification_requirement']='review'
+  self.field['source_priority']={'policy':'miami-dade-county-elected-officials'}
+  self.sources=[dict(source_id='miami-source',source_key='miami-dade-county-elected-officials',
+                     source_url='https://www.miamidade.gov/elections/library/reports/elected-officials.pdf',
+                     active=True,authority_tier='TIER_1_PRIMARY_OFFICIAL')]
+  for origin in ['MONITORING','DISCOVERY']:
+   self.need['origin']=origin
+   self.assertEqual(self.route(deployment_id='release',transport_ready=True)['state'],'OPEN')
  def test_registry_driven_miami_dade_source_routes(self):
   self.need['scope_key']=self.job['payload']['scope_key']='biography'
   self.field['verification_requirement']='review'

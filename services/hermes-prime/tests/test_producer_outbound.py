@@ -116,7 +116,7 @@ class ProducerOutboundTests(unittest.TestCase):
         self.assertIn("CAPABILITY_NOT_IMPLEMENTED: contract scope requirements", source)
         self.assertIn("n.scope_key='election_history'", source)
         self.assertIn("c.contract_key='STATE_GOVERNOR'", source)
-        self.assertIn("f.source_priority->>'policy'='florida-election-calendar'", source)
+        self.assertIn("'fl_dos_elections'=ANY", source)
         self.assertIn("s.seat_key=%s", source)
         self.assertIn("jur.jurisdiction_key=%s", source)
         self.assertIn("PRODUCER_OUTBOUND_ROUTE_READY", source)

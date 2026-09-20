@@ -19,18 +19,20 @@ def plan_extraction(cursor, config):
         WHERE j.job_type='contract_scope_research' AND j.status='succeeded'
         AND j.payload->>'orchestration_authority'='hermes' AND j.payload->>'execution_class'='PRODUCTION'
         AND j.dedupe_key=j.payload->>'research_work_identity' AND n.execution_class='PRODUCTION'
-        AND n.state='AWAITING_RESULT' AND n.scope_key='evidence'
+        AND n.state='AWAITING_RESULT' AND n.scope_key IN ('evidence','seat')
         AND j.checkpoint->>'retrieval_id'=r.retrieval_id::text
         AND j.checkpoint->>'sha256'=r.content_hash AND r.http_status=200 AND r.byte_length>0
-        AND j.payload->'capability_route'->>'source_key'='florida-governor-official'
+        AND j.payload->'capability_route'->>'source_key' IN ('florida-governor-official','miami-dade-county-elected-officials')
         AND EXISTS (SELECT 1 FROM public.research_contracts c WHERE c.research_contract_id=n.contract_id AND c.active AND c.version::text=n.contract_version)
         AND j.payload->'capability_route'->>'version'=%s LIMIT 1""", (ROUTE_VERSION,))
     for parent in cursor.fetchall():
         route = dict(parent['payload']['capability_route'])
+        roster = route.get('source_key') == 'miami-dade-county-elected-officials'
         route.update(deployment_id=config['deployment'], stage='extraction',
-                     capability='official_profile_evidence_extraction',
+                     capability='authoritative_roster_extraction' if roster else 'official_profile_evidence_extraction',
                      module='workers/cloudflare/shared/src/contract-extraction.ts',
-                     output='evidence_objects pending; canonical validation handoff',
+                     output='unresolved_roster_units pending; seat/identity reconciliation handoff' if roster
+                     else 'evidence_objects pending; canonical validation handoff',
                      input_retrieval_id=str(parent['retrieval_id']), input_sha256=parent['content_hash'])
         work = child_identity(parent['dedupe_key'], parent['retrieval_id'], 'extraction')
         payload = {**parent['payload'], 'research_work_identity':work,

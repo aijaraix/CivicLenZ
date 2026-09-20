@@ -64,8 +64,8 @@ def reconcile() -> dict:
                 JOIN public.sources src ON src.source_key=%s AND src.active
                 WHERE s.seat_key=%s AND j.jurisdiction_key=%s AND c.contract_key=%s
                   AND f.field_key=%s AND f.verification_requirement='official_source'
-                  AND f.source_priority->>'policy'='florida-election-calendar'""",
-                (SOURCE_KEY, SEAT_KEY, JURISDICTION_KEY, CONTRACT_KEY, SCOPE_KEY))
+                  AND %s=ANY(string_to_array(replace(f.source_priority->>'policy',' ',''),','))""",
+                (SOURCE_KEY, SEAT_KEY, JURISDICTION_KEY, CONTRACT_KEY, SCOPE_KEY, SOURCE_KEY))
             row = cursor.fetchone()
             if not row:
                 return {"state": "SUPPORTED_DISCOVERY_DEPENDENCY_MISSING", "created": 0}
