@@ -71,6 +71,27 @@ function official(partial: Omit<SourceAdapterConfig, "authorityTier" | "supports
 
 export const SOURCE_ADAPTERS: SourceAdapterConfig[] = [
   official({
+    sourceKey: "fl_dos_elections",
+    sourceName: "Florida Division of Elections — candidate and election filings",
+    sourceType: "election_filing_page",
+    jurisdiction: "us-fl",
+    officeScope: "statewide_elections",
+    baseUrl: "https://dos.elections.myflorida.com/candidates/CanList.asp",
+    parserKey: "election-calendar-discovery",
+    parserFamily: "ELECTION_PORTAL",
+    refreshClass: "HIGH",
+    normalPollInterval: "24h",
+    electionPollInterval: "15m",
+    expectedContentType: "text/html",
+    active: true,
+    firstWaveActive: false,
+    heavyRequired: false,
+    schemaCertified: false,
+    coverage: "discovered",
+    notes: "Canonical registry source; discovery and evidence only until a source-specific parser is certified.",
+  }),
+
+  official({
     sourceKey: "miami-dade-county-elected-officials",
     sourceName: "Miami-Dade County Supervisor of Elections — Current Elected Officials",
     sourceType: "small_pdf",
