@@ -37,6 +37,13 @@ class DispatcherTests(unittest.TestCase):
         with patch.dict(sys.modules,{'database_bootstrap':fake_db,'psycopg2':types.ModuleType('psycopg2'),'psycopg2.extras':fake_pg}):
             spec.loader.exec_module(module)
         return module
+
+    def test_quarantine_budget_excludes_historical_evidence_routes(self):
+        d=self.load(); cursor=Cursor({})
+        d.quarantine_canary_budget(cursor)
+        query,args=cursor.calls[-1]
+        self.assertIn("capability_route'->>'capability'=%s",query)
+        self.assertEqual(args,(d.ROUTE_VERSION,d.QUARANTINE_CAPABILITY))
     def test_followup_uses_existing_atomic_lease_and_only_ingest_queue(self):
         d=self.load()
         job={'job_id':'job','job_type':'contract_scope_research','target_id':'seat','research_need_id':'need',
