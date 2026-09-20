@@ -44,6 +44,16 @@ class DispatcherTests(unittest.TestCase):
         query,args=cursor.calls[-1]
         self.assertIn("capability_route'->>'capability'=%s",query)
         self.assertEqual(args,(d.ROUTE_VERSION,d.QUARANTINE_CAPABILITY))
+
+    def test_continuous_mode_requires_explicit_opt_in_and_is_concurrency_bounded(self):
+        d=self.load()
+        with patch.dict(d.os.environ,{},clear=True):
+            self.assertEqual(d.settings()['mode'],'canary')
+        with patch.dict(d.os.environ,{'HERMES_CONTRACT_DISPATCH_MODE':'continuous',
+                                      'HERMES_CONTRACT_DISPATCH_CONCURRENCY':'99'},clear=True):
+            config=d.settings()
+        self.assertEqual(config['mode'],'continuous')
+        self.assertEqual(config['concurrency'],5)
     def test_followup_uses_existing_atomic_lease_and_only_ingest_queue(self):
         d=self.load()
         job={'job_id':'job','job_type':'contract_scope_research','target_id':'seat','research_need_id':'need',
