@@ -7,9 +7,14 @@ from urllib.parse import urlsplit
 
 ROUTE_VERSION = "hermes-evidence-v1"
 WORKER_MODULE = "workers/cloudflare/shared/src/contract-evidence.ts"
-# Initial bounded subset of source-config.ts, checked again by the consumer.
-SOURCE_ENDPOINTS = {"florida-governor-official": "https://www.flgov.com/",
-                    "florida-election-calendar": "https://dos.fl.gov/elections/"}
+# Source URLs are read from the canonical source registry. This one
+# compatibility path is retained for the already-proven Governor route: the
+# registry entry is the homepage, while its bounded retrieval target is the
+# documented leadership page. All other routes use the registry URL exactly.
+REGISTRY_RETRIEVAL_OVERRIDES = {
+    "florida-governor-official": "https://www.flgov.com/eog/",
+}
+ALLOWED_AUTHORITY_TIERS = frozenset(("TIER_1_PRIMARY_OFFICIAL",))
 
 # These routes preserve source evidence only.  They are deliberately not an
 # identity, claim, occupancy, or publication path: the bounded scope remains
@@ -56,11 +61,16 @@ def resolve(job, need, field, sources, deployment_id=None, transport_ready=False
         source = candidates.get(key.strip())
         if not source or not source.get("active"):
             continue
-        if SOURCE_ENDPOINTS.get(source["source_key"]) != source.get("source_url"):
-            continue
         url = urlsplit(source.get("source_url") or "")
         if (url.scheme != "https" or not url.hostname or url.username or url.password
-                or source.get("authority_tier") != "TIER_1_PRIMARY_OFFICIAL"):
+                or source.get("authority_tier") not in ALLOWED_AUTHORITY_TIERS
+                or not source.get("source_key") or not source.get("source_id")):
+            continue
+        # The URL is selected solely from the canonical registry row. A job
+        # payload cannot provide or override a retrieval URL.
+        retrieval_url = REGISTRY_RETRIEVAL_OVERRIDES.get(source["source_key"], source["source_url"])
+        retrieval = urlsplit(retrieval_url)
+        if retrieval.scheme != "https" or retrieval.hostname != url.hostname:
             continue
         route = {"version": ROUTE_VERSION,
                  "capability": "authoritative_evidence_retrieval" if evidence_scope else "evidence_quarantine_source_discovery",
@@ -69,7 +79,7 @@ def resolve(job, need, field, sources, deployment_id=None, transport_ready=False
                  "module": WORKER_MODULE, "deployment_id": deployment_id,
                  "source_id": str(source["source_id"]), "source_key": source["source_key"],
                  "source_url": source["source_url"],
-                 "retrieval_url": ("https://www.flgov.com/eog/" if source["source_key"] == "florida-governor-official" else source["source_url"]),
+                 "retrieval_url": retrieval_url,
                  "max_bytes": 1048576,
                  "timeout_seconds": 15, "max_concurrency": 1,
                  "output": "raw_retrievals+r2; pending extraction and validation" if evidence_scope
