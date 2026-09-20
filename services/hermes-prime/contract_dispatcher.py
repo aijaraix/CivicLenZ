@@ -103,10 +103,23 @@ def recover_and_collect(cursor):
         if run and run['status'] == 'succeeded' and not job['expired']:
             result = run['metadata']
             extracting = job['job_type']=='contract_evidence_extract'
-            cursor.execute("""SELECT retrieval_id FROM public.raw_retrievals WHERE retrieval_id=%s
-                AND job_id=%s AND content_hash=%s AND byte_length>0 AND http_status=200
-                AND metadata->>'attempt_token'=%s AND metadata->>'worker_run_id'=%s""",
-                (result.get('retrieval_id'), job['payload']['parent_job_id'] if extracting else job['job_id'], result.get('sha256'), result.get('retrieval_attempt_token') if extracting else job['leased_by'], result.get('retrieval_worker_run_id') if extracting else str(run['worker_run_id'])))
+            # A quarantine run may safely reference a prior immutable raw
+            # retrieval from the same source/hash after the worker has read it
+            # back and rehashed it.  Do not require that shared artifact to
+            # have this later scope's job/run identifiers.  Extraction keeps
+            # its stricter parent-attempt lineage requirements.
+            reused_raw = bool(result.get('raw_retrieval_reused')) and not extracting
+            if reused_raw:
+                cursor.execute("""SELECT retrieval_id FROM public.raw_retrievals WHERE retrieval_id=%s
+                    AND content_hash=%s AND byte_length>0 AND http_status=200
+                    AND retrieval_status='stored' AND source_id=%s""",
+                    (result.get('retrieval_id'), result.get('sha256'),
+                     job['payload']['capability_route'].get('source_id')))
+            else:
+                cursor.execute("""SELECT retrieval_id FROM public.raw_retrievals WHERE retrieval_id=%s
+                    AND job_id=%s AND content_hash=%s AND byte_length>0 AND http_status=200
+                    AND metadata->>'attempt_token'=%s AND metadata->>'worker_run_id'=%s""",
+                    (result.get('retrieval_id'), job['payload']['parent_job_id'] if extracting else job['job_id'], result.get('sha256'), result.get('retrieval_attempt_token') if extracting else job['leased_by'], result.get('retrieval_worker_run_id') if extracting else str(run['worker_run_id'])))
             if not cursor.fetchone():
                 continue
             if extracting:
@@ -140,6 +153,54 @@ def recover_and_collect(cursor):
             cursor.execute("""UPDATE hermes_ops.research_needs SET state=%s,reason=%s,
                 evaluated_at=clock_timestamp() WHERE need_id=%s""",
                 ('BLOCKED' if dead else 'OPEN','TERMINAL_WORKER_FAILURE_OR_ATTEMPTS_EXHAUSTED' if dead else 'CANONICAL_RETRY_SCHEDULED',job['research_need_id']))
+
+
+def recover_immutable_raw_conflicts(cursor, config):
+    """Resume only the same failed quarantine jobs after a newer worker deploy.
+
+    The former deployment could not reuse a raw artifact already stored for
+    the same source/hash.  This preserves the failed worker run and attempt
+    history, creates no work, and requires an explicit new deployment before
+    returning the exact job to its ordinary canonical lease path.
+    """
+    if not config['deployment']:
+        return 0
+    cursor.execute("""SELECT j.job_id,j.research_need_id,j.attempt_count,j.payload,
+          w.worker_run_id,w.deployment_id AS failed_deployment,w.error_class
+        FROM public.jobs j
+        JOIN LATERAL (SELECT worker_run_id,deployment_id,error_class FROM public.worker_runs
+          WHERE job_id=j.job_id AND worker_key='hermes.cloudflare.evidence'
+          ORDER BY started_at DESC LIMIT 1) w ON true
+        WHERE j.status='dead_letter' AND j.attempt_count<j.max_attempts
+          AND j.payload->>'orchestration_authority'='hermes'
+          AND j.payload->>'execution_class'='PRODUCTION'
+          AND j.payload->'capability_route'->>'version'=%s
+          AND j.payload->'capability_route'->>'capability'=%s
+          AND w.error_class='worker_store_http_409'
+          AND w.deployment_id<>%s
+        FOR UPDATE OF j SKIP LOCKED""",
+        (ROUTE_VERSION, QUARANTINE_CAPABILITY, config['deployment']))
+    recovered = 0
+    for item in cursor.fetchall():
+        payload = dict(item['payload'])
+        route = dict(payload.get('capability_route', {}))
+        route['deployment_id'] = config['deployment']
+        payload['capability_route'] = route
+        checkpoint = {'recovery': 'IMMUTABLE_RAW_REUSE_DEPLOYMENT_REFRESH',
+                      'worker_run_id': str(item['worker_run_id']),
+                      'failed_deployment': item['failed_deployment'],
+                      'worker_error_class': item['error_class'],
+                      'attempt_count_preserved': item['attempt_count']}
+        cursor.execute("""UPDATE public.jobs SET status='queued',scheduled_for=clock_timestamp(),
+            payload=%s::jsonb,checkpoint=coalesce(checkpoint,'{}'::jsonb)||%s::jsonb,
+            leased_by=NULL,lease_expires_at=NULL,error_class=NULL,error_message=NULL
+            WHERE job_id=%s AND status='dead_letter' AND attempt_count=%s""",
+            (json.dumps(payload), json.dumps(checkpoint), item['job_id'], item['attempt_count']))
+        cursor.execute("""UPDATE hermes_ops.research_needs SET state='OPEN',
+            reason='CANONICAL_RECOVERY_SCHEDULED: immutable raw reuse deployment refresh',
+            evaluated_at=clock_timestamp() WHERE need_id=%s""", (item['research_need_id'],))
+        recovered += 1
+    return recovered
 
 
 def quarantine_canary_budget(cursor):
@@ -176,6 +237,7 @@ def tick(governor):
             validation_followup.collect(cursor)
             governor_context.collect(cursor)
             recover_and_collect(cursor)
+            recover_immutable_raw_conflicts(cursor, config)
             routed = route_pending(cursor,config)
             producer_route = producer_outbound.activate_exact_route(cursor, producer_config)
             validation_followup.plan(cursor,config)
