@@ -19,6 +19,12 @@ import governor_context
 import producer_receipt_validation
 import producer_outbound
 
+# A canary budget belongs to the newly introduced quarantine route, not to
+# every historical route that happened to share the generic router version.
+# In particular, exhausted evidence-route history must never consume the
+# allowance for a new, independently bounded quarantine deployment.
+QUARANTINE_CAPABILITY = 'evidence_quarantine_source_discovery'
+
 
 def settings():
     credential = Path(os.environ.get("CREDENTIALS_DIRECTORY", "/nonexistent")) / "cloudflare-queue-producer"
@@ -131,6 +137,22 @@ def recover_and_collect(cursor):
                 ('BLOCKED' if dead else 'OPEN','TERMINAL_WORKER_FAILURE_OR_ATTEMPTS_EXHAUSTED' if dead else 'CANONICAL_RETRY_SCHEDULED',job['research_need_id']))
 
 
+def quarantine_canary_budget(cursor):
+    """Return only this route family's lifetime canary usage.
+
+    Historical evidence, validation, and Governor work stays auditable but is
+    deliberately outside this new route's bounded activation allowance.
+    """
+    cursor.execute("""SELECT coalesce(sum(attempt_count),0) AS attempts,
+        count(*) FILTER (WHERE status='leased') AS active FROM public.jobs
+        WHERE payload->'capability_route'->>'version'=%s
+        AND payload->'capability_route'->>'capability'=%s
+        AND payload->>'orchestration_authority'='hermes'
+        AND payload->>'execution_class'='PRODUCTION'""",
+        (ROUTE_VERSION, QUARANTINE_CAPABILITY))
+    return cursor.fetchone()
+
+
 def tick(governor):
     config = settings()
     producer_config = producer_outbound.settings()
@@ -183,12 +205,7 @@ def tick(governor):
                     if candidate is None:
                         candidate=validation_receipt.candidate(cursor,config)
                     if candidate is None:
-                        cursor.execute("""SELECT coalesce(sum(attempt_count),0) AS attempts,
-                            count(*) FILTER (WHERE status='leased') AS active FROM public.jobs
-                            WHERE payload->'capability_route'->>'version'=%s
-                            AND payload->>'orchestration_authority'='hermes'
-                            AND payload->>'execution_class'='PRODUCTION'""", (ROUTE_VERSION,))
-                        budget = cursor.fetchone()
+                        budget = quarantine_canary_budget(cursor)
                         if budget['active'] or budget['attempts'] >= config['budget']:
                             return {'state':'BOUNDED_CANARY_BUDGET','attempts':int(budget['attempts'])}
                         cursor.execute("""SELECT j.job_id FROM public.jobs j
@@ -200,11 +217,12 @@ def tick(governor):
                             AND (j.job_type<>'contract_evidence_extract' OR %s)
                             AND j.payload->>'research_work_identity'=j.dedupe_key
                             AND j.payload->'capability_route'->>'version'=%s
+                            AND j.payload->'capability_route'->>'capability'=%s
                             AND NOT (j.payload ? 'dispatch_blocker') AND j.attempt_count<j.max_attempts
                             AND (j.scheduled_for IS NULL OR j.scheduled_for<=clock_timestamp())
                             AND NOT EXISTS (SELECT 1 FROM hermes_ops.job_dependencies d JOIN public.jobs p
                                 ON p.job_id=d.prerequisite_job_id WHERE d.job_id=j.job_id AND p.status<>'succeeded')
-                            ORDER BY n.priority,j.created_at LIMIT 1""",(os.environ.get('HERMES_EXTRACT_EVIDENCE')=='true',ROUTE_VERSION))
+                            ORDER BY n.priority,j.created_at LIMIT 1""",(os.environ.get('HERMES_EXTRACT_EVIDENCE')=='true',ROUTE_VERSION,QUARANTINE_CAPABILITY))
                         candidate=cursor.fetchone()
             if candidate:
                 token=secrets.token_hex(32)
