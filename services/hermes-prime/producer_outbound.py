@@ -148,7 +148,7 @@ def activate_exact_route(cursor, config: dict) -> str | None:
           AND n.scope_key='election_history'
           AND c.contract_key='STATE_GOVERNOR'
           AND f.verification_requirement='official_source'
-          AND f.source_priority->>'policy'='florida-election-calendar'
+          AND 'fl_dos_elections'=ANY(string_to_array(replace(f.source_priority->>'policy',' ',''),','))
           AND s.seat_key=%s AND jur.jurisdiction_key=%s
           AND NOT EXISTS (
             SELECT 1 FROM hermes_ops.job_dependencies d
@@ -320,7 +320,7 @@ def candidate(cursor, config: dict):
           AND n.scope_key='election_history'
           AND c.contract_key='STATE_GOVERNOR'
           AND f.verification_requirement='official_source'
-          AND f.source_priority->>'policy'='florida-election-calendar'
+          AND 'fl_dos_elections'=ANY(string_to_array(replace(f.source_priority->>'policy',' ',''),','))
           AND s.seat_key=%s AND jur.jurisdiction_key=%s
           AND NOT EXISTS (
             SELECT 1 FROM hermes_ops.job_dependencies d

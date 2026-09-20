@@ -15,6 +15,7 @@ REGISTRY_RETRIEVAL_OVERRIDES = {
     "florida-governor-official": "https://www.flgov.com/eog/",
 }
 ALLOWED_AUTHORITY_TIERS = frozenset(("TIER_1_PRIMARY_OFFICIAL",))
+ALLOWED_NEED_ORIGINS = frozenset(("CONTRACT_GAP", "MONITORING", "DISCOVERY"))
 
 # These routes preserve source evidence only.  They are deliberately not an
 # identity, claim, occupancy, or publication path: the bounded scope remains
@@ -34,7 +35,7 @@ def resolve(job, need, field, sources, deployment_id=None, transport_ready=False
             or payload.get("orchestration_authority") != "hermes"
             or payload.get("execution_class") != "PRODUCTION"
             or need.get("execution_class") != "PRODUCTION"
-            or need.get("origin") != "CONTRACT_GAP"
+            or need.get("origin") not in ALLOWED_NEED_ORIGINS
             or not job.get("dedupe_key")
             or payload.get("research_work_identity") != job.get("dedupe_key")
             or str(job.get("research_need_id")) != str(need.get("need_id"))
