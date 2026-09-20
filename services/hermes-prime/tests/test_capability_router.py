@@ -40,9 +40,43 @@ class RoutingTests(unittest.TestCase):
   self.assertEqual(decision['route']['identity_attribution'],'unresolved')
   self.assertFalse(decision['route']['publication_eligible'])
  def test_source_policy_and_url_fail_closed(self):
-  for url in ['http://www.flgov.com/','https://127.0.0.1/','https://www.flgov.com/unregistered']:
+  for url in ['http://www.flgov.com/','https://127.0.0.1/']:
    self.sources[0]['source_url']=url
    self.assertEqual(self.route(deployment_id='release',transport_ready=True)['state'],'BLOCKED')
+ def test_registry_driven_dos_source_routes(self):
+  self.need['scope_key']=self.job['payload']['scope_key']='social'
+  self.field['verification_requirement']='review'
+  self.field['source_priority']={'policy':'fl_dos_elections'}
+  self.sources=[dict(source_id='dos-source',source_key='fl_dos_elections',
+                     source_url='https://dos.elections.myflorida.com/candidates/CanList.asp',
+                     active=True,authority_tier='TIER_1_PRIMARY_OFFICIAL')]
+  result=self.route(deployment_id='release',transport_ready=True)
+  self.assertEqual(result['state'],'OPEN')
+  self.assertEqual(result['route']['retrieval_url'],self.sources[0]['source_url'])
+ def test_registry_driven_miami_dade_source_routes(self):
+  self.need['scope_key']=self.job['payload']['scope_key']='biography'
+  self.field['verification_requirement']='review'
+  self.field['source_priority']={'policy':'miami-dade-county-elected-officials'}
+  self.sources=[dict(source_id='miami-source',source_key='miami-dade-county-elected-officials',
+                     source_url='https://www.miamidade.gov/elections/library/reports/elected-officials.pdf',
+                     active=True,authority_tier='TIER_1_PRIMARY_OFFICIAL')]
+  result=self.route(deployment_id='release',transport_ready=True)
+  self.assertEqual(result['state'],'OPEN')
+ def test_inactive_or_non_authoritative_registry_rows_fail_closed(self):
+  self.need['scope_key']=self.job['payload']['scope_key']='social'
+  self.field['verification_requirement']='review'
+  self.field['source_priority']={'policy':'fl_dos_elections'}
+  for active,tier in [(False,'TIER_1_PRIMARY_OFFICIAL'),(True,'TIER_2_OFFICIAL_CAMPAIGN')]:
+   self.sources=[dict(source_id='dos-source',source_key='fl_dos_elections',source_url='https://dos.elections.myflorida.com/candidates/CanList.asp',active=active,authority_tier=tier)]
+   self.assertEqual(self.route(deployment_id='release',transport_ready=True)['state'],'BLOCKED')
+ def test_job_payload_url_cannot_bypass_registry(self):
+  self.need['scope_key']=self.job['payload']['scope_key']='social'
+  self.field['verification_requirement']='review'
+  self.field['source_priority']={'policy':'fl_dos_elections'}
+  self.job['payload']['source_url']='https://attacker.example/'
+  self.job['payload']['retrieval_url']='https://attacker.example/'
+  self.sources=[]
+  self.assertEqual(self.route(deployment_id='release',transport_ready=True)['state'],'BLOCKED')
  def test_resource_budget(self):
   self.assertEqual(governor(3*1024**3,20*1024**3,0,4)['dispatch_limit'],1)
   self.assertEqual(governor(1024,20*1024**3,0,4)['dispatch_limit'],0)
