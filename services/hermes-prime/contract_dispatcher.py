@@ -44,6 +44,7 @@ def settings():
 
 
 def route_pending(cursor, config):
+    deep_dossier_execution = os.environ.get("HERMES_DEEP_DOSSIER_EXECUTION") == "true"
     cursor.execute("""SELECT row_to_json(j) AS job,row_to_json(n) AS need,
         row_to_json(f) AS field FROM public.jobs j
         JOIN hermes_ops.research_needs n ON n.need_id=j.research_need_id
@@ -58,7 +59,8 @@ def route_pending(cursor, config):
           AND n.state IN ('BLOCKED','OPEN')
           AND (j.payload->>'dispatch_blocker'='CAPABILITY_NOT_IMPLEMENTED'
             OR j.payload->'routing_decision'->>'version'=%s)
-        ORDER BY n.priority,j.created_at LIMIT 50 FOR UPDATE OF j,n SKIP LOCKED""", (ROUTE_VERSION,))
+          AND (NOT (j.payload ? 'deep_dossier_graph_version') OR %s)
+        ORDER BY n.priority,j.created_at LIMIT 50 FOR UPDATE OF j,n SKIP LOCKED""", (ROUTE_VERSION, deep_dossier_execution))
     pending = cursor.fetchall()
     cursor.execute("SELECT source_id,source_key,source_url,active,authority_tier FROM public.sources WHERE active")
     sources = cursor.fetchall()
