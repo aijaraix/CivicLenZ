@@ -1,6 +1,8 @@
 import { ParserError } from "./errors.ts";
 import type { ExtractedOfficeholder } from "./types.ts";
 
+export const MIAMI_DADE_PARSER_VERSION = "canonical-roster-v2";
+
 const AS_OF_PATTERN = /As of\s+(.+?)\s*$/i;
 const PAGE_PATTERN = /^Page\s+\d+\s+of\s+\d+$/i;
 const DATE_PATTERN = /^\d{1,2}\/\d{1,2}\/\d{2,4}$/;
