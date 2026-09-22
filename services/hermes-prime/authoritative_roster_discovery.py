@@ -294,7 +294,7 @@ def plan_downstream(cursor, job: dict, result: dict) -> dict:
             VALUES('contract_scope_research','seat',%s,%s,%s,16,'queued',0,2,%s,%s::jsonb,%s)
             ON CONFLICT(dedupe_key) DO NOTHING RETURNING job_id""",
             (seat["seat_id"], seat["seat_id"], unit["source_id"], work_key,
-             json.dumps(downstream_payload), need[0]))
+            json.dumps(downstream_payload), need["need_id"]))
         if cursor.fetchone():
             created += 1
     return {
