@@ -12,7 +12,7 @@ import urllib.request
 from psycopg2.extras import RealDictCursor
 from database_bootstrap import connect_database
 from capability_router import resolve, ROUTE_VERSION
-from extraction_handoff import plan_extraction, plan_validation_handoff
+from extraction_handoff import plan_extraction, plan_exhausted_extraction_recovery, plan_validation_handoff
 import validation_receipt
 import validation_followup
 import governor_context
@@ -318,6 +318,7 @@ def tick(governor):
             governor_context.plan(cursor,config)
             if os.environ.get('HERMES_EXTRACT_EVIDENCE')=='true':
                 plan_extraction(cursor,config)
+                plan_exhausted_extraction_recovery(cursor,config)
             if governor['dispatch_limit'] < 1:
                 return {'state':'RESOURCE_GATED'}
 

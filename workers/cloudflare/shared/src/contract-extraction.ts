@@ -2,7 +2,7 @@
 import { dispatchSourceAdapter } from "./adapters.ts";
 import { sha256Hex } from "./hash.ts";
 import { uuidFromName } from "./ids.ts";
-import { miamiDadeSeatKey } from "./miami-dade.ts";
+import { miamiDadeSeatKey, MIAMI_DADE_PARSER_VERSION } from "./miami-dade.ts";
 import { objectKeyFromRawObjectUri } from "./r2-keys.ts";
 import { withTimeout } from "./timeouts.ts";
 import { CivicError } from "./errors.ts";
@@ -131,7 +131,7 @@ export async function runContractExtraction(input: {
     worker_module: "workers/cloudflare/shared/src/contract-extraction.ts",
     extraction_run_id: extractionRunId,
     parser_key: rosterRoute ? "miami-dade-elected-officials" : "official-profile-discovery",
-    parser_version: rosterRoute ? "canonical-roster-v1" : "canonical-stored-v1",
+    parser_version: rosterRoute ? MIAMI_DADE_PARSER_VERSION : "canonical-stored-v1",
     retrieval_id: raw.retrieval_id,
     retrieval_job_id: raw.job_id,
     retrieval_attempt_token: raw.metadata.attempt_token,
