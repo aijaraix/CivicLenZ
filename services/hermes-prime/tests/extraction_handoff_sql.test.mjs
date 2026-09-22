@@ -33,8 +33,12 @@ async function setup() {
       need_id text PRIMARY KEY, execution_class text, state text
     );
     CREATE TABLE public.raw_retrievals(
-      retrieval_id text, content_hash text, http_status integer, byte_length integer,
-      retrieval_status text, source_id text, created_at timestamptz
+      retrieval_id uuid PRIMARY KEY, source_id uuid NOT NULL, job_id uuid,
+      retrieved_at timestamptz NOT NULL DEFAULT now(), source_url text NOT NULL,
+      http_status integer, content_type text, etag text, last_modified text,
+      content_hash text NOT NULL, raw_object_uri text, byte_length bigint,
+      parser_key text, parser_version text, retrieval_status text NOT NULL,
+      metadata jsonb NOT NULL DEFAULT '{}'::jsonb
     );
     CREATE TABLE public.worker_runs(
       worker_run_id text, job_id text, worker_key text, deployment_id text,
@@ -42,19 +46,23 @@ async function setup() {
     );
     INSERT INTO hermes_ops.research_needs VALUES ('need-1','PRODUCTION','BLOCKED');
     INSERT INTO public.jobs VALUES
-      ('parent-1','contract_scope_research','work:parent', '{"orchestration_authority":"hermes","execution_class":"PRODUCTION"}', 'need-1', 'succeeded', 1, 2, 'seat', 'seat-1', 'seat-1', 16, '{"retrieval_id":"retrieval-1","sha256":"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"}', now()),
-      ('old-1','contract_evidence_extract','work:old', '{"orchestration_authority":"hermes","execution_class":"PRODUCTION","research_work_identity":"work:old","parent_job_id":"parent-1","capability_route":{"version":"hermes-evidence-v1","stage":"extraction","input_retrieval_id":"retrieval-1","input_sha256":"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa","source_id":"source-1"}}', 'need-1', 'dead_letter', 2, 2, 'seat', 'seat-1', 'seat-1', 16, '{}', now());
-    INSERT INTO public.raw_retrievals VALUES ('retrieval-1','aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa',200,484648,'stored','source-1',now());
+      ('parent-1','contract_scope_research','work:parent', '{"orchestration_authority":"hermes","execution_class":"PRODUCTION"}', 'need-1', 'succeeded', 1, 2, 'seat', 'seat-1', 'seat-1', 16, '{"retrieval_id":"00000000-0000-0000-0000-000000000001","sha256":"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"}', now()),
+      ('old-1','contract_evidence_extract','work:old', '{"orchestration_authority":"hermes","execution_class":"PRODUCTION","research_work_identity":"work:old","parent_job_id":"parent-1","capability_route":{"version":"hermes-evidence-v1","stage":"extraction","input_retrieval_id":"00000000-0000-0000-0000-000000000001","input_sha256":"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa","source_id":"00000000-0000-0000-0000-000000000002"}}', 'need-1', 'dead_letter', 2, 2, 'seat', 'seat-1', 'seat-1', 16, '{}', now());
+    INSERT INTO public.raw_retrievals
+      (retrieval_id, source_id, source_url, content_hash, http_status, byte_length, retrieval_status)
+      VALUES ('00000000-0000-0000-0000-000000000001','00000000-0000-0000-0000-000000000002',
+              'https://example.test/source.pdf','aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa',
+              200,484648,'stored');
     INSERT INTO public.worker_runs VALUES ('run-1','old-1','hermes.cloudflare.extraction','old-deployment','parser_failure','{"retryable":false}',now());
   `);
   return db;
 }
 
-test('exhausted recovery SQL parses and executes with joined created_at columns', async () => {
+test('exhausted recovery SQL executes with the canonical raw_retrievals schema', async () => {
   const db = await setup();
   try {
     const sql = JSON.parse(pythonValue('json.dumps(h.EXHAUSTED_RECOVERY_QUERY)'));
-    assert.match(sql, /ORDER BY r2\.created_at DESC/);
+    assert.doesNotMatch(sql, /ORDER BY\s+r2\.created_at\b/);
     assert.match(sql, /ORDER BY w2\.started_at DESC/);
     assert.doesNotMatch(sql, /ORDER BY\s+created_at\b/);
     const result = await db.query(parameterize(sql), ['hermes-evidence-v1', 'new-deployment', 3]);
