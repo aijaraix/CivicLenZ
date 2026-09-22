@@ -1,11 +1,14 @@
 import hashlib
 import json
+import os
 from pathlib import Path
 import sys
 import unittest
+from unittest.mock import patch
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 import deep_dossier
+import contract_dispatcher
 
 
 class DeepDossierPlannerTests(unittest.TestCase):
@@ -54,6 +57,23 @@ class DeepDossierPlannerTests(unittest.TestCase):
         }, sort_keys=True, separators=(",", ":")).encode()).hexdigest()
         self.assertEqual(need, "need:v1:" + expected)
         self.assertNotIn("politician", need + work)
+
+    def test_deep_graph_waits_for_explicit_collector_execution_enablement(self):
+        class Cursor:
+            def __init__(self):
+                self.calls = []
+
+            def execute(self, sql, params=()):
+                self.calls.append((sql, params))
+
+            def fetchall(self):
+                return []
+
+        cursor = Cursor()
+        with patch.dict(os.environ, {}, clear=True):
+            self.assertEqual(contract_dispatcher.route_pending(cursor, {"deployment": None, "ready": False}), 0)
+        self.assertIn("deep_dossier_graph_version", cursor.calls[0][0])
+        self.assertEqual(cursor.calls[0][1][-1], False)
 
 
 if __name__ == "__main__":
