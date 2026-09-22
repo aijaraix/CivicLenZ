@@ -14,7 +14,7 @@ EXHAUSTED_RECOVERY_QUERY = r"""SELECT j.*,parent.dedupe_key AS parent_work,r.ret
         JOIN LATERAL (SELECT r2.retrieval_id,r2.content_hash,r2.http_status,r2.byte_length,r2.retrieval_status,r2.source_id
           FROM public.raw_retrievals r2
           WHERE r2.retrieval_id::text=j.payload->'capability_route'->>'input_retrieval_id'
-          ORDER BY r2.created_at DESC LIMIT 1) r ON true
+          LIMIT 1) r ON true
         JOIN LATERAL (SELECT w2.worker_run_id,w2.deployment_id,w2.error_class,w2.metadata
           FROM public.worker_runs w2 WHERE w2.job_id=j.job_id AND w2.worker_key='hermes.cloudflare.extraction'
           ORDER BY w2.started_at DESC LIMIT 1) w ON true
