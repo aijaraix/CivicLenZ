@@ -9,6 +9,7 @@ from __future__ import annotations
 
 import hashlib
 import json
+import os
 import time
 
 
@@ -43,7 +44,8 @@ CHILDREN = {
 }
 
 
-def _identity(seat_id: str, contract_id: str, version: str, scope: str, child: str) -> tuple[str, str]:
+def _identity(seat_id: str, contract_id: str, version: str, scope: str, child: str,
+              generation: int = 1) -> tuple[str, str]:
     semantic = {
         "version": 1,
         "graph_version": VERSION,
@@ -53,6 +55,7 @@ def _identity(seat_id: str, contract_id: str, version: str, scope: str, child: s
         "contract_version": str(version),
         "scope_key": scope,
         "child_unit": child,
+        "generation": generation,
     }
     digest = hashlib.sha256(json.dumps(semantic, sort_keys=True, separators=(",", ":")).encode()).hexdigest()
     return "need:v1:" + digest, "work:v1:" + digest
@@ -84,7 +87,9 @@ def reconcile() -> dict:
     # environment; the production dependency is loaded only for a live tick.
     from database_bootstrap import connect_database
 
-    created_needs = created_jobs = blocked_children = examined = 0
+    created_needs = created_jobs = regenerated_jobs = blocked_children = examined = 0
+    execution_enabled = os.environ.get("HERMES_DEEP_DOSSIER_EXECUTION") == "true"
+    current_deployment = os.environ.get("HERMES_EVIDENCE_WORKER_DEPLOYMENT")
     with connect_database() as connection:
         with connection, connection.cursor() as cursor:
             cursor.execute("SELECT pg_try_advisory_xact_lock(184913,13)")
@@ -158,6 +163,42 @@ def reconcile() -> dict:
                         need = cursor.fetchone()
                     if not need:
                         continue
+                    supersedes_job_id = None
+                    generation = 1
+                    if source and execution_enabled and current_deployment:
+                        cursor.execute("""
+                            SELECT j.job_id,j.status,j.payload
+                            FROM public.jobs j
+                            WHERE j.dedupe_key=%s
+                        """, (work_key,))
+                        prior = cursor.fetchone()
+                        prior_route = (prior[2] or {}).get("capability_route", {}) if prior else {}
+                        prior_deployment = prior_route.get("deployment_id")
+                        if prior and prior[1] == "succeeded" and prior_deployment and prior_deployment != current_deployment:
+                            cursor.execute("""
+                                SELECT 1 FROM public.worker_runs wr
+                                WHERE wr.job_id=%s AND wr.status='succeeded'
+                                  AND wr.metadata->>'dossier_evidence_id' IS NOT NULL
+                                LIMIT 1
+                            """, (prior[0],))
+                            if not cursor.fetchone():
+                                generation = 2
+                                supersedes_job_id = str(prior[0])
+                                need_basis = dict(basis)
+                                need_basis.update({
+                                    "regeneration_generation": generation,
+                                    "supersedes_job_id": supersedes_job_id,
+                                    "regeneration_deployment": current_deployment,
+                                })
+                                cursor.execute("""
+                                    UPDATE hermes_ops.research_needs
+                                    SET state='OPEN', reason='DEEP_DOSSIER_REGENERATION_REQUIRED',
+                                        basis=%s::jsonb, evaluated_at=clock_timestamp()
+                                    WHERE need_id=%s
+                                """, (json.dumps(need_basis), need[0]))
+                                regenerated_jobs += 1
+                    if generation > 1:
+                        _, work_key = _identity(seat_id, contract_id, version, scope, child, generation)
                     payload = {
                         "orchestration_authority": "hermes",
                         "execution_class": "PRODUCTION",
@@ -166,6 +207,7 @@ def reconcile() -> dict:
                         "contract_id": str(contract_id),
                         "contract_version": str(version),
                         "deep_dossier_graph_version": VERSION,
+                        "deep_dossier_generation": generation,
                         "deep_dossier_unit_key": child,
                         "deep_dossier_parent_scope": scope,
                         "source_key": source_key,
@@ -175,6 +217,8 @@ def reconcile() -> dict:
                         "publication_allowed": False,
                         "dispatch_blocker": "CAPABILITY_NOT_IMPLEMENTED" if not blocked else "SOURCE_FAMILY_NOT_REGISTERED",
                     }
+                    if supersedes_job_id:
+                        payload["supersedes_job_id"] = supersedes_job_id
                     cursor.execute("""
                         INSERT INTO public.jobs
                           (job_type,target_type,target_id,seat_id,source_id,priority,status,attempt_count,
@@ -196,6 +240,7 @@ def reconcile() -> dict:
         "children_examined": examined,
         "needs_created": created_needs,
         "jobs_created": created_jobs,
+        "regenerated_jobs": regenerated_jobs,
         "blocked_children": blocked_children,
         "observed_at": time.time(),
     }

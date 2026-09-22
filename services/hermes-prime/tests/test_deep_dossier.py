@@ -16,8 +16,10 @@ class DeepDossierPlannerTests(unittest.TestCase):
         first = deep_dossier._identity("seat", "contract", "1", "biography", "official_profile")
         repeat = deep_dossier._identity("seat", "contract", "1", "biography", "official_profile")
         other = deep_dossier._identity("seat", "contract", "1", "biography", "chronology")
+        regenerated = deep_dossier._identity("seat", "contract", "1", "biography", "official_profile", 2)
         self.assertEqual(first, repeat)
         self.assertNotEqual(first, other)
+        self.assertNotEqual(first, regenerated)
         self.assertTrue(first[0].startswith("need:v1:"))
         self.assertTrue(first[1].startswith("work:v1:"))
 
@@ -54,6 +56,7 @@ class DeepDossierPlannerTests(unittest.TestCase):
             "contract_version": "1",
             "scope_key": "biography",
             "child_unit": "official_profile",
+            "generation": 1,
         }, sort_keys=True, separators=(",", ":")).encode()).hexdigest()
         self.assertEqual(need, "need:v1:" + expected)
         self.assertNotIn("politician", need + work)
