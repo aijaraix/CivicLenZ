@@ -7,7 +7,7 @@ function fixture() {
  const token='a'.repeat(64), jobId='00000000-0000-4000-8000-000000000001';
  const message={schemaVersion:'hermes.contract.v1',job_id:jobId,attempt_token:token,research_work_identity:'work:v1:test'};
  const job={job_id:jobId,research_need_id:'need',dedupe_key:'work:v1:test',job_type:'contract_scope_research',attempt_count:1,lease_expires_at:new Date(Date.now()+300000).toISOString(),payload:{orchestration_authority:'hermes',execution_class:'PRODUCTION',scope_key:'evidence',research_work_identity:'work:v1:test',capability_route:{version:'hermes-evidence-v1',worker:'civiclenz-collector',deployment_id:'release',source_key:'florida-governor-official',source_url:'https://www.flgov.com/',retrieval_url:'https://www.flgov.com/eog/',source_id:'source',max_bytes:1048576,timeout_seconds:15}}};
- const runs:any[]=[], results:any[]=[], existingRaw:any[]=[], objects=new Map<string,Uint8Array>();let calls=0,validLease=true;
+ const runs:any[]=[], results:any[]=[], existingRaw:any[]=[], evidenceObjects:any[]=[], capabilityUpdates:any[]=[], objects=new Map<string,Uint8Array>();let calls=0,validLease=true;
  const database=async(path:string,method='GET',body?:any)=>{
   if(path.startsWith('jobs?'))return validLease?[job]:[];
   if(path.startsWith('worker_runs')){
@@ -17,11 +17,14 @@ function fixture() {
   }
   if(path.startsWith('raw_retrievals?'))return existingRaw;
   if(path==='raw_retrievals'){results.push(body);return [body];}
+  if(path.startsWith('evidence_objects?'))return evidenceObjects.filter((row)=>row.evidence_id===path.split('eq.')[1]);
+  if(path==='evidence_objects'){evidenceObjects.push(body);return [body];}
+  if(path.startsWith('physical_capabilities?')){capabilityUpdates.push(body);return [body];}
   throw Error('unexpected_store_operation');
  };
  const bucket={put:async(k:string,v:Uint8Array)=>{objects.set(k,v);},get:async(k:string)=>objects.get(k)};
  const fetchImpl=async()=>{calls++;return new Response('unit fixture bytes',{status:200,headers:{'content-type':'text/html'}});};
- return {message,job,database,bucket,fetchImpl,runs,results,existingRaw,objects,calls:()=>calls,invalidate:()=>{validLease=false;}};
+ return {message,job,database,bucket,fetchImpl,runs,results,existingRaw,evidenceObjects,capabilityUpdates,objects,calls:()=>calls,invalidate:()=>{validLease=false;}};
 }
 const invoke=(f:ReturnType<typeof fixture>)=>runContractEvidence({...f,deploymentId:'release'});
 test('real helper path in fixture persists raw bytes and independent run lineage only',async()=>{
@@ -39,6 +42,19 @@ test('quarantine route stores raw evidence without asserting attribution',async(
   {stage:'quarantine',capability:'evidence_quarantine_source_discovery',identity_attribution:'unresolved',publication_eligible:false});
  await invoke(f);assert.equal(f.runs[0].metadata.quarantine,true);assert.equal(f.results.length,1);
  assert.equal(f.runs[0].metadata.route.publication_eligible,false);
+});
+
+test('deep dossier child stores pending scoped evidence and records capability telemetry',async()=>{
+ const f=fixture();Object.assign(f.job.payload,{scope_key:'biography',deep_dossier_graph_version:'hermes-deep-dossier-graph-v1',deep_dossier_unit_key:'official_profile',identity_authority:false,verification_allowed:false,publication_allowed:false});Object.assign(f.job.payload.capability_route,
+  {stage:'quarantine',capability:'evidence_quarantine_source_discovery',identity_attribution:'unresolved',publication_eligible:false});
+ await invoke(f);
+ assert.equal(f.runs[0].status,'succeeded');assert.equal(f.evidenceObjects.length,1);
+ assert.equal(f.evidenceObjects[0].verification_state,'pending');
+ assert.match(f.evidenceObjects[0].supporting_locator,/dossier-unit:official_profile/);
+ assert.equal(f.capabilityUpdates.length,1);
+ assert.equal(f.capabilityUpdates[0].implementation_state,'ACTIVE');
+ assert.equal(f.runs[0].metadata.deep_dossier_graph_version,'hermes-deep-dossier-graph-v1');
+ await invoke(f);assert.equal(f.evidenceObjects.length,1);assert.equal(f.capabilityUpdates.length,1);
 });
 test('quarantine reuses verified immutable raw bytes across distinct scope work',async()=>{
  const f=fixture();Object.assign(f.job.payload,{scope_key:'social'});Object.assign(f.job.payload.capability_route,

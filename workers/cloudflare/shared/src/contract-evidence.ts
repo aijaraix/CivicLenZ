@@ -10,6 +10,7 @@ import { withTimeout } from "./timeouts.ts";
 
 type Row = Record<string, any>;
 type RequestRows = (path: string, method?: string, body?: Row) => Promise<Row[]>;
+const DEEP_DOSSIER_GRAPH_VERSION = "hermes-deep-dossier-graph-v1";
 
 export function contractDatabase(url: string, key: string): RequestRows {
   return async (path, method = "GET", body) => {
@@ -47,6 +48,10 @@ export async function runContractEvidence(input: {
   const quarantine = route.stage === "quarantine" && quarantineScopes.has(p.scope_key)
     && route.capability === "evidence_quarantine_source_discovery"
     && route.identity_attribution === "unresolved" && route.publication_eligible === false;
+  const deepDossier = p.deep_dossier_graph_version === DEEP_DOSSIER_GRAPH_VERSION
+    && typeof p.deep_dossier_unit_key === "string"
+    && p.identity_authority === false && p.verification_allowed === false
+    && p.publication_allowed === false;
   if (job.job_type !== "contract_scope_research" || !job.research_need_id
       || p.orchestration_authority !== "hermes" || p.execution_class !== "PRODUCTION"
       || (p.scope_key !== "evidence" && !quarantine) || p.dispatch_blocker
@@ -112,10 +117,73 @@ export async function runContractEvidence(input: {
       byte_length: document.bytes.byteLength, raw_object_uri: uri,
       retrieval_status: "stored", parser_key: "pending_extraction", parser_version: "none",
       metadata: { ...lineage, worker_run_id: runId, final_url: document.url, raw_retrieval_reused: false } });
+    let dossierEvidenceId: string | undefined;
+    if (deepDossier) {
+      dossierEvidenceId = await uuidFromName(
+        `hermes-deep-dossier-evidence:${job.dedupe_key}:${digest}`,
+      );
+      const priorEvidence = await input.database(`evidence_objects?evidence_id=eq.${dossierEvidenceId}`);
+      const text = new TextDecoder("utf-8", { fatal: false }).decode(saved)
+        .replace(/\s+/g, " ").trim().slice(0, 2000);
+      const evidence = {
+        evidence_id: dossierEvidenceId,
+        source_id: route.source_id,
+        retrieval_id: retrievalId,
+        evidence_type: "dossier_source_document",
+        source_url: route.retrieval_url,
+        supporting_locator: `dossier-unit:${p.deep_dossier_unit_key};scope:${p.scope_key};sha256:${digest}`,
+        excerpt: text,
+        asset_uri: uri,
+        content_hash: digest,
+        verification_state: "pending",
+        rights_metadata: {
+          graph_version: DEEP_DOSSIER_GRAPH_VERSION,
+          dossier_unit: p.deep_dossier_unit_key,
+          identity_attribution: "unresolved",
+          publication_eligible: false,
+        },
+      };
+      if (priorEvidence.length) {
+        const prior = priorEvidence[0];
+        if (prior.content_hash !== digest || prior.retrieval_id !== retrievalId
+            || prior.supporting_locator !== evidence.supporting_locator) {
+          throw new Error("dossier_evidence_collision");
+        }
+      } else {
+        await input.database("evidence_objects", "POST", evidence);
+      }
+    }
     await input.database(`worker_runs?worker_run_id=eq.${runId}&status=eq.started`, "PATCH", {
-      status: "succeeded", completed_at: new Date().toISOString(), records_read: 1, records_written: 1,
+      status: "succeeded", completed_at: new Date().toISOString(), records_read: 1,
+      records_written: deepDossier ? 2 : 1,
       metadata: { ...lineage, retrieval_id: retrievalId, raw_object_uri: uri,
-        sha256: digest, byte_length: document.bytes.byteLength, http_status: document.status, raw_retrieval_reused: rawRetrievalReused } });
+        sha256: digest, byte_length: document.bytes.byteLength, http_status: document.status,
+        raw_retrieval_reused: rawRetrievalReused,
+        deep_dossier_graph_version: deepDossier ? DEEP_DOSSIER_GRAPH_VERSION : undefined,
+        deep_dossier_unit_key: deepDossier ? p.deep_dossier_unit_key : undefined,
+        dossier_evidence_id: dossierEvidenceId } });
+    if (deepDossier) {
+      // Capability truth is telemetry derived from this durable successful
+      // run, not a deployment-time assertion.  Failure to update the
+      // registry never rewrites the successful civic evidence lineage.
+      try {
+        await input.database("physical_capabilities?capability_key=eq.deep_dossier_source_evidence", "PATCH", {
+          implementation_state: "ACTIVE",
+          worker_module: "workers/cloudflare/shared/src/contract-evidence.ts",
+          runtime: "cloudflare",
+          queue_pool: "cloudflare-deterministic-http",
+          last_successful_worker_run_id: runId,
+          deployment_version: input.deploymentId,
+          monitoring_state: "OBSERVED",
+          last_observed_at: new Date().toISOString(),
+          current_blockers: [],
+          updated_at: new Date().toISOString(),
+        });
+      } catch {
+        // The durable worker run/evidence remain authoritative; the registry
+        // stays READY until a later telemetry tick can update it.
+      }
+    }
     // HERMES independently reads this result and owns all job/need transitions.
   } catch (error) {
     const failure = error instanceof CivicError ? error.errorClass

@@ -1,0 +1,201 @@
+"""Bounded deep-dossier graph generation for already-identified reference seats.
+
+This planner creates durable child work identities.  It never creates people,
+occupancies or claims, and it never marks a scope complete.  A child may be
+dispatched only when its source policy resolves to an active canonical source;
+otherwise the missing source family remains an explicit blocked obligation.
+"""
+from __future__ import annotations
+
+import hashlib
+import json
+import time
+
+
+VERSION = "hermes-deep-dossier-graph-v1"
+CONTRACT_KEY = "STATE_GOVERNOR"
+MAX_SUBJECTS_PER_TICK = 5
+MAX_CHILDREN_PER_SCOPE = 3
+
+# These are bounded research purposes, not claims about what a source contains.
+# The planner uses the contract's source policy and refuses a child when no
+# active source in that policy can perform the requested pass.
+CHILDREN = {
+    "identity": ("official_identity", "source_pass", "official"),
+    "biography": ("official_profile", "chronology", "coverage_audit"),
+    "education": ("official_profile", "institution_chronology", "coverage_audit"),
+    "career": ("official_profile", "career_chronology", "coverage_audit"),
+    "political_history": ("official_history", "election_history", "coverage_audit"),
+    "prior_offices": ("official_history", "election_history", "coverage_audit"),
+    "election_history": ("election_universe", "cycle_records", "reconciliation_audit"),
+    "campaign_finance": ("filing_universe", "transaction_classes", "reconciliation_audit"),
+    "financial_disclosure": ("filing_universe", "disclosure_categories", "reconciliation_audit"),
+    "executive_actions": ("official_actions", "action_period", "coverage_audit"),
+    "promises_statements": ("official_commitments", "commitment_period", "coverage_audit"),
+    "news_activity": ("official_press", "source_pass", "coverage_audit"),
+    "social": ("official_account_discovery", "activity_window", "coverage_audit"),
+    "contact": ("official_contact", "source_pass", "coverage_audit"),
+    "portrait": ("official_portrait", "asset_provenance", "coverage_audit"),
+    "business_interests": ("disclosure_business_interests", "source_pass", "coverage_audit"),
+    "ethics_legal_public_records": ("official_records", "period_records", "coverage_audit"),
+    "family_public_relationships": ("public_relationship_leads", "source_pass", "coverage_audit"),
+    "monitoring": ("currentness_baseline", "change_detection", "monitoring_followup"),
+}
+
+
+def _identity(seat_id: str, contract_id: str, version: str, scope: str, child: str) -> tuple[str, str]:
+    semantic = {
+        "version": 1,
+        "graph_version": VERSION,
+        "subject_type": "seat",
+        "subject_id": str(seat_id),
+        "contract_id": str(contract_id),
+        "contract_version": str(version),
+        "scope_key": scope,
+        "child_unit": child,
+    }
+    digest = hashlib.sha256(json.dumps(semantic, sort_keys=True, separators=(",", ":")).encode()).hexdigest()
+    return "need:v1:" + digest, "work:v1:" + digest
+
+
+def _source_policy(policy: object) -> list[str]:
+    if not isinstance(policy, dict) or not isinstance(policy.get("policy"), str):
+        return []
+    return [key.strip() for key in policy["policy"].split(",") if key.strip()]
+
+
+def _source_for_child(child: str, policy: object, sources: dict[str, dict]) -> tuple[str | None, str]:
+    allowed = _source_policy(policy)
+    if not allowed:
+        return None, "SOURCE_POLICY_UNSUPPORTED"
+    # The source registry remains authoritative.  Prefer an official profile
+    # or election source when the contract explicitly names one; no URL is
+    # invented from the child label.
+    election_child = any(marker in child for marker in ("election", "filing", "transaction", "disclosure"))
+    preferred = [key for key in allowed if key in sources and sources[key].get("active")
+                 and ((election_child and "election" in key)
+                      or (not election_child and ("governor" in key or "official" in key)))]
+    selected = preferred[0] if preferred else next((key for key in allowed if key in sources and sources[key].get("active")), None)
+    return selected, "SOURCE_RESOLVED" if selected else "SOURCE_FAMILY_NOT_REGISTERED"
+
+
+def reconcile() -> dict:
+    # Keep pure identity/source helpers importable in the lightweight test
+    # environment; the production dependency is loaded only for a live tick.
+    from database_bootstrap import connect_database
+
+    created_needs = created_jobs = blocked_children = examined = 0
+    with connect_database() as connection:
+        with connection, connection.cursor() as cursor:
+            cursor.execute("SELECT pg_try_advisory_xact_lock(184913,13)")
+            if not cursor.fetchone()[0]:
+                return {"state": "ANOTHER_DEEP_DOSSIER_TICK_ACTIVE", "observed_at": time.time()}
+
+            cursor.execute("""
+                SELECT s.seat_id,c.research_contract_id,c.version,f.field_key,
+                       f.research_contract_field_id,f.source_priority
+                FROM public.seats s
+                JOIN public.research_contracts c ON c.contract_key=%s AND c.active
+                JOIN public.research_contract_fields f ON f.research_contract_id=c.research_contract_id
+                WHERE s.research_contract_key=%s
+                  AND s.baseline_status IN ('officeholder_pending','baseline_research','baseline_complete','verified','reviewed','complete')
+                ORDER BY s.created_at,f.sort_order,f.field_key
+                LIMIT %s
+            """, (CONTRACT_KEY, CONTRACT_KEY, MAX_SUBJECTS_PER_TICK * 25))
+            rows = cursor.fetchall()
+            if not rows:
+                return {"state": "DEEP_DOSSIER_NO_ELIGIBLE_SUBJECT", "observed_at": time.time()}
+            cursor.execute("SELECT source_id,source_key,source_url,active,authority_tier FROM public.sources WHERE active")
+            sources = {row[1]: {
+                "source_id": row[0], "source_key": row[1], "source_url": row[2],
+                "active": row[3], "authority_tier": row[4],
+            } for row in cursor.fetchall()}
+
+            seen_subjects: set[str] = set()
+            for seat_id, contract_id, version, scope, contract_field_id, source_priority in rows:
+                if str(seat_id) not in seen_subjects and len(seen_subjects) >= MAX_SUBJECTS_PER_TICK:
+                    continue
+                seen_subjects.add(str(seat_id))
+                children = CHILDREN.get(scope)
+                if not children:
+                    continue
+                for child in children[:MAX_CHILDREN_PER_SCOPE]:
+                    examined += 1
+                    need_key, work_key = _identity(seat_id, contract_id, version, scope, child)
+                    source_key, source_state = _source_for_child(child, source_priority, sources)
+                    source = sources.get(source_key) if source_key else None
+                    blocked = source is None
+                    basis = {
+                        "rule": "deep_dossier_child_graph_v1",
+                        "graph_version": VERSION,
+                        "parent_scope_key": scope,
+                        "dossier_unit": child,
+                        "contract_field_id": str(contract_field_id),
+                        "source_selection": source_state,
+                        "source_key": source_key,
+                        "truth_authority": False,
+                        "identity_authority": False,
+                        "verification_authority": False,
+                        "publication_authority": False,
+                    }
+                    cursor.execute("""
+                        INSERT INTO hermes_ops.research_needs
+                          (need_key,contract_id,contract_version,target_type,target_id,scope_key,
+                           origin,execution_class,state,reason,basis,priority)
+                        VALUES(%s,%s,%s,'seat',%s,%s,'CONTRACT_GAP','PRODUCTION',%s,%s,%s::jsonb,30)
+                        ON CONFLICT(need_key) DO NOTHING RETURNING need_id
+                    """, (
+                        need_key, contract_id, str(version), seat_id, scope,
+                        "BLOCKED" if blocked else "OPEN",
+                        "SOURCE_FAMILY_NOT_REGISTERED" if blocked else "DEEP_DOSSIER_CHILD_READY",
+                        json.dumps(basis),
+                    ))
+                    need = cursor.fetchone()
+                    if need:
+                        created_needs += 1
+                    else:
+                        cursor.execute("SELECT need_id FROM hermes_ops.research_needs WHERE need_key=%s", (need_key,))
+                        need = cursor.fetchone()
+                    if not need:
+                        continue
+                    payload = {
+                        "orchestration_authority": "hermes",
+                        "execution_class": "PRODUCTION",
+                        "research_work_identity": work_key,
+                        "scope_key": scope,
+                        "contract_id": str(contract_id),
+                        "contract_version": str(version),
+                        "deep_dossier_graph_version": VERSION,
+                        "deep_dossier_unit_key": child,
+                        "deep_dossier_parent_scope": scope,
+                        "source_key": source_key,
+                        "classification_ceiling": "extracted_unreviewed",
+                        "identity_authority": False,
+                        "verification_allowed": False,
+                        "publication_allowed": False,
+                        "dispatch_blocker": "CAPABILITY_NOT_IMPLEMENTED" if not blocked else "SOURCE_FAMILY_NOT_REGISTERED",
+                    }
+                    cursor.execute("""
+                        INSERT INTO public.jobs
+                          (job_type,target_type,target_id,seat_id,source_id,priority,status,attempt_count,
+                           max_attempts,dedupe_key,payload,research_need_id)
+                        VALUES('contract_scope_research','seat',%s,%s,%s,30,'queued',0,2,%s,%s::jsonb,%s)
+                        ON CONFLICT(dedupe_key) DO NOTHING RETURNING job_id
+                    """, (
+                        seat_id, seat_id, source["source_id"] if source else None,
+                        work_key, json.dumps(payload), need[0],
+                    ))
+                    if cursor.fetchone():
+                        created_jobs += 1
+                    if blocked:
+                        blocked_children += 1
+    return {
+        "state": "DEEP_DOSSIER_GRAPH_WORK_CREATED" if created_jobs else "DEEP_DOSSIER_GRAPH_PRESENT",
+        "graph_version": VERSION,
+        "subjects": len(seen_subjects),
+        "children_examined": examined,
+        "needs_created": created_needs,
+        "jobs_created": created_jobs,
+        "blocked_children": blocked_children,
+        "observed_at": time.time(),
+    }
