@@ -220,7 +220,7 @@ def plan_downstream(cursor, job: dict, result: dict) -> dict:
         cursor.execute("""INSERT INTO public.seats
             (seat_key,seat_name,office_type,government_level,branch,jurisdiction_id,
              district_number,occupancy_status,research_contract_key,baseline_status,monitoring_active)
-            VALUES(%s,%s,%s,%s,%s,%s,%s,'unknown',%s,'discovered_unreviewed',false)
+            VALUES(%s,%s,%s,%s,%s,%s,%s,'unknown',%s,'discovered',false)
             ON CONFLICT(seat_key) DO NOTHING
             RETURNING seat_id,true AS inserted""",
             (seat_key, unit["office_title"], unit["office_kind"],
