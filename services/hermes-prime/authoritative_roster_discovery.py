@@ -18,6 +18,10 @@ VERSION = "hermes-authoritative-roster-discovery-v1"
 CONTRACT_KEY = "AUTHORITATIVE_ROSTER_DISCOVERY"
 SCOPE_KEY = "seat"
 IDENTITY_SCOPE_KEY = "identity"
+# Roster retrieval and its bounded identity follow-up are generated from a
+# durable monitoring obligation.  Keep this aligned with the ResearchNeed
+# schema rather than introducing a subject-factory-specific origin.
+RESEARCH_NEED_ORIGIN = "MONITORING"
 
 ROSTER_SOURCES = {
     "miami-dade-county-elected-officials": {
@@ -155,10 +159,11 @@ def reconcile() -> dict:
                 cursor.execute("""INSERT INTO hermes_ops.research_needs
                     (need_key,contract_id,contract_version,target_type,target_id,scope_key,origin,
                      execution_class,state,reason,basis,priority)
-                    VALUES(%s,%s,%s,'jurisdiction',%s,%s,'DISCOVERY','PRODUCTION','OPEN',
+                    VALUES(%s,%s,%s,'jurisdiction',%s,%s,%s,'PRODUCTION','OPEN',
                       'AUTHORITATIVE_ROSTER_RETRIEVAL_READY',%s::jsonb,15)
                     ON CONFLICT(need_key) DO NOTHING RETURNING need_id""",
-                    (need_key, contract_id, str(version), jurisdiction_id, SCOPE_KEY, json.dumps(basis)))
+                    (need_key, contract_id, str(version), jurisdiction_id, SCOPE_KEY,
+                     RESEARCH_NEED_ORIGIN, json.dumps(basis)))
                 need = cursor.fetchone()
                 if not need:
                     continue
@@ -257,7 +262,7 @@ def plan_downstream(cursor, job: dict, result: dict) -> dict:
         cursor.execute("""INSERT INTO hermes_ops.research_needs
             (need_key,contract_id,contract_version,target_type,target_id,scope_key,origin,
              execution_class,state,reason,basis,priority)
-            VALUES(%s,%s,%s,'seat',%s,%s,'DISCOVERY','PRODUCTION','OPEN',
+            VALUES(%s,%s,%s,'seat',%s,%s,%s,'PRODUCTION','OPEN',
               'AUTHORITATIVE_ROSTER_IDENTITY_RESEARCH_READY',%s::jsonb,16)
             ON CONFLICT(need_key) DO NOTHING RETURNING need_id""",
             (need_key, contract["research_contract_id"], str(contract["version"]),
