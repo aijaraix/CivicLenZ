@@ -266,7 +266,8 @@ def plan_downstream(cursor, job: dict, result: dict) -> dict:
               'AUTHORITATIVE_ROSTER_IDENTITY_RESEARCH_READY',%s::jsonb,16)
             ON CONFLICT(need_key) DO NOTHING RETURNING need_id""",
             (need_key, contract["research_contract_id"], str(contract["version"]),
-             seat["seat_id"], IDENTITY_SCOPE_KEY, json.dumps(basis)))
+             seat["seat_id"], IDENTITY_SCOPE_KEY, RESEARCH_NEED_ORIGIN,
+             json.dumps(basis)))
         need = cursor.fetchone()
         if not need:
             continue
