@@ -101,7 +101,7 @@ def recover_and_collect(cursor):
             AND worker_key=%s AND metadata->>'attempt_token'=%s
             ORDER BY started_at DESC LIMIT 1""", (job['job_id'], 'hermes.cloudflare.extraction' if job['job_type']=='contract_evidence_extract' else 'hermes.cloudflare.evidence', job['leased_by']))
         run = cursor.fetchone()
-        if run and run['status'] == 'succeeded' and not job['expired']:
+        if run and run['status'] == 'succeeded':
             result = run['metadata']
             extracting = job['job_type']=='contract_evidence_extract'
             # A quarantine run may safely reference a prior immutable raw
@@ -139,8 +139,10 @@ def recover_and_collect(cursor):
             cursor.execute("""UPDATE public.jobs SET status='succeeded',completed_at=clock_timestamp(),
                 checkpoint=coalesce(checkpoint,'{}'::jsonb)||%s::jsonb,
                 leased_by=NULL,lease_expires_at=NULL,error_class=NULL,error_message=NULL WHERE job_id=%s
-                AND leased_by=%s AND lease_expires_at>clock_timestamp() RETURNING job_id""",
-                (json.dumps({'worker_run_id':str(run['worker_run_id']), **result}),job['job_id'],job['leased_by']))
+                AND leased_by=%s
+                AND (lease_expires_at>clock_timestamp() OR (lease_expires_at<=clock_timestamp() AND %s))
+                RETURNING job_id""",
+                (json.dumps({'worker_run_id':str(run['worker_run_id']), **result}),job['job_id'],job['leased_by'],job['expired']))
             if cursor.fetchone():
                 if roster_extracting:
                     summary = authoritative_roster_discovery.plan_downstream(cursor, job, result)
@@ -170,6 +172,345 @@ def recover_and_collect(cursor):
             cursor.execute("""UPDATE hermes_ops.research_needs SET state=%s,reason=%s,
                 evaluated_at=clock_timestamp() WHERE need_id=%s""",
                 ('BLOCKED' if dead else 'OPEN','TERMINAL_WORKER_FAILURE_OR_ATTEMPTS_EXHAUSTED' if dead else 'CANONICAL_RETRY_SCHEDULED',job['research_need_id']))
+
+
+def collect_late_successes(cursor):
+    """Acknowledge durable roster extraction after a lease sweep.
+
+    A successful worker_run is authoritative evidence that the worker completed
+    its leased extraction. If HERMES observed the success only after the lease
+    expired, the ordinary leased-job collector cannot see it anymore. This
+    bounded path preserves the terminal job and attempt history while allowing
+    the already-persisted unresolved roster units to enter the same canonical
+    downstream planner exactly once.
+    """
+    cursor.execute("""SELECT j.*,w.worker_run_id,w.metadata AS worker_metadata
+      FROM public.jobs j
+      JOIN LATERAL (SELECT worker_run_id,status,metadata
+        FROM public.worker_runs
+        WHERE job_id=j.job_id AND worker_key='hermes.cloudflare.extraction'
+        ORDER BY started_at DESC LIMIT 1) w ON true
+      WHERE j.status='dead_letter'
+        AND j.job_type='contract_evidence_extract'
+        AND j.attempt_count=j.max_attempts AND j.attempt_count>0
+        AND j.error_class='lease_expired'
+        AND j.payload->>'orchestration_authority'='hermes'
+        AND j.payload->>'execution_class'='PRODUCTION'
+        AND j.payload->'capability_route'->>'version'=%s
+        AND j.payload->'capability_route'->>'stage'='extraction'
+        AND j.payload->'capability_route'->>'capability'='authoritative_roster_extraction'
+        AND j.payload->'capability_route'->>'input_retrieval_id'=w.metadata->>'retrieval_id'
+        AND j.payload->'capability_route'->>'input_sha256'=w.metadata->>'sha256'
+        AND w.status='succeeded'
+        AND w.worker_run_id::text=w.metadata->>'extraction_run_id'
+        AND w.metadata->>'roster_units_extracted' ~ '^[1-9][0-9]*(cursor, config):
+    """Resume only the same failed quarantine jobs after a newer worker deploy.
+
+    The former deployment could not reuse a raw artifact already stored for
+    the same source/hash.  This preserves the failed worker run and attempt
+    history, creates no work, and requires an explicit new deployment before
+    returning the exact job to its ordinary canonical lease path.
+    """
+    if not config['deployment']:
+        return 0
+    cursor.execute("""SELECT j.job_id,j.research_need_id,j.attempt_count,j.payload,
+          w.worker_run_id,w.deployment_id AS failed_deployment,w.error_class
+        FROM public.jobs j
+        JOIN LATERAL (SELECT worker_run_id,deployment_id,error_class FROM public.worker_runs
+          WHERE job_id=j.job_id AND worker_key='hermes.cloudflare.evidence'
+          ORDER BY started_at DESC LIMIT 1) w ON true
+        WHERE j.status='dead_letter' AND j.attempt_count<j.max_attempts
+          AND j.payload->>'orchestration_authority'='hermes'
+          AND j.payload->>'execution_class'='PRODUCTION'
+          AND j.payload->'capability_route'->>'version'=%s
+          AND j.payload->'capability_route'->>'capability'=%s
+          AND w.error_class='worker_store_http_409'
+          AND w.deployment_id<>%s
+        FOR UPDATE OF j SKIP LOCKED""",
+        (ROUTE_VERSION, QUARANTINE_CAPABILITY, config['deployment']))
+    recovered = 0
+    for item in cursor.fetchall():
+        payload = dict(item['payload'])
+        route = dict(payload.get('capability_route', {}))
+        route['deployment_id'] = config['deployment']
+        payload['capability_route'] = route
+        checkpoint = {'recovery': 'IMMUTABLE_RAW_REUSE_DEPLOYMENT_REFRESH',
+                      'worker_run_id': str(item['worker_run_id']),
+                      'failed_deployment': item['failed_deployment'],
+                      'worker_error_class': item['error_class'],
+                      'attempt_count_preserved': item['attempt_count']}
+        cursor.execute("""UPDATE public.jobs SET status='queued',scheduled_for=clock_timestamp(),
+            payload=%s::jsonb,checkpoint=coalesce(checkpoint,'{}'::jsonb)||%s::jsonb,
+            leased_by=NULL,lease_expires_at=NULL,error_class=NULL,error_message=NULL
+            WHERE job_id=%s AND status='dead_letter' AND attempt_count=%s""",
+            (json.dumps(payload), json.dumps(checkpoint), item['job_id'], item['attempt_count']))
+        cursor.execute("""UPDATE hermes_ops.research_needs SET state='OPEN',
+            reason='CANONICAL_RECOVERY_SCHEDULED: immutable raw reuse deployment refresh',
+            evaluated_at=clock_timestamp() WHERE need_id=%s""", (item['research_need_id'],))
+        recovered += 1
+    # A parser failure is recoverable only when the exact immutable input
+    # is still present and a different collector deployment is now configured.
+    # This preserves attempt 1/dead-letter history and never creates a job.
+    cursor.execute("""SELECT j.job_id,j.research_need_id,j.attempt_count,j.max_attempts,j.payload,
+          w.worker_run_id,w.deployment_id AS failed_deployment,w.error_class,
+          r.retrieval_id,r.content_hash
+        FROM public.jobs j
+        JOIN public.jobs parent ON parent.job_id::text=j.payload->>'parent_job_id'
+          AND parent.status='succeeded'
+          AND parent.research_need_id=j.research_need_id
+        JOIN LATERAL (SELECT worker_run_id,deployment_id,error_class,metadata FROM public.worker_runs
+          WHERE job_id=j.job_id AND worker_key='hermes.cloudflare.extraction'
+          ORDER BY started_at DESC LIMIT 1) w ON true
+        JOIN public.raw_retrievals r
+          ON r.retrieval_id::text=j.payload->'capability_route'->>'input_retrieval_id'
+        WHERE j.status='dead_letter' AND j.attempt_count<j.max_attempts
+          AND j.job_type='contract_evidence_extract'
+          AND j.payload->>'orchestration_authority'='hermes'
+          AND j.payload->>'execution_class'='PRODUCTION'
+          AND j.payload->'capability_route'->>'version'=%s
+          AND j.payload->'capability_route'->>'stage'='extraction'
+          AND j.payload->'capability_route'->>'input_retrieval_id'=r.retrieval_id::text
+          AND j.payload->'capability_route'->>'input_sha256'=r.content_hash
+          AND j.payload->'capability_route'->>'source_id'=r.source_id::text
+          AND parent.checkpoint->>'retrieval_id'=r.retrieval_id::text
+          AND parent.checkpoint->>'sha256'=r.content_hash
+          AND r.http_status=200 AND r.byte_length>0 AND r.retrieval_status='stored'
+          AND w.error_class='parser_failure'
+          AND w.metadata->>'retryable'='false'
+          AND w.deployment_id IS NOT NULL AND w.deployment_id<>%s
+        FOR UPDATE OF j SKIP LOCKED""",
+        (ROUTE_VERSION, config['deployment']))
+    for item in cursor.fetchall():
+        payload = dict(item['payload'])
+        route = dict(payload.get('capability_route', {}))
+        route['deployment_id'] = config['deployment']
+        payload['capability_route'] = route
+        checkpoint = {'recovery': 'CHANGED_PARSER_DEPLOYMENT_REFRESH',
+                      'worker_run_id': str(item['worker_run_id']),
+                      'failed_deployment': item['failed_deployment'],
+                      'worker_error_class': item['error_class'],
+                      'input_retrieval_id': item['retrieval_id'],
+                      'input_sha256': item['content_hash'],
+                      'attempt_count_preserved': item['attempt_count']}
+        cursor.execute("""UPDATE public.jobs SET status='queued',scheduled_for=clock_timestamp(),
+            payload=%s::jsonb,checkpoint=coalesce(checkpoint,'{}'::jsonb)||%s::jsonb,
+            leased_by=NULL,lease_expires_at=NULL,error_class=NULL,error_message=NULL
+            WHERE job_id=%s AND status='dead_letter' AND attempt_count=%s
+              AND payload->'capability_route'->>'input_retrieval_id'=%s
+              AND payload->'capability_route'->>'input_sha256'=%s""",
+            (json.dumps(payload), json.dumps(checkpoint), item['job_id'], item['attempt_count'],
+             item['retrieval_id'], item['content_hash']))
+        cursor.execute("""UPDATE hermes_ops.research_needs SET state='OPEN',
+            reason='CANONICAL_RECOVERY_SCHEDULED: changed parser deployment',
+            evaluated_at=clock_timestamp() WHERE need_id=%s
+              AND state='BLOCKED'""", (item['research_need_id'],))
+        recovered += 1
+    return recovered
+
+
+def quarantine_canary_budget(cursor):
+    """Return only this route family's lifetime canary usage.
+
+    Historical evidence, validation, and Governor work stays auditable but is
+    deliberately outside this new route's bounded activation allowance.
+    """
+    cursor.execute("""SELECT coalesce(sum(attempt_count),0) AS attempts,
+        count(*) FILTER (WHERE status='leased') AS active FROM public.jobs
+        WHERE payload->'capability_route'->>'version'=%s
+        AND payload->'capability_route'->>'capability'=%s
+        AND payload->>'orchestration_authority'='hermes'
+        AND payload->>'execution_class'='PRODUCTION'""",
+        (ROUTE_VERSION, QUARANTINE_CAPABILITY))
+    return cursor.fetchone()
+
+
+def tick(governor):
+    config = settings()
+    producer_config = producer_outbound.settings()
+    selected = None
+    local_validation = False
+    producer_delivery = False
+    with connect_database() as connection:
+        with connection, connection.cursor(cursor_factory=RealDictCursor) as cursor:
+            # This serializes selection/budget decisions, not a parallel job lease.
+            cursor.execute("SELECT pg_try_advisory_xact_lock(184913,3) AS acquired")
+            if not cursor.fetchone()['acquired']:
+                return {'state':'ANOTHER_CANONICAL_TICK_ACTIVE'}
+            producer_receipt_validation.collect(cursor)
+            producer_outbound.collect(cursor)
+            validation_receipt.collect(cursor)
+            validation_followup.collect(cursor)
+            governor_context.collect(cursor)
+            recover_and_collect(cursor)
+            collect_late_successes(cursor)
+            recover_immutable_raw_conflicts(cursor, config)
+            routed = route_pending(cursor,config)
+            producer_route = producer_outbound.activate_exact_route(cursor, producer_config)
+            validation_followup.plan(cursor,config)
+            governor_context.plan(cursor,config)
+            if os.environ.get('HERMES_EXTRACT_EVIDENCE')=='true':
+                plan_extraction(cursor,config)
+                plan_exhausted_extraction_recovery(cursor,config)
+            if governor['dispatch_limit'] < 1:
+                return {'state':'RESOURCE_GATED'}
+
+            recovered = producer_outbound.recover_unconfirmed(cursor, producer_config)
+            if recovered is not None:
+                selected = recovered
+                producer_delivery = True
+                candidate = None
+            else:
+                candidate = producer_receipt_validation.candidate(cursor)
+                if candidate is not None:
+                    local_validation = True
+                else:
+                    candidate = producer_outbound.candidate(cursor, producer_config)
+                    if candidate is not None:
+                        producer_delivery = True
+            if selected is None:
+                if candidate is None and not local_validation and not producer_delivery:
+                    if not config['enabled'] or not config['ready'] or not config['deployment']:
+                        return {'state':'DISPATCH_GATED','routing_evaluated':routed,
+                                'credential_ready':config['ready'],'worker_deployment_configured':bool(config['deployment']),
+                                'producer_outbound_ready':producer_config['ready']}
+                    candidate=governor_context.candidate(cursor)
+                    if candidate is None:
+                        candidate=validation_followup.candidate(cursor)
+                    if candidate is None:
+                        candidate=validation_receipt.candidate(cursor,config)
+                    if candidate is None:
+                        budget = quarantine_canary_budget(cursor)
+                        if config['mode'] == 'canary' and budget['attempts'] >= config['budget']:
+                            return {'state':'BOUNDED_CANARY_BUDGET','attempts':int(budget['attempts'])}
+                        if int(budget['active']) >= config['concurrency']:
+                            return {'state':'RESOURCE_GOVERNED_CONCURRENCY','active':int(budget['active']),
+                                    'concurrency':config['concurrency']}
+                        cursor.execute("""SELECT j.job_id FROM public.jobs j
+                            JOIN hermes_ops.research_needs n ON n.need_id=j.research_need_id
+                            WHERE j.job_type IN ('contract_scope_research','contract_evidence_extract') AND j.status='queued'
+                            AND j.payload->>'orchestration_authority'='hermes'
+                            AND j.payload->>'execution_class'='PRODUCTION' AND n.execution_class='PRODUCTION'
+                            AND n.origin IN ('CONTRACT_GAP','MONITORING','DISCOVERY') AND (n.state='OPEN' OR (j.job_type='contract_evidence_extract' AND n.state='AWAITING_RESULT'))
+                            AND (j.job_type<>'contract_evidence_extract' OR %s)
+                            AND j.payload->>'research_work_identity'=j.dedupe_key
+                            AND j.payload->'capability_route'->>'version'=%s
+                            AND ((j.job_type='contract_scope_research'
+                                  AND j.payload->'capability_route'->>'capability'=%s)
+                              OR (j.job_type='contract_evidence_extract'
+                                  AND j.payload->'capability_route'->>'stage'='extraction'))
+                            AND NOT (j.payload ? 'dispatch_blocker') AND j.attempt_count<j.max_attempts
+                            AND (j.scheduled_for IS NULL OR j.scheduled_for<=clock_timestamp())
+                            AND NOT EXISTS (SELECT 1 FROM hermes_ops.job_dependencies d JOIN public.jobs p
+                                ON p.job_id=d.prerequisite_job_id WHERE d.job_id=j.job_id AND p.status<>'succeeded')
+                            ORDER BY n.priority,j.created_at LIMIT 1""",(os.environ.get('HERMES_EXTRACT_EVIDENCE')=='true',ROUTE_VERSION,QUARANTINE_CAPABILITY))
+                        candidate=cursor.fetchone()
+            if candidate:
+                token=secrets.token_hex(32)
+                cursor.execute("SELECT * FROM hermes_ops.lease_job(%s,%s,300)",(candidate['job_id'],token))
+                selected=cursor.fetchone()
+                if selected:
+                    if producer_delivery:
+                        authorization = producer_outbound.arm_return_authorization(selected, producer_config)
+                        cursor.execute("""UPDATE public.jobs SET checkpoint=coalesce(checkpoint,'{}'::jsonb)||
+                            jsonb_build_object('producer_return_authorization',%s::jsonb)
+                            WHERE job_id=%s AND leased_by=%s""",
+                            (json.dumps({
+                                'authorization_id': authorization['authorization_id'],
+                                'status': authorization['status'],
+                                'maximum_uses': authorization['maximum_uses'],
+                                'allowed_job_id': authorization['allowed_job_id'],
+                                'allowed_research_work_identity': authorization['allowed_research_work_identity'],
+                                'expires_at': authorization['expires_at'],
+                                'publication_allowed': False,
+                            }), selected['job_id'], token))
+                    if selected['payload'].get('validation_followup'):
+                        safety=validation_followup.safety_snapshot(cursor,selected['target_id'])
+                        cursor.execute("UPDATE public.jobs SET checkpoint=coalesce(checkpoint,'{}'::jsonb)||%s::jsonb WHERE job_id=%s AND leased_by=%s",(json.dumps({'followup_safety_before':safety}),selected['job_id'],token))
+                    if selected['job_type']=='contract_evidence_validate':
+                        safety=validation_receipt.snapshot(cursor,selected['target_id'])
+                        cursor.execute("UPDATE public.jobs SET checkpoint=coalesce(checkpoint,'{}'::jsonb)||%s::jsonb WHERE job_id=%s AND leased_by=%s",(json.dumps({'validation_safety_before':safety}),selected['job_id'],token))
+                    cursor.execute("""UPDATE public.jobs SET checkpoint=coalesce(checkpoint,'{}'::jsonb)||
+                        jsonb_build_object('dispatch_attempts',coalesce(checkpoint->'dispatch_attempts','[]'::jsonb)||
+                        jsonb_build_array(jsonb_build_object('attempt_token',%s::text,'attempt_count',attempt_count,
+                        'leased_at',clock_timestamp(),'lease_expires_at',lease_expires_at,
+                        'scheduler_source',%s::text))) WHERE job_id=%s AND leased_by=%s""",
+                        (token,str(Path(__file__).resolve()),selected['job_id'],token))
+                    cursor.execute("UPDATE hermes_ops.research_needs SET state='AWAITING_RESULT',reason=%s WHERE need_id=%s",
+                        ('PRODUCER_ASSIGNMENT_LEASE_ACQUIRED' if producer_delivery else 'CANONICAL_LEASE_ACQUIRED', selected['research_need_id']))
+    if not selected:
+        return {'state':'NO_ELIGIBLE_JOB'}
+    if local_validation:
+        try:
+            return producer_receipt_validation.execute(selected)
+        except Exception:
+            # The lease remains authoritative. Recovery/collection handles expiry;
+            # do not expose database/file details or invent a successful result.
+            return {'state':'LOCAL_VALIDATION_EXECUTION_FAILED','job_id':str(selected['job_id'])}
+    if producer_delivery:
+        result = producer_outbound.deliver(selected, producer_config)
+        with connect_database() as connection:
+            with connection, connection.cursor(cursor_factory=RealDictCursor) as cursor:
+                producer_outbound.record_delivery(cursor, selected, result)
+        return result
+    # Commit the lease before delivery; failure or uncertain delivery expires under
+    # the same canonical policy. Never reacquire via the legacy worker RPC.
+    try:
+        token=config['credential'].read_text().strip()
+        account=os.environ['HERMES_CF_ACCOUNT_ID']; queue=os.environ['HERMES_CF_VALIDATE_QUEUE_ID'] if selected['job_type']=='contract_evidence_validate' else os.environ['HERMES_CF_INGEST_QUEUE_ID']
+        message={'schemaVersion':'hermes.governor-context.v1' if selected['payload'].get('capability_route',{}).get('version')==governor_context.VERSION else 'hermes.validation-followup.v1' if selected['payload'].get('capability_route',{}).get('version')==validation_followup.VERSION else 'hermes.validation.v1' if selected['job_type']=='contract_evidence_validate' else 'hermes.extraction.v1' if selected['job_type']=='contract_evidence_extract' else 'hermes.contract.v1','job_id':str(selected['job_id']),
+                 'attempt_token':selected['leased_by'],'research_work_identity':selected['dedupe_key']}
+        body=json.dumps({'body':message,'content_type':'json'}).encode()
+        request=urllib.request.Request(f'https://api.cloudflare.com/client/v4/accounts/{account}/queues/{queue}/messages',
+            data=body,headers={'Authorization':'Bearer '+token,'Content-Type':'application/json'})
+        with urllib.request.urlopen(request,timeout=10) as response:
+            if not json.load(response).get('success'):
+                raise RuntimeError('queue delivery rejected')
+        return {'state':'DELIVERED_AWAITING_WORKER','job_id':str(selected['job_id'])}
+    except Exception:
+        # Do not release an uncertain delivery early: the worker may have received it.
+        with connect_database() as connection:
+            with connection, connection.cursor() as cursor:
+                cursor.execute("""UPDATE public.jobs SET error_class='QUEUE_DELIVERY_UNCONFIRMED',
+                    error_message='Inspect canonical attempt after lease expiry' WHERE job_id=%s AND leased_by=%s""",
+                    (selected['job_id'],selected['leased_by']))
+        return {'state':'QUEUE_DELIVERY_UNCONFIRMED','job_id':str(selected['job_id'])}
+
+        AND w.metadata->>'unresolved_attribution'='true'
+        AND w.metadata->>'publication_eligible'='false'
+        AND NOT (coalesce(j.checkpoint,'{}'::jsonb) ? 'authoritative_roster_late_success_handoff')
+        AND EXISTS (SELECT 1 FROM public.unresolved_roster_units u
+          WHERE u.extraction_worker_run_id=w.worker_run_id
+            AND u.retrieval_id::text=w.metadata->>'retrieval_id'
+            AND u.content_hash=w.metadata->>'sha256'
+            AND u.review_state='UNRESOLVED'
+            AND u.publication_eligible=false)
+      FOR UPDATE OF j SKIP LOCKED""", (ROUTE_VERSION,))
+    handled = 0
+    for job in cursor.fetchall():
+        result = dict(job['worker_metadata'] or {})
+        summary = authoritative_roster_discovery.plan_downstream(cursor, job, result)
+        handoff = {
+            'worker_run_id': str(job['worker_run_id']),
+            'recovery': 'LATE_SUCCESS_AFTER_LEASE_EXPIRY',
+            'authoritative_roster_downstream': summary,
+            'attempt_count_preserved': job['attempt_count'],
+            'job_state_preserved': 'dead_letter',
+        }
+        cursor.execute("""UPDATE public.jobs SET checkpoint=coalesce(checkpoint,'{}'::jsonb)||%s::jsonb
+          WHERE job_id=%s AND status='dead_letter' AND attempt_count=%s
+            AND NOT (coalesce(checkpoint,'{}'::jsonb) ? 'authoritative_roster_late_success_handoff')
+          RETURNING job_id""",
+          (json.dumps({'authoritative_roster_late_success_handoff': handoff}),
+           job['job_id'], job['attempt_count']))
+        if not cursor.fetchone():
+            continue
+        cursor.execute("""UPDATE hermes_ops.research_needs SET state='AWAITING_RESULT',
+          reason='ROSTER_EXTRACTED_UNRESOLVED: identity research work pending',
+          evaluated_at=clock_timestamp()
+          WHERE need_id=%s AND state IN ('BLOCKED','AWAITING_RESULT')""",
+          (job['research_need_id'],))
+        handled += 1
+    return handled
 
 
 def recover_immutable_raw_conflicts(cursor, config):
