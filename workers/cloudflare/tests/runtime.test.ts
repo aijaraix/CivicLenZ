@@ -327,7 +327,7 @@ test("Miami-Dade PDF rows are parsed from source-defined county layout without a
   ].join("\n");
   const records = parseMiamiDadeDirectory(text);
   assert.equal(records.length, 3);
-  assert.equal(records[0]?.officeTitle, "Miami-Dade County Mayor");
+  assert.equal(records[0]?.officeTitle, "Mayor of Miami-Dade County");
   assert.equal(records[0]?.displayName, "Second Example");
   assert.equal(records.some((item) => item.displayName === "First Example"), true);
   const commissioner = records.find((item) => item.officeKind === "commission");
