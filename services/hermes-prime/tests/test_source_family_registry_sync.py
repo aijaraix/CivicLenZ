@@ -21,8 +21,6 @@ class SourceFamilyRegistrySyncTests(unittest.TestCase):
             "florida-attorney-general",
             "florida-cfo",
             "florida-agriculture-commissioner",
-            "us-house-members",
-            "us-senate-members",
             "miami-dade-mayor-html",
             "miami-dade-county-commission-html",
             "broward-county-commission",
@@ -43,6 +41,8 @@ class SourceFamilyRegistrySyncTests(unittest.TestCase):
         sql = MIGRATION.read_text(encoding="utf-8")
         self.assertNotIn("fec-api", sql)
         self.assertNotIn("florida-financial-disclosure", sql)
+        self.assertNotIn("us-house-members", sql)
+        self.assertNotIn("us-senate-members", sql)
         self.assertNotIn("GOOGLE_CIVIC_API_KEY", sql)
         self.assertNotIn("FEC_API_KEY", sql)
 
