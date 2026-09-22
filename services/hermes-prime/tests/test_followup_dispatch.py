@@ -270,4 +270,10 @@ class DispatcherTests(unittest.TestCase):
         self.assertIn("research_contract_key = 'AUTHORITATIVE_ROSTER_DISCOVERY'", migration)
         self.assertIn("monitoring_active = false", migration)
 
+    def test_subject_factory_uses_real_dict_cursor_need_id(self):
+        source = (Path(__file__).resolve().parents[3] /
+                  'services/hermes-prime/authoritative_roster_discovery.py').read_text()
+        self.assertIn('need["need_id"]', source)
+        self.assertNotIn('json.dumps(downstream_payload), need[0]', source)
+
 if __name__=='__main__':unittest.main()
