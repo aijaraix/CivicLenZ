@@ -10,6 +10,7 @@ from unittest.mock import patch
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 import authoritative_roster_discovery as factory
+from capability_router import resolve
 
 
 CANONICAL_ORIGINS = {
@@ -152,6 +153,56 @@ class SubjectFactoryOriginTests(unittest.TestCase):
         source_text = source.read_text()
         self.assertNotIn('"DISCOVERY"', source_text)
         self.assertEqual(source_text.count("RESEARCH_NEED_ORIGIN"), 3)
+
+    def test_generic_quarantine_origins_route_and_arbitrary_origin_fails_closed(self):
+        job = {
+            "job_type": "contract_scope_research",
+            "research_need_id": "need-id",
+            "target_id": "seat-id",
+            "target_type": "seat",
+            "dedupe_key": "work:v1:fixture",
+            "payload": {
+                "orchestration_authority": "hermes",
+                "execution_class": "PRODUCTION",
+                "research_work_identity": "work:v1:fixture",
+                "scope_key": "seat",
+                "contract_id": "contract-id",
+                "contract_version": "1",
+            },
+        }
+        field = {
+            "verification_requirement": "review",
+            "sensitivity_rule": "publication_eligible_claims_only",
+            "source_priority": {"policy": "miami-dade-county-elected-officials"},
+        }
+        source = {
+            "source_id": "source-id",
+            "source_key": "miami-dade-county-elected-officials",
+            "source_url": "https://www.miamidade.gov/elected-officials",
+            "active": True,
+            "authority_tier": "TIER_1_PRIMARY_OFFICIAL",
+        }
+        for origin in ("MONITORING", "DISCOVERY"):
+            need = {
+                "need_id": "need-id",
+                "target_id": "seat-id",
+                "target_type": "seat",
+                "contract_id": "contract-id",
+                "contract_version": "1",
+                "scope_key": "seat",
+                "execution_class": "PRODUCTION",
+                "origin": origin,
+            }
+            self.assertEqual(
+                resolve(job, need, field, [source], "collector-release", True)["state"],
+                "OPEN",
+            )
+
+        arbitrary = dict(need, origin="SUBJECT_FACTORY")
+        self.assertEqual(
+            resolve(job, arbitrary, field, [source], "collector-release", True)["state"],
+            "BLOCKED",
+        )
 
     def test_schema_remains_bounded_and_generic_router_contract_is_untouched(self):
         migration = (
