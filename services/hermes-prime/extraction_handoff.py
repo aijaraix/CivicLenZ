@@ -5,6 +5,44 @@ from capability_router import ROUTE_VERSION
 
 MAX_CHANGED_PARSER_GENERATIONS = 3
 
+EXHAUSTED_RECOVERY_QUERY = r"""SELECT j.*,parent.dedupe_key AS parent_work,r.retrieval_id,r.content_hash,
+          w.worker_run_id,w.deployment_id AS failed_deployment,w.error_class,w.metadata AS worker_metadata
+        FROM public.jobs j
+        JOIN hermes_ops.research_needs n ON n.need_id=j.research_need_id
+        JOIN public.jobs parent ON parent.job_id::text=j.payload->>'parent_job_id'
+          AND parent.status='succeeded' AND parent.research_need_id=j.research_need_id
+        JOIN LATERAL (SELECT r2.retrieval_id,r2.content_hash,r2.http_status,r2.byte_length,r2.retrieval_status,r2.source_id
+          FROM public.raw_retrievals r2
+          WHERE r2.retrieval_id::text=j.payload->'capability_route'->>'input_retrieval_id'
+          ORDER BY r2.created_at DESC LIMIT 1) r ON true
+        JOIN LATERAL (SELECT w2.worker_run_id,w2.deployment_id,w2.error_class,w2.metadata
+          FROM public.worker_runs w2 WHERE w2.job_id=j.job_id AND w2.worker_key='hermes.cloudflare.extraction'
+          ORDER BY w2.started_at DESC LIMIT 1) w ON true
+        WHERE j.job_type='contract_evidence_extract' AND j.status='dead_letter'
+          AND j.attempt_count=j.max_attempts AND j.attempt_count>0
+          AND j.payload->>'orchestration_authority'='hermes'
+          AND j.payload->>'execution_class'='PRODUCTION'
+          AND j.payload->>'research_work_identity'=j.dedupe_key
+          AND j.payload->'capability_route'->>'version'=%s
+          AND j.payload->'capability_route'->>'stage'='extraction'
+          AND j.payload->'capability_route'->>'input_retrieval_id'=r.retrieval_id::text
+          AND j.payload->'capability_route'->>'input_sha256'=r.content_hash
+          AND j.payload->'capability_route'->>'source_id'=r.source_id::text
+          AND parent.checkpoint->>'retrieval_id'=r.retrieval_id::text
+          AND parent.checkpoint->>'sha256'=r.content_hash
+          AND r.http_status=200 AND r.byte_length>0 AND r.retrieval_status='stored'
+          AND w.error_class='parser_failure'
+          AND coalesce(w.metadata->>'retryable','false')='false'
+          AND w.deployment_id IS NOT NULL AND w.deployment_id<>%s
+          AND n.execution_class='PRODUCTION'
+          AND n.state IN ('BLOCKED','AWAITING_RESULT')
+          AND (CASE WHEN j.payload->>'recovery_generation' ~ '^[0-9]+$'
+                    THEN (j.payload->>'recovery_generation')::integer ELSE 1 END) < %s
+          AND NOT EXISTS (SELECT 1 FROM public.jobs replacement
+            WHERE replacement.payload->>'supersedes_job_id'=j.job_id::text
+              AND replacement.payload->>'recovery_reason'='CHANGED_PARSER_IMPLEMENTATION')
+        FOR UPDATE OF j SKIP LOCKED"""
+
 
 def child_identity(parent_work, retrieval_id, stage):
     value = {'parent_research_work_identity': parent_work, 'retrieval_id': str(retrieval_id),
@@ -76,43 +114,7 @@ def plan_exhausted_extraction_recovery(cursor, config):
     """
     if not config['deployment'] or not config['ready']:
         return 0
-    cursor.execute("""SELECT j.*,parent.dedupe_key AS parent_work,r.retrieval_id,r.content_hash,
-          w.worker_run_id,w.deployment_id AS failed_deployment,w.error_class,w.metadata AS worker_metadata
-        FROM public.jobs j
-        JOIN hermes_ops.research_needs n ON n.need_id=j.research_need_id
-        JOIN public.jobs parent ON parent.job_id::text=j.payload->>'parent_job_id'
-          AND parent.status='succeeded' AND parent.research_need_id=j.research_need_id
-        JOIN LATERAL (SELECT retrieval_id,content_hash,http_status,byte_length,retrieval_status,source_id
-          FROM public.raw_retrievals
-          WHERE retrieval_id::text=j.payload->'capability_route'->>'input_retrieval_id'
-          ORDER BY created_at DESC LIMIT 1) r ON true
-        JOIN LATERAL (SELECT worker_run_id,deployment_id,error_class,metadata
-          FROM public.worker_runs WHERE job_id=j.job_id AND worker_key='hermes.cloudflare.extraction'
-          ORDER BY started_at DESC LIMIT 1) w ON true
-        WHERE j.job_type='contract_evidence_extract' AND j.status='dead_letter'
-          AND j.attempt_count=j.max_attempts AND j.attempt_count>0
-          AND j.payload->>'orchestration_authority'='hermes'
-          AND j.payload->>'execution_class'='PRODUCTION'
-          AND j.payload->>'research_work_identity'=j.dedupe_key
-          AND j.payload->'capability_route'->>'version'=%s
-          AND j.payload->'capability_route'->>'stage'='extraction'
-          AND j.payload->'capability_route'->>'input_retrieval_id'=r.retrieval_id::text
-          AND j.payload->'capability_route'->>'input_sha256'=r.content_hash
-          AND j.payload->'capability_route'->>'source_id'=r.source_id::text
-          AND parent.checkpoint->>'retrieval_id'=r.retrieval_id::text
-          AND parent.checkpoint->>'sha256'=r.content_hash
-          AND r.http_status=200 AND r.byte_length>0 AND r.retrieval_status='stored'
-          AND w.error_class='parser_failure'
-          AND coalesce(w.metadata->>'retryable','false')='false'
-          AND w.deployment_id IS NOT NULL AND w.deployment_id<>%s
-          AND n.execution_class='PRODUCTION'
-          AND n.state IN ('BLOCKED','AWAITING_RESULT')
-          AND (CASE WHEN j.payload->>'recovery_generation' ~ '^[0-9]+$'
-                    THEN (j.payload->>'recovery_generation')::integer ELSE 1 END) < %s
-          AND NOT EXISTS (SELECT 1 FROM public.jobs replacement
-            WHERE replacement.payload->>'supersedes_job_id'=j.job_id::text
-              AND replacement.payload->>'recovery_reason'='CHANGED_PARSER_IMPLEMENTATION')
-        FOR UPDATE OF j SKIP LOCKED""", (ROUTE_VERSION, config['deployment'], MAX_CHANGED_PARSER_GENERATIONS))
+    cursor.execute(EXHAUSTED_RECOVERY_QUERY, (ROUTE_VERSION, config['deployment'], MAX_CHANGED_PARSER_GENERATIONS))
     created = 0
     for prior in cursor.fetchall():
         route = dict(prior['payload'].get('capability_route', {}))
