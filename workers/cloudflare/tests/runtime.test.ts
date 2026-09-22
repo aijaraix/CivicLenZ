@@ -313,6 +313,31 @@ test("Miami-Dade fixture maps county seats only and skips school/federal/state/c
   assert.equal(holders.length, 19);
 });
 
+test("Miami-Dade PDF rows are parsed from source-defined county layout without a fixed roster count", () => {
+  const text = [
+    "Elected Officials Information",
+    "As of September 22, 2026",
+    "FEDERAL",
+    "President, United States Unrelated Example 4 years 2028 01/20/2029 Contact",
+    "MIAMI-DADE COUNTY",
+    "Clerk of the Circuit Court and Comptroller First Example 4 years 2028 01/02/2029 Contact",
+    "Mayor Second Example 4 years 2028 11/21/2028 Contact",
+    "Board of County Commissioners District 01: Third Example Appointed 2026 ------------ Contact",
+    "School Board Members District 01: Out Of Scope Example 4 years 2028 11/21/2028 Contact",
+  ].join("\n");
+  const records = parseMiamiDadeDirectory(text);
+  assert.equal(records.length, 3);
+  assert.equal(records[0]?.officeTitle, "Miami-Dade County Mayor");
+  assert.equal(records[0]?.displayName, "Second Example");
+  assert.equal(records.some((item) => item.displayName === "First Example"), true);
+  const commissioner = records.find((item) => item.officeKind === "commission");
+  assert.equal(commissioner?.districtNumber, "1");
+  assert.equal(commissioner?.electedOrAppointed, "appointed");
+  assert.equal(commissioner?.yearOnBallotText, "2026");
+  assert.equal(commissioner?.serviceEndDateText, undefined);
+  assert.equal(commissioner?.rawRowText.includes("Third Example"), true);
+});
+
 test("collector fetch stores R2 object, raw retrieval, and unreviewed claims; HTTP 200 is not VERIFIED", async () => {
   const store = createMemoryStore();
   await store.scheduleJob({
