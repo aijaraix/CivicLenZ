@@ -259,4 +259,15 @@ class DispatcherTests(unittest.TestCase):
         self.assertIn('AND %s)',update_sql)
         self.assertFalse(any("SET status='queued'" in sql for sql,args in cursor.calls))
 
+    def test_subject_factory_uses_canonical_discovered_seat_baseline(self):
+        source = (Path(__file__).resolve().parents[3] /
+                  'services/hermes-prime/authoritative_roster_discovery.py').read_text()
+        migration = (Path(__file__).resolve().parents[3] /
+                     'supabase/migrations/20260922190000_authoritative_subject_factory_canonical_seat_baseline.sql').read_text()
+        self.assertIn("'discovered',false", source)
+        self.assertNotIn("'discovered_unreviewed'", source)
+        self.assertIn("baseline_status = 'discovered'", migration)
+        self.assertIn("research_contract_key = 'AUTHORITATIVE_ROSTER_DISCOVERY'", migration)
+        self.assertIn("monitoring_active = false", migration)
+
 if __name__=='__main__':unittest.main()
