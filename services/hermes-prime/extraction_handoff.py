@@ -3,11 +3,26 @@ import hashlib
 import json
 from capability_router import ROUTE_VERSION
 
+MAX_CHANGED_PARSER_GENERATIONS = 3
+
 
 def child_identity(parent_work, retrieval_id, stage):
     value = {'parent_research_work_identity': parent_work, 'retrieval_id': str(retrieval_id),
              'scope': 'evidence', 'stage': stage, 'version': 1}
     return 'work:v1:' + hashlib.sha256(json.dumps(value, sort_keys=True, separators=(',', ':')).encode()).hexdigest()
+
+
+def recovery_identity(parent_work, retrieval_id, exhausted_job_id, deployment):
+    """Create one bounded ResearchWork generation for a changed implementation.
+
+    This is deliberately distinct from a retry: the exhausted job and every
+    attempt remain terminal history, while the new work retains the same
+    parent scope and immutable retrieval lineage.
+    """
+    value = {'parent_research_work_identity': parent_work, 'retrieval_id': str(retrieval_id),
+             'supersedes_job_id': str(exhausted_job_id), 'deployment': deployment,
+             'scope': 'evidence', 'stage': 'extraction_recovery', 'version': 1}
+    return 'work:v2:' + hashlib.sha256(json.dumps(value, sort_keys=True, separators=(',', ':')).encode()).hexdigest()
 
 
 def plan_extraction(cursor, config):
@@ -49,6 +64,96 @@ def plan_extraction(cursor, config):
         if child:
             cursor.execute("INSERT INTO hermes_ops.job_dependencies(job_id,prerequisite_job_id,reason) VALUES(%s,%s,'Canonical evidence stage requires successful parent')",
                            (child['job_id'],parent['job_id']))
+
+
+def plan_exhausted_extraction_recovery(cursor, config):
+    """Regenerate one extraction ResearchWork after a changed parser deploy.
+
+    The historical job is never requeued or edited. A replacement is allowed
+    only for an exhausted, non-retryable parser failure with the same
+    successful parent and verified immutable retrieval/hash, and only once per
+    prior job/deployment pair.
+    """
+    if not config['deployment'] or not config['ready']:
+        return 0
+    cursor.execute("""SELECT j.*,parent.dedupe_key AS parent_work,r.retrieval_id,r.content_hash,
+          w.worker_run_id,w.deployment_id AS failed_deployment,w.error_class,w.metadata AS worker_metadata
+        FROM public.jobs j
+        JOIN hermes_ops.research_needs n ON n.need_id=j.research_need_id
+        JOIN public.jobs parent ON parent.job_id::text=j.payload->>'parent_job_id'
+          AND parent.status='succeeded' AND parent.research_need_id=j.research_need_id
+        JOIN LATERAL (SELECT retrieval_id,content_hash,http_status,byte_length,retrieval_status,source_id
+          FROM public.raw_retrievals
+          WHERE retrieval_id::text=j.payload->'capability_route'->>'input_retrieval_id'
+          ORDER BY created_at DESC LIMIT 1) r ON true
+        JOIN LATERAL (SELECT worker_run_id,deployment_id,error_class,metadata
+          FROM public.worker_runs WHERE job_id=j.job_id AND worker_key='hermes.cloudflare.extraction'
+          ORDER BY started_at DESC LIMIT 1) w ON true
+        WHERE j.job_type='contract_evidence_extract' AND j.status='dead_letter'
+          AND j.attempt_count=j.max_attempts AND j.attempt_count>0
+          AND j.payload->>'orchestration_authority'='hermes'
+          AND j.payload->>'execution_class'='PRODUCTION'
+          AND j.payload->>'research_work_identity'=j.dedupe_key
+          AND j.payload->'capability_route'->>'version'=%s
+          AND j.payload->'capability_route'->>'stage'='extraction'
+          AND j.payload->'capability_route'->>'input_retrieval_id'=r.retrieval_id::text
+          AND j.payload->'capability_route'->>'input_sha256'=r.content_hash
+          AND j.payload->'capability_route'->>'source_id'=r.source_id::text
+          AND parent.checkpoint->>'retrieval_id'=r.retrieval_id::text
+          AND parent.checkpoint->>'sha256'=r.content_hash
+          AND r.http_status=200 AND r.byte_length>0 AND r.retrieval_status='stored'
+          AND w.error_class='parser_failure'
+          AND coalesce(w.metadata->>'retryable','false')='false'
+          AND w.deployment_id IS NOT NULL AND w.deployment_id<>%s
+          AND n.execution_class='PRODUCTION'
+          AND n.state IN ('BLOCKED','AWAITING_RESULT')
+          AND (CASE WHEN j.payload->>'recovery_generation' ~ '^[0-9]+$'
+                    THEN (j.payload->>'recovery_generation')::integer ELSE 1 END) < %s
+          AND NOT EXISTS (SELECT 1 FROM public.jobs replacement
+            WHERE replacement.payload->>'supersedes_job_id'=j.job_id::text
+              AND replacement.payload->>'recovery_reason'='CHANGED_PARSER_IMPLEMENTATION')
+        FOR UPDATE OF j SKIP LOCKED""", (ROUTE_VERSION, config['deployment'], MAX_CHANGED_PARSER_GENERATIONS))
+    created = 0
+    for prior in cursor.fetchall():
+        route = dict(prior['payload'].get('capability_route', {}))
+        route['deployment_id'] = config['deployment']
+        work = recovery_identity(prior['dedupe_key'], prior['retrieval_id'], prior['job_id'], config['deployment'])
+        payload = {**prior['payload'],
+                   'research_work_identity': work,
+                   'parent_research_work_identity': prior['payload'].get('parent_research_work_identity', prior['parent_work']),
+                   'capability_route': route,
+                   'routing_decision': {'version': ROUTE_VERSION, 'state': 'OPEN',
+                                        'reason': 'ROUTE_RESOLVED: changed parser implementation generation',
+                                        'route': route},
+                   'supersedes_job_id': str(prior['job_id']),
+                   'supersedes_research_work_identity': prior['dedupe_key'],
+                   'recovery_generation': int(prior['payload'].get('recovery_generation', 1)) + 1,
+                   'recovery_reason': 'CHANGED_PARSER_IMPLEMENTATION',
+                   'recovery_deployment': config['deployment'],
+                   'input_retrieval_id': str(prior['retrieval_id']),
+                   'input_sha256': prior['content_hash']}
+        payload.pop('dispatch_blocker', None)
+        cursor.execute("""INSERT INTO public.jobs
+            (job_type,target_type,target_id,seat_id,priority,dedupe_key,payload,research_need_id,max_attempts)
+            VALUES('contract_evidence_extract',%s,%s,%s,%s,%s,%s::jsonb,%s,2)
+            ON CONFLICT(dedupe_key) DO NOTHING RETURNING job_id""",
+            (prior['target_type'], prior['target_id'], prior['seat_id'], prior['priority'], work,
+             json.dumps(payload), prior['research_need_id']))
+        replacement = cursor.fetchone()
+        if not replacement:
+            continue
+        cursor.execute("""INSERT INTO hermes_ops.job_dependencies(job_id,prerequisite_job_id,reason)
+            VALUES(%s,%s,'Changed parser generation retains successful retrieval parent')""",
+            (replacement['job_id'], prior['payload']['parent_job_id']))
+        cursor.execute("""UPDATE hermes_ops.research_needs SET state='AWAITING_RESULT',
+            reason='CANONICAL_RECOVERY_SCHEDULED: changed parser ResearchWork generation',
+            basis=coalesce(basis,'{}'::jsonb)||%s::jsonb,evaluated_at=clock_timestamp()
+            WHERE need_id=%s AND state IN ('BLOCKED','AWAITING_RESULT')""",
+            (json.dumps({'recovery_generation': int(prior['payload'].get('recovery_generation', 1)) + 1, 'supersedes_job_id': str(prior['job_id']),
+                         'input_retrieval_id': str(prior['retrieval_id']), 'input_sha256': prior['content_hash'],
+                         'deployment': config['deployment']}), prior['research_need_id']))
+        created += 1
+    return created
 
 
 def plan_validation_handoff(cursor, job, result):
