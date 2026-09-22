@@ -63,7 +63,7 @@ class DispatcherTests(unittest.TestCase):
         def connect():yield Connection(cursor)
         credential=types.SimpleNamespace(read_text=lambda:'fixture-not-a-credential')
         with patch.object(d,'connect_database',connect),patch.object(d,'settings',return_value={'enabled':True,'ready':True,'deployment':'old','budget':5,'credential':credential}), \
-             patch.object(d,'route_pending',return_value=0),patch.object(d,'recover_and_collect'),patch.object(d,'recover_immutable_raw_conflicts',return_value=0), \
+             patch.object(d,'route_pending',return_value=0),patch.object(d,'recover_and_collect'),patch.object(d,'collect_late_successes',return_value=0),patch.object(d,'recover_immutable_raw_conflicts',return_value=0), \
              patch.object(d.producer_receipt_validation,'collect'),patch.object(d.producer_receipt_validation,'candidate',return_value=None), \
              patch.object(d.validation_receipt,'collect'),patch.object(d.validation_followup,'collect'), \
              patch.object(d.governor_context,'collect'),patch.object(d.governor_context,'plan'),patch.object(d.governor_context,'candidate',return_value=None), \
@@ -87,7 +87,7 @@ class DispatcherTests(unittest.TestCase):
         @contextlib.contextmanager
         def connect():yield Connection(cursor)
         with patch.object(d,'connect_database',connect),patch.object(d,'settings',return_value={'enabled':True,'ready':True,'deployment':'release'}), \
-             patch.object(d,'route_pending',return_value=0),patch.object(d,'recover_and_collect'),patch.object(d,'recover_immutable_raw_conflicts',return_value=0), \
+             patch.object(d,'route_pending',return_value=0),patch.object(d,'recover_and_collect'),patch.object(d,'collect_late_successes',return_value=0),patch.object(d,'recover_immutable_raw_conflicts',return_value=0), \
              patch.object(d.producer_receipt_validation,'collect'),patch.object(d.producer_receipt_validation,'candidate') as producer_candidate, \
              patch.object(d.validation_receipt,'collect'),patch.object(d.validation_followup,'collect'), \
              patch.object(d.governor_context,'collect'),patch.object(d.governor_context,'plan'),patch.object(d.governor_context,'candidate',return_value=None), \
@@ -106,7 +106,7 @@ class DispatcherTests(unittest.TestCase):
         def connect():yield Connection(cursor)
         with patch.object(d,'connect_database',connect), \
              patch.object(d,'settings',return_value={'enabled':False,'ready':False,'deployment':None,'budget':0}), \
-             patch.object(d,'route_pending',return_value=0),patch.object(d,'recover_and_collect'),patch.object(d,'recover_immutable_raw_conflicts',return_value=0), \
+             patch.object(d,'route_pending',return_value=0),patch.object(d,'recover_and_collect'),patch.object(d,'collect_late_successes',return_value=0),patch.object(d,'recover_immutable_raw_conflicts',return_value=0), \
              patch.object(d.producer_receipt_validation,'collect'), \
              patch.object(d.producer_receipt_validation,'candidate',return_value={'job_id':'job'}), \
              patch.object(d.producer_receipt_validation,'execute',return_value={'state':'LOCAL_VALIDATION_RECORDED_AWAITING_COLLECTION','job_id':'job'}) as execute, \
@@ -180,7 +180,6 @@ class DispatcherTests(unittest.TestCase):
         self.assertIn("content_hash",sql)
         self.assertIn("input_retrieval_id",sql)
         self.assertNotIn('INSERT INTO public.jobs',sql)
-\n
 
     def test_late_success_handoff_preserves_terminal_history_and_is_idempotent(self):
         d=self.load()
