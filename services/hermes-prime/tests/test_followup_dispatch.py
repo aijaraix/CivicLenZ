@@ -174,7 +174,7 @@ class DispatcherTests(unittest.TestCase):
         self.assertEqual(checkpoint['recovery'],'CHANGED_PARSER_DEPLOYMENT_REFRESH')
         self.assertEqual(checkpoint['input_retrieval_id'],'retrieval')
         self.assertEqual(checkpoint['input_sha256'],digest)
-        self.assertEqual(updates[0][1][-3:],('retrieval',digest))
+        self.assertEqual(updates[0][1][-2:],('retrieval',digest))
         sql='\n'.join(query for query,args in cursor.calls)
         self.assertIn("w.error_class='parser_failure'",sql)
         self.assertIn("content_hash",sql)
