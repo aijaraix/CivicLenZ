@@ -21,6 +21,19 @@ async function inflate(bytes: Uint8Array): Promise<Uint8Array> {
   return new Uint8Array(await new Response(stream).arrayBuffer());
 }
 
+function removeStreamDelimiterEol(bytes: Uint8Array): Uint8Array {
+  // PDF stream data is followed by one delimiter EOL before endstream. The
+  // delimiter is framing, not part of the Flate payload. Preserve any EOL
+  // that belongs to the compressed bytes by removing only the final delimiter.
+  if (bytes.length >= 2 && bytes[bytes.length - 2] === 0x0d && bytes[bytes.length - 1] === 0x0a) {
+    return bytes.slice(0, -2);
+  }
+  if (bytes.length >= 1 && (bytes[bytes.length - 1] === 0x0a || bytes[bytes.length - 1] === 0x0d)) {
+    return bytes.slice(0, -1);
+  }
+  return bytes;
+}
+
 function decodePdfString(raw: string): string {
   return raw
     .replace(/\\n/g, "\n")
@@ -69,7 +82,7 @@ export async function extractPdfText(bytes: Uint8Array): Promise<string> {
     if (end === -1) continue;
     const dictStart = ascii.lastIndexOf("<<", startToken);
     const dict = dictStart >= 0 ? ascii.slice(dictStart, startToken) : "";
-    const raw = bytes.slice(dataStart, end);
+    const raw = removeStreamDelimiterEol(bytes.slice(dataStart, end));
     let payload: Uint8Array = raw;
     if (/\/Filter\s*\/FlateDecode/.test(dict) || /\/Filter\s*\[(?:[^\]]*\/FlateDecode[^\]]*)\]/.test(dict)) {
       try {
