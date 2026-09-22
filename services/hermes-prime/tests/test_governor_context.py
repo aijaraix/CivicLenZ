@@ -48,7 +48,7 @@ class GovernorContextTests(unittest.TestCase):
   @contextlib.contextmanager
   def connect():yield Connection(c)
   with patch.object(d,'connect_database',connect),patch.object(d,'settings',return_value={'enabled':True,'ready':True,'deployment':'old','budget':5,'credential':types.SimpleNamespace(read_text=lambda:'fixture')}), \
-       patch.object(d,'route_pending'),patch.object(d,'recover_and_collect'), \
+       patch.object(d,'route_pending'),patch.object(d,'recover_and_collect'),patch.object(d,'collect_late_successes'),patch.object(d,'recover_immutable_raw_conflicts'), \
        patch.object(d.producer_receipt_validation,'collect'),patch.object(d.producer_receipt_validation,'candidate',return_value=None), \
        patch.object(d.validation_receipt,'collect'),patch.object(d.validation_followup,'collect'),patch.object(d.validation_followup,'plan'),patch.object(d.governor_context,'collect'), \
        patch.object(d.governor_context,'plan'),patch.object(d.governor_context,'candidate',return_value={'job_id':'job'}), \

@@ -101,7 +101,7 @@ def recover_and_collect(cursor):
             AND worker_key=%s AND metadata->>'attempt_token'=%s
             ORDER BY started_at DESC LIMIT 1""", (job['job_id'], 'hermes.cloudflare.extraction' if job['job_type']=='contract_evidence_extract' else 'hermes.cloudflare.evidence', job['leased_by']))
         run = cursor.fetchone()
-        if run and run['status'] == 'succeeded' and not job['expired']:
+        if run and run['status'] == 'succeeded':
             result = run['metadata']
             extracting = job['job_type']=='contract_evidence_extract'
             # A quarantine run may safely reference a prior immutable raw
@@ -139,8 +139,10 @@ def recover_and_collect(cursor):
             cursor.execute("""UPDATE public.jobs SET status='succeeded',completed_at=clock_timestamp(),
                 checkpoint=coalesce(checkpoint,'{}'::jsonb)||%s::jsonb,
                 leased_by=NULL,lease_expires_at=NULL,error_class=NULL,error_message=NULL WHERE job_id=%s
-                AND leased_by=%s AND lease_expires_at>clock_timestamp() RETURNING job_id""",
-                (json.dumps({'worker_run_id':str(run['worker_run_id']), **result}),job['job_id'],job['leased_by']))
+                AND leased_by=%s
+                AND (lease_expires_at>clock_timestamp() OR (lease_expires_at<=clock_timestamp() AND %s))
+                RETURNING job_id""",
+                (json.dumps({'worker_run_id':str(run['worker_run_id']), **result}),job['job_id'],job['leased_by'],job['expired']))
             if cursor.fetchone():
                 if roster_extracting:
                     summary = authoritative_roster_discovery.plan_downstream(cursor, job, result)
@@ -170,6 +172,68 @@ def recover_and_collect(cursor):
             cursor.execute("""UPDATE hermes_ops.research_needs SET state=%s,reason=%s,
                 evaluated_at=clock_timestamp() WHERE need_id=%s""",
                 ('BLOCKED' if dead else 'OPEN','TERMINAL_WORKER_FAILURE_OR_ATTEMPTS_EXHAUSTED' if dead else 'CANONICAL_RETRY_SCHEDULED',job['research_need_id']))
+
+
+def collect_late_successes(cursor):
+    """Acknowledge durable roster extraction after a lease sweep.
+
+    A successful worker_run is authoritative evidence that the worker completed
+    its leased extraction. If HERMES observed the success only after the lease
+    expired, the ordinary leased-job collector cannot see it anymore. This
+    bounded path preserves the terminal job and attempt history while allowing
+    the already-persisted unresolved roster units to enter the same canonical
+    downstream planner exactly once.
+    """
+    cursor.execute("""SELECT j.*,w.worker_run_id,w.metadata AS worker_metadata
+      FROM public.jobs j
+      JOIN LATERAL (SELECT worker_run_id,status,metadata
+        FROM public.worker_runs
+        WHERE job_id=j.job_id AND worker_key='hermes.cloudflare.extraction'
+        ORDER BY started_at DESC LIMIT 1) w ON true
+      WHERE j.status='dead_letter'
+        AND j.job_type='contract_evidence_extract'
+        AND j.attempt_count=j.max_attempts AND j.attempt_count>0
+        AND j.error_class='lease_expired'
+        AND j.payload->>'orchestration_authority'='hermes'
+        AND j.payload->>'execution_class'='PRODUCTION'
+        AND j.payload->'capability_route'->>'version'=%s
+        AND j.payload->'capability_route'->>'stage'='extraction'
+        AND j.payload->'capability_route'->>'capability'='authoritative_roster_extraction'
+        AND j.payload->'capability_route'->>'input_retrieval_id'=w.metadata->>'retrieval_id'
+        AND j.payload->'capability_route'->>'input_sha256'=w.metadata->>'sha256'
+        AND w.status='succeeded'
+        AND w.worker_run_id::text=w.metadata->>'extraction_run_id'
+        AND w.metadata->>'roster_units_extracted' ~ '^[1-9][0-9]*$'
+        AND w.metadata->>'unresolved_attribution'='true'
+        AND w.metadata->>'publication_eligible'='false'
+        AND NOT (coalesce(j.checkpoint,'{}'::jsonb) ? 'authoritative_roster_late_success_handoff')
+        AND EXISTS (SELECT 1 FROM public.unresolved_roster_units u
+          WHERE u.extraction_worker_run_id=w.worker_run_id
+            AND u.retrieval_id::text=w.metadata->>'retrieval_id'
+            AND u.content_hash=w.metadata->>'sha256'
+            AND u.publication_eligible=false)
+      FOR UPDATE OF j SKIP LOCKED""", (ROUTE_VERSION,))
+    handed_off = 0
+    for item in cursor.fetchall():
+        result = dict(item['worker_metadata'])
+        summary = authoritative_roster_discovery.plan_downstream(cursor, item, result)
+        checkpoint = {
+            'authoritative_roster_late_success_handoff': {
+                'worker_run_id': str(item['worker_run_id']),
+                'reason': 'LEASE_EXPIRED_AFTER_DURABLE_SUCCESS',
+                'planner_summary': summary,
+                'attempt_count_preserved': item['attempt_count'],
+                'job_state_preserved': 'dead_letter',
+            }
+        }
+        cursor.execute("""UPDATE public.jobs SET checkpoint=coalesce(checkpoint,'{}'::jsonb)||%s::jsonb
+            WHERE job_id=%s AND status='dead_letter' AND attempt_count=max_attempts""",
+            (json.dumps(checkpoint), item['job_id']))
+        cursor.execute("""UPDATE hermes_ops.research_needs SET state='AWAITING_RESULT',
+            reason='ROSTER_EXTRACTED_UNRESOLVED: identity research work pending',
+            evaluated_at=clock_timestamp() WHERE need_id=%s""", (item['research_need_id'],))
+        handed_off += 1
+    return handed_off
 
 
 def recover_immutable_raw_conflicts(cursor, config):

@@ -63,7 +63,7 @@ class DispatcherTests(unittest.TestCase):
         def connect():yield Connection(cursor)
         credential=types.SimpleNamespace(read_text=lambda:'fixture-not-a-credential')
         with patch.object(d,'connect_database',connect),patch.object(d,'settings',return_value={'enabled':True,'ready':True,'deployment':'old','budget':5,'credential':credential}), \
-             patch.object(d,'route_pending',return_value=0),patch.object(d,'recover_and_collect'),patch.object(d,'recover_immutable_raw_conflicts',return_value=0), \
+             patch.object(d,'route_pending',return_value=0),patch.object(d,'recover_and_collect'),patch.object(d,'collect_late_successes',return_value=0),patch.object(d,'recover_immutable_raw_conflicts',return_value=0), \
              patch.object(d.producer_receipt_validation,'collect'),patch.object(d.producer_receipt_validation,'candidate',return_value=None), \
              patch.object(d.validation_receipt,'collect'),patch.object(d.validation_followup,'collect'), \
              patch.object(d.governor_context,'collect'),patch.object(d.governor_context,'plan'),patch.object(d.governor_context,'candidate',return_value=None), \
@@ -87,7 +87,7 @@ class DispatcherTests(unittest.TestCase):
         @contextlib.contextmanager
         def connect():yield Connection(cursor)
         with patch.object(d,'connect_database',connect),patch.object(d,'settings',return_value={'enabled':True,'ready':True,'deployment':'release'}), \
-             patch.object(d,'route_pending',return_value=0),patch.object(d,'recover_and_collect'),patch.object(d,'recover_immutable_raw_conflicts',return_value=0), \
+             patch.object(d,'route_pending',return_value=0),patch.object(d,'recover_and_collect'),patch.object(d,'collect_late_successes',return_value=0),patch.object(d,'recover_immutable_raw_conflicts',return_value=0), \
              patch.object(d.producer_receipt_validation,'collect'),patch.object(d.producer_receipt_validation,'candidate') as producer_candidate, \
              patch.object(d.validation_receipt,'collect'),patch.object(d.validation_followup,'collect'), \
              patch.object(d.governor_context,'collect'),patch.object(d.governor_context,'plan'),patch.object(d.governor_context,'candidate',return_value=None), \
@@ -106,7 +106,7 @@ class DispatcherTests(unittest.TestCase):
         def connect():yield Connection(cursor)
         with patch.object(d,'connect_database',connect), \
              patch.object(d,'settings',return_value={'enabled':False,'ready':False,'deployment':None,'budget':0}), \
-             patch.object(d,'route_pending',return_value=0),patch.object(d,'recover_and_collect'),patch.object(d,'recover_immutable_raw_conflicts',return_value=0), \
+             patch.object(d,'route_pending',return_value=0),patch.object(d,'recover_and_collect'),patch.object(d,'collect_late_successes',return_value=0),patch.object(d,'recover_immutable_raw_conflicts',return_value=0), \
              patch.object(d.producer_receipt_validation,'collect'), \
              patch.object(d.producer_receipt_validation,'candidate',return_value={'job_id':'job'}), \
              patch.object(d.producer_receipt_validation,'execute',return_value={'state':'LOCAL_VALIDATION_RECORDED_AWAITING_COLLECTION','job_id':'job'}) as execute, \
@@ -180,4 +180,83 @@ class DispatcherTests(unittest.TestCase):
         self.assertIn("content_hash",sql)
         self.assertIn("input_retrieval_id",sql)
         self.assertNotIn('INSERT INTO public.jobs',sql)
-\nif __name__=='__main__':unittest.main()
+
+    def test_late_success_handoff_preserves_terminal_history_and_is_idempotent(self):
+        d=self.load()
+        metadata={'extraction_run_id':'run','retrieval_id':'retrieval','sha256':'a'*64,
+                  'roster_units_extracted':19,'unresolved_attribution':True,
+                  'publication_eligible':False}
+        item={'job_id':'job','attempt_count':2,'max_attempts':2,'research_need_id':'need',
+              'worker_run_id':'run','worker_metadata':metadata}
+        class LateSuccessCursor:
+            def __init__(self):
+                self.calls=[]; self.queries=0
+            def execute(self,sql,args=()):
+                self.calls.append((sql,args))
+            def fetchall(self):
+                self.queries+=1
+                return [item] if self.queries == 1 else []
+            def fetchone(self):
+                return {'job_id':'job'}
+        cursor=LateSuccessCursor()
+        with patch.object(d.authoritative_roster_discovery,'plan_downstream',
+                          return_value={'state':'AUTHORITATIVE_ROSTER_DOWNSTREAM_PLANNED',
+                                        'created':19,'seats_created':19,'seats_reused':0}) as planner:
+            self.assertEqual(d.collect_late_successes(cursor),1)
+            self.assertEqual(d.collect_late_successes(cursor),0)
+        planner.assert_called_once_with(cursor,item,metadata)
+        sql='\\n'.join(query for query,args in cursor.calls)
+        self.assertIn("j.status='dead_letter'",sql)
+        self.assertIn("w.status='succeeded'",sql)
+        self.assertIn("attempt_count=j.max_attempts",sql)
+        self.assertIn('authoritative_roster_late_success_handoff',sql)
+        self.assertNotIn("SET status='queued'",sql)
+        self.assertNotIn('attempt_count=0',sql)
+
+    def test_expired_success_is_completed_without_requeue(self):
+        d=self.load()
+        token='t'*64
+        metadata={'attempt_token':token,'retrieval_id':'retrieval','sha256':'a'*64,
+                  'extraction_run_id':'run','roster_units_extracted':19,
+                  'unresolved_attribution':True,'publication_eligible':False}
+        job={'job_id':'job','job_type':'contract_evidence_extract','leased_by':token,
+             'expired':True,'research_need_id':'need','payload':{
+                 'parent_job_id':'parent','capability_route':{
+                     'capability':'authoritative_roster_extraction'}}}
+        run={'worker_run_id':'run','status':'succeeded','metadata':metadata}
+        class ExpiredSuccessCursor:
+            def __init__(self):
+                self.calls=[]; self.phase='jobs'; self.result=None
+            def execute(self,sql,args=()):
+                self.calls.append((sql,args))
+                if "SELECT * FROM public.worker_runs" in sql:
+                    self.result=run
+                elif "FROM public.raw_retrievals" in sql:
+                    self.result={'retrieval_id':'retrieval'}
+                elif "SELECT count(*) AS count" in sql:
+                    self.result={'count':19}
+                elif "UPDATE public.jobs SET status='succeeded'" in sql:
+                    self.result={'job_id':'job'}
+                else:
+                    self.result=None
+            def fetchall(self):
+                if self.phase == 'jobs':
+                    self.phase='done'
+                    return [job]
+                return []
+            def fetchone(self):
+                result=self.result
+                self.result=None
+                return result
+        cursor=ExpiredSuccessCursor()
+        with patch.object(d.authoritative_roster_discovery,'plan_downstream',
+                          return_value={'state':'AUTHORITATIVE_ROSTER_DOWNSTREAM_PLANNED',
+                                        'created':19}) as planner:
+            d.recover_and_collect(cursor)
+        planner.assert_called_once()
+        update_sql=[sql for sql,args in cursor.calls if "UPDATE public.jobs SET status='succeeded'" in sql][0]
+        self.assertIn('lease_expires_at<=clock_timestamp()',update_sql)
+        self.assertIn('AND %s)',update_sql)
+        self.assertFalse(any("SET status='queued'" in sql for sql,args in cursor.calls))
+
+if __name__=='__main__':unittest.main()
