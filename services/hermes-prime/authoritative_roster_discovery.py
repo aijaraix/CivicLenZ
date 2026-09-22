@@ -216,15 +216,19 @@ def plan_downstream(cursor, job: dict, result: dict) -> dict:
             (seat_key,seat_name,office_type,government_level,branch,jurisdiction_id,
              district_number,occupancy_status,research_contract_key,baseline_status,monitoring_active)
             VALUES(%s,%s,%s,%s,%s,%s,%s,'unknown',%s,'discovered_unreviewed',false)
-            ON CONFLICT(seat_key) DO UPDATE SET updated_at=clock_timestamp()
-            RETURNING seat_id,(xmax=0) AS inserted""",
+            ON CONFLICT(seat_key) DO NOTHING
+            RETURNING seat_id,true AS inserted""",
             (seat_key, unit["office_title"], unit["office_kind"],
              payload.get("government_level", "county"), payload.get("branch"),
              unit["jurisdiction_id"], unit["district_number"], CONTRACT_KEY))
         seat = cursor.fetchone()
-        if seat["inserted"]:
+        if seat:
             seats_created += 1
         else:
+            cursor.execute("SELECT seat_id,false AS inserted FROM public.seats WHERE seat_key=%s", (seat_key,))
+            seat = cursor.fetchone()
+            if not seat:
+                continue
             seats_reused += 1
         cursor.execute("""UPDATE public.unresolved_roster_units
             SET seat_id=%s,review_state='NEEDS_IDENTITY_RESEARCH',updated_at=clock_timestamp()
