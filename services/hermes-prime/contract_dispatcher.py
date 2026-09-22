@@ -217,6 +217,63 @@ def recover_immutable_raw_conflicts(cursor, config):
             reason='CANONICAL_RECOVERY_SCHEDULED: immutable raw reuse deployment refresh',
             evaluated_at=clock_timestamp() WHERE need_id=%s""", (item['research_need_id'],))
         recovered += 1
+    # A parser failure is recoverable only when the exact immutable input
+    # is still present and a different collector deployment is now configured.
+    # This preserves attempt 1/dead-letter history and never creates a job.
+    cursor.execute("""SELECT j.job_id,j.research_need_id,j.attempt_count,j.max_attempts,j.payload,
+          w.worker_run_id,w.deployment_id AS failed_deployment,w.error_class,
+          r.retrieval_id,r.content_hash
+        FROM public.jobs j
+        JOIN public.jobs parent ON parent.job_id::text=j.payload->>'parent_job_id'
+          AND parent.status='succeeded'
+          AND parent.research_need_id=j.research_need_id
+        JOIN LATERAL (SELECT worker_run_id,deployment_id,error_class,metadata FROM public.worker_runs
+          WHERE job_id=j.job_id AND worker_key='hermes.cloudflare.extraction'
+          ORDER BY started_at DESC LIMIT 1) w ON true
+        JOIN public.raw_retrievals r
+          ON r.retrieval_id::text=j.payload->'capability_route'->>'input_retrieval_id'
+        WHERE j.status='dead_letter' AND j.attempt_count<j.max_attempts
+          AND j.job_type='contract_evidence_extract'
+          AND j.payload->>'orchestration_authority'='hermes'
+          AND j.payload->>'execution_class'='PRODUCTION'
+          AND j.payload->'capability_route'->>'version'=%s
+          AND j.payload->'capability_route'->>'stage'='extraction'
+          AND j.payload->'capability_route'->>'input_retrieval_id'=r.retrieval_id::text
+          AND j.payload->'capability_route'->>'input_sha256'=r.content_hash
+          AND j.payload->'capability_route'->>'source_id'=r.source_id::text
+          AND parent.checkpoint->>'retrieval_id'=r.retrieval_id::text
+          AND parent.checkpoint->>'sha256'=r.content_hash
+          AND r.http_status=200 AND r.byte_length>0 AND r.retrieval_status='stored'
+          AND w.error_class='parser_failure'
+          AND w.metadata->>'retryable'='false'
+          AND w.deployment_id IS NOT NULL AND w.deployment_id<>%s
+        FOR UPDATE OF j SKIP LOCKED""",
+        (ROUTE_VERSION, config['deployment']))
+    for item in cursor.fetchall():
+        payload = dict(item['payload'])
+        route = dict(payload.get('capability_route', {}))
+        route['deployment_id'] = config['deployment']
+        payload['capability_route'] = route
+        checkpoint = {'recovery': 'CHANGED_PARSER_DEPLOYMENT_REFRESH',
+                      'worker_run_id': str(item['worker_run_id']),
+                      'failed_deployment': item['failed_deployment'],
+                      'worker_error_class': item['error_class'],
+                      'input_retrieval_id': item['retrieval_id'],
+                      'input_sha256': item['content_hash'],
+                      'attempt_count_preserved': item['attempt_count']}
+        cursor.execute("""UPDATE public.jobs SET status='queued',scheduled_for=clock_timestamp(),
+            payload=%s::jsonb,checkpoint=coalesce(checkpoint,'{}'::jsonb)||%s::jsonb,
+            leased_by=NULL,lease_expires_at=NULL,error_class=NULL,error_message=NULL
+            WHERE job_id=%s AND status='dead_letter' AND attempt_count=%s
+              AND payload->'capability_route'->>'input_retrieval_id'=%s
+              AND payload->'capability_route'->>'input_sha256'=%s""",
+            (json.dumps(payload), json.dumps(checkpoint), item['job_id'], item['attempt_count'],
+             item['retrieval_id'], item['content_hash']))
+        cursor.execute("""UPDATE hermes_ops.research_needs SET state='OPEN',
+            reason='CANONICAL_RECOVERY_SCHEDULED: changed parser deployment',
+            evaluated_at=clock_timestamp() WHERE need_id=%s
+              AND state='BLOCKED'""", (item['research_need_id'],))
+        recovered += 1
     return recovered
 
 

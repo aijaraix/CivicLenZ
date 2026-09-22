@@ -131,7 +131,8 @@ class DispatcherTests(unittest.TestCase):
         class RecoveryCursor:
             def __init__(self): self.calls=[]
             def execute(self,sql,args=()): self.calls.append((sql,args))
-            def fetchall(self): return [item]
+            def fetchall(self):
+                return [item] if "w.error_class='worker_store_http_409'" in self.calls[-1][0] else []
         cursor=RecoveryCursor()
         self.assertEqual(d.recover_immutable_raw_conflicts(cursor,{'deployment':'new'}),1)
         updates=[x for x in cursor.calls if x[0].startswith("UPDATE public.jobs SET status='queued'")]
@@ -145,4 +146,38 @@ class DispatcherTests(unittest.TestCase):
         self.assertNotIn('attempt_count=0',sql)
         self.assertNotIn('INSERT INTO public.jobs',sql)
 
-if __name__=='__main__':unittest.main()
+
+    def test_parser_failure_recovery_requires_new_deployment_and_same_immutable_input(self):
+        d=self.load()
+        digest='a'*64
+        item={'job_id':'same-parser-job','research_need_id':'need','attempt_count':1,'max_attempts':2,
+              'worker_run_id':'failed-parser-run','failed_deployment':'old','error_class':'parser_failure',
+              'retrieval_id':'retrieval','content_hash':digest,
+              'payload':{'orchestration_authority':'hermes','execution_class':'PRODUCTION',
+                         'parent_job_id':'parent-job',
+                         'capability_route':{'version':d.ROUTE_VERSION,'stage':'extraction',
+                                             'capability':'authoritative_roster_extraction',
+                                             'deployment_id':'old','source_id':'source',
+                                             'input_retrieval_id':'retrieval','input_sha256':digest}}}
+        class RecoveryCursor:
+            def __init__(self): self.calls=[]
+            def execute(self,sql,args=()): self.calls.append((sql,args))
+            def fetchall(self):
+                return [item] if "w.error_class='parser_failure'" in self.calls[-1][0] else []
+        cursor=RecoveryCursor()
+        self.assertEqual(d.recover_immutable_raw_conflicts(cursor,{'deployment':'new'}),1)
+        updates=[x for x in cursor.calls if x[0].startswith("UPDATE public.jobs SET status='queued'")]
+        self.assertEqual(len(updates),1)
+        payload=__import__('json').loads(updates[0][1][0])
+        checkpoint=__import__('json').loads(updates[0][1][1])
+        self.assertEqual(payload['capability_route']['deployment_id'],'new')
+        self.assertEqual(checkpoint['recovery'],'CHANGED_PARSER_DEPLOYMENT_REFRESH')
+        self.assertEqual(checkpoint['input_retrieval_id'],'retrieval')
+        self.assertEqual(checkpoint['input_sha256'],digest)
+        self.assertEqual(updates[0][1][-2:],('retrieval',digest))
+        sql='\n'.join(query for query,args in cursor.calls)
+        self.assertIn("w.error_class='parser_failure'",sql)
+        self.assertIn("content_hash",sql)
+        self.assertIn("input_retrieval_id",sql)
+        self.assertNotIn('INSERT INTO public.jobs',sql)
+\nif __name__=='__main__':unittest.main()
