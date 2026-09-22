@@ -207,7 +207,7 @@ class DispatcherTests(unittest.TestCase):
         planner.assert_called_once_with(cursor,item,metadata)
         sql='\\n'.join(query for query,args in cursor.calls)
         self.assertIn("j.status='dead_letter'",sql)
-        self.assertIn("w.status='succeeded'",sql)
+        self.assertIn("w2.status='succeeded'",sql)
         self.assertIn("attempt_count=j.max_attempts",sql)
         self.assertIn('authoritative_roster_late_success_handoff',sql)
         self.assertNotIn("SET status='queued'",sql)

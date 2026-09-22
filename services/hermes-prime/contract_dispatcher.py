@@ -186,10 +186,17 @@ def collect_late_successes(cursor):
     """
     cursor.execute("""SELECT j.*,w.worker_run_id,w.metadata AS worker_metadata
       FROM public.jobs j
-      JOIN LATERAL (SELECT worker_run_id,status,metadata
-        FROM public.worker_runs
-        WHERE job_id=j.job_id AND worker_key='hermes.cloudflare.extraction'
-        ORDER BY started_at DESC LIMIT 1) w ON true
+      JOIN LATERAL (SELECT w2.worker_run_id,w2.status,w2.metadata
+        FROM public.worker_runs w2
+        WHERE w2.job_id=j.job_id AND w2.worker_key='hermes.cloudflare.extraction'
+          AND w2.status='succeeded'
+          AND w2.metadata->>'roster_units_extracted' ~ '^[1-9][0-9]*$'
+          AND EXISTS (SELECT 1 FROM public.unresolved_roster_units u2
+            WHERE u2.extraction_worker_run_id=w2.worker_run_id
+              AND u2.retrieval_id::text=w2.metadata->>'retrieval_id'
+              AND u2.content_hash=w2.metadata->>'sha256'
+              AND u2.publication_eligible=false)
+        ORDER BY w2.started_at DESC LIMIT 1) w ON true
       WHERE j.status='dead_letter'
         AND j.job_type='contract_evidence_extract'
         AND j.attempt_count=j.max_attempts AND j.attempt_count>0
@@ -201,17 +208,11 @@ def collect_late_successes(cursor):
         AND j.payload->'capability_route'->>'capability'='authoritative_roster_extraction'
         AND j.payload->'capability_route'->>'input_retrieval_id'=w.metadata->>'retrieval_id'
         AND j.payload->'capability_route'->>'input_sha256'=w.metadata->>'sha256'
-        AND w.status='succeeded'
         AND w.worker_run_id::text=w.metadata->>'extraction_run_id'
         AND w.metadata->>'roster_units_extracted' ~ '^[1-9][0-9]*$'
         AND w.metadata->>'unresolved_attribution'='true'
         AND w.metadata->>'publication_eligible'='false'
         AND NOT (coalesce(j.checkpoint,'{}'::jsonb) ? 'authoritative_roster_late_success_handoff')
-        AND EXISTS (SELECT 1 FROM public.unresolved_roster_units u
-          WHERE u.extraction_worker_run_id=w.worker_run_id
-            AND u.retrieval_id::text=w.metadata->>'retrieval_id'
-            AND u.content_hash=w.metadata->>'sha256'
-            AND u.publication_eligible=false)
       FOR UPDATE OF j SKIP LOCKED""", (ROUTE_VERSION,))
     handed_off = 0
     for item in cursor.fetchall():
