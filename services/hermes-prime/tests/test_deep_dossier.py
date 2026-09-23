@@ -160,5 +160,24 @@ class DeepDossierPlannerTests(unittest.TestCase):
         self.assertEqual(len(selected), deep_dossier.MAX_SOURCE_FAMILY_PASSES)
 
 
+    def test_source_discovery_and_gis_scopes_decompose_into_bounded_units(self):
+        self.assertEqual(
+            deep_dossier.CHILDREN["source_discovery"],
+            ("source_inventory", "source_family_discovery", "independent_rediscovery"),
+        )
+        self.assertEqual(
+            deep_dossier.CHILDREN["gis_boundaries"],
+            ("boundary_geometry", "reconciliation_audit", "coverage_audit"),
+        )
+        self.assertEqual(
+            deep_dossier.capability_for_child("source_discovery", "source_family_discovery"),
+            "source_discovery",
+        )
+        self.assertEqual(
+            deep_dossier.capability_for_child("gis_boundaries", "boundary_geometry"),
+            "gis_boundaries",
+        )
+
+
 if __name__ == "__main__":
     unittest.main()
