@@ -83,6 +83,16 @@ CAPABILITY_BY_CHILD = {
     ("family_public_relationships", "public_relationship_leads"): "political_relationships",
     ("family_public_relationships", "source_pass"): "organization_relationships",
     ("family_public_relationships", "coverage_audit"): "completeness_audit",
+    ("family_public_relationships", "donor_relationship_leads"): "donor_relationships",
+    ("elections_gis", "calendar_window"): "election_calendar",
+    ("elections_gis", "election_universe"): "election_discovery",
+    ("elections_gis", "filing_records"): "filing_status",
+    ("elections_gis", "ballot_records"): "ballot_qualification",
+    ("elections_gis", "result_records"): "election_results",
+    ("elections_gis", "historical_cycles"): "election_history",
+    ("quality_monitoring", "currentness_check"): "freshness_monitor",
+    ("quality_monitoring", "contradiction_check"): "contradiction_resolution",
+    ("quality_monitoring", "coverage_audit"): "completeness_audit",
 }
 
 def capability_for_child(scope: str, child: str) -> str | None:
@@ -107,6 +117,8 @@ CHILDREN = {
     "business_interests": ("disclosure_business_interests", "source_pass", "coverage_audit"),
     "ethics_legal_public_records": ("official_records", "period_records", "coverage_audit"),
     "family_public_relationships": ("public_relationship_leads", "source_pass", "coverage_audit"),
+    "elections_gis": ("calendar_window", "election_universe", "result_records"),
+    "quality_monitoring": ("currentness_check", "contradiction_check", "coverage_audit"),
     "monitoring": ("currentness_baseline", "change_detection", "monitoring_followup"),
 }
 
