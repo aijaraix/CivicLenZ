@@ -87,7 +87,8 @@ export function planSourceFamilyPasses(
     input.sourceFamilies,
   );
   const passes = passCount(definition.datasetKind, input.discoveryPasses);
-  if (!sourceFamilies.length || !passes || !input.scopeKey || !input.unitKey) return [];
+  if (!sourceFamilies.length || !passes || !input.scopeKey || !input.unitKey
+      || !definition.units.includes(input.unitKey)) return [];
 
   const generation = input.generation ?? 1;
   if (!Number.isInteger(generation) || generation < 1) return [];
