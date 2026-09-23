@@ -101,5 +101,25 @@ class DeepDossierPlannerTests(unittest.TestCase):
             self.assertEqual(deep_dossier.capability_for_child(*child), capability)
 
 
+    def test_elections_and_quality_scopes_are_bounded_and_named_by_contract(self):
+        self.assertEqual(
+            deep_dossier.CHILDREN["elections_gis"],
+            ("calendar_window", "election_universe", "result_records"),
+        )
+        self.assertEqual(
+            deep_dossier.CHILDREN["quality_monitoring"],
+            ("currentness_check", "contradiction_check", "coverage_audit"),
+        )
+        expected = {
+            ("elections_gis", "calendar_window"): "election_calendar",
+            ("elections_gis", "election_universe"): "election_discovery",
+            ("elections_gis", "result_records"): "election_results",
+            ("quality_monitoring", "currentness_check"): "freshness_monitor",
+            ("quality_monitoring", "contradiction_check"): "contradiction_resolution",
+        }
+        for child, capability in expected.items():
+            self.assertEqual(deep_dossier.capability_for_child(*child), capability)
+
+
 if __name__ == "__main__":
     unittest.main()
