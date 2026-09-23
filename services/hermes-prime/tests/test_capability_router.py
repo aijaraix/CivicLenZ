@@ -116,4 +116,27 @@ class RoutingTests(unittest.TestCase):
   self.assertEqual(decision['state'],'BLOCKED')
   self.assertIn('CAPABILITY_NOT_IMPLEMENTED',decision['reason'])
 
+ def test_family_capability_route_remains_unresolved_and_non_publishable(self):
+  self.need['scope_key']=self.job['payload']['scope_key']='campaign_finance'
+  self.job['payload']['deep_dossier_unit_key']='transaction_classes'
+  self.job['payload']['capability_key']='contributions'
+  self.field['verification_requirement']='review'
+  self.field['source_priority']={'policy':'florida-governor-official'}
+  decision=self.route(deployment_id='release',transport_ready=True)
+  self.assertEqual(decision['state'],'OPEN')
+  self.assertEqual(decision['route']['capability'],'contributions')
+  self.assertEqual(decision['route']['capability_contract']['output'],'contribution_evidence')
+  self.assertEqual(decision['route']['identity_attribution'],'unresolved')
+  self.assertFalse(decision['route']['publication_eligible'])
+
+ def test_unknown_family_capability_cannot_bypass_allow_list(self):
+  self.need['scope_key']=self.job['payload']['scope_key']='campaign_finance'
+  self.job['payload']['deep_dossier_unit_key']='transaction_classes'
+  self.job['payload']['capability_key']='made_up_finance_capability'
+  self.field['verification_requirement']='review'
+  self.field['source_priority']={'policy':'florida-governor-official'}
+  decision=self.route(deployment_id='release',transport_ready=True)
+  self.assertEqual(decision['state'],'BLOCKED')
+  self.assertIn('CAPABILITY_NOT_IMPLEMENTED',decision['reason'])
+
 if __name__=='__main__':unittest.main()
