@@ -25,8 +25,47 @@ QUARANTINE_SCOPES = frozenset((
     "portrait", "contact", "identity", "biography", "education", "career",
     "political_history", "prior_offices", "election_history", "campaign_finance",
     "financial_disclosure", "executive_actions", "promises_statements",
-    "news_activity", "social", "jurisdiction", "seat",
+    "news_activity", "social", "jurisdiction", "seat", "monitoring",
+    "publication_gate",
 ))
+
+# Capability-specific evidence contracts. These routes still preserve only
+# immutable source evidence; the named capability is the bounded downstream
+# reconciliation obligation and is promoted to ACTIVE only by a real worker_run.
+# A missing mapping stays on the legacy quarantine route and cannot inflate
+# capability truth.
+CAPABILITY_CONTRACTS = {
+    "candidate_discovery": {"scopes": ("election_history",), "units": ("election_universe",), "output": "candidate_discovery_evidence"},
+    "candidate_status": {"scopes": ("election_history",), "units": ("cycle_records",), "output": "candidate_status_evidence"},
+    "change_detection": {"scopes": ("monitoring",), "units": ("change_detection",), "output": "change_detection_observation"},
+    "completeness_audit": {"scopes": ("*",), "units": ("coverage_audit",), "output": "bounded_coverage_audit_input"},
+    "current_officeholder": {"scopes": ("identity",), "units": ("official",), "output": "current_officeholder_evidence"},
+    "dataset_reconciliation": {"scopes": ("election_history", "campaign_finance", "financial_disclosure"), "units": ("reconciliation_audit",), "output": "dataset_reconciliation_input"},
+    "entity_resolution": {"scopes": ("identity",), "units": ("source_pass",), "output": "entity_resolution_evidence"},
+    "identity_resolution": {"scopes": ("identity",), "units": ("official_identity",), "output": "identity_resolution_evidence"},
+    "jurisdiction_discovery": {"scopes": ("jurisdiction",), "units": ("*",), "output": "jurisdiction_discovery_evidence"},
+    "portrait": {"scopes": ("portrait",), "units": ("official_portrait", "asset_provenance"), "output": "portrait_provenance_evidence"},
+    "publication_gate": {"scopes": ("publication_gate",), "units": ("*",), "output": "publication_gate_assessment"},
+    "seat_discovery": {"scopes": ("seat",), "units": ("*",), "output": "seat_discovery_evidence"},
+    "source_health": {"scopes": ("monitoring",), "units": ("currentness_baseline", "monitoring_followup"), "output": "source_health_observation"},
+}
+CAPABILITY_ROUTE_KEYS = tuple(CAPABILITY_CONTRACTS) + ("evidence_quarantine_source_discovery",)
+
+
+def capability_for_job(job):
+    payload = job.get("payload") or {}
+    explicit = payload.get("capability_key")
+    scope = payload.get("scope_key")
+    unit = payload.get("deep_dossier_unit_key")
+    if explicit in CAPABILITY_CONTRACTS:
+        contract = CAPABILITY_CONTRACTS[explicit]
+        if (scope in contract["scopes"] or "*" in contract["scopes"]) and (unit in contract["units"] or "*" in contract["units"]):
+            return explicit
+        return None
+    for key, contract in CAPABILITY_CONTRACTS.items():
+        if (scope in contract["scopes"] or "*" in contract["scopes"]) and (unit in contract["units"] or "*" in contract["units"]):
+            return key
+    return None
 
 
 def resolve(job, need, field, sources, deployment_id=None, transport_ready=False):
@@ -50,8 +89,12 @@ def resolve(job, need, field, sources, deployment_id=None, transport_ready=False
         and field.get("verification_requirement") == "official_source"
         and field.get("sensitivity_rule") == "publication_eligible_claims_only")
     quarantine_scope = scope in QUARANTINE_SCOPES
+    capability = capability_for_job(job)
+    capability_contract = CAPABILITY_CONTRACTS.get(capability) if capability else None
     if not evidence_scope and not quarantine_scope:
         return {"state": "BLOCKED", "reason": "CAPABILITY_NOT_IMPLEMENTED: contract scope requirements"}
+    if capability is None and payload.get("capability_key"):
+        return {"state": "BLOCKED", "reason": "CAPABILITY_NOT_IMPLEMENTED: capability contract mismatch"}
     policy = field.get("source_priority") or {}
     keys = policy.get("policy", "") if isinstance(policy, dict) else ""
     if not isinstance(keys, str):
@@ -74,10 +117,11 @@ def resolve(job, need, field, sources, deployment_id=None, transport_ready=False
         if retrieval.scheme != "https" or retrieval.hostname != url.hostname:
             continue
         route = {"version": ROUTE_VERSION,
-                 "capability": "authoritative_evidence_retrieval" if evidence_scope else "evidence_quarantine_source_discovery",
+                 "capability": "authoritative_evidence_retrieval" if evidence_scope else capability or "evidence_quarantine_source_discovery",
                  "stage": "evidence" if evidence_scope else "quarantine",
                  "pool": "cloudflare-deterministic-http", "worker": "civiclenz-collector",
                  "module": WORKER_MODULE, "deployment_id": deployment_id,
+                 "capability_contract": capability_contract or {"output": "immutable_raw_evidence_only", "publication_authority": False},
                  "source_id": str(source["source_id"]), "source_key": source["source_key"],
                  "source_url": source["source_url"],
                  "retrieval_url": retrieval_url,

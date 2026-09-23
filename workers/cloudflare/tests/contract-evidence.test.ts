@@ -7,7 +7,7 @@ function fixture() {
  const token='a'.repeat(64), jobId='00000000-0000-4000-8000-000000000001';
  const message={schemaVersion:'hermes.contract.v1',job_id:jobId,attempt_token:token,research_work_identity:'work:v1:test'};
  const job={job_id:jobId,research_need_id:'need',dedupe_key:'work:v1:test',job_type:'contract_scope_research',attempt_count:1,lease_expires_at:new Date(Date.now()+300000).toISOString(),payload:{orchestration_authority:'hermes',execution_class:'PRODUCTION',scope_key:'evidence',research_work_identity:'work:v1:test',capability_route:{version:'hermes-evidence-v1',worker:'civiclenz-collector',deployment_id:'release',source_key:'florida-governor-official',source_url:'https://www.flgov.com/',retrieval_url:'https://www.flgov.com/eog/',source_id:'source',max_bytes:1048576,timeout_seconds:15}}};
- const runs:any[]=[], results:any[]=[], existingRaw:any[]=[], evidenceObjects:any[]=[], capabilityUpdates:any[]=[], objects=new Map<string,Uint8Array>();let calls=0,validLease=true;
+ const runs:any[]=[], results:any[]=[], existingRaw:any[]=[], evidenceObjects:any[]=[], capabilityUpdates:any[]=[], capabilityUpdatePaths:string[]=[], objects=new Map<string,Uint8Array>();let calls=0,validLease=true;
  const database=async(path:string,method='GET',body?:any)=>{
   if(path.startsWith('jobs?'))return validLease?[job]:[];
   if(path.startsWith('worker_runs')){
@@ -19,12 +19,12 @@ function fixture() {
   if(path==='raw_retrievals'){results.push(body);return [body];}
   if(path.startsWith('evidence_objects?'))return evidenceObjects.filter((row)=>row.evidence_id===path.split('eq.')[1]);
   if(path==='evidence_objects'){evidenceObjects.push(body);return [body];}
-  if(path.startsWith('physical_capabilities?')){capabilityUpdates.push(body);return [body];}
+  if(path.startsWith('physical_capabilities?')){capabilityUpdatePaths.push(path);capabilityUpdates.push(body);return [body];}
   throw Error('unexpected_store_operation');
  };
  const bucket={put:async(k:string,v:Uint8Array)=>{objects.set(k,v);},get:async(k:string)=>objects.get(k)};
  const fetchImpl=async()=>{calls++;return new Response('unit fixture bytes',{status:200,headers:{'content-type':'text/html'}});};
- return {message,job,database,bucket,fetchImpl,runs,results,existingRaw,evidenceObjects,capabilityUpdates,objects,calls:()=>calls,invalidate:()=>{validLease=false;}};
+ return {message,job,database,bucket,fetchImpl,runs,results,existingRaw,evidenceObjects,capabilityUpdates,capabilityUpdatePaths,objects,calls:()=>calls,invalidate:()=>{validLease=false;}};
 }
 const invoke=(f:ReturnType<typeof fixture>)=>runContractEvidence({...f,deploymentId:'release'});
 test('real helper path in fixture persists raw bytes and independent run lineage only',async()=>{
@@ -85,4 +85,34 @@ test('arbitrary or downgraded retrieval endpoints never execute',async()=>{
 test('manual redirect response is rejected without fetching its target',async()=>{
  const f=fixture();let calls=0;f.fetchImpl=async()=>{calls++;return new Response(null,{status:302,headers:{location:'http://www.flgov.com/eog/'}});};
  await assert.rejects(invoke(f));assert.equal(calls,1);assert.equal(f.results.length,0);assert.equal(f.runs[0].status,'failed');
+});
+
+
+test('allow-listed capability contract records a real capability-specific handoff',async()=>{
+ const f=fixture();
+ Object.assign(f.job.payload,{scope_key:'identity',deep_dossier_unit_key:'official_identity'});
+ Object.assign(f.job.payload.capability_route,{
+   stage:'quarantine',capability:'identity_resolution',
+   capability_contract:{output:'identity_resolution_evidence'},
+   identity_attribution:'unresolved',publication_eligible:false
+ });
+ await invoke(f);
+ assert.equal(f.runs[0].status,'succeeded');
+ assert.equal(f.runs[0].metadata.capability,'identity_resolution');
+ assert.equal(f.runs[0].metadata.capability_result.output,'identity_resolution_evidence');
+ assert.equal(f.runs[0].metadata.capability_result.publication_authority,false);
+ assert.equal(f.capabilityUpdatePaths[0],'physical_capabilities?capability_key=eq.identity_resolution');
+ assert.equal(f.capabilityUpdates[0].implementation_state,'ACTIVE');
+});
+
+test('arbitrary capability contract is rejected before retrieval',async()=>{
+ const f=fixture();
+ Object.assign(f.job.payload,{scope_key:'identity',deep_dossier_unit_key:'official_identity'});
+ Object.assign(f.job.payload.capability_route,{
+   stage:'quarantine',capability:'not_a_capability',
+   identity_attribution:'unresolved',publication_eligible:false
+ });
+ await assert.rejects(invoke(f));
+ assert.equal(f.calls(),0);
+ assert.equal(f.runs.length,0);
 });

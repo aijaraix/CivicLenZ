@@ -21,6 +21,26 @@ MAX_CHILDREN_PER_SCOPE = 3
 # These are bounded research purposes, not claims about what a source contains.
 # The planner uses the contract's source policy and refuses a child when no
 # active source in that policy can perform the requested pass.
+CAPABILITY_BY_CHILD = {
+    ("identity", "official_identity"): "identity_resolution",
+    ("identity", "source_pass"): "entity_resolution",
+    ("identity", "official"): "current_officeholder",
+    ("jurisdiction", "*"): "jurisdiction_discovery",
+    ("seat", "*"): "seat_discovery",
+    ("portrait", "official_portrait"): "portrait",
+    ("portrait", "asset_provenance"): "portrait",
+    ("portrait", "coverage_audit"): "completeness_audit",
+    ("election_history", "election_universe"): "candidate_discovery",
+    ("election_history", "cycle_records"): "candidate_status",
+    ("election_history", "reconciliation_audit"): "dataset_reconciliation",
+    ("monitoring", "currentness_baseline"): "source_health",
+    ("monitoring", "change_detection"): "change_detection",
+    ("monitoring", "monitoring_followup"): "source_health",
+}
+
+def capability_for_child(scope: str, child: str) -> str | None:
+    return CAPABILITY_BY_CHILD.get((scope, child)) or CAPABILITY_BY_CHILD.get((scope, "*"))
+
 CHILDREN = {
     "identity": ("official_identity", "source_pass", "official"),
     "biography": ("official_profile", "chronology", "coverage_audit"),
@@ -130,6 +150,7 @@ def reconcile() -> dict:
                     source_key, source_state = _source_for_child(child, source_priority, sources)
                     source = sources.get(source_key) if source_key else None
                     blocked = source is None
+                    capability_key = capability_for_child(scope, child)
                     basis = {
                         "rule": "deep_dossier_child_graph_v1",
                         "graph_version": VERSION,
@@ -138,6 +159,7 @@ def reconcile() -> dict:
                         "contract_field_id": str(contract_field_id),
                         "source_selection": source_state,
                         "source_key": source_key,
+                        "capability_key": capability_key,
                         "truth_authority": False,
                         "identity_authority": False,
                         "verification_authority": False,
@@ -174,6 +196,8 @@ def reconcile() -> dict:
                         prior = cursor.fetchone()
                         prior_route = (prior[2] or {}).get("capability_route", {}) if prior else {}
                         prior_deployment = prior_route.get("deployment_id")
+                        prior_capability = prior_route.get("capability") or (prior[2] or {}).get("capability_key")
+                        capability_refresh_required = bool(capability_key and prior_capability != capability_key)
                         if prior and prior[1] == "succeeded" and prior_deployment and prior_deployment != current_deployment:
                             cursor.execute("""
                                 SELECT 1 FROM public.worker_runs wr
@@ -181,7 +205,8 @@ def reconcile() -> dict:
                                   AND wr.metadata->>'dossier_evidence_id' IS NOT NULL
                                 LIMIT 1
                             """, (prior[0],))
-                            if not cursor.fetchone():
+                            prior_has_capability_evidence = bool(cursor.fetchone())
+                            if capability_refresh_required or not prior_has_capability_evidence:
                                 generation = 2
                                 supersedes_job_id = str(prior[0])
                                 need_basis = dict(basis)
@@ -211,6 +236,7 @@ def reconcile() -> dict:
                         "deep_dossier_unit_key": child,
                         "deep_dossier_parent_scope": scope,
                         "source_key": source_key,
+                        "capability_key": capability_key,
                         "classification_ceiling": "extracted_unreviewed",
                         "identity_authority": False,
                         "verification_allowed": False,

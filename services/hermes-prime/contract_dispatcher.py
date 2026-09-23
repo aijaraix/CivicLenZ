@@ -25,6 +25,9 @@ import authoritative_roster_discovery
 # In particular, exhausted evidence-route history must never consume the
 # allowance for a new, independently bounded quarantine deployment.
 QUARANTINE_CAPABILITY = 'evidence_quarantine_source_discovery'
+# Every named capability has an explicit allow-list in capability_router.
+# The legacy quarantine key remains bounded separately for unmapped work.
+from capability_router import CAPABILITY_ROUTE_KEYS
 
 
 def settings():
@@ -353,10 +356,10 @@ def quarantine_canary_budget(cursor):
     cursor.execute("""SELECT coalesce(sum(attempt_count),0) AS attempts,
         count(*) FILTER (WHERE status='leased') AS active FROM public.jobs
         WHERE payload->'capability_route'->>'version'=%s
-        AND payload->'capability_route'->>'capability'=%s
+        AND payload->'capability_route'->>'capability' = ANY(%s)
         AND payload->>'orchestration_authority'='hermes'
         AND payload->>'execution_class'='PRODUCTION'""",
-        (ROUTE_VERSION, QUARANTINE_CAPABILITY))
+        (ROUTE_VERSION, list(CAPABILITY_ROUTE_KEYS)))
     return cursor.fetchone()
 
 
@@ -430,14 +433,14 @@ def tick(governor):
                             AND j.payload->>'research_work_identity'=j.dedupe_key
                             AND j.payload->'capability_route'->>'version'=%s
                             AND ((j.job_type='contract_scope_research'
-                                  AND j.payload->'capability_route'->>'capability'=%s)
+                                  AND j.payload->'capability_route'->>'capability' = ANY(%s))
                               OR (j.job_type='contract_evidence_extract'
                                   AND j.payload->'capability_route'->>'stage'='extraction'))
                             AND NOT (j.payload ? 'dispatch_blocker') AND j.attempt_count<j.max_attempts
                             AND (j.scheduled_for IS NULL OR j.scheduled_for<=clock_timestamp())
                             AND NOT EXISTS (SELECT 1 FROM hermes_ops.job_dependencies d JOIN public.jobs p
                                 ON p.job_id=d.prerequisite_job_id WHERE d.job_id=j.job_id AND p.status<>'succeeded')
-                            ORDER BY n.priority,j.created_at LIMIT 1""",(os.environ.get('HERMES_EXTRACT_EVIDENCE')=='true',ROUTE_VERSION,QUARANTINE_CAPABILITY))
+                            ORDER BY n.priority,j.created_at LIMIT 1""",(os.environ.get('HERMES_EXTRACT_EVIDENCE')=='true',ROUTE_VERSION,list(CAPABILITY_ROUTE_KEYS)))
                         candidate=cursor.fetchone()
             if candidate:
                 token=secrets.token_hex(32)
