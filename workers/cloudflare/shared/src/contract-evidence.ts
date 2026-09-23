@@ -12,6 +12,31 @@ type Row = Record<string, any>;
 type RequestRows = (path: string, method?: string, body?: Row) => Promise<Row[]>;
 const DEEP_DOSSIER_GRAPH_VERSION = "hermes-deep-dossier-graph-v1";
 
+const LEGACY_QUARANTINE_CAPABILITY = "evidence_quarantine_source_discovery";
+const CAPABILITY_CONTRACTS: Record<string, { scopes: string[]; units: string[]; output: string }> = {
+  candidate_discovery: { scopes: ["election_history"], units: ["election_universe"], output: "candidate_discovery_evidence" },
+  candidate_status: { scopes: ["election_history"], units: ["cycle_records"], output: "candidate_status_evidence" },
+  change_detection: { scopes: ["monitoring"], units: ["change_detection"], output: "change_detection_observation" },
+  completeness_audit: { scopes: ["*"], units: ["coverage_audit"], output: "bounded_coverage_audit_input" },
+  current_officeholder: { scopes: ["identity"], units: ["official"], output: "current_officeholder_evidence" },
+  dataset_reconciliation: { scopes: ["election_history", "campaign_finance", "financial_disclosure"], units: ["reconciliation_audit"], output: "dataset_reconciliation_input" },
+  entity_resolution: { scopes: ["identity"], units: ["source_pass"], output: "entity_resolution_evidence" },
+  identity_resolution: { scopes: ["identity"], units: ["official_identity"], output: "identity_resolution_evidence" },
+  jurisdiction_discovery: { scopes: ["jurisdiction"], units: ["*"], output: "jurisdiction_discovery_evidence" },
+  portrait: { scopes: ["portrait"], units: ["official_portrait", "asset_provenance"], output: "portrait_provenance_evidence" },
+  publication_gate: { scopes: ["publication_gate"], units: ["*"], output: "publication_gate_assessment" },
+  seat_discovery: { scopes: ["seat"], units: ["*"], output: "seat_discovery_evidence" },
+  source_health: { scopes: ["monitoring"], units: ["currentness_baseline", "monitoring_followup"], output: "source_health_observation" },
+};
+
+function capabilityContract(route: Row, scope: unknown, unit: unknown) {
+  const candidate = CAPABILITY_CONTRACTS[route.capability];
+  if (!candidate) return undefined;
+  if (!(candidate.scopes.includes("*") || candidate.scopes.includes(String(scope)))) return undefined;
+  if (!(candidate.units.includes("*") || candidate.units.includes(String(unit)))) return undefined;
+  return candidate;
+}
+
 export function contractDatabase(url: string, key: string): RequestRows {
   return async (path, method = "GET", body) => {
     const response = await fetch(`${url.replace(/\/$/, "")}/rest/v1/${path}`, {
@@ -44,9 +69,14 @@ export async function runContractEvidence(input: {
   const config = sourceAdapter(route.source_key);
   const quarantineScopes = new Set(["portrait", "contact", "identity", "biography", "education", "career",
     "political_history", "prior_offices", "election_history", "campaign_finance", "financial_disclosure",
-    "executive_actions", "promises_statements", "news_activity", "social", "jurisdiction", "seat"]);
+    "executive_actions", "promises_statements", "news_activity", "social", "jurisdiction", "seat",
+    "monitoring", "publication_gate"]);
+  const capability = capabilityContract(route, p.scope_key, p.deep_dossier_unit_key);
+  const legacyQuarantine = route.capability === LEGACY_QUARANTINE_CAPABILITY;
+  const capabilityQuarantine = route.stage === "quarantine" && capability !== undefined
+    && route.identity_attribution === "unresolved" && route.publication_eligible === false;
   const quarantine = route.stage === "quarantine" && quarantineScopes.has(p.scope_key)
-    && route.capability === "evidence_quarantine_source_discovery"
+    && (legacyQuarantine || capabilityQuarantine)
     && route.identity_attribution === "unresolved" && route.publication_eligible === false;
   const deepDossier = p.deep_dossier_graph_version === DEEP_DOSSIER_GRAPH_VERSION
     && typeof p.deep_dossier_unit_key === "string"
@@ -159,15 +189,26 @@ export async function runContractEvidence(input: {
       metadata: { ...lineage, retrieval_id: retrievalId, raw_object_uri: uri,
         sha256: digest, byte_length: document.bytes.byteLength, http_status: document.status,
         raw_retrieval_reused: rawRetrievalReused,
+        capability_contract: capability?.output ?? (legacyQuarantine ? "immutable_raw_evidence_only" : undefined),
+        capability_result: capability ? {
+          capability: route.capability,
+          output: capability.output,
+          source_evidence_persisted: true,
+          identity_attribution: "unresolved",
+          verification_authority: false,
+          publication_authority: false,
+          next_required_stage: "canonical_reconciliation_and_validation",
+        } : undefined,
         deep_dossier_graph_version: deepDossier ? DEEP_DOSSIER_GRAPH_VERSION : undefined,
         deep_dossier_unit_key: deepDossier ? p.deep_dossier_unit_key : undefined,
         dossier_evidence_id: dossierEvidenceId } });
-    if (deepDossier) {
+    if (deepDossier || capability) {
       // Capability truth is telemetry derived from this durable successful
       // run, not a deployment-time assertion.  Failure to update the
       // registry never rewrites the successful civic evidence lineage.
       try {
-        await input.database("physical_capabilities?capability_key=eq.deep_dossier_source_evidence", "PATCH", {
+        const capabilityKey = capability ? route.capability : "deep_dossier_source_evidence";
+        await input.database(`physical_capabilities?capability_key=eq.${capabilityKey}`, "PATCH", {
           implementation_state: "ACTIVE",
           worker_module: "workers/cloudflare/shared/src/contract-evidence.ts",
           runtime: "cloudflare",
