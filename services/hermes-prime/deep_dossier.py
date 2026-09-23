@@ -93,6 +93,16 @@ CAPABILITY_BY_CHILD = {
     ("quality_monitoring", "currentness_check"): "freshness_monitor",
     ("quality_monitoring", "contradiction_check"): "contradiction_resolution",
     ("quality_monitoring", "coverage_audit"): "completeness_audit",
+    ("gis_boundaries", "boundary_geometry"): "gis_boundaries",
+    ("gis_boundaries", "reconciliation_audit"): "dataset_reconciliation",
+    ("gis_boundaries", "coverage_audit"): "completeness_audit",
+    ("source_discovery", "source_inventory"): "source_discovery",
+    ("source_discovery", "source_family_discovery"): "source_discovery",
+    ("source_discovery", "archive_discovery"): "source_discovery",
+    ("source_discovery", "lead_normalization"): "source_discovery",
+    ("source_discovery", "independent_rediscovery"): "source_discovery",
+    ("source_discovery", "unresolved_lead_closure"): "source_discovery",
+    ("source_discovery", "coverage_audit"): "completeness_audit",
 }
 
 def capability_for_child(scope: str, child: str) -> str | None:
@@ -119,6 +129,8 @@ CHILDREN = {
     "family_public_relationships": ("public_relationship_leads", "source_pass", "coverage_audit"),
     "elections_gis": ("calendar_window", "election_universe", "result_records"),
     "quality_monitoring": ("currentness_check", "contradiction_check", "coverage_audit"),
+    "gis_boundaries": ("boundary_geometry", "reconciliation_audit", "coverage_audit"),
+    "source_discovery": ("source_inventory", "source_family_discovery", "independent_rediscovery"),
     "monitoring": ("currentness_baseline", "change_detection", "monitoring_followup"),
 }
 
