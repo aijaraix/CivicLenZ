@@ -121,5 +121,44 @@ class DeepDossierPlannerTests(unittest.TestCase):
             self.assertEqual(deep_dossier.capability_for_child(*child), capability)
 
 
+    def test_multiple_registered_source_families_get_distinct_lineage(self):
+        sources = {
+            "official-one": {"active": True},
+            "official-two": {"active": True},
+            "inactive": {"active": False},
+        }
+        selected = deep_dossier._sources_for_child(
+            "source_pass",
+            {"policy": "official-one,official-two,inactive"},
+            sources,
+        )
+        self.assertEqual(selected, ["official-one", "official-two"])
+        first = deep_dossier._identity(
+            "seat", "contract", "1", "news_activity", "source_pass",
+            source_family=selected[0],
+        )
+        second = deep_dossier._identity(
+            "seat", "contract", "1", "news_activity", "source_pass",
+            source_family=selected[1],
+        )
+        self.assertNotEqual(first, second)
+        self.assertEqual(
+            deep_dossier._identity("seat", "contract", "1", "news_activity", "source_pass"),
+            deep_dossier._identity("seat", "contract", "1", "news_activity", "source_pass"),
+        )
+
+    def test_source_family_passes_are_bounded(self):
+        sources = {
+            f"official-{index}": {"active": True}
+            for index in range(6)
+        }
+        selected = deep_dossier._sources_for_child(
+            "source_pass",
+            {"policy": ",".join(sources)},
+            sources,
+        )
+        self.assertEqual(len(selected), deep_dossier.MAX_SOURCE_FAMILY_PASSES)
+
+
 if __name__ == "__main__":
     unittest.main()

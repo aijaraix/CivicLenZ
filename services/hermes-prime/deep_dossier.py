@@ -124,7 +124,8 @@ CHILDREN = {
 
 
 def _identity(seat_id: str, contract_id: str, version: str, scope: str, child: str,
-              generation: int = 1) -> tuple[str, str]:
+              generation: int = 1, source_family: str | None = None,
+              discovery_pass: int = 1) -> tuple[str, str]:
     semantic = {
         "version": 1,
         "graph_version": VERSION,
@@ -136,6 +137,9 @@ def _identity(seat_id: str, contract_id: str, version: str, scope: str, child: s
         "child_unit": child,
         "generation": generation,
     }
+    if source_family is not None:
+        semantic["source_family"] = source_family
+        semantic["discovery_pass"] = discovery_pass
     digest = hashlib.sha256(json.dumps(semantic, sort_keys=True, separators=(",", ":")).encode()).hexdigest()
     return "need:v1:" + digest, "work:v1:" + digest
 
@@ -146,19 +150,27 @@ def _source_policy(policy: object) -> list[str]:
     return [key.strip() for key in policy["policy"].split(",") if key.strip()]
 
 
-def _source_for_child(child: str, policy: object, sources: dict[str, dict]) -> tuple[str | None, str]:
+MAX_SOURCE_FAMILY_PASSES = 3
+
+def _sources_for_child(child: str, policy: object, sources: dict[str, dict]) -> list[str]:
     allowed = _source_policy(policy)
     if not allowed:
-        return None, "SOURCE_POLICY_UNSUPPORTED"
-    # The source registry remains authoritative.  Prefer an official profile
-    # or election source when the contract explicitly names one; no URL is
-    # invented from the child label.
+        return []
+    # The source registry remains authoritative. Prefer explicitly relevant
+    # official/election families, then retain the declared order. No URL is
+    # inferred from a child label.
     election_child = any(marker in child for marker in ("election", "filing", "transaction", "disclosure"))
-    preferred = [key for key in allowed if key in sources and sources[key].get("active")
-                 and ((election_child and "election" in key)
-                      or (not election_child and ("governor" in key or "official" in key)))]
-    selected = preferred[0] if preferred else next((key for key in allowed if key in sources and sources[key].get("active")), None)
-    return selected, "SOURCE_RESOLVED" if selected else "SOURCE_FAMILY_NOT_REGISTERED"
+    active = [key for key in allowed if key in sources and sources[key].get("active")]
+    preferred = [key for key in active if
+                 ((election_child and "election" in key)
+                  or (not election_child and ("governor" in key or "official" in key)))]
+    selected = preferred or active
+    return selected[:MAX_SOURCE_FAMILY_PASSES]
+
+
+def _source_for_child(child: str, policy: object, sources: dict[str, dict]) -> tuple[str | None, str]:
+    selected = _sources_for_child(child, policy, sources)
+    return (selected[0], "SOURCE_RESOLVED") if selected else (None, "SOURCE_FAMILY_NOT_REGISTERED")
 
 
 def reconcile() -> dict:
@@ -205,119 +217,131 @@ def reconcile() -> dict:
                     continue
                 for child in children[:MAX_CHILDREN_PER_SCOPE]:
                     examined += 1
-                    need_key, work_key = _identity(seat_id, contract_id, version, scope, child)
-                    source_key, source_state = _source_for_child(child, source_priority, sources)
-                    source = sources.get(source_key) if source_key else None
-                    blocked = source is None
-                    capability_key = capability_for_child(scope, child)
-                    basis = {
-                        "rule": "deep_dossier_child_graph_v1",
-                        "graph_version": VERSION,
-                        "parent_scope_key": scope,
-                        "dossier_unit": child,
-                        "contract_field_id": str(contract_field_id),
-                        "source_selection": source_state,
-                        "source_key": source_key,
-                        "capability_key": capability_key,
-                        "truth_authority": False,
-                        "identity_authority": False,
-                        "verification_authority": False,
-                        "publication_authority": False,
-                    }
-                    cursor.execute("""
-                        INSERT INTO hermes_ops.research_needs
-                          (need_key,contract_id,contract_version,target_type,target_id,scope_key,
-                           origin,execution_class,state,reason,basis,priority)
-                        VALUES(%s,%s,%s,'seat',%s,%s,'CONTRACT_GAP','PRODUCTION',%s,%s,%s::jsonb,30)
-                        ON CONFLICT(need_key) DO NOTHING RETURNING need_id
-                    """, (
-                        need_key, contract_id, str(version), seat_id, scope,
-                        "BLOCKED" if blocked else "OPEN",
-                        "SOURCE_FAMILY_NOT_REGISTERED" if blocked else "DEEP_DOSSIER_CHILD_READY",
-                        json.dumps(basis),
-                    ))
-                    need = cursor.fetchone()
-                    if need:
-                        created_needs += 1
-                    else:
-                        cursor.execute("SELECT need_id FROM hermes_ops.research_needs WHERE need_key=%s", (need_key,))
-                        need = cursor.fetchone()
-                    if not need:
-                        continue
-                    supersedes_job_id = None
-                    generation = 1
-                    if source and execution_enabled and current_deployment:
+                    source_keys = _sources_for_child(child, source_priority, sources)
+                    if not source_keys:
+                        source_keys = [None]
+                    for source_key in source_keys:
+                        source_family_pass = source_key if len(source_keys) > 1 else None
+                        need_key, work_key = _identity(
+                            seat_id, contract_id, version, scope, child,
+                            source_family=source_family_pass,
+                        )
+                        source_state = "SOURCE_RESOLVED" if source_key else "SOURCE_FAMILY_NOT_REGISTERED"
+                        source = sources.get(source_key) if source_key else None
+                        blocked = source is None
+                        capability_key = capability_for_child(scope, child)
+                        basis = {
+                            "rule": "deep_dossier_child_graph_v1",
+                            "graph_version": VERSION,
+                            "parent_scope_key": scope,
+                            "dossier_unit": child,
+                            "contract_field_id": str(contract_field_id),
+                            "source_selection": source_state,
+                            "source_key": source_key,
+                            "source_family_pass": source_family_pass,
+                            "discovery_pass": 1,
+                            "capability_key": capability_key,
+                            "truth_authority": False,
+                            "identity_authority": False,
+                            "verification_authority": False,
+                            "publication_authority": False,
+                        }
                         cursor.execute("""
-                            SELECT j.job_id,j.status,j.payload
-                            FROM public.jobs j
-                            WHERE j.dedupe_key=%s
-                        """, (work_key,))
-                        prior = cursor.fetchone()
-                        prior_route = (prior[2] or {}).get("capability_route", {}) if prior else {}
-                        prior_deployment = prior_route.get("deployment_id")
-                        prior_capability = prior_route.get("capability") or (prior[2] or {}).get("capability_key")
-                        capability_refresh_required = bool(capability_key and prior_capability != capability_key)
-                        if prior and prior[1] == "succeeded" and prior_deployment and prior_deployment != current_deployment:
+                            INSERT INTO hermes_ops.research_needs
+                              (need_key,contract_id,contract_version,target_type,target_id,scope_key,
+                               origin,execution_class,state,reason,basis,priority)
+                            VALUES(%s,%s,%s,'seat',%s,%s,'CONTRACT_GAP','PRODUCTION',%s,%s,%s::jsonb,30)
+                            ON CONFLICT(need_key) DO NOTHING RETURNING need_id
+                        """, (
+                            need_key, contract_id, str(version), seat_id, scope,
+                            "BLOCKED" if blocked else "OPEN",
+                            "SOURCE_FAMILY_NOT_REGISTERED" if blocked else "DEEP_DOSSIER_CHILD_READY",
+                            json.dumps(basis),
+                        ))
+                        need = cursor.fetchone()
+                        if need:
+                            created_needs += 1
+                        else:
+                            cursor.execute("SELECT need_id FROM hermes_ops.research_needs WHERE need_key=%s", (need_key,))
+                            need = cursor.fetchone()
+                        if not need:
+                            continue
+                        supersedes_job_id = None
+                        generation = 1
+                        if source and execution_enabled and current_deployment:
                             cursor.execute("""
-                                SELECT 1 FROM public.worker_runs wr
-                                WHERE wr.job_id=%s AND wr.status='succeeded'
-                                  AND wr.metadata->>'dossier_evidence_id' IS NOT NULL
-                                LIMIT 1
-                            """, (prior[0],))
-                            prior_has_capability_evidence = bool(cursor.fetchone())
-                            if capability_refresh_required or not prior_has_capability_evidence:
-                                generation = 2
-                                supersedes_job_id = str(prior[0])
-                                need_basis = dict(basis)
-                                need_basis.update({
-                                    "regeneration_generation": generation,
-                                    "supersedes_job_id": supersedes_job_id,
-                                    "regeneration_deployment": current_deployment,
-                                })
+                                SELECT j.job_id,j.status,j.payload
+                                FROM public.jobs j
+                                WHERE j.dedupe_key=%s
+                            """, (work_key,))
+                            prior = cursor.fetchone()
+                            prior_route = (prior[2] or {}).get("capability_route", {}) if prior else {}
+                            prior_deployment = prior_route.get("deployment_id")
+                            prior_capability = prior_route.get("capability") or (prior[2] or {}).get("capability_key")
+                            capability_refresh_required = bool(capability_key and prior_capability != capability_key)
+                            if prior and prior[1] == "succeeded" and prior_deployment and prior_deployment != current_deployment:
                                 cursor.execute("""
-                                    UPDATE hermes_ops.research_needs
-                                    SET state='OPEN', reason='DEEP_DOSSIER_REGENERATION_REQUIRED',
-                                        basis=%s::jsonb, evaluated_at=clock_timestamp()
-                                    WHERE need_id=%s
-                                """, (json.dumps(need_basis), need[0]))
-                                regenerated_jobs += 1
-                    if generation > 1:
-                        _, work_key = _identity(seat_id, contract_id, version, scope, child, generation)
-                    payload = {
-                        "orchestration_authority": "hermes",
-                        "execution_class": "PRODUCTION",
-                        "research_work_identity": work_key,
-                        "scope_key": scope,
-                        "contract_id": str(contract_id),
-                        "contract_version": str(version),
-                        "deep_dossier_graph_version": VERSION,
-                        "deep_dossier_generation": generation,
-                        "deep_dossier_unit_key": child,
-                        "deep_dossier_parent_scope": scope,
-                        "source_key": source_key,
-                        "capability_key": capability_key,
-                        "classification_ceiling": "extracted_unreviewed",
-                        "identity_authority": False,
-                        "verification_allowed": False,
-                        "publication_allowed": False,
-                        "dispatch_blocker": "CAPABILITY_NOT_IMPLEMENTED" if not blocked else "SOURCE_FAMILY_NOT_REGISTERED",
-                    }
-                    if supersedes_job_id:
-                        payload["supersedes_job_id"] = supersedes_job_id
-                    cursor.execute("""
-                        INSERT INTO public.jobs
-                          (job_type,target_type,target_id,seat_id,source_id,priority,status,attempt_count,
-                           max_attempts,dedupe_key,payload,research_need_id)
-                        VALUES('contract_scope_research','seat',%s,%s,%s,30,'queued',0,2,%s,%s::jsonb,%s)
-                        ON CONFLICT(dedupe_key) DO NOTHING RETURNING job_id
-                    """, (
-                        seat_id, seat_id, source["source_id"] if source else None,
-                        work_key, json.dumps(payload), need[0],
-                    ))
-                    if cursor.fetchone():
-                        created_jobs += 1
-                    if blocked:
-                        blocked_children += 1
+                                    SELECT 1 FROM public.worker_runs wr
+                                    WHERE wr.job_id=%s AND wr.status='succeeded'
+                                      AND wr.metadata->>'dossier_evidence_id' IS NOT NULL
+                                    LIMIT 1
+                                """, (prior[0],))
+                                prior_has_capability_evidence = bool(cursor.fetchone())
+                                if capability_refresh_required or not prior_has_capability_evidence:
+                                    generation = 2
+                                    supersedes_job_id = str(prior[0])
+                                    need_basis = dict(basis)
+                                    need_basis.update({
+                                        "regeneration_generation": generation,
+                                        "supersedes_job_id": supersedes_job_id,
+                                        "regeneration_deployment": current_deployment,
+                                    })
+                                    cursor.execute("""
+                                        UPDATE hermes_ops.research_needs
+                                        SET state='OPEN', reason='DEEP_DOSSIER_REGENERATION_REQUIRED',
+                                            basis=%s::jsonb, evaluated_at=clock_timestamp()
+                                        WHERE need_id=%s
+                                    """, (json.dumps(need_basis), need[0]))
+                                    regenerated_jobs += 1
+                        if generation > 1:
+                            _, work_key = _identity(seat_id, contract_id, version, scope, child, generation, source_family=source_family_pass)
+                        payload = {
+                            "orchestration_authority": "hermes",
+                            "execution_class": "PRODUCTION",
+                            "research_work_identity": work_key,
+                            "scope_key": scope,
+                            "contract_id": str(contract_id),
+                            "contract_version": str(version),
+                            "deep_dossier_graph_version": VERSION,
+                            "deep_dossier_generation": generation,
+                            "deep_dossier_unit_key": child,
+                            "deep_dossier_parent_scope": scope,
+                            "source_key": source_key,
+                            "source_family_pass": source_family_pass,
+                            "discovery_pass": 1,
+                            "capability_key": capability_key,
+                            "classification_ceiling": "extracted_unreviewed",
+                            "identity_authority": False,
+                            "verification_allowed": False,
+                            "publication_allowed": False,
+                            "dispatch_blocker": "CAPABILITY_NOT_IMPLEMENTED" if not blocked else "SOURCE_FAMILY_NOT_REGISTERED",
+                        }
+                        if supersedes_job_id:
+                            payload["supersedes_job_id"] = supersedes_job_id
+                        cursor.execute("""
+                            INSERT INTO public.jobs
+                              (job_type,target_type,target_id,seat_id,source_id,priority,status,attempt_count,
+                               max_attempts,dedupe_key,payload,research_need_id)
+                            VALUES('contract_scope_research','seat',%s,%s,%s,30,'queued',0,2,%s,%s::jsonb,%s)
+                            ON CONFLICT(dedupe_key) DO NOTHING RETURNING job_id
+                        """, (
+                            seat_id, seat_id, source["source_id"] if source else None,
+                            work_key, json.dumps(payload), need[0],
+                        ))
+                        if cursor.fetchone():
+                            created_jobs += 1
+                        if blocked:
+                            blocked_children += 1
     return {
         "state": "DEEP_DOSSIER_GRAPH_WORK_CREATED" if created_jobs else "DEEP_DOSSIER_GRAPH_PRESENT",
         "graph_version": VERSION,
