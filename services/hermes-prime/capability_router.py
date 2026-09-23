@@ -25,7 +25,8 @@ QUARANTINE_SCOPES = frozenset((
     "portrait", "contact", "identity", "biography", "education", "career",
     "political_history", "prior_offices", "election_history", "campaign_finance",
     "financial_disclosure", "executive_actions", "promises_statements",
-    "news_activity", "social", "jurisdiction", "seat",
+    "news_activity", "social", "jurisdiction", "seat", "monitoring",
+    "publication_gate",
 ))
 
 # Capability-specific evidence contracts. These routes still preserve only
