@@ -44,5 +44,10 @@ jobs:
       - name: Collection runtime unit tests
         run: npm run test:collection-runtime
 
+      - name: PostgreSQL-compatible readiness migration tests
+        run: |
+          npm install --no-save --no-audit --no-fund @electric-sql/pglite
+          node --test services/hermes-prime/tests/capability_readiness_sql.test.mjs
+
       - name: Build
         run: npm run build
