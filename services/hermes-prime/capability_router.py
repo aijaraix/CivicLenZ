@@ -26,7 +26,7 @@ QUARANTINE_SCOPES = frozenset((
     "political_history", "prior_offices", "election_history", "campaign_finance",
     "financial_disclosure", "executive_actions", "promises_statements",
     "news_activity", "social", "jurisdiction", "seat", "monitoring",
-    "elections_gis", "quality_monitoring", "publication_gate",
+    "elections_gis", "gis_boundaries", "quality_monitoring", "source_discovery", "publication_gate",
 ))
 
 # Capability-specific evidence contracts. These routes still preserve only
@@ -110,7 +110,9 @@ CAPABILITY_CONTRACTS.update({
     "election_history": {"scopes": ("elections_gis",), "units": ("historical_cycles",), "output": "election_history_evidence"},
     "donor_relationships": {"scopes": ("family_public_relationships",), "units": ("donor_relationship_leads",), "output": "donor_relationship_evidence"},
     "freshness_monitor": {"scopes": ("quality_monitoring",), "units": ("currentness_check",), "output": "freshness_observation"},
-    "contradiction_resolution": {"scopes": ("quality_monitoring",), "units": ("contradiction_check",), "output": "contradiction_resolution_input"}
+    "contradiction_resolution": {"scopes": ("quality_monitoring",), "units": ("contradiction_check",), "output": "contradiction_resolution_input"},
+    "gis_boundaries": {"scopes": ("gis_boundaries",), "units": ("boundary_geometry", "reconciliation_audit", "coverage_audit"), "output": "boundary_geometry_evidence"},
+    "source_discovery": {"scopes": ("source_discovery",), "units": ("source_inventory", "source_family_discovery", "archive_discovery", "lead_normalization", "independent_rediscovery", "unresolved_lead_closure", "coverage_audit"), "output": "source_discovery_evidence"}
 })
 
 CAPABILITY_ROUTE_KEYS = tuple(CAPABILITY_CONTRACTS) + ("evidence_quarantine_source_discovery",)
