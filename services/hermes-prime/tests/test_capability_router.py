@@ -162,4 +162,21 @@ class RoutingTests(unittest.TestCase):
    self.assertEqual(decision['route']['identity_attribution'],'unresolved')
    self.assertFalse(decision['route']['publication_eligible'])
 
+ def test_source_discovery_and_gis_routes_are_allow_listed(self):
+  for scope,unit,capability in [
+   ('source_discovery','source_family_discovery','source_discovery'),
+   ('source_discovery','independent_rediscovery','source_discovery'),
+   ('gis_boundaries','boundary_geometry','gis_boundaries'),
+  ]:
+   self.need['scope_key']=self.job['payload']['scope_key']=scope
+   self.job['payload']['deep_dossier_unit_key']=unit
+   self.job['payload']['capability_key']=capability
+   self.field['verification_requirement']='review'
+   self.field['source_priority']={'policy':'florida-governor-official'}
+   decision=self.route(deployment_id='release',transport_ready=True)
+   self.assertEqual(decision['state'],'OPEN')
+   self.assertEqual(decision['route']['capability'],capability)
+   self.assertEqual(decision['route']['identity_attribution'],'unresolved')
+   self.assertFalse(decision['route']['publication_eligible'])
+
 if __name__=='__main__':unittest.main()
