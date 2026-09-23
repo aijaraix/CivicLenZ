@@ -56,7 +56,7 @@ SET
     'source_rate_limits', true,
     'pool_reserved_for_validation', true
   ),
-  current_blockers = '[\"NO_RECENT_SUCCESSFUL_CAPABILITY_RUN\"]'::jsonb,
+  current_blockers = '["NO_RECENT_SUCCESSFUL_CAPABILITY_RUN"]'::jsonb,
   monitoring_state = 'UNKNOWN',
   updated_at = now()
 FROM contract AS c
