@@ -78,6 +78,13 @@ class DeepDossierPlannerTests(unittest.TestCase):
         self.assertIn("deep_dossier_graph_version", cursor.calls[0][0])
         self.assertEqual(cursor.calls[0][1][-1], False)
 
+    def test_deep_children_map_to_explicit_capabilities_without_names_or_counts(self):
+        self.assertEqual(deep_dossier.capability_for_child("identity", "official_identity"), "identity_resolution")
+        self.assertEqual(deep_dossier.capability_for_child("identity", "source_pass"), "entity_resolution")
+        self.assertEqual(deep_dossier.capability_for_child("election_history", "reconciliation_audit"), "dataset_reconciliation")
+        self.assertEqual(deep_dossier.capability_for_child("monitoring", "change_detection"), "change_detection")
+        self.assertIsNone(deep_dossier.capability_for_child("biography", "official_profile"))
+
 
 if __name__ == "__main__":
     unittest.main()
