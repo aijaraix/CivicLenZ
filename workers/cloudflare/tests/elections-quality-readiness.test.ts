@@ -17,7 +17,7 @@ test("elections and quality readiness is limited to explicit routed contracts", 
     "ballot_qualification", "election_results", "election_history",
     "donor_relationships", "freshness_monitor", "contradiction_resolution",
   ]) {
-    assert.match(migration, new RegExp(`'\\${capability}',`));
+    assert.match(migration, new RegExp(`'${capability}',`));
   }
   assert.match(migration, /p\.implementation_state = 'NOT_IMPLEMENTED'/);
   assert.match(migration, /implementation_state = 'READY'/);
