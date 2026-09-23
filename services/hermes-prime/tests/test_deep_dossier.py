@@ -85,6 +85,21 @@ class DeepDossierPlannerTests(unittest.TestCase):
         self.assertEqual(deep_dossier.capability_for_child("monitoring", "change_detection"), "change_detection")
         self.assertIsNone(deep_dossier.capability_for_child("biography", "official_profile"))
 
+    def test_family_children_map_to_explicit_capabilities(self):
+        expected = {
+            ("campaign_finance", "filing_universe"): "campaign_finance",
+            ("campaign_finance", "transaction_classes"): "contributions",
+            ("campaign_finance", "reconciliation_audit"): "finance_reconciliation",
+            ("financial_disclosure", "filing_universe"): "financial_disclosures",
+            ("promises_statements", "commitment_period"): "campaign_promises",
+            ("news_activity", "source_pass"): "news",
+            ("social", "activity_window"): "material_social_activity",
+            ("family_public_relationships", "source_pass"): "organization_relationships",
+            ("biography", "chronology"): "biography",
+        }
+        for child, capability in expected.items():
+            self.assertEqual(deep_dossier.capability_for_child(*child), capability)
+
 
 if __name__ == "__main__":
     unittest.main()
