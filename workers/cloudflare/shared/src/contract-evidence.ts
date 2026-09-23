@@ -70,7 +70,7 @@ export async function runContractEvidence(input: {
   const quarantineScopes = new Set(["portrait", "contact", "identity", "biography", "education", "career",
     "political_history", "prior_offices", "election_history", "campaign_finance", "financial_disclosure",
     "executive_actions", "promises_statements", "news_activity", "social", "jurisdiction", "seat",
-    "monitoring", "publication_gate"]);
+    "monitoring", "elections_gis", "quality_monitoring", "publication_gate"]);
   const capability = capabilityContract(route, p.scope_key, p.deep_dossier_unit_key);
   const legacyQuarantine = route.capability === LEGACY_QUARANTINE_CAPABILITY;
   const capabilityQuarantine = route.stage === "quarantine" && capability !== undefined
