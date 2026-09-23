@@ -28,7 +28,7 @@ const routedFamilies = [
 
 test("family readiness migration covers only routed repository contracts", () => {
   for (const capability of routedFamilies) {
-    assert.match(migration, new RegExp(`'\\${capability}',`));
+    assert.match(migration, new RegExp(`'${capability}',`));
   }
   assert.match(migration, /p\.implementation_state = 'NOT_IMPLEMENTED'/);
   assert.match(migration, /implementation_state = 'READY'/);
