@@ -139,4 +139,27 @@ class RoutingTests(unittest.TestCase):
   self.assertEqual(decision['state'],'BLOCKED')
   self.assertIn('CAPABILITY_NOT_IMPLEMENTED',decision['reason'])
 
+ def test_elections_and_quality_family_routes_are_bounded(self):
+  cases=[
+   ('elections_gis','calendar_window','election_calendar'),
+   ('elections_gis','election_universe','election_discovery'),
+   ('elections_gis','filing_records','filing_status'),
+   ('elections_gis','ballot_records','ballot_qualification'),
+   ('elections_gis','result_records','election_results'),
+   ('elections_gis','historical_cycles','election_history'),
+   ('quality_monitoring','currentness_check','freshness_monitor'),
+   ('quality_monitoring','contradiction_check','contradiction_resolution'),
+  ]
+  for scope,unit,capability in cases:
+   self.need['scope_key']=self.job['payload']['scope_key']=scope
+   self.job['payload']['deep_dossier_unit_key']=unit
+   self.job['payload']['capability_key']=capability
+   self.field['verification_requirement']='review'
+   self.field['source_priority']={'policy':'florida-governor-official'}
+   decision=self.route(deployment_id='release',transport_ready=True)
+   self.assertEqual(decision['state'],'OPEN')
+   self.assertEqual(decision['route']['capability'],capability)
+   self.assertEqual(decision['route']['identity_attribution'],'unresolved')
+   self.assertFalse(decision['route']['publication_eligible'])
+
 if __name__=='__main__':unittest.main()
