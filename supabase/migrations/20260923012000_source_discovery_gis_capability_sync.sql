@@ -64,7 +64,7 @@ SELECT
     'source_rate_limits', true,
     'pool_reserved_for_validation', true
   ),
-  '[\"NO_RECENT_SUCCESSFUL_CAPABILITY_RUN\"]'::jsonb,
+  '["NO_RECENT_SUCCESSFUL_CAPABILITY_RUN"]'::jsonb,
   'UNKNOWN'
 FROM contract AS c
 ON CONFLICT (capability_key) DO UPDATE
