@@ -41,7 +41,7 @@ test("open-ended work requires multiple bounded discovery passes", () => {
   assert.deepEqual([...new Set(planned.map((item) => item.discoveryPass))], [1, 2]);
   assert.deepEqual(
     [...new Set(planned.map((item) => item.sourceRateLimitKey))],
-    ["archival_source", "official_source", "reputable_media"],
+    ["official_source", "reputable_media", "archival_source"],
   );
   assert.deepEqual(
     planSourceFamilyPasses({
