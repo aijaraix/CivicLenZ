@@ -74,7 +74,7 @@ INSERT INTO public.sources (
   rate_limit_policy, parser_key, health_state
 )
 SELECT source_key, name, source_url, source_type, authority_tier, jurisdiction_id,
-       host, active, refresh_class, normal_poll_interval, election_poll_interval,
+       host, active, refresh_class, normal_poll_interval::interval, election_poll_interval::interval,
        rate_limit_policy, parser_key, 'UNOBSERVED'
 FROM resolved
 WHERE jurisdiction_id IS NOT NULL
