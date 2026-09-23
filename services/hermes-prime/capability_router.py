@@ -101,7 +101,16 @@ CAPABILITY_CONTRACTS.update({
     "military_history": {"scopes": ("biography",), "units": ("chronology",), "output": "military_history_evidence"},
     "political_history": {"scopes": ("political_history",), "units": ("official_history", "election_history"), "output": "political_history_evidence"},
     "prior_offices": {"scopes": ("prior_offices",), "units": ("official_history", "election_history"), "output": "prior_office_evidence"},
-    "official_contact": {"scopes": ("contact",), "units": ("official_contact", "source_pass"), "output": "official_contact_evidence"},
+    "official_contact": {"scopes": ("contact",), "units": ("official_contact", "source_pass"), "output": "official_contact_evidence"},,
+    "election_calendar": {"scopes": ("elections_gis",), "units": ("calendar_window",), "output": "election_calendar_evidence"},
+    "election_discovery": {"scopes": ("elections_gis",), "units": ("election_universe",), "output": "election_discovery_evidence"},
+    "filing_status": {"scopes": ("elections_gis",), "units": ("filing_records",), "output": "filing_status_evidence"},
+    "ballot_qualification": {"scopes": ("elections_gis",), "units": ("ballot_records",), "output": "ballot_qualification_evidence"},
+    "election_results": {"scopes": ("elections_gis",), "units": ("result_records",), "output": "election_result_evidence"},
+    "election_history": {"scopes": ("elections_gis",), "units": ("historical_cycles",), "output": "election_history_evidence"},
+    "donor_relationships": {"scopes": ("family_public_relationships",), "units": ("donor_relationship_leads",), "output": "donor_relationship_evidence"},
+    "freshness_monitor": {"scopes": ("quality_monitoring",), "units": ("currentness_check",), "output": "freshness_observation"},
+    "contradiction_resolution": {"scopes": ("quality_monitoring",), "units": ("contradiction_check",), "output": "contradiction_resolution_input"}
 })
 
 CAPABILITY_ROUTE_KEYS = tuple(CAPABILITY_CONTRACTS) + ("evidence_quarantine_source_discovery",)
