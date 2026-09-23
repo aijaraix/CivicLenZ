@@ -93,4 +93,27 @@ class RoutingTests(unittest.TestCase):
   self.assertEqual(governor(3*1024**3,1024,0,4)['dispatch_limit'],0)
   self.assertEqual(governor(3*1024**3,20*1024**3,9,4)['dispatch_limit'],0)
 
+    def test_named_capability_route_is_allow_listed_and_unresolved(self):
+  self.need['scope_key']=self.job['payload']['scope_key']='identity'
+  self.job['payload']['deep_dossier_unit_key']='official_identity'
+  self.job['payload']['capability_key']='identity_resolution'
+  self.field['verification_requirement']='review'
+  self.field['source_priority']={'policy':'florida-governor-official'}
+  decision=self.route(deployment_id='release',transport_ready=True)
+  self.assertEqual(decision['state'],'OPEN')
+  self.assertEqual(decision['route']['capability'],'identity_resolution')
+  self.assertEqual(decision['route']['capability_contract']['output'],'identity_resolution_evidence')
+  self.assertEqual(decision['route']['identity_attribution'],'unresolved')
+  self.assertFalse(decision['route']['publication_eligible'])
+
+    def test_arbitrary_capability_key_cannot_route(self):
+  self.need['scope_key']=self.job['payload']['scope_key']='identity'
+  self.job['payload']['deep_dossier_unit_key']='official_identity'
+  self.job['payload']['capability_key']='not_a_capability'
+  self.field['verification_requirement']='review'
+  self.field['source_priority']={'policy':'florida-governor-official'}
+  decision=self.route(deployment_id='release',transport_ready=True)
+  self.assertEqual(decision['state'],'BLOCKED')
+  self.assertIn('CAPABILITY_NOT_IMPLEMENTED',decision['reason'])
+
 if __name__=='__main__':unittest.main()
