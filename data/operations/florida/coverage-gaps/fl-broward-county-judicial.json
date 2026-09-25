@@ -1,0 +1,14 @@
+{
+  "schemaVersion": "1.0.0",
+  "coverageGapId": "7cdd023e-dede-573a-aede-b64a85045eb2",
+  "gapKey": "fl-broward-county-judicial",
+  "jurisdictionName": "Broward County",
+  "stateCode": "FL",
+  "governmentLevel": "judicial",
+  "officeFamily": "judicial",
+  "expectedCountStatus": "expected_count_unknown",
+  "expectedCount": null,
+  "reason": "Judicial elected or retention seats counts for Broward County are not declared as expected seats. County commission district counts vary; municipal, school, judicial, and special-district inventories are not invented.",
+  "coverageRegion": "broward",
+  "ledgerStatus": "coverage_gap"
+}

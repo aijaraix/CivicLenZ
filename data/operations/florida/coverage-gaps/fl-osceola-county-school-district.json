@@ -1,0 +1,14 @@
+{
+  "schemaVersion": "1.0.0",
+  "coverageGapId": "b0495922-9c87-5e2c-a79f-2146d34ea201",
+  "gapKey": "fl-osceola-county-school-district",
+  "jurisdictionName": "Osceola County",
+  "stateCode": "FL",
+  "governmentLevel": "school_district",
+  "officeFamily": "school_district",
+  "expectedCountStatus": "expected_count_unknown",
+  "expectedCount": null,
+  "reason": "School district elected seats counts for Osceola County are not declared as expected seats. County commission district counts vary; municipal, school, judicial, and special-district inventories are not invented.",
+  "coverageRegion": "remaining",
+  "ledgerStatus": "coverage_gap"
+}

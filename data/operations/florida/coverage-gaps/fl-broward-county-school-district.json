@@ -1,0 +1,14 @@
+{
+  "schemaVersion": "1.0.0",
+  "coverageGapId": "9641c0f1-dbdb-54c8-80b2-d6976d503a3d",
+  "gapKey": "fl-broward-county-school-district",
+  "jurisdictionName": "Broward County",
+  "stateCode": "FL",
+  "governmentLevel": "school_district",
+  "officeFamily": "school_district",
+  "expectedCountStatus": "expected_count_unknown",
+  "expectedCount": null,
+  "reason": "School district elected seats counts for Broward County are not declared as expected seats. County commission district counts vary; municipal, school, judicial, and special-district inventories are not invented.",
+  "coverageRegion": "broward",
+  "ledgerStatus": "coverage_gap"
+}
