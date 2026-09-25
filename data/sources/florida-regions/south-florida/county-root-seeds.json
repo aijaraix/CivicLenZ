@@ -1,0 +1,91 @@
+{
+  "seedVersion": "1.0.0",
+  "region": "broward_and_miami_dade",
+  "state": "Florida",
+  "stateCode": "FL",
+  "preparedAt": "2026-07-16T10:24:06Z",
+  "scope": {
+    "counties": ["Broward", "Miami-Dade"],
+    "dataPhase": "source_discovery",
+    "publicationAllowed": false
+  },
+  "verificationRule": "A county root is only a discovery seed. The worker must record retrieval evidence for every candidate source. No candidate can seed an officeholder, person, contact, portrait, social, finance, biography, score, or public profile record until an authorized review stage approves it.",
+  "counties": [
+    {
+      "county": "Broward",
+      "countyGovernmentRoot": "https://www.broward.org/",
+      "rootStatus": "official_root_seed_pending_runtime_verification",
+      "sitePlatformHint": "unknown",
+      "seedEvidence": {
+        "kind": "county_government_root",
+        "retrievedAt": null,
+        "reviewStatus": "unreviewed"
+      }
+    },
+    {
+      "county": "Miami-Dade",
+      "countyGovernmentRoot": "https://www.miamidade.gov/",
+      "rootStatus": "official_root_seed_pending_runtime_verification",
+      "sitePlatformHint": "unknown",
+      "seedEvidence": {
+        "kind": "county_government_root",
+        "retrievedAt": null,
+        "reviewStatus": "unreviewed"
+      }
+    }
+  ],
+  "requiredDiscoveryTargets": [
+    {
+      "key": "county_commission_directory",
+      "authorityClass": "county_government"
+    },
+    {
+      "key": "sheriff_directory",
+      "authorityClass": "county_constitutional_office"
+    },
+    {
+      "key": "clerk_directory",
+      "authorityClass": "county_constitutional_office"
+    },
+    {
+      "key": "supervisor_of_elections_directory",
+      "authorityClass": "county_constitutional_office"
+    },
+    {
+      "key": "tax_collector_directory",
+      "authorityClass": "county_constitutional_office_or_charter_equivalent"
+    },
+    {
+      "key": "property_appraiser_directory",
+      "authorityClass": "county_constitutional_office"
+    },
+    {
+      "key": "school_board_directory",
+      "authorityClass": "school_district"
+    },
+    {
+      "key": "school_superintendent_status_and_directory",
+      "authorityClass": "school_district"
+    },
+    {
+      "key": "municipality_registry",
+      "authorityClass": "county_or_state_registry"
+    },
+    {
+      "key": "special_district_registry",
+      "authorityClass": "county_or_state_registry"
+    },
+    {
+      "key": "judicial_election_or_retention_sources",
+      "authorityClass": "court_or_elections_office"
+    },
+    {
+      "key": "campaign_finance_and_candidate_filing_sources",
+      "authorityClass": "elections_office"
+    },
+    {
+      "key": "financial_disclosure_sources",
+      "authorityClass": "state_ethics_or_local_filing_office"
+    }
+  ]
+}
