@@ -1,0 +1,60 @@
+schema_version: 1
+project_id: civiclenz
+project_name: CivicLenZ
+repository_role: application
+directive: CIVICLENZ_FULL_SWARM_COMMISSIONING_2026_09_27
+directive_path: docs/control-plane/CIVICLENZ_FULL_SWARM_COMMISSIONING_2026_09_27.md
+provider_documentation_base: 0467e3534b358e2c9f40640d8a05acf5dcabab0a
+accepted_engineering_head_at_creation: 270edb04393e5ccdc3b2fbbcf7f0f4f70c7cde7e
+fresh_gateway_truth_wins: true
+automatic_advancement:
+  stages: [1, 2, 3]
+  on_pass: CONTINUE
+  on_fail: FAIL_CLOSED
+production_authorization:
+  required_before_stage: 4
+  deployment_separate: true
+  migration_separate: true
+stages:
+  - id: 1
+    name: production_faithful_lifecycle_sql_acceptance
+    production_mutation: false
+    required_result: PASS
+  - id: 2
+    name: throughput_queue_source_identity_root_cause_audit
+    production_mutation: false
+    required_result: PASS
+  - id: 3
+    name: production_commissioning_package
+    production_mutation: false
+    required_result: READY_FOR_AUTHORIZATION
+  - id: 4
+    name: migrate
+    authorization_required: true
+  - id: 5
+    name: deploy
+    authorization_required: true
+  - id: 6
+    name: activate
+    authorization_required: true
+  - id: 7
+    name: natural_backlog_proof
+    authorization_required: true
+  - id: 8
+    name: multi_subject_name_proof
+    authorization_required: true
+  - id: 9
+    name: perpetual_loop_proof
+    authorization_required: true
+  - id: 10
+    name: resource_measured_scaling
+    authorization_required: true
+safety:
+  fabricate_civic_truth: false
+  manufacture_acceptance_jobs: false
+  reset_attempts: false
+  delete_lineage: false
+  weaken_identity_gate: false
+  weaken_occupancy_gate: false
+  weaken_publication_gate: false
+  global_person_complete: false
