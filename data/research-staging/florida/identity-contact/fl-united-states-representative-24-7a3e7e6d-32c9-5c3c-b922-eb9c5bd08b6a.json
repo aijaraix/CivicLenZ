@@ -6,7 +6,7 @@
   "displayName": "Frederica Wilson",
   "officeTitle": "United States Representative",
   "sourceUrl": "https://wilson.house.gov/",
-  "fetchedAt": "2026-07-16T05:19:58Z",
+  "fetchedAt": "2026-09-13T13:51:37Z",
   "collectionStatus": "success",
   "reviewStatus": "unreviewed",
   "publicationAllowed": false,
@@ -222,7 +222,7 @@
   "errors": [],
   "httpStatus": 200,
   "finalUrl": "https://wilson.house.gov/",
-  "sourceSnapshotSha256": "b53890bb2607bc0db819166303c30edda02ab3b81d1a519dd43efe9422c6eee3",
+  "sourceSnapshotSha256": "f1613d1bf07a8a5f98aa65c02f2e3829dab5e5bf54ce2d3cd1818195ad9d6145",
   "contentType": "text/html",
   "pageTitle": "Congresswoman Frederica Wilson |",
   "candidateSummary": {

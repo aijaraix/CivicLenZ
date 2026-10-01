@@ -6,7 +6,7 @@
   "displayName": "Aaron Bean",
   "officeTitle": "United States Representative",
   "sourceUrl": "https://bean.house.gov",
-  "fetchedAt": "2026-07-16T05:19:58Z",
+  "fetchedAt": "2026-09-13T13:51:36Z",
   "collectionStatus": "success",
   "reviewStatus": "unreviewed",
   "publicationAllowed": false,
@@ -215,7 +215,7 @@
   "errors": [],
   "httpStatus": 200,
   "finalUrl": "https://bean.house.gov/",
-  "sourceSnapshotSha256": "4755295a120f7dbdae8f325292b8e33173b7a571e22e88831a5f132743edfd40",
+  "sourceSnapshotSha256": "3a47f765459ff0d4c19010ca09bc3621e329187bde754295e96513857e95400f",
   "contentType": "text/html",
   "pageTitle": "Representative Bean |",
   "candidateSummary": {

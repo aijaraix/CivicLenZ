@@ -6,7 +6,7 @@
   "displayName": "William \"Bill\" Conerly",
   "officeTitle": "Florida State Representative, District 72",
   "sourceUrl": "https://www.flhouse.gov/Sections/Representatives/details.aspx?MemberId=4920&LegislativeTermId=91",
-  "fetchedAt": "2026-07-16T05:20:28Z",
+  "fetchedAt": "2026-09-13T13:52:10Z",
   "collectionStatus": "success",
   "reviewStatus": "unreviewed",
   "publicationAllowed": false,
@@ -42,7 +42,7 @@
       "downloadStatus": "captured_for_hash"
     },
     {
-      "url": "https://www.flhouse.gov/Images/bronze-seal-250.png?cb=4.6.654349",
+      "url": "https://www.flhouse.gov/Images/bronze-seal-250.png?cb=4.6.654350",
       "method": "og:image",
       "score": 14,
       "altText": null,
@@ -50,7 +50,7 @@
       "rightsStatus": "review_required",
       "identityReviewStatus": "unreviewed",
       "httpStatus": 200,
-      "finalUrl": "https://www.flhouse.gov/Images/bronze-seal-250.png?cb=4.6.654349",
+      "finalUrl": "https://www.flhouse.gov/Images/bronze-seal-250.png?cb=4.6.654350",
       "contentType": "image/png",
       "byteSize": 150275,
       "imageSha256": "36f7c4317f0cc62c44ff5bbfc0a0e5eebf014be23c9c8826141f11a70d9e7ff8",
@@ -146,7 +146,7 @@
   "errors": [],
   "httpStatus": 200,
   "finalUrl": "https://www.flhouse.gov/Sections/Representatives/custom/details.aspx?MemberId=4920&LegislativeTermId=91",
-  "sourceSnapshotSha256": "a0f39a33c112e9688608311c86a6a1b9b20b5bc902eea648dcfe516c403dc057",
+  "sourceSnapshotSha256": "20e2d42a89d3b8f32c603051262ba0792aaaaad5107083a8b0a9396a81baa9a8",
   "contentType": "text/html",
   "pageTitle": "William \"Bill\" Conerly  - 2024 - 2026 ( Speaker Perez ) | Florida House of Representatives",
   "candidateSummary": {

@@ -6,7 +6,7 @@
   "displayName": "Nick DiCeglie",
   "officeTitle": "Florida State Senator, District 18",
   "sourceUrl": "https://www.flsenate.gov/Senators/2024-2026/S18",
-  "fetchedAt": "2026-07-16T05:20:39Z",
+  "fetchedAt": "2026-09-13T13:52:22Z",
   "collectionStatus": "success",
   "reviewStatus": "unreviewed",
   "publicationAllowed": false,
@@ -208,7 +208,7 @@
   "errors": [],
   "httpStatus": 200,
   "finalUrl": "https://www.flsenate.gov/Senators/S18",
-  "sourceSnapshotSha256": "158a6f504338b802d5f9be2a19d00dd4c909fab4115d679a209e482ee936f9d3",
+  "sourceSnapshotSha256": "f2c80cb04a7eacd089e644534dea9763600194ace78f6db7548fa2e4a8abfcfa",
   "contentType": "text/html",
   "pageTitle": "Senator DiCeglie - The Florida Senate",
   "candidateSummary": {
