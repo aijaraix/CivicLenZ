@@ -7,14 +7,14 @@
   "officeTitle": "Florida State Representative, District 101",
   "districtNumber": "101",
   "sourceUrl": "https://www.flhouse.gov/Sections/Representatives/details.aspx?MemberId=4895&LegislativeTermId=91",
-  "fetchedAt": "2026-07-16T05:26:31Z",
+  "fetchedAt": "2026-09-13T14:55:56Z",
   "collectionStatus": "success",
   "reviewStatus": "unreviewed",
   "publicationAllowed": false,
   "errors": [],
   "httpStatus": 200,
   "finalUrl": "https://www.flhouse.gov/Sections/Representatives/custom/details.aspx?MemberId=4895&LegislativeTermId=91",
-  "sourceSnapshotSha256": "f088e46814418b6650d96f361551f773a0e91fbef14f78e43bf7db09b1a440fc",
+  "sourceSnapshotSha256": "2e35e3e3b29232e3770b67802b3a83314c609f0114849cbbc2d5d7360d6871f5",
   "partyAndDistrictText": "District: 101 -- Republican",
   "staffCandidates": [
     {
@@ -128,7 +128,7 @@
       "identityReviewStatus": "unreviewed"
     },
     {
-      "url": "https://www.flhouse.gov/Images/bronze-seal-250.png?cb=4.6.654349",
+      "url": "https://www.flhouse.gov/Images/bronze-seal-250.png?cb=4.6.654350",
       "method": "og:image",
       "score": 14,
       "altText": null,

@@ -7,14 +7,14 @@
   "officeTitle": "Florida State Representative, District 47",
   "districtNumber": "47",
   "sourceUrl": "https://www.flhouse.gov/Sections/Representatives/details.aspx?MemberId=4878&LegislativeTermId=91",
-  "fetchedAt": "2026-07-16T05:26:26Z",
+  "fetchedAt": "2026-09-13T14:55:50Z",
   "collectionStatus": "success",
   "reviewStatus": "unreviewed",
   "publicationAllowed": false,
   "errors": [],
   "httpStatus": 200,
   "finalUrl": "https://www.flhouse.gov/Sections/Representatives/custom/details.aspx?MemberId=4878&LegislativeTermId=91",
-  "sourceSnapshotSha256": "84fadb9b26d6fd75cb38163e7ed89a4a1ee829115cf2888e4cea0cd631d0798f",
+  "sourceSnapshotSha256": "6a8f0e9bd9d8a5e5775012865c7b5a8e46ff16f9869a1d253cdbb3c448180cf6",
   "partyAndDistrictText": "District: 47 -- Republican",
   "staffCandidates": [
     {
@@ -140,7 +140,7 @@
       "identityReviewStatus": "unreviewed"
     },
     {
-      "url": "https://www.flhouse.gov/Images/bronze-seal-250.png?cb=4.6.654349",
+      "url": "https://www.flhouse.gov/Images/bronze-seal-250.png?cb=4.6.654350",
       "method": "og:image",
       "score": 14,
       "altText": null,

@@ -7,14 +7,14 @@
   "officeTitle": "Florida State Representative, District 86",
   "districtNumber": "86",
   "sourceUrl": "https://www.flhouse.gov/Sections/Representatives/details.aspx?MemberId=4787&LegislativeTermId=91",
-  "fetchedAt": "2026-07-16T05:26:30Z",
+  "fetchedAt": "2026-09-13T14:55:54Z",
   "collectionStatus": "success",
   "reviewStatus": "unreviewed",
   "publicationAllowed": false,
   "errors": [],
   "httpStatus": 200,
   "finalUrl": "https://www.flhouse.gov/Sections/Representatives/details.aspx?MemberId=4787&LegislativeTermId=91",
-  "sourceSnapshotSha256": "9e505db6a9511741ca7a681e88eec127471ccad38faf7815d3de6c6c28ab288b",
+  "sourceSnapshotSha256": "b65569237503792f163c2a09d6d5a029f10375cac209771f3fa8a52fd781022a",
   "partyAndDistrictText": "District: 86 -- Republican",
   "staffCandidates": [
     {
@@ -120,7 +120,7 @@
       "identityReviewStatus": "unreviewed"
     },
     {
-      "url": "https://www.flhouse.gov/Images/bronze-seal-250.png?cb=4.6.654349",
+      "url": "https://www.flhouse.gov/Images/bronze-seal-250.png?cb=4.6.654350",
       "method": "og:image",
       "score": 14,
       "altText": null,

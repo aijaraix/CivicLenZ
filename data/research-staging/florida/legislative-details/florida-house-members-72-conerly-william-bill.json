@@ -7,14 +7,14 @@
   "officeTitle": "Florida State Representative, District 72",
   "districtNumber": "72",
   "sourceUrl": "https://www.flhouse.gov/Sections/Representatives/details.aspx?MemberId=4920&LegislativeTermId=91",
-  "fetchedAt": "2026-07-16T05:26:28Z",
+  "fetchedAt": "2026-09-13T14:55:53Z",
   "collectionStatus": "success",
   "reviewStatus": "unreviewed",
   "publicationAllowed": false,
   "errors": [],
   "httpStatus": 200,
   "finalUrl": "https://www.flhouse.gov/Sections/Representatives/custom/details.aspx?MemberId=4920&LegislativeTermId=91",
-  "sourceSnapshotSha256": "bb3e8ca9779edf396fb98b08fe2177a9882ca382a005495d83e4ff1aa24a4d7e",
+  "sourceSnapshotSha256": "894a59aa91eadc5ec8dc9ec4b8fc85b8ace8dec8d8c657d79f1b8c55fe9c8b75",
   "partyAndDistrictText": "District: 72 -- Republican",
   "staffCandidates": [
     {
@@ -24,7 +24,7 @@
     },
     {
       "role": "District Aide",
-      "name": "None",
+      "name": "Brittany Hoppe",
       "reviewStatus": "unreviewed"
     }
   ],
@@ -131,7 +131,7 @@
       "identityReviewStatus": "unreviewed"
     },
     {
-      "url": "https://www.flhouse.gov/FileStores/Web/Imaging/PhotoAlbums/HousePhotoSized8178.JPG",
+      "url": "https://www.flhouse.gov/FileStores/Web/Imaging/PhotoAlbums/HousePhotoSized8228.JPG",
       "method": "img",
       "score": 30,
       "altText": "Representative Conerly Photo",
@@ -140,7 +140,7 @@
       "identityReviewStatus": "unreviewed"
     },
     {
-      "url": "https://www.flhouse.gov/Images/bronze-seal-250.png?cb=4.6.654349",
+      "url": "https://www.flhouse.gov/Images/bronze-seal-250.png?cb=4.6.654350",
       "method": "og:image",
       "score": 14,
       "altText": null,
@@ -149,7 +149,7 @@
       "identityReviewStatus": "unreviewed"
     },
     {
-      "url": "https://www.flhouse.gov/FileStores/Web/Imaging/PhotoAlbums/HousePhotoSized8228.JPG",
+      "url": "https://www.flhouse.gov/FileStores/Web/Imaging/PhotoAlbums/HousePhotoSized8178.JPG",
       "method": "img",
       "score": 9,
       "altText": null,

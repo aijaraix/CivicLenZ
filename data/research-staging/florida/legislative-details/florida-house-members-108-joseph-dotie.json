@@ -7,14 +7,14 @@
   "officeTitle": "Florida State Representative, District 108",
   "districtNumber": "108",
   "sourceUrl": "https://www.flhouse.gov/Sections/Representatives/details.aspx?MemberId=4716&LegislativeTermId=91",
-  "fetchedAt": "2026-07-16T05:26:32Z",
+  "fetchedAt": "2026-09-13T14:55:56Z",
   "collectionStatus": "success",
   "reviewStatus": "unreviewed",
   "publicationAllowed": false,
   "errors": [],
   "httpStatus": 200,
   "finalUrl": "https://www.flhouse.gov/Sections/Representatives/custom/details.aspx?MemberId=4716&LegislativeTermId=91",
-  "sourceSnapshotSha256": "def71b6c9a6373288eacb3f3057646a89695970d7c5beca12f1e3fae608c8990",
+  "sourceSnapshotSha256": "35d8d5b600b21d31ec3fc17a64102e2960bf5aaa1b367d6cdb397c41df99f4d6",
   "partyAndDistrictText": "District: 108 -- Democrat",
   "staffCandidates": [
     {
@@ -108,7 +108,7 @@
       "identityReviewStatus": "unreviewed"
     },
     {
-      "url": "https://www.flhouse.gov/FileStores/Web/Imaging/PhotoAlbums/HousePhotoSized7788.jpg",
+      "url": "https://www.flhouse.gov/FileStores/Web/Imaging/PhotoAlbums/HousePhotoSized7789.jpg",
       "method": "img",
       "score": 30,
       "altText": "Representative Joseph Photo",
@@ -117,7 +117,7 @@
       "identityReviewStatus": "unreviewed"
     },
     {
-      "url": "https://www.flhouse.gov/Images/bronze-seal-250.png?cb=4.6.654349",
+      "url": "https://www.flhouse.gov/Images/bronze-seal-250.png?cb=4.6.654350",
       "method": "og:image",
       "score": 14,
       "altText": null,
@@ -126,7 +126,7 @@
       "identityReviewStatus": "unreviewed"
     },
     {
-      "url": "https://www.flhouse.gov/FileStores/Web/Imaging/PhotoAlbums/HousePhotoSized7789.jpg",
+      "url": "https://www.flhouse.gov/FileStores/Web/Imaging/PhotoAlbums/HousePhotoSized7788.jpg",
       "method": "img",
       "score": 9,
       "altText": null,
