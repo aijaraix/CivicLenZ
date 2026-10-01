@@ -8,7 +8,7 @@
   "finalRootUrl": "https://www.gulfcounty-fl.gov/",
   "rootSeedStatus": "reachable_official_site",
   "sitePlatformHint": "custom",
-  "fetchedAt": "2026-07-16T07:22:33Z",
+  "fetchedAt": "2026-09-13T14:42:00Z",
   "collectionStatus": "success",
   "publicationAllowed": false,
   "reviewStatus": "unreviewed",
@@ -18,56 +18,56 @@
       "httpStatus": 200,
       "contentType": "text/html; charset=utf-8",
       "pageTitle": "Home - Gulf County, FL",
-      "sha256": "fefaa2ef723586b93364624e85f3fd01217feb9d1347e1d250a53d946754aa73"
+      "sha256": "68eb2175976c59d80c4dad4828b50d01d0b48471f87f35182cf10945bdfc8607"
     },
     {
       "url": "https://www.gulfcounty-fl.gov/county_government/board_of_county_commissioners",
       "httpStatus": 200,
       "contentType": "text/html; charset=utf-8",
       "pageTitle": "Board of County Commissioners - Gulf County, FL",
-      "sha256": "4debbc4ad4f1869643db9cf46bc26ee522c487b99a4831da646b316c427de17a"
+      "sha256": "e9faffd927a53567c5b4a824e68b425b15926843cd3e614311d6240e15879c15"
     },
     {
       "url": "https://www.gulfcounty-fl.gov/county_government/board_of_county_commissioners/district_1",
       "httpStatus": 200,
       "contentType": "text/html; charset=utf-8",
       "pageTitle": "District 1 - Gulf County, FL",
-      "sha256": "2d6865f9a9360e03e1785770db81d5cfc2984589bb4e50ad2fb293ac5b71bff5"
+      "sha256": "c2b3bf637b0b6225f4d58f4651e8400b1a5bdeba8cee82602102efb8cb0170b8"
     },
     {
       "url": "https://www.gulfcounty-fl.gov/county_government/board_of_county_commissioners/district_2",
       "httpStatus": 200,
       "contentType": "text/html; charset=utf-8",
       "pageTitle": "District 2 - Gulf County, FL",
-      "sha256": "5c11d97f31d286b567c7b5aa8d9e3c3d140715ca09b669312933a2b04ed0d33c"
+      "sha256": "7d6ea37486c3e83e3d3fb30c8f3383b990e3648ada810531773bfe6900eb9669"
     },
     {
       "url": "https://www.gulfcounty-fl.gov/county_government/board_of_county_commissioners/district_3",
       "httpStatus": 200,
       "contentType": "text/html; charset=utf-8",
       "pageTitle": "District 3 - Gulf County, FL",
-      "sha256": "65e070162a5dcaa7345e4fe8f4a4ec8ac038a83850b1641995458823b99bc20a"
+      "sha256": "d760cf590cfd23877897c071f4b354b043908ff1ffdd7894720008affd6a0c50"
     },
     {
       "url": "https://www.gulfcounty-fl.gov/county_government/board_of_county_commissioners/district_4",
       "httpStatus": 200,
       "contentType": "text/html; charset=utf-8",
       "pageTitle": "District 4 - Gulf County, FL",
-      "sha256": "ae6c472de48193963f24d8a305985f346e05a36cc629469afb1628cba841a1c1"
+      "sha256": "80ccfe1e8297e6661399aa25160c8ec07cfa44da5d24de8992e0f97823f2a089"
     },
     {
       "url": "https://www.gulfcounty-fl.gov/county_government/board_of_county_commissioners/district_5",
       "httpStatus": 200,
       "contentType": "text/html; charset=utf-8",
       "pageTitle": "District 5 - Gulf County, FL",
-      "sha256": "8a7589a9b6bb01e68de4b369e0baca2e7b1e2998d9134e639e7acbbd165e4be3"
+      "sha256": "9af9f82c890ddd2779b88d017451c4798daa950ca2ccc78c3ce30b1563ad0075"
     },
     {
       "url": "https://www.gulfclerk.com/",
       "httpStatus": 200,
       "contentType": "text/html; charset=UTF-8",
       "pageTitle": "Gulf County Clerk of Circuit Court& County Comptroller",
-      "sha256": "06f3591bbe678c41b33980bd7f72f1ab1f61dc178b25fac63d0a801770bc9ebc"
+      "sha256": "e1ed83138907a2bac440f19e862fd371ba6b6dd508dc43005e6912ad3cf48c7a"
     },
     {
       "url": "https://www.gulfcounty-fl.gov/our_government/property_appraiser",
@@ -78,35 +78,35 @@
       "httpStatus": 200,
       "contentType": "text/html; charset=utf-8",
       "pageTitle": "Gulf County Sheriff's Office",
-      "sha256": "d9c87ac206f9f0a08eb192028754866c201403fb48112bfc67c87e00dbfe71c5"
+      "sha256": "fe63a221e07a718b377a6d5edaa4571b0fada21380a12736edb529068aa98388"
     },
     {
       "url": "https://votegulf.gov",
       "httpStatus": 200,
       "contentType": "text/html; charset=UTF-8",
-      "pageTitle": "Gulf County Supervisor of Elections",
-      "sha256": "5a61f724a92a8e73052edbbc1749667a775e63ee49ccb3239102d9433898f81f"
+      "pageTitle": "Gulf County Supervisor of Elections | Rhonda Pierce",
+      "sha256": "e82a7db3969f9ec99522b42a02b5a072bc876108050ef2a614f3be697a90bcf3"
     },
     {
       "url": "https://gulftaxcollector.com/",
       "httpStatus": 200,
       "contentType": "text/html;charset=utf-8",
       "pageTitle": "Gulf County Tax Collector",
-      "sha256": "23ae71391db76ab9dd1ea12966dc289471494c42f487934347c33038529b94d1"
+      "sha256": "8dd2ab106a43921d89f91baae04f572346d5ca920e2f494ab1fe5782752a0b4b"
     },
     {
-      "url": "https://www.gulfcounty-fl.gov/cms/one.aspx?portalId=6501074&pageId=6501090&objectId.97956=21342886&contextId.97956=6798197&parentId.97956=6798198&localStartDate=2026-07-21T09:00&localEndDate=2026-07-21T09:00&ref=mesTP9fg96fVsgzpWYeogDfCnFTqdO28f85%2B9iv90Pg%3D",
+      "url": "https://www.gulfcounty-fl.gov/cms/one.aspx?portalId=6501074&pageId=6501090&objectId.97956=21387606&contextId.97956=6798197&parentId.97956=6798198&localStartDate=2026-09-14T11:00&localEndDate=2026-09-14T11:00",
       "httpStatus": 200,
       "contentType": "text/html; charset=utf-8",
       "pageTitle": "Calendar - Gulf County, FL",
-      "sha256": "ddc19024595c832bbc5b19ef205d7b601b3b41d3e00718aa2057324a625f6c78"
+      "sha256": "c4ffc8dc64d0901c2cfbcd8b6aaa22bb284d41b310f0ee5dead238432b541a67"
     },
     {
-      "url": "https://www.gulfcounty-fl.gov/cms/one.aspx?portalId=6501074&pageId=6501090&objectId.97956=19323316&contextId.97956=6798197&parentId.97956=6798198&localStartDate=2026-07-27T09:00&localEndDate=2026-07-27T11:00&ref=3MgQplOP4ZX4%2BALqld0%2F8yd1xHAgi73vsPy0h0zmMPI%3D",
+      "url": "https://www.gulfcounty-fl.gov/cms/one.aspx?portalId=6501074&pageId=6501090&objectId.97956=19323320&contextId.97956=6798197&parentId.97956=6798198&localStartDate=2026-09-22T09:00&localEndDate=2026-09-22T11:00",
       "httpStatus": 200,
       "contentType": "text/html; charset=utf-8",
       "pageTitle": "Calendar - Gulf County, FL",
-      "sha256": "694441ba913ce54bffc93b5067a977b5293ac20270387a417f2d465b382b5a8c"
+      "sha256": "b3da7f325d8ef1b8d325ea51ef936d78cc181e195c78a9697d4ac75bc9297cb7"
     }
   ],
   "sourceCandidates": {
@@ -152,16 +152,16 @@
         "reviewStatus": "unreviewed"
       },
       {
-        "url": "https://www.gulfcounty-fl.gov/cms/one.aspx?portalId=6501074&pageId=6501090&objectId.97956=19323316&contextId.97956=6798197&parentId.97956=6798198&localStartDate=2026-07-27T09:00&localEndDate=2026-07-27T11:00&ref=3MgQplOP4ZX4%2bALqld0%2f8yd1xHAgi73vsPy0h0zmMPI%3d",
-        "label": "Jul 27 GC BOCC Mtg Donald H. Butler Commission Chamber 9:00AM - 11:00AM",
+        "url": "https://www.gulfcounty-fl.gov/cms/one.aspx?portalId=6501074&pageId=6501090&objectId.97956=19323320&contextId.97956=6798197&parentId.97956=6798198&localStartDate=2026-09-22T09:00&localEndDate=2026-09-22T11:00",
+        "label": "Sep 22 GC BOCC Mtg Donald H. Butler Commission Chamber 9:00AM - 11:00AM",
         "discoveredOn": "https://www.gulfcounty-fl.gov/",
         "score": 22,
         "sameHost": true,
         "reviewStatus": "unreviewed"
       },
       {
-        "url": "https://www.gulfcounty-fl.gov/cms/one.aspx?portalId=6501074&pageId=6501090&objectId.97956=21342886&contextId.97956=6798197&parentId.97956=6798198&localStartDate=2026-07-21T09:00&localEndDate=2026-07-21T09:00&ref=mesTP9fg96fVsgzpWYeogDfCnFTqdO28f85%2b9iv90Pg%3d",
-        "label": "Jul 21 GC BOCC Special Mtg Donald H. Butler Commission Chamber 9:00AM - 9:00AM",
+        "url": "https://www.gulfcounty-fl.gov/cms/one.aspx?portalId=6501074&pageId=6501090&objectId.97956=21387606&contextId.97956=6798197&parentId.97956=6798198&localStartDate=2026-09-14T11:00&localEndDate=2026-09-14T11:00",
+        "label": "Sep 14 GC BOCC Joint Workshop w/ City of Port St. Joe City of Port St. Joe Commission Chambers 11:00AM - 11:00AM",
         "discoveredOn": "https://www.gulfcounty-fl.gov/",
         "score": 22,
         "sameHost": true,
@@ -422,47 +422,15 @@
         "reviewStatus": "unreviewed"
       },
       {
-        "url": "https://files.floridados.gov/media/700479/dsde-139-eng-07-2019.pdf",
-        "label": "Vote By Mail Cure Affidavit",
-        "discoveredOn": "https://votegulf.gov",
-        "score": 18,
-        "sameHost": false,
-        "reviewStatus": "unreviewed"
-      },
-      {
-        "url": "https://registertovoteflorida.gov/",
-        "label": "Register To Vote",
-        "discoveredOn": "https://votegulf.gov",
-        "score": 18,
-        "sameHost": false,
-        "reviewStatus": "unreviewed"
-      },
-      {
         "url": "https://registertovoteflorida.gov/home",
-        "label": "Register to Vote",
+        "label": "Voter Registration",
         "discoveredOn": "https://votegulf.gov",
-        "score": 18,
+        "score": 22,
         "sameHost": false,
         "reviewStatus": "unreviewed"
       },
       {
-        "url": "https://votegulf.gov/request-a-vote-by-mail-ballot/",
-        "label": "Request a Vote By Mail Ballot",
-        "discoveredOn": "https://votegulf.gov",
-        "score": 18,
-        "sameHost": false,
-        "reviewStatus": "unreviewed"
-      },
-      {
-        "url": "https://votegulf.gov/vote-by-mail/",
-        "label": "Vote by Mail",
-        "discoveredOn": "https://votegulf.gov",
-        "score": 18,
-        "sameHost": false,
-        "reviewStatus": "unreviewed"
-      },
-      {
-        "url": "https://votegulf.gov/vote-early/",
+        "url": "https://votegulf.gov/voters/early-voting/",
         "label": "Vote Early",
         "discoveredOn": "https://votegulf.gov",
         "score": 18,
@@ -470,7 +438,15 @@
         "reviewStatus": "unreviewed"
       },
       {
-        "url": "https://votegulf.gov/vote-on-election-day/",
+        "url": "https://votegulf.gov/voters/vote-by-mail/",
+        "label": "Vote by Mail",
+        "discoveredOn": "https://votegulf.gov",
+        "score": 18,
+        "sameHost": false,
+        "reviewStatus": "unreviewed"
+      },
+      {
+        "url": "https://votegulf.gov/voters/vote-on-election-day/",
         "label": "Vote on Election Day",
         "discoveredOn": "https://votegulf.gov",
         "score": 18,
@@ -478,24 +454,8 @@
         "reviewStatus": "unreviewed"
       },
       {
-        "url": "https://votegulf.gov/where-to-vote/",
-        "label": "Where To Vote",
-        "discoveredOn": "https://votegulf.gov",
-        "score": 18,
-        "sameHost": false,
-        "reviewStatus": "unreviewed"
-      },
-      {
-        "url": "https://www.votegulf.gov/request%20a%20vote%20by%20mail%20ballot",
-        "label": "Vote By Mail",
-        "discoveredOn": "https://votegulf.gov",
-        "score": 18,
-        "sameHost": false,
-        "reviewStatus": "unreviewed"
-      },
-      {
-        "url": "https://www.votegulf.gov/where-to-vote/",
-        "label": "Where To Vote",
+        "url": "https://votegulf.gov/voters/where-to-vote/",
+        "label": "Where to Vote",
         "discoveredOn": "https://votegulf.gov",
         "score": 18,
         "sameHost": false,
@@ -563,7 +523,15 @@
     ],
     "campaign_finance_and_candidate_filing_sources": [
       {
-        "url": "https://votegulf.gov/campaign-finance-search/",
+        "url": "https://votegulf.gov/candidates/how-to-become-a-candidate/",
+        "label": "Candidate Information",
+        "discoveredOn": "https://votegulf.gov",
+        "score": 22,
+        "sameHost": false,
+        "reviewStatus": "unreviewed"
+      },
+      {
+        "url": "https://votegulf.gov/candidates/campaign-finance-search/",
         "label": "Campaign Finance Search",
         "discoveredOn": "https://votegulf.gov",
         "score": 18,
@@ -571,8 +539,8 @@
         "reviewStatus": "unreviewed"
       },
       {
-        "url": "https://votegulf.gov/candidatereportsandprogiles/",
-        "label": "Candidate Reports and Profiles",
+        "url": "https://votegulf.gov/candidates/candidate-reports-profiles/",
+        "label": "Candidate Reports & Profiles",
         "discoveredOn": "https://votegulf.gov",
         "score": 18,
         "sameHost": false,

@@ -5,230 +5,191 @@
   "stateCode": "FL",
   "region": "northwest_florida_panhandle",
   "rootSeedUrl": "https://www.jeffersoncountyfl.gov/",
-  "finalRootUrl": "https://www.jeffersoncountyfl.gov/",
+  "finalRootUrl": "https://jeffersoncountyfl.gov/",
   "rootSeedStatus": "reachable_official_site",
   "sitePlatformHint": "wordpress_or_custom",
-  "fetchedAt": "2026-07-16T07:22:35Z",
+  "fetchedAt": "2026-09-13T14:42:01Z",
   "collectionStatus": "success",
   "publicationAllowed": false,
   "reviewStatus": "unreviewed",
   "visitedPages": [
     {
-      "url": "https://www.jeffersoncountyfl.gov/",
-      "httpStatus": 200,
-      "contentType": "text/html; charset=utf-8",
-      "pageTitle": "Jefferson County, Florida - The Keystone County",
-      "sha256": "dc697d3d3456a160cf909eb181aeb97401f00c5450dc3a7dd75d44de91c25e80"
-    },
-    {
-      "url": "https://www.jeffersoncountyfl.gov/p/county-departments/board-of-county-commissioners",
-      "httpStatus": 200,
-      "contentType": "text/html; charset=utf-8",
-      "pageTitle": "Board of County Commissioners - County Departments - Jefferson County Florida",
-      "sha256": "aeef6e165ddb5c5e34a80ff436575e8525190de7e84b3e19841f7bd236497b9a"
-    },
-    {
-      "url": "https://www.jeffersonclerk.com/",
+      "url": "https://jeffersoncountyfl.gov/",
       "httpStatus": 200,
       "contentType": "text/html; charset=UTF-8",
-      "pageTitle": "Jefferson County, FL | Clerk of Court & Comptroller",
-      "sha256": "a403260aef7b240c0a8bfd200c62454dcf55396f6e440faa072058bbd994a8fc"
+      "pageTitle": "Home - Jefferson County Florida",
+      "sha256": "b46e49549f9560a484f349d961c11b478bd4c4b72e3af0fa416a76fb8802464f"
     },
     {
-      "url": "https://jeffersonpa.net/",
+      "url": "https://jeffersoncountyfl.gov/event/sept-15-2026-board-of-county-commissioners-special-budget-hearing/",
       "httpStatus": 200,
       "contentType": "text/html; charset=UTF-8",
-      "pageTitle": "Jefferson County, FL – Official Website of the Jefferson County Property Appraiser",
-      "sha256": "ed06ef16265ed10627fb7137ca5e3430070ea52438430851999a3f6746e0eab0"
+      "pageTitle": "September 15th, 2026 – Board of County Commissioners: Special Budget Hearing - Jefferson County Florida",
+      "sha256": "197df833e4294cfefb72e956e70d5a9d11754eaea110f7337b148ad4e03c2423"
     },
     {
-      "url": "https://www.jeffersoncountyfl.gov/p/constitutional-officers",
+      "url": "https://jeffersoncountyfl.gov/property-taxes/",
       "httpStatus": 200,
-      "contentType": "text/html; charset=utf-8",
+      "contentType": "text/html; charset=UTF-8",
+      "pageTitle": "Property & Taxes - Jefferson County Florida",
+      "sha256": "ba92f40727830c88ea83e7c557132cab2402adebe5d04a1e56485ff8d2f297df"
+    },
+    {
+      "url": "https://jeffersoncountyfl.gov/public-safety/",
+      "httpStatus": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "pageTitle": "Public Safety - Jefferson County Florida",
+      "sha256": "54c3b1c5be672a1f48d6acea4f83b3aff436b838593c2f6580be7f2d5659c09f"
+    },
+    {
+      "url": "https://jeffersoncountyfl.gov/supervisor-of-elections/",
+      "httpStatus": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "pageTitle": "Supervisor of Elections - Jefferson County Florida",
+      "sha256": "f6d140486cca8a1aa1d734c9a350485e3dde7caeee0345f55d1199d273244e93"
+    },
+    {
+      "url": "https://jeffersoncountyfl.gov/board-of-county-commissioners/",
+      "httpStatus": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "pageTitle": "Board of County Commissioners - Jefferson County Florida",
+      "sha256": "c1eec255756eb97a95056d9f48f737378e27cb9cde5091b5cae9b5d25530ef8d"
+    },
+    {
+      "url": "https://jeffersoncountyfl.gov/constitutional-officers/",
+      "httpStatus": 200,
+      "contentType": "text/html; charset=UTF-8",
       "pageTitle": "Constitutional Officers - Jefferson County Florida",
-      "sha256": "1ecc4d2fe44d3cf63259f24cdff9e7995fad070f574f20b0f2f47816583c21c5"
+      "sha256": "0805ae3193783f3e0fbf6770779ae50d6af484dde613bad8e51b162b507c52e5"
     },
     {
-      "url": "https://jeffersonvotesfl.gov/",
-      "httpStatus": 200,
-      "contentType": "text/html; charset=utf-8",
-      "pageTitle": "Jefferson County Supervisor of Elections | Voter Information & Election Resources",
-      "sha256": "9aee4ce8d641c2191871374ab7cb659051361b91380014356c55c4c4b731efdc"
-    },
-    {
-      "url": "https://www.jeffersoncountytaxcollector.com//Property/SearchSelect?Accept=true&ClearData=True",
-      "httpStatus": 200,
-      "contentType": "text/html; charset=utf-8",
-      "pageTitle": "Shanna Boutwell - Jefferson County Tax Collector",
-      "sha256": "667ce0e8646e4f2809fb1a894b3a4338d52fca89d60e80ce7cc6aa27e8cb2063"
-    },
-    {
-      "url": "http://www.jeffersoncountyfl.gov/p/county-departments/board-of-county-commissioners",
-      "httpStatus": 200,
-      "contentType": "text/html; charset=utf-8",
-      "pageTitle": "Board of County Commissioners - County Departments - Jefferson County Florida",
-      "sha256": "fc9e9ff9a051774c1ea654dc27ef75ea8cab04c65303ff81465cf7563f43ac1b"
-    },
-    {
-      "url": "https://www.jeffersoncountyfl.gov/external-link.aspx?l=http://www.jeffersonclerk.com/bocc-records.aspx?t=agendas",
-      "error": "HTTPError:404 Client Error: Not Found for url: https://www.jeffersonclerk.com/bocc-records.aspx?t=agendas"
-    },
-    {
-      "url": "https://www.jeffersoncountyfl.gov/external-link.aspx?l=http://www.jeffersonclerk.com/bocc-records.aspx?t=minutes",
-      "error": "HTTPError:404 Client Error: Not Found for url: https://www.jeffersonclerk.com/bocc-records.aspx?t=minutes"
-    },
-    {
-      "url": "http://www.jeffersoncountyfl.gov/external-link.aspx?l=http://www.jeffersonclerk.com/bocc-records.aspx?t=budgets",
-      "error": "HTTPError:404 Client Error: Not Found for url: https://www.jeffersonclerk.com/bocc-records.aspx?t=budgets"
-    },
-    {
-      "url": "https://jeffersonpa.net/",
+      "url": "https://jeffersoncountyfl.gov/event/sept-24-2026-board-of-county-commissioners-final-budget-hearing/",
       "httpStatus": 200,
       "contentType": "text/html; charset=UTF-8",
-      "pageTitle": "Jefferson County, FL – Official Website of the Jefferson County Property Appraiser",
-      "sha256": "1d7775dc96ed438ebd2ad455ad7cbcbccba3e18a399d88570648622f737697fd"
+      "pageTitle": "September 24th, 2026 – Board of County Commissioners: Final Budget Hearing - Jefferson County Florida",
+      "sha256": "cb3082a8f1846af5decf7f5a9e991301f4deef9ee094ab446ee2a1f89da22e88"
     },
     {
-      "url": "https://www.jeffersonclerk.com/",
+      "url": "https://jeffersoncountyfl.gov/watch-a-meeting/",
       "httpStatus": 200,
       "contentType": "text/html; charset=UTF-8",
-      "pageTitle": "Jefferson County, FL | Clerk of Court & Comptroller",
-      "sha256": "a403260aef7b240c0a8bfd200c62454dcf55396f6e440faa072058bbd994a8fc"
+      "pageTitle": "Watch a Meeting - Jefferson County Florida",
+      "sha256": "e42288d1fd42e2190de080f1b8e3ddd3976d2d1e9154b84a5d4b8ce2bab98c48"
     },
     {
-      "url": "https://jeffersonpa.net/",
+      "url": "https://jeffersoncountyfl.gov/pay-property-taxes/",
       "httpStatus": 200,
       "contentType": "text/html; charset=UTF-8",
-      "pageTitle": "Jefferson County, FL – Official Website of the Jefferson County Property Appraiser",
-      "sha256": "c1d0ac840238522f577c66d7783fc295e9396453569d66a21360425fddd6178c"
+      "pageTitle": "Pay Property Taxes - Jefferson County Florida",
+      "sha256": "23e4899d99dac2422d99b0effb02aa81d51e59d447002e6bddb77f89471186f7"
+    },
+    {
+      "url": "https://jeffersoncountyfl.gov/event/october-8th-2026-board-of-county-commissioners-regular-morning-meeting/",
+      "httpStatus": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "pageTitle": "October 8th, 2026 – Board of County Commissioners: Regular Morning Meeting - Jefferson County Florida",
+      "sha256": "2fe08e73d9504b4457a78fba74de4db6432166ab10f18adb27640c6e1acb7d7f"
+    },
+    {
+      "url": "https://jeffersoncountyfl.gov/property-appraiser/",
+      "httpStatus": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "pageTitle": "Property Appraiser - Jefferson County Florida",
+      "sha256": "0e73c9a2527c9bd1ec45135b0a76713400b4129f3ff9f7fe55ad8cdd76a5b0e8"
+    },
+    {
+      "url": "https://jeffersoncountyfl.gov/tax-collector/",
+      "httpStatus": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "pageTitle": "Tax Collector - Jefferson County Florida",
+      "sha256": "6f1e199ef7f765bf36a73e64ec9ce1a1ecc19bd22e46e8331de57a39285a4409"
+    },
+    {
+      "url": "https://jeffersoncountyfl.gov/sheriffs-office/",
+      "httpStatus": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "pageTitle": "Sheriff's Office - Jefferson County Florida",
+      "sha256": "967145534e5600507a18ac96c35f0431b635d02b76eb16b9fdae26eaa9da84cc"
     }
   ],
   "sourceCandidates": {
     "county_commission_directory": [
       {
-        "url": "http://www.jeffersoncountyfl.gov/p/county-departments/board-of-county-commissioners",
+        "url": "https://jeffersoncountyfl.gov/board-of-county-commissioners/",
         "label": "Board of County Commissioners",
-        "discoveredOn": "http://www.jeffersoncountyfl.gov/p/county-departments/board-of-county-commissioners",
+        "discoveredOn": "https://jeffersoncountyfl.gov/",
         "score": 35,
         "sameHost": true,
         "reviewStatus": "unreviewed"
       },
       {
-        "url": "https://www.jeffersoncountyfl.gov/p/county-departments/board-of-county-commissioners",
-        "label": "Board of County Commissioners",
-        "discoveredOn": "https://www.jeffersoncountyfl.gov/",
-        "score": 35,
+        "url": "https://jeffersoncountyfl.gov/event/october-8th-2026-board-of-county-commissioners-regular-morning-meeting/",
+        "label": "October 8th, 2026 – Board of County Commissioners: Regular Morning Meeting",
+        "discoveredOn": "https://jeffersoncountyfl.gov/",
+        "score": 31,
         "sameHost": true,
         "reviewStatus": "unreviewed"
       },
       {
-        "url": "https://jeffersonvotesfl.gov/county-officials/",
-        "label": "Jefferson County Commissioners",
-        "discoveredOn": "https://jeffersonvotesfl.gov/",
-        "score": 27,
-        "sameHost": false,
+        "url": "https://jeffersoncountyfl.gov/event/sept-15-2026-board-of-county-commissioners-special-budget-hearing/",
+        "label": "September 15th, 2026 – Board of County Commissioners: Special Budget Hearing",
+        "discoveredOn": "https://jeffersoncountyfl.gov/",
+        "score": 31,
+        "sameHost": true,
         "reviewStatus": "unreviewed"
       },
       {
-        "url": "http://www.jeffersoncountyfl.gov/Uploads/Editor/file/Board%20of%20County%20Commissioners/2026%20Holiday-Meeting%20Calendar.pdf",
-        "label": "2026 Meeting and Holiday Schedule",
-        "discoveredOn": "http://www.jeffersoncountyfl.gov/p/county-departments/board-of-county-commissioners",
+        "url": "https://jeffersoncountyfl.gov/event/sept-24-2026-board-of-county-commissioners-final-budget-hearing/",
+        "label": "September 24th, 2026 – Board of County Commissioners: Final Budget Hearing",
+        "discoveredOn": "https://jeffersoncountyfl.gov/",
+        "score": 31,
+        "sameHost": true,
+        "reviewStatus": "unreviewed"
+      },
+      {
+        "url": "https://jeffersoncountyfl.gov/watch-a-meeting/",
+        "label": "Watch the BOCC Meeting",
+        "discoveredOn": "https://jeffersoncountyfl.gov/",
         "score": 22,
         "sameHost": true,
         "reviewStatus": "unreviewed"
       },
       {
-        "url": "http://www.jeffersoncountyfl.gov/Uploads/Editor/file/Board%20of%20County%20Commissioners/Accommodation%20Request%20Form.pdf",
-        "label": "complete and return the ADA Request Form",
-        "discoveredOn": "https://www.jeffersoncountyfl.gov/p/county-departments/board-of-county-commissioners",
+        "url": "https://jeffersoncountyfl.gov/wp-content/uploads/2026/07/bocc-2026-meeting-calendar.pdf",
+        "label": "2026 meeting & holiday schedule (PDF)",
+        "discoveredOn": "https://jeffersoncountyfl.gov/board-of-county-commissioners/",
         "score": 22,
         "sameHost": true,
         "reviewStatus": "unreviewed"
       },
       {
-        "url": "http://www.jeffersoncountyfl.gov/Uploads/Editor/file/Board%20of%20County%20Commissioners/District%20map%202017/2016%20District%20Map%20with%20overlay36X46%20(1).pdf",
-        "label": "click here for District Map",
-        "discoveredOn": "http://www.jeffersoncountyfl.gov/p/county-departments/board-of-county-commissioners",
+        "url": "https://jeffersoncountyfl.gov/wp-content/uploads/2026/07/bocc-district-map.pdf",
+        "label": "View the district map (PDF)",
+        "discoveredOn": "https://jeffersoncountyfl.gov/board-of-county-commissioners/",
         "score": 22,
         "sameHost": true,
         "reviewStatus": "unreviewed"
       },
       {
-        "url": "http://www.jeffersoncountyfl.gov/Uploads/Editor/file/Board%20of%20County%20Commissioners/ForesicAudit-11292015211401.pdf",
-        "label": "2022/2023 Forensic Audit Attachment",
-        "discoveredOn": "https://www.jeffersoncountyfl.gov/p/county-departments/board-of-county-commissioners",
+        "url": "https://jeffersoncountyfl.gov/wp-content/uploads/2026/09/jefferson-county-board-of-county-commissioners_2026-09-15_172316_combined.pdf",
+        "label": "View Agenda",
+        "discoveredOn": "https://jeffersoncountyfl.gov/event/sept-15-2026-board-of-county-commissioners-special-budget-hearing/",
         "score": 22,
         "sameHost": true,
         "reviewStatus": "unreviewed"
       },
       {
-        "url": "http://www.jeffersoncountyfl.gov/external-link.aspx?l=http://www.jeffersonclerk.com/bocc-records.aspx?t=agendas",
-        "label": "Agendas",
-        "discoveredOn": "http://www.jeffersoncountyfl.gov/p/county-departments/board-of-county-commissioners",
-        "score": 22,
-        "sameHost": true,
-        "reviewStatus": "unreviewed"
-      },
-      {
-        "url": "http://www.jeffersoncountyfl.gov/external-link.aspx?l=http://www.jeffersonclerk.com/bocc-records.aspx?t=budgets",
-        "label": "budgets",
-        "discoveredOn": "https://www.jeffersoncountyfl.gov/p/county-departments/board-of-county-commissioners",
-        "score": 22,
-        "sameHost": true,
-        "reviewStatus": "unreviewed"
-      },
-      {
-        "url": "http://www.jeffersoncountyfl.gov/external-link.aspx?l=http://www.jeffersonclerk.com/bocc-records.aspx?t=minutes",
-        "label": "meeting minutes",
-        "discoveredOn": "http://www.jeffersoncountyfl.gov/p/county-departments/board-of-county-commissioners",
-        "score": 22,
-        "sameHost": true,
-        "reviewStatus": "unreviewed"
-      },
-      {
-        "url": "https://www.jeffersoncountyfl.gov/Uploads/Editor/file/Board%20of%20County%20Commissioners/2026%20Holiday-Meeting%20Calendar.pdf",
-        "label": "2026 Meeting and Holiday Schedule",
-        "discoveredOn": "https://www.jeffersoncountyfl.gov/p/county-departments/board-of-county-commissioners",
-        "score": 22,
-        "sameHost": true,
-        "reviewStatus": "unreviewed"
-      },
-      {
-        "url": "https://www.jeffersoncountyfl.gov/Uploads/Editor/file/Board%20of%20County%20Commissioners/District%20map%202017/2016%20District%20Map%20with%20overlay36X46%20(1).pdf",
-        "label": "click here for District Map",
-        "discoveredOn": "https://www.jeffersoncountyfl.gov/p/county-departments/board-of-county-commissioners",
-        "score": 22,
-        "sameHost": true,
-        "reviewStatus": "unreviewed"
-      },
-      {
-        "url": "https://www.jeffersoncountyfl.gov/external-link.aspx?l=http://www.jeffersonclerk.com/bocc-records.aspx?t=agendas",
-        "label": "Agendas",
-        "discoveredOn": "https://www.jeffersoncountyfl.gov/p/county-departments/board-of-county-commissioners",
-        "score": 22,
-        "sameHost": true,
-        "reviewStatus": "unreviewed"
-      },
-      {
-        "url": "https://www.jeffersoncountyfl.gov/external-link.aspx?l=http://www.jeffersonclerk.com/bocc-records.aspx?t=minutes",
-        "label": "meeting minutes",
-        "discoveredOn": "https://www.jeffersoncountyfl.gov/p/county-departments/board-of-county-commissioners",
-        "score": 22,
-        "sameHost": true,
-        "reviewStatus": "unreviewed"
-      },
-      {
-        "url": "https://jeffersonclerk.com/clerk-services/bocc-records-disclaimer/",
-        "label": "BOCC Minutes",
-        "discoveredOn": "https://www.jeffersonclerk.com/",
+        "url": "https://www.jeffersonclerk.com/bocc-records.aspx",
+        "label": "Minutes, records & budgets (Clerk of Court)",
+        "discoveredOn": "https://jeffersoncountyfl.gov/board-of-county-commissioners/",
         "score": 13,
         "sameHost": false,
         "reviewStatus": "unreviewed"
       },
       {
-        "url": "https://www.jeffersonclerk.com/clerk-services/bocc-records-disclaimer/",
-        "label": "BOCC Records",
-        "discoveredOn": "https://www.jeffersonclerk.com/",
+        "url": "https://www.jeffersonclerk.com/clerk-services/bocc-records-disclaimer/bocc-records/",
+        "label": "Recordings of past meetings (Clerk of Court)",
+        "discoveredOn": "https://jeffersoncountyfl.gov/watch-a-meeting/",
         "score": 13,
         "sameHost": false,
         "reviewStatus": "unreviewed"
@@ -236,25 +197,33 @@
     ],
     "sheriff_directory": [
       {
-        "url": "http://www.jeffersoncountyfl.gov/p/constitutional-officers",
-        "label": "Sheriff's Office",
-        "discoveredOn": "http://www.jeffersoncountyfl.gov/p/county-departments/board-of-county-commissioners",
-        "score": 29,
+        "url": "https://jeffersoncountyfl.gov/constitutional-officers/",
+        "label": "Constitutional Officers Clerk · PA · Sheriff · SOE · TC",
+        "discoveredOn": "https://jeffersoncountyfl.gov/",
+        "score": 22,
         "sameHost": true,
         "reviewStatus": "unreviewed"
       },
       {
-        "url": "https://www.jeffersoncountyfl.gov/p/constitutional-officers",
-        "label": "Sheriff's Office",
-        "discoveredOn": "https://www.jeffersoncountyfl.gov/",
-        "score": 29,
+        "url": "https://jeffersoncountyfl.gov/public-safety/",
+        "label": "Public Safety Fire & Rescue, Sheriff, Emergency Mgmt",
+        "discoveredOn": "https://jeffersoncountyfl.gov/",
+        "score": 22,
+        "sameHost": true,
+        "reviewStatus": "unreviewed"
+      },
+      {
+        "url": "https://jeffersoncountyfl.gov/sheriffs-office/",
+        "label": "Jefferson County Sheriff’s Office",
+        "discoveredOn": "https://jeffersoncountyfl.gov/public-safety/",
+        "score": 22,
         "sameHost": true,
         "reviewStatus": "unreviewed"
       },
       {
         "url": "https://www.jcso-fl.org/",
         "label": "Sheriff's Office",
-        "discoveredOn": "https://www.jeffersonclerk.com/",
+        "discoveredOn": "https://jeffersoncountyfl.gov/",
         "score": 20,
         "sameHost": false,
         "reviewStatus": "unreviewed"
@@ -262,109 +231,77 @@
     ],
     "clerk_directory": [
       {
-        "url": "http://www.jeffersoncountyfl.gov/external-link.aspx?l=http://jeffersonclerk.com",
+        "url": "https://www.jeffersonclerk.com/",
         "label": "Clerk of Court",
-        "discoveredOn": "http://www.jeffersoncountyfl.gov/p/county-departments/board-of-county-commissioners",
-        "score": 26,
-        "sameHost": true,
+        "discoveredOn": "https://jeffersoncountyfl.gov/",
+        "score": 17,
+        "sameHost": false,
         "reviewStatus": "unreviewed"
       },
       {
-        "url": "https://www.jeffersoncountyfl.gov/external-link.aspx?l=http://jeffersonclerk.com",
-        "label": "Clerk of Court",
-        "discoveredOn": "https://www.jeffersoncountyfl.gov/",
-        "score": 26,
-        "sameHost": true,
+        "url": "https://www.jeffersonclerk.com/bocc-records.aspx",
+        "label": "Minutes, records & budgets (Clerk of Court)",
+        "discoveredOn": "https://jeffersoncountyfl.gov/board-of-county-commissioners/",
+        "score": 13,
+        "sameHost": false,
+        "reviewStatus": "unreviewed"
+      },
+      {
+        "url": "https://www.jeffersonclerk.com/clerk-services/bocc-records-disclaimer/bocc-records/",
+        "label": "Recordings of past meetings (Clerk of Court)",
+        "discoveredOn": "https://jeffersoncountyfl.gov/watch-a-meeting/",
+        "score": 13,
+        "sameHost": false,
         "reviewStatus": "unreviewed"
       }
     ],
     "supervisor_of_elections_directory": [
       {
-        "url": "http://www.jeffersoncountyfl.gov/external-link.aspx?l=http://www.jeffersonvotes.com/",
-        "label": "Supervisor of Elections",
-        "discoveredOn": "http://www.jeffersoncountyfl.gov/p/county-departments/board-of-county-commissioners",
-        "score": 26,
-        "sameHost": true,
-        "reviewStatus": "unreviewed"
-      },
-      {
-        "url": "https://www.jeffersoncountyfl.gov/external-link.aspx?l=http://www.jeffersonvotes.com/",
-        "label": "Supervisor of Elections",
-        "discoveredOn": "https://www.jeffersoncountyfl.gov/",
-        "score": 26,
+        "url": "https://jeffersoncountyfl.gov/supervisor-of-elections/",
+        "label": "Voter & Election Information Supervisor of Elections",
+        "discoveredOn": "https://jeffersoncountyfl.gov/",
+        "score": 22,
         "sameHost": true,
         "reviewStatus": "unreviewed"
       },
       {
         "url": "https://jeffersonvotesfl.gov/",
         "label": "Supervisor of Elections",
-        "discoveredOn": "https://www.jeffersonclerk.com/",
+        "discoveredOn": "https://jeffersoncountyfl.gov/",
         "score": 22,
-        "sameHost": false,
-        "reviewStatus": "unreviewed"
-      },
-      {
-        "url": "https://jeffersonvotesfl.gov/register-to-vote/",
-        "label": "Register to Vote",
-        "discoveredOn": "https://jeffersonvotesfl.gov/",
-        "score": 18,
-        "sameHost": false,
-        "reviewStatus": "unreviewed"
-      },
-      {
-        "url": "https://jeffersonvotesfl.gov/vote-by-mail/",
-        "label": "Vote by Mail",
-        "discoveredOn": "https://jeffersonvotesfl.gov/",
-        "score": 18,
-        "sameHost": false,
-        "reviewStatus": "unreviewed"
-      },
-      {
-        "url": "https://jeffersonvotesfl.gov/vote-early/",
-        "label": "Vote Early",
-        "discoveredOn": "https://jeffersonvotesfl.gov/",
-        "score": 18,
-        "sameHost": false,
-        "reviewStatus": "unreviewed"
-      },
-      {
-        "url": "https://jeffersonvotesfl.gov/vote-on-election-day/",
-        "label": "Vote on Election Day",
-        "discoveredOn": "https://jeffersonvotesfl.gov/",
-        "score": 18,
-        "sameHost": false,
-        "reviewStatus": "unreviewed"
-      },
-      {
-        "url": "https://jeffersonvotesfl.gov/where-to-vote-in-person/",
-        "label": "Where to Vote in Person",
-        "discoveredOn": "https://jeffersonvotesfl.gov/",
-        "score": 18,
         "sameHost": false,
         "reviewStatus": "unreviewed"
       }
     ],
     "tax_collector_directory": [
       {
-        "url": "http://www.jeffersoncountyfl.gov/external-link.aspx?l=http://jeffersoncountytaxcollector.com/",
+        "url": "https://jeffersoncountyfl.gov/pay-property-taxes/",
         "label": "Tax Collector",
-        "discoveredOn": "http://www.jeffersoncountyfl.gov/p/county-departments/board-of-county-commissioners",
+        "discoveredOn": "https://jeffersoncountyfl.gov/",
         "score": 26,
         "sameHost": true,
         "reviewStatus": "unreviewed"
       },
       {
-        "url": "https://www.jeffersoncountyfl.gov/external-link.aspx?l=http://jeffersoncountytaxcollector.com/",
+        "url": "https://jeffersoncountyfl.gov/tax-collector/",
         "label": "Tax Collector",
-        "discoveredOn": "https://www.jeffersoncountyfl.gov/",
+        "discoveredOn": "https://jeffersoncountyfl.gov/property-taxes/",
         "score": 26,
         "sameHost": true,
         "reviewStatus": "unreviewed"
       },
       {
-        "url": "https://jeffersontc.com/",
+        "url": "https://jeffersoncountyfl.gov/property-taxes/",
+        "label": "Property & Taxes Property Appraiser · Tax Collector",
+        "discoveredOn": "https://jeffersoncountyfl.gov/",
+        "score": 22,
+        "sameHost": true,
+        "reviewStatus": "unreviewed"
+      },
+      {
+        "url": "https://www.jeffersoncountytaxcollector.com/",
         "label": "Tax Collector",
-        "discoveredOn": "https://www.jeffersonclerk.com/",
+        "discoveredOn": "https://jeffersoncountyfl.gov/",
         "score": 17,
         "sameHost": false,
         "reviewStatus": "unreviewed"
@@ -372,25 +309,17 @@
     ],
     "property_appraiser_directory": [
       {
-        "url": "http://www.jeffersoncountyfl.gov/external-link.aspx?l=http://jeffersonpa.net/",
+        "url": "https://jeffersoncountyfl.gov/property-appraiser/",
         "label": "Property Appraiser",
-        "discoveredOn": "http://www.jeffersoncountyfl.gov/p/county-departments/board-of-county-commissioners",
+        "discoveredOn": "https://jeffersoncountyfl.gov/property-taxes/",
         "score": 26,
         "sameHost": true,
         "reviewStatus": "unreviewed"
       },
       {
-        "url": "https://www.jeffersoncountyfl.gov/external-link.aspx?l=http://jeffersonpa.net/",
-        "label": "Property Appraiser",
-        "discoveredOn": "https://www.jeffersoncountyfl.gov/",
-        "score": 26,
-        "sameHost": true,
-        "reviewStatus": "unreviewed"
-      },
-      {
-        "url": "https://www.jeffersoncountyfl.gov/external-link.aspx?l=http://www.jeffersonpa.net/",
-        "label": ">>Visit the Property Appraiser’s Website",
-        "discoveredOn": "https://www.jeffersoncountyfl.gov/p/constitutional-officers",
+        "url": "https://jeffersoncountyfl.gov/property-taxes/",
+        "label": "Property & Taxes Property Appraiser · Tax Collector",
+        "discoveredOn": "https://jeffersoncountyfl.gov/",
         "score": 22,
         "sameHost": true,
         "reviewStatus": "unreviewed"
@@ -398,61 +327,29 @@
       {
         "url": "https://jeffersonpa.net/",
         "label": "Property Appraiser",
-        "discoveredOn": "https://www.jeffersonclerk.com/",
+        "discoveredOn": "https://jeffersoncountyfl.gov/",
         "score": 17,
         "sameHost": false,
         "reviewStatus": "unreviewed"
       }
     ],
-    "school_board_directory": [
-      {
-        "url": "https://www.jeffersonschools.net/",
-        "label": "School Board",
-        "discoveredOn": "https://www.jeffersonclerk.com/",
-        "score": 17,
-        "sameHost": false,
-        "reviewStatus": "unreviewed"
-      }
-    ],
+    "school_board_directory": [],
     "school_superintendent_status_and_directory": [],
     "municipality_registry": [],
     "special_district_registry": [],
-    "judicial_election_or_retention_sources": [
-      {
-        "url": "https://2ndcircuit.leoncountyfl.gov/",
-        "label": "Second Judicial Circuit",
-        "discoveredOn": "https://www.jeffersonclerk.com/",
-        "score": 18,
-        "sameHost": false,
-        "reviewStatus": "unreviewed"
-      },
-      {
-        "url": "https://www.jeffersonclerk.com/court-services/circuit-court/",
-        "label": "Circuit Court",
-        "discoveredOn": "https://www.jeffersonclerk.com/",
-        "score": 17,
-        "sameHost": false,
-        "reviewStatus": "unreviewed"
-      }
-    ],
-    "campaign_finance_and_candidate_filing_sources": [
-      {
-        "url": "https://www.voterfocus.com/CampaignFinance/candidate_pr.php?c=jefferson",
-        "label": "Candidate Profiles & Financial Reports",
-        "discoveredOn": "https://jeffersonvotesfl.gov/",
-        "score": 13,
-        "sameHost": false,
-        "reviewStatus": "unreviewed"
-      }
-    ],
+    "judicial_election_or_retention_sources": [],
+    "campaign_finance_and_candidate_filing_sources": [],
     "financial_disclosure_sources": []
   },
-  "resolvedCategoryCount": 9,
+  "resolvedCategoryCount": 6,
   "requiredCategoryCount": 13,
   "unresolvedCategories": [
+    "school_board_directory",
     "school_superintendent_status_and_directory",
     "municipality_registry",
     "special_district_registry",
+    "judicial_election_or_retention_sources",
+    "campaign_finance_and_candidate_filing_sources",
     "financial_disclosure_sources"
   ],
   "notes": [
