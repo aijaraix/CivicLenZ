@@ -102,3 +102,93 @@ notes/blockers
 
 ## Next research pass
 Populate all 50 states + DC using the FEC/USAGov authority seed, then cluster by source family and choose representative engineering fixtures. Do not build 51 bespoke parsers before clustering.
+
+
+## Research pass 2 — additional authoritative source families
+
+The following are source-family discoveries from official state/DC election systems. They are collector-design inputs; each endpoint/document must be freshly revalidated before canonical ingestion.
+
+### Arizona
+Arizona Secretary of State publishes a 2026 Candidate Nominations and Petitions Filed document.
+Pattern: STATE_CANDIDATE_FILING_DOCUMENT.
+Use: filing-stage observation; later reconcile against certified ballot/general-election source.
+
+### California
+California Secretary of State publishes certified candidate lists for both the June 2, 2026 primary and November 3, 2026 general election.
+Pattern: STATE_CERTIFIED_BALLOT_PDF.
+Important: general certified list also includes judicial retention candidates. Preserve ordinary candidate contests and retention contests as distinct semantics.
+
+### Alaska
+Alaska Public Offices Commission exposes an All Candidates system with year, candidate, office, election, status and initial filing.
+Pattern: STATE_STRUCTURED_CANDIDATE_TABLE.
+Caution: campaign-finance registration/status is not automatically ballot certification.
+
+### Connecticut
+Connecticut SEEC exposes a 2026 candidate-list CSV download endpoint.
+Pattern: STATE_BULK_CANDIDATE_CSV.
+Caution: distinguish campaign-finance candidate/committee state from ballot qualification.
+
+### Mississippi
+Mississippi Secretary of State publishes a 2026 Primary Election Candidate Qualifying List and explicitly states that the list reflects submitted qualifying papers while the relevant election bodies determine actual qualification.
+Pattern: STATE_QUALIFYING_LIST_WITH_EXPLICIT_PENDING_GATE.
+This is a strong fixture for temporal/status semantics: SUBMITTED != QUALIFIED.
+
+### Missouri
+Missouri Secretary of State exposes a candidate filing system with cumulative candidates and withdrawn/removed candidates and separately publishes certified general-election candidates, including nonpartisan judicial candidates.
+Pattern: STATE_LIVE_FILING_PLUS_WITHDRAWAL_PLUS_CERTIFIED_PDF.
+This is a strong fixture for lifecycle reconciliation and judicial retention/candidate semantics.
+
+### Montana
+Montana candidate filing system exposes 2026 candidate lists with export to Excel/PDF/CSV and structured fields including status, district, race, filing date, party preference and ballot order.
+Pattern: STATE_EXPORTABLE_STRUCTURED_TABLE.
+High-value deterministic candidate source.
+
+### Nebraska
+Nebraska Secretary of State provides a 2026 statewide candidate filing XLSX plus final statewide primary/general candidate lists. Candidate materials cover statewide, federal, legislative and multiple district/subdivision offices.
+Pattern: STATE_BULK_XLSX_PLUS_FINAL_CERTIFIED_DOCUMENTS.
+High-value fixture for broad nontraditional elected structures.
+
+### Nevada
+Nevada Secretary of State Candidate Filing List is a structured searchable table with Excel/CSV export and includes many state/county/city jurisdictions. It explicitly labels the live list unofficial and says a certified list follows after filing closes.
+Pattern: STATE_REALTIME_EXPORTABLE_FILING_TABLE_TO_CERTIFIED_LIST.
+Strong fixture for provisional -> certified lifecycle.
+
+### New Hampshire
+New Hampshire Secretary of State 2026 election details publishes cumulative filings, qualified declarations of intent, declarations of intent and withdrawals.
+Pattern: STATE_CUMULATIVE_FILING_PLUS_QUALIFIED_PLUS_WITHDRAWAL.
+Strong lifecycle source family.
+
+### New Mexico
+New Mexico Secretary of State has a 2026 candidate portal with contest/candidate lists and explicit Qualified status. Filing authority is split: statewide/congressional with Secretary of State, other offices through county clerks for applicable filing types.
+Pattern: STATE_CANDIDATE_PORTAL_PLUS_COUNTY_DELEGATION.
+Browser/access-control behavior must be respected; use deterministic endpoint only if permitted/stable.
+
+### North Dakota
+North Dakota Secretary of State/VIP portal exposes election-specific contest/candidate lists.
+Pattern: STATE_ELECTION_CANDIDATE_PORTAL.
+Requires endpoint/parser inspection and currentness semantics before productionization.
+
+### South Carolina
+South Carolina election authority exposes an election-specific Candidate Listing searchable across offices, with county voter-registration offices relevant for questions/local scope.
+Pattern: STATE_ELECTION_CANDIDATE_SEARCH.
+Investigate deterministic backing endpoint before browser dependence.
+
+### District of Columbia
+DC Board of Elections publishes primary candidate documents, general/write-in candidate documents, Advisory Neighborhood Commission candidate lists and special-election candidate lists.
+Pattern: JURISDICTION_DOCUMENT_FAMILY_WITH_LOCAL_MICRODISTRICTS.
+Important national lesson: Seat universe must include jurisdiction-specific elected structures such as ANC single-member districts where applicable.
+
+## High-value representative engineering fixtures
+Before creating state-specific collectors, use these fixtures to prove reusable families:
+1. North Carolina — bulk CSV.
+2. Connecticut — direct candidate CSV.
+3. Montana — exportable structured table.
+4. Nebraska — XLSX + final documents + broad subdivision offices.
+5. Nevada — real-time filing table -> certified lifecycle.
+6. Missouri — filing + withdrawals/removals + certification + judicial.
+7. California — certified primary/general + retention.
+8. New Hampshire — filing/qualified/withdrawal lifecycle.
+9. Mississippi — submitted qualifying papers vs legal qualification gate.
+10. DC — dense local microdistrict candidate document family.
+
+These fixtures intentionally cover different source mechanics and legal/status semantics. Academy should generalize proven patterns before national fanout.
