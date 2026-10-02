@@ -1,7 +1,7 @@
 # CivicLenZ National Acquisition Campaign — Master Index
 
 Status: PLANNING / EXECUTION CONTRACT
-Date: 2026-09-30
+Date: 2026-10-01
 Runtime source authority: Internal Forge / Recovery, NOT this documentation branch.
 
 ## Critical source rule
@@ -23,9 +23,10 @@ Do not hard-code 500,000 or 513,200 as the current Seat total. The 2026 Census g
 1. `CAMPAIGN_OPERATING_CONTRACT.md`
 2. `SWARM_RECONCILIATION_AND_EXECUTION_MAP.md`
 3. `RESOURCE_MAXIMIZATION_AND_CONCURRENCY_PLAN.md`
-4. `WAVES_AND_ACCEPTANCE_GATES.md`
-5. `WORKER_CAMPAIGNS.md`
-6. Existing canonical control-plane documents referenced below.
+4. `RESEARCH_AND_COMPUTE_MULTIPLICATION_CONTRACT.md`
+5. `WAVES_AND_ACCEPTANCE_GATES.md`
+6. `WORKER_CAMPAIGNS.md`
+7. Existing canonical control-plane documents referenced below.
 
 ## Mandatory existing canon
 - docs/control-plane/AUTONOMOUS_RESEARCH_CONTROL_PLANE_MASTER_INDEX_AND_IMPLEMENTATION_ORDER.md
